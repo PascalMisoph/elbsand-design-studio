@@ -1,0 +1,8 @@
+---
+interface Props { intro: string; items: readonly string[]; }
+const { intro, items } = Astro.props;
+---
+<section class="proof-strip" aria-label={intro}>
+  <p>{intro}</p>
+  <div class="proof-list">{items.map((item) => <span>{item}</span>)}</div>
+</section>
