@@ -1,0 +1,28 @@
+---
+import { screenshots } from "../content/site";
+interface Props { eyebrow: string; title: string; body: string; decisions: readonly (readonly [string, string])[]; more: string; screenshotPending: string; urlPending: string; }
+const { eyebrow, title, body, decisions, more, screenshotPending, urlPending } = Astro.props;
+const projects = [
+  { name: "Pauline Paternoga", image: null, url: urlPending },
+  { name: "Paw & Sage", image: screenshots.pawSage, url: "pawandsage.com" },
+  { name: "Ochre & Chrome", image: screenshots.ochreChrome, url: "ochreandchrome.com" }
+];
+---
+<section class="section-shell references" id="referenzen">
+  <div class="reference-grid">
+    <div class="reference-copy">
+      <p class="eyebrow">{eyebrow}</p><h2>{title}</h2><p>{body}</p>
+      <dl class="decision-list">{decisions.map(([term, description]) => <div><dt>{term}</dt><dd>{description}</dd></div>)}</dl>
+    </div>
+    <a class="featured-frame" href="https://eurosummer.co" target="_blank" rel="noreferrer" aria-label="Eurosummer website"><img src={screenshots.eurosummer} alt="Screenshot der Eurosummer Website" width="1600" height="1000" loading="lazy" /></a>
+  </div>
+  <div class="more-heading"><h3>{more}</h3></div>
+  <div class="project-row">
+    {projects.map((project) => (
+      <a class="project-link" href={project.image ? `https://${project.url}` : "#kontakt"} target={project.image ? "_blank" : undefined} rel={project.image ? "noreferrer" : undefined}>
+        {project.image ? <img src={project.image} alt={`Screenshot von ${project.name}`} width="1200" height="800" loading="lazy" /> : <div class="project-placeholder" aria-hidden="true"><span>{screenshotPending}</span></div>}
+        <span>{project.name}</span><small>{project.url}</small>
+      </a>
+    ))}
+  </div>
+</section>
