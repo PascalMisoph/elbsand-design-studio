@@ -1,0 +1,27 @@
+---
+import "../styles/global.css";
+interface Props { title: string; description: string; lang: "de" | "en"; canonicalPath?: string; }
+const { title, description, lang, canonicalPath = lang === "de" ? "/" : "/en/" } = Astro.props;
+const siteUrl = "https://elbsand.studio";
+const canonical = new URL(canonicalPath, siteUrl).toString();
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="de" href={`${siteUrl}/`} />
+    <link rel="alternate" hreflang="en" href={`${siteUrl}/en/`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}/`} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta name="theme-color" content="#f5f1ea" />
+    <script type="application/ld+json" set:html={JSON.stringify({"@context":"https://schema.org","@type":"ProfessionalService",name:"ELBSAND Design Studio",url:siteUrl,email:"pascal.misoph@gmail.com",areaServed:["Dresden","Sachsen","Deutschland","DACH"],serviceType:["Webdesign","Web development","SEO","AI visibility"]})} />
+  </head>
+  <body><slot /></body>
+</html>
