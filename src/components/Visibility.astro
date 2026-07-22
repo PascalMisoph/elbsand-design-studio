@@ -1,0 +1,14 @@
+---
+interface Props { eyebrow: string; title: string; body: string; points: readonly string[]; }
+const { eyebrow, title, body, points } = Astro.props;
+const systems = ["ChatGPT", "Claude", "Perplexity"];
+---
+<section class="visibility-band" aria-labelledby="visibility-title">
+  <div class="visibility-inner">
+    <div><p class="eyebrow">{eyebrow}</p><h2 id="visibility-title">{title}</h2><p>{body}</p></div>
+    <div class="visibility-panel" aria-label="AI visibility systems">
+      <div class="system-row">{systems.map((system) => <span>{system}</span>)}</div>
+      <ul>{points.map((point) => <li>{point}</li>)}</ul>
+    </div>
+  </div>
+</section>
