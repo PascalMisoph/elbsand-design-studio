@@ -1,0 +1,8 @@
+---
+interface Props { legal: string; imprint: string; privacy: string; }
+const { legal, imprint, privacy } = Astro.props;
+---
+<footer class="site-footer">
+  <div><a class="wordmark" href="/">ELBSAND</a><p>{legal}</p></div>
+  <nav aria-label="Legal navigation"><a href="#">{imprint}</a><a href="#">{privacy}</a><a href="mailto:pascal.misoph@gmail.com">pascal.misoph@gmail.com</a></nav>
+</footer>
