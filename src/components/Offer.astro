@@ -1,0 +1,10 @@
+---
+interface Props { eyebrow: string; title: string; body: string; items: readonly (readonly [string, string, string])[]; }
+const { eyebrow, title, body, items } = Astro.props;
+---
+<section class="section-shell offer" id="leistungen">
+  <div class="section-heading"><p class="eyebrow">{eyebrow}</p><h2>{title}</h2><p>{body}</p></div>
+  <div class="offer-list">
+    {items.map(([number, title, text]) => <article class="offer-item"><span>{number}</span><h3>{title}</h3><p>{text}</p></article>)}
+  </div>
+</section>
