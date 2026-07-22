@@ -1,0 +1,11 @@
+---
+interface Props { eyebrow: string; title: string; body: string; fields: readonly string[]; submit: string; mail: string; }
+const { eyebrow, title, body, fields, submit, mail } = Astro.props;
+---
+<section class="contact-section" id="kontakt">
+  <div class="contact-copy"><p class="eyebrow">{eyebrow}</p><h2>{title}</h2><p>{body}</p><p class="mail-line">{mail} <a href="mailto:pascal.misoph@gmail.com">pascal.misoph@gmail.com</a></p></div>
+  <form class="contact-form" aria-label="Website check request">
+    {fields.map((field, index) => <label class={index === fields.length - 1 ? "is-wide" : ""}><span>{field}</span>{index === fields.length - 1 ? <textarea rows="5"></textarea> : <input type={field.toLowerCase().includes("mail") || field.toLowerCase().includes("email") ? "email" : "text"} />}</label>)}
+    <button class="button" type="button">{submit}</button>
+  </form>
+</section>
