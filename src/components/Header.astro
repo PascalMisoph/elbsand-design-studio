@@ -1,0 +1,27 @@
+---
+import type { Locale } from "../content/site";
+interface Props { lang: Locale; nav: readonly string[]; cta: string; }
+const { lang, nav, cta } = Astro.props;
+const hrefs = ["#leistungen", "#referenzen", "#prozess", "#studio", "#kontakt"];
+const otherHref = lang === "de" ? "/en/" : "/";
+const menuLabel = lang === "de" ? "Menü" : "Menu";
+---
+<header class="site-header" aria-label="Primary navigation">
+  <a class="wordmark" href={lang === "de" ? "/" : "/en/"} aria-label="ELBSAND home">ELBSAND</a>
+  <nav class="desktop-nav" aria-label="Main navigation">
+    {nav.map((item, index) => <a href={hrefs[index]}>{item}</a>)}
+  </nav>
+  <div class="header-actions">
+    <a class="language-switch" href={otherHref} aria-label={lang === "de" ? "Switch to English" : "Zur deutschen Version wechseln"}>
+      <span class={lang === "de" ? "is-active" : ""}>DE</span><span class={lang === "en" ? "is-active" : ""}>EN</span>
+    </a>
+    <a class="button button-small" href="#kontakt">{cta}</a>
+    <details class="mobile-menu">
+      <summary aria-label={menuLabel}><span></span><span></span></summary>
+      <nav aria-label="Mobile navigation">
+        {nav.map((item, index) => <a href={hrefs[index]}>{item}</a>)}
+        <a class="button" href="#kontakt">{cta}</a>
+      </nav>
+    </details>
+  </div>
+</header>
