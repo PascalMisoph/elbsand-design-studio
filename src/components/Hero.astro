@@ -1,0 +1,17 @@
+---
+import { heroImage } from "../content/site";
+interface Props { eyebrow: string; title: string; body: string; cta: string; secondaryCta: string; }
+const { eyebrow, title, body, cta, secondaryCta } = Astro.props;
+---
+<section class="hero section-shell">
+  <div class="hero-copy">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{title}</h1>
+    <p class="lead">{body}</p>
+    <div class="cta-row"><a class="button" href="#kontakt">{cta}</a><a class="text-link" href="#referenzen">{secondaryCta}</a></div>
+  </div>
+  <figure class="hero-media" aria-label="Architectural detail as visual direction for ELBSAND">
+    <img src={heroImage} alt="Warme architektonische Struktur mit klaren Linien" width="1600" height="1067" fetchpriority="high" />
+    <figcaption>Strategie, Gestaltung und technische Umsetzung aus einem klaren System.</figcaption>
+  </figure>
+</section>
