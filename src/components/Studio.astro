@@ -1,0 +1,17 @@
+---
+import { saxonyImage, studioImage } from "../content/site";
+interface Props { eyebrow: string; title: string; body: string; note: string; }
+const { eyebrow, title, body, note } = Astro.props;
+---
+<section class="section-shell studio" id="studio">
+  <div class="studio-media">
+    <img class="studio-primary" src={studioImage} alt="Ruhige Studioaufnahme mit Schreibtisch und Tageslicht" width="1400" height="933" loading="lazy" />
+    <img class="studio-secondary" src={saxonyImage} alt="Landschaftliche Referenz zu Sachsen und Dresden" width="900" height="1200" loading="lazy" />
+  </div>
+  <div class="studio-copy">
+    <p class="eyebrow">{eyebrow}</p><h2>{title}</h2><p>{body}</p>
+    <div class="founder-line"><strong>Pascal</strong><span>Founder, Design, Development & SEO Strategy</span></div>
+    <div class="founder-line muted"><strong>Pauline</strong><span>Studio Support & Editorial Operations</span></div>
+    <p class="studio-note">{note}</p>
+  </div>
+</section>
