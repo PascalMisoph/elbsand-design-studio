@@ -1,0 +1,10 @@
+---
+interface Props { eyebrow: string; title: string; steps: readonly (readonly [string, string])[]; }
+const { eyebrow, title, steps } = Astro.props;
+---
+<section class="section-shell process" id="prozess">
+  <div class="section-heading compact"><p class="eyebrow">{eyebrow}</p><h2>{title}</h2></div>
+  <div class="process-list">
+    {steps.map(([title, text], index) => <article><span>{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{text}</p></article>)}
+  </div>
+</section>
