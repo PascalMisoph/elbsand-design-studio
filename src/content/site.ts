@@ -42,8 +42,8 @@ export const content = {
       body: "Die Hauptreferenz zeigt, wie ein digitaler Auftritt internationale Wirkung, klare Inhaltsführung und ruhige visuelle Präsentation verbinden kann - ohne den Nutzerweg mit Effekten oder Agenturfloskeln zu überladen.",
       decisions: [
         ["Struktur", "Inhalte werden in klare Einstiege, wiedererkennbare Abschnitte und nachvollziehbare Wege übersetzt."],
-        ["Gestaltung", "Der visuelle Rahmen bleibt reduziert, damit Projektqualität, Bildsprache und Botschaft tragen."],
-        ["Umsetzung", "Responsiver Aufbau, saubere Oberflächen und ausbaufähige Seitenlogik stehen im Vordergrund."]
+        ["Gestaltung", "Der visuelle Rahmen bleibt reduziert, damit Projektqualitaet, Bildsprache und Botschaft tragen."],
+        ["Umsetzung", "Responsive Aufbau, saubere Oberflächen und ausbaufähige Seitenlogik stehen im Vordergrund."]
       ],
       more: "Weitere Referenzen",
       screenshotPending: "Screenshot folgt",
@@ -63,7 +63,7 @@ export const content = {
     studio: {
       eyebrow: "Studio",
       title: "Persönlich geführt, bewusst klein gehalten.",
-      body: "ELBSAND verbindet Gestaltung, Entwicklung und Suchstrategie in einem schlanken Studio-Setup. Pascal führt Strategie, Design, technische Umsetzung und SEO zusammen. Pauline unterstützt im Hintergrund bei Struktur, Redaktion und Studio-Organisation.",
+      body: "ELBSAND verbindet Gestaltung, Entwicklung und Suchstrategie in einem schlanken Studio-Setup. Pascal fuehrt Strategie, Design, technische Umsetzung und SEO zusammen. Pauline unterstützt im Hintergrund bei Struktur, Redaktion und Studio-Organisation.",
       note: "Erweiterter Studio-Support: Zula & Nali. Sehr leise, meistens."
     },
     contact: {
