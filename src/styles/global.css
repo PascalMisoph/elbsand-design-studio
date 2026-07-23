@@ -78,8 +78,7 @@ h3 { margin-bottom: 10px; font-size: 20px; font-weight: 560; }
 .project-placeholder { display: grid; width: 100%; aspect-ratio: 1.36; place-items: center; border-bottom: 1px solid var(--line); background: linear-gradient(135deg, rgba(141,118,85,0.12), rgba(250,248,243,0.78)); color: var(--accent-dark); font-family: var(--serif); font-size: 22px; }
 .project-link span, .project-link small { display: block; padding-inline: 18px; }
 .project-link span { margin-top: 16px; font-family: var(--serif); font-size: 24px; }
-.project-link small { margin-top: 3px; color: var(--muted); }
-.visibility-band { margin-block: var(--section); background: #e7ded1; }
+.project-link small { margin-top: 3px; color: var(--muted); }.visibility-band { margin-block: var(--section); background: #e7ded1; }
 .visibility-inner { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.65fr); gap: clamp(36px, 7vw, 110px); max-width: var(--max); margin: 0 auto; padding: clamp(72px, 10vw, 138px) var(--gutter); align-items: center; }
 .visibility-panel { border: 1px solid rgba(23,22,18,0.12); border-radius: var(--radius-lg); background: rgba(250,248,243,0.56); padding: clamp(22px, 4vw, 42px); box-shadow: 0 18px 55px rgba(43,35,24,0.08); }
 .system-row { display: grid; gap: 12px; margin-bottom: 34px; }
