@@ -1,0 +1,156 @@
+---
+interface Props { lang: "de" | "en" }
+const { lang } = Astro.props;
+
+const content = lang === "de" ? {
+  eyebrow: "Leistungsnetz",
+  title: "Die passende Arbeit für jede Sichtbarkeitslücke.",
+  aria: "GEO-Leistungen",
+  core: "GEO",
+  signals: ["Antworten", "Quellen", "Technik", "Inhalte"],
+  items: [
+    { label: "Ausgangslage", title: "GEO Audit", href: "/geo-audit/", children: [] },
+    { label: "Messung", title: "AI-Sichtbarkeit", href: "/ai-sichtbarkeit/", children: [
+      ["Quellenanalyse", "/ki-quellenanalyse/"], ["Wettbewerbsanalyse", "/ki-wettbewerbsanalyse/"],
+      ["Markenwahrnehmung", "/ki-markenwahrnehmung/"], ["Faktencheck", "/ki-faktencheck/"]
+    ] },
+    { label: "Nachfrage", title: "Prompt-Recherche", href: "/prompt-recherche/", children: [] },
+    { label: "Zugänglichkeit", title: "Technische GEO-Optimierung", href: "/technische-geo-optimierung/", children: [["AI-Crawlability", "/ai-crawlability/"]] },
+    { label: "Antwortfähigkeit", title: "GEO-Content", href: "/geo-content/", children: [["Content für AI-Suche optimieren", "/content-optimierung-ai-suche/"]] },
+    { label: "Weiterentwicklung", title: "GEO-Betreuung", href: "/geo-betreuung/", children: [["GEO-Monitoring", "/geo-monitoring/"]] }
+  ]
+} : {
+  eyebrow: "Service network",
+  title: "The right work for every visibility gap.",
+  aria: "GEO services",
+  core: "GEO",
+  signals: ["Answers", "Sources", "Technology", "Content"],
+  items: [
+    { label: "Baseline", title: "GEO audit", href: "/en/geo-audit/", children: [] },
+    { label: "Measurement", title: "AI visibility", href: "/en/ai-visibility/", children: [
+      ["Source analysis", "/en/ai-source-analysis/"], ["Competitor analysis", "/en/ai-competitor-analysis/"],
+      ["Brand perception", "/en/ai-brand-perception/"], ["Fact checking", "/en/ai-fact-checking/"]
+    ] },
+    { label: "Demand", title: "Prompt research", href: "/en/prompt-research/", children: [] },
+    { label: "Access", title: "Technical GEO optimisation", href: "/en/technical-geo-optimization/", children: [["AI crawlability", "/en/ai-crawlability/"]] },
+    { label: "Answer readiness", title: "GEO content", href: "/en/geo-content/", children: [["Content optimisation for AI search", "/en/content-optimization-ai-search/"]] },
+    { label: "Development", title: "GEO support", href: "/en/geo-support/", children: [["GEO monitoring", "/en/geo-monitoring/"]] }
+  ]
+};
+---
+
+<section class="geo-service-network" data-geo-service-network>
+  <div class="geo-network-shell">
+    <header>
+      <p>{content.eyebrow}</p>
+      <h2>{content.title}</h2>
+    </header>
+
+    <div class="geo-network-layout">
+      <div class="geo-network-visual" aria-hidden="true">
+        <div class="geo-network-core"><i></i><strong>{content.core}</strong></div>
+        <span class="geo-network-orbit geo-network-orbit-a"></span>
+        <span class="geo-network-orbit geo-network-orbit-b"></span>
+        {content.signals.map((signal, index) => <small data-signal={index}>{signal}</small>)}
+      </div>
+
+      <nav aria-label={content.aria}>
+        <ol>
+          {content.items.map((item, index) => (
+            <li style={`--network-index: ${index}`}>
+              <a class="geo-network-parent" href={item.href}>
+                <span>{index + 1}</span>
+                <div><small>{item.label}</small><h3>{item.title}</h3></div>
+                <b aria-hidden="true">↗</b>
+              </a>
+              {item.children.length > 0 && (
+                <ul>
+                  {item.children.map(([label, href]) => <li><a href={href}>{label}<span aria-hidden="true">→</span></a></li>)}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<script>
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll<HTMLElement>("[data-geo-service-network]").forEach((section) => {
+    if (reducedMotion) {
+      section.classList.add("is-visible");
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry?.isIntersecting) return;
+      section.classList.add("is-visible");
+      observer.disconnect();
+    }, { threshold: .12 });
+    observer.observe(section);
+  });
+</script>
+
+<style>
+  .geo-service-network { border-top: 1px solid rgba(255, 250, 244, .16); border-bottom: 1px solid rgba(255, 250, 244, .16); background: #171715; color: #fffaf4; padding: 112px var(--gutter); }
+  .geo-network-shell { width: min(100%, var(--container)); margin-inline: auto; }
+  header { max-width: 850px; margin-bottom: 76px; }
+  header p { margin: 0 0 18px; color: #e98764; font-size: 11px; font-weight: 720; letter-spacing: .14em; text-transform: uppercase; }
+  header h2 { margin: 0; font-family: var(--sans); font-size: clamp(48px, 5.4vw, 72px); font-weight: 530; letter-spacing: -.06em; line-height: .98; }
+  .geo-network-layout { display: grid; grid-template-columns: minmax(330px, .68fr) minmax(0, 1.32fr); gap: clamp(64px, 8vw, 116px); align-items: start; }
+  .geo-network-visual { position: sticky; top: 100px; min-height: 600px; overflow: hidden; border: 1px solid rgba(255, 250, 244, .16); border-radius: 16px; background-image: linear-gradient(rgba(255, 250, 244, .055) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 250, 244, .055) 1px, transparent 1px); background-size: 54px 54px; }
+  .geo-network-core { position: absolute; z-index: 3; top: 50%; left: 50%; display: grid; width: 126px; height: 126px; place-items: center; border: 1px solid rgba(233, 135, 100, .58); border-radius: 50%; background: rgba(23, 23, 21, .92); box-shadow: 0 0 0 34px rgba(233, 135, 100, .04), 0 0 90px rgba(183, 70, 34, .22); transform: translate(-50%, -50%); }
+  .geo-network-core i { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: #e98764; animation: core-pulse 2.6s ease-in-out infinite; }
+  .geo-network-core strong { margin-top: 52px; color: #b9b4aa; font-size: 13px; font-weight: 620; }
+  .geo-network-orbit { position: absolute; top: 50%; left: 50%; border: 1px solid rgba(233, 135, 100, .2); border-radius: 50%; transform: translate(-50%, -50%); }
+  .geo-network-orbit-a { width: 260px; height: 260px; }
+  .geo-network-orbit-b { width: 410px; height: 410px; border-style: dashed; animation: orbit-spin 24s linear infinite; }
+  .geo-network-visual small { position: absolute; z-index: 4; color: #b9b4aa; font-size: 12px; opacity: 0; transform: translateY(10px); transition: opacity 500ms ease calc(var(--signal-delay, 0) * 1ms), transform 650ms var(--motion-ease) calc(var(--signal-delay, 0) * 1ms); }
+  .geo-network-visual [data-signal="0"] { --signal-delay: 180; top: 18%; left: 12%; }
+  .geo-network-visual [data-signal="1"] { --signal-delay: 270; top: 19%; right: 12%; }
+  .geo-network-visual [data-signal="2"] { --signal-delay: 360; bottom: 18%; left: 12%; }
+  .geo-network-visual [data-signal="3"] { --signal-delay: 450; right: 12%; bottom: 18%; }
+  .is-visible .geo-network-visual small { opacity: 1; transform: translateY(0); }
+  nav > ol, nav ul { margin: 0; padding: 0; list-style: none; }
+  nav > ol > li { border-top: 1px solid rgba(255, 250, 244, .16); opacity: .2; transform: translateY(20px); transition: opacity 520ms ease calc(var(--network-index) * 80ms), transform 650ms var(--motion-ease) calc(var(--network-index) * 80ms); }
+  .is-visible nav > ol > li { opacity: 1; transform: translateY(0); }
+  nav > ol > li:last-child { border-bottom: 1px solid rgba(255, 250, 244, .16); }
+  .geo-network-parent { display: grid; grid-template-columns: 44px minmax(0, 1fr) 40px; gap: 22px; align-items: center; min-height: 128px; padding: 25px 0; }
+  .geo-network-parent > span { display: grid; width: 40px; height: 40px; place-items: center; border: 1px solid rgba(255, 250, 244, .2); border-radius: 50%; color: #b9b4aa; font-size: 12px; }
+  .geo-network-parent small { display: block; margin-bottom: 8px; color: #e98764; font-size: 10px; font-weight: 680; letter-spacing: .11em; text-transform: uppercase; }
+  .geo-network-parent h3 { margin: 0; font-family: var(--sans); font-size: clamp(27px, 2.7vw, 38px); font-weight: 530; letter-spacing: -.045em; }
+  .geo-network-parent > b { display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid rgba(255, 250, 244, .2); border-radius: 50%; color: #e98764; font-weight: 500; transition: background 220ms ease, color 220ms ease, transform 350ms var(--motion-ease); }
+  .geo-network-parent:hover > b, .geo-network-parent:focus-visible > b { background: #e98764; color: #171715; transform: rotate(45deg); }
+  nav ul { display: flex; flex-wrap: wrap; gap: 8px; margin: -12px 0 26px 66px; }
+  nav ul a { display: inline-flex; min-height: 38px; align-items: center; gap: 12px; border: 1px solid rgba(255, 250, 244, .16); border-radius: 7px; padding: 0 12px; color: #b9b4aa; font-size: 12px; transition: border-color 220ms ease, color 220ms ease, background 220ms ease; }
+  nav ul a:hover, nav ul a:focus-visible { border-color: rgba(233, 135, 100, .52); background: rgba(233, 135, 100, .07); color: #fffaf4; }
+  nav ul a span { color: #e98764; }
+  @keyframes orbit-spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+  @keyframes core-pulse { 0%, 100% { scale: .86; opacity: .65; } 50% { scale: 1.12; opacity: 1; } }
+  @media (max-width: 860px) {
+    .geo-network-layout { grid-template-columns: 1fr; gap: 48px; }
+    .geo-network-visual { position: relative; top: auto; min-height: 420px; }
+  }
+  @media (max-width: 640px) {
+    .geo-service-network { padding: 80px 20px; }
+    header { margin-bottom: 48px; }
+    header h2 { font-size: 44px; }
+    .geo-network-visual { min-height: 330px; border-radius: 12px; background-size: 44px 44px; }
+    .geo-network-core { width: 90px; height: 90px; }
+    .geo-network-core strong { margin-top: 36px; font-size: 11px; }
+    .geo-network-orbit-a { width: 170px; height: 170px; }
+    .geo-network-orbit-b { width: 260px; height: 260px; }
+    .geo-network-visual small { font-size: 10px; }
+    .geo-network-parent { grid-template-columns: 38px minmax(0, 1fr) 34px; gap: 12px; min-height: 112px; }
+    .geo-network-parent > span { width: 34px; height: 34px; }
+    .geo-network-parent h3 { font-size: 28px; overflow-wrap: break-word; hyphens: auto; }
+    .geo-network-parent > b { width: 34px; height: 34px; }
+    nav ul { display: grid; margin: -4px 0 24px 50px; }
+    nav ul a { justify-content: space-between; font-size: 13px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .geo-network-core i, .geo-network-orbit-b { animation: none; }
+    .geo-network-visual small, nav > ol > li, .geo-network-parent > b { opacity: 1; transform: none; transition: none; }
+  }
+</style>

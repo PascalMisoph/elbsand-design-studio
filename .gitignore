@@ -5,3 +5,12 @@ dist/
 .env.*
 preview-server.log
 review/*.png
+test-results/
+playwright-report/
+.data/
+.codex-tmp/
+.tmp/
+tmp/
+artifacts/
+.codex-*.log
+debug.log

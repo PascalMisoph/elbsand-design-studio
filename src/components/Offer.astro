@@ -1,10 +1,116 @@
 ---
-interface Props { eyebrow: string; title: string; body: string; items: readonly (readonly [string, string, string])[]; }
-const { eyebrow, title, body, items } = Astro.props;
+interface Props {
+  eyebrow: string;
+  title: string;
+  detailLinkLabel: string;
+  items: readonly (readonly [string, string, string])[];
+}
+
+const { eyebrow, title, detailLinkLabel, items } = Astro.props;
+const isEnglish = Astro.url.pathname.startsWith("/en/");
+const detailHref = isEnglish ? "/en/geo-optimization/" : "/geo-optimierung/";
+const structureLabels = isEnglish
+  ? ["Home", "Services", "Projects", "Contact"]
+  : ["Start", "Leistungen", "Projekte", "Kontakt"];
 ---
+
 <section class="section-shell offer" id="leistungen">
-  <div class="section-heading"><p class="eyebrow">{eyebrow}</p><h2>{title}</h2><p>{body}</p></div>
+  <div class="section-heading compact offer-heading">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2>{title}</h2>
+  </div>
+
   <div class="offer-list">
-    {items.map(([number, title, text]) => <article class="offer-item"><span>{number}</span><h3>{title}</h3><p>{text}</p></article>)}
+    {items.map(([, itemTitle, text], index) => (
+      <article class="offer-item" data-offer-row style={`--check-stagger: ${index * 150}ms`}>
+        <span class="offer-check" data-offer-check aria-hidden="true">
+          <span class="offer-check-number">{index + 1}</span>
+          <svg viewBox="0 0 28 28" focusable="false">
+            <path class="offer-check-circle" pathLength="1" d="M14 1.75a12.25 12.25 0 0 1 0 24.5 12.25 12.25 0 0 1 0-24.5"></path>
+            <path class="offer-check-mark" pathLength="1" d="M8.5 14.2 12.2 18l7.5-8.2"></path>
+          </svg>
+        </span>
+
+        <div class="offer-story-copy">
+          <h3>{itemTitle}</h3>
+          <div class="offer-item-copy">
+            <p>{text}</p>
+            {index === 2 && (
+              <a class="offer-detail-link" href={detailHref} data-astro-prefetch>
+                {detailLinkLabel}<span aria-hidden="true">→</span>
+              </a>
+            )}
+          </div>
+        </div>
+
+        <div class:list={["offer-story-visual", `offer-story-visual--${index + 1}`]} aria-hidden="true">
+          {index === 0 && (
+            <div class="structure-demo">
+              <div class="demo-browser-bar"><i></i><i></i><i></i><span>elbsand.studio</span></div>
+              <div class="structure-demo-body">
+                <p>{isEnglish ? "Clear path to enquiry" : "Klarer Weg zur Anfrage"}</p>
+                <ol>
+                  {structureLabels.map((label, labelIndex) => (
+                    <li><span>{labelIndex + 1}</span><strong>{label}</strong><i></i></li>
+                  ))}
+                </ol>
+                <b class="structure-demo-cursor"></b>
+              </div>
+            </div>
+          )}
+
+          {index === 1 && (
+            <div class="responsive-demo">
+              <div class="responsive-demo-desktop">
+                <span class="responsive-demo-nav"></span>
+                <strong>{isEnglish ? "One system." : "Ein System."}</strong>
+                <i></i><i></i><i></i>
+              </div>
+              <div class="responsive-demo-mobile">
+                <span></span><strong>{isEnglish ? "Every screen." : "Jeder Screen."}</strong><i></i><i></i>
+              </div>
+              <p><span>320</span><span>768</span><span>1440</span></p>
+            </div>
+          )}
+
+          {index === 2 && (
+            <div class="search-intent-demo">
+              <p>{isEnglish ? "Discover what your customers ask" : "Verstehen, wonach deine Kunden fragen"}</p>
+              <div class="search-intent-field">
+                <strong>{isEnglish ? "web design Dresden" : "Webdesign Dresden"}</strong>
+                <div><span><i></i>{isEnglish ? "Topic analysis" : "Themenanalyse"}</span><b>{isEnglish ? "Analyse" : "Analysieren"}</b></div>
+              </div>
+              <small>{isEnglish ? "Related questions" : "Verwandte Fragen"}</small>
+              <ol>
+                <li><strong>{isEnglish ? "How much does a professional website cost?" : "Was kostet eine professionelle Website?"}</strong><span>1</span></li>
+                <li><strong>{isEnglish ? "Which agency combines design and SEO?" : "Welche Agentur verbindet Design und SEO?"}</strong><span>2</span></li>
+                <li><strong>{isEnglish ? "How does a website relaunch work?" : "Wie läuft ein Website-Relaunch ab?"}</strong><span>3</span></li>
+              </ol>
+            </div>
+          )}
+        </div>
+      </article>
+    ))}
   </div>
 </section>
+
+<script>
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  if (!reducedMotion.matches) {
+    document.documentElement.classList.add("offer-check-animation");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.3, rootMargin: "0px 0px -8% 0px" }
+    );
+
+    document.querySelectorAll("[data-offer-row]").forEach((row) => observer.observe(row));
+  }
+</script>

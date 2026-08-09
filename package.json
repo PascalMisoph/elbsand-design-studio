@@ -8,12 +8,26 @@
     "build": "astro check && astro build",
     "preview": "astro preview --host 127.0.0.1",
     "check": "astro check",
-    "static:check": "node scripts/static-smoke-check.cjs"
+    "static:check": "node scripts/static-smoke-check.cjs",
+    "test:visual": "playwright test"
   },
   "dependencies": {
     "@astrojs/check": "latest",
+    "@astrojs/node": "11.0.2",
+    "@astrojs/react": "^6.0.2",
+    "@fontsource-variable/inter": "^5.2.8",
+    "@lobehub/icons-static-svg": "^1.94.0",
+    "@lucide/astro": "^1.26.0",
+    "@remotion/media": "^4.0.501",
+    "@remotion/player": "^4.0.501",
     "astro": "latest",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "remotion": "^4.0.501",
     "typescript": "latest"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "26.1.2"
+  }
 }

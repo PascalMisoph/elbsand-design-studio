@@ -1,0 +1,128 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import SubpageContact from "./SubpageContact.astro";
+import { content } from "../content/site";
+import type { ServicePageContent } from "../content/service-pages";
+
+interface Props { page: ServicePageContent }
+const { page } = Astro.props;
+const siteContent = content[page.lang];
+const en = page.lang === "en";
+const home = en ? "/en/" : "/";
+const canonicalPath = en ? page.alternateEnPath : page.alternateDePath;
+const crumbs = [
+  { name: page.breadcrumb.home, href: home },
+  { name: page.breadcrumb.hub, href: en ? "/en/geo-optimization/" : "/geo-optimierung/" },
+  ...(page.breadcrumb.parent ? [{ name: page.breadcrumb.parent.label, href: page.breadcrumb.parent.href }] : []),
+  { name: page.breadcrumb.current, href: canonicalPath },
+];
+const ui = en ? {
+  primary:"Discuss perception", secondary:"Get started", trust:"Trusted project contexts for brand, content and visibility",
+  measure:"Measure brand perception across AI answers", measureText:"We read perception at question level, separated by theme, context and answer environment.",
+  diagnose:"Diagnose causes and turn perception into action", diagnoseText:"The analysis connects what is being said with the pages, facts and external contexts that shape it.",
+  proof:"What real projects reveal about our way of working", proofSub:"Clarity before artificial image work",
+  faq:"Frequently asked questions", closing:"Keep control of how your offer is understood", closingText:"AI forms an impression whether you observe it or not. ELBSAND helps you understand the narrative and strengthen the sources that can carry the real offer.",
+  project:"Project context", status:"Studio systems operational",
+} : {
+  primary:"Wahrnehmung besprechen", secondary:"Jetzt starten", trust:"Vertraute Projektkontexte für Marke, Inhalt und Sichtbarkeit",
+  measure:"Markenwahrnehmung in KI-Antworten messbar lesen", measureText:"Wir betrachten Wahrnehmung auf Fragenebene – getrennt nach Thema, Kontext und Antwortumfeld.",
+  diagnose:"Ursachen erkennen und Wahrnehmung in Arbeit übersetzen", diagnoseText:"Die Analyse verbindet das Gesagte mit den Seiten, Fakten und externen Kontexten, die das Bild prägen.",
+  proof:"Was reale Projekte über unsere Arbeitsweise zeigen", proofSub:"Klarheit vor künstlicher Imagepflege",
+  faq:"Häufig gestellte Fragen", closing:"Behalte im Blick, wie dein Angebot verstanden wird", closingText:"KI formt ein Bild, ob du es beobachtest oder nicht. ELBSAND hilft dir, die Erzählung zu verstehen und die Quellen zu stärken, die dein tatsächliches Angebot tragen.",
+  project:"Projektkontext", status:"Studio-Systeme erreichbar",
+};
+const caps = [
+  { title:en?"Dedicated perception questions":"Gezielte Wahrnehmungsfragen", text:en?"Ask where the brand is understood clearly and where the picture stays generic.":"Prüfe, wo die Marke klar verstanden wird und wo das Bild austauschbar bleibt." },
+  { title:en?"Theme and tone overview":"Themen- und Tonalitätsbild", text:en?"Read recurring traits and the tone connected with the offer.":"Lies wiederkehrende Eigenschaften und den Ton, der mit dem Angebot verbunden wird." },
+  { title:en?"Themes and root causes":"Muster und Ursachen", text:en?"Connect recurring narratives with the sources behind them.":"Verbinde wiederkehrende Erzählungen mit den Quellen, die dahinterstehen." },
+  { title:en?"Perception-to-action workflow":"Vom Markenbild zur Arbeit", text:en?"Turn the findings into precise work on pages, facts and context.":"Übersetze die Befunde in präzise Arbeit an Seiten, Fakten und Kontext." },
+];
+const measureItems = en ? [
+  ["Dedicated perception questions","Questions explicitly examine what the brand is known for, how it is described and where the picture remains generic."],
+  ["Topics and contexts","Themes separate service, personality, specialism and trust so a broad impression becomes readable."],
+  ["Tone and development","Positive, unclear and conflicting descriptions are viewed together and observed over selected time points."],
+  ["Key themes and patterns","Recurring narratives are ranked by relevance and connected to the sources that support them."],
+] : [
+  ["Gezielte Wahrnehmungsfragen","Die Fragen untersuchen ausdrücklich, wofür die Marke steht, wie sie beschrieben wird und wo das Bild austauschbar bleibt."],
+  ["Themen und Kontexte","Leistung, Persönlichkeit, Spezialisierung und Vertrauen werden getrennt, damit ein allgemeiner Eindruck lesbar wird."],
+  ["Tonalität und Entwicklung","Positive, unklare und widersprüchliche Beschreibungen werden gemeinsam und über ausgewählte Zeitpunkte betrachtet."],
+  ["Kernmuster und Wiederholungen","Wiederkehrende Erzählungen werden nach Relevanz geordnet und mit den Quellen verbunden, die sie stützen."],
+];
+const diagnoseItems = en ? [
+  ["Root cause investigation","We trace evaluations back to owned pages, profiles, editorial mentions and recurring competitor context."],
+  ["Perception and reality","A communication gap is separated from a genuine gap in the service or customer experience."],
+  ["Perception monitoring","Selected repeat observations show whether clearer content and new evidence change the answer pattern."],
+  ["Actionable workflows","Findings become precise briefs for website content, sources, editorial work or positioning."],
+] : [
+  ["Ursachen untersuchen","Wir verfolgen Zuschreibungen zurück zu eigenen Seiten, Profilen, redaktionellen Erwähnungen und wiederkehrenden Wettbewerbskontexten."],
+  ["Wahrnehmung und Realität","Eine kommunikative Lücke wird von einer tatsächlichen Lücke im Angebot oder Kundenerlebnis getrennt."],
+  ["Wahrnehmung beobachten","Ausgewählte Wiederholungen zeigen, ob klarere Inhalte und neue Belege das Antwortmuster verändern."],
+  ["Konkrete Arbeitsabläufe","Befunde werden zu präzisen Briefings für Website-Inhalte, Quellenarbeit, Redaktion oder Positionierung."],
+];
+const insightCards = en ? [
+  ["Answer picture","See which traits repeatedly appear together."], ["Tone development","Separate stable perception from short-term variation."],
+  ["Source influence","Trace which contexts reinforce a narrative."], ["Reality check","Distinguish communication drift from a real service gap."],
+] : [
+  ["Antwortbild","Erkenne, welche Eigenschaften wiederholt gemeinsam auftreten."], ["Tonalitätsverlauf","Trenne stabile Wahrnehmung von kurzfristiger Abweichung."],
+  ["Quelleneinfluss","Verfolge, welche Kontexte eine Erzählung verstärken."], ["Realitätsprüfung","Unterscheide kommunikative Drift von einer echten Angebotslücke."],
+];
+const faqs = [...page.faq.items, ...(en ? [
+  {question:"Which answer environments are included?",answer:"The selection follows the audience and topic. Relevant systems are read through the same set of perception questions."},
+  {question:"How are negative themes prioritised?",answer:"Frequency alone is not enough. We combine relevance, source strength, development and the actual impact on a customer decision."},
+  {question:"Can the findings guide content work?",answer:"Yes. The analysis identifies where an existing page needs a clearer fact, a better explanation or stronger external context."},
+  {question:"How often should perception be reviewed?",answer:"A baseline and selected follow-ups are usually sufficient. Shorter intervals make sense after major changes to content, offer or public coverage."},
+] : [
+  {question:"Welche Antwortumfelder werden einbezogen?",answer:"Die Auswahl folgt Zielgruppe und Thema. Relevante Systeme werden mit demselben Satz an Wahrnehmungsfragen gelesen."},
+  {question:"Wie werden negative Themen priorisiert?",answer:"Häufigkeit allein reicht nicht. Wir verbinden Relevanz, Quellenstärke, Entwicklung und die tatsächliche Wirkung auf eine Kundenentscheidung."},
+  {question:"Kann die Analyse die Content-Arbeit steuern?",answer:"Ja. Sie zeigt, wo eine vorhandene Seite einen klareren Fakt, eine bessere Erklärung oder stärkeren externen Kontext benötigt."},
+  {question:"Wie oft sollte die Wahrnehmung geprüft werden?",answer:"Eine Ausgangslage und ausgewählte Wiederholungen reichen meist aus. Kürzere Abstände sind nach größeren Änderungen an Inhalt, Angebot oder Berichterstattung sinnvoll."},
+])];
+const schema={"@context":"https://schema.org","@graph":[{"@type":"Service",name:page.eyebrow,description:page.meta.description,url:new URL(canonicalPath,"https://elbsand.studio").toString(),provider:{"@type":"ProfessionalService",name:"ELBSAND Design Studio",url:"https://elbsand.studio/"}},{"@type":"BreadcrumbList",itemListElement:crumbs.map((x,i)=>({"@type":"ListItem",position:i+1,name:x.name,item:new URL(x.href,"https://elbsand.studio").toString()}))},{"@type":"FAQPage",mainEntity:faqs.map(x=>({"@type":"Question",name:x.question,acceptedAnswer:{"@type":"Answer",text:x.answer}}))}]};
+---
+
+<BaseLayout title={page.meta.title} description={page.meta.description} lang={page.lang} canonicalPath={canonicalPath} alternateDePath={page.alternateDePath} alternateEnPath={page.alternateEnPath} schema={schema} bodyClass="sentiment-reference-page">
+  <Header lang={page.lang} nav={siteContent.nav} cta={siteContent.cta} page="service" alternateDePath={page.alternateDePath} alternateEnPath={page.alternateEnPath}/>
+  <main id="main-content">
+    <section class="sp-hero"><div class="sp-shell sp-hero-inner">
+      <nav class="sp-crumbs" aria-label={en?"Breadcrumb":"Brotkrumen-Navigation"}>{crumbs.map((x,i)=><>{i>0&&<span>/</span>}{i===crumbs.length-1?<span aria-current="page">{x.name}</span>:<a href={x.href}>{x.name}</a>}</>)}</nav>
+      <div class="sp-hero-copy" data-sp-reveal><h1>{page.title}</h1><p>{page.lead}</p><div class="sp-actions"><a class="sp-button sp-primary" href={`${home}#kontakt`}>{ui.primary}</a><a class="sp-button sp-secondary" href="#analyse">{ui.secondary}</a></div></div>
+      <div class="sp-caps">{caps.map((x,i)=><article data-sp-reveal><span>{i+1}</span><h2>{x.title}</h2><p>{x.text}</p></article>)}</div>
+    </div></section>
+    <section class="sp-insight-showcase sp-shell" id="analyse"><header><h2>{ui.measure}</h2><p>{ui.measureText}</p></header><div>{insightCards.map((x,i)=><article class={`sp-insight-card sp-insight-${i+1}`} data-sp-reveal><span>{i+1}</span><h3>{x[0]}</h3><p>{x[1]}</p>{i===0&&<div class="sp-mini-chart" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>}{i===1&&<div class="sp-tone-split" aria-hidden="true"><i></i><b></b><em></em></div>}{i===2&&<div class="sp-source-rings" aria-hidden="true"><i></i><i></i><i></i></div>}{i===3&&<div class="sp-reality-axis" aria-hidden="true"><i></i><b></b></div>}</article>)}</div></section>
+    <section class="sp-narrative-lab sp-shell"><div class="sp-lab-copy"><h2>{ui.diagnose}</h2><p>{ui.diagnoseText}</p></div><div class="sp-theme-board">{measureItems.map((x,i)=><article data-sp-reveal><span>{i+1}</span><div><h3>{x[0]}</h3><p>{x[1]}</p></div><b style={`--score:${82-i*13}%`}></b></article>)}</div><div class="sp-action-track">{diagnoseItems.map((x,i)=><article data-sp-reveal><span>{i+1}</span><h3>{x[0]}</h3><p>{x[1]}</p></article>)}</div></section>
+    <div class="sp-gap-a"></div>
+    <section class="sp-proof sp-shell"><header><h2>{en?"From narrative to a controlled next action":"Von der Erzählung zur kontrollierten nächsten Handlung"}</h2><p>{en?"No artificial image work — every move stays tied to an observed pattern.":"Keine künstliche Imagepflege – jeder Schritt bleibt an ein beobachtetes Muster gebunden."}</p></header><div class="sp-proof-grid">{page.method.steps.slice(0,3).map((x,i)=><article data-sp-reveal><span>{i+1}</span><h3>{x.title}</h3><p>{x.text}</p><i aria-hidden="true"></i></article>)}</div></section>
+    <div class="sp-gap-b"></div>
+    <section class="sp-faq sp-shell"><h2>{ui.faq}</h2><div>{faqs.map(x=><details><summary><span>{x.question}</span><i>⌄</i></summary><p>{x.answer}</p></details>)}</div></section>
+    <SubpageContact lang={page.lang} source="brand-perception-service" />
+  </main>
+  <Footer {...siteContent.footer} lang={page.lang} />
+</BaseLayout>
+
+<script>
+  const targets=document.querySelectorAll<HTMLElement>("[data-sp-reveal]");
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) targets.forEach(x=>x.classList.add("is-visible"));
+  else { document.documentElement.classList.add("sp-motion"); const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("is-visible");io.unobserve(e.target)}}),{threshold:0,rootMargin:"160px 0px"});targets.forEach(x=>io.observe(x)); }
+</script>
+
+<style>
+  :global(body.sentiment-reference-page){--sbg:#050504;--sink:#fffaf4;--smuted:#b9b4aa;--sline:rgba(255,250,244,.13);--saccent:#b74622;overflow-x:clip;background:var(--sbg);color:var(--sink)}
+  :global(.sentiment-reference-page .site-header){border-color:var(--sline);background:rgba(5,5,4,.94);color:var(--sink)} :global(.sentiment-reference-page .language-switch){background:rgba(255,250,244,.06)} :global(.sentiment-reference-page main h1),:global(.sentiment-reference-page main h2),:global(.sentiment-reference-page main h3){font-family:var(--sans)}
+  .sp-shell{width:min(calc(100% - 40px),1056px);margin-inline:auto}.sp-hero{height:976px}.sp-hero-inner{position:relative;height:976px;border-inline:1px solid var(--sline);padding-top:120px}.sp-crumbs{display:flex;gap:8px;padding-inline:32px;color:#77736c;font-size:11px}.sp-crumbs a{color:inherit;text-decoration:none}.sp-hero-copy{margin:32px 0 0;padding-inline:32px}.sp-hero h1{max-width:768px;margin:0;font-size:56px;font-weight:500;letter-spacing:-.055em;line-height:64px}.sp-hero-copy>p{max-width:620px;margin:20px 0 0;color:var(--smuted);font-size:16px;line-height:24px}.sp-actions{display:flex;gap:8px;margin-top:30px}.sp-button{display:inline-flex;min-height:48px;align-items:center;justify-content:center;border:1px solid rgba(255,250,244,.28);border-radius:var(--radius-sm);padding:0 22px;font-size:15px;font-weight:650;text-decoration:none;transition:.18s ease}.sp-button:hover{transform:translateY(-1px)}.sp-primary{border-color:var(--saccent);background:var(--saccent);color:#fffaf4}.sp-primary:hover{background:#7b2f18}.sp-secondary{background:#33322f;color:var(--sink)}
+  .sp-caps{position:absolute;top:567px;right:0;left:0;display:grid;height:184px;grid-template-columns:repeat(4,1fr)}.sp-caps article{min-width:0;border-right:1px solid var(--sline);padding:24px 16px}.sp-caps article:last-child{border:0}.sp-caps span{color:#858078;font-size:12px}.sp-caps h2{margin:18px 0 8px;font-size:17px;font-weight:560;line-height:24px}.sp-caps p{margin:0;color:var(--smuted);font-size:14px;line-height:20px;overflow-wrap:anywhere}
+  .sp-trust-wrap{height:699px;border-top:1px solid var(--sline);padding-top:119px}.sp-trust{height:379px;border:1px solid var(--sline)}.sp-trust h2{height:121px;margin:0;border-bottom:1px solid var(--sline);padding:42px 16px;font-size:24px;font-weight:500;line-height:32px;text-align:center}.sp-logos{display:grid;height:256px;grid-template-columns:repeat(4,1fr)}.sp-logos div{display:grid;place-items:center;border-right:1px solid var(--sline);border-bottom:1px solid var(--sline);padding:20px}.sp-logos div:nth-child(4n){border-right:0}.sp-logos div:nth-child(n+5){border-bottom:0}.sp-logos img{width:min(100%,145px);height:50px;object-fit:contain}.sp-logos b{font-size:15px;letter-spacing:.08em}
+  .sp-analysis{height:1569px;border:1px solid var(--sline)}.sp-analysis-row{display:grid;height:795px;grid-template-columns:1fr 1fr}.sp-analysis-row+ .sp-analysis-row{height:772px;border-top:1px solid var(--sline)}.sp-analysis-copy{position:sticky;top:96px;align-self:start;padding:32px}.sp-analysis-copy h2{margin:0;font-size:25px;font-weight:500;line-height:34px}.sp-analysis-copy p{max-width:430px;margin:18px 0 0;color:var(--smuted);font-size:16px;line-height:24px}.sp-analysis-list{border-left:1px solid var(--sline)}.sp-analysis-list article{display:grid;height:25%;grid-template-columns:32px 1fr;gap:16px;border-bottom:1px solid var(--sline);padding:28px 24px}.sp-analysis-list article:last-child{border:0}.sp-analysis-list span{color:#858078;font-size:12px}.sp-analysis-list h3{margin:0;font-size:17px;font-weight:560;line-height:24px}.sp-analysis-list p{margin:8px 0 0;color:var(--smuted);font-size:15px;line-height:22px}
+  .sp-insight-showcase{margin-top:120px;border:1px solid var(--sline)}.sp-insight-showcase>header{display:grid;min-height:220px;grid-template-columns:1fr 1fr;padding:46px 32px}.sp-insight-showcase>header h2{max-width:460px;margin:0;font-size:34px;font-weight:500;line-height:42px}.sp-insight-showcase>header p{max-width:440px;margin:0;color:var(--smuted);font-size:17px;line-height:26px}.sp-insight-showcase>div{display:grid;grid-template-columns:1.15fr .85fr;border-top:1px solid var(--sline)}.sp-insight-card{position:relative;min-height:480px;overflow:hidden;border-right:1px solid var(--sline);border-bottom:1px solid var(--sline);padding:32px}.sp-insight-card:nth-child(even){border-right:0}.sp-insight-card>span{color:#858078;font-size:12px}.sp-insight-card h3{margin:26px 0 10px;font-size:26px;font-weight:520}.sp-insight-card p{max-width:390px;margin:0;color:var(--smuted);font-size:16px;line-height:24px}.sp-mini-chart{position:absolute;right:32px;bottom:38px;left:32px;display:flex;height:170px;align-items:flex-end;gap:12px;border-bottom:1px solid var(--sline)}.sp-mini-chart i{width:20%;height:42%;background:#b74622}.sp-mini-chart i:nth-child(2){height:64%}.sp-mini-chart i:nth-child(3){height:51%}.sp-mini-chart i:nth-child(4){height:82%}.sp-mini-chart i:nth-child(5){height:73%}.sp-tone-split{position:absolute;right:32px;bottom:52px;left:32px;display:grid;height:120px;grid-template-columns:58fr 27fr 15fr;gap:5px;align-items:end}.sp-tone-split>*{display:block;height:100%;background:#596246}.sp-tone-split b{height:64%;background:#b74622}.sp-tone-split em{height:38%;background:#77736c}.sp-source-rings{position:absolute;right:40px;bottom:34px;width:220px;height:220px}.sp-source-rings i{position:absolute;inset:0;border:1px solid rgba(228,123,87,.55);border-radius:50%}.sp-source-rings i:nth-child(2){inset:35px}.sp-source-rings i:nth-child(3){inset:70px;background:rgba(183,70,34,.18)}.sp-reality-axis{position:absolute;right:32px;bottom:70px;left:32px;height:2px;background:var(--sline)}.sp-reality-axis i,.sp-reality-axis b{position:absolute;top:-13px;width:28px;height:28px;border-radius:50%}.sp-reality-axis i{left:24%;background:#b74622}.sp-reality-axis b{left:72%;border:1px solid #e47b57;background:#050504}
+  .sp-narrative-lab{margin-top:200px;border:1px solid var(--sline)}.sp-lab-copy{min-height:300px;padding:52px 32px}.sp-lab-copy h2{max-width:620px;margin:0;font-size:34px;font-weight:500;line-height:42px}.sp-lab-copy p{max-width:620px;margin:18px 0 0;color:var(--smuted);font-size:17px;line-height:26px}.sp-theme-board{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--sline)}.sp-theme-board article{position:relative;min-height:210px;min-width:0;border-right:1px solid var(--sline);border-bottom:1px solid var(--sline);padding:28px 30px}.sp-theme-board article:nth-child(even){border-right:0}.sp-theme-board span,.sp-action-track span{color:#858078;font-size:12px}.sp-theme-board h3,.sp-action-track h3{margin:20px 0 8px;font-size:19px}.sp-theme-board p,.sp-action-track p{max-width:390px;margin:0;color:var(--smuted);font-size:15px;line-height:22px}.sp-theme-board article>b{position:absolute;right:30px;bottom:26px;left:30px;height:2px;background:linear-gradient(90deg,#b74622 var(--score),var(--sline) var(--score))}.sp-action-track{display:grid;grid-template-columns:repeat(4,1fr)}.sp-action-track article{min-height:300px;min-width:0;border-right:1px solid var(--sline);padding:30px 24px}.sp-action-track article:last-child{border:0}
+  .sp-gap-a{height:241px}.sp-proof{height:651px;border:1px solid var(--sline)}.sp-proof header{height:150px;padding:32px}.sp-proof h2{margin:0;font-size:26px;font-weight:500;line-height:34px}.sp-proof header p{margin:10px 0 0;color:var(--smuted);font-size:16px}.sp-proof-grid{display:grid;height:499px;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--sline)}.sp-proof-grid article{position:relative;min-height:499px;border-right:1px solid var(--sline);padding:30px 28px}.sp-proof-grid article:last-child{border:0}.sp-proof-grid span{color:#858078;font-size:12px}.sp-proof-grid h3{margin:48px 0 12px;font-size:20px}.sp-proof-grid p{margin:0;color:var(--smuted);font-size:15px;line-height:23px}.sp-proof-grid i{position:absolute;right:28px;bottom:30px;left:28px;height:1px;background:linear-gradient(90deg,#b74622 62%,var(--sline) 62%)}
+  .sp-gap-b,.sp-gap-c{height:200px}.sp-faq{display:grid;height:585px;grid-template-columns:264px 1fr}.sp-faq>h2{margin:0;padding:0 16px;font-size:24px;font-weight:500;line-height:32px}.sp-faq>div{border-left:1px solid var(--sline)}.sp-faq details{border-top:1px solid var(--sline)}.sp-faq details:last-child{border-bottom:1px solid var(--sline)}.sp-faq summary{display:grid;height:64px;grid-template-columns:1fr auto;align-items:center;padding:0 24px;cursor:pointer;font-size:15px;line-height:22px;list-style:none}.sp-faq summary::-webkit-details-marker{display:none}.sp-faq summary i{font-style:normal}.sp-faq details p{margin:0;padding:0 24px 20px;color:var(--smuted);font-size:15px;line-height:23px}
+  .sp-closing{height:274px;border:1px solid var(--sline);padding:55px 40px}.sp-closing h2{margin:0;font-size:24px;font-weight:500;line-height:32px}.sp-closing p{max-width:700px;margin:12px 0 0;color:var(--smuted);font-size:16px;line-height:24px}.sp-closing .sp-actions{margin-top:20px}.sp-post{height:120px}
+  .sp-footer{height:805px;border-top:1px solid var(--sline);padding:88px max(20px,calc((100% - 1056px)/2)) 36px}.sp-footer-grid{display:grid;grid-template-columns:1.35fr repeat(4,1fr);gap:54px}.sp-footer-brand{display:flex;min-height:530px;flex-direction:column;justify-content:space-between}.sp-footer-brand img{width:170px;height:auto}.sp-footer-brand p{display:flex;align-items:center;gap:9px;color:#81b36c;font-size:12px}.sp-footer-brand p i{width:7px;height:7px;border-radius:50%;background:currentColor}.sp-footer nav{display:flex;flex-direction:column;gap:14px}.sp-footer nav strong{margin-bottom:8px;font-size:13px}.sp-footer nav a{color:var(--smuted);font-size:13px;text-decoration:none}.sp-footer-bottom{display:flex;justify-content:space-between;border-top:1px solid var(--sline);padding-top:28px;color:#77736c;font-size:11px}.sp-footer-bottom a{color:inherit}
+  :global(.sp-motion) [data-sp-reveal]{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .75s cubic-bezier(.2,.8,.2,1)}.is-visible{opacity:1!important;transform:none!important}
+  @media(max-width:760px){.sp-shell{width:min(calc(100% - 32px),1056px)}.sp-hero,.sp-hero-inner{height:1450px}.sp-hero-inner{padding-top:72px}.sp-crumbs{padding-inline:20px;overflow:hidden;white-space:nowrap}.sp-crumbs a,.sp-crumbs span:not([aria-current]){display:none}.sp-crumbs span[aria-current]{max-width:100%;overflow:hidden;text-overflow:ellipsis}.sp-hero-copy{margin-top:34px;padding-inline:20px}.sp-hero h1{font-size:44px;line-height:48px}.sp-actions{flex-direction:column}.sp-caps{top:690px;height:650px;grid-template-columns:1fr 1fr}.sp-caps article{min-height:325px;border-bottom:1px solid var(--sline);padding:24px 18px}.sp-caps article:nth-child(even){border-right:0}.sp-insight-showcase{margin-top:100px}.sp-insight-showcase>header{min-height:340px;grid-template-columns:minmax(0,1fr);gap:24px;padding:38px 22px}.sp-insight-showcase>header>*{min-width:0;max-width:100%;overflow-wrap:anywhere}.sp-insight-showcase>header h2,.sp-lab-copy h2{font-size:29px;line-height:36px}.sp-insight-showcase>div{grid-template-columns:1fr}.sp-insight-card{min-height:460px;border-right:0}.sp-narrative-lab{margin-top:120px}.sp-lab-copy{min-height:360px;padding:42px 22px}.sp-theme-board{grid-template-columns:1fr}.sp-theme-board article{min-height:260px;border-right:0;padding:28px 22px}.sp-action-track{grid-template-columns:1fr}.sp-action-track article{min-height:260px;border-right:0;border-bottom:1px solid var(--sline);padding:28px 22px}.sp-gap-a{height:130px}.sp-proof{height:auto}.sp-proof header{height:auto;min-height:190px;padding:36px 22px}.sp-proof-grid{height:auto;grid-template-columns:1fr}.sp-proof-grid article{min-height:330px;border-right:0;border-bottom:1px solid var(--sline);padding:28px 22px}.sp-gap-b,.sp-gap-c{height:120px}.sp-faq{height:auto;grid-template-columns:1fr}.sp-faq>h2{height:150px;padding:42px 22px}.sp-faq>div{border-left:0}.sp-faq summary{height:auto;min-height:100px;padding:0 20px}.sp-faq details p{padding:0 20px 24px}.sp-closing{height:auto;min-height:480px;padding:62px 22px}.sp-post{height:90px}.sp-footer{height:1120px;padding:70px 20px 30px}.sp-footer-grid{grid-template-columns:1fr 1fr;gap:52px 28px}.sp-footer-brand{min-height:180px;grid-column:1/-1}.sp-footer-bottom{flex-direction:column;gap:10px;margin-top:58px}}
+  @media(max-width:360px){.sp-hero h1{font-size:40px;line-height:44px}.sp-hero,.sp-hero-inner{height:1800px}.sp-caps{top:690px;height:1000px;grid-template-columns:1fr}.sp-caps article{min-height:250px;border-right:0}}
+  @media(prefers-reduced-motion:reduce){[data-sp-reveal]{opacity:1!important;transform:none!important;transition:none!important}.sp-button{transition:none}}
+  .sp-caps p, .sp-analysis-list p, .sp-theme-board p, .sp-action-track p, .sp-proof-grid p, .sp-faq details p { font-size:16px; line-height:1.55; }
+</style>

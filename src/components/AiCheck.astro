@@ -1,0 +1,569 @@
+---
+import type { Locale } from "../content/site";
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const isEnglish = lang === "en";
+const copy = isEnglish
+  ? {
+      badge: "📍 Owner-led design & SEO studio from Dresden",
+      title: "How visible is your business in AI search?",
+      body: "We run 21 technical checks on your website live. No estimate, no AI-generated filler.",
+      phases: ["Website", "Live scan", "Result"],
+      urlLabel: "Website address",
+      urlPlaceholder: "your-website.com",
+      start: "Check AI readiness",
+      inputNote: "We only retrieve publicly accessible website data.",
+      scanningTitle: "We are checking your website live.",
+      scanningBody: "This usually takes a few seconds.",
+      scanItems: [
+        "Checking llms.txt and robots.txt for AI crawlers",
+        "Reading Schema.org, NAP and trust signals",
+        "Inspecting security headers and response time",
+        "Scoring all 21 findings transparently",
+      ],
+      preliminary: "Preliminary AI score",
+      scoreNote: "The score evaluates technical readiness, not guaranteed mentions in AI answers.",
+      resultTitle: "21 technical checks completed",
+      leadTitle: "Technical scan complete",
+      leadBody: "Your results and optimisation opportunities are now available.",
+      firstNameLabel: "First name",
+      firstNamePlaceholder: "Your first name",
+      emailLabel: "Email",
+      emailPlaceholder: "you@company.com",
+      unlock: "View detailed results",
+      privacy: "Technical live check · no automated sales sequence",
+      sending: "Unlocking …",
+      leadError: "The findings could not be unlocked. Please try again.",
+      scanError: "We could not reliably retrieve this website. Check the address and try again.",
+      criticalSingular: "critical issue found",
+      criticalPlural: "critical issues found",
+      unlockedEyebrow: "Analysis complete",
+      unlocked: "Your findings are unlocked.",
+      unlockedBody: "Your request has been saved. The technical details are now visible below.",
+      lockedLabel: "Enter your details to reveal all 21 findings",
+      grade: "Grade",
+      recommendationTitle: "Your biggest opportunities",
+      recommendationBody: "The scan shows where your website currently loses visibility in AI systems across technical and editorial signals. In the free results review, we put the findings into context, prioritise the most important measures and show you which optimisations offer the greatest leverage.",
+      contact: "Book a free results review",
+      again: "Check another website",
+      checkLabels: {
+        robots: "AI crawler access",
+        schema: "Structured data",
+        technical: "Technical foundation",
+      },
+      categoryTitles: {
+        ai: "AI readiness & crawling",
+        data: "Data architecture & trust signals",
+        tech: "Technical foundation & security",
+      },
+    }
+  : {
+      badge: "📍 Inhabergeführtes Design- & SEO-Studio aus Dresden",
+      title: "Wie sichtbar ist dein Unternehmen in der KI-Suche?",
+      body: "21 technische Prüfungen auf deiner Website.",
+      phases: ["Website", "Live-Scan", "Ergebnis"],
+      urlLabel: "Website-Adresse",
+      urlPlaceholder: "deine-website.de",
+      start: "KI-Bereitschaft prüfen",
+      inputNote: "Wir rufen ausschließlich öffentlich erreichbare Website-Daten ab.",
+      scanningTitle: "Wir prüfen deine Website live.",
+      scanningBody: "Das dauert in der Regel nur wenige Sekunden.",
+      scanItems: [
+        "llms.txt und robots.txt für KI-Crawler prüfen",
+        "Schema.org, NAP und Vertrauenssignale auslesen",
+        "Security-Header und Antwortzeit analysieren",
+        "Alle 21 Befunde transparent bewerten",
+      ],
+      preliminary: "Vorläufiger KI-Score",
+      scoreNote: "Der Score bewertet die technische Bereitschaft, nicht garantierte Nennungen in KI-Antworten.",
+      resultTitle: "21 technische Einzelchecks abgeschlossen",
+      leadTitle: "Technischer Scan abgeschlossen",
+      leadBody: "Deine Ergebnisse und Optimierungspotenziale sind jetzt verfügbar.",
+      firstNameLabel: "Vorname",
+      firstNamePlaceholder: "Dein Vorname",
+      emailLabel: "E-Mail",
+      emailPlaceholder: "du@unternehmen.de",
+      unlock: "Ergebnisse im Detail ansehen",
+      privacy: "Technischer Live-Check · keine automatische Verkaufsserie",
+      sending: "Wird freigeschaltet …",
+      leadError: "Der Befund konnte nicht freigeschaltet werden. Bitte versuche es erneut.",
+      scanError: "Diese Website konnte nicht zuverlässig abgerufen werden. Prüfe die Adresse und versuche es erneut.",
+      criticalSingular: "kritischer Punkt erkannt",
+      criticalPlural: "kritische Punkte erkannt",
+      unlockedEyebrow: "Analyse abgeschlossen",
+      unlocked: "Dein Befund ist freigeschaltet.",
+      unlockedBody: "Deine Anfrage wurde gespeichert. Die technischen Details sind jetzt unten sichtbar.",
+      lockedLabel: "Kontaktdaten eintragen und alle 21 Befunde ansehen",
+      grade: "Note",
+      recommendationTitle: "Deine größten Potenziale",
+      recommendationBody: "Der Scan zeigt, an welchen technischen und inhaltlichen Stellen deine Website aktuell Sichtbarkeit in KI-Systemen verschenkt. Im kostenlosen Auswertungsgespräch ordnen wir die Ergebnisse ein, priorisieren die wichtigsten Maßnahmen und zeigen dir, welche Optimierungen den größten Hebel haben.",
+      contact: "Kostenlose Auswertung vereinbaren",
+      again: "Weitere Website prüfen",
+      checkLabels: {
+        robots: "KI-Crawler erreichbar",
+        schema: "Strukturierte Daten",
+        technical: "Technische Basis",
+      },
+      categoryTitles: {
+        ai: "AI-Readiness & Crawling",
+        data: "Daten-Architektur & Vertrauenssignale",
+        tech: "Technische Basis & Security",
+      },
+    };
+---
+<section class="ai-check section-shell" id="ki-check" aria-labelledby="ai-check-title">
+  <header class="ai-check-heading">
+    <p class="hero-trust-badge ai-check-badge">{copy.badge}</p>
+    <h2 id="ai-check-title">{copy.title}</h2>
+    <p>{copy.body}</p>
+  </header>
+
+  <div
+    class="ai-check-tool"
+    data-ai-check
+    data-lang={lang}
+    data-scan-error={copy.scanError}
+    data-lead-error={copy.leadError}
+    data-sending={copy.sending}
+    data-critical-singular={copy.criticalSingular}
+    data-critical-plural={copy.criticalPlural}
+  >
+    <div class="ai-check-surface">
+      <ol class="ai-check-phases" aria-label={isEnglish ? "Analysis progress" : "Analysefortschritt"}>
+        {copy.phases.map((phase, index) => (
+          <li class={index === 0 ? "is-current" : ""} data-ai-phase={index + 1} aria-current={index === 0 ? "step" : undefined}>
+            <span>{index + 1}</span>{phase}
+          </li>
+        ))}
+      </ol>
+
+      <section class="ai-check-screen ai-check-start" data-ai-screen="1">
+        <form data-scan-form>
+          <label for={`ai-check-url-${lang}`}>{copy.urlLabel}</label>
+          <div class="ai-check-url-row">
+            <input
+              id={`ai-check-url-${lang}`}
+              name="url"
+              type="text"
+              inputmode="url"
+              autocomplete="url"
+              placeholder={copy.urlPlaceholder}
+              required
+            />
+            <button class="button" type="submit">{copy.start}</button>
+          </div>
+          <small>{copy.inputNote}</small>
+          <p class="ai-check-error" role="alert" data-scan-error hidden>{copy.scanError}</p>
+        </form>
+      </section>
+
+      <section class="ai-check-screen ai-check-scanning" data-ai-screen="2" hidden aria-live="polite">
+        <div>
+          <p class="eyebrow">{copy.phases[1]}</p>
+          <h3>{copy.scanningTitle}</h3>
+          <p>{copy.scanningBody}</p>
+        </div>
+        <ul class="ai-scan-list">
+          {copy.scanItems.map((item, index) => (
+            <li data-scan-item={index}>
+              <span class="ai-scan-marker" aria-hidden="true"></span>
+              <span>{item}</span>
+              <small data-scan-state>{isEnglish ? "Waiting" : "Wartet"}</small>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="ai-check-screen ai-check-result" data-ai-screen="3" hidden>
+        <div class="ai-score-column">
+          <p>{copy.preliminary}</p>
+          <p class="ai-score"><strong data-ai-score>0</strong><span>/ 100</span></p>
+          <p class="ai-grade"><span>{copy.grade}</span> <strong data-ai-grade>–</strong></p>
+          <p class="ai-critical" data-ai-critical></p>
+          <p class="ai-score-note">{copy.scoreNote}</p>
+        </div>
+
+        <div class="ai-lead-column">
+          <div data-lead-gate>
+            <h3>{copy.leadTitle}</h3>
+            <p class="ai-lead-intro">{copy.leadBody}</p>
+            <form action="/api/contact" method="post" data-ai-lead-form>
+              <div class="ai-lead-fields">
+                <div>
+                  <label for={`ai-check-name-${lang}`}>{copy.firstNameLabel}</label>
+                  <input
+                    id={`ai-check-name-${lang}`}
+                    name="name"
+                    type="text"
+                    autocomplete="given-name"
+                    placeholder={copy.firstNamePlaceholder}
+                    required
+                  />
+                </div>
+                <div>
+                  <label for={`ai-check-email-${lang}`}>{copy.emailLabel}</label>
+                  <input
+                    id={`ai-check-email-${lang}`}
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    placeholder={copy.emailPlaceholder}
+                    required
+                  />
+                </div>
+              </div>
+              <button class="button" type="submit">{copy.unlock}</button>
+              <small>{copy.privacy}</small>
+              <p class="ai-check-error" role="alert" data-lead-error hidden>{copy.leadError}</p>
+            </form>
+          </div>
+          <div class="ai-unlocked" data-ai-unlocked hidden tabindex="-1">
+            <p class="eyebrow">{copy.unlockedEyebrow}</p>
+            <h3>{copy.unlocked}</h3>
+            <p>{copy.unlockedBody}</p>
+          </div>
+        </div>
+
+        <div
+          class="ai-result-checks is-locked"
+          aria-labelledby={`ai-result-title-${lang}`}
+          data-result-checks
+        >
+          <h3 id={`ai-result-title-${lang}`}>{copy.resultTitle}</h3>
+          <div class="ai-result-checks-grid ai-audit-content" data-result-grid aria-hidden="true">
+            {(["ai", "data", "tech"] as const).map((key, index) => (
+              <section class="ai-audit-category" data-audit-category={key}>
+                <header>
+                  <p>{index + 1}</p>
+                  <h4>{copy.categoryTitles[key]}</h4>
+                  <small data-category-score>0 / {key === "tech" ? "30" : "35"}</small>
+                </header>
+                <ul data-category-checks></ul>
+              </section>
+            ))}
+            <section class="ai-recommendation">
+              <h4>{copy.recommendationTitle}</h4>
+              <p class="ai-recommendation-copy">{copy.recommendationBody}</p>
+            </section>
+          </div>
+          <div class="ai-result-lock" data-result-lock>
+            <span aria-hidden="true"></span>
+            <p>{copy.lockedLabel}</p>
+          </div>
+        </div>
+
+        <a class="button ai-live-cta" href="#kontakt" data-live-cta hidden>{copy.contact}</a>
+      </section>
+    </div>
+
+    <button class="ai-check-again" type="button" data-ai-again hidden>← {copy.again}</button>
+  </div>
+</section>
+
+<script>
+  interface ScanCheck {
+    slug: string;
+    score: number;
+    maxScore: number;
+    status: "pass" | "warning" | "fail";
+    passed: boolean;
+    title: string;
+    detail: string;
+  }
+
+  interface ScanCategory {
+    key: "ai" | "data" | "tech";
+    title: string;
+    score: number;
+    maxScore: number;
+    status: "pass" | "warning" | "fail";
+    checks: ScanCheck[];
+  }
+
+  interface ScanResult {
+    ok: true;
+    scanId: string;
+    finalUrl: string;
+    score: number;
+    grade: string;
+    criticalIssues: number;
+    categories: {
+      ai: ScanCategory;
+      data: ScanCategory;
+      tech: ScanCategory;
+    };
+  }
+
+  document.querySelectorAll<HTMLElement>("[data-ai-check]").forEach((tool) => {
+    const phases = Array.from(tool.querySelectorAll<HTMLElement>("[data-ai-phase]"));
+    const screens = Array.from(tool.querySelectorAll<HTMLElement>("[data-ai-screen]"));
+    const scanForm = tool.querySelector<HTMLFormElement>("[data-scan-form]");
+    const urlInput = scanForm?.elements.namedItem("url") as HTMLInputElement | null;
+    const scanError = tool.querySelector<HTMLElement>("[data-scan-error]");
+    const scanItems = Array.from(tool.querySelectorAll<HTMLElement>("[data-scan-item]"));
+    const score = tool.querySelector<HTMLElement>("[data-ai-score]");
+    const grade = tool.querySelector<HTMLElement>("[data-ai-grade]");
+    const critical = tool.querySelector<HTMLElement>("[data-ai-critical]");
+    const leadForm = tool.querySelector<HTMLFormElement>("[data-ai-lead-form]");
+    const leadGate = tool.querySelector<HTMLElement>("[data-lead-gate]");
+    const leadError = tool.querySelector<HTMLElement>("[data-lead-error]");
+    const unlocked = tool.querySelector<HTMLElement>("[data-ai-unlocked]");
+    const resultChecks = tool.querySelector<HTMLElement>("[data-result-checks]");
+    const resultGrid = tool.querySelector<HTMLElement>("[data-result-grid]");
+    const resultLock = tool.querySelector<HTMLElement>("[data-result-lock]");
+    const liveCta = tool.querySelector<HTMLAnchorElement>("[data-live-cta]");
+    const again = tool.querySelector<HTMLButtonElement>("[data-ai-again]");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let scanResult: ScanResult | null = null;
+
+    const showPhase = (phaseNumber: number) => {
+      screens.forEach((screen, index) => {
+        screen.hidden = index !== phaseNumber - 1;
+      });
+      phases.forEach((phase, index) => {
+        const isCurrent = index === phaseNumber - 1;
+        phase.classList.toggle("is-current", isCurrent);
+        phase.classList.toggle("is-complete", index < phaseNumber - 1);
+        if (isCurrent) phase.setAttribute("aria-current", "step");
+        else phase.removeAttribute("aria-current");
+      });
+      if (again) again.hidden = phaseNumber === 1;
+    };
+
+    const resetScanItems = () => {
+      scanItems.forEach((item) => {
+        item.classList.remove("is-active", "is-complete");
+        const state = item.querySelector<HTMLElement>("[data-scan-state]");
+        if (state) state.textContent = tool.dataset.lang === "en" ? "Waiting" : "Wartet";
+      });
+    };
+
+    const createStatusMarker = (status: ScanCheck["status"]) => {
+      const marker = document.createElement("span");
+      marker.className = "ai-audit-marker";
+      marker.dataset.icon = status;
+      marker.setAttribute("aria-hidden", "true");
+
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("viewBox", status === "fail" ? "0 0 24 24" : "0 0 20 20");
+      svg.setAttribute("focusable", "false");
+      svg.setAttribute("stroke-linecap", "round");
+      svg.setAttribute("stroke-linejoin", "round");
+
+      if (status === "pass") {
+        const check = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        check.setAttribute("d", "M5 10.25 8.25 13.5 15.25 6.5");
+        svg.append(check);
+      } else if (status === "warning") {
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        line.setAttribute("d", "M10 5.25v6");
+        const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        dot.setAttribute("cx", "10");
+        dot.setAttribute("cy", "14.5");
+        dot.setAttribute("r", "1");
+        dot.setAttribute("fill", "currentColor");
+        dot.setAttribute("stroke", "none");
+        svg.append(line, dot);
+      } else {
+        const firstLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        firstLine.setAttribute("x1", "6");
+        firstLine.setAttribute("y1", "6");
+        firstLine.setAttribute("x2", "18");
+        firstLine.setAttribute("y2", "18");
+
+        const secondLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        secondLine.setAttribute("x1", "18");
+        secondLine.setAttribute("y1", "6");
+        secondLine.setAttribute("x2", "6");
+        secondLine.setAttribute("y2", "18");
+        svg.append(firstLine, secondLine);
+      }
+
+      marker.append(svg);
+      return marker;
+    };
+
+    const populateResult = (result: ScanResult) => {
+      if (score) score.textContent = String(result.score);
+      if (grade) grade.textContent = result.grade;
+      if (critical) {
+        const label =
+          result.criticalIssues === 1
+            ? tool.dataset.criticalSingular
+            : tool.dataset.criticalPlural;
+        critical.textContent = `${result.criticalIssues} ${label}`;
+      }
+
+      (Object.entries(result.categories) as Array<[keyof ScanResult["categories"], ScanCategory]>).forEach(
+        ([key, category]) => {
+          const categoryElement = tool.querySelector<HTMLElement>(`[data-audit-category="${key}"]`);
+          const list = categoryElement?.querySelector<HTMLUListElement>("[data-category-checks]");
+          const categoryScore = categoryElement?.querySelector<HTMLElement>("[data-category-score]");
+          if (!categoryElement || !list) return;
+          categoryElement.dataset.status = category.status;
+          if (categoryScore) categoryScore.textContent = `${category.score} / ${category.maxScore}`;
+
+          const rows = category.checks.map((check) => {
+            const item = document.createElement("li");
+            item.dataset.status = check.status;
+
+            const marker = createStatusMarker(check.status);
+
+            const content = document.createElement("div");
+            const title = document.createElement("strong");
+            title.textContent = check.title;
+            const detail = document.createElement("p");
+            detail.textContent = check.detail;
+            content.append(title, detail);
+
+            const value = document.createElement("small");
+            value.textContent = `${check.score} / ${check.maxScore}`;
+            item.append(marker, content, value);
+            return item;
+          });
+          list.replaceChildren(...rows);
+        },
+      );
+    };
+
+    scanForm?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!scanForm.reportValidity() || !urlInput) return;
+      if (scanError) scanError.hidden = true;
+      resetScanItems();
+      showPhase(2);
+
+      const timers = scanItems.map((item, index) =>
+        window.setTimeout(() => {
+          scanItems[index - 1]?.classList.replace("is-active", "is-complete");
+          const previousState = scanItems[index - 1]?.querySelector<HTMLElement>("[data-scan-state]");
+          if (previousState) previousState.textContent = tool.dataset.lang === "en" ? "Done" : "Erledigt";
+          item.classList.add("is-active");
+          const state = item.querySelector<HTMLElement>("[data-scan-state]");
+          if (state) state.textContent = tool.dataset.lang === "en" ? "Checking" : "Prüft";
+        }, reducedMotion ? 0 : index * 700),
+      );
+
+      try {
+        const request = fetch("/api/scan", {
+          method: "POST",
+          headers: { "content-type": "application/json", accept: "application/json" },
+          body: JSON.stringify({ url: urlInput.value }),
+        }).then(async (response) => {
+          const result = await response.json().catch(() => null);
+          if (!response.ok || !result?.ok) throw new Error(result?.error ?? "scan_failed");
+          return result as ScanResult;
+        });
+        const minimumDisplay = new Promise((resolve) =>
+          window.setTimeout(resolve, reducedMotion ? 0 : 2_200),
+        );
+        const [result] = await Promise.all([request, minimumDisplay]);
+        timers.forEach(window.clearTimeout);
+        scanItems.forEach((item) => {
+          item.classList.remove("is-active");
+          item.classList.add("is-complete");
+          const state = item.querySelector<HTMLElement>("[data-scan-state]");
+          if (state) state.textContent = tool.dataset.lang === "en" ? "Done" : "Erledigt";
+        });
+        scanResult = result;
+        populateResult(result);
+        showPhase(3);
+        leadForm?.querySelector<HTMLInputElement>('input[type="email"]')?.focus();
+      } catch {
+        timers.forEach(window.clearTimeout);
+        showPhase(1);
+        if (scanError) {
+          scanError.textContent = tool.dataset.scanError ?? "";
+          scanError.hidden = false;
+        }
+        urlInput.focus();
+      }
+    });
+
+    leadForm?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!leadForm.reportValidity() || !scanResult) return;
+      const submit = leadForm.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const email = leadForm.elements.namedItem("email") as HTMLInputElement | null;
+      const name = leadForm.elements.namedItem("name") as HTMLInputElement | null;
+      if (!submit || !email || !name) return;
+      const submitLabel = submit.textContent ?? "";
+      submit.disabled = true;
+      submit.textContent = tool.dataset.sending ?? submitLabel;
+      if (leadError) leadError.hidden = true;
+
+      const details = [
+        "[KI-CHECK]",
+        `Scan-ID: ${scanResult.scanId}`,
+        `URL: ${scanResult.finalUrl}`,
+        `Score: ${scanResult.score}/100`,
+        `Note: ${scanResult.grade}`,
+        ...Object.values(scanResult.categories).flatMap((category) => [
+          "",
+          `${category.title}: ${category.score}/${category.maxScore}`,
+          ...category.checks.map(
+            (check) => `${check.status === "pass" ? "OK" : check.status === "warning" ? "HINWEIS" : "FEHLT"} · ${check.title}: ${check.detail}`,
+          ),
+        ]),
+      ].join("\n");
+
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "content-type": "application/json", accept: "application/json" },
+          body: JSON.stringify({
+            source: "ai-check",
+            intent: "improve",
+            details,
+            email: email.value,
+            name: name.value,
+            locale: tool.dataset.lang,
+            companyFax: "",
+            startedAt: 0,
+          }),
+        });
+        const result = await response.json().catch(() => null);
+        if (!response.ok || !result?.ok) throw new Error(result?.error ?? "lead_failed");
+
+        resultChecks?.classList.remove("is-locked");
+        resultGrid?.removeAttribute("aria-hidden");
+        if (resultLock) resultLock.hidden = true;
+        if (liveCta) liveCta.hidden = false;
+        if (leadGate) leadGate.hidden = true;
+        if (unlocked) {
+          unlocked.hidden = false;
+          unlocked.focus();
+        }
+      } catch {
+        if (leadError) {
+          leadError.textContent = tool.dataset.leadError ?? "";
+          leadError.hidden = false;
+        }
+      } finally {
+        submit.disabled = false;
+        submit.textContent = submitLabel;
+      }
+    });
+
+    again?.addEventListener("click", () => {
+      scanResult = null;
+      scanForm?.reset();
+      leadForm?.reset();
+      if (leadGate) leadGate.hidden = false;
+      if (unlocked) unlocked.hidden = true;
+      resultChecks?.classList.add("is-locked");
+      resultGrid?.setAttribute("aria-hidden", "true");
+      if (resultLock) resultLock.hidden = false;
+      if (liveCta) liveCta.hidden = true;
+      if (scanError) scanError.hidden = true;
+      if (leadError) leadError.hidden = true;
+      resetScanItems();
+      showPhase(1);
+      urlInput?.focus();
+    });
+  });
+</script>

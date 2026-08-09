@@ -1,0 +1,88 @@
+---
+interface Package {
+  number: string;
+  name: string;
+  descriptor: string;
+  price: string;
+  priceSuffix: string;
+  duration: string;
+  features: readonly string[];
+  cta: string;
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  items: readonly Package[];
+  priceNote: string;
+  scopeNote: string;
+  recommendedLabel?: string;
+  detailsLabel?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  intro,
+  items,
+  priceNote,
+  scopeNote,
+  recommendedLabel = "Der logische Schritt",
+  detailsLabel = "Alle Details anzeigen",
+} = Astro.props;
+---
+
+<section class="geo-packages section-shell" id="geo-pakete" aria-labelledby="geo-packages-title">
+  <header class:list={["geo-packages-heading", { "geo-packages-heading--solo": !intro }]}>
+    <div>
+      <p class="eyebrow">{eyebrow}</p>
+      <h2 id="geo-packages-title">{title}</h2>
+    </div>
+    {intro && <p>{intro}</p>}
+  </header>
+
+  <div class="geo-package-list">
+    {items.map((item, index) => (
+      <article class:list={["geo-package", { "geo-package-featured": index === 0 }]}> 
+        {index === 0 && <span class="geo-package-recommended">{recommendedLabel}</span>}
+        <div class="geo-package-name">
+          <p>{item.number}</p>
+          <h3>{item.name}</h3>
+          <span>{item.descriptor}</span>
+        </div>
+        <div class="geo-package-price">
+          <p><strong>{item.price}</strong></p>
+          <span class="geo-package-price-suffix">{item.priceSuffix}</span>
+          <small>{item.duration}</small>
+        </div>
+        <ul class="geo-package-benefits">
+          {item.features.slice(0, 3).map((feature) => (
+            <li><span aria-hidden="true">✓</span>{feature}</li>
+          ))}
+        </ul>
+        {item.features.length > 3 && (
+          <details class="geo-package-details">
+            <summary>+ {detailsLabel}</summary>
+            <ul>
+              {item.features.slice(3).map((feature) => (
+                <li><span aria-hidden="true">✓</span>{feature}</li>
+              ))}
+            </ul>
+          </details>
+        )}
+        <a
+          class:list={["button", "geo-package-cta", { "button-ghost": index !== 0 }]}
+          href="#geo-anfrage"
+        >
+          {item.cta}
+        </a>
+      </article>
+    ))}
+  </div>
+
+  <div class="geo-price-notes">
+    <p>{priceNote}</p>
+    <p>{scopeNote}</p>
+  </div>
+</section>

@@ -1,10 +1,115 @@
 ---
-interface Props { eyebrow: string; title: string; steps: readonly (readonly [string, string])[]; }
-const { eyebrow, title, steps } = Astro.props;
+import { Mail, MessageCircle, Phone } from "@lucide/astro";
+
+interface Contact {
+  label: string;
+  name: string;
+  role: string;
+  phoneLabel: string;
+  whatsappLabel: string;
+  emailLabel: string;
+  imageAlt: string;
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  steps: readonly (readonly [string, string])[];
+  contact: Contact;
+}
+
+const { eyebrow, title, steps, contact } = Astro.props;
 ---
-<section class="section-shell process" id="prozess">
-  <div class="section-heading compact"><p class="eyebrow">{eyebrow}</p><h2>{title}</h2></div>
-  <div class="process-list">
-    {steps.map(([title, text], index) => <article><span>{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{text}</p></article>)}
+<section class="section-shell process" id="ablauf" data-process>
+  <div class="process-layout">
+    <div class="process-flow">
+      <header class="process-heading">
+        <p class="eyebrow">{eyebrow}</p>
+        <h2>{title}</h2>
+      </header>
+
+      <ol class="process-timeline">
+        {steps.map(([stepTitle, text], index) => (
+          <li class:list={["process-step", { "is-current": index === 0 }]} style={`--step-delay: ${index * 110}ms`}>
+            <span class="process-node" aria-hidden="true">{index + 1}</span>
+            <div class="process-step-copy">
+              <h3>{stepTitle}</h3>
+              <p>{text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <aside class="process-contact-card" id="direkter-kontakt" aria-labelledby="process-contact-name">
+      <img
+        src="/images/pascal-misoph-contact.webp"
+        width="1200"
+        height="1600"
+        alt={contact.imageAlt}
+        loading="lazy"
+        decoding="async"
+      />
+      <div class="process-contact-content">
+        <p class="process-contact-label">{contact.label}</p>
+        <h3 id="process-contact-name">{contact.name}</h3>
+        <p>{contact.role}</p>
+        <address class="process-contact-links">
+          <a href="tel:015206398390" aria-label={`${contact.phoneLabel}: 0152 06398390`}>
+            <span class="process-contact-icon" aria-hidden="true"><Phone /></span>
+            <span><small>{contact.phoneLabel}</small>0152 06398390</span>
+          </a>
+          <a
+            href="https://wa.me/4915206398390"
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`${contact.whatsappLabel}: ${contact.name}`}
+          >
+            <span class="process-contact-icon" aria-hidden="true"><MessageCircle /></span>
+            <span><small>{contact.whatsappLabel}</small>{contact.whatsappLabel}</span>
+          </a>
+          <a href="mailto:pascal.misoph@gmail.com" aria-label={`${contact.emailLabel}: ${contact.name}`}>
+            <span class="process-contact-icon" aria-hidden="true"><Mail /></span>
+            <span><small>{contact.emailLabel}</small>{contact.emailLabel}</span>
+          </a>
+        </address>
+      </div>
+    </aside>
   </div>
 </section>
+
+<script>
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!reducedMotion && "IntersectionObserver" in window) {
+    document.querySelectorAll<HTMLElement>("[data-process]").forEach((process) => {
+      process.classList.add("has-process-motion");
+      const timeline = process.querySelector<HTMLElement>(".process-timeline");
+      const steps = process.querySelectorAll<HTMLElement>(".process-step");
+
+      const timelineObserver = new IntersectionObserver(
+        ([entry], observer) => {
+          if (!entry.isIntersecting) return;
+          timeline?.classList.add("is-visible");
+          observer.disconnect();
+        },
+        { threshold: 0.12 }
+      );
+
+      if (timeline) timelineObserver.observe(timeline);
+
+      const stepObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.28, rootMargin: "0px 0px -6% 0px" }
+      );
+
+      steps.forEach((step) => stepObserver.observe(step));
+    });
+  }
+</script>

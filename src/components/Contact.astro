@@ -1,11 +1,341 @@
 ---
-interface Props { eyebrow: string; title: string; body: string; fields: readonly string[]; submit: string; mail: string; }
-const { eyebrow, title, body, fields, submit, mail } = Astro.props;
+interface IntentOption {
+  value: "new" | "improve" | "advice";
+  label: string;
+}
+
+interface FlowCopy {
+  stepLabel: string;
+  ofLabel: string;
+  back: string;
+  intentQuestion: string;
+  intentOptions: readonly IntentOption[];
+  detailQuestions: Record<IntentOption["value"], string>;
+  detailPlaceholders: Record<IntentOption["value"], string>;
+  contactQuestion: string;
+  nameLabel: string;
+  emailLabel: string;
+  next: string;
+  submit: string;
+  summaryLabel: string;
+  privacy: string;
+  sending: string;
+  errorMessage: string;
+  successEyebrow: string;
+  successTitle: string;
+  successBody: string;
+  successAgain: string;
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  quickOption: string;
+  detailOption: string;
+  valueLine: string;
+  note: string;
+  formLabel: string;
+  flow: FlowCopy;
+  sectionId?: string;
+  source?: string;
+  disclaimerTitle?: string;
+  disclaimer?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  quickOption,
+  detailOption,
+  valueLine,
+  note,
+  formLabel,
+  flow,
+  sectionId = "kontakt",
+  source = "contact-form",
+  disclaimerTitle,
+  disclaimer,
+} = Astro.props;
+const locale = Astro.url.pathname.startsWith("/en") ? "en" : "de";
 ---
-<section class="contact-section" id="kontakt">
-  <div class="contact-copy"><p class="eyebrow">{eyebrow}</p><h2>{title}</h2><p>{body}</p><p class="mail-line">{mail} <a href="mailto:pascal.misoph@gmail.com">pascal.misoph@gmail.com</a></p></div>
-  <form class="contact-form" aria-label="Website check request">
-    {fields.map((field, index) => <label class={index === fields.length - 1 ? "is-wide" : ""}><span>{field}</span>{index === fields.length - 1 ? <textarea rows="5"></textarea> : <input type={field.toLowerCase().includes("mail") || field.toLowerCase().includes("email") ? "email" : "text"} />}</label>)}
-    <button class="button" type="button">{submit}</button>
+<section class="contact-section" id={sectionId}>
+  <div class="contact-copy">
+    <p class="eyebrow">{eyebrow}</p>
+    <h2>{title}</h2>
+  </div>
+
+  <p class="contact-value-line">{valueLine}</p>
+
+  <div
+    class="contact-paths"
+    role="tablist"
+    aria-label={locale === "en" ? "Choose how to get in touch" : "Kontaktweg auswählen"}
+  >
+    <button
+      class="contact-path contact-path--calendar"
+      type="button"
+      role="tab"
+      id={`contact-calendar-tab-${locale}`}
+      aria-controls={`contact-calendar-${locale}`}
+      aria-selected="false"
+      tabindex="0"
+      data-contact-path="calendar"
+    >
+      <span>{quickOption}</span>
+      <span class="contact-path-arrow" aria-hidden="true">→</span>
+    </button>
+    <button
+      class="contact-path contact-path--form"
+      type="button"
+      role="tab"
+      id={`contact-form-tab-${locale}`}
+      aria-controls={`contact-form-${locale}`}
+      aria-selected="false"
+      tabindex="-1"
+      data-contact-path="form"
+    >
+      <span>{detailOption}</span>
+      <span class="contact-path-arrow" aria-hidden="true">→</span>
+    </button>
+  </div>
+
+  <div class="contact-path-panels">
+  <form
+    class="contact-flow"
+    id={`contact-form-${locale}`}
+    role="tabpanel"
+    aria-labelledby={`contact-form-tab-${locale}`}
+    aria-label={formLabel}
+    action="/api/contact"
+    method="post"
+    hidden
+    data-contact-panel="form"
+    data-contact-flow
+    data-step-label={flow.stepLabel}
+    data-of-label={flow.ofLabel}
+    data-sending={flow.sending}
+    data-error-message={flow.errorMessage}
+  >
+    <label class="contact-honeypot" aria-hidden="true">
+      <span>Company fax</span>
+      <input name="companyFax" type="text" tabindex="-1" autocomplete="off" />
+    </label>
+    <input name="locale" type="hidden" value={locale} />
+    <input name="source" type="hidden" value={source} />
+    <input name="startedAt" type="hidden" value="" data-started-at />
+
+    <div class="contact-flow-progress">
+      <button class="contact-flow-back" type="button" data-flow-back hidden>← {flow.back}</button>
+      <span class="contact-flow-count" data-flow-count>{flow.stepLabel} 1 {flow.ofLabel} 3</span>
+      <span class="contact-flow-track"><span data-flow-progress></span></span>
+    </div>
+    <p class="sr-only" aria-live="polite" data-flow-status>{flow.stepLabel} 1 {flow.ofLabel} 3</p>
+
+    <fieldset class="contact-flow-step" data-flow-step="0">
+      <legend>{flow.intentQuestion}</legend>
+      <div class="contact-choice-list">
+        {flow.intentOptions.map((option) => (
+          <label class="contact-choice">
+            <input
+              type="radio"
+              name="intent"
+              value={option.value}
+              data-flow-question={flow.detailQuestions[option.value]}
+              data-flow-placeholder={flow.detailPlaceholders[option.value]}
+              required
+            />
+            <span class="contact-choice-marker" aria-hidden="true"></span>
+            <span>{option.label}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+
+    <fieldset class="contact-flow-step" data-flow-step="1" hidden disabled>
+      <legend data-detail-question>{flow.detailQuestions.new}</legend>
+      <label class="contact-flow-input">
+        <span class="sr-only" data-detail-label>{flow.detailQuestions.new}</span>
+        <textarea name="details" rows="5" placeholder={flow.detailPlaceholders.new} required data-detail-input></textarea>
+      </label>
+      <div class="contact-flow-actions"><button class="button" type="button" data-flow-next>{flow.next}</button></div>
+    </fieldset>
+
+    <fieldset class="contact-flow-step" data-flow-step="2" hidden disabled>
+      <legend>{flow.contactQuestion}</legend>
+      <div class="contact-details">
+        <label class="contact-flow-input"><span>{flow.nameLabel}</span><input name="name" type="text" autocomplete="name" required /></label>
+        <label class="contact-flow-input"><span>{flow.emailLabel}</span><input name="email" type="email" autocomplete="email" required /></label>
+      </div>
+      <div class="contact-flow-summary"><span>{flow.summaryLabel}</span><strong data-flow-summary></strong></div>
+      <div class="contact-flow-actions"><button class="button" type="submit">{flow.submit}</button></div>
+      <p class="contact-flow-error" role="alert" data-flow-error hidden>{flow.errorMessage}</p>
+    </fieldset>
+
+    <p class="contact-flow-privacy">{flow.privacy}</p>
+    <section class="contact-flow-success" data-flow-success hidden tabindex="-1">
+      <p class="eyebrow">{flow.successEyebrow}</p>
+      <h3>{flow.successTitle}</h3>
+      <p>{flow.successBody}</p>
+      <button class="text-link" type="button" data-flow-again>{flow.successAgain}</button>
+    </section>
+    <noscript><p class="contact-flow-noscript">{note}</p></noscript>
   </form>
+
+  <!-- Calendly inline widget begin -->
+  <div
+    class="calendly-panel"
+    id={`contact-calendar-${locale}`}
+    role="tabpanel"
+    aria-labelledby={`contact-calendar-tab-${locale}`}
+    aria-label={locale === "en" ? "Book an initial consultation" : "Erstgespräch buchen"}
+    data-contact-panel="calendar"
+    hidden
+  >
+    <div
+      class="calendly-inline-widget"
+      data-url="https://calendly.com/pascal-misoph/erstgespraech"
+      style="min-width:320px;height:700px;"
+    ></div>
+  </div>
+  <!-- Calendly inline widget end -->
+  </div>
+  {disclaimerTitle && disclaimer && (
+    <aside class="geo-disclaimer-note" aria-label={disclaimerTitle}>
+      <strong>{disclaimerTitle}</strong>
+      <span>{disclaimer}</span>
+    </aside>
+  )}
 </section>
+
+<script>
+  document.querySelectorAll<HTMLElement>(".contact-section").forEach((section) => {
+    const tabs = Array.from(section.querySelectorAll<HTMLButtonElement>("[data-contact-path]"));
+    const panels = Array.from(section.querySelectorAll<HTMLElement>("[data-contact-panel]"));
+
+    const loadCalendly = () => {
+      if (document.querySelector<HTMLScriptElement>("script[data-calendly-loader]")) return;
+      const script = document.createElement("script");
+      script.src = "https://assets.calendly.com/assets/external/widget.js";
+      script.async = true;
+      script.dataset.calendlyLoader = "true";
+      document.head.append(script);
+    };
+
+    const selectPath = (path: string, moveFocus = false) => {
+      tabs.forEach((tab) => {
+        const selected = tab.dataset.contactPath === path;
+        tab.classList.toggle("is-active", selected);
+        tab.setAttribute("aria-selected", String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+        if (selected && moveFocus) tab.focus();
+      });
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.contactPanel !== path;
+      });
+      if (path === "calendar") loadCalendly();
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => selectPath(tab.dataset.contactPath ?? "calendar"));
+      tab.addEventListener("keydown", (event) => {
+        if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        const nextIndex = event.key === "Home"
+          ? 0
+          : event.key === "End"
+            ? tabs.length - 1
+            : (index + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+        selectPath(tabs[nextIndex]?.dataset.contactPath ?? "calendar", true);
+      });
+    });
+  });
+
+  document.querySelectorAll<HTMLFormElement>("[data-contact-flow]").forEach((form) => {
+    const steps = Array.from(form.querySelectorAll<HTMLFieldSetElement>("[data-flow-step]"));
+    const intents = Array.from(form.querySelectorAll<HTMLInputElement>('input[name="intent"]'));
+    const detailQuestion = form.querySelector<HTMLElement>("[data-detail-question]");
+    const detailLabel = form.querySelector<HTMLElement>("[data-detail-label]");
+    const detailInput = form.querySelector<HTMLTextAreaElement>("[data-detail-input]");
+    const progress = form.querySelector<HTMLElement>("[data-flow-progress]");
+    const count = form.querySelector<HTMLElement>("[data-flow-count]");
+    const status = form.querySelector<HTMLElement>("[data-flow-status]");
+    const summary = form.querySelector<HTMLElement>("[data-flow-summary]");
+    const back = form.querySelector<HTMLButtonElement>("[data-flow-back]");
+    const progressArea = form.querySelector<HTMLElement>(".contact-flow-progress");
+    const privacy = form.querySelector<HTMLElement>(".contact-flow-privacy");
+    const success = form.querySelector<HTMLElement>("[data-flow-success]");
+    const error = form.querySelector<HTMLElement>("[data-flow-error]");
+    const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const startedAt = form.querySelector<HTMLInputElement>("[data-started-at]");
+    const submitLabel = submit?.textContent ?? "";
+    let currentStep = 0;
+
+    const showStep = (index: number, focus = true) => {
+      currentStep = Math.max(0, Math.min(index, steps.length - 1));
+      steps.forEach((step, stepIndex) => {
+        step.hidden = stepIndex !== currentStep;
+        step.disabled = stepIndex !== currentStep;
+      });
+      const progressText = `${form.dataset.stepLabel} ${currentStep + 1} ${form.dataset.ofLabel} ${steps.length}`;
+      if (count) count.textContent = progressText;
+      if (status) status.textContent = progressText;
+      if (progress) progress.style.setProperty("--flow-progress", `${((currentStep + 1) / steps.length) * 100}%`);
+      if (back) back.hidden = currentStep === 0;
+      if (focus) steps[currentStep]?.querySelector<HTMLElement>("input:checked, input, textarea")?.focus();
+    };
+
+    intents.forEach((input) => input.addEventListener("change", () => {
+      const question = input.dataset.flowQuestion ?? "";
+      const placeholder = input.dataset.flowPlaceholder ?? "";
+      if (detailQuestion) detailQuestion.textContent = question;
+      if (detailLabel) detailLabel.textContent = question;
+      if (detailInput) detailInput.placeholder = placeholder;
+      if (summary) summary.textContent = input.closest("label")?.innerText.trim() ?? "";
+      showStep(1);
+    }));
+
+    back?.addEventListener("click", () => showStep(currentStep - 1));
+    form.querySelector<HTMLButtonElement>("[data-flow-next]")?.addEventListener("click", () => {
+      if (detailInput?.reportValidity()) showStep(2);
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!form.reportValidity() || !submit) return;
+      error?.setAttribute("hidden", "");
+      submit.disabled = true;
+      submit.textContent = form.dataset.sending ?? submitLabel;
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          headers: { "content-type": "application/json", accept: "application/json" },
+          body: JSON.stringify(Object.fromEntries(new FormData(form).entries())),
+        });
+        const result = await response.json().catch(() => null);
+        if (!response.ok || !result?.ok) throw new Error("submission_failed");
+        steps.forEach((step) => { step.hidden = true; step.disabled = true; });
+        if (progressArea) progressArea.hidden = true;
+        if (privacy) privacy.hidden = true;
+        if (success) { success.hidden = false; success.focus(); }
+      } catch {
+        if (error) { error.hidden = false; error.textContent = form.dataset.errorMessage ?? ""; }
+      } finally {
+        submit.disabled = false;
+        submit.textContent = submitLabel;
+      }
+    });
+
+    form.querySelector<HTMLButtonElement>("[data-flow-again]")?.addEventListener("click", () => {
+      form.reset();
+      if (success) success.hidden = true;
+      if (progressArea) progressArea.hidden = false;
+      if (privacy) privacy.hidden = false;
+      if (startedAt) startedAt.value = String(Date.now());
+      showStep(0);
+    });
+
+    form.dataset.lang = form.querySelector<HTMLInputElement>('[name="locale"]')?.value ?? "de";
+    if (startedAt) startedAt.value = String(Date.now());
+    showStep(0, false);
+  });
+</script>

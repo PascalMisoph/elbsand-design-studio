@@ -1,27 +1,202 @@
 ---
 import type { Locale } from "../content/site";
-interface Props { lang: Locale; nav: readonly string[]; cta: string; }
-const { lang, nav, cta } = Astro.props;
-const hrefs = ["#leistungen", "#referenzen", "#prozess", "#studio", "#kontakt"];
-const otherHref = lang === "de" ? "/en/" : "/";
-const menuLabel = lang === "de" ? "Menü" : "Menu";
+
+interface Props {
+  lang: Locale;
+  nav: readonly string[];
+  cta: string;
+  page?: "home" | "geo" | "service";
+  alternateDePath?: string;
+  alternateEnPath?: string;
+}
+
+const { lang, cta, page = "home", alternateDePath, alternateEnPath } = Astro.props;
+const de = lang === "de";
+const homePath = de ? "/" : "/en/";
+const local = (dePath: string, enPath: string) => de ? dePath : enPath;
+const homeLink = (anchor: string) => `${homePath}${anchor}`;
+const ctaHref = homeLink("#ki-check");
+const languagePaths = alternateDePath && alternateEnPath
+  ? { de: alternateDePath, en: alternateEnPath }
+  : page === "geo"
+    ? { de: "/geo-optimierung/", en: "/en/geo-optimization/" }
+    : { de: "/", en: "/en/" };
+
+const services = {
+  label: de ? "Leistungen" : "Services",
+  feature: {
+    eyebrow: de ? "Leistungsübersicht" : "Service overview",
+    title: de ? "GEO & KI-Sichtbarkeit" : "GEO & AI visibility",
+    text: de ? "Von der ersten Diagnose bis zur laufenden Weiterentwicklung." : "From the first diagnosis to ongoing improvement.",
+    href: local("/geo-optimierung/", "/en/geo-optimization/"),
+  },
+  groups: de ? [
+    { label: "Diagnose", items: [["GEO Audit", "/geo-audit/"], ["Prompt-Recherche", "/prompt-recherche/"]] },
+    { label: "AI-Sichtbarkeit", items: [["AI-Sichtbarkeit", "/ai-sichtbarkeit/"], ["KI-Quellenanalyse", "/ki-quellenanalyse/"], ["KI-Wettbewerbsanalyse", "/ki-wettbewerbsanalyse/"], ["KI-Markenwahrnehmung", "/ki-markenwahrnehmung/"], ["KI-Faktencheck", "/ki-faktencheck/"]] },
+    { label: "Technik & Content", items: [["AI-Crawlability", "/ai-crawlability/"], ["Technische GEO-Optimierung", "/technische-geo-optimierung/"], ["GEO-Content", "/geo-content/"], ["Content-Optimierung für AI-Suche", "/content-optimierung-ai-suche/"]] },
+    { label: "Begleitung", items: [["GEO-Monitoring", "/geo-monitoring/"], ["GEO-Betreuung", "/geo-betreuung/"]] },
+  ] : [
+    { label: "Diagnosis", items: [["GEO audit", "/en/geo-audit/"], ["Prompt research", "/en/prompt-research/"]] },
+    { label: "AI visibility", items: [["AI visibility", "/en/ai-visibility/"], ["AI source analysis", "/en/ai-source-analysis/"], ["AI competitor analysis", "/en/ai-competitor-analysis/"], ["AI brand perception", "/en/ai-brand-perception/"], ["AI fact checking", "/en/ai-fact-checking/"]] },
+    { label: "Technical & content", items: [["AI crawlability", "/en/ai-crawlability/"], ["Technical GEO optimisation", "/en/technical-geo-optimization/"], ["GEO content", "/en/geo-content/"], ["Content optimisation for AI search", "/en/content-optimization-ai-search/"]] },
+    { label: "Ongoing support", items: [["GEO monitoring", "/en/geo-monitoring/"], ["GEO support", "/en/geo-support/"]] },
+  ],
+};
+
+const resources = {
+  label: de ? "Ressourcen" : "Resources",
+  feature: {
+    eyebrow: de ? "Kostenfreier Einstieg" : "Free starting point",
+    title: de ? "KI-Website-Check" : "AI website check",
+    text: de ? "Eine kompakte technische Einordnung deiner Website." : "A compact technical assessment of your website.",
+    href: ctaHref,
+  },
+  groups: de ? [
+    { label: "Analysieren", items: [["Kostenfreier KI-Check", ctaHref], ["GEO Audit", "/geo-audit/"], ["Prompt-Recherche", "/prompt-recherche/"]] },
+    { label: "Verstehen", items: [["GEO-Grundlagen", "/geo-optimierung/"], ["Technische GEO-Optimierung", "/technische-geo-optimierung/"], ["AI-Crawlability", "/ai-crawlability/"]] },
+    { label: "Weiterarbeiten", items: [["GEO-Content", "/geo-content/"], ["Content-Optimierung", "/content-optimierung-ai-suche/"], ["GEO-Monitoring", "/geo-monitoring/"]] },
+  ] : [
+    { label: "Analyse", items: [["Free AI check", ctaHref], ["GEO audit", "/en/geo-audit/"], ["Prompt research", "/en/prompt-research/"]] },
+    { label: "Understand", items: [["GEO foundations", "/en/geo-optimization/"], ["Technical GEO optimisation", "/en/technical-geo-optimization/"], ["AI crawlability", "/en/ai-crawlability/"]] },
+    { label: "Improve", items: [["GEO content", "/en/geo-content/"], ["Content optimisation", "/en/content-optimization-ai-search/"], ["GEO monitoring", "/en/geo-monitoring/"]] },
+  ],
+};
+
+const solutions = {
+  label: de ? "Lösungen" : "Solutions",
+  feature: {
+    eyebrow: de ? "Passender Einstieg" : "Choose your starting point",
+    title: de ? "Was soll sich verbessern?" : "What needs to improve?",
+    text: de ? "Starte mit deinem konkreten Ziel statt mit einem Fachbegriff." : "Start with your concrete goal instead of a technical term.",
+    href: "#kontakt",
+  },
+  groups: de ? [
+    { label: "Website", items: [["Neue Website entwickeln", homeLink("#leistungen")], ["Bestehende Website überarbeiten", "/content-optimierung-ai-suche/"], ["Referenzen ansehen", homeLink("#projekte")]] },
+    { label: "Sichtbarkeit", items: [["In KI-Antworten sichtbar werden", "/ai-sichtbarkeit/"], ["Quellen und Nennungen verstehen", "/ki-quellenanalyse/"], ["Wettbewerb einordnen", "/ki-wettbewerbsanalyse/"]] },
+    { label: "Zusammenarbeit", items: [["Mit einem Audit starten", "/geo-audit/"], ["Content aufbauen", "/geo-content/"], ["Laufend begleitet werden", "/geo-betreuung/"]] },
+  ] : [
+    { label: "Website", items: [["Build a new website", homeLink("#leistungen")], ["Improve an existing website", "/en/content-optimization-ai-search/"], ["View selected work", homeLink("#projekte")]] },
+    { label: "Visibility", items: [["Become visible in AI answers", "/en/ai-visibility/"], ["Understand sources and mentions", "/en/ai-source-analysis/"], ["Benchmark competitors", "/en/ai-competitor-analysis/"]] },
+    { label: "Collaboration", items: [["Start with an audit", "/en/geo-audit/"], ["Build content", "/en/geo-content/"], ["Get ongoing support", "/en/geo-support/"]] },
+  ],
+};
+
+const dropdowns = [services, resources, solutions];
+const directLinks = de ? [
+  ["Referenzen", homeLink("#projekte")],
+  ["Ablauf", homeLink("#ablauf")],
+  ["Kontakt", "#kontakt"],
+] : [
+  ["Work", homeLink("#projekte")],
+  ["Process", homeLink("#ablauf")],
+  ["Contact", "#kontakt"],
+];
+const menuLabel = de ? "Menü" : "Menu";
 ---
-<header class="site-header" aria-label="Primary navigation">
-  <a class="wordmark" href={lang === "de" ? "/" : "/en/"} aria-label="ELBSAND home">ELBSAND</a>
-  <nav class="desktop-nav" aria-label="Main navigation">
-    {nav.map((item, index) => <a href={hrefs[index]}>{item}</a>)}
+
+<header class="site-header" data-site-header>
+  <a class="wordmark" href={homePath} aria-label="ELBSAND Design Studio home">
+    <img src="/images/elbsand-logo.png" alt="ELBSAND Design Studio" width="1080" height="180" />
+  </a>
+
+  <nav class="desktop-nav" aria-label={de ? "Hauptnavigation" : "Main navigation"}>
+    {dropdowns.map((menu, menuIndex) => (
+      <details class="header-menu" data-header-menu>
+        <summary>
+          <span>{menu.label}</span>
+          <svg aria-hidden="true" viewBox="0 0 16 16"><path d="m4.5 6 3.5 3.5L11.5 6" /></svg>
+        </summary>
+        <div class:list={["header-mega-panel", `header-mega-${menuIndex + 1}`]}>
+          <div class="header-mega-inner">
+            <a class="header-mega-feature" href={menu.feature.href}>
+              <span>{menu.feature.eyebrow}</span>
+              <strong>{menu.feature.title}</strong>
+              <p>{menu.feature.text}</p>
+              <i aria-hidden="true">↗</i>
+            </a>
+            <div class="header-mega-groups">
+              {menu.groups.map((group) => (
+                <section>
+                  <h2>{group.label}</h2>
+                  <div>{group.items.map(([label, href]) => <a href={href}>{label}</a>)}</div>
+                </section>
+              ))}
+            </div>
+          </div>
+        </div>
+      </details>
+    ))}
+    {directLinks.map(([label, href]) => <a class="header-direct-link" href={href}>{label}</a>)}
   </nav>
+
   <div class="header-actions">
-    <a class="language-switch" href={otherHref} aria-label={lang === "de" ? "Switch to English" : "Zur deutschen Version wechseln"}>
-      <span class={lang === "de" ? "is-active" : ""}>DE</span><span class={lang === "en" ? "is-active" : ""}>EN</span>
-    </a>
-    <a class="button button-small" href="#kontakt">{cta}</a>
-    <details class="mobile-menu">
+    <nav class="language-switch" aria-label={de ? "Sprachauswahl" : "Language selection"}>
+      <a href={languagePaths.de} hreflang="de" lang="de" aria-current={de ? "page" : undefined} data-astro-prefetch="viewport">DE</a>
+      <a href={languagePaths.en} hreflang="en" lang="en" aria-current={!de ? "page" : undefined} data-astro-prefetch="viewport">EN</a>
+    </nav>
+    <a class="button button-small" href={ctaHref}>{cta}</a>
+    <details class="mobile-menu" data-mobile-menu>
       <summary aria-label={menuLabel}><span></span><span></span></summary>
-      <nav aria-label="Mobile navigation">
-        {nav.map((item, index) => <a href={hrefs[index]}>{item}</a>)}
-        <a class="button" href="#kontakt">{cta}</a>
+      <nav aria-label={de ? "Mobile Navigation" : "Mobile navigation"}>
+        {dropdowns.map((menu) => (
+          <details class="mobile-nav-group">
+            <summary>{menu.label}<span aria-hidden="true">⌄</span></summary>
+            <div>
+              <a class="mobile-feature-link" href={menu.feature.href}>{menu.feature.title}</a>
+              {menu.groups.map((group) => (
+                <section>
+                  <h2>{group.label}</h2>
+                  {group.items.map(([label, href]) => <a href={href}>{label}</a>)}
+                </section>
+              ))}
+            </div>
+          </details>
+        ))}
+        <div class="mobile-direct-links">{directLinks.map(([label, href]) => <a href={href}>{label}</a>)}</div>
+        <a class="button" href={ctaHref}>{cta}</a>
       </nav>
     </details>
   </div>
 </header>
+
+<script>
+  const headers = document.querySelectorAll<HTMLElement>("[data-site-header]");
+  headers.forEach((header) => {
+    const menus = [...header.querySelectorAll<HTMLDetailsElement>("[data-header-menu]")];
+    const mobileMenu = header.querySelector<HTMLDetailsElement>("[data-mobile-menu]");
+    menus.forEach((menu) => menu.addEventListener("toggle", () => {
+      if (menu.open) menus.forEach((other) => { if (other !== menu) other.open = false; });
+    }));
+    mobileMenu?.addEventListener("toggle", () => {
+      document.documentElement.classList.toggle("mobile-nav-open", mobileMenu.open);
+    });
+    mobileMenu?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+      mobileMenu.open = false;
+      document.documentElement.classList.remove("mobile-nav-open");
+    }));
+    document.addEventListener("click", (event) => {
+      if (!header.contains(event.target as Node)) menus.forEach((menu) => { menu.open = false; });
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        menus.forEach((menu) => { menu.open = false; });
+        mobileMenu?.removeAttribute("open");
+        document.documentElement.classList.remove("mobile-nav-open");
+      }
+    });
+  });
+
+  document.querySelectorAll<HTMLElement>(".language-switch").forEach((switcher) => {
+    switcher.querySelectorAll<HTMLAnchorElement>("a").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        if (link.getAttribute("aria-current") === "page") {
+          event.preventDefault();
+          return;
+        }
+        switcher.querySelectorAll("a").forEach((item) => item.classList.remove("is-pending"));
+        link.classList.add("is-pending");
+        switcher.setAttribute("aria-busy", "true");
+      });
+    });
+  });
+</script>

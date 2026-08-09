@@ -1,0 +1,43 @@
+---
+interface Props { index: number; lang: "de" | "en" }
+const { index } = Astro.props;
+---
+
+<div class:list={["presence-visual", `presence-visual--${index + 1}`]} aria-hidden="true">
+  {index === 0 && (
+    <div class="score-visual-image">
+      <img src="/images/geo-audit-visibility-scores-graph.webp" alt="" width="1254" height="1254" loading="eager" decoding="async" />
+    </div>
+  )}
+  {index === 1 && (
+    <div class="sentiment-visual-image">
+      <img src="/images/geo-audit-sentiment-insights.webp" alt="" width="1254" height="1254" loading="eager" decoding="async" />
+    </div>
+  )}
+  {index === 2 && (
+    <div class="citation-visual-image">
+      <img src="/images/geo-audit-citation-authority-v2.webp" alt="" width="1254" height="792" loading="lazy" decoding="async" />
+    </div>
+  )}
+  {index === 3 && (
+    <div class="fact-visual-image">
+      <img src="/images/geo-audit-brand-factcheck-v2.webp" alt="" width="1254" height="1254" loading="lazy" decoding="async" />
+    </div>
+  )}
+  {index === 4 && (
+    <div class="benchmark-visual-image">
+      <img src="/images/geo-audit-competitive-benchmarking.webp" alt="" width="1254" height="1254" loading="lazy" decoding="async" />
+    </div>
+  )}
+  {index === 5 && (
+    <div class="platform-visual-image">
+      <img src="/images/geo-audit-platform-comparisons.webp" alt="" width="1254" height="1254" loading="lazy" decoding="async" />
+    </div>
+  )}
+</div>
+
+<style>
+  .presence-visual{position:relative;height:270px;min-height:270px;flex:0 0 270px;overflow:hidden;color:#f8f4ed}.presence-visual small,.presence-visual span{color:#8f8a82}.score-visual-image,.sentiment-visual-image,.citation-visual-image,.fact-visual-image,.benchmark-visual-image,.platform-visual-image{position:absolute;inset:0}.score-visual-image img,.sentiment-visual-image img,.citation-visual-image img,.fact-visual-image img,.benchmark-visual-image img,.platform-visual-image img{display:block;width:100%;height:100%;object-fit:cover;mix-blend-mode:screen;transition:transform 700ms var(--motion-ease),filter 420ms ease}.score-visual-image img{object-position:center 53%}.sentiment-visual-image img{object-position:center 51%}.citation-visual-image img{object-fit:contain;object-position:center;transform:scale(.96)}.fact-visual-image img{object-position:center 44%;transform:scale(.9)}.benchmark-visual-image img{object-position:center 50%;transform:scale(.9)}.platform-visual-image img{object-fit:contain;object-position:center;transform:scale(1.14)}:global(.a-presence-grid>article.has-reference-image:hover) .score-visual-image img,:global(.a-presence-grid>article.has-reference-image:hover) .sentiment-visual-image img{filter:saturate(1.06) contrast(1.03) brightness(1.035);transform:scale(1.025)}:global(.a-presence-grid>article.has-reference-image:hover) .fact-visual-image img,:global(.a-presence-grid>article.has-reference-image:hover) .benchmark-visual-image img{filter:saturate(1.06) contrast(1.03) brightness(1.035);transform:scale(.925)}:global(.a-presence-grid>article.has-reference-image:hover) .citation-visual-image img{filter:saturate(1.06) contrast(1.03) brightness(1.035);transform:scale(.985)}:global(.a-presence-grid>article.has-reference-image:hover) .platform-visual-image img{filter:saturate(1.06) contrast(1.03) brightness(1.035);transform:scale(1.165)}
+  @media(max-width:560px){.presence-visual{height:230px;min-height:230px;flex-basis:230px}}
+  @media(prefers-reduced-motion:reduce){.score-visual-image img,.sentiment-visual-image img{transition:none;transform:none!important}.fact-visual-image img,.benchmark-visual-image img{transition:none;transform:scale(.9)!important}.citation-visual-image img{transition:none;transform:scale(.96)!important}.platform-visual-image img{transition:none;transform:scale(1.14)!important}}
+</style>

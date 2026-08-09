@@ -1,0 +1,48 @@
+---
+interface Person {
+  name: string;
+  role: string;
+  image: string;
+  imageWidth: number;
+  imageHeight: number;
+  imageAlt: string;
+}
+
+interface Props {
+  eyebrow: string;
+  intro: string;
+  people: readonly Person[];
+}
+
+const { eyebrow, intro, people } = Astro.props;
+---
+
+<section class="section-shell editorial-support" aria-labelledby="editorial-support-title">
+  <div class="editorial-support-inner">
+    <header class="editorial-support-heading">
+      <p class="eyebrow" id="editorial-support-title">{eyebrow}</p>
+      <p>{intro}</p>
+    </header>
+
+    <div class="editorial-support-people">
+      {people.map((person) => (
+        <article class:list={["editorial-support-person", `editorial-support-person--${person.name.toLowerCase()}`]}>
+          <div class="editorial-support-portrait">
+            <img
+              src={person.image}
+              width={person.imageWidth}
+              height={person.imageHeight}
+              alt={person.imageAlt}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="editorial-support-copy">
+            <h3>{person.name}</h3>
+            <p>{person.role}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

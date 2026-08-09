@@ -1,0 +1,30 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  steps: readonly (readonly [string, string, string, string])[];
+}
+
+const { eyebrow, title, steps } = Astro.props;
+---
+
+<section class="geo-process-band" aria-labelledby="geo-process-title">
+  <div class="geo-process section-shell">
+    <header class="geo-process-heading">
+      <p class="eyebrow">{eyebrow}</p>
+      <h2 id="geo-process-title">{title}</h2>
+    </header>
+    <ol class="geo-journey">
+      {steps.map(([number, name, detail, outcome]) => (
+        <li class="geo-journey-step">
+          <span class="geo-journey-node" aria-hidden="true">{number}</span>
+          <div>
+            <span class="geo-journey-label">{outcome}</span>
+            <h3>{name}</h3>
+            <p>{detail}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

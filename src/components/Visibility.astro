@@ -1,14 +1,105 @@
 ---
-interface Props { eyebrow: string; title: string; body: string; points: readonly string[]; }
-const { eyebrow, title, body, points } = Astro.props;
-const systems = ["ChatGPT", "Claude", "Perplexity"];
+import googleLogo from "@lobehub/icons-static-svg/icons/google-color.svg?url";
+import openAiLogo from "@lobehub/icons-static-svg/icons/openai.svg?url";
+import claudeLogo from "@lobehub/icons-static-svg/icons/claude-color.svg?url";
+import perplexityLogo from "@lobehub/icons-static-svg/icons/perplexity-color.svg?url";
+import { Braces, MapPin, Percent, ScanSearch } from "@lucide/astro";
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  body: string;
+  points: readonly (readonly [string, string])[];
+  dataNote: string;
+  sourceLabel: string;
+  sources: readonly {
+    label: string;
+    url: string;
+    ariaLabel: string;
+  }[];
+  note: string;
+  systemsIntro: string;
+  systemsLabel: string;
+  detailLinkLabel: string;
+}
+const { eyebrow, title, body, points, dataNote, sourceLabel, sources, note, systemsIntro, systemsLabel, detailLinkLabel } = Astro.props;
+const detailHref = Astro.url.pathname.startsWith("/en/") ? "/en/geo-optimization/" : "/geo-optimierung/";
+const systems = [
+  { name: "Google", logo: googleLogo },
+  { name: "ChatGPT", logo: openAiLogo },
+  { name: "Claude", logo: claudeLogo },
+  { name: "Perplexity", logo: perplexityLogo }
+];
+const featureIcons = [ScanSearch, MapPin, Braces];
 ---
-<section class="visibility-band" aria-labelledby="visibility-title">
+<section class="visibility-band" id="seo-geo" aria-labelledby="visibility-title">
   <div class="visibility-inner">
-    <div><p class="eyebrow">{eyebrow}</p><h2 id="visibility-title">{title}</h2><p>{body}</p></div>
-    <div class="visibility-panel" aria-label="AI visibility systems">
-      <div class="system-row">{systems.map((system) => <span>{system}</span>)}</div>
-      <ul>{points.map((point) => <li>{point}</li>)}</ul>
+    <header class="visibility-heading">
+      <p class="eyebrow">{eyebrow}</p>
+      <h2 id="visibility-title">{title}</h2>
+      <p>{body}</p>
+    </header>
+
+    <div class="visibility-systems" aria-label={systemsLabel}>
+      <p>{systemsIntro}</p>
+      <ul>
+        {systems.map((system) => (
+          <li>
+            <img src={system.logo} alt="" width="28" height="28" loading="lazy" />
+            <span>{system.name}</span>
+          </li>
+        ))}
+      </ul>
     </div>
+
+    <div class="visibility-grid">
+      {points.slice(0, 3).map(([pointTitle, text], index) => {
+        const Icon = featureIcons[index];
+        return (
+          <article class="visibility-tile">
+            <Icon aria-hidden="true" />
+            <h3>{pointTitle}</h3>
+            <p>{text}</p>
+          </article>
+        );
+      })}
+
+      <aside class="visibility-tile visibility-tile--stat" aria-label={sourceLabel}>
+        <Percent aria-hidden="true" />
+        <strong>60%</strong>
+        <p>{dataNote}</p>
+        <p class="visibility-sources">
+          <span>{sourceLabel}</span>
+          {sources.map((source, index) => (
+            <>
+              {index > 0 && <span aria-hidden="true">/</span>}
+              <a href={source.url} target="_blank" rel="noreferrer" aria-label={source.ariaLabel}>
+                {source.label}
+              </a>
+            </>
+          ))}
+        </p>
+      </aside>
+
+      <article class="visibility-tile visibility-tile--geo">
+        <!-- Free stock photo: Tsuyoshi Kozu / Unsplash, https://unsplash.com/photos/9xSEFNwFs6A -->
+        <img
+          class="visibility-geo-image"
+          src="/images/geo-visibility-stock.webp"
+          alt=""
+          width="1400"
+          height="2100"
+          loading="lazy"
+          decoding="async"
+        />
+        <h3>{points[3][0]}</h3>
+        <p>{points[3][1]}</p>
+        <a class="visibility-detail-link" href={detailHref} data-astro-prefetch>
+          {detailLinkLabel}<span aria-hidden="true">→</span>
+        </a>
+      </article>
+    </div>
+
+    <p class="visibility-note">{note}</p>
   </div>
 </section>

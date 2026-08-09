@@ -1,8 +1,58 @@
 ---
-interface Props { intro: string; items: readonly string[]; }
+interface ProjectLogo {
+  name: string;
+  logo: string;
+  width: number;
+  height: number;
+  url: string;
+  variant: "wide" | "landscape" | "compact";
+  slug: string;
+}
+
+interface Props {
+  intro: string;
+  items: readonly ProjectLogo[];
+}
+
 const { intro, items } = Astro.props;
 ---
 <section class="proof-strip" aria-label={intro}>
   <p>{intro}</p>
-  <div class="proof-list">{items.map((item) => <span>{item}</span>)}</div>
+  <div class="marquee-window">
+    <div class="proof-list" data-project-logo-marquee>
+      <div class="marquee-group">
+        {items.map((item) => (
+          <a
+            class={`project-logo project-logo--${item.variant} project-logo--${item.slug}`}
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={item.logo}
+              alt={`${item.name} Logo`}
+              width={item.width}
+              height={item.height}
+              loading="eager"
+              decoding="async"
+            />
+          </a>
+        ))}
+      </div>
+      <div class="marquee-group" aria-hidden="true">
+        {items.map((item) => (
+          <span class={`project-logo project-logo--${item.variant} project-logo--${item.slug}`}>
+            <img
+              src={item.logo}
+              alt=""
+              width={item.width}
+              height={item.height}
+              loading="eager"
+              decoding="async"
+            />
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
 </section>

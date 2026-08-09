@@ -1,8 +1,41 @@
 ---
-interface Props { legal: string; imprint: string; privacy: string; }
-const { legal, imprint, privacy } = Astro.props;
+interface Props { legal: string; imprint: string; privacy: string; lang: "de" | "en"; }
+const { imprint, privacy, lang } = Astro.props;
+const de = lang === "de";
+const home = de ? "/" : "/en/";
+const columns = de ? [
+  { title: "Sichtbarkeit", links: [["GEO-Optimierung", "/geo-optimierung/"], ["GEO Audit", "/geo-audit/"], ["AI-Sichtbarkeit", "/ai-sichtbarkeit/"], ["Prompt-Recherche", "/prompt-recherche/"]] },
+  { title: "Analyse", links: [["KI-Quellenanalyse", "/ki-quellenanalyse/"], ["KI-Wettbewerbsanalyse", "/ki-wettbewerbsanalyse/"], ["KI-Markenwahrnehmung", "/ki-markenwahrnehmung/"], ["KI-Faktencheck", "/ki-faktencheck/"]] },
+  { title: "Umsetzung", links: [["Technische GEO", "/technische-geo-optimierung/"], ["AI-Crawlability", "/ai-crawlability/"], ["GEO-Content", "/geo-content/"], ["Content-Optimierung", "/content-optimierung-ai-suche/"]] },
+  { title: "Studio", links: [["GEO-Monitoring", "/geo-monitoring/"], ["GEO-Betreuung", "/geo-betreuung/"], ["Referenzen", "/#projekte"], ["Ablauf", "/#ablauf"], ["Kontakt", "#kontakt"]] },
+] : [
+  { title: "Visibility", links: [["GEO optimisation", "/en/geo-optimization/"], ["GEO audit", "/en/geo-audit/"], ["AI visibility", "/en/ai-visibility/"], ["Prompt research", "/en/prompt-research/"]] },
+  { title: "Analysis", links: [["AI source analysis", "/en/ai-source-analysis/"], ["AI competitor analysis", "/en/ai-competitor-analysis/"], ["AI brand perception", "/en/ai-brand-perception/"], ["AI fact checking", "/en/ai-fact-checking/"]] },
+  { title: "Implementation", links: [["Technical GEO", "/en/technical-geo-optimization/"], ["AI crawlability", "/en/ai-crawlability/"], ["GEO content", "/en/geo-content/"], ["Content optimisation", "/en/content-optimization-ai-search/"]] },
+  { title: "Studio", links: [["GEO monitoring", "/en/geo-monitoring/"], ["GEO support", "/en/geo-support/"], ["Work", "/en/#projekte"], ["Process", "/en/#ablauf"], ["Contact", "#kontakt"]] },
+];
 ---
+
 <footer class="site-footer">
-  <div><a class="wordmark" href="/">ELBSAND</a><p>{legal}</p></div>
-  <nav aria-label="Legal navigation"><a href="#">{imprint}</a><a href="#">{privacy}</a><a href="mailto:pascal.misoph@gmail.com">pascal.misoph@gmail.com</a></nav>
+  <div class="site-footer-inner">
+    <div class="site-footer-brand">
+      <a class="wordmark" href={home} aria-label="ELBSAND Design Studio home">
+        <img src="/images/elbsand-logo.png" alt="ELBSAND Design Studio" width="1080" height="180" loading="lazy" />
+      </a>
+      <p><i aria-hidden="true"></i>{de ? "Studio-Systeme erreichbar" : "Studio systems operational"}</p>
+      <a href="mailto:pascal.misoph@gmail.com">pascal.misoph@gmail.com</a>
+    </div>
+    <div class="site-footer-columns">
+      {columns.map((column) => (
+        <nav class="site-footer-column" aria-label={column.title}>
+          <strong>{column.title}</strong>
+          {column.links.map(([label, href]) => <a href={href}>{label}</a>)}
+        </nav>
+      ))}
+    </div>
+  </div>
+  <div class="site-footer-bottom">
+    <span>© 2026 ELBSAND Design Studio</span>
+    <div><span>{imprint}</span><span>{privacy}</span></div>
+  </div>
 </footer>
