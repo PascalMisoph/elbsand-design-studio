@@ -4,7 +4,11 @@ const TEST_ORIGIN = process.env.TEST_ORIGIN ?? "http://127.0.0.1:4321";
 
 test.beforeEach(async ({ context }) => {
   await context.clearCookies();
-  await context.addInitScript(() => localStorage.removeItem("paternoga-consent-v1"));
+  await context.addInitScript(() => {
+    if (sessionStorage.getItem("paternoga-consent-test-ready")) return;
+    localStorage.removeItem("paternoga-consent-v1");
+    sessionStorage.setItem("paternoga-consent-test-ready", "true");
+  });
 });
 
 test("optional providers make no request before consent and Calendly stays blocked after rejection", async ({ page }) => {
@@ -34,23 +38,40 @@ test("optional providers make no request before consent and Calendly stays block
 });
 
 test("analytics is loaded only after opt-in and can be withdrawn", async ({ page }) => {
-  const googleRequests: string[] = [];
+  const tagRequests: string[] = [];
+  const analyticsHits: string[] = [];
+  await page.route(`${TEST_ORIGIN}/`, async (route) => {
+    const response = await route.fetch();
+    const body = (await response.text()).replace(/data-analytics-id="[^"]*"/, 'data-analytics-id="G-TEST123456"');
+    await route.fulfill({ response, body });
+  });
   await page.route("https://www.googletagmanager.com/**", async (route) => {
-    googleRequests.push(route.request().url());
-    await route.fulfill({ status: 200, contentType: "application/javascript", body: "" });
+    tagRequests.push(route.request().url());
+    await route.fulfill({ status: 200, contentType: "application/javascript", body: "window.__paternogaGaLoaded = true;" });
+  });
+  await page.route(/https:\/\/(?:www\.)?google-analytics\.com\/.*/, async (route) => {
+    analyticsHits.push(route.request().url());
+    await route.fulfill({ status: 204, body: "" });
   });
 
   await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
-  await page.locator("[data-consent-manager]").evaluate((element) => {
-    (element as HTMLElement).dataset.analyticsId = "G-TEST123456";
-  });
-  expect(googleRequests).toEqual([]);
+  await expect.poll(() => page.evaluate(() => Array.isArray((window as Window & { dataLayer?: unknown[] }).dataLayer))).toBe(true);
+  expect(tagRequests).toEqual([]);
+  expect(analyticsHits).toEqual([]);
+
+  const initialConsent = await page.evaluate(() => (window as Window & { dataLayer?: unknown[] }).dataLayer);
+  const initialConsentJson = JSON.stringify(initialConsent);
+  expect(initialConsentJson).toContain('"analytics_storage":"denied"');
+  expect(initialConsentJson).toContain('"ad_storage":"denied"');
+  expect(initialConsentJson).toContain('"ad_user_data":"denied"');
+  expect(initialConsentJson).toContain('"ad_personalization":"denied"');
 
   await page.locator("[data-consent-details]").click();
   await page.locator("[data-consent-analytics]").check();
   await page.locator("[data-consent-save]").click();
-  await expect.poll(() => googleRequests.length).toBe(1);
-  expect(googleRequests[0]).toContain("id=G-TEST123456");
+  await expect.poll(() => tagRequests.length).toBe(1);
+  expect(tagRequests[0]).toContain("id=G-TEST123456");
+  await expect(page.locator("script[data-paternoga-ga4]")).toHaveCount(1);
 
   const consentCommands = await page.evaluate(() => (window as Window & { dataLayer?: unknown[] }).dataLayer);
   expect(JSON.stringify(consentCommands)).toContain('"analytics_storage":"denied"');
@@ -59,11 +80,28 @@ test("analytics is loaded only after opt-in and can be withdrawn", async ({ page
   expect(JSON.stringify(consentCommands)).toContain('"ad_user_data":"denied"');
   expect(JSON.stringify(consentCommands)).toContain('"ad_personalization":"denied"');
 
+  await page.reload({ waitUntil: "networkidle" });
+  expect(tagRequests.length).toBe(2);
+  await expect(page.locator("script[data-paternoga-ga4]")).toHaveCount(1);
+  const persisted = await page.evaluate(() => (window as Window & { paternogaConsent?: { analytics: boolean; external: boolean } }).paternogaConsent);
+  expect(persisted).toMatchObject({ analytics: true, external: false });
+
   await page.locator("[data-open-consent-settings]").last().click();
   await page.locator("[data-consent-analytics]").uncheck();
   await page.locator("[data-consent-save]").click();
   const withdrawn = await page.evaluate(() => (window as Window & { paternogaConsent?: { analytics: boolean } }).paternogaConsent);
   expect(withdrawn?.analytics).toBe(false);
+  const disabled = await page.evaluate(() => (window as unknown as Record<string, unknown>)["ga-disable-G-TEST123456"]);
+  expect(disabled).toBe(true);
+  const hitsBeforeSyntheticEvent = analyticsHits.length;
+  await page.evaluate(() => (window as Window & { gtag?: (...args: unknown[]) => void }).gtag?.("event", "post_withdrawal_test"));
+  await page.waitForTimeout(250);
+  expect(analyticsHits.length).toBe(hitsBeforeSyntheticEvent);
+
+  await page.reload({ waitUntil: "networkidle" });
+  expect(tagRequests.length).toBe(2);
+  const persistedWithdrawal = await page.evaluate(() => (window as Window & { paternogaConsent?: { analytics: boolean } }).paternogaConsent);
+  expect(persistedWithdrawal?.analytics).toBe(false);
 });
 
 test("legal routes and privacy information are reachable in both languages", async ({ page }) => {

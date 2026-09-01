@@ -102,6 +102,12 @@ const copy = de
 
   const STORAGE_KEY = "paternoga-consent-v1";
   const managers = document.querySelectorAll<HTMLElement>("[data-consent-manager]");
+  const deniedGoogleConsent = {
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+    analytics_storage: "denied",
+  } as const;
 
   const readChoice = (): ConsentChoice | null => {
     try {
@@ -119,14 +125,31 @@ const copy = de
     });
   };
 
-  const loadAnalytics = (analyticsId: string) => {
-    if (!analyticsId || document.querySelector("script[data-paternoga-ga4]")) return;
+  const setAnalyticsDisabled = (analyticsId: string, disabled: boolean) => {
+    if (!analyticsId) return;
+    (window as unknown as Record<string, unknown>)[`ga-disable-${analyticsId}`] = disabled;
+  };
+
+  const updateGoogleConsent = (analyticsGranted: boolean) => {
     const consentWindow = window as ConsentWindow;
-    const gtag = consentWindow.gtag;
-    if (!gtag) return;
-    gtag("consent", "update", { analytics_storage: "granted" });
-    gtag("js", new Date());
-    gtag("config", analyticsId, { allow_google_signals: false, allow_ad_personalization_signals: false });
+    consentWindow.gtag?.("consent", "update", {
+      ...deniedGoogleConsent,
+      analytics_storage: analyticsGranted ? "granted" : "denied",
+    });
+  };
+
+  const loadAnalytics = (analyticsId: string) => {
+    if (!analyticsId) return;
+    const consentWindow = window as ConsentWindow;
+    if (!consentWindow.gtag) return;
+    setAnalyticsDisabled(analyticsId, false);
+    updateGoogleConsent(true);
+    if (document.querySelector("script[data-paternoga-ga4]")) return;
+    consentWindow.gtag("js", new Date());
+    consentWindow.gtag("config", analyticsId, {
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
+    });
     const script = document.createElement("script");
     script.async = true;
     script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(analyticsId)}`;
@@ -139,12 +162,8 @@ const copy = de
     consentWindow.paternogaConsent = choice;
     if (choice.analytics) loadAnalytics(analyticsId);
     else {
-      consentWindow.gtag?.("consent", "update", {
-        analytics_storage: "denied",
-        ad_storage: "denied",
-        ad_user_data: "denied",
-        ad_personalization: "denied",
-      });
+      setAnalyticsDisabled(analyticsId, true);
+      updateGoogleConsent(false);
       deleteAnalyticsCookies();
     }
     window.dispatchEvent(new CustomEvent("paternoga:consent", { detail: choice }));
@@ -184,11 +203,9 @@ const copy = de
     const consentWindow = window as ConsentWindow;
     consentWindow.dataLayer = consentWindow.dataLayer ?? [];
     consentWindow.gtag = consentWindow.gtag ?? ((...args: unknown[]) => consentWindow.dataLayer?.push(args));
+    setAnalyticsDisabled(analyticsId, true);
     consentWindow.gtag("consent", "default", {
-      analytics_storage: "denied",
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
+      ...deniedGoogleConsent,
       wait_for_update: 500,
     });
     manager.hidden = false;
