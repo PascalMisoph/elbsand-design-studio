@@ -1,0 +1,16 @@
+.agents/
+.codex-artifacts/
+.codex-tmp/
+.codex-*.png
+artifacts/
+playwright-report/
+review/
+test-results/
+remotion-video/.remotion/
+remotion-video/node_modules/
+scripts/analyze-x-bookmarks.mjs
+scripts/build-seo-geo-bookmark-doc.ps1
+scripts/finalize-seo-geo-bookmark-html.mjs
+scripts/render-word-pages.ps1
+scripts/resolve-x-bookmark-links.mjs
+scripts/x-bookmarks-console-export.js
