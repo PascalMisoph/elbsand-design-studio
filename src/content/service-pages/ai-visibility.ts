@@ -23,25 +23,25 @@ export const aiVisibilityPages: AiVisibilityPair = {
     alternateDePath: aiVisibilityDePath,
     alternateEnPath: aiVisibilityEnPath,
     meta: {
-      title: "AI-Sichtbarkeit für Unternehmen | ELBSAND Design Studio",
-      description: "ELBSAND macht sichtbar, wie dein Unternehmen in KI-Antworten auftaucht, welche Themen fehlen und welche Signale als Nächstes gestärkt werden sollten."
+      title: "AI-Sichtbarkeit für Unternehmen | Paternoga SEO & GEO Studio",
+      description: "Erfahre, wie dein Unternehmen in KI-Antworten erscheint, welche Themen fehlen und welche Signale gestärkt werden sollten. AI-Sichtbarkeit prüfen."
     },
     breadcrumb: { home: "Start", hub: "GEO-Optimierung", current: "AI-Sichtbarkeit" },
     eyebrow: "AI-Sichtbarkeit",
-    title: "Wird dein Unternehmen in KI-Antworten richtig eingeordnet?",
-    lead: "Wir beobachten relevante Fragen, Antworten und Quellen über mehrere Systeme hinweg. So wird aus einem schwer greifbaren Eindruck eine nachvollziehbare Sicht auf Präsenz, Kontext und nächste Schritte.",
+    title: "Wie, wo und wie oft wird deine Marke in den KI-Antworten platziert?",
+    lead: "Wir beobachten relevante Fragen, Antworten und Quellen über mehrere Systeme hinweg. So wird aus einem schwer greifbaren Eindruck eine nachvollziehbare Sicht auf deinen Share of Model.",
     primaryCta: "Website-Check anfragen",
     secondaryCta: "Methode ansehen",
     outcomes: [
-      { label: "Präsenz", title: "Sichtbarkeit einordnen", text: "Erkenne, bei welchen Fragen dein Angebot auftaucht und wo es übersehen wird." },
-      { label: "Kontext", title: "Antworten verstehen", text: "Sieh, ob Systeme Leistung, Standort und Besonderheiten korrekt verbinden." },
+      { label: "Präsenz", title: "Die Sichtbarkeit messen", text: "Wir messen kontinuierlich, wie oft dein Angebot bei kaufrelevanten Prompts im Vergleich zum Wettbewerb genannt wird. Wir machen sichtbar, welche Plattformen gut laufen und wo es noch Potenziale gibt." },
+      { label: "Kontext", title: "Die Einordnung prüfen", text: "Wir prüfen, ob Systeme deine Dienstleistungen, deinen Standort und deine Merkmale korrekt verknüpfen, und markieren Informationslücken, die zu unklaren oder falschen Einordnungen beitragen." },
       { label: "Richtung", title: "Arbeit priorisieren", text: "Erhalte eine ruhige, begründete Reihenfolge für Inhalte, Quellen und Technik." }
     ],
     demo: {
       variant: "visibility-index",
       eyebrow: "Illustrativer Sichtbarkeitsindex",
       title: "Ein Antwortbild statt einer einzelnen Zahl",
-      note: "Illustrative Darstellung – keine echten Kundendaten oder garantierten Rankings.",
+      note: "Einzelne Abfragen oder Klickzahlen sagen über generative Suchsysteme wenig aus. Auf Grundlage der Forschung zu Generative Engine Optimization betrachten wir Präsenz, Kontext und stabile Quellennennungen gemeinsam und machen deinen Share of Model plattformübergreifend nachvollziehbar. So erkennen wir früh, wie KI auf deine Marke blickt.",
       scoreLabel: "Beobachtete Antwortsignale",
       score: "21 / 32",
       checks: [
@@ -99,10 +99,11 @@ export const aiVisibilityPages: AiVisibilityPair = {
       eyebrow: "FAQ",
       title: "Fragen zur AI-Sichtbarkeit",
       items: [
-        { question: "Was bedeutet AI-Sichtbarkeit bei ELBSAND?", answer: "Wir beobachten, ob und wie ein Unternehmen in Antworten auf relevante Kundenfragen auftaucht. Dabei zählen Präsenz, Kontext und Quellen – nicht nur die Tatsache, dass ein Name genannt wird." },
-        { question: "Welche Systeme werden betrachtet?", answer: "Die Auswahl richtet sich nach Zielgruppe und Thema. Je nach Projekt können unter anderem ChatGPT, Claude, Perplexity und Google AI Overviews in einer einheitlichen Fragelogik einbezogen werden." },
-        { question: "Kann ELBSAND eine Empfehlung durch KI garantieren?", answer: "Nein. Externe Antwortsysteme verändern sich und liegen nicht in unserer Kontrolle. Wir schaffen bessere, überprüfbare Grundlagen und machen Veränderungen nachvollziehbar." },
-        { question: "Brauche ich dafür neue Inhalte?", answer: "Nicht automatisch. Zuerst prüfen wir vorhandene Seiten, Fakten und Quellen. Neue Inhalte entstehen nur dort, wo eine relevante Frage noch keine klare und belastbare Antwort findet." }
+        { question: "Was unterscheidet das fortlaufende Monitoring der AI-Sichtbarkeit von einer einmaligen Prompt-Recherche?", answer: "Die Prompt-Recherche bildet die sprachliche Ebene ab: Welche Fragen stellen deine Zielgruppen an KI-Systeme? Die AI-Sichtbarkeit ist die fortlaufende Kontrollinstanz. Weil sich Gewichtungen, Datenbasen und Antwortlogiken verändern, beobachten wir deinen Share of Model regelmäßig, machen Verschiebungen sichtbar und leiten daraus nächste Maßnahmen ab." },
+        { question: "Welche KI-Systeme und Modelle werden im Rahmen der Betreuung überwacht?", answer: "Wir wählen die Systeme nach Zielgruppe, Markt und Fragestellung aus. Je nach Projekt betrachten wir unter anderem ChatGPT Search, Claude, Perplexity und Google AI Overviews. Weil jedes System Inhalte unterschiedlich abruft und gewichtet, vergleichen wir die Antworten in einem konsistenten, für dich relevanten Fragenset." },
+        { question: "Können durch die kontinuierliche Optimierung Platzierungen oder Empfehlungen garantiert werden?", answer: "Nein. Eine feste Platzierung oder Empfehlung lässt sich bei generativen Systemen nicht seriös garantieren, weil ihre Antworten stochastisch und vom jeweiligen Kontext abhängig sind. Wir schaffen klarere Voraussetzungen für belegbare Nennungen, schließen Informationslücken, prüfen falsche Verknüpfungen und verbessern die technische Zugänglichkeit deiner Website, etwa durch strukturierte Daten." },
+        { question: "Erfordert die Betreuung die permanente Erstellung neuer Website-Inhalte?", answer: "Nicht zwingend. Zuerst prüfen wir die bestehende Substanz deiner Kernseiten und stärken sie technisch und strukturell, etwa mit klarer Answer-First-Logik oder passenden Schema-Markups. Neue Inhalte entstehen nur dort, wo das Monitoring eine relevante, bisher unbesetzte Zitationslücke zeigt und eine eigene Seite wirklich weiterhilft." },
+        { question: "Was wird für das Monitoring vereinbart?", answer: "Wir definieren gemeinsam Angebote, Zielmarkt, relevante Antwortsysteme und ein stabiles Set an Entscheidungsfragen. Du erhältst wiederholbare Beobachtungen, eine Einordnung der Veränderungen und priorisierte nächste Maßnahmen. PATERNOGA pflegt den Mess- und Analyseablauf; fachliche Aussagen und Umsetzungsfreigaben bestätigst du." }
       ]
     },
     closing: { eyebrow: "Nächster Schritt", title: "Mach aus KI-Sichtbarkeit eine klare Arbeitsgrundlage.", text: "Wir starten mit den Fragen, die für dein Unternehmen wirklich zählen, und zeigen dir, was bereits trägt und was als Nächstes verdient, geschärft zu werden.", cta: "AI-Sichtbarkeit besprechen" }
@@ -113,8 +114,8 @@ export const aiVisibilityPages: AiVisibilityPair = {
     alternateDePath: aiVisibilityDePath,
     alternateEnPath: aiVisibilityEnPath,
     meta: {
-      title: "AI Visibility for Businesses | ELBSAND Design Studio",
-      description: "ELBSAND shows how your business appears in AI answers, which topics are missing and which signals should be strengthened next."
+      title: "AI Visibility for Businesses | Paternoga SEO & GEO Studio",
+      description: "See how your business appears in AI answers, which topics are missing and which signals need strengthening. Request an AI visibility review."
     },
     breadcrumb: { home: "Home", hub: "GEO optimisation", current: "AI visibility" },
     eyebrow: "AI visibility",
@@ -123,8 +124,8 @@ export const aiVisibilityPages: AiVisibilityPair = {
     primaryCta: "Request a website check",
     secondaryCta: "View the method",
     outcomes: [
-      { label: "Presence", title: "Classify visibility", text: "See which relevant questions include your offer and where it is overlooked." },
-      { label: "Context", title: "Understand answers", text: "Check whether systems connect your service, location and difference correctly." },
+      { label: "Presence", title: "Measure visibility", text: "We continuously measure how often your offer is mentioned for purchase-relevant prompts compared with competitors. We make clear which platforms perform well and where potential remains." },
+      { label: "Context", title: "Review the interpretation", text: "We review whether systems connect your services, location and characteristics correctly and flag information gaps that contribute to unclear or incorrect interpretations." },
       { label: "Direction", title: "Prioritise the work", text: "Receive a calm, reasoned sequence for content, sources and technical foundations." }
     ],
     demo: {
@@ -189,10 +190,11 @@ export const aiVisibilityPages: AiVisibilityPair = {
       eyebrow: "FAQ",
       title: "Questions about AI visibility",
       items: [
-        { question: "What does AI visibility mean at ELBSAND?", answer: "We observe whether and how a business appears in answers to relevant customer questions. Presence, context and sources matter, not simply whether a name is mentioned." },
-        { question: "Which systems do you consider?", answer: "The selection follows your audience and topic. Depending on the project, ChatGPT, Claude, Perplexity and Google AI Overviews can be included in a consistent question set." },
-        { question: "Can ELBSAND guarantee an AI recommendation?", answer: "No. External answer systems change and are outside our control. We build stronger, checkable foundations and make changes easier to understand." },
-        { question: "Do I need to publish new content?", answer: "Not automatically. We first assess existing pages, facts and sources. New content is only useful where a relevant question still lacks a clear, supported answer." }
+        { question: "How does ongoing AI visibility monitoring differ from one-time prompt research?", answer: "Prompt research covers the language layer: which questions does your audience ask AI systems? AI visibility is the ongoing control layer. Because weighting, data bases and answer logic change, we regularly observe your share of model, make shifts visible and derive the next actions." },
+        { question: "Which AI systems and models do you monitor during ongoing support?", answer: "We select systems according to your audience, market and questions. Depending on the project, this can include ChatGPT Search, Claude, Perplexity and Google AI Overviews. Since every system retrieves and weights information differently, we compare answers through a consistent question set that is relevant to your business." },
+        { question: "Can ongoing optimisation guarantee rankings or recommendations?", answer: "No. A fixed placement or recommendation cannot be responsibly guaranteed for generative systems because their answers are stochastic and context-dependent. We create clearer foundations for evidenced mentions, close information gaps, review incorrect connections and improve your website’s technical accessibility, for example through structured data." },
+        { question: "Does ongoing support require a constant stream of new website content?", answer: "Not necessarily. We first strengthen the existing substance of your core pages technically and structurally, for example with clear answer-first logic or appropriate schema markup. New content is only created where monitoring shows a relevant citation gap and a dedicated page would genuinely help." },
+        { question: "What is agreed for monitoring?", answer: "Together we define the offers, target market, relevant answer systems and a stable set of decision questions. You receive repeatable observations, an interpretation of change and prioritised next actions. PATERNOGA maintains the measurement and analysis process; you confirm subject-matter statements and implementation decisions." }
       ]
     },
     closing: { eyebrow: "Next step", title: "Turn AI visibility into a clear working basis.", text: "We begin with the questions that actually matter for your business and show what already holds up and what deserves to be sharpened next.", cta: "Discuss AI visibility" }
@@ -202,9 +204,9 @@ export const aiVisibilityPages: AiVisibilityPair = {
 export const aiSourceAnalysisPages: AiVisibilityPair = {
   de: {
     lang: "de", slug: "ki-quellenanalyse", alternateDePath: "/ki-quellenanalyse/", alternateEnPath: "/en/ai-source-analysis/",
-    meta: { title: "KI-Quellenanalyse für Websites | ELBSAND", description: "Die KI-Quellenanalyse zeigt, welche Quellen AI-Antworten über dein Unternehmen stützen, wo Belege fehlen und welche Inhalte Vertrauen aufbauen können." },
+    meta: { title: "KI-Quellenanalyse für Websites | PATERNOGA", description: "Erkenne, welche Quellen KI-Antworten über dein Unternehmen prägen, wo Belege fehlen und welcher Content Vertrauen schafft. Analyse anfragen." },
     breadcrumb: { home: "Start", hub: "GEO-Optimierung", parent: { label: "AI-Sichtbarkeit", href: aiVisibilityDePath }, current: "KI-Quellenanalyse" },
-    eyebrow: "KI-Quellenanalyse", title: "Welche Quellen tragen das Bild deines Unternehmens?", lead: "Wir verfolgen, worauf KI-Antworten verweisen und wie belastbar diese Bezüge sind. Daraus entsteht eine Quellenkarte für Inhalte, Fakten und externe Erwähnungen.", primaryCta: "Quellenanalyse anfragen", secondaryCta: "Arbeitsweise ansehen",
+    eyebrow: "KI-Quellenanalyse", title: "Auf welche Quellen stützt die KI das Bild deines Unternehmens?", lead: "KI-Systeme greifen auf ein Geflecht aus Drittquellen zurück. Wir entschlüsseln, welche Foren, Fachmedien und Dokumente deine Marke prägen, wie belastbar diese Bezüge sind und wo eine eigene Quelle fehlt.", primaryCta: "Quellenanalyse anfragen", secondaryCta: "Arbeitsweise ansehen",
     outcomes: [
       { label: "Herkunft", title: "Bezüge nachvollziehen", text: "Verstehe, welche Seiten und externen Quellen in Antworten Gewicht bekommen." },
       { label: "Qualität", title: "Belege einordnen", text: "Trenne klare, veraltete und nur vermutete Quellen voneinander." },
@@ -240,15 +242,16 @@ export const aiSourceAnalysisPages: AiVisibilityPair = {
       { question: "Prüft ihr nur Links, die in Antworten sichtbar sind?", answer: "Nein. Sichtbare Verweise sind ein Ausgangspunkt. Wir betrachten auch die Informationsstruktur und externe Kontexte, die eine Aussage plausibel oder unklar machen." },
       { question: "Ist eine eigene Website automatisch die beste Quelle?", answer: "Nicht für jede Frage. Eine eigene Seite kann das Angebot am klarsten erklären, während externe Quellen bei Einordnung und Vertrauen helfen. Entscheidend ist die passende Kombination." },
       { question: "Kann eine Quellenanalyse neue Erwähnungen garantieren?", answer: "Nein. Wir können Quellenqualität und Klarheit verbessern, aber nicht kontrollieren, welche externen Systeme welche Bezüge künftig verwenden." },
-      { question: "Was erhalte ich am Ende?", answer: "Eine nachvollziehbare Quellenkarte mit Befunden, Lücken und priorisierten Maßnahmen für bestehende Seiten, Fakten und redaktionelle Kontexte." }
+      { question: "Was erhalte ich am Ende?", answer: "Eine nachvollziehbare Quellenkarte mit Befunden, Lücken und priorisierten Maßnahmen für bestehende Seiten, Fakten und redaktionelle Kontexte." },
+      { question: "Welche Grundlage braucht die Analyse?", answer: "Wir brauchen deine Domain, die wichtigsten Angebote und die Fragen oder Aussagen, deren Herkunft geklärt werden soll. PATERNOGA verfolgt die Quellenpfade und priorisiert die Arbeit; interne Fakten und fachliche Freigaben bestätigst du." }
     ] },
     closing: { eyebrow: "Nächster Schritt", title: "Baue Quellen, auf die Antworten sich stützen können.", text: "Wir verfolgen die Wege hinter relevanten Aussagen und zeigen dir, wo ein klarerer Beleg den größten Unterschied machen kann.", cta: "Quellenanalyse besprechen" }
   },
   en: {
     lang: "en", slug: "ai-source-analysis", alternateDePath: "/ki-quellenanalyse/", alternateEnPath: "/en/ai-source-analysis/",
-    meta: { title: "AI Source Analysis for Websites | ELBSAND", description: "AI source analysis shows which sources support answers about your business, where evidence is missing and which content can build trust." },
+    meta: { title: "AI Source Analysis for Websites | PATERNOGA", description: "Identify the sources shaping AI answers about your business, find evidence gaps and strengthen trustworthy content. Request a source analysis." },
     breadcrumb: { home: "Home", hub: "GEO optimisation", parent: { label: "AI visibility", href: aiVisibilityEnPath }, current: "AI source analysis" },
-    eyebrow: "AI source analysis", title: "Which sources carry the picture of your business?", lead: "We trace what AI answers refer to and how dependable those references are. The outcome is a source map for content, facts and external mentions.", primaryCta: "Request source analysis", secondaryCta: "View the approach",
+    eyebrow: "AI source analysis", title: "Which sources does AI rely on to shape the picture of your business?", lead: "AI systems draw on a network of third-party sources. We trace which forums, specialist publications and documents shape your brand, how dependable those references are and where your own source is missing.", primaryCta: "Request source analysis", secondaryCta: "View the approach",
     outcomes: [
       { label: "Origin", title: "Trace the references", text: "Understand which pages and external sources carry weight in answers." },
       { label: "Quality", title: "Classify evidence", text: "Separate clear, outdated and only assumed sources." },
@@ -284,7 +287,8 @@ export const aiSourceAnalysisPages: AiVisibilityPair = {
       { question: "Do you only check links visible in answers?", answer: "No. Visible references are a starting point. We also consider information structure and external contexts that make a statement clearer or less dependable." },
       { question: "Is an owned website automatically the best source?", answer: "Not for every question. An owned page can explain the offer most clearly, while external sources can add context and trust. The right combination matters." },
       { question: "Can source analysis guarantee new mentions?", answer: "No. We can improve source quality and clarity, but cannot control which references external systems use in the future." },
-      { question: "What do I receive?", answer: "A traceable source map with findings, gaps and prioritised actions for existing pages, facts and editorial contexts." }
+      { question: "What do I receive?", answer: "A traceable source map with findings, gaps and prioritised actions for existing pages, facts and editorial contexts." },
+      { question: "What foundation does the analysis need?", answer: "We need your domain, core offers and the questions or statements whose origin should be clarified. PATERNOGA traces source paths and prioritises the work; you confirm internal facts and subject-matter approvals." }
     ] },
     closing: { eyebrow: "Next step", title: "Build sources that answers can stand on.", text: "We trace the paths behind relevant statements and show where clearer evidence could make the greatest difference.", cta: "Discuss source analysis" }
   }
@@ -293,7 +297,7 @@ export const aiSourceAnalysisPages: AiVisibilityPair = {
 export const aiCompetitorAnalysisPages: AiVisibilityPair = {
   de: {
     lang: "de", slug: "ki-wettbewerbsanalyse", alternateDePath: "/ki-wettbewerbsanalyse/", alternateEnPath: "/en/ai-competitor-analysis/",
-    meta: { title: "KI-Wettbewerbsanalyse für Unternehmen | ELBSAND", description: "Die KI-Wettbewerbsanalyse vergleicht, wie ähnliche Angebote in relevanten Antworten erscheinen und wo deine eigene Position klarer werden kann." },
+    meta: { title: "KI-Wettbewerbsanalyse für Unternehmen | PATERNOGA", description: "Vergleiche, wie Wettbewerber in relevanten KI-Antworten erscheinen, welche Quellen sie stärken und wo deine Position klarer werden kann. Analyse anfragen." },
     breadcrumb: { home: "Start", hub: "GEO-Optimierung", parent: { label: "AI-Sichtbarkeit", href: aiVisibilityDePath }, current: "KI-Wettbewerbsanalyse" },
     eyebrow: "KI-Wettbewerbsanalyse", title: "Was wird im gleichen Antwortfeld über andere Angebote gesagt?", lead: "Wir vergleichen nicht bloß Namen oder Rankings. Wir untersuchen, welche Fragen, Merkmale und Belege vergleichbare Unternehmen in KI-Antworten besetzen – und wo eine eigene, ehrliche Differenz sichtbar werden kann.", primaryCta: "Wettbewerbsanalyse anfragen", secondaryCta: "Vergleichsmethode ansehen",
     outcomes: [
@@ -331,13 +335,14 @@ export const aiCompetitorAnalysisPages: AiVisibilityPair = {
       { question: "Vergleicht ihr konkrete Wettbewerber?", answer: "Nur, wenn sie für die definierte Kundenfrage und Region tatsächlich relevant sind. Die Analyse kann auch mit einem anonymisierten Vergleichsfeld arbeiten." },
       { question: "Ist das Ergebnis ein Marktanteilsbericht?", answer: "Nein. Wir liefern eine qualitative und nachvollziehbare Sicht auf Antwortmuster, Merkmale und Quellen – keine Hochrechnung realer Marktanteile." },
       { question: "Kann ich dadurch Wettbewerber überholen?", answer: "Das lässt sich nicht versprechen. Der Vergleich zeigt, wo dein Angebot klarer, belegbarer oder hilfreicher erklärt werden kann." },
-      { question: "Welche Vorarbeit braucht ihr?", answer: "Ein kurzer Überblick über Angebot, Region und wichtige Entscheidungssituationen reicht für den Start. Die Fragen und Vergleichskriterien schärfen wir gemeinsam." }
+      { question: "Welche Vorarbeit braucht ihr?", answer: "Ein kurzer Überblick über Angebot, Region und wichtige Entscheidungssituationen reicht für den Start. Die Fragen und Vergleichskriterien schärfen wir gemeinsam." },
+      { question: "Was ist das konkrete Ergebnis?", answer: "Du erhältst ein abgegrenztes Vergleichsfeld mit wiederkehrenden Antwortmustern, relevanten Quellenunterschieden und priorisierten Entscheidungen für Positionierung, Inhalte oder Belege. Es ist kein Marktanteilsbericht und keine Ranggarantie." }
     ] },
     closing: { eyebrow: "Nächster Schritt", title: "Finde deine faire Differenz im Antwortfeld.", text: "Wir vergleichen mit Ruhe und klaren Kriterien, damit aus Wettbewerbsbeobachtung eine glaubwürdige nächste Entscheidung wird.", cta: "Wettbewerbsanalyse besprechen" }
   },
   en: {
     lang: "en", slug: "ai-competitor-analysis", alternateDePath: "/ki-wettbewerbsanalyse/", alternateEnPath: "/en/ai-competitor-analysis/",
-    meta: { title: "AI Competitor Analysis for Businesses | ELBSAND", description: "AI competitor analysis compares how similar offers appear in relevant answers and where your own position can become clearer." },
+    meta: { title: "AI Competitor Analysis for Businesses | PATERNOGA", description: "Compare how competitors appear in relevant AI answers, which sources support them and where your position can become clearer. Request an analysis." },
     breadcrumb: { home: "Home", hub: "GEO optimisation", parent: { label: "AI visibility", href: aiVisibilityEnPath }, current: "AI competitor analysis" },
     eyebrow: "AI competitor analysis", title: "What is said about other offers in the same answer field?", lead: "We do not compare names or rankings alone. We study which questions, traits and evidence comparable businesses occupy in AI answers – and where an honest difference can become clearer.", primaryCta: "Request competitor analysis", secondaryCta: "View comparison method",
     outcomes: [
@@ -375,7 +380,8 @@ export const aiCompetitorAnalysisPages: AiVisibilityPair = {
       { question: "Do you compare named competitors?", answer: "Only when they are genuinely relevant to the defined customer question and region. The work can also use an anonymised comparison field." },
       { question: "Is this a market share report?", answer: "No. We provide a qualitative, traceable view of answer patterns, traits and sources, not an estimate of real market share." },
       { question: "Can this help me outrank competitors?", answer: "That cannot be promised. The comparison shows where your offer could be explained more clearly, credibly or helpfully." },
-      { question: "What do you need to begin?", answer: "A short view of your offer, region and key decision moments is enough. We refine questions and comparison criteria together." }
+      { question: "What do you need to begin?", answer: "A short view of your offer, region and key decision moments is enough. We refine questions and comparison criteria together." },
+      { question: "What is the concrete output?", answer: "You receive a defined comparison field with recurring answer patterns, relevant source differences and prioritised decisions for positioning, content or evidence. It is not a market-share report or a ranking guarantee." }
     ] },
     closing: { eyebrow: "Next step", title: "Find your fair difference in the answer field.", text: "We compare with calm and clear criteria so competitor observation can become a credible next decision.", cta: "Discuss competitor analysis" }
   }
@@ -384,7 +390,7 @@ export const aiCompetitorAnalysisPages: AiVisibilityPair = {
 export const aiBrandPerceptionPages: AiVisibilityPair = {
   de: {
     lang: "de", slug: "ki-markenwahrnehmung", alternateDePath: "/ki-markenwahrnehmung/", alternateEnPath: "/en/ai-brand-perception/",
-    meta: { title: "KI-Markenwahrnehmung analysieren | ELBSAND", description: "Die KI-Markenwahrnehmung zeigt, welche Themen, Eigenschaften und Stimmungen mit deiner Marke verbunden werden und wo die Erzählung unklar bleibt." },
+    meta: { title: "KI-Markenwahrnehmung analysieren | PATERNOGA", description: "Prüfe, welche Themen, Eigenschaften und Stimmungen KI-Systeme mit deiner Marke verbinden und wo die Erzählung unklar bleibt. Analyse anfragen." },
     breadcrumb: { home: "Start", hub: "GEO-Optimierung", parent: { label: "AI-Sichtbarkeit", href: aiVisibilityDePath }, current: "KI-Markenwahrnehmung" },
     eyebrow: "KI-Markenwahrnehmung", title: "Welche Geschichte erzählt KI über deine Marke?", lead: "Wir ordnen wiederkehrende Themen, Tonalität und Zuschreibungen in AI-Antworten. So erkennst du, ob die Außenwahrnehmung zu deinem tatsächlichen Angebot passt.", primaryCta: "Markenwahrnehmung anfragen", secondaryCta: "Analyse ansehen",
     outcomes: [
@@ -422,13 +428,14 @@ export const aiBrandPerceptionPages: AiVisibilityPair = {
       { question: "Messt ihr Stimmung wie ein Social-Listening-Tool?", answer: "Nicht im Sinn einer repräsentativen Sentiment-Messung. Wir analysieren Antwortmuster und ihre Themen, Tonalität und Belege im definierten Nutzungskontext." },
       { question: "Was passiert, wenn das Bild nicht zu uns passt?", answer: "Wir trennen Missverständnis, fehlenden Kontext und tatsächliche Unschärfe. Danach priorisieren wir die Stellen, an denen eine klare Seite oder ein Fakt helfen kann." },
       { question: "Kann man eine gewünschte Markenwahrnehmung erzwingen?", answer: "Nein. Wahrnehmung entsteht aus vielen Signalen. Wir können nur daran arbeiten, dass dein tatsächliches Angebot konsistent, verständlich und belegbar erscheint." },
-      { question: "Ist die Analyse auch für kleine Unternehmen sinnvoll?", answer: "Ja. Gerade bei lokalen Unternehmen helfen wenige, gut gewählte Themen und Quellen oft mehr als eine große Menge allgemeiner Kommunikation." }
+      { question: "Ist die Analyse auch für kleine Unternehmen sinnvoll?", answer: "Ja. Gerade bei lokalen Unternehmen helfen wenige, gut gewählte Themen und Quellen oft mehr als eine große Menge allgemeiner Kommunikation." },
+      { question: "Was braucht ihr und was erhalten wir?", answer: "Für den Start brauchen wir deine Domain, das tatsächliche Leistungsversprechen und die Merkmale, für die deine Marke stehen soll. Du erhältst ein geordnetes Wahrnehmungsbild mit Antwortmustern, Quelleneinflüssen und priorisierten Stellen, an denen Fakten oder Erklärungen geschärft werden sollten. Du bestätigst, welches Markenbild fachlich und geschäftlich zutrifft." }
     ] },
     closing: { eyebrow: "Nächster Schritt", title: "Sorge dafür, dass deine Marke verständlich bleibt.", text: "Wir lesen das Antwortbild mit dir gemeinsam und übersetzen es in klare, belegbare Signale für dein tatsächliches Angebot.", cta: "Markenwahrnehmung besprechen" }
   },
   en: {
     lang: "en", slug: "ai-brand-perception", alternateDePath: "/ki-markenwahrnehmung/", alternateEnPath: "/en/ai-brand-perception/",
-    meta: { title: "AI Brand Perception Analysis | ELBSAND", description: "AI brand perception analysis shows which themes, traits and tones become associated with your brand and where the story remains unclear." },
+    meta: { title: "AI Brand Perception Analysis | PATERNOGA", description: "See which themes, traits and tones AI systems associate with your brand and where the story remains unclear. Request a perception analysis." },
     breadcrumb: { home: "Home", hub: "GEO optimisation", parent: { label: "AI visibility", href: aiVisibilityEnPath }, current: "AI brand perception" },
     eyebrow: "AI brand perception", title: "What story does AI tell about your brand?", lead: "We classify recurring themes, tone and associations in AI answers. You can see whether the outside picture fits the offer you actually deliver.", primaryCta: "Request brand perception analysis", secondaryCta: "View the analysis",
     outcomes: [
@@ -466,7 +473,8 @@ export const aiBrandPerceptionPages: AiVisibilityPair = {
       { question: "Do you measure sentiment like a social listening tool?", answer: "Not as a representative sentiment measurement. We analyse answer patterns, themes, tone and evidence in a defined usage context." },
       { question: "What if the picture does not fit us?", answer: "We separate misunderstanding, missing context and genuine ambiguity. We then prioritise where a clearer page or fact could help." },
       { question: "Can you force a desired brand perception?", answer: "No. Perception grows from many signals. We can work towards a consistent, understandable and evidenced presentation of the offer you actually provide." },
-      { question: "Is this useful for small businesses?", answer: "Yes. For local businesses, a few well-chosen themes and sources can often help more than a large volume of generic communication." }
+      { question: "Is this useful for small businesses?", answer: "Yes. For local businesses, a few well-chosen themes and sources can often help more than a large volume of generic communication." },
+      { question: "What do you need and what do we receive?", answer: "To begin, we need your domain, the offer you actually deliver and the traits your brand should stand for. You receive a structured perception picture with answer patterns, source influences and prioritised places where facts or explanations should be sharpened. You confirm which brand picture is accurate in subject-matter and business terms." }
     ] },
     closing: { eyebrow: "Next step", title: "Keep your brand understandable in the answer field.", text: "We read the answer picture with you and translate it into clear, evidenced signals for the offer you actually deliver.", cta: "Discuss brand perception" }
   }
@@ -475,7 +483,7 @@ export const aiBrandPerceptionPages: AiVisibilityPair = {
 export const aiFactCheckingPages: AiVisibilityPair = {
   de: {
     lang: "de", slug: "ki-faktencheck", alternateDePath: "/ki-faktencheck/", alternateEnPath: "/en/ai-fact-checking/",
-    meta: { title: "KI-Faktencheck für Unternehmensangaben | ELBSAND", description: "Der KI-Faktencheck findet veraltete, unklare oder falsche Unternehmensangaben in AI-Antworten und ordnet die passende Korrekturquelle." },
+    meta: { title: "KI-Faktencheck für Unternehmensangaben | PATERNOGA", description: "Finde veraltete, unklare oder falsche Angaben über dein Unternehmen in KI-Antworten und ordne die richtige Korrekturquelle zu. Faktencheck anfragen." },
     breadcrumb: { home: "Start", hub: "GEO-Optimierung", parent: { label: "AI-Sichtbarkeit", href: aiVisibilityDePath }, current: "KI-Faktencheck" },
     eyebrow: "KI-Faktencheck", title: "Stimmen die Fakten, die KI über dich nennt?", lead: "Wir prüfen Aussagen zu Angebot, Ort, Erfahrung und Rahmenbedingungen gegen nachvollziehbare Quellen. So werden sachliche Fehler dort sichtbar, wo sie Entscheidungen beeinflussen können.", primaryCta: "Faktencheck anfragen", secondaryCta: "Prüfschritte ansehen",
     outcomes: [
@@ -483,15 +491,15 @@ export const aiFactCheckingPages: AiVisibilityPair = {
       { label: "Aktualität", title: "Änderungen finden", text: "Erkenne veraltete Leistungen, Orte, Zeiten oder Zuständigkeiten." },
       { label: "Korrektur", title: "Quelle festlegen", text: "Ordne jedem Befund eine klare, gepflegte Referenz für die weitere Arbeit zu." }
     ],
-    demo: { variant: "factcheck-tilt", eyebrow: "Illustrative Faktenansicht", title: "Ein großer Genauigkeits-Check für kleine Aussagen", note: "Illustratives redaktionelles Fakt-Interface – keine echten Kundendaten. Die dunkle Split-Komposition und das geneigte Accuracy-Panel sind eine interne Szenenrichtung für eine spätere ELBSAND-Grafik.", scoreLabel: "Aussagen mit Prüfstatus", score: "7 / 12", checks: [
+    demo: { variant: "factcheck-tilt", eyebrow: "Illustrative Faktenansicht", title: "Ein großer Genauigkeits-Check für kleine Aussagen", note: "Illustratives redaktionelles Fakt-Interface – keine echten Kundendaten oder Kundenbefunde.", scoreLabel: "Aussagen mit Prüfstatus", score: "7 / 12", checks: [
       { label: "Leistungsumfang", detail: "Die aktuelle Angebotsseite bestätigt die Aussage.", status: "clear" },
       { label: "Standortangabe", detail: "Eine ältere Drittquelle nennt noch eine frühere Adresse.", status: "review" },
       { label: "Erfahrungswert", detail: "Die Zahl ist nicht mit einer gepflegten Quelle verknüpft.", status: "open" },
       { label: "Kontaktweg", detail: "Die primäre Kontaktmöglichkeit ist eindeutig auffindbar.", status: "clear" }
     ] },
     narratives: [
-      { eyebrow: "Fakten statt Bauchgefühl", title: "Eine kleine Ungenauigkeit kann große Verwirrung stiften.", text: "Wir prüfen nicht jede Formulierung auf Stil. Im Fokus stehen Angaben, die Vertrauen, Auswahl oder den nächsten Kontakt beeinflussen – mit einer Quelle, die du selbst pflegen kannst.", points: ["Leistung und Umfang", "Ort und Zuständigkeit", "Zahl und Zeitpunkt"] },
-      { eyebrow: "Korrektur mit Herkunft", title: "Jeder Befund braucht einen verantwortlichen Anker.", text: "Eine Korrektur ist erst dauerhaft hilfreich, wenn klar ist, welche Seite oder Quelle künftig maßgeblich sein soll. Deshalb dokumentieren wir neben dem Fehler auch seinen besten Pflegeort.", points: ["Aussage markieren", "Quelle bestimmen", "Änderung beobachten"] }
+      { eyebrow: "Fakten statt Bauchgefühl", title: "Eine kleine Ungenauigkeit kann große Verwirrung stiften", text: "Wir prüfen nicht jede Formulierung auf Stil. Im Fokus stehen Angaben, die Vertrauen, Auswahl oder den nächsten Kontakt beeinflussen – mit einer Quelle, die du selbst pflegen kannst.", points: ["Leistung und Umfang", "Ort und Zuständigkeit", "Zahl und Zeitpunkt"] },
+      { eyebrow: "Korrektur mit Herkunft", title: "Jeder Befund braucht einen verantwortlichen Anker", text: "Eine Korrektur ist erst dauerhaft hilfreich, wenn klar ist, welche Seite oder Quelle künftig maßgeblich sein soll. Deshalb dokumentieren wir neben dem Fehler auch seinen besten Pflegeort.", points: ["Aussage markieren", "Quelle bestimmen", "Änderung beobachten"] }
     ],
     method: { eyebrow: "Arbeitsweise", title: "Vier Schritte für verlässliche Fakten", steps: [
       { title: "Faktenfragen wählen", text: "Wir beginnen mit Angaben, die für Kundinnen und Kunden wirklich entscheidungsrelevant sind." },
@@ -513,13 +521,14 @@ export const aiFactCheckingPages: AiVisibilityPair = {
       { question: "Was gilt bei euch als Fakt?", answer: "Wir betrachten konkrete, überprüfbare Angaben wie Leistungen, Orte, Zeiten, Zuständigkeiten oder Zahlen – nicht subjektive Geschmacksurteile." },
       { question: "Könnt ihr falsche Antworten direkt korrigieren?", answer: "Nein. Wir können die maßgeblichen Quellen und Korrekturen vorbereiten. Wie externe Systeme diese Änderungen aufnehmen, liegt nicht in unserer Kontrolle." },
       { question: "Muss jede Abweichung sofort geändert werden?", answer: "Nicht zwingend. Wir ordnen Befunde nach möglichem Schaden, Relevanz und Aufwand, damit zuerst die Angaben mit echter Entscheidungswirkung sauber werden." },
-      { question: "Ist der Faktencheck einmalig?", answer: "Er kann einmalig als Ausgangspunkt oder wiederkehrend für sensible Angaben eingesetzt werden. Das passende Intervall hängt von Änderungsfrequenz und Thema ab." }
+      { question: "Ist der Faktencheck einmalig?", answer: "Er kann einmalig als Ausgangspunkt oder wiederkehrend für sensible Angaben eingesetzt werden. Das passende Intervall hängt von Änderungsfrequenz und Thema ab." },
+      { question: "Was braucht ihr und was erhalten wir?", answer: "Wir brauchen die zu prüfenden Angebote, Orte oder Angaben sowie deine verlässlichen internen oder öffentlichen Referenzen. Du erhältst eine priorisierte Liste der Aussagen, ihren Prüfstatus, die maßgebliche Korrekturquelle und klare Pflegeverantwortung. PATERNOGA bereitet die Korrekturwege vor; du gibst unternehmensinterne Fakten frei." }
     ] },
     closing: { eyebrow: "Nächster Schritt", title: "Halte die Fakten hinter deiner Sichtbarkeit sauber.", text: "Wir prüfen die Aussagen, bei denen Genauigkeit zählt, und machen Korrektur und Pflege für dich nachvollziehbar.", cta: "Faktencheck besprechen" }
   },
   en: {
     lang: "en", slug: "ai-fact-checking", alternateDePath: "/ki-faktencheck/", alternateEnPath: "/en/ai-fact-checking/",
-    meta: { title: "AI Fact Checking for Business Information | ELBSAND", description: "AI fact checking finds outdated, unclear or incorrect business statements in AI answers and assigns the right source for correction." },
+    meta: { title: "AI Fact Checking for Business Information | PATERNOGA", description: "Find outdated, unclear or incorrect business claims in AI answers and identify the right correction source. Request an AI fact check." },
     breadcrumb: { home: "Home", hub: "GEO optimisation", parent: { label: "AI visibility", href: aiVisibilityEnPath }, current: "AI fact checking" },
     eyebrow: "AI fact checking", title: "Are the facts AI gives about you correct?", lead: "We check statements about your offer, location, experience and practical details against traceable sources. This makes factual errors visible where they can influence a decision.", primaryCta: "Request fact checking", secondaryCta: "View the checks",
     outcomes: [
@@ -527,15 +536,15 @@ export const aiFactCheckingPages: AiVisibilityPair = {
       { label: "Freshness", title: "Find changes", text: "Spot outdated services, locations, opening details or responsibilities." },
       { label: "Correction", title: "Assign a source", text: "Give each finding a clear, maintained reference for the work ahead." }
     ],
-    demo: { variant: "factcheck-tilt", eyebrow: "Illustrative fact view", title: "A large accuracy check for small statements", note: "Illustrative editorial fact interface – no real client data. The dark split composition and tilted accuracy panel are an internal scene direction for a future ELBSAND graphic.", scoreLabel: "Statements with a review status", score: "7 / 12", checks: [
+    demo: { variant: "factcheck-tilt", eyebrow: "Illustrative fact view", title: "A large accuracy check for small statements", note: "Illustrative editorial fact interface – no real client data or client findings.", scoreLabel: "Statements with a review status", score: "7 / 12", checks: [
       { label: "Service scope", detail: "The current service page supports the statement.", status: "clear" },
       { label: "Location detail", detail: "An older third-party source still lists a former address.", status: "review" },
       { label: "Experience figure", detail: "The number is not connected to a maintained source.", status: "open" },
       { label: "Contact path", detail: "The primary way to get in touch is clearly findable.", status: "clear" }
     ] },
     narratives: [
-      { eyebrow: "Facts over instinct", title: "A small inaccuracy can create real confusion.", text: "We do not style-check every sentence. We focus on details that influence trust, choice or the next contact, with a source you can maintain yourself.", points: ["Service and scope", "Place and responsibility", "Number and date"] },
-      { eyebrow: "Correction with origin", title: "Every finding needs a responsible anchor.", text: "A correction only remains useful when it is clear which page or source should become authoritative. We therefore document the best maintenance point alongside the issue.", points: ["Mark the statement", "Assign the source", "Observe the change"] }
+      { eyebrow: "Facts over instinct", title: "A small inaccuracy can create real confusion", text: "We do not style-check every sentence. We focus on details that influence trust, choice or the next contact, with a source you can maintain yourself.", points: ["Service and scope", "Place and responsibility", "Number and date"] },
+      { eyebrow: "Correction with origin", title: "Every finding needs a responsible anchor", text: "A correction only remains useful when it is clear which page or source should become authoritative. We therefore document the best maintenance point alongside the issue.", points: ["Mark the statement", "Assign the source", "Observe the change"] }
     ],
     method: { eyebrow: "How we work", title: "Four steps to dependable facts", steps: [
       { title: "Choose fact questions", text: "We start with details that genuinely matter to customer decisions." },
@@ -557,7 +566,8 @@ export const aiFactCheckingPages: AiVisibilityPair = {
       { question: "What counts as a fact in your work?", answer: "We focus on concrete, checkable information such as services, locations, dates, responsibilities or numbers, not subjective taste judgements." },
       { question: "Can you correct a wrong answer directly?", answer: "No. We can prepare the authoritative sources and corrections. How external systems absorb those changes is outside our control." },
       { question: "Does every mismatch need an immediate fix?", answer: "Not necessarily. We order findings by possible harm, relevance and effort so details with real decision impact are handled first." },
-      { question: "Is fact checking a one-time service?", answer: "It can be a one-time baseline or a recurring check for sensitive details. The right interval depends on how often the information and topic change." }
+      { question: "Is fact checking a one-time service?", answer: "It can be a one-time baseline or a recurring check for sensitive details. The right interval depends on how often the information and topic change." },
+      { question: "What do you need and what do we receive?", answer: "We need the offers, locations or details to review and your dependable internal or public references. You receive a prioritised list of statements, their review status, the authoritative correction source and clear maintenance ownership. PATERNOGA prepares the correction paths; you approve internal company facts." }
     ] },
     closing: { eyebrow: "Next step", title: "Keep the facts behind your visibility clean.", text: "We check the statements where accuracy matters and make correction and maintenance understandable.", cta: "Discuss fact checking" }
   }

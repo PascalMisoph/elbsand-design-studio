@@ -1,100 +1,132 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Header from "./Header.astro";
 import Footer from "./Footer.astro";
+import Header from "./Header.astro";
 import SubpageContact from "./SubpageContact.astro";
+import FaqAccordion from "./FaqAccordion.astro";
+import FeatureCardGrid from "./FeatureCardGrid";
+import LinkButton from "./LinkButton";
+import RelatedLinkGrid from "./RelatedLinkGrid";
+import TechnicalArtifactCircuit from "./TechnicalArtifactCircuit";
+import TechnicalFoundationBeam from "./TechnicalFoundationBeam";
+import TechnicalGeoMacbook from "./TechnicalGeoMacbook";
 import { content } from "../content/site";
+import { technicalGeoOptimizationPages } from "../content/service-pages/technical-content";
+import { createServicePageSchema } from "../lib/seo";
 
-interface Props { lang: "de" | "en" }
+interface Props {
+  lang: "de" | "en";
+}
+
 const { lang } = Astro.props;
-const de = lang === "de";
+const isGerman = lang === "de";
 const siteContent = content[lang];
-const homePath = de ? "/" : "/en/";
-const path = de ? "/technische-geo-optimierung/" : "/en/technical-geo-optimization/";
-const t = de ? {
-  title: "Technische GEO-Optimierung für klare, erreichbare Inhalte.",
+const homePath = isGerman ? "/" : "/en/";
+const canonicalPath = isGerman ? "/technische-geo-optimierung/" : "/en/technical-geo-optimization/";
+const meta = technicalGeoOptimizationPages[lang].meta;
+const t = isGerman ? {
+  title: "Technische GEO-Optimierung für klare, erreichbare Inhalte",
   description: "Technische GEO-Optimierung verbindet semantisches HTML, kurze Ladewege, strukturierte Fakten und eine nachvollziehbare interne Verlinkung.",
   eyebrow: "Technische GEO-Optimierung",
   lead: "Antwortsysteme können nur aufgreifen, was sie erreichen, lesen und einordnen können. Wir prüfen die technische Grundlage deiner Website und machen aus einzelnen Seiten einen verständlichen, belastbaren Pfad.",
-  cta: "Technik-Check anfragen", jump: "Grundlagen ansehen", home: "Start", hub: "GEO-Optimierung", parent: "Technische GEO-Optimierung",
-  artifactLabel: "Illustrative Quellansicht", artifactTitle: "Eine Seite, die als Struktur lesbar bleibt.", artifactNote: "Illustratives Beispiel – kein gemessener Kundenwert.",
-  source: "Quellstruktur", rendered: "Gerenderte Bedeutung", status: "strukturierbar", html: "HTML / Inhalt", schema: "Fakten / Kontext",
+  cta: "Technik-Check anfragen",
+  jump: "Grundlagen ansehen",
+  home: "Start",
+  hub: "GEO-Optimierung",
   outcomes: [
-    ["Struktur", "Semantik statt Oberfläche", "Überschriften, Landmarks und Inhalte bilden eine klare Lesereihenfolge."],
-    ["Geschwindigkeit", "Kürzere Wege zur Antwort", "Serverseitige Inhalte und schlanke Assets reduzieren unnötige Wartezeiten."],
-    ["Verbindung", "Ein flacher, sinnvoller Pfad", "Interne Links zeigen, welche Seite welches Thema weiterführt."]
+    { title: "Semantik statt Oberfläche", text: "Überschriften, Landmarks und Inhalte bilden eine klare Lesereihenfolge." },
+    { title: "Kürzere Wege zur Antwort", text: "Serverseitige Inhalte und schlanke Assets reduzieren unnötige Wartezeiten." },
+    { title: "Ein flacher, sinnvoller Pfad", text: "Interne Links zeigen, welche Seite welches Thema weiterführt." },
   ],
-  methodEyebrow: "Technische Grundlage", methodTitle: "Vier Ebenen, die zusammen lesbar werden.",
-  methodLead: "Die Reihenfolge ist kein Checklisten-Trick. Jede Ebene beantwortet eine andere technische Frage – und wird an der nächsten geprüft.",
+  methodEyebrow: "Technische Grundlage",
+  methodTitle: "Vier Ebenen, die zusammen lesbar werden",
+  methodLead: "Jede Ebene beantwortet eine andere technische Frage und wird an der nächsten geprüft.",
   steps: [
-    ["Semantisches HTML", "Ist die wichtigste Aussage in einer nachvollziehbaren Überschriften- und Landmark-Struktur vorhanden?"],
-    ["Antwortpfad", "Können wichtige Seiten ohne Umwege erreicht werden, oder verstecken sich sie hinter Ketten und Sackgassen?"],
-    ["Performance", "Kommt der relevante Inhalt schnell und ohne clientseitige Abhängigkeit im ersten Response an?"],
-    ["Faktenstruktur", "Sind Angebot, Ort, Zuständigkeit und Aktualität in passenden Feldern miteinander verbunden?"]
+    { title: "Semantisches HTML", text: "Ist die wichtigste Aussage in einer nachvollziehbaren Überschriften- und Landmark-Struktur vorhanden?" },
+    { title: "Antwortpfad", text: "Können wichtige Seiten ohne Ketten, Umwege oder Sackgassen erreicht werden?" },
+    { title: "Performance", text: "Kommt relevanter Inhalt schnell und ohne clientseitige Abhängigkeit im ersten Response an?" },
+    { title: "Faktenstruktur", text: "Sind Angebot, Ort, Zuständigkeit und Aktualität in passenden Feldern verbunden?" },
   ],
-  relatedEyebrow: "Einordnung", relatedTitle: "Technik zwischen Audit und Umsetzung",
-  related: [["AI Crawlability", "Bot-Zugriff, Serverantwort und page-level Reichweite prüfen.", "/ai-crawlability/"], ["GEO Audit", "Antworten, Quellen und technische Ausgangslage gemeinsam priorisieren.", "/geo-audit/"], ["GEO-Content", "Neue Seiten auf einer klaren, erreichbaren Struktur aufbauen.", "/geo-content/"]],
-  faqTitle: "Fragen zur technischen GEO-Optimierung", faq: [["Ist technische GEO-Optimierung etwas anderes als technisches SEO?", "Die Grundlagen überschneiden sich stark. Der Fokus liegt zusätzlich darauf, dass Antwortsysteme relevante Inhalte direkt erreichen, lesen und im Kontext einordnen können."], ["Brauche ich eine eigene Markdown-Version meiner Website?", "Nicht automatisch. Wir prüfen zuerst die HTML-Struktur, serverseitige Auslieferung und den tatsächlichen Informationspfad. Eine zusätzliche Version ist nur bei einem klaren, begründeten Anwendungsfall sinnvoll."], ["Kann strukturierte Daten eine Empfehlung garantieren?", "Nein. Strukturierte Daten helfen, Fakten eindeutig zu benennen, sind aber kein privilegiertes Signal und ersetzen keine guten, erreichbaren Inhalte."], ["Was erhalte ich nach dem Check?", "Eine priorisierte technische Sicht: Befund, betroffene Seiten, konkrete Änderung und eine klare Reihenfolge für die Umsetzung."]],
-  closeEyebrow: "Nächster Schritt", closeTitle: "Mach die technische Grundlage lesbar.", closeText: "Wir beginnen mit wenigen Seiten, prüfen ihre Wege und übersetzen den Befund in konkrete technische Entscheidungen.", closeCta: "Technik-Check anfragen"
+  artifactTitle: "Eine Seite, die als Struktur lesbar bleibt",
+  artifactLead: "Quellstruktur, gerenderte Bedeutung und Faktenkontext werden als zusammenhängender technischer Pfad geprüft.",
+  artifactItems: [
+    { title: "Quellstruktur", text: "Landmarks und Überschriften tragen die Lesereihenfolge." },
+    { title: "Gerenderte Bedeutung", text: "Der Kerninhalt bleibt ohne unnötigen Browser-Umweg verfügbar." },
+    { title: "Fakten & Kontext", text: "Angebot, Ort und Aktualität sind eindeutig miteinander verbunden." },
+  ],
+  relatedTitle: "Technik zwischen Audit und Umsetzung",
+  related: [
+    { title: "AI Crawlability", text: "Bot-Zugriff, Serverantwort und Reichweite prüfen.", href: "/ai-crawlability/" },
+    { title: "GEO Audit", text: "Antworten, Quellen und technische Ausgangslage priorisieren.", href: "/geo-audit/" },
+    { title: "GEO-Content", text: "Neue Seiten auf einer klaren, erreichbaren Struktur aufbauen.", href: "/geo-content/" },
+  ],
+  faqTitle: "Fragen zur technischen GEO-Optimierung",
+  faq: [
+    { question: "Ist technische GEO-Optimierung etwas anderes als technisches SEO?", answer: "Die Grundlagen überschneiden sich stark. Der zusätzliche Fokus liegt darauf, dass Antwortsysteme relevante Inhalte direkt erreichen, lesen und im Kontext einordnen können." },
+    { question: "Brauche ich eine eigene Markdown-Version meiner Website?", answer: "Nicht automatisch. Zuerst werden HTML-Struktur, serverseitige Auslieferung und der tatsächliche Informationspfad geprüft." },
+    { question: "Kann strukturierte Daten eine Empfehlung garantieren?", answer: "Nein. Strukturierte Daten helfen, Fakten eindeutig zu benennen, ersetzen aber keine guten, erreichbaren Inhalte." },
+    { question: "Was erhalte ich nach dem Check?", answer: "Eine priorisierte technische Sicht mit Befund, betroffenen Seiten, konkreter Änderung und klarer Reihenfolge." },
+    { question: "Welche Zugänge oder Mitarbeit braucht ihr?", answer: "Für die erste Prüfung reichen Domain und wichtigste Seitentypen. Wenn Befunde tiefer geprüft oder umgesetzt werden, stimmen wir benötigte CMS-, Hosting- oder Code-Zugänge gezielt ab. PATERNOGA analysiert und dokumentiert; technische Änderungen erfolgen nur im vereinbarten System und nach deiner Freigabe." },
+  ],
 } : {
-  title: "Technical GEO optimisation for content that stays clear and reachable.",
-  description: "Technical GEO optimisation connects semantic HTML, fast delivery, structured facts and a purposeful internal link path.",
-  eyebrow: "Technical GEO optimisation", lead: "Answer systems can only use what they can reach, read and place in context. We review the technical foundation of your website and turn individual pages into a clear, dependable path.",
-  cta: "Request a technical check", jump: "See the foundations", home: "Home", hub: "GEO optimisation", parent: "Technical GEO optimisation",
-  artifactLabel: "Illustrative source view", artifactTitle: "A page that remains readable as structure.", artifactNote: "Illustrative example – not a measured client value.",
-  source: "Source structure", rendered: "Rendered meaning", status: "parseable", html: "HTML / content", schema: "Facts / context",
-  outcomes: [["Structure", "Semantics over surface", "Headings, landmarks and content create a clear reading order."], ["Speed", "Shorter routes to the answer", "Server-rendered content and lean assets remove unnecessary waiting."], ["Connection", "A shallow, useful path", "Internal links show which page carries the topic forward."]],
-  methodEyebrow: "Technical foundation", methodTitle: "Four layers that become readable together.", methodLead: "This order is not a checklist trick. Each layer answers a different technical question – and is tested against the next one.",
-  steps: [["Semantic HTML", "Is the main statement present in a coherent heading and landmark structure?"], ["Answer path", "Can priority pages be reached without detours, chains or dead ends?"], ["Performance", "Does relevant content arrive quickly in the first response without a client-side dependency?"], ["Fact structure", "Are offer, location, ownership and currency connected in suitable fields?"]],
-  relatedEyebrow: "Place it in context", relatedTitle: "Technical work between audit and delivery", related: [["AI crawlability", "Review bot access, server response and page-level reach.", "/en/ai-crawlability/"], ["GEO audit", "Prioritise answers, sources and technical foundations together.", "/en/geo-audit/"], ["GEO content", "Build new pages on a clear, reachable structure.", "/en/geo-content/"]],
-  faqTitle: "Questions about technical GEO optimisation", faq: [["Is technical GEO optimisation different from technical SEO?", "The foundations overlap heavily. The additional emphasis is on helping answer systems reach relevant content, read it and understand its context."], ["Do I need a Markdown version of my website?", "Not automatically. We first review HTML structure, server delivery and the actual information path. An extra version only makes sense for a clear, defensible use case."], ["Can structured data guarantee a recommendation?", "No. Structured data helps name facts clearly, but it is not a privileged signal and cannot replace useful, reachable content."], ["What do I receive after the check?", "A prioritised technical view: finding, affected pages, concrete change and a clear order for implementation."]],
-  closeEyebrow: "Next step", closeTitle: "Make the technical foundation readable.", closeText: "We start with a small set of pages, inspect their paths and translate the finding into concrete technical decisions.", closeCta: "Request a technical check"
+  title: "Technical GEO optimization for content that stays clear and reachable",
+  description: "Technical GEO optimization connects semantic HTML, fast delivery, structured facts and a purposeful internal link path.",
+  eyebrow: "Technical GEO Optimization",
+  lead: "Answer systems can only use what they can reach, read and place in context. We review the technical foundation and turn individual pages into a clear, dependable path.",
+  cta: "Request a technical check",
+  jump: "See the foundations",
+  home: "Home",
+  hub: "GEO Optimization",
+  outcomes: [
+    { title: "Semantics over surface", text: "Headings, landmarks and content create a clear reading order." },
+    { title: "Shorter routes to the answer", text: "Server-rendered content and lean assets remove unnecessary waiting." },
+    { title: "A shallow, useful path", text: "Internal links show which page carries the topic forward." },
+  ],
+  methodEyebrow: "Technical foundation",
+  methodTitle: "Four layers that become readable together",
+  methodLead: "Each layer answers a different technical question and is tested against the next.",
+  steps: [
+    { title: "Semantic HTML", text: "Is the main statement present in a coherent heading and landmark structure?" },
+    { title: "Answer path", text: "Can priority pages be reached without chains, detours or dead ends?" },
+    { title: "Performance", text: "Does relevant content arrive quickly in the first response without a client-side dependency?" },
+    { title: "Fact structure", text: "Are offer, location, ownership and currency connected in suitable fields?" },
+  ],
+  artifactTitle: "A page that remains readable as structure",
+  artifactLead: "Source structure, rendered meaning and fact context are reviewed as one technical path.",
+  artifactItems: [
+    { title: "Source structure", text: "Landmarks and headings carry the reading order." },
+    { title: "Rendered meaning", text: "Core content remains available without an unnecessary browser detour." },
+    { title: "Facts & context", text: "Offer, location and currency are connected unambiguously." },
+  ],
+  relatedTitle: "Technical work between audit and delivery",
+  related: [
+    { title: "AI crawlability", text: "Review bot access, server response and reach.", href: "/en/ai-crawlability/" },
+    { title: "GEO audit", text: "Prioritise answers, sources and technical foundations.", href: "/en/geo-audit/" },
+    { title: "GEO content", text: "Build new pages on a clear, reachable structure.", href: "/en/geo-content/" },
+  ],
+  faqTitle: "Questions about technical GEO optimization",
+  faq: [
+    { question: "Is technical GEO optimization different from technical SEO?", answer: "The foundations overlap heavily. The additional emphasis is helping answer systems reach, read and understand relevant content." },
+    { question: "Do I need a Markdown version of my website?", answer: "Not automatically. HTML structure, server delivery and the actual information path are reviewed first." },
+    { question: "Can structured data guarantee a recommendation?", answer: "No. Structured data helps name facts clearly but cannot replace useful, reachable content." },
+    { question: "What do I receive after the check?", answer: "A prioritised technical view with finding, affected pages, concrete change and clear implementation order." },
+    { question: "Which access or input do you need?", answer: "For the initial review, the domain and priority page types are enough. If findings need deeper investigation or implementation, we agree the required CMS, hosting or code access specifically. PATERNOGA analyses and documents; technical changes are made only in the agreed system and after your approval." },
+  ],
 };
-const crumbs = [{ name: t.home, href: homePath }, { name: t.hub, href: de ? "/geo-optimierung/" : "/en/geo-optimization/" }, { name: t.eyebrow, href: path }];
-const schema = { "@context": "https://schema.org", "@graph": [{ "@type": "Service", name: t.eyebrow, description: t.description, url: `https://elbsand.studio${path}`, provider: { "@type": "ProfessionalService", name: "ELBSAND Design Studio" } }, { "@type": "BreadcrumbList", itemListElement: crumbs.map((item, i) => ({ "@type": "ListItem", position: i + 1, name: item.name, item: `https://elbsand.studio${item.href}` })) }, { "@type": "FAQPage", mainEntity: t.faq.map((x) => ({ "@type": "Question", name: x[0], acceptedAnswer: { "@type": "Answer", text: x[1] } })) }] };
+
+const breadcrumbItems = [{ name: t.home, href: homePath }, { name: t.hub, href: isGerman ? "/geo-optimierung/" : "/en/geo-optimization/" }, { name: t.eyebrow, href: canonicalPath }];
+const schema = createServicePageSchema({ lang, title: meta.title, description: meta.description, path: canonicalPath, serviceName: t.eyebrow, breadcrumbs: breadcrumbItems, faqs: t.faq });
 ---
-<BaseLayout title={`${t.eyebrow} | ELBSAND`} description={t.description} lang={lang} canonicalPath={path} alternateDePath="/technische-geo-optimierung/" alternateEnPath="/en/technical-geo-optimization/" schema={schema} bodyClass="technical-page">
+
+<BaseLayout title={meta.title} description={meta.description} lang={lang} canonicalPath={canonicalPath} alternateDePath="/technische-geo-optimierung/" alternateEnPath="/en/technical-geo-optimization/" schema={schema} bodyClass="technical-page ui-dark-page dark">
   <Header lang={lang} nav={siteContent.nav} cta={siteContent.cta} page="service" alternateDePath="/technische-geo-optimierung/" alternateEnPath="/en/technical-geo-optimization/" />
-  <main id="main-content" class="technical-main">
-    <section class="technical-hero technical-shell">
-      <nav class="technical-crumbs" aria-label={de ? "Brotkrumen-Navigation" : "Breadcrumb"}>{crumbs.map((item, i) => <>{i > 0 && <span aria-hidden="true">/</span>}{i === crumbs.length - 1 ? <span aria-current="page">{item.name}</span> : <a href={item.href}>{item.name}</a>}</>)}</nav>
-      <div class="technical-hero-grid"><div class="technical-hero-copy"><p class="technical-eyebrow">{t.eyebrow}</p><h1>{t.title}</h1><p class="technical-lead">{t.lead}</p><div class="technical-actions"><a class="button" href={`${homePath}#ki-check`}>{t.cta}</a><a class="technical-jump" href="#foundations">{t.jump}<span aria-hidden="true">↓</span></a></div></div><div class="source-artifact" aria-label={t.artifactTitle}><div class="source-artifact-bar"><span>ELBSAND / TECHNICAL</span><b><i></i>{t.status}</b></div><div class="source-artifact-body"><div class="source-column"><p>{t.source}</p><ol><li class="source-active"><span>&lt;h1&gt;</span><strong>{de ? "Lokales Angebot" : "Local service"}</strong><i></i></li><li><span>&lt;main&gt;</span><strong>{t.html}</strong><i></i></li><li><span>&lt;nav&gt;</span><strong>{de ? "Nächster Schritt" : "Next step"}</strong><i></i></li><li><span>&lt;footer&gt;</span><strong>{de ? "Verantwortung" : "Ownership"}</strong><i></i></li></ol></div><div class="source-meaning"><p>{t.rendered}</p><div class="meaning-line meaning-line-wide"><i></i><b>{t.schema}</b></div><div class="meaning-line"><i></i><b>{de ? "Ort / Leistung" : "Place / service"}</b></div><div class="meaning-line meaning-line-short"><i></i><b>{de ? "Datum" : "Date"}</b></div><span class="source-bracket" aria-hidden="true"></span></div></div><small>{t.artifactNote}</small></div></div>
-    </section>
-    <section class="technical-outcomes technical-shell" aria-label={de ? "Ergebnisse" : "Outcomes"}>{t.outcomes.map((o) => <article><p>{o[0]}</p><h2>{o[1]}</h2><span>{o[2]}</span></article>)}</section>
-    <section class="technical-foundations technical-shell" id="foundations"><header class="technical-section-intro"><p class="technical-eyebrow">{t.methodEyebrow}</p><h2>{t.methodTitle}</h2><p>{t.methodLead}</p></header><div class="foundation-experience"><div class="foundation-visual" data-foundation-visual><div class="foundation-top"><span>ELBSAND / SOURCE PATH</span><b><i></i>{de ? "Beispielstatus" : "Illustrative state"}</b></div><div class="foundation-frame"><div class="foundation-number" data-foundation-number>1</div><strong data-foundation-label>{t.steps[0][0]}</strong><div class="foundation-code"><span data-code-line="1">&lt;header&gt;</span><span data-code-line="2">&nbsp;&nbsp;&lt;h1&gt;{de ? "Klarer Einstieg" : "Clear opening"}&lt;/h1&gt;</span><span data-code-line="3">&nbsp;&nbsp;&lt;nav&gt;{de ? "Verwandte Seite" : "Related page"}&lt;/nav&gt;</span><span data-code-line="4">&lt;/header&gt;</span></div><div class="foundation-meter"><i></i></div></div><div class="foundation-foot"><span data-foundation-count>1 / 4</span><span>{de ? "scrollen zum nächsten Befund" : "scroll for next finding"}</span></div></div><ol class="foundation-steps">{t.steps.map((step, i) => <li data-foundation-step={i} class:list={{ "is-active": i === 0 }}><span>{i + 1}</span><div><h3>{step[0]}</h3><p>{step[1]}</p></div></li>)}</ol></div></section>
-    <section class="technical-related technical-shell"><header><p class="technical-eyebrow">{t.relatedEyebrow}</p><h2>{t.relatedTitle}</h2></header><div class="related-grid">{t.related.map((item) => <a href={item[2]}><span aria-hidden="true">↗</span><h3>{item[0]}</h3><p>{item[1]}</p></a>)}</div></section>
-    <section class="technical-faq technical-shell"><header><p class="technical-eyebrow">FAQ</p><h2>{t.faqTitle}</h2></header><div>{t.faq.map((item) => <details><summary>{item[0]}<span aria-hidden="true">+</span></summary><p>{item[1]}</p></details>)}</div></section>
+  <main id="main-content" class="min-h-screen bg-background text-foreground">
+    <section class="border-b border-solid border-border"><div class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><nav class="flex flex-wrap gap-2 text-xs text-muted-foreground" aria-label={isGerman ? "Brotkrumen-Navigation" : "Breadcrumb"}>{breadcrumbItems.map((item, index) => <>{index > 0 && <span aria-hidden="true">/</span>}{index === breadcrumbItems.length - 1 ? <span aria-current="page">{item.name}</span> : <a class="text-inherit no-underline hover:text-foreground" href={item.href}>{item.name}</a>}</>)}</nav><div class="grid grid-cols-1 items-center gap-10 xl:w-[calc(100%+min(11vw,160px))] xl:grid-cols-[minmax(0,1fr)_430px] xl:gap-8"><div class="max-w-3xl pt-12"><p class="m-0 text-xs font-medium uppercase tracking-wider text-primary">{t.eyebrow}</p><h1 class="m-0 mt-6 text-display-mobile font-medium text-foreground md:text-display">{t.title}</h1><p class="m-0 mt-6 max-w-xl text-base leading-copy text-muted-foreground">{t.lead}</p><div class="mt-8 flex flex-col gap-3 sm:flex-row"><LinkButton href={`${homePath}#kontakt`} label={t.cta} icon="right" /><LinkButton href="#technical-foundations" label={t.jump} variant="secondary" icon="down" /></div></div><div class="pt-4 xl:pt-12"><TechnicalGeoMacbook lang={lang} client:load /></div></div><div class="mt-20"><FeatureCardGrid items={t.outcomes} columns={3} /></div></div></section>
+    <section id="technical-foundations" class="mx-auto grid max-w-content grid-cols-1 gap-12 px-5 py-section-mobile md:px-12 lg:grid-cols-2 lg:py-section"><div class="lg:sticky lg:top-24 lg:self-start"><p class="m-0 text-xs font-medium uppercase tracking-wider text-primary">{t.methodEyebrow}</p><h2 class="m-0 mt-6 text-section-title font-medium text-foreground">{t.methodTitle}</h2><p class="m-0 mt-6 max-w-xl text-base leading-copy text-muted-foreground">{t.methodLead}</p></div><TechnicalFoundationBeam items={t.steps} label={t.methodEyebrow} client:load /></section>
+    <section class="border-y border-solid border-border"><div class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><header class="grid grid-cols-1 gap-6 pb-12 lg:grid-cols-2 lg:pb-20"><h2 class="m-0 text-section-title font-medium text-foreground">{t.artifactTitle}</h2><p class="m-0 max-w-xl text-base leading-copy text-muted-foreground">{t.artifactLead}</p></header><TechnicalArtifactCircuit lang={lang} client:load /></div></section>
+    <section class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><h2 class="m-0 max-w-2xl text-section-title font-medium text-foreground">{t.relatedTitle}</h2><div class="mt-12"><RelatedLinkGrid items={t.related} /></div></section>
+    <section class="border-t border-solid border-border"><div class="mx-auto grid max-w-content grid-cols-1 gap-12 px-5 py-section-mobile md:px-12 lg:grid-cols-3 lg:py-section"><h2 class="m-0 text-section-title font-medium text-foreground">{t.faqTitle}</h2><FaqAccordion items={t.faq} theme="dark" className="lg:col-span-2" /></div></section>
     <SubpageContact lang={lang} source="technical-geo-service" />
   </main>
   <Footer {...siteContent.footer} lang={lang} />
 </BaseLayout>
-<script>
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const story = document.querySelector(".foundation-experience");
-  if (story) {
-    const visual = story.querySelector<HTMLElement>("[data-foundation-visual]");
-    const steps = Array.from(story.querySelectorAll<HTMLElement>("[data-foundation-step]"));
-    const label = visual?.querySelector<HTMLElement>("[data-foundation-label]");
-    const number = visual?.querySelector<HTMLElement>("[data-foundation-number]");
-    const count = visual?.querySelector<HTMLElement>("[data-foundation-count]");
-    const set = (index: number) => { if (!visual || !label || !number || !count) return; visual.dataset.active = String(index); number.textContent = String(index + 1); count.textContent = `${index + 1} / ${steps.length}`; label.textContent = steps[index].querySelector("h3")?.textContent ?? ""; steps.forEach((step, i) => step.classList.toggle("is-active", i === index)); };
-    if (reduce.matches) set(0); else { const observer = new IntersectionObserver((entries) => { const active = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]; if (active) set(Number((active.target as HTMLElement).dataset.foundationStep ?? 0)); }, { rootMargin: "-34% 0px -42%", threshold: [0.2, 0.55, 0.8] }); steps.forEach((step) => observer.observe(step)); }
-  }
-</script>
-<style>
-  :global(body.technical-page) { --t-bg:#171715; --t-surface:#211f1c; --t-surface-2:#282521; --t-text:#fffaf4; --t-muted:#b9b4aa; --t-line:rgba(255,250,244,.16); --t-accent:#e98764; background:var(--t-bg); color:var(--t-text); }
-  :global(.technical-page .site-header), :global(.technical-page .site-footer) { border-color:var(--t-line); background:rgba(23,23,21,.94); color:var(--t-text); }
-  :global(.technical-page .language-switch) { background:rgba(255,250,244,.06); } :global(.technical-page .language-switch a[aria-current="page"]) { background:rgba(255,250,244,.12); box-shadow:none; color:var(--t-text); } :global(.technical-page .mobile-menu nav) { background:var(--t-surface); }
-  .technical-main { overflow:hidden; } .technical-shell { width:min(100%, calc(1120px + 96px)); margin-inline:auto; padding-inline:48px; } .technical-hero { padding-top:28px; padding-bottom:112px; } .technical-crumbs { display:flex; flex-wrap:wrap; gap:9px; color:var(--t-muted); font-size:12px; } .technical-crumbs a:hover { color:var(--t-text); }
-  .technical-hero-grid { display:grid; grid-template-columns:minmax(0,.84fr) minmax(480px,1.16fr); gap:clamp(42px,6vw,92px); align-items:center; margin-top:clamp(90px,10vw,140px); } .technical-eyebrow { margin:0 0 17px; color:var(--t-accent); font-size:11px; font-weight:720; letter-spacing:.14em; text-transform:uppercase; } .technical-hero h1 { max-width:690px; margin:0 0 26px; color:var(--t-text); font-family:var(--sans); font-size:clamp(48px,5.3vw,72px); font-weight:540; letter-spacing:-.055em; line-height:.98; text-wrap:balance; } .technical-lead { max-width:570px; color:var(--t-muted); font-size:18px; line-height:1.62; } .technical-actions { display:flex; flex-wrap:wrap; gap:13px; align-items:center; margin-top:29px; } .technical-jump { display:inline-flex; min-height:48px; align-items:center; gap:14px; border:1px solid rgba(255,250,244,.32); border-radius:8px; padding:0 17px; font-size:14px; font-weight:620; } .technical-jump span { color:var(--t-accent); font-size:18px; transition:transform 180ms ease; } .technical-jump:hover span { transform:translateY(3px); }
-  .source-artifact { position:relative; min-height:465px; overflow:hidden; border:1px solid var(--t-line); border-radius:14px; background:var(--t-surface); box-shadow:0 24px 70px rgba(0,0,0,.26); transform:rotate(1.2deg); } .source-artifact::after { position:absolute; inset:0; background:linear-gradient(120deg,rgba(233,135,100,.06),transparent 38%); content:""; pointer-events:none; } .source-artifact-bar,.foundation-top { display:flex; min-height:51px; align-items:center; justify-content:space-between; border-bottom:1px solid var(--t-line); padding:0 19px; color:var(--t-muted); font-size:10px; letter-spacing:.11em; } .source-artifact-bar b,.foundation-top b { display:flex; align-items:center; gap:8px; color:var(--t-text); font-size:11px; font-weight:600; letter-spacing:0; } .source-artifact-bar b i,.foundation-top b i { width:7px; height:7px; border-radius:50%; background:var(--t-accent); box-shadow:0 0 0 5px rgba(233,135,100,.1); animation:technical-pulse 1.8s ease-in-out infinite alternate; } .source-artifact-body { display:grid; grid-template-columns:1fr 1fr; min-height:350px; } .source-column,.source-meaning { padding:32px 27px; } .source-column { border-right:1px solid var(--t-line); } .source-column p,.source-meaning p { margin:0 0 20px; color:var(--t-muted); font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; } .source-column ol { margin:0; padding:0; list-style:none; } .source-column li { display:grid; grid-template-columns:60px minmax(0,1fr); gap:6px; align-items:center; min-height:62px; border-top:1px solid var(--t-line); color:var(--t-muted); font-size:12px; } .source-column li:last-child { border-bottom:1px solid var(--t-line); } .source-column li span { color:var(--t-accent); font-family:ui-monospace,monospace; font-size:11px; } .source-column li strong { font-weight:570; } .source-column li i { grid-column:2; width:72%; height:4px; border-radius:4px; background:rgba(255,250,244,.13); } .source-column li.source-active { color:var(--t-text); } .source-column li.source-active strong { font-size:15px; } .source-meaning { position:relative; } .meaning-line { display:grid; grid-template-columns:32px 1fr; gap:12px; align-items:center; min-height:69px; border-bottom:1px solid var(--t-line); } .meaning-line i { width:28px; height:28px; border:1px solid var(--t-accent); border-radius:50%; background:rgba(183,70,34,.14); } .meaning-line b { font-size:14px; font-weight:560; } .meaning-line-wide i { border-radius:8px; } .meaning-line-short { opacity:.62; } .source-bracket { position:absolute; top:101px; right:26px; width:11px; height:117px; border-right:1px solid var(--t-accent); border-top:1px solid var(--t-accent); border-bottom:1px solid var(--t-accent); } .source-artifact > small { position:absolute; bottom:18px; left:27px; color:var(--t-muted); font-size:11px; }
-  .technical-outcomes { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--t-line); border-bottom:1px solid var(--t-line); } .technical-outcomes article { min-height:245px; padding:34px 28px 38px; } .technical-outcomes article + article { border-left:1px solid var(--t-line); } .technical-outcomes p { margin:0 0 54px; color:var(--t-accent); font-size:12px; font-weight:680; letter-spacing:.1em; text-transform:uppercase; } .technical-outcomes h2 { margin:0 0 12px; color:var(--t-text); font-family:var(--sans); font-size:25px; font-weight:520; letter-spacing:-.04em; line-height:1.08; } .technical-outcomes span { display:block; color:var(--t-muted); font-size:16px; line-height:1.5; }
-  .technical-foundations { padding-top:120px; padding-bottom:116px; } .technical-section-intro { display:grid; grid-template-columns:minmax(230px,.6fr) minmax(0,1fr); column-gap:60px; align-items:start; margin-bottom:70px; } .technical-section-intro .technical-eyebrow { grid-row:1 / span 2; } .technical-section-intro h2,.technical-related h2,.technical-faq h2,.technical-close h2 { max-width:720px; margin:0 0 20px; color:var(--t-text); font-family:var(--sans); font-size:clamp(39px,4.4vw,59px); font-weight:520; letter-spacing:-.052em; line-height:1; } .technical-section-intro > p:last-child { grid-column:2; max-width:560px; margin:0; color:var(--t-muted); font-size:17px; line-height:1.62; }
-  .foundation-experience { display:grid; grid-template-columns:minmax(420px,.95fr) minmax(0,1.05fr); gap:clamp(50px,8vw,120px); align-items:start; } .foundation-visual { position:sticky; top:104px; overflow:hidden; min-height:480px; border:1px solid var(--t-line); border-radius:14px; background:var(--t-surface); box-shadow:0 22px 60px rgba(0,0,0,.22); } .foundation-frame { position:relative; min-height:379px; padding:39px 34px 30px; } .foundation-number { display:grid; width:46px; height:46px; place-items:center; border:1px solid var(--t-accent); border-radius:50%; color:var(--t-accent); font-size:15px; font-weight:650; } .foundation-frame > strong { display:block; margin-top:24px; color:var(--t-text); font-size:25px; font-weight:540; letter-spacing:-.04em; } .foundation-code { display:grid; gap:14px; margin-top:37px; border-top:1px solid var(--t-line); padding-top:23px; color:var(--t-muted); font-family:ui-monospace,monospace; font-size:14px; line-height:1.5; } .foundation-code span:nth-child(2) { color:var(--t-text); } .foundation-code span:nth-child(3) { color:var(--t-accent); } .foundation-meter { position:absolute; right:34px; bottom:30px; left:34px; height:2px; background:rgba(255,250,244,.12); } .foundation-meter i { display:block; width:25%; height:100%; background:var(--t-accent); transition:width 700ms var(--motion-ease); } .foundation-visual[data-active="1"] .foundation-meter i { width:50%; } .foundation-visual[data-active="2"] .foundation-meter i { width:75%; } .foundation-visual[data-active="3"] .foundation-meter i { width:100%; } .foundation-foot { display:flex; min-height:49px; align-items:center; justify-content:space-between; border-top:1px solid var(--t-line); padding:0 20px; color:var(--t-muted); font-size:11px; } .foundation-steps { margin:0; padding:0; list-style:none; } .foundation-steps li { display:grid; grid-template-columns:45px 1fr; gap:22px; min-height:255px; border-top:1px solid var(--t-line); padding:35px 0 45px; opacity:.48; transition:opacity 500ms ease, transform 600ms var(--motion-ease); } .foundation-steps li:last-child { border-bottom:1px solid var(--t-line); } .foundation-steps li.is-active { opacity:1; transform:translateX(7px); } .foundation-steps li > span { display:grid; width:38px; height:38px; place-items:center; border:1px solid var(--t-line); border-radius:50%; color:var(--t-muted); font-size:13px; } .foundation-steps li.is-active > span { border-color:var(--t-accent); background:var(--t-accent); color:#fffaf4; } .foundation-steps h3 { margin:0 0 13px; color:var(--t-text); font-size:27px; font-weight:520; letter-spacing:-.04em; } .foundation-steps p { max-width:470px; margin:0; color:var(--t-muted); font-size:17px; line-height:1.62; }
-  .technical-related,.technical-faq { padding-top:100px; padding-bottom:110px; } .technical-related > header,.technical-faq > header { margin-bottom:48px; } .related-grid { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--t-line); border-bottom:1px solid var(--t-line); } .related-grid a { min-height:220px; padding:26px 26px 34px; transition:background 220ms ease, transform 220ms var(--motion-ease); } .related-grid a + a { border-left:1px solid var(--t-line); } .related-grid a:hover { background:var(--t-surface); transform:translateY(-3px); } .related-grid a > span { display:block; margin-bottom:48px; color:var(--t-accent); font-size:22px; } .related-grid h3 { margin:0 0 10px; color:var(--t-text); font-size:23px; font-weight:520; } .related-grid p { margin:0; color:var(--t-muted); font-size:16px; line-height:1.5; } .technical-faq { display:grid; grid-template-columns:minmax(250px,.72fr) minmax(0,1.28fr); gap:64px; border-top:1px solid var(--t-line); } .technical-faq > header { margin:0; } .technical-faq > header h2 { font-size:clamp(38px,4vw,55px); } .technical-faq details { border-top:1px solid var(--t-line); padding:22px 0; } .technical-faq details:last-child { border-bottom:1px solid var(--t-line); } .technical-faq summary { display:flex; align-items:flex-start; justify-content:space-between; gap:22px; cursor:pointer; color:var(--t-text); font-size:17px; font-weight:560; list-style:none; } .technical-faq summary::-webkit-details-marker { display:none; } .technical-faq summary span { color:var(--t-accent); font-size:22px; font-weight:400; line-height:1; transition:transform 180ms ease; } .technical-faq details[open] summary span { transform:rotate(45deg); } .technical-faq details p { max-width:660px; margin:16px 32px 3px 0; color:var(--t-muted); font-size:16px; line-height:1.62; }
-  .technical-close { display:grid; grid-template-columns:1fr auto; gap:20px 60px; align-items:end; border-top:1px solid var(--t-line); padding-top:106px; padding-bottom:120px; } .technical-close .technical-eyebrow { grid-column:1 / -1; margin:0; } .technical-close h2 { margin:0; } .technical-close > p:nth-of-type(2) { max-width:500px; margin:0; color:var(--t-muted); font-size:17px; } .technical-close .button { grid-column:2; grid-row:2 / span 2; }
-  @keyframes technical-pulse { to { opacity:.44; transform:scale(.72); } }
-  @media (max-width:900px) { .technical-shell { padding-inline:28px; } .technical-hero-grid,.foundation-experience { grid-template-columns:1fr; } .source-artifact { max-width:720px; justify-self:center; width:100%; } .foundation-visual { position:sticky; top:88px; z-index:2; } .foundation-steps li { min-height:220px; } .technical-faq { grid-template-columns:1fr; gap:42px; } }
-  @media (max-width:640px) { .technical-shell { padding-inline:20px; } .technical-hero { padding-top:22px; padding-bottom:80px; } .technical-hero-grid { margin-top:74px; gap:58px; } .technical-hero h1 { font-size:clamp(43px,12.8vw,57px); } .technical-lead { font-size:17px; } .technical-actions { width:100%; } .technical-actions > a { width:100%; justify-content:center; text-align:center; } .source-artifact { min-height:500px; transform:none; } .source-artifact-body { grid-template-columns:1fr; } .source-column { border-right:0; border-bottom:1px solid var(--t-line); padding:25px 20px 26px; } .source-meaning { min-height:225px; padding:25px 20px; } .source-artifact > small { right:20px; bottom:17px; left:20px; } .technical-outcomes { grid-template-columns:1fr; } .technical-outcomes article { min-height:0; padding:28px 0 32px; } .technical-outcomes article + article { border-top:1px solid var(--t-line); border-left:0; } .technical-outcomes p { margin-bottom:30px; } .technical-foundations { padding-top:80px; padding-bottom:80px; } .technical-section-intro { display:block; margin-bottom:43px; } .technical-section-intro h2,.technical-related h2,.technical-faq h2,.technical-close h2 { font-size:43px; } .technical-section-intro > p:last-child { font-size:16px; } .foundation-visual { min-height:386px; } .foundation-frame { min-height:286px; padding:28px 20px 22px; } .foundation-code { margin-top:26px; font-size:12px; gap:9px; } .foundation-meter { right:20px; bottom:22px; left:20px; } .foundation-steps li { grid-template-columns:38px minmax(0,1fr); gap:15px; min-height:260px; padding:29px 0 40px; } .foundation-steps li.is-active { transform:none; } .foundation-steps h3 { font-size:25px; } .foundation-steps p { font-size:16px; } .technical-related,.technical-faq { padding-top:80px; padding-bottom:80px; } .related-grid { grid-template-columns:1fr; } .related-grid a { min-height:0; padding:23px 0 29px; } .related-grid a + a { border-top:1px solid var(--t-line); border-left:0; } .related-grid a > span { margin-bottom:27px; } .technical-faq { display:block; } .technical-faq > header { margin-bottom:41px; } .technical-faq summary { font-size:16px; } .technical-close { display:block; padding-top:80px; padding-bottom:84px; } .technical-close .technical-eyebrow { margin-bottom:18px; } .technical-close > p:nth-of-type(2) { margin:0 0 28px; font-size:16px; } .technical-close .button { width:100%; } }
-  @media (prefers-reduced-motion:reduce) { .source-artifact-bar b i,.foundation-top b i { animation:none; } .foundation-steps li,.foundation-meter i,.technical-jump span { transition:none; } .foundation-steps li { opacity:1; transform:none; } }
-</style>

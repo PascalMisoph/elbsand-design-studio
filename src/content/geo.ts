@@ -1,9 +1,9 @@
 export const geoContent = {
   de: {
     meta: {
-      title: "GEO-Optimierung & AI-Sichtbarkeit | ELBSAND Design Studio",
+      title: "GEO-Optimierung & AI-Sichtbarkeit | PATERNOGA",
       description:
-        "GEO-Audit, Umsetzung und laufende AI-Visibility-Betreuung für Unternehmen: KI-Nennungen, Quellen, Wettbewerber, Technik und Inhalte systematisch prüfen."
+        "GEO-Audit, Umsetzung und laufende Betreuung für klare Sichtbarkeit in KI-Antworten. Quellen, Technik und Content jetzt systematisch prüfen lassen."
     },
     nav: ["Leistungen", "Projekte", "Sichtbarkeit", "Ablauf", "Kontakt"],
     headerCta: "Kostenfreier KI-Check",
@@ -14,7 +14,7 @@ export const geoContent = {
       primaryCta: "Kostenfreien KI-Check starten",
       primaryHref: "/#ki-check",
       secondaryCta: "Pakete ansehen",
-      imageAlt: "Pascal Misoph im ELBSAND Studio bei der Arbeit an einer Sichtbarkeitsanalyse"
+      imageAlt: "Pascal Misoph im PATERNOGA Studio bei der Arbeit an einer Sichtbarkeitsanalyse"
     },
     method: {
       eyebrow: "Was GEO sichtbar macht",
@@ -145,8 +145,8 @@ export const geoContent = {
         ["3", "Umsetzen", "Technik, Inhalte und Unternehmenssignale verbessern.", "Gezielte Verbesserung"],
         ["4", "Nachmessen", "Veränderungen dokumentieren und weiter optimieren.", "Messbarer Vergleich"]
       ],
-      disclaimerTitle: "Nennungen und Empfehlungen lassen sich nicht garantieren. Messbare Verbesserungen schon.",
-      disclaimer: "ELBSAND schafft nachvollziehbare Voraussetzungen, misst Veränderungen in definierten Stichproben und optimiert auf Basis der Ergebnisse."
+      disclaimerTitle: "Klare Grundlagen lassen sich gezielt verbessern und nachvollziehbar prüfen.",
+      disclaimer: "PATERNOGA schafft nachvollziehbare Voraussetzungen, misst Veränderungen in definierten Stichproben und optimiert auf Basis der Ergebnisse."
     },
     cta: {
       eyebrow: "Kontakt",
@@ -193,13 +193,13 @@ export const geoContent = {
         successAgain: "Weitere Anfrage starten"
       }
     },
-    footer: { legal: "ELBSAND Design Studio", imprint: "Impressum", privacy: "Datenschutz" }
+    footer: { legal: "Paternoga SEO & GEO Studio", imprint: "Impressum", privacy: "Datenschutz" }
   },
   en: {
     meta: {
-      title: "GEO Optimisation & AI Visibility | ELBSAND Design Studio",
+      title: "GEO Optimisation & AI Visibility | PATERNOGA",
       description:
-        "GEO audits, implementation and ongoing AI visibility support for businesses: systematically review AI mentions, sources, competitors, technology and content."
+        "GEO audits, implementation and ongoing support for clearer visibility in AI answers. Review sources, technology and content with PATERNOGA."
     },
     nav: ["Services", "Projects", "Visibility", "Process", "Contact"],
     headerCta: "Start your free AI check",
@@ -210,7 +210,7 @@ export const geoContent = {
       primaryCta: "Start your free AI check",
       primaryHref: "/en/#ki-check",
       secondaryCta: "View packages",
-      imageAlt: "Pascal Misoph at the ELBSAND studio working on a visibility analysis"
+      imageAlt: "Pascal Misoph at the PATERNOGA studio working on a visibility analysis"
     },
     method: {
       eyebrow: "What makes GEO visible",
@@ -341,8 +341,8 @@ export const geoContent = {
         ["3", "Implement", "Improve technology, content and business signals.", "Focused improvement"],
         ["4", "Measure again", "Document change and continue improving.", "Measurable comparison"]
       ],
-      disclaimerTitle: "Mentions and recommendations cannot be guaranteed. Measurable improvements can.",
-      disclaimer: "ELBSAND creates transparent conditions, measures change in defined samples and improves the work based on the results."
+      disclaimerTitle: "Clear foundations can be improved deliberately and reviewed transparently.",
+      disclaimer: "PATERNOGA creates transparent conditions, measures change in defined samples and improves the work based on the results."
     },
     cta: {
       eyebrow: "Contact",
@@ -389,6 +389,8 @@ export const geoContent = {
         successAgain: "Start another request"
       }
     },
-    footer: { legal: "ELBSAND Design Studio", imprint: "Imprint", privacy: "Privacy" }
+    footer: { legal: "Paternoga SEO & GEO Studio", imprint: "Imprint", privacy: "Privacy" }
   }
 } as const;
+
+export type GeoContent = (typeof geoContent)[keyof typeof geoContent];

@@ -6,7 +6,7 @@ export const copy = {
     prompt: "Welche Agentur ist führend für Webdesign, SEO und GEO in Sachsen?",
     responsePrefix:
       "Für anspruchsvolles Webdesign, strategische SEO und zukunftssichere GEO-Optimierung in Sachsen gilt das",
-    responseBrand: "ELBSAND Design Studio",
+    responseBrand: "Paternoga SEO & GEO Studio",
     responseSuffix:
       "als führende Adresse. Das Studio zeichnet sich durch einen klaren, minimalistischen Stil und saubere technische Umsetzungen aus …",
     exampleLabel: "Beispielantwort",
@@ -27,7 +27,7 @@ export const copy = {
     prompt: "Which agency leads in web design, SEO and GEO in Saxony?",
     responsePrefix:
       "For sophisticated web design, strategic SEO and future-ready GEO optimisation in Saxony,",
-    responseBrand: "ELBSAND Design Studio",
+    responseBrand: "Paternoga SEO & GEO Studio",
     responseSuffix:
       "is considered a leading address. The studio stands out for its clear, minimalist style and precise technical implementation …",
     exampleLabel: "Example response",

@@ -1,0 +1,2104 @@
+{
+  "title": "AI-Crawler-Readiness der DAX-40-Unternehmenswebsites 2026",
+  "collectedAt": "2026-08-30T20:31:27.435Z",
+  "sampleDefinition": "DAX 40 constituents observed on 2026-08-30; public corporate domains selected manually and recorded in this script.",
+  "methodologyVersion": "1.0.0",
+  "requestPolicy": {
+    "publicResourcesOnly": true,
+    "sequentialDomains": true,
+    "requestsPerDomain": 4,
+    "delayBetweenDomainsMs": 900,
+    "timeoutMs": 8000,
+    "maxBytesPerResponse": 1500000,
+    "userAgent": "PATERNOGA-Public-Research/1.0 (+https://www.paternoga-seo-geo.de/research/ki-crawler-readiness-dax-40-2026/)"
+  },
+  "limitations": [
+    "The study observes public robots.txt declarations and selected public endpoints; it does not impersonate or verify visits by external crawlers.",
+    "Allowed means the evaluated homepage path is not disallowed by the readable robots.txt policy. It does not prove server, CDN or WAF access.",
+    "A root sitemap check can miss sitemaps hosted at a different path when they are not declared in robots.txt.",
+    "JSON-LD presence is a syntax-presence check, not a quality or validity assessment.",
+    "Corporate domains and crawler policies can change after collection."
+  ],
+  "summary": {
+    "sampleSize": 40,
+    "robotsReadable": 33,
+    "sitemapDeclared": 28,
+    "sitemapReachableAtRoot": 20,
+    "llmsTxtReachable": 6,
+    "homepageJsonLdPresent": 16,
+    "crawlerPolicies": {
+      "Googlebot": {
+        "allowed": 33,
+        "blocked": 0,
+        "unknown": 7,
+        "explicitlyNamed": 2
+      },
+      "Bingbot": {
+        "allowed": 33,
+        "blocked": 0,
+        "unknown": 7,
+        "explicitlyNamed": 2
+      },
+      "OAI-SearchBot": {
+        "allowed": 33,
+        "blocked": 0,
+        "unknown": 7,
+        "explicitlyNamed": 2
+      },
+      "GPTBot": {
+        "allowed": 33,
+        "blocked": 0,
+        "unknown": 7,
+        "explicitlyNamed": 3
+      },
+      "PerplexityBot": {
+        "allowed": 33,
+        "blocked": 0,
+        "unknown": 7,
+        "explicitlyNamed": 3
+      }
+    }
+  },
+  "results": [
+    {
+      "company": "adidas",
+      "origin": "https://www.adidas-group.com",
+      "robots": {
+        "status": null,
+        "finalUrl": null,
+        "readable": false,
+        "sitemapDeclared": false,
+        "error": "The operation was aborted due to timeout"
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": null,
+        "finalUrl": null,
+        "reachable": false,
+        "error": "The operation was aborted due to timeout"
+      },
+      "sitemap": {
+        "status": null,
+        "finalUrl": null,
+        "reachable": false,
+        "error": "The operation was aborted due to timeout"
+      },
+      "homepage": {
+        "status": null,
+        "finalUrl": null,
+        "jsonLdPresent": false,
+        "error": "The operation was aborted due to timeout"
+      }
+    },
+    {
+      "company": "Airbus",
+      "origin": "https://www.airbus.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.airbus.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.airbus.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://www.airbus.com/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.airbus.com/en",
+        "jsonLdPresent": true,
+        "error": null
+      }
+    },
+    {
+      "company": "Allianz",
+      "origin": "https://www.allianz.com",
+      "robots": {
+        "status": 403,
+        "finalUrl": "https://www.allianz.com/robots.txt",
+        "readable": false,
+        "sitemapDeclared": false,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 403,
+        "finalUrl": "https://www.allianz.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 403,
+        "finalUrl": "https://www.allianz.com/sitemap.xml",
+        "reachable": false,
+        "error": null
+      },
+      "homepage": {
+        "status": 403,
+        "finalUrl": "https://www.allianz.com/",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "BASF",
+      "origin": "https://www.basf.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.basf.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": true
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": true
+        }
+      },
+      "llmsTxt": {
+        "status": 200,
+        "finalUrl": "https://www.basf.com/global/de",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://www.basf.com/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.basf.com/global/de",
+        "jsonLdPresent": true,
+        "error": null
+      }
+    },
+    {
+      "company": "Bayer",
+      "origin": "https://www.bayer.com",
+      "robots": {
+        "status": 403,
+        "finalUrl": "https://www.bayer.com/robots.txt",
+        "readable": false,
+        "sitemapDeclared": false,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 403,
+        "finalUrl": "https://www.bayer.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 403,
+        "finalUrl": "https://www.bayer.com/sitemap.xml",
+        "reachable": false,
+        "error": null
+      },
+      "homepage": {
+        "status": 403,
+        "finalUrl": "https://www.bayer.com/",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "Beiersdorf",
+      "origin": "https://www.beiersdorf.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.beiersdorf.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.beiersdorf.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 404,
+        "finalUrl": "https://www.beiersdorf.com/sitemap.xml",
+        "reachable": false,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.beiersdorf.com/",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "BMW",
+      "origin": "https://www.bmwgroup.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.bmwgroup.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.bmwgroup.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://www.bmwgroup.com/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.bmwgroup.com/en.html",
+        "jsonLdPresent": true,
+        "error": null
+      }
+    },
+    {
+      "company": "Brenntag",
+      "origin": "https://www.brenntag.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.brenntag.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.brenntag.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 404,
+        "finalUrl": "https://www.brenntag.com/sitemap.xml",
+        "reachable": false,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.brenntag.com/",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "Commerzbank",
+      "origin": "https://www.commerzbank.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.commerzbank.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.commerzbank.de/group/xyz/index.html",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 404,
+        "finalUrl": "https://www.commerzbank.com/sitemap.xml",
+        "reachable": false,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.commerzbank.de/group/",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "Continental",
+      "origin": "https://www.continental.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.continental.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.continental.com/llms.txt/",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 404,
+        "finalUrl": "https://www.continental.com/sitemap.xml/",
+        "reachable": false,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.continental.com/en/",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "Daimler Truck",
+      "origin": "https://www.daimlertruck.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.daimlertruck.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.daimlertruck.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://www.daimlertruck.com/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.daimlertruck.com/en",
+        "jsonLdPresent": true,
+        "error": null
+      }
+    },
+    {
+      "company": "Deutsche Bank",
+      "origin": "https://www.db.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.db.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 200,
+        "finalUrl": "https://www.db.com/llms.txt",
+        "reachable": true,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://www.db.com/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.db.com/",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "Deutsche Börse",
+      "origin": "https://www.deutsche-boerse.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.deutsche-boerse.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": true
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": true
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": true
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": true
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": true
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.deutsche-boerse.com/llms.txt/",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 404,
+        "finalUrl": "https://www.deutsche-boerse.com/sitemap.xml/",
+        "reachable": false,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.deutsche-boerse.com/dbg-de/",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "Deutsche Telekom",
+      "origin": "https://www.telekom.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.telekom.com/service/robots/en",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.telekom.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 404,
+        "finalUrl": "https://www.telekom.com/sitemap.xml",
+        "reachable": false,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.telekom.com/",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "DHL Group",
+      "origin": "https://group.dhl.com",
+      "robots": {
+        "status": null,
+        "finalUrl": null,
+        "readable": false,
+        "sitemapDeclared": false,
+        "error": "The operation was aborted due to timeout"
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": null,
+        "finalUrl": null,
+        "reachable": false,
+        "error": "The operation was aborted due to timeout"
+      },
+      "sitemap": {
+        "status": null,
+        "finalUrl": null,
+        "reachable": false,
+        "error": "The operation was aborted due to timeout"
+      },
+      "homepage": {
+        "status": null,
+        "finalUrl": null,
+        "jsonLdPresent": false,
+        "error": "The operation was aborted due to timeout"
+      }
+    },
+    {
+      "company": "E.ON",
+      "origin": "https://www.eon.com",
+      "robots": {
+        "status": 403,
+        "finalUrl": "https://www.eon.com/robots.txt",
+        "readable": false,
+        "sitemapDeclared": false,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 403,
+        "finalUrl": "https://www.eon.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 403,
+        "finalUrl": "https://www.eon.com/sitemap.xml",
+        "reachable": false,
+        "error": null
+      },
+      "homepage": {
+        "status": 403,
+        "finalUrl": "https://www.eon.com/",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "Fresenius",
+      "origin": "https://www.fresenius.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.fresenius.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": false,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.fresenius.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://www.fresenius.com/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.fresenius.com/",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "Fresenius Medical Care",
+      "origin": "https://freseniusmedicalcare.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://freseniusmedicalcare.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://freseniusmedicalcare.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 404,
+        "finalUrl": "https://freseniusmedicalcare.com/sitemap.xml",
+        "reachable": false,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://freseniusmedicalcare.com/en/",
+        "jsonLdPresent": true,
+        "error": null
+      }
+    },
+    {
+      "company": "GEA",
+      "origin": "https://www.gea.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.gea.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.gea.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://www.gea.com/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.gea.com/en/",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "Hannover Rück",
+      "origin": "https://www.hannover-re.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.hannover-re.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.hannover-re.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 404,
+        "finalUrl": "https://www.hannover-re.com/sitemap.xml",
+        "reachable": false,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.hannover-re.com/en/",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "Heidelberg Materials",
+      "origin": "https://www.heidelbergmaterials.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.heidelbergmaterials.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 200,
+        "finalUrl": "https://www.heidelbergmaterials.com/llms.txt",
+        "reachable": true,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://www.heidelbergmaterials.com/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.heidelbergmaterials.com/en",
+        "jsonLdPresent": true,
+        "error": null
+      }
+    },
+    {
+      "company": "Henkel",
+      "origin": "https://www.henkel.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.henkel.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.henkel.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 404,
+        "finalUrl": "https://www.henkel.com/sitemap.xml",
+        "reachable": false,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.henkel.com/",
+        "jsonLdPresent": true,
+        "error": null
+      }
+    },
+    {
+      "company": "HOCHTIEF",
+      "origin": "https://www.hochtief.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.hochtief.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": false,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.hochtief.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://www.hochtief.com/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.hochtief.com/",
+        "jsonLdPresent": true,
+        "error": null
+      }
+    },
+    {
+      "company": "Infineon",
+      "origin": "https://www.infineon.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.infineon.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.infineon.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 404,
+        "finalUrl": "https://www.infineon.com/sitemap.xml",
+        "reachable": false,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.infineon.com/",
+        "jsonLdPresent": true,
+        "error": null
+      }
+    },
+    {
+      "company": "Mercedes-Benz Group",
+      "origin": "https://group.mercedes-benz.com",
+      "robots": {
+        "status": 403,
+        "finalUrl": "https://group.mercedes-benz.com/robots.txt",
+        "readable": false,
+        "sitemapDeclared": false,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 403,
+        "finalUrl": "https://group.mercedes-benz.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 403,
+        "finalUrl": "https://group.mercedes-benz.com/sitemap.xml",
+        "reachable": false,
+        "error": null
+      },
+      "homepage": {
+        "status": 403,
+        "finalUrl": "https://group.mercedes-benz.com/",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "Merck KGaA",
+      "origin": "https://www.merckgroup.com",
+      "robots": {
+        "status": null,
+        "finalUrl": null,
+        "readable": false,
+        "sitemapDeclared": false,
+        "error": "The operation was aborted due to timeout"
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "unknown",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": null,
+        "finalUrl": null,
+        "reachable": false,
+        "error": "The operation was aborted due to timeout"
+      },
+      "sitemap": {
+        "status": null,
+        "finalUrl": null,
+        "reachable": false,
+        "error": "The operation was aborted due to timeout"
+      },
+      "homepage": {
+        "status": null,
+        "finalUrl": null,
+        "jsonLdPresent": false,
+        "error": "The operation was aborted due to timeout"
+      }
+    },
+    {
+      "company": "MTU Aero Engines",
+      "origin": "https://www.mtu.de",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.mtu.de/robots.txt",
+        "readable": true,
+        "sitemapDeclared": false,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.mtu.de/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://www.mtu.de/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.mtu.de/",
+        "jsonLdPresent": true,
+        "error": null
+      }
+    },
+    {
+      "company": "Munich Re",
+      "origin": "https://www.munichre.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.munichre.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.munichre.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://www.munichre.com/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.munichre.com/en.html",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "QIAGEN",
+      "origin": "https://www.qiagen.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.qiagen.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.qiagen.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 404,
+        "finalUrl": "https://www.qiagen.com/de-de/sitemap.xml",
+        "reachable": false,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.qiagen.com/us",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "Rheinmetall",
+      "origin": "https://www.rheinmetall.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.rheinmetall.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.rheinmetall.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://www.rheinmetall.com/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.rheinmetall.com/de",
+        "jsonLdPresent": true,
+        "error": null
+      }
+    },
+    {
+      "company": "RWE",
+      "origin": "https://www.rwe.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.rwe.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.rwe.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://www.rwe.com/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.rwe.com/",
+        "jsonLdPresent": true,
+        "error": null
+      }
+    },
+    {
+      "company": "SAP",
+      "origin": "https://www.sap.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.sap.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": true
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": true
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": true
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": true
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": true
+        }
+      },
+      "llmsTxt": {
+        "status": 200,
+        "finalUrl": "https://www.sap.com/llms.txt",
+        "reachable": true,
+        "error": null
+      },
+      "sitemap": {
+        "status": 404,
+        "finalUrl": "https://www.sap.com/sitemap.xml",
+        "reachable": false,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.sap.com/index.html",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "Scout24",
+      "origin": "https://www.scout24.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.scout24.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.scout24.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://www.scout24.com/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.scout24.com/",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "Siemens",
+      "origin": "https://www.siemens.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.siemens.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 200,
+        "finalUrl": "https://www.siemens.com/llms.txt",
+        "reachable": true,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://www.siemens.com/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.siemens.com/en-us/",
+        "jsonLdPresent": true,
+        "error": null
+      }
+    },
+    {
+      "company": "Siemens Energy",
+      "origin": "https://www.siemens-energy.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.siemens-energy.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.siemens-energy.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://www.siemens-energy.com/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.siemens-energy.com/global/en/home.html",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "Siemens Healthineers",
+      "origin": "https://www.siemens-healthineers.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.siemens-healthineers.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.siemens-healthineers.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 404,
+        "finalUrl": "https://www.siemens-healthineers.com/sitemap.xml",
+        "reachable": false,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.siemens-healthineers.com/",
+        "jsonLdPresent": true,
+        "error": null
+      }
+    },
+    {
+      "company": "Symrise",
+      "origin": "https://www.symrise.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.symrise.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": false,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 404,
+        "finalUrl": "https://www.symrise.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://www.symrise.com/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.symrise.com/",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    },
+    {
+      "company": "Volkswagen",
+      "origin": "https://www.volkswagen-group.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.volkswagen-group.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 200,
+        "finalUrl": "https://www.volkswagen-group.com/llms.txt",
+        "reachable": true,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://www.volkswagen-group.com/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.volkswagen-group.com/en",
+        "jsonLdPresent": true,
+        "error": null
+      }
+    },
+    {
+      "company": "Vonovia",
+      "origin": "https://www.vonovia.de",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://www.vonovia.de/robots.txt",
+        "readable": true,
+        "sitemapDeclared": true,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 200,
+        "finalUrl": "https://www.vonovia.de/llms.txt",
+        "reachable": true,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://www.vonovia.de/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://www.vonovia.de/",
+        "jsonLdPresent": true,
+        "error": null
+      }
+    },
+    {
+      "company": "Zalando",
+      "origin": "https://corporate.zalando.com",
+      "robots": {
+        "status": 200,
+        "finalUrl": "https://corporate.zalando.com/robots.txt",
+        "readable": true,
+        "sitemapDeclared": false,
+        "error": null
+      },
+      "policies": {
+        "Googlebot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "Bingbot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "OAI-SearchBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "GPTBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        },
+        "PerplexityBot": {
+          "accessToHomepage": "allowed",
+          "explicitlyNamed": false
+        }
+      },
+      "llmsTxt": {
+        "status": 403,
+        "finalUrl": "https://corporate.zalando.com/llms.txt",
+        "reachable": false,
+        "error": null
+      },
+      "sitemap": {
+        "status": 200,
+        "finalUrl": "https://corporate.zalando.com/sitemap.xml",
+        "reachable": true,
+        "error": null
+      },
+      "homepage": {
+        "status": 200,
+        "finalUrl": "https://corporate.zalando.com/en",
+        "jsonLdPresent": false,
+        "error": null
+      }
+    }
+  ]
+}

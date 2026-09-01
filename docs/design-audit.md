@@ -1,11 +1,11 @@
-# ELBSAND Design Studio – Design-Audit und Umsetzungsplan
+# Paternoga SEO & GEO Studio – Design-Audit und Umsetzungsplan
 
 Stand: 22. Juli 2026  
 Grundlage: Repository-Analyse, `AGENTS.md`, Komponenten und Inhalte in `src/`, statische Review-Dateien sowie Browserprüfung bei 1440×900, 1280×800, 768×1024, 375×812 und 320×700.
 
 ## Projektverständnis
 
-ELBSAND Design Studio ist eine zweisprachige Boutique-Website für ein persönlich geführtes Webstudio. Primäre Zielgruppe sind lokale, inhabergeführte Unternehmen in Deutschland; Dresden und Sachsen bilden den ersten lokalen Vertrauens- und SEO-Anker, ohne die Startseite regional zu verengen. Das Angebot verbindet Strategie, Webdesign, Entwicklung, Relaunch, technische SEO-Grundlagen und moderne Auffindbarkeit in Antwortsystemen.
+Paternoga SEO & GEO Studio ist eine zweisprachige Boutique-Website für ein persönlich geführtes Webstudio. Primäre Zielgruppe sind lokale, inhabergeführte Unternehmen in Deutschland; Dresden und Sachsen bilden den ersten lokalen Vertrauens- und SEO-Anker, ohne die Startseite regional zu verengen. Das Angebot verbindet Strategie, Webdesign, Entwicklung, Relaunch, technische SEO-Grundlagen und moderne Auffindbarkeit in Antwortsystemen.
 
 Das zentrale Kundenproblem ist kein isolierter Mangel an Gestaltung, sondern ein bestehender oder fehlender Webauftritt, der Anspruch, Angebot und Glaubwürdigkeit nicht klar genug vermittelt oder technisch nicht sauber sichtbar wird. Die Marke soll ruhig, präzise, persönlich und international gestaltet wirken – weder wie eine anonyme Full-Service-Agentur noch wie ein privates Nebenprojekt.
 
@@ -34,7 +34,7 @@ Die primäre Conversion ist eine niedrigschwellige Anfrage für einen Website-Ch
 ### Markenwirkung
 
 **Aktuell:** Warm, editorial und reduziert; zugleich wirken die großen Georgia-Schriftbilder und austauschbaren Stockmotive wie eine bekannte Luxury-Template-Sprache.  
-**Auswirkung:** ELBSAND wird als gestalterisch ambitioniert wahrgenommen, aber noch nicht als spezifisches, persönlich geführtes Studio mit belastbarer Umsetzungskompetenz.  
+**Auswirkung:** PATERNOGA wird als gestalterisch ambitioniert wahrgenommen, aber noch nicht als spezifisches, persönlich geführtes Studio mit belastbarer Umsetzungskompetenz.
 **Verbesserung:** Das bestehende neutrale Fundament bewahren, die Typografie disziplinieren und durch präzise Projektbilder, sachliche Mikrodetails und Pascals konkrete Rolle individualisieren.
 
 ### Visuelle Konsistenz
@@ -64,7 +64,7 @@ Die primäre Conversion ist eine niedrigschwellige Anfrage für einen Website-Ch
 ### Hero
 
 **Aktuell:** Vollviewport-Split, H1 bis 150 px, Bild mindestens 560 px hoch; `hero-copy` ist unten ausgerichtet. Bei 1440×900 endet der Screenshot mitten im H1/Bild, bei 1280×800 ebenso.  
-**Auswirkung:** Besucher sehen die visuelle Geste, aber nicht klar, für wen ELBSAND arbeitet, was angeboten wird oder wie der nächste Schritt aussieht.  
+**Auswirkung:** Besucher sehen die visuelle Geste, aber nicht klar, für wen PATERNOGA arbeitet, was angeboten wird oder wie der nächste Schritt aussieht.
 **Verbesserung:** Keine Viewport-Mindesthöhe. Kompakter Split mit kontrolliertem Bildformat, H1 maximal drei Zeilen, kurzer erklärender Text und beide CTAs im ersten Viewport. Die Proof-Zeile beziehungsweise der Beginn der Leistungssektion soll bei 900 px Höhe sichtbar werden.
 
 ### Bildsprache
@@ -73,7 +73,7 @@ Die primäre Conversion ist eine niedrigschwellige Anfrage für einen Website-Ch
 **Auswirkung:** Die ruhige Palette bricht im Hero ins kühle Blau; persönliche Glaubwürdigkeit entsteht nicht. Cookie-Overlays beschädigen die Referenzwirkung.  
 **Verbesserung:** Keine zufälligen Ersatz-Stockbilder. Für die erste Überarbeitung den Hero stärker projekt-/materialbezogen rahmen und generische Studiofotografie zurücknehmen. Projekt-Screenshots lokal, cookie-frei und in konsistenten 16:10- beziehungsweise 4:3-Ausschnitten speichern. Bis diese Assets vorliegen: ehrlich beschriftete, gestaltete Projektflächen statt unkontrollierter Live-Screenshots.
 
-**Benötigtes Material:** aktuelle freigegebene Screenshots der vier realen Projekte; optional authentische Portrait-/Arbeitsaufnahme von Pascal; optional ruhiges Dresden-/Elbsandstein-Detail ohne touristischen Landmarkencharakter.
+**Benötigtes Material:** aktuelle freigegebene Screenshots der vier realen Projekte; optional authentische Portrait-/Arbeitsaufnahme von Pascal; optional ruhiges Dresden-/Paternogastein-Detail ohne touristischen Landmarkencharakter.
 
 ### Text und Tonalität
 

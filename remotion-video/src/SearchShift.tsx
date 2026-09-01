@@ -140,7 +140,7 @@ const GscScene: React.FC<{locale: "de" | "en"; frame: number; opacity: number}> 
   const badgePulse = interpolate(frame, [50, 57, 66, 76], [0.25, 1, 0.55, 1], clamp);
 
   return (
-    <AbsoluteFill style={{backgroundColor: palette.paper, opacity, padding: 58, fontFamily: "Elbsand Sans, Arial, sans-serif"}}>
+    <AbsoluteFill style={{backgroundColor: palette.paper, opacity, padding: 58, fontFamily: "Paternoga Sans, Arial, sans-serif"}}>
       <BrowserShell title="search.google.com/search-console/performance">
         <div style={{display: "grid", gridTemplateColumns: "210px minmax(0, 1fr)", height: "100%"}}>
           <aside style={{borderRight: `1px solid ${palette.line}`, backgroundColor: "#f5f2ec", padding: "34px 24px"}}>
@@ -256,7 +256,7 @@ const SearchSplitScene: React.FC<{locale: "de" | "en"; frame: number; opacity: n
   const wipe = interpolate(local, [0, 10], [0, 100], {...clamp, easing: easeOut});
 
   return (
-    <AbsoluteFill style={{backgroundColor: palette.paper, opacity, clipPath: `inset(0 ${100 - wipe}% 0 0)`, padding: 58, fontFamily: "Elbsand Sans, Arial, sans-serif"}}>
+    <AbsoluteFill style={{backgroundColor: palette.paper, opacity, clipPath: `inset(0 ${100 - wipe}% 0 0)`, padding: 58, fontFamily: "Paternoga Sans, Arial, sans-serif"}}>
       <div style={{position: "absolute", top: 20, left: 0, right: 0, textAlign: "center", color: palette.muted, fontSize: 18, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase"}}>{text.splitTitle}</div>
       <div style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18, width: "100%", height: "100%"}}>
         <BrowserShell title="google.com/search">
@@ -364,10 +364,10 @@ const GeoDashboardScene: React.FC<{locale: "de" | "en"; frame: number; opacity: 
   const sweepX = interpolate(local, [88, 108], [125, -30], clamp);
 
   return (
-    <AbsoluteFill style={{backgroundColor: palette.paper, opacity, padding: 58, fontFamily: "Elbsand Sans, Arial, sans-serif"}}>
+    <AbsoluteFill style={{backgroundColor: palette.paper, opacity, padding: 58, fontFamily: "Paternoga Sans, Arial, sans-serif"}}>
       <div style={{position: "relative", width: "100%", height: "100%", opacity: dim, scale: interpolate(settle, [0, 1], [1.08, 1]), filter: `blur(${interpolate(settle, [0, 1], [7, 0])}px)`, borderRadius: 24, overflow: "hidden", backgroundColor: palette.charcoal, boxShadow: "0 30px 90px rgba(31,27,21,.2)"}}>
         <div style={{height: 78, display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #3b3e39", padding: "0 34px", color: "white"}}>
-          <div style={{fontSize: 23, fontWeight: 800, letterSpacing: "0.12em"}}>ELBSAND <span style={{color: "#91968d", fontWeight: 400}}>GEO TRACKING</span></div>
+          <div style={{fontSize: 23, fontWeight: 800, letterSpacing: "0.12em"}}>PATERNOGA <span style={{color: "#91968d", fontWeight: 400}}>GEO TRACKING</span></div>
           <div style={{display: "flex", alignItems: "center", gap: 10, color: "#b9bdb5", fontSize: 17}}><span style={{width: 9, height: 9, borderRadius: "50%", backgroundColor: palette.green, boxShadow: "0 0 16px rgba(54,214,126,.7)"}} />Live model monitoring</div>
         </div>
         <div style={{padding: "30px 34px"}}>

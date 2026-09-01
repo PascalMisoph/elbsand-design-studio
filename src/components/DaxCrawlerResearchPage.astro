@@ -1,0 +1,197 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+import LinkButton from "./LinkButton";
+import { content } from "../content/site";
+import study from "../data/research/dax-40-ai-crawler-readiness-2026.json";
+import { createResearchPageSchema } from "../lib/seo";
+
+interface Props { lang: "de" | "en" }
+const { lang } = Astro.props;
+const de = lang === "de";
+const site = content[lang];
+const canonicalPath = de ? "/research/ki-crawler-readiness-dax-40-2026/" : "/en/research/dax-40-ai-crawler-readiness-2026/";
+const alternateDePath = "/research/ki-crawler-readiness-dax-40-2026/";
+const alternateEnPath = "/en/research/dax-40-ai-crawler-readiness-2026/";
+const collectedDate = new Intl.DateTimeFormat(de ? "de-DE" : "en-GB", { dateStyle: "long", timeStyle: "short", timeZone: "Europe/Berlin" }).format(new Date(study.collectedAt));
+const copy = de ? {
+  meta: { title: "KI-Crawler-Readiness der DAX 40 2026 | PATERNOGA", description: "PATERNOGA untersucht die öffentlichen robots.txt-Richtlinien der DAX-40-Unternehmenswebsites. Methode, Grenzen und Rohdaten transparent einsehbar." },
+  eyebrow: "PATERNOGA Research · Erhebung 2026",
+  title: "Wie steuern DAX-40-Unternehmen KI-Crawler?",
+  lead: "PATERNOGA hat für eine klar definierte Stichprobe öffentlicher Unternehmenswebsites geprüft, welche Crawler-Richtlinien und technischen Discovery-Dateien am 30. August 2026 erreichbar waren. Die Auswertung misst veröffentlichte Konfiguration – nicht tatsächliche Bot-Besuche, Indexierung oder Zitationen.",
+  summaryTitle: "Zentrale Beobachtung",
+  summary: `Bei ${study.summary.robotsReadable} von ${study.summary.sampleSize} Domains war eine verwertbare robots.txt abrufbar. Keine dieser ${study.summary.robotsReadable} Dateien sperrte die geprüfte Startseite für Googlebot, Bingbot, OAI-SearchBot, GPTBot oder PerplexityBot. Für ${study.summary.sampleSize - study.summary.robotsReadable} Domains bleibt die Richtlinie wegen 403-Antwort oder Timeout unbekannt.`,
+  metrics: [
+    [String(study.summary.robotsReadable), "robots.txt verwertbar", `von ${study.summary.sampleSize} Domains`],
+    [String(study.summary.crawlerPolicies["OAI-SearchBot"].explicitlyNamed), "OAI-SearchBot explizit genannt", "in verwertbaren Richtlinien"],
+    [String(study.summary.llmsTxtReachable), "llms.txt verwertbar", `von ${study.summary.sampleSize} Domains`],
+    [String(study.summary.sitemapDeclared), "Sitemap in robots.txt deklariert", `von ${study.summary.sampleSize} Domains`],
+  ],
+  interpretationTitle: "Was sich daraus ableiten lässt – und was nicht",
+  interpretation: [
+    ["Beobachtung", "In der auswertbaren Teilstichprobe war kein vollständiger Startseiten-Block für die fünf geprüften User-Agents konfiguriert."],
+    ["Einordnung", "Die meisten Freigaben entstanden über generische Regeln. Nur wenige Unternehmen nannten die KI-Crawler ausdrücklich. Das zeigt Konfiguration, nicht Absicht."],
+    ["Keine Aussage", "Die Erhebung sagt nicht, ob ein Bot die Website tatsächlich besucht, ein CDN ihn zulässt, Inhalte indexiert werden oder in Antworten erscheinen."],
+    ["Keine Hochrechnung", "DAX-40-Unternehmen sind keine repräsentative Stichprobe aller deutschen Unternehmen oder des Mittelstands."],
+  ],
+  methodTitle: "Methode",
+  methodIntro: `Erhoben am ${collectedDate}. Die Domains wurden nacheinander verarbeitet. Pro Domain wurden genau vier öffentliche Ressourcen einmalig abgefragt: robots.txt, llms.txt, /sitemap.xml und die Startseite.`,
+  methodSteps: [
+    ["Stichprobe", "Die 40 am Stichtag beobachteten DAX-Unternehmen. Für jedes Unternehmen wurde eine öffentliche Corporate-Domain vorab festgelegt."],
+    ["robots.txt", "Regeln wurden gruppenbezogen für den Pfad / ausgewertet. Spezifische User-Agent-Gruppen haben Vorrang vor der generischen Stern-Gruppe."],
+    ["Discovery-Dateien", "Erfasst wurde, ob eine Sitemap in robots.txt deklariert ist, ob /sitemap.xml ein URL-Set oder einen Sitemap-Index liefert und ob /llms.txt verwertbaren Klartext liefert."],
+    ["Homepage", "Erfasst wurde ausschließlich, ob JSON-LD-Syntax vorhanden ist. Inhaltliche Qualität oder Schema-Validität wurden nicht bewertet."],
+  ],
+  findingsTitle: "Detailbefunde",
+  findings: [
+    `${study.summary.sitemapDeclared} von ${study.summary.sampleSize} robots.txt-Dateien deklarierten eine Sitemap.`,
+    `${study.summary.sitemapReachableAtRoot} von ${study.summary.sampleSize} Domains lieferten unter /sitemap.xml ein erkennbares URL-Set oder einen Sitemap-Index. Eine Sitemap an einem anderen, nicht deklarierten Pfad kann damit übersehen worden sein.`,
+    `${study.summary.llmsTxtReachable} von ${study.summary.sampleSize} Domains lieferten unter /llms.txt verwertbaren Klartext. Daraus wird keine Ranking- oder Zitationswirkung abgeleitet.`,
+    `${study.summary.homepageJsonLdPresent} von ${study.summary.sampleSize} Startseiten enthielten erkennbares JSON-LD. Diese Präsenzprüfung ist keine Qualitätsbewertung.`,
+    `${study.summary.crawlerPolicies.GPTBot.explicitlyNamed} Richtlinien nannten GPTBot explizit, ${study.summary.crawlerPolicies["OAI-SearchBot"].explicitlyNamed} OAI-SearchBot und ${study.summary.crawlerPolicies.PerplexityBot.explicitlyNamed} PerplexityBot.`,
+  ],
+  tableTitle: "Alle 40 Beobachtungen",
+  tableColumns: ["Unternehmen", "robots.txt", "OAI Search", "GPTBot", "Perplexity", "Sitemap deklariert", "llms.txt"],
+  status: { allowed: "erlaubt", blocked: "gesperrt", unknown: "unbekannt", yes: "ja", no: "nein" },
+  limitationsTitle: "Grenzen der Erhebung",
+  limitations: ["Öffentliche Richtlinie statt realer Bot-Traffic", "Keine IP-Verifikation externer Crawler", "Keine WAF-, CDN- oder Rendering-Simulation", "Keine Bewertung von Indexierung oder Zitation", "Stichtagsmessung; Domains und Regeln können sich ändern", "Keine repräsentative Aussage über deutsche Unternehmen insgesamt"],
+  dataTitle: "Rohdaten und Reproduzierbarkeit",
+  dataBody: "Die vollständigen Beobachtungen, Statuscodes, Ziel-URLs, Methodenversion und technischen Grenzen stehen als JSON und CSV bereit. Das Erhebungsskript bleibt im Projekt versioniert, damit eine spätere Wiederholung dieselbe Logik verwenden kann.",
+  json: "Rohdaten als JSON",
+  csv: "Rohdaten als CSV",
+  sourcesTitle: "Stichprobe und technische Primärquellen",
+  sources: [
+    ["Aktuelle DAX-40-Liste, beobachtet am 30.08.2026", "https://www.finanzen.net/index/dax/40-werte"],
+    ["Deutsche Börse: Neuzusammensetzung Juni 2026", "https://live.deutsche-boerse.com/nachrichten/auswahlindizes-neuzusammensetzung-der-dax-blue-chip-indizes"],
+    ["OpenAI: Publisher- und Crawler-Dokumentation", "https://help.openai.com/en/articles/12627856-publishers-and-developers-faq"],
+    ["Perplexity: Crawler-Dokumentation", "https://docs.perplexity.ai/docs/resources/perplexity-crawlers"],
+    ["Google: Common Crawlers und Google-Extended", "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers"],
+  ],
+  bridgeTitle: "Crawler-Zugriff ist eine Voraussetzung, keine Sichtbarkeitsgarantie",
+  bridgeBody: "Für eine belastbare Bewertung müssen Richtlinien, Serverzugriff, Indexierung, Inhalte, Quellen und reale Antwortmuster getrennt betrachtet werden.",
+  guideCta: "Crawler-Leitfaden lesen",
+  guideHref: "/wissen/ki-crawler-robots-txt/",
+  serviceCta: "AI-Crawlability prüfen",
+  serviceHref: "/ai-crawlability/",
+} : {
+  meta: { title: "DAX 40 AI Crawler Readiness 2026 | PATERNOGA Research", description: "PATERNOGA reviews public robots.txt policies across DAX 40 corporate websites. Method, limitations and raw data are openly available." },
+  eyebrow: "PATERNOGA Research · 2026 study",
+  title: "How do DAX 40 companies control AI crawlers?",
+  lead: "For a clearly defined sample of public corporate websites, PATERNOGA checked which crawler policies and discovery files were reachable on 30 August 2026. The study measures published configuration — not actual bot visits, indexing or citations.",
+  summaryTitle: "Central observation",
+  summary: `A usable robots.txt file was available on ${study.summary.robotsReadable} of ${study.summary.sampleSize} domains. None of those ${study.summary.robotsReadable} files blocked the tested homepage for Googlebot, Bingbot, OAI-SearchBot, GPTBot or PerplexityBot. Policy remains unknown for ${study.summary.sampleSize - study.summary.robotsReadable} domains because of a 403 response or timeout.`,
+  metrics: [
+    [String(study.summary.robotsReadable), "usable robots.txt", `of ${study.summary.sampleSize} domains`],
+    [String(study.summary.crawlerPolicies["OAI-SearchBot"].explicitlyNamed), "explicit OAI-SearchBot rules", "in usable policies"],
+    [String(study.summary.llmsTxtReachable), "usable llms.txt", `of ${study.summary.sampleSize} domains`],
+    [String(study.summary.sitemapDeclared), "sitemaps declared in robots.txt", `of ${study.summary.sampleSize} domains`],
+  ],
+  interpretationTitle: "What the data supports — and what it does not",
+  interpretation: [
+    ["Observation", "No complete homepage block for the five tested user agents appeared in the readable subsample."],
+    ["Interpretation", "Most access came from generic rules. Only a few companies named AI crawlers explicitly. This shows configuration, not intent."],
+    ["Not measured", "The study does not show whether a bot actually visited the site, a CDN allowed it, content was indexed or an answer cited it."],
+    ["No extrapolation", "DAX 40 companies are not a representative sample of all German companies or the Mittelstand."],
+  ],
+  methodTitle: "Method",
+  methodIntro: `Collected on ${collectedDate}. Domains were processed sequentially. Exactly four public resources were requested once per domain: robots.txt, llms.txt, /sitemap.xml and the homepage.`,
+  methodSteps: [
+    ["Sample", "The 40 DAX constituents observed on the collection date. One public corporate domain was defined in advance for each company."],
+    ["robots.txt", "Rules were evaluated by group for the / path. Specific user-agent groups take precedence over the generic wildcard group."],
+    ["Discovery files", "The study recorded sitemap declarations, a recognisable URL set or sitemap index at /sitemap.xml, and usable plain text at /llms.txt."],
+    ["Homepage", "The study only recorded whether JSON-LD syntax was present. It did not assess content quality or schema validity."],
+  ],
+  findingsTitle: "Detailed findings",
+  findings: [
+    `${study.summary.sitemapDeclared} of ${study.summary.sampleSize} robots.txt files declared a sitemap.`,
+    `${study.summary.sitemapReachableAtRoot} of ${study.summary.sampleSize} domains returned a recognisable URL set or sitemap index at /sitemap.xml. A sitemap at another undeclared path may therefore be missed.`,
+    `${study.summary.llmsTxtReachable} of ${study.summary.sampleSize} domains returned usable plain text at /llms.txt. No ranking or citation effect is inferred.`,
+    `${study.summary.homepageJsonLdPresent} of ${study.summary.sampleSize} homepages contained recognisable JSON-LD. Presence is not a quality assessment.`,
+    `${study.summary.crawlerPolicies.GPTBot.explicitlyNamed} policies named GPTBot explicitly, ${study.summary.crawlerPolicies["OAI-SearchBot"].explicitlyNamed} named OAI-SearchBot and ${study.summary.crawlerPolicies.PerplexityBot.explicitlyNamed} named PerplexityBot.`,
+  ],
+  tableTitle: "All 40 observations",
+  tableColumns: ["Company", "robots.txt", "OAI Search", "GPTBot", "Perplexity", "Sitemap declared", "llms.txt"],
+  status: { allowed: "allowed", blocked: "blocked", unknown: "unknown", yes: "yes", no: "no" },
+  limitationsTitle: "Study limitations",
+  limitations: ["Public policy, not observed bot traffic", "No IP verification of external crawlers", "No WAF, CDN or rendering simulation", "No assessment of indexing or citation", "Point-in-time measurement; domains and rules may change", "Not representative of German companies as a whole"],
+  dataTitle: "Raw data and reproducibility",
+  dataBody: "The complete observations, status codes, destination URLs, methodology version and technical limitations are available as JSON and CSV. The collection script remains versioned with the project so a later edition can use the same logic.",
+  json: "Download raw JSON",
+  csv: "Download raw CSV",
+  sourcesTitle: "Sample and technical primary sources",
+  sources: [
+    ["Current DAX 40 list observed on 30 August 2026", "https://www.finanzen.net/index/dax/40-werte"],
+    ["Deutsche Börse: June 2026 index changes", "https://live.deutsche-boerse.com/nachrichten/auswahlindizes-neuzusammensetzung-der-dax-blue-chip-indizes"],
+    ["OpenAI: publisher and crawler documentation", "https://help.openai.com/en/articles/12627856-publishers-and-developers-faq"],
+    ["Perplexity: crawler documentation", "https://docs.perplexity.ai/docs/resources/perplexity-crawlers"],
+    ["Google: common crawlers and Google-Extended", "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers"],
+  ],
+  bridgeTitle: "Crawler access is a prerequisite, not a visibility guarantee",
+  bridgeBody: "A credible assessment separates policy, server access, indexing, content, sources and observed answer patterns.",
+  guideCta: "Read the crawler guide",
+  guideHref: "/en/knowledge/ai-crawlers-robots-txt/",
+  serviceCta: "Review AI crawlability",
+  serviceHref: "/en/ai-crawlability/",
+};
+
+const breadcrumbs = [
+  { name: de ? "Start" : "Home", href: de ? "/" : "/en/" },
+  { name: "Research", href: canonicalPath },
+  { name: de ? "KI-Crawler-Readiness DAX 40" : "DAX 40 AI crawler readiness", href: canonicalPath },
+];
+const schema = createResearchPageSchema({
+  lang,
+  title: copy.meta.title,
+  description: copy.meta.description,
+  path: canonicalPath,
+  headline: copy.title,
+  datePublished: "2026-08-30",
+  dateModified: "2026-08-30",
+  breadcrumbs,
+  datasetName: de ? "DAX-40-KI-Crawler-Readiness 2026" : "DAX 40 AI Crawler Readiness 2026",
+  datasetDescription: copy.meta.description,
+  datasetTemporalCoverage: "2026-08-30",
+  datasetDistribution: [
+    { name: "JSON", contentUrl: "/research/dax-40-ai-crawler-readiness-2026.json", encodingFormat: "application/json" },
+    { name: "CSV", contentUrl: "/research/dax-40-ai-crawler-readiness-2026.csv", encodingFormat: "text/csv" },
+  ],
+});
+const displayAccess = (access: string) => copy.status[access as keyof typeof copy.status] ?? access;
+const yesNo = (value: boolean) => value ? copy.status.yes : copy.status.no;
+---
+
+<BaseLayout title={copy.meta.title} description={copy.meta.description} lang={lang} canonicalPath={canonicalPath} alternateDePath={alternateDePath} alternateEnPath={alternateEnPath} schema={schema} openGraphType="article" bodyClass="ui-dark-page dark research-route">
+  <Header lang={lang} nav={site.nav} cta={site.cta} page="service" alternateDePath={alternateDePath} alternateEnPath={alternateEnPath} />
+  <main id="main-content" class="min-h-screen bg-background text-foreground">
+    <article class="longform-document">
+      <header class="border-b border-solid border-border"><div class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><nav class="flex gap-2 text-xs text-muted-foreground" aria-label={de ? "Brotkrumen-Navigation" : "Breadcrumb"}><a class="text-inherit no-underline hover:text-foreground" href={de ? "/" : "/en/"}>{de ? "Start" : "Home"}</a><span aria-hidden="true">/</span><span>Research</span><span aria-hidden="true">/</span><span aria-current="page">DAX 40</span></nav><div class="max-w-3xl pt-12"><p class="m-0 text-xs font-medium uppercase tracking-wider text-primary">{copy.eyebrow}</p><h1 class="m-0 mt-6 text-display-mobile font-medium text-foreground md:text-display">{copy.title}</h1><p class="m-0 mt-6 max-w-2xl text-base leading-copy text-muted-foreground">{copy.lead}</p></div></div></header>
+
+      <section class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><div class="max-w-3xl border-l-2 border-primary pl-6"><h2 class="m-0 text-section-title font-medium text-foreground">{copy.summaryTitle}</h2><p class="m-0 mt-6 text-base leading-copy text-muted-foreground">{copy.summary}</p></div><dl class="mt-12 grid grid-cols-1 border-l border-t border-solid border-border sm:grid-cols-2 lg:grid-cols-4">{copy.metrics.map(([value, label, detail]) => <div class="border-b border-r border-solid border-border p-6"><dt class="text-sm text-muted-foreground">{label}</dt><dd class="m-0 mt-5 text-5xl font-medium tracking-tight text-foreground tabular-nums">{value}</dd><dd class="m-0 mt-3 text-xs text-muted-foreground">{detail}</dd></div>)}</dl></section>
+
+      <section class="border-y border-solid border-border"><div class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><h2 class="m-0 text-section-title font-medium text-foreground">{copy.interpretationTitle}</h2><div class="mt-10 grid grid-cols-1 border-l border-t border-solid border-border md:grid-cols-2">{copy.interpretation.map(([label, text]) => <div class="border-b border-r border-solid border-border p-6"><p class="m-0 text-xs font-medium uppercase tracking-wider text-primary">{label}</p><p class="m-0 mt-4 text-base leading-copy text-muted-foreground">{text}</p></div>)}</div></div></section>
+
+      <section class="mx-auto grid max-w-content grid-cols-1 gap-12 px-5 py-section-mobile md:px-12 lg:grid-cols-2 lg:py-section"><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.methodTitle}</h2><p class="m-0 mt-6 text-base leading-copy text-muted-foreground">{copy.methodIntro}</p></div><ol class="m-0 grid list-none gap-0 border-t border-solid border-border p-0">{copy.methodSteps.map(([title, text], index) => <li class="grid grid-cols-[2rem_1fr] gap-4 border-b border-solid border-border py-6"><span class="text-sm text-primary">{index + 1}</span><div><h3 class="m-0 text-card-title font-medium text-foreground">{title}</h3><p class="m-0 mt-3 text-base leading-copy text-muted-foreground">{text}</p></div></li>)}</ol></section>
+
+      <section class="border-y border-solid border-border"><div class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><h2 class="m-0 text-section-title font-medium text-foreground">{copy.findingsTitle}</h2><ul class="m-0 mt-8 grid list-none gap-0 border-t border-solid border-border p-0">{copy.findings.map((finding) => <li class="border-b border-solid border-border py-5 text-base leading-copy text-muted-foreground">{finding}</li>)}</ul></div></section>
+
+      <section class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><h2 class="m-0 text-section-title font-medium text-foreground">{copy.tableTitle}</h2><div class="research-table-region mt-10 overflow-x-auto" role="region" aria-label={copy.tableTitle} tabindex="0"><table class="research-observations w-full border-collapse text-left text-sm"><thead><tr>{copy.tableColumns.map((column) => <th class="border-b border-solid border-border px-3 py-4 font-medium text-foreground first:pl-0" scope="col">{column}</th>)}</tr></thead><tbody>{study.results.map((result) => <tr><th class="border-b border-solid border-border px-3 py-4 text-left font-medium text-foreground first:pl-0" scope="row">{result.company}</th><td class="border-b border-solid border-border px-3 py-4 text-muted-foreground tabular-nums">{result.robots.readable ? "200" : result.robots.status ?? "—"}</td><td class="border-b border-solid border-border px-3 py-4 text-muted-foreground">{displayAccess(result.policies["OAI-SearchBot"].accessToHomepage)}</td><td class="border-b border-solid border-border px-3 py-4 text-muted-foreground">{displayAccess(result.policies.GPTBot.accessToHomepage)}</td><td class="border-b border-solid border-border px-3 py-4 text-muted-foreground">{displayAccess(result.policies.PerplexityBot.accessToHomepage)}</td><td class="border-b border-solid border-border px-3 py-4 text-muted-foreground">{yesNo(result.robots.sitemapDeclared)}</td><td class="border-b border-solid border-border px-3 py-4 text-muted-foreground">{yesNo(result.llmsTxt.reachable)}</td></tr>)}</tbody></table></div></section>
+
+      <section class="border-y border-solid border-border"><div class="mx-auto grid max-w-content grid-cols-1 gap-12 px-5 py-section-mobile md:px-12 lg:grid-cols-2 lg:py-section"><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.limitationsTitle}</h2><ul class="m-0 mt-6 grid list-none gap-0 border-t border-solid border-border p-0">{copy.limitations.map((item) => <li class="border-b border-solid border-border py-4 text-base leading-copy text-muted-foreground">{item}</li>)}</ul></div><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.dataTitle}</h2><p class="m-0 mt-6 text-base leading-copy text-muted-foreground">{copy.dataBody}</p><div class="mt-8 flex flex-col flex-wrap gap-3 sm:flex-row"><LinkButton href="/research/dax-40-ai-crawler-readiness-2026.json" label={copy.json} variant="secondary" icon="external" /><LinkButton href="/research/dax-40-ai-crawler-readiness-2026.csv" label={copy.csv} variant="secondary" icon="external" /></div></div></div></section>
+
+      <section id="kontakt" class="mx-auto grid max-w-content grid-cols-1 gap-12 px-5 py-section-mobile md:px-12 lg:grid-cols-2 lg:py-section"><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.sourcesTitle}</h2><ul class="m-0 mt-6 grid list-none gap-3 p-0">{copy.sources.map(([label, href]) => <li><a class="text-sm text-primary underline underline-offset-4" href={href} target="_blank" rel="noopener">{label}</a></li>)}</ul></div><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.bridgeTitle}</h2><p class="m-0 mt-6 text-base leading-copy text-muted-foreground">{copy.bridgeBody}</p><div class="mt-8 flex flex-col flex-wrap gap-3 sm:flex-row"><LinkButton href={copy.guideHref} label={copy.guideCta} icon="right" /><LinkButton href={copy.serviceHref} label={copy.serviceCta} variant="secondary" icon="right" /></div></div></section>
+    </article>
+  </main>
+  <Footer {...site.footer} lang={lang} />
+</BaseLayout>
+
+<style>
+  .research-observations {
+    min-width: 900px;
+    font-variant-numeric: tabular-nums;
+  }
+  .research-table-region:focus-visible {
+    outline: 2px solid var(--ui-ring);
+    outline-offset: 4px;
+  }
+</style>

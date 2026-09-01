@@ -4,6 +4,7 @@ import openAiLogo from "@lobehub/icons-static-svg/icons/openai.svg?url";
 import claudeLogo from "@lobehub/icons-static-svg/icons/claude-color.svg?url";
 import perplexityLogo from "@lobehub/icons-static-svg/icons/perplexity-color.svg?url";
 import geminiLogo from "@lobehub/icons-static-svg/icons/gemini-color.svg?url";
+import { LiquidChrome } from "./ui/liquid-chrome";
 
 interface Props {
   eyebrow: string;
@@ -16,8 +17,8 @@ interface Props {
 
 const { eyebrow, title, body, imageAlt, cta, secondaryCta } = Astro.props;
 const isEnglish = Astro.url.pathname.startsWith("/en/");
-const videoPath = isEnglish ? "/video/elbsand-search-shift-en.mp4" : "/video/elbsand-search-shift-de.mp4";
-const posterPath = isEnglish ? "/video/elbsand-search-shift-poster-en.png" : "/video/elbsand-search-shift-poster-de.png";
+const videoPath = isEnglish ? "/video/paternoga-search-shift-en.mp4" : "/video/paternoga-search-shift-de.mp4";
+const posterPath = isEnglish ? "/video/paternoga-search-shift-poster-en.png" : "/video/paternoga-search-shift-poster-de.png";
 const systems = [
   { name: "ChatGPT", logo: openAiLogo, inverse: true },
   { name: "Claude", logo: claudeLogo },
@@ -28,6 +29,10 @@ const systems = [
 ---
 
 <section class:list={["hero", "section-shell", { "hero--en": isEnglish }]}>
+  <div class="hero-liquid-chrome" aria-hidden="true">
+    <LiquidChrome baseColor={[0.18, 0.075, 0.03]} speed={0.32} amplitude={0.52} interactive={false} client:load />
+  </div>
+  <div class="hero-liquid-overlay" aria-hidden="true"></div>
   <div class="hero-inner">
     <div class="hero-copy">
       <p class="hero-trust-badge">{eyebrow}</p>

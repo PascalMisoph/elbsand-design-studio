@@ -11,8 +11,8 @@ const technicalGeoOptimizationDe: ServicePageContent = {
   alternateDePath: "/technische-geo-optimierung/",
   alternateEnPath: "/en/technical-geo-optimization/",
   meta: {
-    title: "Technische GEO-Optimierung für klare KI-Signale | ELBSAND",
-    description: "Technische GEO-Optimierung verbindet semantische HTML-Strukturen, schnelle Auslieferung, strukturierte Fakten und nachvollziehbare Crawlpfade für KI-Suchsysteme."
+    title: "Technische GEO-Optimierung | PATERNOGA",
+    description: "Verbinde semantisches HTML, schnelle Auslieferung, strukturierte Fakten und klare Crawlpfade für KI-Suchsysteme. Technik-Check anfragen."
   },
   breadcrumb: { home: "Start", hub: "GEO-Optimierung", current: "Technische GEO-Optimierung" },
   eyebrow: "Technische GEO-Optimierung",
@@ -106,8 +106,8 @@ const technicalGeoOptimizationEn: ServicePageContent = {
   alternateDePath: "/technische-geo-optimierung/",
   alternateEnPath: "/en/technical-geo-optimization/",
   meta: {
-    title: "Technical GEO Optimization for Clear AI Signals | ELBSAND",
-    description: "Technical GEO optimization connects semantic HTML, fast delivery, structured facts and traceable crawl paths so AI search systems can access and interpret your website."
+    title: "Technical GEO Optimization | PATERNOGA",
+    description: "Connect semantic HTML, fast delivery, structured facts and clear crawl paths for AI search systems. Request a technical GEO review."
   },
   breadcrumb: { home: "Home", hub: "GEO optimisation", current: "Technical GEO optimization" },
   eyebrow: "Technical GEO optimization",
@@ -201,8 +201,8 @@ const aiCrawlabilityDe: ServicePageContent = {
   alternateDePath: "/ai-crawlability/",
   alternateEnPath: "/en/ai-crawlability/",
   meta: {
-    title: "AI-Crawlability: Zugängliche Inhalte für KI-Suche | ELBSAND",
-    description: "AI-Crawlability prüft, ob Bots relevante Seiten erreichen, ausliefern und in einem klaren technischen Kontext lesen können – von robots-Regeln bis Rendering."
+    title: "AI-Crawlability für KI-Suche | PATERNOGA",
+    description: "Prüfe, welche Bots wichtige Seiten erreichen, wo Requests scheitern und welche technischen Pfade zuerst geöffnet werden sollten. Check anfragen."
   },
   breadcrumb: {
     home: "Start",
@@ -272,9 +272,9 @@ const aiCrawlabilityDe: ServicePageContent = {
     eyebrow: "Im Kontext",
     title: "Nach dem Crawl den Kontext verbessern",
     items: [
+      { title: "KI-Crawler & robots.txt", text: "Such-Crawler, Trainings-Crawler und ihre Richtlinien technisch korrekt unterscheiden.", href: "/wissen/ki-crawler-robots-txt/" },
       { title: "Technische GEO-Optimierung", text: "Die übergeordnete Struktur aus HTML, Performance, Fakten und Crawlpfaden.", href: "/technische-geo-optimierung/" },
-      { title: "GEO Audit", text: "Crawlability mit Antworten, Quellen und Fakten in einer Ausgangsanalyse verbinden.", href: "/geo-audit/" },
-      { title: "GEO-Content", text: "Neue Inhalte so planen, dass sie über erreichbare, nachvollziehbare Pfade auffindbar sind.", href: "/geo-content/" }
+      { title: "GEO Audit", text: "Crawlability mit Antworten, Quellen und Fakten in einer Ausgangsanalyse verbinden.", href: "/geo-audit/" }
     ]
   },
   faq: {
@@ -301,8 +301,8 @@ const aiCrawlabilityEn: ServicePageContent = {
   alternateDePath: "/ai-crawlability/",
   alternateEnPath: "/en/ai-crawlability/",
   meta: {
-    title: "AI Crawlability: Accessible Content for AI Search | ELBSAND",
-    description: "AI crawlability reviews whether bots can reach, receive and read important pages in a clear technical context, from robots rules to rendering."
+    title: "AI Crawlability for AI Search | PATERNOGA",
+    description: "See which bots reach important pages, where requests fail and which technical paths need attention first. Request a crawlability check."
   },
   breadcrumb: {
     home: "Home",
@@ -372,9 +372,9 @@ const aiCrawlabilityEn: ServicePageContent = {
     eyebrow: "In context",
     title: "Improve context after the crawl",
     items: [
+      { title: "AI crawlers & robots.txt", text: "Distinguish search crawlers, training crawlers and their policies correctly.", href: "/en/knowledge/ai-crawlers-robots-txt/" },
       { title: "Technical GEO optimization", text: "The wider structure of HTML, performance, facts and crawl paths.", href: "/en/technical-geo-optimization/" },
-      { title: "GEO audit", text: "Connect crawlability with answers, sources and facts in one baseline review.", href: "/en/geo-audit/" },
-      { title: "GEO content", text: "Plan new content so it can be found through reachable, understandable paths.", href: "/en/geo-content/" }
+      { title: "GEO audit", text: "Connect crawlability with answers, sources and facts in one baseline review.", href: "/en/geo-audit/" }
     ]
   },
   faq: {
@@ -401,8 +401,8 @@ const geoContentDe: ServicePageContent = {
   alternateDePath: "/geo-content/",
   alternateEnPath: "/en/geo-content/",
   meta: {
-    title: "GEO-Content für belastbare Antworten und Quellen | ELBSAND",
-    description: "GEO-Content entwickelt klare, belegte Seiten und Inhaltsstrukturen, die Kundenfragen beantworten und als nachvollziehbare Quelle in KI-Suchen dienen können."
+    title: "GEO-Content für belastbare Antworten und Quellen | PATERNOGA",
+    description: "Entwickle klare, belegte GEO-Seiten, die echte Kundenfragen beantworten und als nachvollziehbare Quelle dienen können. Content-Projekt anfragen."
   },
   breadcrumb: { home: "Start", hub: "GEO-Optimierung", current: "GEO-Content" },
   eyebrow: "GEO-Content",
@@ -479,7 +479,8 @@ const geoContentDe: ServicePageContent = {
       { question: "Ist GEO-Content einfach ein Blog mit KI-Keywords?", answer: "Nein. Im Mittelpunkt stehen echte Fragen, klare Antworten, belastbare Quellen und eine sinnvolle Verbindung zu deinem Angebot. Keywords können dabei helfen, ersetzen aber keine inhaltliche Aufgabe." },
       { question: "Müssen alle Aussagen externe Quellen haben?", answer: "Nein. Eigene Leistungen, Prozesse und Erfahrungen können aus deiner Organisation stammen. Wichtig ist, dass Herkunft, Aktualität und Geltungsbereich einer Aussage nicht missverständlich bleiben." },
       { question: "Könnt ihr auch Themen entwickeln, zu denen noch keine Seite existiert?", answer: "Ja. Wir priorisieren Themen aus Kundenfragen, bestehenden Quellen und deinem Angebot und legen offen, wenn ein Thema zunächst Recherche oder fachliche Freigabe benötigt." },
-      { question: "Garantiert eine zitierfähige Seite eine Nennung?", answer: "Nein. Sie schafft eine klarere, überprüfbare Grundlage. Ob ein externes System eine Seite nutzt oder zitiert, hängt von vielen Faktoren ab und ist nicht garantierbar." }
+      { question: "Garantiert eine zitierfähige Seite eine Nennung?", answer: "Nein. Sie schafft eine klarere, überprüfbare Grundlage. Ob ein externes System eine Seite nutzt oder zitiert, hängt von vielen Faktoren ab und ist nicht garantierbar." },
+      { question: "Was braucht ihr und was erhalten wir?", answer: "Wir brauchen das wichtigste Thema, Zielgruppe, Angebot und vorhandenes Fachwissen oder Quellen. Du erhältst ein redaktionelles Briefing, eine Antwortarchitektur, den abgestimmten Entwurf und eine nachvollziehbare Quellen- und Freigabespur. PATERNOGA strukturiert und redigiert; fachliche Aussagen und Veröffentlichung gibst du frei." }
     ]
   },
   closing: {
@@ -496,8 +497,8 @@ const geoContentEn: ServicePageContent = {
   alternateDePath: "/geo-content/",
   alternateEnPath: "/en/geo-content/",
   meta: {
-    title: "GEO Content for Dependable Answers and Sources | ELBSAND",
-    description: "GEO content develops clear, supported pages and content systems that answer customer questions and can serve as understandable sources in AI search."
+    title: "GEO Content for Dependable Answers and Sources | PATERNOGA",
+    description: "Build clear, supported GEO pages that answer real customer questions and can serve as traceable sources. Request a content project."
   },
   breadcrumb: { home: "Home", hub: "GEO optimisation", current: "GEO content" },
   eyebrow: "GEO content",
@@ -574,7 +575,8 @@ const geoContentEn: ServicePageContent = {
       { question: "Is GEO content simply a blog with AI keywords?", answer: "No. The focus is on real questions, clear answers, dependable sources and a useful connection to your offer. Keywords can support that work, but cannot replace a content job." },
       { question: "Does every statement need an external source?", answer: "No. Your services, processes and experience can come from your organisation. The important thing is that origin, currency and scope are not misleading." },
       { question: "Can you develop topics for pages that do not exist yet?", answer: "Yes. We prioritise topics from customer questions, existing sources and your offer, and make clear when a topic needs research or expert approval first." },
-      { question: "Does a citation-ready page guarantee a mention?", answer: "No. It creates a clearer, more verifiable foundation. Whether an external system uses or cites it depends on many factors and cannot be guaranteed." }
+      { question: "Does a citation-ready page guarantee a mention?", answer: "No. It creates a clearer, more verifiable foundation. Whether an external system uses or cites it depends on many factors and cannot be guaranteed." },
+      { question: "What do you need and what do we receive?", answer: "We need the priority topic, audience, offer and any existing subject knowledge or sources. You receive an editorial brief, answer architecture, the agreed draft and a traceable source and approval trail. PATERNOGA structures and edits; you approve subject-matter statements and publication." }
     ]
   },
   closing: {
@@ -591,8 +593,8 @@ const contentOptimizationDe: ServicePageContent = {
   alternateDePath: "/content-optimierung-ai-suche/",
   alternateEnPath: "/en/content-optimization-ai-search/",
   meta: {
-    title: "Content-Optimierung für AI-Suche: Bestehendes verbessern | ELBSAND",
-    description: "Content-Optimierung für AI-Suche prüft vorhandene Seiten auf Antwortklarheit, Quellen, Aktualität und interne Verbindungen – mit konkreten, priorisierten Überarbeitungen."
+    title: "Content-Optimierung für AI-Suche | PATERNOGA",
+    description: "Prüfe bestehende Seiten auf Antwortklarheit, Quellen, Aktualität und interne Verbindungen. Erhalte priorisierte Überarbeitungen. Check anfragen."
   },
   breadcrumb: {
     home: "Start",
@@ -614,7 +616,7 @@ const contentOptimizationDe: ServicePageContent = {
     variant: "content-refresh",
     eyebrow: "Illustrative Refresh-Ansicht",
     title: "Ein Inhalts-Refresh mit nachvollziehbaren Entscheidungen",
-    note: "Illustratives Beispiel – keine Analyse einer realen ELBSAND- oder Kundenseite.",
+    note: "Illustratives Beispiel – keine Analyse einer realen PATERNOGA- oder Kundenseite.",
     scoreLabel: "Abschnitte für den Refresh markiert",
     score: "7 / 11",
     checks: [
@@ -673,8 +675,9 @@ const contentOptimizationDe: ServicePageContent = {
     items: [
       { question: "Wann ist eine Überarbeitung besser als eine neue Seite?", answer: "Wenn die bestehende Seite bereits passende Autorität, Inhalte oder interne Verbindungen hat, aber Antworten, Aktualität oder Struktur nicht mehr sauber trägt. Die Entscheidung treffen wir anhand des konkreten Bestands." },
       { question: "Wie geht ihr mit alten Zahlen und Beispielen um?", answer: "Wir prüfen Zeitbezug, Quelle und Gültigkeitsbereich. Was nicht mehr belastbar ist, wird nicht still verlängert, sondern ersetzt, eingeordnet oder entfernt." },
-      { question: "Kann ich die redaktionellen Änderungen selbst umsetzen?", answer: "Ja. Du kannst eine klare Änderungsgrundlage erhalten oder ELBSAND mit Redaktion und Veröffentlichung beauftragen. Umfang und Verantwortlichkeiten werden vorher festgelegt." },
-      { question: "Verbessert ein Refresh automatisch die AI-Sichtbarkeit?", answer: "Nein. Ein klarerer und aktuellerer Inhalt verbessert die Grundlage, aber externe Systeme entscheiden weiterhin selbst, welche Quellen sie verwenden und wie sie antworten." }
+      { question: "Kann ich die redaktionellen Änderungen selbst umsetzen?", answer: "Ja. Du kannst eine klare Änderungsgrundlage erhalten oder PATERNOGA mit Redaktion und Veröffentlichung beauftragen. Umfang und Verantwortlichkeiten werden vorher festgelegt." },
+      { question: "Verbessert ein Refresh automatisch die AI-Sichtbarkeit?", answer: "Nein. Ein klarerer und aktuellerer Inhalt verbessert die Grundlage, aber externe Systeme entscheiden weiterhin selbst, welche Quellen sie verwenden und wie sie antworten." },
+      { question: "Was braucht ihr für den Start?", answer: "Wir brauchen die betroffenen URLs, das aktuelle Ziel der Seiten und vorhandene Quellen oder fachliche Ansprechpartner. PATERNOGA liefert den priorisierten Befund und je nach vereinbartem Umfang ein Änderungsbriefing oder die redaktionelle Umsetzung; Freigabe und Veröffentlichung werden vorab klar zugeordnet." }
     ]
   },
   closing: {
@@ -691,8 +694,8 @@ const contentOptimizationEn: ServicePageContent = {
   alternateDePath: "/content-optimierung-ai-suche/",
   alternateEnPath: "/en/content-optimization-ai-search/",
   meta: {
-    title: "Content Optimization for AI Search: Improve What Exists | ELBSAND",
-    description: "Content optimization for AI search reviews existing pages for answer clarity, sources, currency and internal connections, with concrete, prioritised revisions."
+    title: "Content Optimization for AI Search | PATERNOGA",
+    description: "Review existing pages for answer clarity, sources, currency and internal links. Get prioritised revisions. Request a content review."
   },
   breadcrumb: {
     home: "Home",
@@ -714,7 +717,7 @@ const contentOptimizationEn: ServicePageContent = {
     variant: "content-refresh",
     eyebrow: "Illustrative refresh view",
     title: "A content refresh with traceable decisions",
-    note: "Illustrative example – not an analysis of an ELBSAND or client page.",
+    note: "Illustrative example – not an analysis of an PATERNOGA or client page.",
     scoreLabel: "Sections marked for refresh",
     score: "7 / 11",
     checks: [
@@ -773,8 +776,9 @@ const contentOptimizationEn: ServicePageContent = {
     items: [
       { question: "When is a revision better than a new page?", answer: "When the existing page already has useful authority, content or internal connections, but no longer carries answers, currency or structure well. We decide from the actual inventory." },
       { question: "How do you handle old figures and examples?", answer: "We check time context, source and scope. Anything no longer dependable is not silently extended; it is replaced, qualified or removed." },
-      { question: "Can I implement the editorial changes myself?", answer: "Yes. You can receive a clear revision brief or ask ELBSAND to handle editing and publication. Scope and ownership are agreed beforehand." },
-      { question: "Does a refresh automatically improve AI visibility?", answer: "No. Clearer and more current content improves the foundation, but external systems still decide which sources they use and how they answer." }
+      { question: "Can I implement the editorial changes myself?", answer: "Yes. You can receive a clear revision brief or ask PATERNOGA to handle editing and publication. Scope and ownership are agreed beforehand." },
+      { question: "Does a refresh automatically improve AI visibility?", answer: "No. Clearer and more current content improves the foundation, but external systems still decide which sources they use and how they answer." },
+      { question: "What do you need to begin?", answer: "We need the affected URLs, the current job of each page and any existing sources or subject-matter contacts. PATERNOGA provides the prioritised finding and, depending on the agreed scope, a revision brief or editorial implementation; approval and publication ownership are assigned beforehand." }
     ]
   },
   closing: {

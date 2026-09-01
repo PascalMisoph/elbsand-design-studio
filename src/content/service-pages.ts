@@ -72,8 +72,8 @@ export const geoAuditPages: Record<ServiceLocale, ServicePageContent> = {
     alternateDePath: "/geo-audit/",
     alternateEnPath: "/en/geo-audit/",
     meta: {
-      title: "GEO Audit für Unternehmen | ELBSAND Design Studio",
-      description: "Ein GEO Audit prüft, wie KI-Suchsysteme dein Unternehmen einordnen, welche Quellen sie nutzen und wo konkrete Optimierungspotenziale liegen."
+      title: "GEO Audit für Unternehmen | Paternoga SEO & GEO Studio",
+      description: "Prüfe, wie KI-Systeme dein Unternehmen einordnen, welche Quellen sie nutzen und wo die stärksten GEO-Hebel liegen. Jetzt GEO Audit anfragen."
     },
     breadcrumb: { home: "Start", hub: "GEO-Optimierung", current: "GEO Audit" },
     eyebrow: "GEO Audit",
@@ -150,11 +150,12 @@ export const geoAuditPages: Record<ServiceLocale, ServicePageContent> = {
         { question: "Welche KI-Systeme werden geprüft?", answer: "Je nach Zielgruppe und Auditumfang betrachten wir die sichtbaren Nutzererlebnisse von ChatGPT, Perplexity, Claude, Microsoft Copilot, Google AI Overviews und AI Mode sowie Gemini. Grok oder DeepSeek beziehen wir ein, wenn sie für dein Thema relevant sind. Entscheidend ist nicht die größtmögliche Anzahl, sondern die Systeme, die deine Kunden tatsächlich nutzen." },
         { question: "Was lässt sich mit einem GEO Audit untersuchen?", answer: "Wir prüfen, wie häufig und in welchem Zusammenhang dein Unternehmen erscheint, wie dein Angebot beschrieben wird, welche Quellen Antworten prägen, wo Fakten falsch oder unvollständig sind und wie du gegenüber relevanten Wettbewerbern eingeordnet wirst. Zeiträume, Regionen oder Zielgruppen lassen sich bei Bedarf als eigener Prüfrahmen ergänzen." },
         { question: "Wie viele Marken oder Angebote kann ich prüfen lassen?", answer: "Ein klar abgegrenzter Audit konzentriert sich meist auf ein Unternehmen, ein Angebot und ein passendes Wettbewerbsumfeld. Mehrere Produktlinien, Standorte oder unterschiedliche Wettbewerbsgruppen können wir in getrennten Prüffeldern abbilden und vorab sinnvoll eingrenzen." },
-        { question: "Wie viele Fragen werden untersucht?", answer: "ELBSAND arbeitet nicht mit starren Prompt-Paketen. Der Fragenumfang richtet sich nach deinem Angebot, den wichtigsten Entscheidungssituationen und dem vereinbarten Audit-Tiefgang. So prüfen wir lieber eine relevante Auswahl konsistent als viele beliebige Fragen ohne geschäftlichen Bezug." },
-        { question: "Wie verbessere ich meine Sichtbarkeit in der KI-Suche?", answer: "Der Audit zeigt, bei welchen Fragen Wettbewerber oder andere Quellen bevorzugt werden und warum. Daraus priorisieren wir konkrete Verbesserungen an Fakten, Inhalten, Quellen, Seitenstruktur und technischer Erreichbarkeit. ELBSAND kann diese Maßnahmen anschließend mit dir planen oder direkt umsetzen." },
+        { question: "Wie viele Fragen werden untersucht?", answer: "PATERNOGA arbeitet nicht mit starren Prompt-Paketen. Der Fragenumfang richtet sich nach deinem Angebot, den wichtigsten Entscheidungssituationen und dem vereinbarten Audit-Tiefgang. So prüfen wir lieber eine relevante Auswahl konsistent als viele beliebige Fragen ohne geschäftlichen Bezug." },
+        { question: "Wie verbessere ich meine Sichtbarkeit in der KI-Suche?", answer: "Der Audit zeigt, bei welchen Fragen Wettbewerber oder andere Quellen bevorzugt werden und warum. Daraus priorisieren wir konkrete Verbesserungen an Fakten, Inhalten, Quellen, Seitenstruktur und technischer Erreichbarkeit. PATERNOGA kann diese Maßnahmen anschließend mit dir planen oder direkt umsetzen." },
         { question: "Welche Regionen und Sprachen lassen sich berücksichtigen?", answer: "Der Schwerpunkt liegt auf Deutschland und dem DACH-Markt, bei lokalen Unternehmen zusätzlich auf ihrem tatsächlichen Einzugsgebiet. Regionale und mehrsprachige Prüfungen sind möglich, wenn Angebot, Website und Zielgruppe dafür eine belastbare Grundlage bieten." },
         { question: "Garantiert ein Audit spätere Nennungen?", answer: "Nein. Ein Audit macht Voraussetzungen, Lücken und mögliche Hebel sichtbar. Eine konkrete Nennung oder Empfehlung durch ein externes System kann nicht garantiert werden." },
-        { question: "Brauche ich bereits viele Inhalte?", answer: "Nein. Der Audit zeigt gerade, welche bestehenden Inhalte verwendbar sind und wo neue, klar belegte Inhalte sinnvoll wären." }
+        { question: "Brauche ich bereits viele Inhalte?", answer: "Nein. Der Audit zeigt gerade, welche bestehenden Inhalte verwendbar sind und wo neue, klar belegte Inhalte sinnvoll wären." },
+        { question: "Was brauchen wir für den Start und was erhältst du?", answer: "Für den Start genügen deine Domain, das wichtigste Angebot, Zielmarkt oder Region und die Entscheidungssituationen, in denen dein Unternehmen sichtbar sein soll. Du erhältst einen priorisierten Auditbefund mit untersuchten Fragen, Antwortmustern, Quellen- und Technikhinweisen sowie klaren nächsten Entscheidungen. Fachliche Freigaben bleiben bei dir; PATERNOGA übernimmt Prüfung, Einordnung und Priorisierung." }
       ]
     },
     closing: { eyebrow: "Audit anfragen", title: "Klarheit vor der nächsten Maßnahme.", text: "Wir schauen zuerst, was bereits funktioniert, was Systeme missverstehen und welcher nächste Schritt wirklich sinnvoll ist.", cta: "GEO Audit besprechen" }
@@ -165,8 +166,8 @@ export const geoAuditPages: Record<ServiceLocale, ServicePageContent> = {
     alternateDePath: "/geo-audit/",
     alternateEnPath: "/en/geo-audit/",
     meta: {
-      title: "GEO Audit for Businesses | ELBSAND Design Studio",
-      description: "A GEO audit reviews how AI search systems understand your business, which sources they use and where specific optimisation opportunities exist."
+      title: "GEO Audit for Businesses | Paternoga SEO & GEO Studio",
+      description: "See how AI systems understand your business, which sources they use and where the strongest GEO opportunities lie. Request a GEO audit."
     },
     breadcrumb: { home: "Home", hub: "GEO optimisation", current: "GEO audit" },
     eyebrow: "GEO audit",
@@ -243,11 +244,12 @@ export const geoAuditPages: Record<ServiceLocale, ServicePageContent> = {
         { question: "Which AI systems are reviewed?", answer: "Depending on your audience and audit scope, we review the visible consumer experiences of ChatGPT, Perplexity, Claude, Microsoft Copilot, Google AI Overviews and AI Mode, and Gemini. Grok or DeepSeek can be included when relevant to your topic. The goal is not the longest platform list, but the systems your customers actually use." },
         { question: "What can a GEO audit examine?", answer: "We assess how often and in which context your business appears, how your offer is described, which sources shape answers, where facts are incomplete or wrong and how you compare with relevant competitors. Time periods, regions or audience groups can be added as a defined review frame when useful." },
         { question: "How many brands or offers can I review?", answer: "A clearly scoped audit usually focuses on one business, one offer and a relevant competitive set. Multiple product lines, locations or distinct competitor groups can be handled as separate review areas and scoped sensibly before work begins." },
-        { question: "How many questions are examined?", answer: "ELBSAND does not use rigid prompt plans. The question set follows your offer, the most important decision moments and the agreed audit depth. A relevant selection tested consistently is more useful than a large set of arbitrary prompts with little business context." },
-        { question: "How can I improve my visibility in AI search?", answer: "The audit shows where competitors or other sources are preferred and why. We turn those findings into prioritised improvements to facts, content, sources, page structure and technical accessibility. ELBSAND can then plan those measures with you or implement them directly." },
+        { question: "How many questions are examined?", answer: "PATERNOGA does not use rigid prompt plans. The question set follows your offer, the most important decision moments and the agreed audit depth. A relevant selection tested consistently is more useful than a large set of arbitrary prompts with little business context." },
+        { question: "How can I improve my visibility in AI search?", answer: "The audit shows where competitors or other sources are preferred and why. We turn those findings into prioritised improvements to facts, content, sources, page structure and technical accessibility. PATERNOGA can then plan those measures with you or implement them directly." },
         { question: "Which regions and languages can be considered?", answer: "The core focus is Germany and the DACH market, with local businesses reviewed in their actual service area. Regional and multilingual reviews are possible when the offer, website and audience provide a sound basis for them." },
         { question: "Does an audit guarantee future mentions?", answer: "No. An audit identifies prerequisites, gaps and potential levers. A mention or recommendation by an external system cannot be guaranteed." },
-        { question: "Do I already need a large content library?", answer: "No. The audit shows which existing content can be used and where new, clearly supported content would be valuable." }
+        { question: "Do I already need a large content library?", answer: "No. The audit shows which existing content can be used and where new, clearly supported content would be valuable." },
+        { question: "What do you need to begin and what do I receive?", answer: "To begin, we need your domain, core offer, target market or region and the decision moments in which the business should be visible. You receive a prioritised audit finding with reviewed questions, answer patterns, source and technical observations, and clear next decisions. Subject-matter approval remains with you; PATERNOGA handles review, interpretation and prioritisation." }
       ]
     },
     closing: { eyebrow: "Request an audit", title: "Clarity before the next measure.", text: "We first establish what already works, what systems misunderstand and which next step actually makes sense.", cta: "Discuss a GEO audit" }

@@ -1,0 +1,125 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+import LinkButton from "./LinkButton";
+import SubpageContact from "./SubpageContact.astro";
+import { content } from "../content/site";
+import { createServicePageSchema } from "../lib/seo";
+
+interface Props { lang: "de" | "en" }
+const { lang } = Astro.props;
+const de = lang === "de";
+const site = content[lang];
+const canonicalPath = de ? "/geo-agentur-deutschland/" : "/en/geo-agency-germany/";
+const alternateDePath = "/geo-agentur-deutschland/";
+const alternateEnPath = "/en/geo-agency-germany/";
+const copy = de ? {
+  meta: {
+    title: "GEO Agentur Deutschland | Paternoga SEO & GEO Studio",
+    description: "GEO-Agentur für Unternehmen in Deutschland: Audit, Technik, Content und Monitoring aus Dresden. Leistungen und Zusammenarbeit transparent prüfen.",
+  },
+  eyebrow: "GEO-Agentur Deutschland",
+  title: "GEO-Agentur für Unternehmen in Deutschland",
+  lead: "PATERNOGA ist ein spezialisiertes Studio für Generative Engine Optimization und AI-Sichtbarkeit mit Sitz in Dresden. Wir arbeiten mit Unternehmen in ganz Deutschland an der Frage, wie ihre Inhalte, Quellen und technischen Signale in Google und generativen Suchsystemen auffindbar, verständlich und überprüfbar werden.",
+  primary: "GEO-Projekt anfragen",
+  secondary: "Leistungen prüfen",
+  positionEyebrow: "Spezialist statt Schlagwort",
+  positionTitle: "Was eine GEO-Agentur konkret leisten sollte",
+  positionBody: "GEO ist kein einzelner Trick und keine Garantie auf eine Nennung. Eine belastbare Zusammenarbeit verbindet Diagnose, technische Zugänglichkeit, klare Inhalte, überprüfbare Unternehmenssignale und wiederholbare Messung.",
+  capabilities: [
+    { title: "Ausgangslage prüfen", text: "Ein GEO Audit ordnet relevante Fragen, aktuelle Antworten, Quellen, Wettbewerber und technische Grundlagen ein.", href: "/geo-audit/", link: "GEO Audit ansehen" },
+    { title: "Technik und Zugriff klären", text: "Crawlpfade, Indexierung, Rendering, strukturierte Daten und Bot-Richtlinien werden entlang konkreter URLs geprüft.", href: "/technische-geo-optimierung/", link: "Technische GEO ansehen" },
+    { title: "Antwortfähige Inhalte entwickeln", text: "Content wird nach echten Entscheidungsfragen, belastbaren Aussagen, Quellenbedarf und sinnvoller interner Verknüpfung aufgebaut.", href: "/geo-content/", link: "GEO-Content ansehen" },
+    { title: "Veränderungen beobachten", text: "Ein dokumentiertes Promptset, Quellen und Antwortmuster machen Entwicklungen über mehrere Messpunkte vergleichbar.", href: "/geo-monitoring/", link: "GEO-Monitoring ansehen" },
+  ],
+  collaborationEyebrow: "Deutschlandweite Zusammenarbeit",
+  collaborationTitle: "Dresden ist der Standort. Deutschland ist der Markt",
+  collaborationBody: "PATERNOGA hat keine fingierten Niederlassungen in anderen Städten. Projekte werden vom Studio in Dresden geführt und können deutschlandweit digital abgestimmt werden. Entscheidend sind Markt, Zielgruppen, Angebot und Informationsbedarf – nicht die Entfernung zum nächsten Agenturbüro.",
+  process: [
+    ["1", "Rahmen klären", "Domain, Markt, relevante Leistungen und Entscheidungsfragen festlegen."],
+    ["2", "Belege erfassen", "Website, Quellen, technische Signale und vorhandene Sichtbarkeit untersuchen."],
+    ["3", "Arbeit priorisieren", "Befunde nach Relevanz, Einflussbereich und Umsetzungsaufwand ordnen."],
+    ["4", "Umsetzen und prüfen", "Freigegebene Maßnahmen realisieren und Veränderungen dokumentiert nachmessen."],
+  ],
+  fitEyebrow: "Passung",
+  fitTitle: "Für wen die Zusammenarbeit sinnvoll ist",
+  fitBody: "Der Ansatz passt zu Unternehmen mit erklärungsbedürftigen Leistungen, belastbarem Fachwissen und dem Anspruch, ihre digitale Sichtbarkeit nachvollziehbar weiterzuentwickeln. Benötigt werden mindestens eine erreichbare Website, klare Ansprechpartner und die Bereitschaft, Aussagen, Quellen und Angebotsgrenzen fachlich zu prüfen.",
+  evidenceEyebrow: "Technische Einordnung",
+  evidenceTitle: "GEO baut auf Suchgrundlagen auf",
+  evidenceBody: "Google beschreibt für seine generativen Suchfunktionen dieselben Grundlagen wie für die klassische Suche: indexierbare Seiten, zugängliche Textinhalte, klare interne Links und strukturierte Daten, die den sichtbaren Inhalt korrekt abbilden. OpenAI und Perplexity dokumentieren zusätzlich eigene Such-Crawler. Daraus entstehen prüfbare Arbeitsfelder – keine garantierte Platzierung.",
+  sourceGoogle: "Google: AI-Funktionen und Website",
+  sourceOpenAi: "OpenAI: Publisher FAQ",
+  sourcePerplexity: "Perplexity: Crawler-Dokumentation",
+  closing: "Klären wir, welcher Einstieg für dein Unternehmen sinnvoll ist",
+} : {
+  meta: {
+    title: "GEO Agency Germany | Paternoga SEO & GEO Studio",
+    description: "A Germany-wide GEO agency for audits, technical foundations, content and monitoring. Specialist delivery from PATERNOGA's studio in Dresden.",
+  },
+  eyebrow: "GEO agency Germany",
+  title: "A GEO agency for companies across Germany",
+  lead: "PATERNOGA is a specialist studio for generative engine optimisation and AI visibility, based in Dresden. We work with companies across Germany to make their content, sources and technical signals easier to discover, understand and verify in Google and generative search systems.",
+  primary: "Discuss a GEO project",
+  secondary: "Review the services",
+  positionEyebrow: "A specialist, not a slogan",
+  positionTitle: "What a GEO agency should actually deliver",
+  positionBody: "GEO is neither a single trick nor a guarantee of inclusion. Credible work combines diagnosis, technical accessibility, clear content, verifiable company signals and repeatable measurement.",
+  capabilities: [
+    { title: "Establish the baseline", text: "A GEO audit assesses relevant questions, current answers, sources, competitors and technical foundations.", href: "/en/geo-audit/", link: "Explore the GEO audit" },
+    { title: "Clarify technical access", text: "Crawl paths, indexing, rendering, structured data and crawler policies are checked against concrete URLs.", href: "/en/technical-geo-optimization/", link: "Explore technical GEO" },
+    { title: "Build answer-ready content", text: "Content is structured around real decision questions, supportable claims, source requirements and useful internal links.", href: "/en/geo-content/", link: "Explore GEO content" },
+    { title: "Observe change", text: "A documented prompt set, sources and answer patterns make developments comparable across multiple measurement points.", href: "/en/geo-monitoring/", link: "Explore GEO monitoring" },
+  ],
+  collaborationEyebrow: "Germany-wide collaboration",
+  collaborationTitle: "Dresden is the location. Germany is the market",
+  collaborationBody: "PATERNOGA does not claim offices in other cities. Projects are led from the Dresden studio and can be coordinated digitally across Germany. The relevant variables are market, audience, offer and information needs — not proximity to an agency branch.",
+  process: [
+    ["1", "Define the frame", "Set the domain, market, relevant services and decision questions."],
+    ["2", "Collect evidence", "Review the website, sources, technical signals and current visibility."],
+    ["3", "Prioritise the work", "Order findings by relevance, controllability and implementation effort."],
+    ["4", "Implement and verify", "Deliver approved changes and remeasure them under documented conditions."],
+  ],
+  fitEyebrow: "Fit",
+  fitTitle: "Who this engagement is suited to",
+  fitBody: "The approach suits companies with complex services, real subject expertise and a need to develop digital visibility methodically. It requires at least an accessible website, clear stakeholders and a willingness to review claims, sources and service boundaries with subject experts.",
+  evidenceEyebrow: "Technical grounding",
+  evidenceTitle: "GEO builds on search fundamentals",
+  evidenceBody: "Google describes the same foundations for generative search features as for conventional Search: indexable pages, accessible text, clear internal links and structured data that matches visible content. OpenAI and Perplexity additionally document dedicated search crawlers. These create testable work areas — not guaranteed placement.",
+  sourceGoogle: "Google: AI features and your website",
+  sourceOpenAi: "OpenAI: publisher FAQ",
+  sourcePerplexity: "Perplexity: crawler documentation",
+  closing: "Let's establish the right starting point for your company",
+};
+
+const breadcrumbs = [
+  { name: de ? "Start" : "Home", href: de ? "/" : "/en/" },
+  { name: copy.eyebrow, href: canonicalPath },
+];
+const schema = createServicePageSchema({ lang, title: copy.meta.title, description: copy.meta.description, path: canonicalPath, serviceName: copy.eyebrow, breadcrumbs });
+---
+
+<BaseLayout title={copy.meta.title} description={copy.meta.description} lang={lang} canonicalPath={canonicalPath} alternateDePath={alternateDePath} alternateEnPath={alternateEnPath} schema={schema} bodyClass="ui-dark-page dark national-geo-route">
+  <Header lang={lang} nav={site.nav} cta={site.cta} page="service" alternateDePath={alternateDePath} alternateEnPath={alternateEnPath} />
+  <main id="main-content" class="min-h-screen bg-background text-foreground">
+    <section class="border-b border-solid border-border">
+      <div class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section">
+        <nav class="flex gap-2 text-xs text-muted-foreground" aria-label={de ? "Brotkrumen-Navigation" : "Breadcrumb"}><a class="text-inherit no-underline hover:text-foreground" href={de ? "/" : "/en/"}>{de ? "Start" : "Home"}</a><span aria-hidden="true">/</span><span aria-current="page">{copy.eyebrow}</span></nav>
+        <div class="max-w-3xl pt-12"><p class="m-0 text-xs font-medium uppercase tracking-wider text-primary">{copy.eyebrow}</p><h1 class="m-0 mt-6 text-display-mobile font-medium text-foreground md:text-display">{copy.title}</h1><p class="m-0 mt-6 max-w-2xl text-base leading-copy text-muted-foreground">{copy.lead}</p><div class="mt-8 flex flex-col gap-3 sm:flex-row"><LinkButton href="#kontakt" label={copy.primary} icon="right" /><LinkButton href="#leistungen" label={copy.secondary} variant="secondary" icon="down" /></div></div>
+      </div>
+    </section>
+
+    <section id="leistungen" class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section">
+      <header class="max-w-3xl"><p class="m-0 text-xs font-medium uppercase tracking-wider text-primary">{copy.positionEyebrow}</p><h2 class="m-0 mt-6 text-section-title font-medium text-foreground">{copy.positionTitle}</h2><p class="m-0 mt-6 max-w-2xl text-base leading-copy text-muted-foreground">{copy.positionBody}</p></header>
+      <div class="mt-12 grid grid-cols-1 border-l border-t border-solid border-border md:grid-cols-2">{copy.capabilities.map((item) => <article class="grid min-h-64 content-between gap-10 border-b border-r border-solid border-border p-6 md:p-8"><div><h3 class="m-0 text-card-title font-medium text-foreground">{item.title}</h3><p class="m-0 mt-4 text-base leading-copy text-muted-foreground">{item.text}</p></div><a class="w-fit text-sm font-medium text-primary underline decoration-transparent underline-offset-4 transition-colors hover:decoration-current focus-visible:decoration-current" href={item.href}>{item.link}</a></article>)}</div>
+    </section>
+
+    <section class="border-y border-solid border-border"><div class="mx-auto grid max-w-content grid-cols-1 gap-12 px-5 py-section-mobile md:px-12 lg:grid-cols-2 lg:py-section"><div><p class="m-0 text-xs font-medium uppercase tracking-wider text-primary">{copy.collaborationEyebrow}</p><h2 class="m-0 mt-6 text-section-title font-medium text-foreground">{copy.collaborationTitle}</h2><p class="m-0 mt-6 text-base leading-copy text-muted-foreground">{copy.collaborationBody}</p></div><ol class="m-0 grid list-none gap-0 border-t border-solid border-border p-0">{copy.process.map(([number, title, text]) => <li class="grid grid-cols-[2rem_1fr] gap-4 border-b border-solid border-border py-6"><span class="text-sm text-primary">{number}</span><div><h3 class="m-0 text-card-title font-medium text-foreground">{title}</h3><p class="m-0 mt-3 text-base leading-copy text-muted-foreground">{text}</p></div></li>)}</ol></div></section>
+
+    <section class="mx-auto grid max-w-content grid-cols-1 gap-12 px-5 py-section-mobile md:px-12 lg:grid-cols-2 lg:py-section"><div><p class="m-0 text-xs font-medium uppercase tracking-wider text-primary">{copy.fitEyebrow}</p><h2 class="m-0 mt-6 text-section-title font-medium text-foreground">{copy.fitTitle}</h2><p class="m-0 mt-6 text-base leading-copy text-muted-foreground">{copy.fitBody}</p></div><div><p class="m-0 text-xs font-medium uppercase tracking-wider text-primary">{copy.evidenceEyebrow}</p><h2 class="m-0 mt-6 text-section-title font-medium text-foreground">{copy.evidenceTitle}</h2><p class="m-0 mt-6 text-base leading-copy text-muted-foreground">{copy.evidenceBody}</p><ul class="mt-6 grid list-none gap-3 p-0 text-sm"><li><a class="text-primary underline underline-offset-4" href="https://developers.google.com/search/docs/appearance/ai-features" target="_blank" rel="noopener">{copy.sourceGoogle}</a></li><li><a class="text-primary underline underline-offset-4" href="https://help.openai.com/en/articles/12627856-publishers-and-developers-faq" target="_blank" rel="noopener">{copy.sourceOpenAi}</a></li><li><a class="text-primary underline underline-offset-4" href="https://docs.perplexity.ai/docs/resources/perplexity-crawlers" target="_blank" rel="noopener">{copy.sourcePerplexity}</a></li></ul></div></section>
+
+    <section class="border-t border-solid border-border"><div class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><h2 class="m-0 max-w-3xl text-section-title font-medium text-foreground">{copy.closing}</h2></div></section>
+    <SubpageContact lang={lang} source="national-geo-agency" />
+  </main>
+  <Footer {...site.footer} lang={lang} />
+</BaseLayout>

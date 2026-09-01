@@ -1,5 +1,7 @@
 import { expect, test } from "@playwright/test";
 
+const TEST_ORIGIN = process.env.TEST_ORIGIN ?? "http://127.0.0.1:4321";
+
 const sizes = [
   ["mobile-320", 320, 700],
   ["mobile-375", 375, 812],
@@ -16,7 +18,7 @@ for (const [name, width, height] of sizes) {
     const errors: string[] = [];
     page.on("console", (message) => message.type() === "error" && errors.push(message.text()));
     await page.setViewportSize({ width, height });
-    await page.goto("http://127.0.0.1:4321/", { waitUntil: "networkidle" });
+    await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
 
     const geometry = await page.evaluate(() => ({
       scrollWidth: document.documentElement.scrollWidth,
@@ -56,11 +58,12 @@ for (const [name, width, height] of sizes) {
       await image.scrollIntoViewIfNeeded();
     }
     await page.locator("footer").scrollIntoViewIfNeeded();
-    expect(await page.locator("img").count()).toBeGreaterThanOrEqual(25);
+    // The brand lockup is semantic text; this count covers the remaining content imagery.
+    expect(await page.locator("img").count()).toBeGreaterThanOrEqual(24);
     await expect(page.locator(".hero-media video")).toHaveCount(1);
     await expect(page.locator('.hero-media source[type="video/mp4"]')).toHaveAttribute(
       "src",
-      "/video/elbsand-search-shift-de.mp4"
+      "/video/paternoga-search-shift-de.mp4"
     );
     await page.waitForFunction(() => [...document.images].every((image) => image.complete));
     const brokenImages = await page.locator("img").evaluateAll((images) => {
@@ -75,7 +78,7 @@ for (const [name, width, height] of sizes) {
 test("keyboard focus, reduced motion and mobile menu", async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.emulateMedia({ reducedMotion: "reduce" });
-  await page.goto("http://127.0.0.1:4321/", { waitUntil: "networkidle" });
+  await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
   await page.keyboard.press("Tab");
   await expect(page.locator(".skip-link")).toBeFocused();
   const focusStyle = await page.locator(".skip-link").evaluate((element) => getComputedStyle(element).outlineStyle);
@@ -93,7 +96,7 @@ test("keyboard focus, reduced motion and mobile menu", async ({ page }) => {
 
 test("Profound-style header keeps the service network simple and accessible", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto("http://127.0.0.1:4321/", { waitUntil: "networkidle" });
+  await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
   const desktopNav = page.locator(".desktop-nav");
   expect(await desktopNav.locator(":scope > .header-menu > summary").allTextContents()).toEqual([
     "Leistungen",
@@ -108,7 +111,7 @@ test("Profound-style header keeps the service network simple and accessible", as
 
   await desktopNav.locator(".header-menu > summary").first().click();
   await expect(desktopNav.locator(".header-menu").first()).toHaveAttribute("open", "");
-  await expect(desktopNav.locator(".header-menu").first().getByRole("link")).toHaveCount(14);
+  await expect(desktopNav.locator(".header-menu").first().getByRole("link")).toHaveCount(15);
   await desktopNav.locator(".header-menu > summary").nth(1).click();
   await expect(desktopNav.locator(".header-menu").first()).not.toHaveAttribute("open", "");
   await expect(desktopNav.locator(".header-menu").nth(1)).toHaveAttribute("open", "");
@@ -132,7 +135,7 @@ test("Profound-style header keeps the service network simple and accessible", as
 });
 
 test("selected projects marquee moves", async ({ page }) => {
-  await page.goto("http://127.0.0.1:4321/", { waitUntil: "networkidle" });
+  await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
   const marquee = page.locator(".proof-list");
   await expect(marquee).toHaveCSS("animation-name", "marquee");
   const primaryLogos = page.locator(".marquee-group").first();
@@ -160,7 +163,7 @@ test("selected projects marquee moves", async ({ page }) => {
 });
 
 test("project section uses the final real-image selection", async ({ page }) => {
-  await page.goto("http://127.0.0.1:4321/", { waitUntil: "networkidle" });
+  await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
   expect(await page.locator(".featured-project, .project-card").locator("h3").allTextContents()).toEqual([
     "Rays of Hope",
     "Eurosummer",
@@ -182,7 +185,7 @@ test("project section uses the final real-image selection", async ({ page }) => 
 });
 
 test("service checks replace numbers and animate once in view", async ({ page }) => {
-  await page.goto("http://127.0.0.1:4321/", { waitUntil: "networkidle" });
+  await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
   await expect(page.locator(".offer-item .offer-check")).toHaveCount(3);
   expect(await page.locator(".offer-item").evaluateAll((items) =>
     items.map((item) => item.querySelector(":scope > span")?.textContent?.trim())
@@ -203,7 +206,7 @@ test("service checks replace numbers and animate once in view", async ({ page })
 
 test("SEO and GEO uses an accessible responsive Bento grid", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto("http://127.0.0.1:4321/", { waitUntil: "networkidle" });
+  await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
 
   const section = page.locator(".visibility-band");
   const desktopNav = page.locator(".desktop-nav");
@@ -256,7 +259,7 @@ test("SEO and GEO uses an accessible responsive Bento grid", async ({ page }) =>
 
 test("process contact card is responsive and directly actionable", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto("http://127.0.0.1:4321/", { waitUntil: "networkidle" });
+  await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
   const section = page.locator(".process");
   const card = section.locator(".process-contact-card");
   await expect(card).toHaveCount(1);
@@ -270,8 +273,8 @@ test("process contact card is responsive and directly actionable", async ({ page
   expect(await section.locator(".process-step h3").allTextContents()).toEqual([
     "Wunschtermin wählen",
     "Bestand prüfen",
-    "Seiten planen",
-    "Design festlegen",
+    "Struktur & Seiten planen",
+    "Design & User Experience festlegen",
     "Website bauen & veröffentlichen",
   ]);
   await expect(section.locator(".process-step").first()).toHaveClass(/is-current/);
@@ -299,7 +302,7 @@ test("process contact card is responsive and directly actionable", async ({ page
 
 test("editorial support bridges process and contact with responsive portraits", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto("http://127.0.0.1:4321/", { waitUntil: "networkidle" });
+  await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
 
   const support = page.locator(".editorial-support");
   await expect(support).toHaveCount(1);
@@ -344,16 +347,17 @@ test("editorial support bridges process and contact with responsive portraits", 
 });
 
 test("English route and form semantics", async ({ page }) => {
-  await page.goto("http://127.0.0.1:4321/en/", { waitUntil: "networkidle" });
+  await page.goto(`${TEST_ORIGIN}/en/`, { waitUntil: "networkidle" });
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
-  const calendarTab = page.getByRole("tab", { name: "Book an initial consultation" });
-  const formTab = page.getByRole("tab", { name: "Send a project enquiry" });
+  const calendarTab = page.getByRole("tab", { name: "Book a visibility consultation" });
+  const formTab = page.getByRole("tab", { name: "Enquire about SEO & GEO" });
   await expect(calendarTab).toHaveAttribute("aria-selected", "false");
   await expect(page.locator('[data-contact-panel="calendar"]')).toBeHidden();
   await expect(page.locator('form[data-contact-panel="form"]')).toBeHidden();
   await calendarTab.click();
   await expect(calendarTab).toHaveAttribute("aria-selected", "true");
   await expect(page.locator('[data-contact-panel="calendar"]')).toBeVisible();
+  await expect(page.locator('script[src="https://assets.calendly.com/assets/external/widget.js"]')).toHaveCount(0);
   await formTab.click();
   await expect(formTab).toHaveAttribute("aria-selected", "true");
   await expect(page.locator('[data-contact-panel="calendar"]')).toBeHidden();
@@ -369,6 +373,12 @@ test("English route and form semantics", async ({ page }) => {
   await expect(page.locator('[data-flow-step="2"]')).toBeVisible();
   await expect(page.locator('form[data-contact-flow] input[name="email"]')).toBeVisible();
   await expect(page.locator('.calendly-inline-widget[data-url="https://calendly.com/pascal-misoph/erstgespraech"]')).toHaveCount(1);
+  await calendarTab.click();
+  await expect(page.locator('[data-calendly-consent]')).toBeVisible();
+  await expect(page.locator('script[src="https://assets.calendly.com/assets/external/widget.js"]')).toHaveCount(0);
+  await page.locator('[data-calendly-consent] [data-open-consent-settings]').click();
+  await page.locator('[data-consent-external]').check();
+  await page.locator('[data-consent-save]').click();
   await expect(page.locator('script[src="https://assets.calendly.com/assets/external/widget.js"]')).toHaveCount(1);
   await expect(page.locator('a[hreflang="en"]')).toHaveAttribute("aria-current", "page");
 });
@@ -410,7 +420,7 @@ test("AI check gates blurred findings behind first name and email", async ({ pag
     await route.fulfill({ contentType: "application/json", body: JSON.stringify({ ok: true }) });
   });
 
-  await page.goto("http://127.0.0.1:4321/", { waitUntil: "networkidle" });
+  await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
   const compactStart = await page.locator("#ki-check .ai-check-surface").evaluate((surface) => {
     const phases = surface.querySelector(".ai-check-phases")!;
     const row = surface.querySelector(".ai-check-url-row")!.getBoundingClientRect();
@@ -466,7 +476,7 @@ test("AI check gates blurred findings behind first name and email", async ({ pag
   await expect(failedRows.first().locator("strong")).toHaveCSS("color", "rgb(185, 28, 28)");
   await expect(result.locator("[data-live-cta]")).toBeVisible();
   await expect(result.locator(".ai-recommendation h4")).toHaveText("Deine größten Potenziale");
-  await expect(result.locator(".ai-recommendation-copy")).toContainText("welche Optimierungen den größten Hebel haben");
+  await expect(result.locator(".ai-recommendation-copy")).toContainText("welche technischen und inhaltlichen Voraussetzungen");
   await expect(result.locator("[data-recommendation-cta]")).toHaveCount(0);
   await expect(result.locator("[data-live-cta]")).toHaveText("Kostenlose Auswertung vereinbaren");
   await expect(result.locator("[data-live-cta]")).toHaveAttribute("href", "#kontakt");

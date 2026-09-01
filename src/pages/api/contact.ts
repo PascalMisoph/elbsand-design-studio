@@ -3,12 +3,18 @@ import { createHash, randomUUID } from "node:crypto";
 import { appendFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 
+import { createInMemoryRateLimiter } from "@/lib/server/rate-limit";
+
 export const prerender = false;
 
 const MAX_REQUEST_BYTES = 12_000;
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
 const RATE_LIMIT_MAX = 5;
-const requestHistory = new Map<string, number[]>();
+const RESEND_ENDPOINT = "https://api.resend.com/emails";
+const isRateLimited = createInMemoryRateLimiter({
+  windowMs: RATE_LIMIT_WINDOW_MS,
+  maxRequests: RATE_LIMIT_MAX,
+});
 
 const text = (value: unknown, maxLength: number) =>
   typeof value === "string" ? value.trim().slice(0, maxLength) : "";
@@ -30,31 +36,93 @@ const getClientAddress = (request: Request) =>
   request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
   "unknown";
 
-const isRateLimited = (address: string) => {
-  const now = Date.now();
-  const recent = (requestHistory.get(address) ?? []).filter(
-    (timestamp) => now - timestamp < RATE_LIMIT_WINDOW_MS,
+interface ContactRecord {
+  id: string;
+  reference: string;
+  createdAt: string;
+  status: "new";
+  intent: string;
+  details: string;
+  name: string;
+  email: string;
+  locale: "de" | "en";
+  source: string;
+  clientHash: string;
+  userAgent: string;
+}
+
+const persistLocally = async (record: ContactRecord) => {
+  const dataDirectory = path.join(process.cwd(), ".data");
+  await mkdir(dataDirectory, { recursive: true });
+  await appendFile(
+    path.join(dataDirectory, "contact-inquiries.ndjson"),
+    `${JSON.stringify(record)}\n`,
+    { encoding: "utf8" },
   );
-  if (recent.length >= RATE_LIMIT_MAX) return true;
-  recent.push(now);
-  requestHistory.set(address, recent);
-  return false;
+};
+
+const deliverWithResend = async (record: ContactRecord) => {
+  const apiKey = process.env.RESEND_API_KEY?.trim();
+  const from = process.env.CONTACT_FROM_EMAIL?.trim();
+  const to = process.env.CONTACT_TO_EMAIL?.trim();
+
+  if (!apiKey || !from || !to) {
+    throw new Error("contact_delivery_not_configured");
+  }
+
+  const intentLabels: Record<string, string> = {
+    new: "Neues Projekt",
+    improve: "Bestehende Website",
+    advice: "Beratung",
+  };
+  const message = [
+    `Referenz: ${record.reference}`,
+    `Eingang: ${record.createdAt}`,
+    `Quelle: ${record.source}`,
+    `Sprache: ${record.locale}`,
+    `Anliegen: ${intentLabels[record.intent] ?? record.intent}`,
+    `Name: ${record.name}`,
+    `E-Mail: ${record.email}`,
+    "",
+    record.details,
+  ].join("\n");
+
+  const response = await fetch(RESEND_ENDPOINT, {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${apiKey}`,
+      "content-type": "application/json",
+      "idempotency-key": record.id,
+    },
+    body: JSON.stringify({
+      from,
+      to: [to],
+      reply_to: record.email,
+      subject: `PATERNOGA Anfrage · ${record.reference} · ${intentLabels[record.intent] ?? record.intent}`,
+      text: message,
+    }),
+    signal: AbortSignal.timeout(10_000),
+  });
+
+  if (!response.ok) {
+    throw new Error(`contact_delivery_failed_${response.status}`);
+  }
 };
 
 const htmlConfirmation = (locale: string, reference: string) => {
   const isEnglish = locale === "en";
-  const title = isEnglish ? "Thank you for your enquiry." : "Vielen Dank für deine Anfrage.";
+  const title = isEnglish ? "The next step is ready." : "Der nächste Schritt ist vorbereitet.";
   const body = isEnglish
-    ? "Your details have been received. Pascal will reply personally."
-    : "Deine Angaben sind angekommen. Pascal meldet sich persönlich bei dir.";
-  const back = isEnglish ? "Back to ELBSAND" : "Zurück zu ELBSAND";
+    ? "Pascal will review your details personally and get back to you with an initial assessment and suitable next steps."
+    : "Pascal prüft deine Angaben persönlich und meldet sich mit einer ersten Einschätzung und passenden nächsten Schritten.";
+  const back = isEnglish ? "Back to PATERNOGA" : "Zurück zu PATERNOGA";
 
   return `<!doctype html>
 <html lang="${isEnglish ? "en" : "de"}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>${escapeHtml(title)} · ELBSAND Design Studio</title>
+    <title>${escapeHtml(title)} · Paternoga SEO & GEO Studio</title>
     <style>
       :root { color-scheme: light; font-family: Inter, system-ui, sans-serif; background: #f4f0e8; color: #1b1a17; }
       body { min-height: 100vh; display: grid; place-items: center; margin: 0; padding: 24px; }
@@ -67,7 +135,7 @@ const htmlConfirmation = (locale: string, reference: string) => {
   </head>
   <body>
     <main>
-      <p>ELBSAND · ${escapeHtml(reference)}</p>
+      <p>PATERNOGA · ${escapeHtml(reference)}</p>
       <h1>${escapeHtml(title)}</h1>
       <p>${escapeHtml(body)}</p>
       <a href="/">${escapeHtml(back)}</a>
@@ -86,7 +154,12 @@ export const POST: APIRoute = async ({ request }) => {
   const origin = request.headers.get("origin");
   const fetchSite = request.headers.get("sec-fetch-site");
   if (origin) {
-    const originHost = new URL(origin).host;
+    let originHost: string;
+    try {
+      originHost = new URL(origin).host;
+    } catch {
+      return Response.json({ ok: false, error: "invalid_origin" }, { status: 403 });
+    }
     const acceptedHosts = new Set(
       [
         requestUrl.host,
@@ -105,7 +178,11 @@ export const POST: APIRoute = async ({ request }) => {
 
   try {
     if (contentType.includes("application/json")) {
-      payload = await request.json();
+      const parsed: unknown = await request.json();
+      if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+        return Response.json({ ok: false, error: "invalid_request" }, { status: 400 });
+      }
+      payload = parsed as Record<string, unknown>;
     } else {
       payload = Object.fromEntries(await request.formData());
     }
@@ -147,7 +224,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   const id = randomUUID();
   const reference = id.slice(0, 8).toUpperCase();
-  const record = {
+  const record: ContactRecord = {
     id,
     reference,
     createdAt: new Date().toISOString(),
@@ -163,16 +240,15 @@ export const POST: APIRoute = async ({ request }) => {
   };
 
   try {
-    const dataDirectory = path.join(process.cwd(), ".data");
-    await mkdir(dataDirectory, { recursive: true });
-    await appendFile(
-      path.join(dataDirectory, "contact-inquiries.ndjson"),
-      `${JSON.stringify(record)}\n`,
-      { encoding: "utf8" },
-    );
+    if (import.meta.env.PROD) {
+      await deliverWithResend(record);
+    } else {
+      await persistLocally(record);
+    }
   } catch (error) {
-    console.error("Unable to persist contact enquiry", error);
-    return Response.json({ ok: false, error: "persistence_failed" }, { status: 500 });
+    const reason = error instanceof Error ? error.message : "unknown_error";
+    console.error("Unable to deliver contact enquiry", { reference, reason });
+    return Response.json({ ok: false, error: "delivery_failed" }, { status: 503 });
   }
 
   if (contentType.includes("application/json")) {

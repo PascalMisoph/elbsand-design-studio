@@ -26,9 +26,9 @@
   "scripts": {
     "dev": "remotion studio",
     "build": "remotion bundle",
-    "render:de": "remotion render ElbsandSearchShiftDe out/elbsand-search-shift-de.mp4 --codec=h264 --crf=22 --scale=2 --timeout=120000 --concurrency=4",
-    "render:en": "remotion render ElbsandSearchShiftEn out/elbsand-search-shift-en.mp4 --codec=h264 --crf=22 --scale=2 --timeout=120000 --concurrency=4",
-    "still": "remotion still ElbsandSearchShiftDe out/elbsand-search-shift-poster.png --frame=0 --timeout=120000",
+    "render:de": "remotion render PaternogaSearchShiftDe out/paternoga-search-shift-de.mp4 --codec=h264 --crf=22 --scale=2 --timeout=120000 --concurrency=4",
+    "render:en": "remotion render PaternogaSearchShiftEn out/paternoga-search-shift-en.mp4 --codec=h264 --crf=22 --scale=2 --timeout=120000 --concurrency=4",
+    "still": "remotion still PaternogaSearchShiftDe out/paternoga-search-shift-poster.png --frame=0 --timeout=120000",
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc"
   },

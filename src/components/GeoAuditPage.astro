@@ -3,13 +3,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
 import SubpageContact from "./SubpageContact.astro";
-import GeoAuditFeatureVisual from "./GeoAuditFeatureVisual.astro";
+import ServicePresenceGrid from "./ServicePresenceGrid.astro";
 import { ChartNoAxesCombined, ListChecks, Network, SlidersHorizontal } from "@lucide/astro";
 import openAiLogo from "@lobehub/icons-static-svg/icons/openai.svg?url";
 import perplexityLogo from "@lobehub/icons-static-svg/icons/perplexity.svg?url";
 import claudeLogo from "@lobehub/icons-static-svg/icons/claude.svg?url";
 import type { ServicePageContent } from "../content/service-pages";
 import { content } from "../content/site";
+import { createServicePageSchema } from "../lib/seo";
 
 interface Props { page: ServicePageContent }
 const { page } = Astro.props;
@@ -23,11 +24,7 @@ const crumbs = [
   { name: page.breadcrumb.hub, href: hub },
   { name: page.breadcrumb.current, href: canonical }
 ];
-const schema = { "@context": "https://schema.org", "@graph": [
-  { "@type": "Service", name: page.eyebrow, description: page.meta.description, url: new URL(canonical, "https://elbsand.studio").toString(), provider: { "@type": "ProfessionalService", name: "ELBSAND Design Studio" } },
-  { "@type": "BreadcrumbList", itemListElement: crumbs.map((item, i) => ({ "@type": "ListItem", position: i + 1, name: item.name, item: new URL(item.href, "https://elbsand.studio").toString() })) },
-  { "@type": "FAQPage", mainEntity: page.faq.items.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) }
-] };
+const schema = createServicePageSchema({ lang: page.lang, title: page.meta.title, description: page.meta.description, path: canonical, serviceName: page.eyebrow, breadcrumbs: crumbs, faqs: page.faq.items });
 const storyIcons = [SlidersHorizontal, ChartNoAxesCombined, Network, ListChecks];
 const answerPlatforms = [
   { name: "ChatGPT", logo: openAiLogo },
@@ -56,14 +53,14 @@ const presenceFeatures = de ? [
   <main id="main-content" class="audit-page">
     <section class="a-hero a-shell">
       <nav class="a-crumbs" aria-label={de ? "Brotkrumen-Navigation" : "Breadcrumb"}>{crumbs.map((item, i) => <>{i > 0 && <span aria-hidden="true">/</span>}{i === crumbs.length - 1 ? <span aria-current="page">{item.name}</span> : <a href={item.href}>{item.name}</a>}</>)}</nav>
-      <div class="a-hero-grid"><div class="a-hero-copy"><p class="a-kicker">{page.eyebrow}</p><h1>{page.title}</h1><p>{page.lead}</p><div class="a-actions"><a class="a-button" href={`${homePath}#ki-check`}>{page.primaryCta}</a><a class="a-link" href="#audit-story">{page.secondaryCta}<span aria-hidden="true">↓</span></a></div></div><div class="a-report" aria-label={de ? "Dashboard zur KI-Sichtbarkeit" : "AI visibility dashboard"}><div class="a-report-top"><span><i></i><i></i><i></i></span><b>ELBSAND / GEO AUDIT</b></div></div></div>
+      <div class="a-hero-grid"><div class="a-hero-copy"><p class="a-kicker">{page.eyebrow}</p><h1>{page.title}</h1><p>{page.lead}</p><div class="a-actions"><a class="a-button" href={`${homePath}#ki-check`}>{page.primaryCta}</a><a class="a-link" href="#audit-story">{page.secondaryCta}<span aria-hidden="true">↓</span></a></div></div><div class="a-report" aria-label={de ? "Illustratives Dashboard zur KI-Sichtbarkeit" : "Illustrative AI visibility dashboard"}><div class="a-report-top"><span><i></i><i></i><i></i></span><b>PATERNOGA / GEO AUDIT</b></div><p class="a-report-provenance">{de ? "Illustratives Audit-Beispiel · keine Kundendaten" : "Illustrative audit example · no client data"}</p></div></div>
     </section>
 
-    <section class="a-presence a-shell" data-a-reveal><header><h2>{de ? "Verstehe und kontrolliere deine KI-Präsenz" : "Understand and control your AI Presence"}</h2></header><div class="a-presence-grid">{presenceFeatures.map((item, index) => <article class="has-reference-image"><GeoAuditFeatureVisual index={index} lang={page.lang} /><div class="a-presence-copy"><h3>{item.title}</h3><p>{item.text}</p></div></article>)}</div></section>
+    <ServicePresenceGrid heading={de ? "Verstehe und ordne deine KI-Präsenz ein" : "Understand and assess your AI presence"} items={presenceFeatures} lang={page.lang} />
 
     <section id="audit-story" class="a-story a-shell" data-a-story>
       <div class="a-story-copy">
-        <h2>{de ? "Erkenne, was KI potenziellen Kunden über dein Unternehmen sagt." : "See what AI tells potential customers about your business."}</h2>
+        <h2>{de ? "Erkenne, was KI potenziellen Kunden über dein Unternehmen sagt" : "See what AI tells potential customers about your business"}</h2>
         <p>{de ? "Du erfährst, ob dein Angebot korrekt verstanden wird, welche Quellen das Bild prägen und was du konkret verbessern kannst, um bei relevanten Entscheidungen sichtbarer und vertrauenswürdiger zu werden." : "Find out whether your offer is understood correctly, which sources shape the story and what to improve so your business becomes more visible and credible at relevant decision moments."}</p>
       </div>
       <div class="a-story-list">
@@ -82,7 +79,7 @@ const presenceFeatures = de ? [
 
     <section class="a-method a-shell" data-platform-story>
       <div class="a-method-copy">
-        <h2>{de ? "Gewinne Einblicke aus den wichtigsten KI-Antwortsystemen." : "Gain insight across the major AI answer engines."}</h2>
+        <h2>{de ? "Gewinne Einblicke aus den wichtigsten KI-Antwortsystemen" : "Gain insight across the major AI answer engines"}</h2>
         <p>{de ? "Wir betrachten Antworten so, wie potenzielle Kunden sie tatsächlich sehen – in der realen Nutzeransicht der Systeme und nicht ausschließlich als isolierte API-Ausgabe." : "We review answers as potential customers actually see them – in the systems’ real consumer experience rather than relying exclusively on isolated API output."}</p>
       </div>
       <div class="a-platform-stack">
@@ -108,14 +105,14 @@ const presenceFeatures = de ? [
   const reduceAudit = window.matchMedia("(prefers-reduced-motion: reduce)");
   if (auditRoot && !reduceAudit.matches) {
     const reveal = new IntersectionObserver((entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add("is-visible")), { threshold: .14, rootMargin: "0px 0px -10%" });
-    auditRoot.querySelectorAll("[data-a-reveal]").forEach((el) => reveal.observe(el));
+    auditRoot.querySelectorAll("[data-presence-reveal], [data-a-reveal]").forEach((el) => reveal.observe(el));
     const steps = [...auditRoot.querySelectorAll("[data-a-step]")];
     const observer = new IntersectionObserver((entries) => { const active = entries.filter((e) => e.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0]; if (!active) return; const index = Number(active.target.getAttribute("data-a-step")); steps.forEach((step, i) => step.classList.toggle("is-active", i === index)); }, { threshold: [.28,.6], rootMargin: "-24% 0px -42%" });
     steps.forEach((step) => observer.observe(step));
     const platformPanels = [...auditRoot.querySelectorAll("[data-platform-panel]")];
     const platformObserver = new IntersectionObserver((entries) => { const active = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]; if (!active) return; platformPanels.forEach((panel) => panel.classList.toggle("is-active", panel === active.target)); }, { threshold: [.3, .65], rootMargin: "-18% 0px -38%" });
     platformPanels.forEach((panel) => platformObserver.observe(panel));
-  } else auditRoot?.querySelectorAll("[data-a-reveal]").forEach((el) => el.classList.add("is-visible"));
+  } else auditRoot?.querySelectorAll("[data-presence-reveal], [data-a-reveal]").forEach((el) => el.classList.add("is-visible"));
 </script>
 
 <style>
@@ -124,10 +121,11 @@ const presenceFeatures = de ? [
   @media(max-width:860px){.a-hero-grid,.a-insights>header,.a-story,.a-method,.a-faq{grid-template-columns:minmax(0,1fr)}.a-hero-grid>*,.a-insights>header>*,.a-story>*,.a-method>*,.a-faq>*{min-width:0}}
   @media(max-width:560px){.a-report{width:100%;max-width:100%;transform:none}}
   .a-report {
+    position: relative;
     min-height: 0;
     aspect-ratio: 810 / 971;
     border: 1px solid var(--a-line);
-    background: #0c0c0b url("/images/geo-audit-visibility-score.png") center / calc(100% - 28px) auto no-repeat;
+    background: #0c0c0b url("/images/geo-audit-visibility-score.webp") center / calc(100% - 28px) auto no-repeat;
     border-radius: 14px;
     padding: 0;
     overflow: hidden;
@@ -136,6 +134,19 @@ const presenceFeatures = de ? [
   }
   .a-report:hover { transform: none; }
   .a-report > * { display: none; }
+  .a-report > .a-report-provenance {
+    position: absolute;
+    right: 14px;
+    bottom: 12px;
+    display: block;
+    margin: 0;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, .76);
+    padding: 6px 8px;
+    color: rgba(251, 248, 242, .72);
+    font-size: 10px;
+    line-height: 1.4;
+  }
   :global(body.audit-route),
   :global(body.audit-route .site-header),
   :global(body.audit-route .site-footer),
@@ -145,96 +156,6 @@ const presenceFeatures = de ? [
     border-color: transparent;
     background-color: #000;
   }
-  .a-presence {
-    border-top: 1px solid var(--a-line);
-    padding-top: 128px;
-    padding-bottom: 140px;
-  }
-  .a-presence > header {
-    margin-bottom: 68px;
-    text-align: center;
-  }
-  .a-presence h2 {
-    margin: 0 auto;
-    color: var(--a-ink);
-    font-family: var(--sans);
-    font-size: 46px;
-    font-weight: 520;
-    letter-spacing: -.055em;
-    line-height: 1;
-  }
-  .a-presence-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    border-top: 1px solid var(--a-line);
-    border-left: 1px solid var(--a-line);
-  }
-  .a-presence-grid > article {
-    display: flex;
-    min-width: 0;
-    min-height: 520px;
-    flex-direction: column;
-    border-right: 1px solid var(--a-line);
-    border-bottom: 1px solid var(--a-line);
-    padding: 34px 36px 38px;
-  }
-  .a-presence-grid > article.has-reference-image {
-    transition: background-color 420ms ease, box-shadow 420ms ease;
-  }
-  .a-presence-grid > article.has-reference-image:hover {
-    background: rgba(183, 70, 34, .025);
-    box-shadow: inset 0 0 0 1px rgba(233, 135, 100, .08);
-  }
-  .a-presence-copy {
-    min-height: 128px;
-    margin-top: auto;
-    padding-top: 24px;
-  }
-  .a-presence-copy h3 {
-    max-width: 470px;
-    margin: 0 0 12px;
-    color: var(--a-ink);
-    font-family: var(--sans);
-    font-size: 25px;
-    font-weight: 600;
-    letter-spacing: -.04em;
-    line-height: 1.08;
-  }
-  .a-presence-copy p {
-    max-width: 470px;
-    margin: 0;
-    color: var(--a-muted);
-    font-size: 15px;
-    line-height: 1.58;
-  }
-  @media (min-width: 1121px) {
-    .a-presence h2 { white-space: nowrap; }
-  }
-  @media (max-width: 860px) {
-    .a-presence { padding-top: 92px; padding-bottom: 100px; }
-    .a-presence > header { margin-bottom: 52px; }
-    .a-presence h2 { max-width: 720px; font-size: 42px; }
-    .a-presence-grid { grid-template-columns: 1fr; }
-    .a-presence-grid > article { min-height: 480px; }
-  }
-  @media (max-width: 560px) {
-    .a-presence { padding-top: 80px; padding-bottom: 84px; }
-    .a-presence > header { margin-bottom: 42px; text-align: left; }
-    .a-presence h2 { font-size: 41px; line-height: 1.02; }
-    .a-presence-grid { border-left: 0; }
-    .a-presence-grid > article {
-      min-height: 445px;
-      border-right: 0;
-      padding: 28px 0 32px;
-    }
-    .a-presence-copy { min-height: 0; }
-    .a-presence-copy h3 { font-size: 24px; }
-    .a-presence-copy p { font-size: 15px; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .a-presence-grid > article.has-reference-image { transition: none; }
-  }
-
   /* Minimal system-grid treatment for the signal-to-cause process. */
   .a-story {
     display: grid;
@@ -296,7 +217,7 @@ const presenceFeatures = de ? [
   }
   .a-story-list article.is-active .a-step-icon { transform: translateX(3px); }
   .a-story-list h3 {
-    margin: 0 0 12px;
+    margin: 0 0 var(--card-heading-copy-gap);
     color: var(--a-ink);
     font-family: var(--sans);
     font-size: 24px;
@@ -443,4 +364,12 @@ const presenceFeatures = de ? [
       transition: none;
     }
   }
+  :global(body.audit-route),
+  .a-faq,
+  .a-faq h2,
+  .a-faq summary,
+  .a-faq details p {
+    font-family: var(--sans);
+  }
+  .a-faq { border-top: 0; }
 </style>

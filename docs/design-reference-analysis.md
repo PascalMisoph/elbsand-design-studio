@@ -1,6 +1,6 @@
 # Analyse der visuellen Referenzrichtung
 
-Die Referenzbilder liegen unter `artifacts/design-reference/elbsand-top.png` und `artifacts/design-reference/elbsand-bottom.png`. Sie dienen als visuelle Spezifikation; Inhalte aus der Bildgenerierung werden nur übernommen, wenn sie durch das Repository belegt sind.
+Die Referenzbilder liegen unter `artifacts/design-reference/paternoga-top.png` und `artifacts/design-reference/paternoga-bottom.png`. Sie dienen als visuelle Spezifikation; Inhalte aus der Bildgenerierung werden nur übernommen, wenn sie durch das Repository belegt sind.
 
 ## Extrahiertes System
 

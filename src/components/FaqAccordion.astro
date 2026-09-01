@@ -1,0 +1,39 @@
+---
+import { ChevronDown } from "@lucide/astro";
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items: readonly FaqItem[];
+  className?: string;
+  theme?: "light" | "dark";
+  borderless?: boolean;
+}
+
+const { items, className, theme = "light", borderless = false } = Astro.props;
+---
+
+<div class:list={[theme === "dark" && "dark", className]}>
+  <div class="w-full">
+    {items.map((item) => (
+      <details
+        name="page-faq"
+        class:list={[
+          "group border-x-0 border-b-0 border-t border-solid border-border last:border-b",
+          borderless && "border-0 last:border-b-0",
+        ]}
+      >
+        <summary class="m-0 flex min-h-20 cursor-pointer list-none appearance-none items-center justify-between gap-6 border-0 bg-transparent px-0 py-6 text-left text-base font-medium text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden">
+          {item.question}
+          <ChevronDown class="size-4 shrink-0 text-muted-foreground transition-transform duration-300 group-open:rotate-180" aria-hidden="true" />
+        </summary>
+        <div class="overflow-hidden pb-6 pr-12 text-base leading-relaxed text-muted-foreground">
+          <p>{item.answer}</p>
+        </div>
+      </details>
+    ))}
+  </div>
+</div>

@@ -1,5 +1,7 @@
 import { expect, test } from "@playwright/test";
 
+const TEST_ORIGIN = process.env.TEST_ORIGIN ?? "http://127.0.0.1:4321";
+
 const serviceRoutes = [
   ["/geo-audit/", "de"], ["/en/geo-audit/", "en"],
   ["/ai-sichtbarkeit/", "de"], ["/en/ai-visibility/", "en"],
@@ -16,10 +18,34 @@ const serviceRoutes = [
   ["/geo-betreuung/", "de"], ["/en/geo-support/", "en"],
 ] as const;
 
+const acquisitionRoutes = [
+  ["/geo-agentur-deutschland/", "de"],
+  ["/en/geo-agency-germany/", "en"],
+  ["/wissen/ki-crawler-robots-txt/", "de"],
+  ["/en/knowledge/ai-crawlers-robots-txt/", "en"],
+  ["/research/ki-crawler-readiness-dax-40-2026/", "de"],
+  ["/en/research/dax-40-ai-crawler-readiness-2026/", "en"],
+] as const;
+
+for (const [route, lang] of acquisitionRoutes) {
+  test(`${route} acquisition route is responsive and semantic`, async ({ page }) => {
+    for (const width of [320, 1440]) {
+      await page.setViewportSize({ width, height: 900 });
+      const response = await page.goto(`${TEST_ORIGIN}${route}`, { waitUntil: "networkidle" });
+      expect(response?.status()).toBe(200);
+      await expect(page.locator("html")).toHaveAttribute("lang", lang);
+      await expect(page.locator("h1")).toHaveCount(1);
+      await expect(page.locator("main")).toHaveCount(1);
+      const widths = await page.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.clientWidth]);
+      expect(widths[0]).toBe(widths[1]);
+    }
+  });
+}
+
 for (const [route, lang] of serviceRoutes) {
   test(`${route} is structurally sound`, async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 700 });
-    const response = await page.goto(`http://127.0.0.1:4321${route}`, { waitUntil: "networkidle" });
+    const response = await page.goto(`${TEST_ORIGIN}${route}`, { waitUntil: "networkidle" });
     expect(response?.status()).toBe(200);
     await expect(page.locator("html")).toHaveAttribute("lang", lang);
     await expect(page.locator("h1")).toHaveCount(1);
@@ -34,7 +60,7 @@ for (const [route, lang] of serviceRoutes) {
       await expect(page.locator("h1")).toHaveText("Wie spricht KI über dein Unternehmen?");
       await expect(page.locator(".a-hero-copy > p:not(.a-kicker)")).toContainText("Verfolge deine KI-Sichtbarkeit");
       await expect(page.locator(".a-presence-grid h3")).toHaveText(["Sichtbarkeits-Scores", "Stimmung & Themen", "Quellenautorität", "Faktencheck deiner Marke", "Wettbewerbsvergleich", "Plattformvergleich"]);
-      await expect(page.locator(".a-presence h2")).toHaveText("Verstehe und kontrolliere deine KI-Präsenz");
+      await expect(page.locator(".a-presence h2")).toHaveText("Verstehe und ordne deine KI-Präsenz ein");
       await expect(page.locator('.score-visual-image img[src="/images/geo-audit-visibility-scores-graph.webp"]')).toHaveJSProperty("naturalWidth", 1254);
       await expect(page.locator('.sentiment-visual-image img[src="/images/geo-audit-sentiment-insights.webp"]')).toHaveJSProperty("naturalWidth", 1254);
       const citationVisual = page.locator('.citation-visual-image img[src="/images/geo-audit-citation-authority-v2.webp"]');
@@ -52,15 +78,15 @@ for (const [route, lang] of serviceRoutes) {
       await expect(page.locator("#audit-story .a-story-copy > .a-kicker")).toHaveCount(0);
       await expect(page.locator("#audit-story .a-step-icon")).toHaveCount(4);
       expect(await page.locator("#audit-story [data-a-step]").evaluateAll((steps) => steps.every((step) => getComputedStyle(step).opacity === "1"))).toBe(true);
-      await expect(page.locator(".a-faq details")).toHaveCount(8);
+      await expect(page.locator(".a-faq details")).toHaveCount(9);
       await expect(page.locator(".a-faq summary").first()).toHaveText(/Welche KI-Systeme werden geprüft/);
     }
     if (route === "/en/geo-audit/") {
       await expect(page.locator("h1")).toHaveText("How does AI talk about your business?");
       await expect(page.locator(".a-hero-copy > p:not(.a-kicker)")).toHaveText("Track your AI visibility, see where and how AI mentions your brand, and uncover insights to enhance your presence.");
       await expect(page.locator(".a-presence-grid h3")).toHaveText(["Visibility Scores", "Sentiment & Keyword Insights", "Citation Authority", "FactCheck what AI says about your brand", "Competitive Benchmarking", "Platform Comparisons"]);
-      await expect(page.locator(".a-presence h2")).toHaveText("Understand and control your AI Presence");
-      await expect(page.locator(".a-faq details")).toHaveCount(8);
+      await expect(page.locator(".a-presence h2")).toHaveText("Understand and assess your AI presence");
+      await expect(page.locator(".a-faq details")).toHaveCount(9);
       await expect(page.locator(".a-faq summary").first()).toHaveText(/Which AI systems are reviewed/);
     }
 
@@ -84,7 +110,7 @@ for (const route of ["/geo-optimierung/", "/en/geo-optimization/"]) {
   test(`${route} network remains contained at mobile and desktop widths`, async ({ page }) => {
     for (const width of [320, 1440]) {
       await page.setViewportSize({ width, height: 900 });
-      await page.goto(`http://127.0.0.1:4321${route}`, { waitUntil: "networkidle" });
+      await page.goto(`${TEST_ORIGIN}${route}`, { waitUntil: "networkidle" });
       await expect(page.locator(".h-services")).toHaveCount(1);
       await expect(page.locator("main > .subpage-contact")).toHaveCount(1);
       await expect(page.locator(".site-footer-column")).toHaveCount(4);
@@ -96,7 +122,7 @@ for (const route of ["/geo-optimierung/", "/en/geo-optimization/"]) {
 
 test("GEO audit presence grid keeps its desktop heading on one line and reference visuals interactive", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto("http://127.0.0.1:4321/geo-audit/", { waitUntil: "networkidle" });
+  await page.goto(`${TEST_ORIGIN}/geo-audit/`, { waitUntil: "networkidle" });
   await expect(page.locator(".a-presence-grid > article")).toHaveCount(6);
   await expect(page.locator(".a-presence-grid > article.has-reference-image")).toHaveCount(6);
   await expect(page.locator(".a-method [data-platform-panel]")).toHaveCount(3);
@@ -126,7 +152,7 @@ test("GEO audit presence grid keeps its desktop heading on one line and referenc
 test("Prompt research hero begins inside the first viewport", async ({ page }) => {
   for (const width of [390, 1440]) {
     await page.setViewportSize({ width, height: 900 });
-    await page.goto("http://127.0.0.1:4321/prompt-recherche/", { waitUntil: "networkidle" });
+    await page.goto(`${TEST_ORIGIN}/prompt-recherche/`, { waitUntil: "networkidle" });
     const heroPosition = await page.locator(".pv-hero h1").evaluate((heading) => ({
       top: heading.getBoundingClientRect().top,
       viewportHeight: innerHeight,
@@ -134,7 +160,7 @@ test("Prompt research hero begins inside the first viewport", async ({ page }) =
     expect(heroPosition.top).toBeLessThan(heroPosition.viewportHeight * .5);
   }
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto("http://127.0.0.1:4321/prompt-recherche/", { waitUntil: "networkidle" });
+  await page.goto(`${TEST_ORIGIN}/prompt-recherche/`, { waitUntil: "networkidle" });
   await expect(page.locator(".pv-flow h2")).toHaveText("Entdecken, verfolgen, verbessern");
   const discoverVisual = page.locator('.pv-flow-grid article').first().locator('img[src="/images/prompt-research-discover-trends-v2.webp"]');
   await expect(discoverVisual).toHaveJSProperty("naturalWidth", 1254);
@@ -177,4 +203,19 @@ test("Prompt research hero begins inside the first viewport", async ({ page }) =
   expect(Math.abs(flowGeometry.cards[0].right + 1 - flowGeometry.cards[1].left)).toBeLessThanOrEqual(.5);
   expect(Math.abs(flowGeometry.cards[0].right + .5 - (flowGeometry.grid.left + flowGeometry.grid.width / 2))).toBeLessThanOrEqual(.5);
   expect(Math.abs(flowGeometry.cards[0].bottom + 1 - flowGeometry.cards[2].top)).toBeLessThanOrEqual(.5);
+});
+
+test("shared FAQ keeps single-open native disclosure behavior", async ({ page }) => {
+  await page.goto(`${TEST_ORIGIN}/content-optimierung-ai-suche/`);
+
+  const questions = page.locator("main details[name='page-faq']");
+  await expect(questions).toHaveCount(5);
+  await questions.nth(0).locator("summary").click();
+  await expect(questions.nth(0)).toHaveAttribute("open", "");
+
+  await questions.nth(1).locator("summary").focus();
+  await page.keyboard.press("Enter");
+  await expect(questions.nth(1)).toHaveAttribute("open", "");
+  await expect(questions.nth(0)).not.toHaveAttribute("open", "");
+  await expect(page.locator("main astro-island")).toHaveCount(0);
 });

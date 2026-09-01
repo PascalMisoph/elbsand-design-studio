@@ -4,24 +4,25 @@ This file defines durable project guidance for coding agents working inside this
 
 ## Project
 
-- Official brand: ELBSAND Design Studio.
-- Logo/header wordmark: ELBSAND only.
-- Product: bilingual boutique web studio website.
+- Official brand: Paternoga SEO & GEO Studio.
+- Logo/header wordmark: PATERNOGA with `SEO & GEO Studio` as its descriptor.
+- Product: bilingual specialist website for SEO, GEO, AI Search and AI visibility.
 - Primary market: local businesses in Germany, with Dresden/Saxony as the first local SEO anchor and Germany/DACH as the broader scale path.
 - Public positioning: personal-led premium design studio for web design, web development, redesigns, concept, launch, SEO, and modern AI/GEO visibility.
 - Tone: German-first, polished `du`, calm, confident, not loud, not overly technical.
 - Hero headline direction: `Websites, die Form, Funktion und Sichtbarkeit verbinden.`
-- Hero explanation direction: `ELBSAND entwickelt individuelle digitale Auftritte für lokale Unternehmen - von Strategie und Design bis Entwicklung, SEO und moderner AI-Sichtbarkeit.`
+- Hero explanation direction: `PATERNOGA entwickelt individuelle digitale Auftritte für lokale Unternehmen - von Strategie und Design bis Entwicklung, SEO und moderner AI-Sichtbarkeit.`
 - Primary CTA: `Website-Check anfragen`.
 - Secondary CTA: `Referenzen ansehen`.
 - Pricing: inquiry-only.
 - Temporary contact email: pascal.misoph@gmail.com.
+- Core claim: `Be the brand AI thinks of first.`
 
 ## Brand And Content Rules
 
-- Do not use the founder surname in the brand name.
-- Use `ELBSAND` as the strong wordmark in logo/header contexts.
-- Use `ELBSAND Design Studio` in metadata, footer, imprint, and suitable explanatory contexts.
+- Treat `Paternoga SEO & GEO Studio` as the organization brand; do not conflate it with any unrelated person entity sharing the surname.
+- Use `PATERNOGA` as the strong wordmark in logo/header contexts.
+- Use `Paternoga SEO & GEO Studio` in metadata, footer, imprint, and suitable explanatory contexts.
 - Include Pascal's personal name for credibility, preferably in About/team context rather than making the hero depend on him.
 - Pauline may appear as `Studio Support & Editorial Operations`; she should not be presented as client-facing or as a core delivery lead.
 - Zula and Nali may appear as a small humanizing detail in the team/footer area only.
@@ -36,14 +37,14 @@ This file defines durable project guidance for coding agents working inside this
 ## Visual Direction
 
 - `design.md` is the required detailed visual and motion reference for all frontend work. Read it before changing shared styles, layout, cards, typography, animation, GEO pages, or marketing-page structure.
-- The public Profound marketing site is the primary reference for grid discipline, spacing, component proportions, content depth, page flow, motion quality, and internal-link architecture. Translate these qualities into the ELBSAND palette and service model; do not reuse Profound-owned copy or media.
-- Use self-hosted Inter Variable as the primary type family for the new Profound-referenced product/GEO system. Retain editorial serif usage only where it remains an intentional ELBSAND accent.
+- The public Profound marketing site is the primary reference for grid discipline, spacing, component proportions, content depth, page flow, motion quality, and internal-link architecture. Translate these qualities into the PATERNOGA palette and service model; do not reuse Profound-owned copy or media.
+- Use self-hosted Inter Variable as the primary type family for the new Profound-referenced product/GEO system. Retain editorial serif usage only where it remains an intentional PATERNOGA accent.
 - Motion is a first-class design requirement. Signature areas must implement the timing, blur/reveal, focus, stacking, and reduced-motion rules documented in `design.md`; do not substitute generic fade-ins.
 - Every new service page must include at least one original, content-relevant signature visual and a purposeful motion behavior. Text-only sections, generic icon cards, or decorative filler do not satisfy this requirement; the visual must explain a relationship, state, comparison, path, source, or outcome and must receive its own mobile composition.
 - Do not push every service route through one identical long-scroll template. Keep the Profound-derived global shell consistent, but assign route-specific hero/media placement, module count, section order, scroll mechanism, and page length from the closest Profound feature reference. Sibling pages may share primitives; they may not feel like copy-swapped clones.
 - A generic dark dashboard, orbit, node graph, metric card, or line animation is not a valid substitute for a measured Profound reference visual. Reconstruct the actual visible object hierarchy, panel overlap, interface density, crop, scale, typography, and mobile order from the assigned page. If a side-by-side comparison reads as generic AI/SaaS artwork, the route fails review even when its colors and topic are correct.
 - The homepage AI-system switcher must remain fully visible in the first viewport on desktop and mobile. Treat it as part of the hero message, not as the next section.
-- The landing page uses the continuous ELBSAND charcoal material system documented in `design.md`; do not reintroduce alternating large light page bands without an explicit reason.
+- The landing page uses the continuous PATERNOGA charcoal material system documented in `design.md`; do not reintroduce alternating large light page bands without an explicit reason.
 - Reference mood: aurum-design.de inspired luxury-agency feel, but do not clone assets, exact brand identity, copy, or protected design.
 - Overall feel: minimalist, editorial, warm, spacious, sophisticated, internationally polished with a quiet Dresden/Saxony root.
 - Apple-like means disciplined craft, not copying apple.com. Use clear hierarchy, exact spacing, refined materials, calm motion, excellent image art direction, and high component consistency.
@@ -109,6 +110,10 @@ This file defines durable project guidance for coding agents working inside this
 - Preferred stack: Astro + TypeScript + plain CSS or scoped component CSS.
 - Keep JavaScript minimal. Add framework islands only for real interaction.
 - Favor semantic, maintainable components over decorative abstraction.
+- Reuse before recreating: before implementing a repeated visual structure, search the existing components, templates, and styles for the canonical implementation.
+- A repeated visual structure must have one source of truth. New content variants must consume the existing component or a shared primitive through typed data/props; do not copy its markup and approximate its CSS in a second route.
+- If a matching structure is still embedded in a page, extract it into a reusable component before adding another consumer. The extraction must preserve the existing canonical consumer visually and behaviorally.
+- Introduce a component variant only for a real semantic or interaction difference. Keep shared layout, typography, spacing, divider, responsive, motion, and token rules in the shared component; document intentional exceptions.
 - Use CSS custom properties for color, spacing, typography, borders, and z-index.
 - Do not nest cards inside cards. Use cards only for individual repeated items, modals, or framed tools.
 - Keep section layouts full-width or unframed with a constrained inner wrapper.
@@ -134,6 +139,9 @@ This file defines durable project guidance for coding agents working inside this
 - Keep files organized by purpose: components, layouts, pages, styles, content, assets.
 - Prefer explicit names over clever abbreviations.
 - Avoid large monolithic components once sections become complex.
+- Follow DRY and single-source-of-truth principles for UI code: duplicated section markup or CSS is a defect when the sections share structure, behavior, and visual rules.
+- Before expanding a page with a familiar section, compare the new consumer with the canonical component at desktop, mobile, hover/focus, active, and reduced-motion states. The existing consumer must remain unchanged unless the user explicitly requests a redesign of the canonical component.
+- When related duplicate implementations are discovered outside the current task, report their locations and defer unrelated refactors rather than silently widening scope.
 - Comments should explain non-obvious decisions, not restate code.
 - Keep generated content, legal copy, and placeholder content clearly identifiable.
 - Do not commit secrets, API keys, analytics tokens, or private contact credentials.
@@ -144,13 +152,13 @@ Before calling work complete, run the relevant checks available in the project: 
 
 For frontend changes, use browser inspection or screenshots where possible. Specifically verify header and language switcher, hero framing, CTA visibility, image loading, no text overflow, no incoherent overlaps, reduced-motion behavior, and keyboard focus visibility.
 
-For every new service route, follow the binding Visual Parity Protocol in `design.md`. Assign a concrete Profound page reference, measure its composition and motion, reconstruct an original ELBSAND equivalent, and require desktop/mobile/state comparison before approval. Shared templates do not waive route-specific visual review.
+For every new service route, follow the binding Visual Parity Protocol in `design.md`. Assign a concrete Profound page reference, measure its composition and motion, reconstruct an original PATERNOGA equivalent, and require desktop/mobile/state comparison before approval. Shared templates do not waive route-specific visual review.
 - Finish and compare one assigned Profound route at a time. Do not mass-propagate an unapproved visual abstraction to sibling pages.
 
 ### Theme And Interaction Regression Rules
 
 - Do not reuse the current portfolio placeholders as customer proof, logos, case studies, trust bands, or routine CTA destinations on GEO/AI service pages. Keep them in the dedicated reference context only until explicitly approved as real publishable cases.
-- Do not copy Profound CTA color or micro-typography into ELBSAND pages. The default primary CTA is ELBSAND `#b74622`, Inter, `15px / 650`, with a `48px` minimum control height at every viewport.
+- Do not copy Profound CTA color or micro-typography into PATERNOGA pages. The default primary CTA is PATERNOGA `#b74622`, Inter, `15px / 650`, with a `48px` minimum control height at every viewport.
 - When the assigned Profound reference uses a sticky reading column and sequentially activated list rows, preserve that scroll relationship; a static enumeration is a regression even when its screenshot looks similar.
 - Never apply blanket `filter`, `opacity`, `mix-blend-mode`, grayscale, inversion, or recoloring rules to logos or supplied project media during a theme conversion. Preserve original brand colors unless an asset-specific treatment has been intentionally reviewed.
 - Do not approve a dark-theme conversion from static screenshots alone. For every affected interactive component, verify default, hover, keyboard focus, active/selected where applicable, mobile, and `prefers-reduced-motion` states.
@@ -182,12 +190,12 @@ For every new service route, follow the binding Visual Parity Protocol in `desig
 - 2026-08-09: Established the supplied GEO Audit visibility-score graph as the binding minimum visual-quality reference for future analytical graphics and dashboard modules.
 - 2026-08-08: Installed the MotionSites MCP connector in the local Codex host configuration; newly launched Codex sessions can load it after the client refreshes its MCP inventory.
 - 2026-08-08: Adopted a shallow root/subtopic/leaf taxonomy for the GEO network, with logical breadcrumbs, level-specific metadata, and taxonomy-aware internal linking.
-- 2026-08-08: Reserved the supplied AI response-index screenshot as a non-shipping composition reference for the localized AI Visibility pages; implementation must be an original, clearly illustrative ELBSAND interface.
+- 2026-08-08: Reserved the supplied AI response-index screenshot as a non-shipping composition reference for the localized AI Visibility pages; implementation must be an original, clearly illustrative PATERNOGA interface.
 - 2026-08-08: UI descriptions are omitted by default and are only added when they prevent real ambiguity or error without restating the heading.
-- 2026-08-08: Added `design.md` as the binding Profound-referenced visual, motion, page-flow, and internal-link specification for the ELBSAND redesign.
-- 2026-08-08: Inter Variable selected as the primary family for the new product/GEO design system; ELBSAND editorial serif remains optional and restrained.
+- 2026-08-08: Added `design.md` as the binding Profound-referenced visual, motion, page-flow, and internal-link specification for the PATERNOGA redesign.
+- 2026-08-08: Inter Variable selected as the primary family for the new product/GEO design system; PATERNOGA editorial serif remains optional and restrained.
 - 2026-08-08: Approved a complete GEO service topic network in DE and EN, subject to unique-intent/content-quality checks before splitting routes.
-- 2026-07-22: Brand set to `ELBSAND Design Studio`; header wordmark set to `ELBSAND`.
+- 2026-07-22: Brand set to `Paternoga SEO & GEO Studio`; header wordmark set to `PATERNOGA`.
 - 2026-07-22: Chosen stack direction `Astro + TypeScript`.
 - 2026-07-22: Primary CTA changed to `Website-Check anfragen`.
 - 2026-07-22: Secondary CTA changed to `Referenzen ansehen`.

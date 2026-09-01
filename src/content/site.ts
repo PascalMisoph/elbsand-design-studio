@@ -1,6 +1,6 @@
 export type Locale = "de" | "en";
 
-export const heroImage = "/images/elbsand-hero.webp";
+export const heroImage = "/images/paternoga-hero.webp";
 
 export const projectLogos = [
   {
@@ -23,7 +23,7 @@ export const projectLogos = [
   },
   {
     name: "Pauline Paternoga",
-    logo: "/images/project-logos/pauline-paternoga-logo.png",
+    logo: "/images/project-logos/pauline-paternoga-logo.webp",
     width: 440,
     height: 440,
     url: "https://www.sprechen-paulinepaternoga.de/",
@@ -32,7 +32,7 @@ export const projectLogos = [
   },
   {
     name: "Paw & Sage",
-    logo: "/images/project-logos/paw-and-sage-logo.png",
+    logo: "/images/project-logos/paw-and-sage-logo.webp",
     width: 600,
     height: 600,
     url: "https://pawandsage.com",
@@ -41,7 +41,7 @@ export const projectLogos = [
   },
   {
     name: "Ochre & Chrome",
-    logo: "/images/project-logos/ochre-and-chrome-logo.png",
+    logo: "/images/project-logos/ochre-and-chrome-logo.webp",
     width: 600,
     height: 600,
     url: "https://ochreandchrome.com",
@@ -53,18 +53,18 @@ export const projectLogos = [
 export const content = {
   de: {
     meta: {
-      title: "ELBSAND Design Studio – Webdesign, SEO & GEO aus Dresden",
+      title: "SEO & GEO Studio für Deutschland | PATERNOGA",
       description:
-        "ELBSAND plant, gestaltet und entwickelt Websites für Unternehmen – mit Webdesign, technischer Umsetzung, SEO, lokaler Suche und GEO."
+        "PATERNOGA ist das Spezialstudio für SEO, GEO, AI Search und AI Visibility. Deutschlandweit tätig, persönlich geführt aus Dresden."
     },
     nav: ["Leistungen", "Projekte", "Sichtbarkeit", "Ablauf", "Kontakt"],
     cta: "Kostenfreier KI-Check",
     secondaryCta: "Ausgewählte Projekte",
     hero: {
-      eyebrow: "📍 Webdesign und digitale Sichtbarkeit aus Dresden",
+      eyebrow: "📍 Studio aus Dresden · für Unternehmen in Deutschland",
       title: ["Suchmaschinen verändern sich.", "Dein Online-Auftritt auch?"],
-      body: "Websiten, die überzeugen. Für Sichtbarkeit bei Google und in KI-Suchen.",
-      imageAlt: "Pascal Misoph an seinem Arbeitsplatz im ELBSAND Studio"
+      body: "PATERNOGA verbindet SEO, GEO und technische Umsetzung, damit dein Angebot in Google und KI-Systemen klar gefunden und eingeordnet werden kann.",
+      imageAlt: "Pascal Misoph an seinem Arbeitsplatz im PATERNOGA Studio"
     },
     proof: {
       intro: "Ausgewählte Projekte",
@@ -139,7 +139,8 @@ export const content = {
     visibility: {
       eyebrow: "SEO & GEO",
       title: "Gefunden werden verändert sich",
-      body: "Suchverhalten wandelt sich – von klassischen Treffern zu direkten KI-Antworten. ELBSAND macht deine Website technisch stark, lokal sichtbar und maschinenlesbar.",
+      body: "Eine aktuelle Analyse von Graphite.io schätzt, dass das globale Suchvolumen in KI-Assistenten bereits 56 % des klassischen Suchmaschinen-Volumens erreicht hat. PATERNOGA strukturiert deine Inhalte und macht deine Website lokal auffindbar und maschinenlesbar, damit dein Angebot auch in neuen Suchumfeldern klar eingeordnet werden kann.",
+      bodyHtml: "Eine aktuelle <a href=\"https://graphite.io/five-percent/research/ai-is-much-bigger-than-you-think\" target=\"_blank\" rel=\"noopener\">Analyse von Graphite.io</a> schätzt, dass das globale Suchvolumen in KI-Assistenten bereits 56 % des klassischen Suchmaschinen-Volumens erreicht hat. PATERNOGA strukturiert deine Inhalte und macht deine Website lokal auffindbar und maschinenlesbar, damit dein Angebot auch in neuen Suchumfeldern klar eingeordnet werden kann.",
       points: [
         [
           "Technisches SEO",
@@ -155,7 +156,7 @@ export const content = {
         ],
         [
           "GEO-Optimierung",
-          "Damit ChatGPT und Perplexity dein Unternehmen als relevante Quelle einordnen können."
+          "Relevante Sichtbarkeit in generativer KI durch klare Inhalte, Quellen und technische Signale."
         ]
       ],
       dataNote: "der US-amerikanischen Erwachsenen geben an, KI-Zusammenfassungen in Suchergebnissen zu lesen.",
@@ -172,7 +173,7 @@ export const content = {
           ariaLabel: "Pew Research Center: Americans and AI 2026"
         }
       ],
-      note: "Eine konkrete Nennung oder Empfehlung kann nicht garantiert werden. ELBSAND schafft die technischen und inhaltlichen Voraussetzungen, damit Such- und Antwortsysteme ein Unternehmen möglichst eindeutig erfassen können.",
+      note: "Eine konkrete Nennung oder Empfehlung kann nicht garantiert werden. PATERNOGA schafft die technischen und inhaltlichen Voraussetzungen, damit Such- und Antwortsysteme ein Unternehmen möglichst eindeutig erfassen können.",
       systemsIntro: "Sichtbar in",
       systemsLabel: "Google, ChatGPT, Claude und Perplexity",
       detailLinkLabel: "Mehr über SEO & GEO erfahren"
@@ -190,16 +191,16 @@ export const content = {
         imageAlt: "Pascal Misoph vor einer Berglandschaft"
       },
       steps: [
-        ["Wunschtermin wählen", "Wähle einen Termin für ein unverbindliches Erstgespräch. Wir sprechen über dein Vorhaben, stellen erste Rückfragen und klären, ob ELBSAND der richtige Partner für dein Projekt ist."],
-        ["Bestand prüfen", "Wenn bereits eine Website vorhanden ist, sehen wir uns Struktur, Inhalte, Gestaltung und technische Basis an. So wird schnell sichtbar, wo die größten Hebel liegen."],
-        ["Seiten planen", "Wir legen fest, welche Inhalte benötigt werden und wie Besucher sinnvoll durch die Website geführt werden."],
-        ["Design festlegen", "Wir entwickeln die visuelle und strukturelle Richtung der Website – passend zum Unternehmen und zum gewünschten Auftritt."],
-        ["Website bauen & veröffentlichen", "Das freigegebene Design wird umgesetzt, technisch geprüft und mit den grundlegenden SEO- und GEO-Einstellungen veröffentlicht."]
+        ["Wunschtermin wählen", "Wähle einen Termin für ein unverbindliches Erstgespräch. Wir sprechen über dein Vorhaben, analysieren deine aktuelle Sichtbarkeit und klären, ob PATERNOGA der richtige Partner für dein Projekt ist."],
+        ["Bestand prüfen", "Wir analysieren deine Website, Inhalte, Datenquellen und die technische Basis. So wird sofort sichtbar, wo die größten Hebel für Google und KI-Suchsysteme liegen."],
+        ["Struktur & Seiten planen", "Wir ordnen Suchintentionen und Themen zu einem klaren Seitenaufbau. So stellen wir sicher, dass potenzielle Kunden und moderne Antwortsysteme deine Kernbotschaften sofort finden."],
+        ["Design & User Experience festlegen", "Wir entwickeln die visuelle Richtung. Das Design spiegelt deine Marke wider, baut Vertrauen auf und führt Besucher klar zur passenden nächsten Handlung."],
+        ["Website bauen & veröffentlichen", "Wir setzen den Code und alle Inhalte sauber um. Nach finalen Prüfungen der Indexierbarkeit, der strukturierten Daten und aller GEO-Funktionen geht deine neue Website live."]
       ]
     },
     editorialSupport: {
       eyebrow: "Editorial Support",
-      intro: "Das Team hinter ELBSAND.",
+      intro: "Das Team hinter PATERNOGA.",
       people: [
         {
           name: "Pauline",
@@ -229,63 +230,63 @@ export const content = {
     },
     contact: {
       eyebrow: "Kontakt",
-      title: "Wie möchtest du starten?",
-      quickOption: "Direkt Erstgespräch buchen",
-      detailOption: "Projektanfrage senden",
-      valueLine: "Von der ersten Idee bis zum sichtbaren Ergebnis.",
-      note: "Die Anfrage wird direkt und sicher übermittelt.",
-      formLabel: "Geführte Anfrage für einen kostenlosen Website-Check",
+      title: "Sichtbarkeit gezielt ausbauen",
+      quickOption: "Erstgespräch zur Sichtbarkeit buchen",
+      detailOption: "SEO- & GEO-Projekt anfragen",
+      valueLine: "SEO & GEO, die aus relevanten Fragen qualifizierte Anfragen machen.",
+      note: "Deine Anfrage wird direkt und vertraulich an Pascal übermittelt.",
+      formLabel: "Unverbindliche Anfrage für SEO, GEO und digitale Sichtbarkeit",
       flow: {
         stepLabel: "Schritt",
         ofLabel: "von",
         back: "Zurück",
-        intentQuestion: "Wobei können wir dich unterstützen?",
+        intentQuestion: "Was möchtest du bei Google und in generativen KI-Systemen als Nächstes erreichen?",
         intentOptions: [
-          { value: "new", label: "Neue Website" },
-          { value: "improve", label: "Bestehende Website verbessern" },
-          { value: "advice", label: "Beratung zu digitaler Sichtbarkeit" }
+          { value: "new", label: "SEO & GEO neu aufbauen" },
+          { value: "improve", label: "Bestehende Sichtbarkeit verbessern" },
+          { value: "advice", label: "Strategie & nächste Schritte besprechen" }
         ],
         detailQuestions: {
-          new: "Was soll die neue Website für dich erreichen?",
-          improve: "Welche Website sollen wir uns ansehen?",
-          advice: "Worüber möchtest du mit uns sprechen?"
+          new: "Welche Ziele soll deine Sichtbarkeit bei Google und in generativen KI-Systemen erreichen?",
+          improve: "Welche Website oder Inhalte sollen wir auf SEO- und GEO-Potenzial prüfen?",
+          advice: "Welche Sichtbarkeitsfrage möchtest du mit uns klären?"
         },
         detailPlaceholders: {
-          new: "Ein bis zwei Sätze genügen.",
-          improve: "Website-Adresse und, wenn du magst, ein kurzer Hinweis.",
-          advice: "Ein bis zwei Sätze genügen."
+          new: "Zum Beispiel: mehr qualifizierte Anfragen, lokale Sichtbarkeit oder bessere Antworten in KI-Systemen.",
+          improve: "Website-Adresse und, wenn du magst, das wichtigste Ziel.",
+          advice: "Ein bis zwei Sätze zu deiner aktuellen Situation genügen."
         },
-        contactQuestion: "Wie dürfen wir dich erreichen?",
+        contactQuestion: "Wohin dürfen wir uns mit einer ersten Einschätzung melden?",
         nameLabel: "Name",
         emailLabel: "E-Mail",
         next: "Weiter",
-        submit: "Anfrage vorbereiten",
-        summaryLabel: "Dein Anliegen",
-        privacy: "Persönlich gelesen · unverbindlich · keine Weitergabe",
-        sending: "Wird gesendet …",
+        submit: "Sichtbarkeit besprechen",
+        summaryLabel: "Dein Sichtbarkeitsziel",
+        privacy: "Persönlich gelesen · unverbindlich · vertraulich behandelt",
+        sending: "Wird sicher übermittelt …",
         errorMessage: "Das hat gerade nicht funktioniert. Bitte versuche es noch einmal.",
-        successEyebrow: "Anfrage gesendet",
-        successTitle: "Vielen Dank für deine Anfrage.",
-        successBody: "Deine Angaben sind angekommen. Pascal sieht sie sich persönlich an und meldet sich bei dir.",
+        successEyebrow: "Anfrage angekommen",
+        successTitle: "Der nächste Schritt ist vorbereitet.",
+        successBody: "Pascal prüft deine Angaben persönlich und meldet sich mit einer ersten Einschätzung und passenden nächsten Schritten.",
         successAgain: "Weitere Anfrage starten"
       }
     },
-    footer: { legal: "ELBSAND Design Studio", imprint: "Impressum", privacy: "Datenschutz" }
+    footer: { legal: "Paternoga SEO & GEO Studio", imprint: "Impressum", privacy: "Datenschutz" }
   },
   en: {
     meta: {
-      title: "ELBSAND Design Studio – Web design, SEO & GEO from Dresden",
+      title: "SEO & GEO Studio for Germany | PATERNOGA",
       description:
-        "ELBSAND plans, designs and develops websites for businesses, including web design, development, SEO, local search and GEO."
+        "PATERNOGA is a specialist studio for SEO, GEO, AI Search and AI Visibility, serving companies across Germany from Dresden."
     },
     nav: ["Services", "Projects", "Visibility", "Process", "Contact"],
     cta: "Start your free AI check",
     secondaryCta: "Selected projects",
     hero: {
-      eyebrow: "📍 Web design and digital visibility from Dresden",
+      eyebrow: "📍 Dresden-based studio · serving companies across Germany",
       title: ["Search engines are changing.", "Is your online presence keeping up?"],
-      body: "Websites that convince. Built for visibility on Google and in AI search.",
-      imageAlt: "Pascal Misoph at his desk in the ELBSAND studio"
+      body: "PATERNOGA connects SEO, GEO and technical implementation so your offer can be found and understood clearly in Google and AI systems.",
+      imageAlt: "Pascal Misoph at his desk in the PATERNOGA studio"
     },
     proof: {
       intro: "Selected projects",
@@ -360,7 +361,8 @@ export const content = {
     visibility: {
       eyebrow: "SEO & GEO",
       title: "The way businesses are found is changing",
-      body: "Search is shifting from traditional results to direct AI answers. ELBSAND makes your website technically strong, locally visible and machine-readable.",
+      body: "A recent analysis by Graphite.io estimates that global search volume in AI assistants has reached 56% of traditional search-engine volume. PATERNOGA structures your content and makes your website locally discoverable and machine-readable so your offer can be understood clearly in emerging search environments.",
+      bodyHtml: "A recent <a href=\"https://graphite.io/five-percent/research/ai-is-much-bigger-than-you-think\" target=\"_blank\" rel=\"noopener\">analysis by Graphite.io</a> estimates that global search volume in AI assistants has reached 56% of traditional search-engine volume. PATERNOGA structures your content and makes your website locally discoverable and machine-readable so your offer can be understood clearly in emerging search environments.",
       points: [
         [
           "Technical SEO",
@@ -376,7 +378,7 @@ export const content = {
         ],
         [
           "GEO optimisation",
-          "So ChatGPT and Perplexity can classify your business as a relevant source."
+          "Relevant visibility in generative AI through clear content, sources and technical signals."
         ]
       ],
       dataNote: "of U.S. adults say they read AI summaries in search results.",
@@ -393,7 +395,7 @@ export const content = {
           ariaLabel: "Pew Research Center: Americans and AI 2026"
         }
       ],
-      note: "A specific mention or recommendation cannot be guaranteed. ELBSAND creates the technical and editorial conditions that help search and answer systems identify a business as clearly as possible.",
+      note: "A specific mention or recommendation cannot be guaranteed. PATERNOGA creates the technical and editorial conditions that help search and answer systems identify a business as clearly as possible.",
       systemsIntro: "Visible in",
       systemsLabel: "Google, ChatGPT, Claude and Perplexity",
       detailLinkLabel: "Learn more about SEO & GEO"
@@ -411,16 +413,16 @@ export const content = {
         imageAlt: "Pascal Misoph in front of a mountain landscape"
       },
       steps: [
-        ["Choose a preferred date", "Choose a date for a no-obligation initial conversation. We discuss your project, ask the first questions and determine whether ELBSAND is the right partner for it."],
-        ["Review the current site", "If a website already exists, we review its structure, content, design and technical foundation. This quickly reveals where the strongest opportunities lie."],
-        ["Plan the pages", "We define the content required and how visitors should move through the website."],
-        ["Set the design", "We develop the visual and structural direction of the website to suit the business and the desired presence."],
-        ["Build & publish the website", "The approved design is implemented, technically reviewed and published with the essential SEO and GEO settings."]
+        ["Choose a preferred date", "Choose a date for a no-obligation initial conversation. We discuss your project, its current visibility and whether PATERNOGA is the right partner for your SEO and GEO work."],
+        ["Review the current site", "We review the website, content, sources, technical foundation and existing visibility. This quickly reveals where the strongest SEO and GEO opportunities lie."],
+        ["Plan the pages", "We prioritise questions and search intent to create a page structure that leads people quickly to the right answer, builds trust and gives AI systems the relevant context."],
+        ["Set the design", "We develop the visual direction. The design reflects your brand, builds trust and guides visitors clearly towards the right next action."],
+        ["Build & publish the website", "We implement the content and technical foundations, review indexability, structured data and internal linking, then publish with the essential SEO and GEO settings."]
       ]
     },
     editorialSupport: {
       eyebrow: "Editorial Support",
-      intro: "The people and familiar faces who support ELBSAND behind the scenes.",
+      intro: "The people and familiar faces who support PATERNOGA behind the scenes.",
       people: [
         {
           name: "Pauline",
@@ -450,47 +452,47 @@ export const content = {
     },
     contact: {
       eyebrow: "Contact",
-      title: "How would you like to start?",
-      quickOption: "Book an initial consultation",
-      detailOption: "Send a project enquiry",
-      valueLine: "From the first idea to a visible result.",
-      note: "Your request is submitted directly and securely.",
-      formLabel: "Guided request for a free website check",
+      title: "Build your visibility deliberately",
+      quickOption: "Book a visibility consultation",
+      detailOption: "Enquire about SEO & GEO",
+      valueLine: "SEO & GEO that turn relevant questions into qualified enquiries.",
+      note: "Your enquiry goes directly and confidentially to Pascal.",
+      formLabel: "No-obligation enquiry for SEO, GEO and digital visibility",
       flow: {
         stepLabel: "Step",
         ofLabel: "of",
         back: "Back",
-        intentQuestion: "How can we help?",
+        intentQuestion: "What would you like to achieve on Google and in generative AI next?",
         intentOptions: [
-          { value: "new", label: "Create a new website" },
-          { value: "improve", label: "Improve an existing website" },
-          { value: "advice", label: "Digital visibility consultation" }
+          { value: "new", label: "Build SEO & GEO from the ground up" },
+          { value: "improve", label: "Improve existing visibility" },
+          { value: "advice", label: "Discuss strategy & next steps" }
         ],
         detailQuestions: {
-          new: "What should your new website achieve?",
-          improve: "Which website should we review?",
-          advice: "What would you like to discuss?"
+          new: "What should your visibility on Google and in generative AI achieve?",
+          improve: "Which website or content should we review for SEO and GEO potential?",
+          advice: "Which visibility question would you like to clarify with us?"
         },
         detailPlaceholders: {
-          new: "One or two sentences are enough.",
-          improve: "Your website address and, if useful, a short note.",
-          advice: "One or two sentences are enough."
+          new: "For example: more qualified enquiries, local visibility or better answers in AI systems.",
+          improve: "Website address and, if useful, the main goal.",
+          advice: "One or two sentences about your current situation are enough."
         },
-        contactQuestion: "How can we reach you?",
+        contactQuestion: "Where may we send a first assessment?",
         nameLabel: "Name",
         emailLabel: "Email",
         next: "Continue",
-        submit: "Prepare request",
-        summaryLabel: "Your request",
-        privacy: "Read personally · no obligation · never shared",
-        sending: "Sending …",
+        submit: "Discuss visibility",
+        summaryLabel: "Your visibility goal",
+        privacy: "Read personally · no obligation · treated confidentially",
+        sending: "Sending securely …",
         errorMessage: "That did not work. Please try again.",
-        successEyebrow: "Enquiry sent",
-        successTitle: "Thank you for your enquiry.",
-        successBody: "Your details have arrived. Pascal will review them personally and get back to you.",
+        successEyebrow: "Enquiry received",
+        successTitle: "The next step is ready.",
+        successBody: "Pascal will review your details personally and get back to you with an initial assessment and suitable next steps.",
         successAgain: "Start another enquiry"
       }
     },
-    footer: { legal: "ELBSAND Design Studio", imprint: "Imprint", privacy: "Privacy" }
+    footer: { legal: "Paternoga SEO & GEO Studio", imprint: "Imprint", privacy: "Privacy" }
   }
 } as const;

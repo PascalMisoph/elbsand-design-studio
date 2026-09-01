@@ -1,0 +1,244 @@
+---
+interface Props {
+  lang: "de" | "en";
+  analyticsId?: string;
+}
+
+const { lang, analyticsId = "" } = Astro.props;
+const de = lang === "de";
+const privacyPath = de ? "/datenschutz/" : "/en/privacy/";
+const copy = de
+  ? {
+      title: "Datenschutz-Einstellungen",
+      intro: "Wir verwenden optionale Dienste nur mit deiner Einwilligung. Du kannst frei entscheiden und deine Auswahl jederzeit im Footer ändern.",
+      essential: "Technisch notwendig",
+      essentialText: "Speichert deine Datenschutzauswahl und stellt die Website sicher bereit.",
+      analytics: "Reichweitenmessung",
+      analyticsText: "Google Analytics hilft uns zu verstehen, welche Inhalte genutzt werden. Google-Werbefunktionen bleiben deaktiviert.",
+      external: "Externe Terminbuchung",
+      externalText: "Lädt Calendly erst, wenn du die Terminbuchung öffnest und dieser Kategorie zugestimmt hast.",
+      details: "Einstellungen",
+      reject: "Ablehnen",
+      accept: "Alle akzeptieren",
+      save: "Auswahl speichern",
+      close: "Einstellungen schließen",
+      privacy: "Datenschutzerklärung",
+      always: "Immer aktiv",
+    }
+  : {
+      title: "Privacy settings",
+      intro: "We use optional services only with your consent. You can choose freely and change your selection in the footer at any time.",
+      essential: "Strictly necessary",
+      essentialText: "Stores your privacy choice and keeps the website available securely.",
+      analytics: "Audience measurement",
+      analyticsText: "Google Analytics helps us understand which content is used. Google advertising features remain disabled.",
+      external: "External scheduling",
+      externalText: "Loads Calendly only after you open scheduling and have allowed this category.",
+      details: "Settings",
+      reject: "Reject",
+      accept: "Accept all",
+      save: "Save selection",
+      close: "Close settings",
+      privacy: "Privacy Policy",
+      always: "Always active",
+    };
+---
+
+<div class="consent-manager" data-consent-manager data-analytics-id={analyticsId} data-lang={lang} hidden>
+  <section class="consent-banner" role="dialog" aria-modal="true" aria-labelledby={`consent-title-${lang}`} data-consent-banner>
+    <div>
+      <p class="consent-eyebrow">PATERNOGA</p>
+      <h2 id={`consent-title-${lang}`}>{copy.title}</h2>
+      <p>{copy.intro} <a href={privacyPath}>{copy.privacy}</a></p>
+    </div>
+    <div class="consent-actions">
+      <button type="button" class="consent-button consent-button--quiet" data-consent-reject>{copy.reject}</button>
+      <button type="button" class="consent-button consent-button--quiet" data-consent-details>{copy.details}</button>
+      <button type="button" class="consent-button consent-button--primary" data-consent-accept>{copy.accept}</button>
+    </div>
+  </section>
+
+  <dialog class="consent-dialog" data-consent-dialog aria-labelledby={`consent-dialog-title-${lang}`}>
+    <form method="dialog">
+      <header>
+        <div>
+          <p class="consent-eyebrow">PATERNOGA</p>
+          <h2 id={`consent-dialog-title-${lang}`}>{copy.title}</h2>
+        </div>
+        <button type="button" class="consent-close" data-consent-close aria-label={copy.close}>×</button>
+      </header>
+      <div class="consent-options">
+        <div class="consent-option">
+          <div><strong>{copy.essential}</strong><p>{copy.essentialText}</p></div>
+          <span>{copy.always}</span>
+        </div>
+        <label class="consent-option">
+          <div><strong>{copy.analytics}</strong><p>{copy.analyticsText}</p></div>
+          <input type="checkbox" name="analytics" data-consent-analytics />
+        </label>
+        <label class="consent-option">
+          <div><strong>{copy.external}</strong><p>{copy.externalText}</p></div>
+          <input type="checkbox" name="external" data-consent-external />
+        </label>
+      </div>
+      <div class="consent-dialog-actions">
+        <a href={privacyPath}>{copy.privacy}</a>
+        <div>
+          <button type="button" class="consent-button consent-button--quiet" data-consent-reject>{copy.reject}</button>
+          <button type="button" class="consent-button consent-button--primary" data-consent-save>{copy.save}</button>
+        </div>
+      </div>
+    </form>
+  </dialog>
+</div>
+
+<script>
+  type ConsentChoice = { analytics: boolean; external: boolean; updatedAt: string; version: 1 };
+  type ConsentWindow = Window & {
+    dataLayer?: unknown[];
+    gtag?: (...args: unknown[]) => void;
+    paternogaConsent?: ConsentChoice;
+  };
+
+  const STORAGE_KEY = "paternoga-consent-v1";
+  const managers = document.querySelectorAll<HTMLElement>("[data-consent-manager]");
+
+  const readChoice = (): ConsentChoice | null => {
+    try {
+      const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "null") as ConsentChoice | null;
+      return parsed?.version === 1 && typeof parsed.analytics === "boolean" && typeof parsed.external === "boolean" ? parsed : null;
+    } catch {
+      return null;
+    }
+  };
+
+  const deleteAnalyticsCookies = () => {
+    document.cookie.split(";").map((item) => item.trim().split("=")[0]).filter((name) => name === "_ga" || name.startsWith("_ga_")).forEach((name) => {
+      document.cookie = `${name}=; Max-Age=0; Path=/; SameSite=Lax`;
+      document.cookie = `${name}=; Max-Age=0; Path=/; Domain=.${location.hostname}; SameSite=Lax`;
+    });
+  };
+
+  const loadAnalytics = (analyticsId: string) => {
+    if (!analyticsId || document.querySelector("script[data-paternoga-ga4]")) return;
+    const consentWindow = window as ConsentWindow;
+    const gtag = consentWindow.gtag;
+    if (!gtag) return;
+    gtag("consent", "update", { analytics_storage: "granted" });
+    gtag("js", new Date());
+    gtag("config", analyticsId, { allow_google_signals: false, allow_ad_personalization_signals: false });
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(analyticsId)}`;
+    script.dataset.paternogaGa4 = "true";
+    document.head.append(script);
+  };
+
+  const applyChoice = (choice: ConsentChoice, analyticsId: string) => {
+    const consentWindow = window as ConsentWindow;
+    consentWindow.paternogaConsent = choice;
+    if (choice.analytics) loadAnalytics(analyticsId);
+    else {
+      consentWindow.gtag?.("consent", "update", {
+        analytics_storage: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+      });
+      deleteAnalyticsCookies();
+    }
+    window.dispatchEvent(new CustomEvent("paternoga:consent", { detail: choice }));
+  };
+
+  managers.forEach((manager) => {
+    const banner = manager.querySelector<HTMLElement>("[data-consent-banner]");
+    const dialog = manager.querySelector<HTMLDialogElement>("[data-consent-dialog]");
+    const analyticsInput = manager.querySelector<HTMLInputElement>("[data-consent-analytics]");
+    const externalInput = manager.querySelector<HTMLInputElement>("[data-consent-external]");
+    const analyticsId = manager.dataset.analyticsId ?? "";
+    let choice = readChoice();
+
+    const openSettings = () => {
+      if (!dialog) return;
+      analyticsInput && (analyticsInput.checked = choice?.analytics ?? false);
+      externalInput && (externalInput.checked = choice?.external ?? false);
+      dialog.showModal();
+    };
+    const save = (analytics: boolean, external: boolean) => {
+      const previous = choice;
+      choice = { analytics, external, updatedAt: new Date().toISOString(), version: 1 };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(choice));
+      if (banner) banner.hidden = true;
+      dialog?.close();
+      applyChoice(choice, manager.dataset.analyticsId ?? analyticsId);
+      if (previous?.external && !external) location.reload();
+    };
+
+    manager.querySelectorAll<HTMLButtonElement>("[data-consent-reject]").forEach((button) => button.addEventListener("click", () => save(false, false)));
+    manager.querySelector<HTMLButtonElement>("[data-consent-accept]")?.addEventListener("click", () => save(true, true));
+    manager.querySelector<HTMLButtonElement>("[data-consent-details]")?.addEventListener("click", openSettings);
+    manager.querySelector<HTMLButtonElement>("[data-consent-close]")?.addEventListener("click", () => dialog?.close());
+    manager.querySelector<HTMLButtonElement>("[data-consent-save]")?.addEventListener("click", () => save(analyticsInput?.checked ?? false, externalInput?.checked ?? false));
+    document.querySelectorAll<HTMLButtonElement>("[data-open-consent-settings]").forEach((button) => button.addEventListener("click", openSettings));
+
+    const consentWindow = window as ConsentWindow;
+    consentWindow.dataLayer = consentWindow.dataLayer ?? [];
+    consentWindow.gtag = consentWindow.gtag ?? ((...args: unknown[]) => consentWindow.dataLayer?.push(args));
+    consentWindow.gtag("consent", "default", {
+      analytics_storage: "denied",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      wait_for_update: 500,
+    });
+    manager.hidden = false;
+    if (choice) {
+      if (banner) banner.hidden = true;
+      applyChoice(choice, manager.dataset.analyticsId ?? analyticsId);
+    } else if (banner) banner.hidden = false;
+  });
+</script>
+
+<style>
+  .consent-manager { position: fixed; z-index: 1000; inset: 0; pointer-events: none; }
+  .consent-manager[hidden] { display: none; }
+  .consent-banner[hidden] { display: none; }
+  .consent-banner { position: absolute; right: 20px; bottom: 20px; left: 20px; display: grid; width: min(calc(100% - 40px), 980px); margin: 0 auto; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end; border: 1px solid rgba(255,250,244,.18); border-radius: 12px; background: #171715; padding: 24px; color: #fffaf4; box-shadow: 0 24px 80px rgba(0,0,0,.3); pointer-events: auto; }
+  .consent-eyebrow { margin: 0 0 10px; color: #e98764; font-size: 10px; font-weight: 700; letter-spacing: .14em; }
+  .consent-banner h2, .consent-dialog h2 { margin: 0; font-family: var(--sans); font-size: 24px; font-weight: 570; letter-spacing: -.04em; line-height: 1.05; }
+  .consent-banner p:not(.consent-eyebrow) { max-width: 640px; margin: 12px 0 0; color: #b9b4aa; font-size: 14px; line-height: 1.55; }
+  .consent-manager a { color: inherit; text-underline-offset: 3px; }
+  .consent-actions { display: flex; gap: 9px; flex-wrap: wrap; justify-content: flex-end; }
+  .consent-button { min-height: 44px; border: 1px solid rgba(255,250,244,.26); border-radius: 6px; padding: 0 17px; color: #fffaf4; font: 650 13px/1 var(--sans); cursor: pointer; }
+  .consent-button--quiet { background: transparent; }
+  .consent-button--primary { border-color: #b74622; background: #b74622; }
+  .consent-button:focus-visible, .consent-close:focus-visible, .consent-option input:focus-visible { outline: 3px solid #e98764; outline-offset: 3px; }
+  .consent-dialog { width: min(calc(100% - 32px), 720px); max-height: calc(100vh - 32px); overflow: auto; border: 1px solid rgba(27,26,23,.18); border-radius: 12px; background: #fbf8f2; padding: 0; color: #1b1a17; box-shadow: 0 30px 100px rgba(0,0,0,.35); pointer-events: auto; }
+  .consent-dialog::backdrop { background: rgba(10,10,9,.72); }
+  .consent-dialog form > header, .consent-dialog-actions { display: flex; gap: 20px; align-items: flex-start; justify-content: space-between; padding: 24px; }
+  .consent-close { width: 40px; height: 40px; flex: 0 0 auto; border: 1px solid rgba(27,26,23,.16); border-radius: 50%; background: transparent; color: #1b1a17; font: 300 26px/1 var(--sans); cursor: pointer; }
+  .consent-options { border-block: 1px solid rgba(27,26,23,.14); }
+  .consent-option { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 24px; align-items: center; padding: 20px 24px; }
+  .consent-option + .consent-option { border-top: 1px solid rgba(27,26,23,.1); }
+  .consent-option strong { font-size: 15px; }
+  .consent-option p { margin: 5px 0 0; color: #625f58; font-size: 13px; line-height: 1.5; }
+  .consent-option > span { color: #625f58; font-size: 11px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+  .consent-option input { width: 22px; height: 22px; accent-color: #b74622; }
+  .consent-dialog-actions { align-items: center !important; }
+  .consent-dialog-actions > div { display: flex; gap: 9px; }
+  .consent-dialog-actions .consent-button--quiet { border-color: rgba(27,26,23,.2); color: #1b1a17; }
+  @media (max-width: 720px) {
+    .consent-banner { grid-template-columns: 1fr; gap: 20px; }
+    .consent-actions { justify-content: stretch; }
+    .consent-actions .consent-button { flex: 1 1 auto; }
+    .consent-dialog-actions { align-items: stretch !important; flex-direction: column; }
+    .consent-dialog-actions > div { width: 100%; }
+    .consent-dialog-actions .consent-button { flex: 1; }
+  }
+  @media (max-width: 430px) {
+    .consent-banner { right: 10px; bottom: 10px; left: 10px; width: calc(100% - 20px); padding: 20px; }
+    .consent-actions { display: grid; grid-template-columns: 1fr 1fr; }
+    .consent-actions .consent-button--primary { grid-column: 1 / -1; grid-row: 1; }
+    .consent-option { padding-inline: 18px; }
+  }
+</style>

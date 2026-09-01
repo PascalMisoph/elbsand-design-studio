@@ -7,6 +7,6 @@
   Mixkit Sound Effects Free License.
   Source: https://mixkit.co/free-sound-effects/typing/
 
-The ELBSAND logo is a project-owned brand asset. OpenAI, Perplexity and Gemini
+The PATERNOGA logo is a project-owned brand asset. OpenAI, Perplexity and Gemini
 marks are shown as restrained monochrome product identifiers; all marks remain
 the property of their respective owners.

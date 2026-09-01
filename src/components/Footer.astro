@@ -3,26 +3,30 @@ interface Props { legal: string; imprint: string; privacy: string; lang: "de" | 
 const { imprint, privacy, lang } = Astro.props;
 const de = lang === "de";
 const home = de ? "/" : "/en/";
+const imprintPath = de ? "/impressum/" : "/en/legal-notice/";
+const privacyPath = de ? "/datenschutz/" : "/en/privacy/";
 const columns = de ? [
-  { title: "Sichtbarkeit", links: [["GEO-Optimierung", "/geo-optimierung/"], ["GEO Audit", "/geo-audit/"], ["AI-Sichtbarkeit", "/ai-sichtbarkeit/"], ["Prompt-Recherche", "/prompt-recherche/"]] },
+  { title: "Sichtbarkeit", links: [["GEO-Agentur Deutschland", "/geo-agentur-deutschland/"], ["GEO-Optimierung", "/geo-optimierung/"], ["GEO Audit", "/geo-audit/"], ["AI-Sichtbarkeit", "/ai-sichtbarkeit/"]] },
   { title: "Analyse", links: [["KI-Quellenanalyse", "/ki-quellenanalyse/"], ["KI-Wettbewerbsanalyse", "/ki-wettbewerbsanalyse/"], ["KI-Markenwahrnehmung", "/ki-markenwahrnehmung/"], ["KI-Faktencheck", "/ki-faktencheck/"]] },
   { title: "Umsetzung", links: [["Technische GEO", "/technische-geo-optimierung/"], ["AI-Crawlability", "/ai-crawlability/"], ["GEO-Content", "/geo-content/"], ["Content-Optimierung", "/content-optimierung-ai-suche/"]] },
-  { title: "Studio", links: [["GEO-Monitoring", "/geo-monitoring/"], ["GEO-Betreuung", "/geo-betreuung/"], ["Referenzen", "/#projekte"], ["Ablauf", "/#ablauf"], ["Kontakt", "#kontakt"]] },
+  { title: "Studio", links: [["KI-Crawler-Leitfaden", "/wissen/ki-crawler-robots-txt/"], ["DAX-40-Research", "/research/ki-crawler-readiness-dax-40-2026/"], ["GEO-Monitoring", "/geo-monitoring/"], ["GEO-Betreuung", "/geo-betreuung/"], ["Kontakt", "#kontakt"]] },
 ] : [
-  { title: "Visibility", links: [["GEO optimisation", "/en/geo-optimization/"], ["GEO audit", "/en/geo-audit/"], ["AI visibility", "/en/ai-visibility/"], ["Prompt research", "/en/prompt-research/"]] },
+  { title: "Visibility", links: [["GEO agency Germany", "/en/geo-agency-germany/"], ["GEO optimisation", "/en/geo-optimization/"], ["GEO audit", "/en/geo-audit/"], ["AI visibility", "/en/ai-visibility/"]] },
   { title: "Analysis", links: [["AI source analysis", "/en/ai-source-analysis/"], ["AI competitor analysis", "/en/ai-competitor-analysis/"], ["AI brand perception", "/en/ai-brand-perception/"], ["AI fact checking", "/en/ai-fact-checking/"]] },
   { title: "Implementation", links: [["Technical GEO", "/en/technical-geo-optimization/"], ["AI crawlability", "/en/ai-crawlability/"], ["GEO content", "/en/geo-content/"], ["Content optimisation", "/en/content-optimization-ai-search/"]] },
-  { title: "Studio", links: [["GEO monitoring", "/en/geo-monitoring/"], ["GEO support", "/en/geo-support/"], ["Work", "/en/#projekte"], ["Process", "/en/#ablauf"], ["Contact", "#kontakt"]] },
+  { title: "Studio", links: [["AI crawler guide", "/en/knowledge/ai-crawlers-robots-txt/"], ["DAX 40 research", "/en/research/dax-40-ai-crawler-readiness-2026/"], ["GEO monitoring", "/en/geo-monitoring/"], ["GEO support", "/en/geo-support/"], ["Contact", "#kontakt"]] },
 ];
 ---
 
-<footer class="site-footer">
+<footer class="site-footer" data-nosnippet>
   <div class="site-footer-inner">
     <div class="site-footer-brand">
-      <a class="wordmark" href={home} aria-label="ELBSAND Design Studio home">
-        <img src="/images/elbsand-logo.png" alt="ELBSAND Design Studio" width="1080" height="180" loading="lazy" />
+      <a class="wordmark" href={home} aria-label="Paternoga SEO & GEO Studio home">
+        <span class="wordmark-brand">PATERNOGA</span>
+        <span class="wordmark-descriptor">SEO &amp; GEO Studio</span>
       </a>
-      <p><i aria-hidden="true"></i>{de ? "Studio-Systeme erreichbar" : "Studio systems operational"}</p>
+      <p class="site-footer-claim">Be the brand AI thinks of first.</p>
+      <p class="site-footer-status"><i aria-hidden="true"></i>{de ? "Studio-Systeme erreichbar" : "Studio systems operational"}</p>
       <a href="mailto:pascal.misoph@gmail.com">pascal.misoph@gmail.com</a>
     </div>
     <div class="site-footer-columns">
@@ -35,7 +39,11 @@ const columns = de ? [
     </div>
   </div>
   <div class="site-footer-bottom">
-    <span>© 2026 ELBSAND Design Studio</span>
-    <div><span>{imprint}</span><span>{privacy}</span></div>
+    <span>© 2026 Paternoga SEO & GEO Studio</span>
+    <div>
+      <a href={imprintPath}>{imprint}</a>
+      <a href={privacyPath}>{privacy}</a>
+      <button type="button" data-open-consent-settings>{de ? "Datenschutz-Einstellungen" : "Privacy settings"}</button>
+    </div>
   </div>
 </footer>

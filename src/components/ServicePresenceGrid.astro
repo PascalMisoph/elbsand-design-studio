@@ -1,0 +1,187 @@
+---
+import GeoAuditFeatureVisual from "./GeoAuditFeatureVisual.astro";
+
+interface PresenceItem {
+  title: string;
+  text: string;
+}
+
+interface Props {
+  heading: string;
+  items: readonly PresenceItem[];
+  lang: "de" | "en";
+  stacked?: boolean;
+  centeredItems?: boolean;
+  images?: readonly {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    index?: number;
+  }[];
+}
+
+const { heading, items, lang, stacked = false, centeredItems = false, images = [] } = Astro.props;
+---
+
+<section class:list={["a-presence", "a-shell", { "a-presence--stacked": stacked, "a-presence--centered-items": centeredItems }]} data-presence-reveal>
+  <header><h2>{heading}</h2></header>
+  <div class="a-presence-grid">
+    {items.map((item, index) => {
+      const image = images.find((visual) => (visual.index ?? 0) === index);
+      return (
+        <article class="has-reference-image">
+          {image ? (
+            <div class="presence-visual presence-visual--custom">
+              <img src={image.src} alt={image.alt} width={image.width} height={image.height} loading="eager" decoding="async" />
+            </div>
+          ) : (
+            <GeoAuditFeatureVisual index={index} lang={lang} />
+          )}
+          <div class="a-presence-copy">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        </article>
+      );
+    })}
+  </div>
+</section>
+
+<style>
+  .a-shell {
+    box-sizing: border-box;
+    width: min(100%, 1120px);
+    margin-inline: auto;
+    padding-inline: 32px;
+  }
+  .a-presence {
+    border-top: 1px solid var(--a-line, var(--s-line, rgba(255, 250, 244, .15)));
+    padding-top: 128px;
+    padding-bottom: 140px;
+  }
+  .a-presence > header {
+    margin-bottom: 68px;
+    text-align: center;
+  }
+  .a-presence h2 {
+    margin: 0 auto;
+    color: var(--a-ink, var(--s-ink, #fbf8f2));
+    font-family: var(--sans, Inter, system-ui, sans-serif);
+    font-size: 46px;
+    font-weight: 520;
+    letter-spacing: -.055em;
+    line-height: 1;
+  }
+  .a-presence-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid var(--a-line, var(--s-line, rgba(255, 250, 244, .15)));
+  }
+  .a-presence-grid > article {
+    display: flex;
+    min-width: 0;
+    min-height: 520px;
+    flex-direction: column;
+    border-right: 1px solid var(--a-line, var(--s-line, rgba(255, 250, 244, .15)));
+    border-bottom: 1px solid var(--a-line, var(--s-line, rgba(255, 250, 244, .15)));
+    padding: 34px 36px 38px;
+  }
+  .a-presence-grid > article.has-reference-image {
+    transition: background-color 420ms ease, box-shadow 420ms ease;
+  }
+  .a-presence-grid > article.has-reference-image:hover {
+    background: rgba(183, 70, 34, .025);
+    box-shadow: inset 0 0 0 1px rgba(233, 135, 100, .08);
+  }
+  .a-presence-copy {
+    min-height: 128px;
+    margin-top: auto;
+    padding-top: 24px;
+  }
+  .a-presence-copy h3 {
+    max-width: 470px;
+    margin: 0 0 var(--card-heading-copy-gap);
+    color: var(--a-ink, var(--s-ink, #fbf8f2));
+    font-family: var(--sans, Inter, system-ui, sans-serif);
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: -.04em;
+    line-height: 1.08;
+  }
+  .a-presence-copy p {
+    max-width: 470px;
+    margin: 0;
+    color: var(--a-muted, var(--s-muted, #b7b0a5));
+    font-size: 15px;
+    line-height: 1.58;
+  }
+  .presence-visual--custom {
+    position: relative;
+    height: auto;
+    min-height: 0;
+    flex: 0 0 auto;
+    overflow: hidden;
+  }
+  .presence-visual--custom img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    transition: transform 700ms var(--motion-ease), filter 420ms ease;
+  }
+  .a-presence-grid > article.has-reference-image:hover .presence-visual--custom img {
+    filter: saturate(1.06) contrast(1.03) brightness(1.035);
+    transform: scale(1.025);
+  }
+  .a-presence--stacked .a-presence-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .a-presence--stacked .a-presence-grid > article {
+    border-right: 0;
+  }
+  .a-presence--centered-items .a-presence-grid > article .a-presence-copy {
+    text-align: center;
+  }
+  .a-presence--centered-items .a-presence-grid > article .a-presence-copy h3,
+  .a-presence--centered-items .a-presence-grid > article .a-presence-copy p {
+    margin-inline: auto;
+  }
+  .a-presence--centered-items .a-presence-grid > article .a-presence-copy h3 {
+    max-width: 620px;
+  }
+  .a-presence--centered-items .a-presence-grid > article .a-presence-copy p {
+    max-width: 620px;
+  }
+  @media (min-width: 1121px) {
+    .a-presence h2 { white-space: nowrap; }
+  }
+  @media (max-width: 860px) {
+    .a-shell { padding-inline: 20px; }
+    .a-presence { padding-top: 92px; padding-bottom: 100px; }
+    .a-presence > header { margin-bottom: 52px; }
+    .a-presence h2 { max-width: 720px; font-size: 42px; }
+    .a-presence-grid { grid-template-columns: 1fr; }
+    .a-presence-grid > article { min-height: 480px; }
+  }
+  @media (max-width: 560px) {
+    .a-presence { padding-top: 80px; padding-bottom: 84px; }
+    .a-presence > header { margin-bottom: 42px; text-align: left; }
+    .a-presence h2 { font-size: 41px; line-height: 1.02; }
+    .a-presence-grid { border-left: 0; }
+    .a-presence-grid > article {
+      min-height: 445px;
+      border-right: 0;
+      padding: 28px 0 32px;
+    }
+    .a-presence-copy { min-height: 0; }
+    .a-presence-copy h3 { font-size: 24px; }
+    .a-presence-copy p { font-size: 15px; }
+    .presence-visual--custom { width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .a-presence-grid > article.has-reference-image,
+    .presence-visual--custom img { transition: none; }
+  }
+</style>

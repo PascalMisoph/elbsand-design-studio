@@ -1,0 +1,164 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+import { content } from "../content/site";
+
+interface Props { lang: "de" | "en"; kind: "imprint" | "privacy" }
+const { lang, kind } = Astro.props;
+const de = lang === "de";
+const site = content[lang];
+const isImprint = kind === "imprint";
+const canonicalPath = isImprint
+  ? (de ? "/impressum/" : "/en/legal-notice/")
+  : (de ? "/datenschutz/" : "/en/privacy/");
+const alternateDePath = isImprint ? "/impressum/" : "/datenschutz/";
+const alternateEnPath = isImprint ? "/en/legal-notice/" : "/en/privacy/";
+const meta = de
+  ? isImprint
+    ? { title: "Impressum | Paternoga SEO & GEO Studio", description: "Anbieterkennzeichnung und Kontaktangaben von Paternoga SEO & GEO Studio in Dresden." }
+    : { title: "Datenschutz | Paternoga SEO & GEO Studio", description: "Informationen zur Verarbeitung personenbezogener Daten bei Paternoga SEO & GEO Studio." }
+  : isImprint
+    ? { title: "Legal Notice | Paternoga SEO & GEO Studio", description: "Provider identification and contact details for Paternoga SEO & GEO Studio in Dresden, Germany." }
+    : { title: "Privacy Policy | Paternoga SEO & GEO Studio", description: "How Paternoga SEO & GEO Studio processes personal data when you use this website and its services." };
+---
+
+<BaseLayout title={meta.title} description={meta.description} lang={lang} canonicalPath={canonicalPath} alternateDePath={alternateDePath} alternateEnPath={alternateEnPath} bodyClass="legal-page">
+  <Header lang={lang} nav={site.nav} cta={site.cta} page="service" alternateDePath={alternateDePath} alternateEnPath={alternateEnPath} />
+  <main id="main-content" class="legal-document">
+    <header class="legal-hero">
+      <p class="eyebrow">{de ? "Rechtliche Informationen" : "Legal information"}</p>
+      <h1>{de ? (isImprint ? "Impressum" : "Datenschutz") : (isImprint ? "Legal Notice" : "Privacy Policy")}</h1>
+      {!isImprint && <p>{de ? "Hier erfährst du, welche personenbezogenen Daten beim Besuch dieser Website und bei der Nutzung unserer Angebote verarbeitet werden." : "This policy explains which personal data is processed when you visit this website or use our services."}</p>}
+    </header>
+
+    {isImprint ? (
+      <article class="legal-content longform-document">
+        <section>
+          <h2>{de ? "Diensteanbieter gemäß § 5 DDG" : "Service provider under section 5 DDG"}</h2>
+          <address id="kontakt">
+            <strong>Pascal Misoph</strong><br />
+            {de ? "Geschäftsbezeichnung" : "Trading name"}: Paternoga SEO &amp; GEO Studio<br />
+            Holbeinstraße 7<br />
+            01307 Dresden<br />
+            Deutschland
+          </address>
+        </section>
+        <section>
+          <h2>{de ? "Kontakt" : "Contact"}</h2>
+          <p>{de ? "Telefon" : "Telephone"}: <a href="tel:+4915206398390">+49 152 06398390</a><br />
+          E-Mail: <a href="mailto:pascal.misoph@gmail.com">pascal.misoph@gmail.com</a></p>
+        </section>
+        <section>
+          <h2>{de ? "Verantwortlich für redaktionelle Inhalte" : "Responsibility for editorial content"}</h2>
+          <p>{de ? "Soweit auf dieser Website journalistisch-redaktionelle Inhalte im Sinne von § 18 Abs. 2 MStV angeboten werden, ist verantwortlich:" : "Where this website provides journalistic-editorial content within the meaning of section 18(2) of the German Interstate Media Treaty, the responsible person is:"}</p>
+          <address>Pascal Misoph<br />Holbeinstraße 7<br />01307 Dresden<br />Deutschland</address>
+        </section>
+        <section>
+          <h2>{de ? "Verbraucherstreitbeilegung" : "Consumer dispute resolution"}</h2>
+          <p>{de ? "Wir sind weder bereit noch verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen." : "We are neither willing nor obliged to participate in dispute-resolution proceedings before a consumer arbitration body."}</p>
+        </section>
+      </article>
+    ) : (
+      <article class="legal-content longform-document">
+        <p class="legal-updated">{de ? "Stand: 1. September 2026" : "Last updated: 1 September 2026"}</p>
+        <section id="kontakt">
+          <h2>{de ? "1. Verantwortlicher" : "1. Controller"}</h2>
+          <address>
+            Pascal Misoph<br />Paternoga SEO &amp; GEO Studio<br />Holbeinstraße 7<br />01307 Dresden<br />Deutschland<br />
+            E-Mail: <a href="mailto:pascal.misoph@gmail.com">pascal.misoph@gmail.com</a><br />
+            {de ? "Telefon" : "Telephone"}: <a href="tel:+4915206398390">+49 152 06398390</a>
+          </address>
+        </section>
+
+        <section id="hosting">
+          <h2>{de ? "2. Hosting und Server-Protokolle" : "2. Hosting and server logs"}</h2>
+          <p>{de ? "Diese Website wird über Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA, bereitgestellt. Beim Aufruf können technisch erforderliche Protokolldaten verarbeitet werden, insbesondere IP-Adresse, Datum und Uhrzeit, aufgerufene URL, Referrer, Browser-, Geräte- und Betriebssysteminformationen. Die Verarbeitung dient der sicheren, stabilen und effizienten Auslieferung der Website sowie der Abwehr von Missbrauch. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt in Betrieb und Sicherheit der Website." : "This website is delivered through Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA. Technically necessary log data may be processed when a page is requested, in particular the IP address, date and time, requested URL, referrer, browser, device and operating-system information. Processing is necessary to deliver the website securely, reliably and efficiently and to prevent abuse. The legal basis is Article 6(1)(f) GDPR."}</p>
+          <p>{de ? "Vercel kann Daten außerhalb des Europäischen Wirtschaftsraums verarbeiten. Vercel beschreibt hierfür unter anderem das EU-US Data Privacy Framework und Standardvertragsklauseln als Übermittlungsmechanismen. Weitere Informationen:" : "Vercel may process data outside the European Economic Area. Vercel describes, among other mechanisms, the EU-US Data Privacy Framework and Standard Contractual Clauses for such transfers. Further information:"} <a href="https://vercel.com/legal/privacy-notice" target="_blank" rel="noopener noreferrer">Vercel Privacy Notice</a> · <a href="https://vercel.com/legal/dpa" target="_blank" rel="noopener noreferrer">Vercel DPA</a>.</p>
+        </section>
+
+        <section id="einwilligung">
+          <h2>{de ? "3. Datenschutzeinstellungen und Endgerätezugriffe" : "3. Privacy settings and access to your device"}</h2>
+          <p>{de ? "Wir speichern deine Auswahl zu optionalen Diensten im lokalen Speicher deines Browsers. Diese Speicherung ist erforderlich, damit die Website deine Entscheidung berücksichtigt; Rechtsgrundlage für die anschließende Verarbeitung ist Art. 6 Abs. 1 lit. f DSGVO, für den Endgerätezugriff § 25 Abs. 2 Nr. 2 TDDDG. Google Analytics und Calendly werden erst nach deiner vorherigen Einwilligung geladen. Rechtsgrundlagen sind Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG." : "We store your choice regarding optional services in your browser's local storage. This is necessary for the website to respect that choice; the legal basis for subsequent processing is Article 6(1)(f) GDPR and section 25(2)(2) TDDDG for access to the device. Google Analytics and Calendly load only after your prior consent. The legal bases are Article 6(1)(a) GDPR and section 25(1) TDDDG."}</p>
+          <p>{de ? "Du kannst deine Auswahl jederzeit mit Wirkung für die Zukunft ändern. Die Rechtmäßigkeit der Verarbeitung bis zum Widerruf bleibt unberührt." : "You may change your choice at any time with effect for the future. Processing performed before withdrawal remains lawful."}</p>
+          <button class="legal-settings-button" type="button" data-open-consent-settings>{de ? "Datenschutz-Einstellungen öffnen" : "Open privacy settings"}</button>
+        </section>
+
+        <section id="analytics">
+          <h2>{de ? "4. Google Analytics 4" : "4. Google Analytics 4"}</h2>
+          <p>{de ? "Nach deiner Einwilligung verwenden wir Google Analytics 4, einen Analysedienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Google Analytics verarbeitet insbesondere Seitenaufrufe und Interaktionen, Sitzungsinformationen, ungefähren Standort sowie Browser- und Geräteinformationen. Zur Unterscheidung von Nutzern und Sitzungen können die Cookies „_ga“ und „_ga_<Mess-ID>“ gesetzt werden; Google nennt hierfür standardmäßig eine Laufzeit von bis zu zwei Jahren." : "After you consent, we use Google Analytics 4, an analytics service provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland. Google Analytics processes page views and interactions, session information, approximate location and browser and device information. The cookies “_ga” and “_ga_<measurement-id>” may be used to distinguish users and sessions; Google states a default lifetime of up to two years."}</p>
+          <p>{de ? "Vor deiner Zustimmung wird das Google-Tag nicht von unserer Website geladen. Werbespeicherung, Werbenutzerdaten und personalisierte Werbung bleiben deaktiviert. Die Verarbeitung erfolgt ausschließlich zur Reichweitenmessung und Verbesserung unserer Inhalte auf Grundlage deiner Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG." : "The Google tag is not loaded by our website before you consent. Advertising storage, advertising user data and personalised advertising remain disabled. Processing is used solely for audience measurement and content improvement on the basis of your consent under Article 6(1)(a) GDPR and section 25(1) TDDDG."}</p>
+          <p>{de ? "Eine Verarbeitung durch Google LLC in den USA kann nicht ausgeschlossen werden. Google verweist auf das EU-US Data Privacy Framework und Standardvertragsklauseln. Die Aufbewahrung von nutzer- und ereignisbezogenen Daten richtet sich nach der für die Analytics-Property konfigurierten Aufbewahrungsdauer. Weitere Informationen:" : "Processing by Google LLC in the United States cannot be ruled out. Google refers to the EU-US Data Privacy Framework and Standard Contractual Clauses. Retention of user- and event-level data follows the retention period configured for the Analytics property. Further information:"} <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a> · <a href="https://support.google.com/analytics/answer/11593727" target="_blank" rel="noopener noreferrer">Google Analytics data collection</a>.</p>
+        </section>
+
+        <section id="calendly">
+          <h2>{de ? "5. Terminvereinbarung mit Calendly" : "5. Scheduling with Calendly"}</h2>
+          <p>{de ? "Für die Terminvereinbarung nutzen wir Calendly, einen Dienst von Calendly LLC, 115 E Main St., Ste A1B, Buford, GA 30518, USA. Das Calendly-Embed und seine Ressourcen werden erst geladen, wenn du die Terminbuchung auswählst und der Kategorie „Externe Terminbuchung“ zugestimmt hast. Beim Laden können technische Nutzungsdaten an Calendly übertragen und Informationen auf deinem Endgerät gespeichert oder ausgelesen werden." : "We use Calendly, a service provided by Calendly LLC, 115 E Main St., Ste A1B, Buford, GA 30518, USA, for scheduling. The Calendly embed and its resources load only after you choose scheduling and consent to the “External scheduling” category. Loading may transmit technical usage data to Calendly and may store or access information on your device."}</p>
+          <p>{de ? "Bei der anschließenden Buchung verarbeitet Calendly die von dir eingegebenen Daten, insbesondere Name, E-Mail-Adresse, Terminangaben und freiwillige Angaben. Der optionale Embed-Zugriff beruht auf Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG; die Verarbeitung deiner Buchung erfolgt zur Durchführung vorvertraglicher Maßnahmen auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO. Calendly beschreibt das EU-US Data Privacy Framework und Standardvertragsklauseln als Übermittlungsmechanismen." : "When you book, Calendly processes the information you provide, in particular your name, email address, appointment details and optional information. Access through the optional embed is based on Article 6(1)(a) GDPR and section 25(1) TDDDG; processing of your booking is necessary for pre-contractual steps under Article 6(1)(b) GDPR. Calendly describes the EU-US Data Privacy Framework and Standard Contractual Clauses as transfer mechanisms."} <a href="https://calendly.com/legal/privacy-notice" target="_blank" rel="noopener noreferrer">Calendly Privacy Notice</a>.</p>
+        </section>
+
+        <section id="ki-check">
+          <h2>{de ? "6. KI-Website-Check" : "6. AI website check"}</h2>
+          <p>{de ? "Beim technischen KI-Website-Check verarbeiten wir zunächst die von dir eingegebene URL sowie öffentlich erreichbare technische Informationen der Zielwebsite. Der Abruf erfolgt serverseitig. Die Zielwebsite kann dabei die technische Anfrage unseres Hosting-Systems protokollieren; deine lokale IP-Adresse wird nicht an die geprüfte Website übermittelt." : "The technical AI website check initially processes the URL you enter and publicly available technical information from the target website. The request is performed server-side. The target website may log the technical request from our hosting system; your local IP address is not transmitted to the website being checked."}</p>
+          <p>{de ? "Wenn du den vollständigen Befund freischaltest, verarbeiten wir zusätzlich deinen Namen, deine E-Mail-Adresse, die geprüfte URL, Scan-Ergebnisse und technische Metadaten zur Missbrauchsabwehr. Dies dient der Bereitstellung und Einordnung des angeforderten Checks sowie einer möglichen vorvertraglichen Kommunikation. Rechtsgrundlagen sind Art. 6 Abs. 1 lit. b DSGVO und, für Sicherheits- und Missbrauchsschutz, Art. 6 Abs. 1 lit. f DSGVO. Die Angaben werden nicht automatisch für Newsletter oder Werbeserien verwendet." : "If you unlock the complete findings, we additionally process your name, email address, checked URL, scan results and technical metadata used to prevent abuse. This provides and contextualises the requested check and enables potential pre-contractual communication. The legal bases are Article 6(1)(b) GDPR and, for security and abuse prevention, Article 6(1)(f) GDPR. The information is not automatically used for newsletters or marketing sequences."}</p>
+        </section>
+
+        <section id="kontaktformulare">
+          <h2>{de ? "7. Kontaktanfragen und E-Mail-Versand" : "7. Contact enquiries and email delivery"}</h2>
+          <p>{de ? "Bei einer Anfrage verarbeiten wir die von dir eingegebenen Kontaktdaten, dein Anliegen, die ausgewählte Leistung sowie technische Sicherheitsinformationen wie einen nicht rückrechenbaren Hash der anfragenden IP-Adresse und den User-Agent. Pflichtangaben sind für die Bearbeitung erforderlich. Die Verarbeitung erfolgt zur Bearbeitung deiner Anfrage und zur Durchführung vorvertraglicher Maßnahmen nach Art. 6 Abs. 1 lit. b DSGVO sowie zur Missbrauchsabwehr nach Art. 6 Abs. 1 lit. f DSGVO." : "When you submit an enquiry, we process the contact information you enter, your request, the selected service and technical security information such as a non-reversible hash of the requesting IP address and the user agent. Required fields are necessary to process the request. Processing is necessary to respond and take pre-contractual steps under Article 6(1)(b) GDPR and to prevent abuse under Article 6(1)(f) GDPR."}</p>
+          <p>{de ? "Für die technische Übermittlung der Anfrage verwenden wir Resend, angeboten von Plus Five Five, Inc., 2261 Market Street #5039, San Francisco, CA 94114, USA. Dabei werden insbesondere Absenderdaten und Nachrichteninhalt in den USA verarbeitet. Resend beschreibt Standardvertragsklauseln und die Teilnahme am EU-US Data Privacy Framework als Übermittlungsmechanismen. Wir nutzen diese Formulare nicht für eine automatische Newsletter-Anmeldung." : "We use Resend, provided by Plus Five Five, Inc., 2261 Market Street #5039, San Francisco, CA 94114, USA, to deliver enquiries by email. Sender details and message content are processed in the United States. Resend describes Standard Contractual Clauses and participation in the EU-US Data Privacy Framework as transfer mechanisms. These forms do not automatically subscribe you to a newsletter."} <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Resend Privacy Policy</a> · <a href="https://resend.com/legal/dpa" target="_blank" rel="noopener noreferrer">Resend DPA</a>.</p>
+        </section>
+
+        <section id="empfaenger">
+          <h2>{de ? "8. Empfänger und Übermittlungen" : "8. Recipients and transfers"}</h2>
+          <p>{de ? "Empfänger personenbezogener Daten sind nur diejenigen Hosting-, Analyse-, Termin- und E-Mail-Dienstleister, die zur Erbringung der jeweils beschriebenen Funktion erforderlich sind, sowie öffentliche Stellen, soweit eine gesetzliche Verpflichtung besteht. Übermittlungen in Drittländer erfolgen nur auf Grundlage eines Angemessenheitsbeschlusses oder geeigneter Garantien nach Art. 44 ff. DSGVO, soweit diese erforderlich sind." : "Personal data is disclosed only to the hosting, analytics, scheduling and email providers necessary for the functions described above and to public authorities where required by law. Transfers to third countries take place only on the basis of an adequacy decision or appropriate safeguards under Articles 44 et seq. GDPR where required."}</p>
+        </section>
+
+        <section id="speicherdauer">
+          <h2>{de ? "9. Speicherdauer" : "9. Retention"}</h2>
+          <p>{de ? "Wir speichern personenbezogene Daten nur so lange, wie es für den jeweiligen Zweck erforderlich ist. Anfragen werden nach Abschluss der Kommunikation gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten oder die Notwendigkeit zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen entgegenstehen. Deine Datenschutzauswahl bleibt im Browser gespeichert, bis du sie löschst, widerrufst oder wir die Version der Einstellungen ändern. Für Daten bei Dienstleistern gelten zusätzlich deren dokumentierte Lösch- und Aufbewahrungsregeln sowie unsere jeweiligen Kontoeinstellungen." : "We retain personal data only for as long as necessary for the relevant purpose. Enquiries are deleted after the communication has ended unless statutory retention duties apply or the data is required to establish, exercise or defend legal claims. Your privacy choice remains in your browser until you delete or withdraw it or we change the settings version. Provider data is also subject to their documented deletion and retention rules and our account settings."}</p>
+        </section>
+
+        <section id="rechte">
+          <h2>{de ? "10. Deine Rechte" : "10. Your rights"}</h2>
+          <p>{de ? "Nach Maßgabe der gesetzlichen Voraussetzungen hast du das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Eine erteilte Einwilligung kannst du jederzeit mit Wirkung für die Zukunft widerrufen. Wenn eine Verarbeitung auf Art. 6 Abs. 1 lit. f DSGVO beruht, kannst du aus Gründen, die sich aus deiner besonderen Situation ergeben, Widerspruch einlegen. Zur Ausübung deiner Rechte genügt eine Nachricht an die oben genannte E-Mail-Adresse." : "Subject to the statutory requirements, you have rights of access, rectification, erasure, restriction, data portability and objection. You may withdraw consent at any time with effect for the future. Where processing is based on Article 6(1)(f) GDPR, you may object on grounds relating to your particular situation. To exercise your rights, contact us at the email address above."}</p>
+        </section>
+
+        <section id="beschwerde">
+          <h2>{de ? "11. Beschwerderecht" : "11. Right to lodge a complaint"}</h2>
+          <p>{de ? "Du hast das Recht, dich bei einer Datenschutzaufsichtsbehörde zu beschweren. Für unseren Sitz ist insbesondere zuständig:" : "You have the right to lodge a complaint with a data protection supervisory authority. The authority responsible for our location is:"}</p>
+          <address>Sächsische Datenschutz- und Transparenzbeauftragte<br />Maternistraße 17<br />01067 Dresden<br />Deutschland<br /><a href="https://www.datenschutz.sachsen.de/kontakt.html" target="_blank" rel="noopener noreferrer">www.datenschutz.sachsen.de</a></address>
+        </section>
+
+        <section>
+          <h2>{de ? "12. Datensicherheit und Änderungen" : "12. Security and changes"}</h2>
+          <p>{de ? "Wir treffen angemessene technische und organisatorische Maßnahmen, um personenbezogene Daten vor Verlust, Manipulation und unbefugtem Zugriff zu schützen. Wir aktualisieren diese Datenschutzerklärung, wenn sich unsere Verarbeitung, eingesetzte Dienste oder die Rechtslage wesentlich ändern. Das oben genannte Datum bezeichnet die letzte inhaltliche Aktualisierung." : "We use appropriate technical and organisational measures to protect personal data against loss, manipulation and unauthorised access. We update this policy when our processing, providers or the legal framework materially changes. The date above identifies the latest substantive update."}</p>
+        </section>
+      </article>
+    )}
+  </main>
+  <Footer {...site.footer} lang={lang} />
+</BaseLayout>
+
+<style>
+  .legal-document { width: min(calc(100% - 40px), 1120px); margin: 0 auto; padding: 150px 0 120px; }
+  .legal-hero { max-width: 820px; padding-bottom: 64px; border-bottom: 1px solid var(--line); }
+  .legal-hero h1 { margin: 18px 0 0; font-family: var(--sans); font-size: clamp(52px, 7vw, 86px); font-weight: 540; letter-spacing: -.07em; line-height: .95; }
+  .legal-hero > p:last-child:not(.eyebrow) { max-width: 670px; margin: 28px 0 0; color: var(--muted); font-size: 18px; line-height: 1.6; }
+  .legal-content { max-width: 820px; padding-top: 64px; }
+  .legal-content section { padding: 38px 0; border-top: 1px solid var(--line); }
+  .legal-content section:first-of-type { border-top: 0; }
+  .legal-content h2 { margin: 0 0 20px; font-family: var(--sans); font-size: clamp(26px, 3vw, 36px); font-weight: 560; letter-spacing: -.045em; line-height: 1.08; }
+  .legal-content p, .legal-content address { margin: 0; color: #4f4c46; font: normal 16px/1.72 var(--sans); }
+  .legal-content p + p, .legal-content p + address { margin-top: 16px; }
+  .legal-content a { color: #7b2f18; text-decoration-thickness: 1px; text-underline-offset: 3px; overflow-wrap: anywhere; }
+  .legal-updated { margin: 0 0 30px !important; color: var(--muted) !important; font-size: 13px !important; }
+  .legal-settings-button { min-height: 46px; margin-top: 22px; border: 1px solid #b74622; border-radius: 6px; background: transparent; padding: 0 18px; color: #7b2f18; font: 650 14px/1 var(--sans); cursor: pointer; }
+  .legal-settings-button:focus-visible { outline: 3px solid #b74622; outline-offset: 3px; }
+  @media (max-width: 640px) {
+    .legal-document { padding-top: 112px; padding-bottom: 80px; }
+    .legal-hero { padding-bottom: 44px; }
+    .legal-content { padding-top: 42px; }
+    .legal-content section { padding-block: 30px; }
+  }
+</style>

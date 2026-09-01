@@ -2,6 +2,8 @@ import type { APIRoute } from "astro";
 import { lookup } from "node:dns/promises";
 import { isIP } from "node:net";
 
+import { createInMemoryRateLimiter } from "@/lib/server/rate-limit";
+
 export const prerender = false;
 
 const MAX_HTML_BYTES = 1_250_000;
@@ -9,7 +11,10 @@ const MAX_ROBOTS_BYTES = 200_000;
 const FETCH_TIMEOUT_MS = 12_000;
 const RATE_LIMIT_WINDOW_MS = 30 * 60 * 1000;
 const RATE_LIMIT_MAX = 10;
-const requestHistory = new Map<string, number[]>();
+const isRateLimited = createInMemoryRateLimiter({
+  windowMs: RATE_LIMIT_WINDOW_MS,
+  maxRequests: RATE_LIMIT_MAX,
+});
 
 type CheckStatus = "pass" | "warning" | "fail";
 
@@ -38,17 +43,6 @@ const getClientAddress = (request: Request) =>
   request.headers.get("cf-connecting-ip") ??
   request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
   "unknown";
-
-const isRateLimited = (address: string) => {
-  const now = Date.now();
-  const recent = (requestHistory.get(address) ?? []).filter(
-    (timestamp) => now - timestamp < RATE_LIMIT_WINDOW_MS,
-  );
-  if (recent.length >= RATE_LIMIT_MAX) return true;
-  recent.push(now);
-  requestHistory.set(address, recent);
-  return false;
-};
 
 const isPrivateIpv4 = (address: string) => {
   const parts = address.split(".").map(Number);
@@ -165,7 +159,7 @@ const fetchPublicText = async (initialUrl: URL, maxBytes: number) => {
         signal: controller.signal,
         headers: {
           accept: "text/html,application/xhtml+xml,text/plain;q=0.8,*/*;q=0.5",
-          "user-agent": "ELBSAND-GEO-Readiness-Check/1.0 (+https://elbsand.studio)",
+          "user-agent": "PATERNOGA-GEO-Readiness-Check/1.0 (+https://www.paternoga-seo-geo.de)",
         },
       });
       const ttfbMs = Math.round(performance.now() - startedAt);
@@ -655,7 +649,11 @@ export const POST: APIRoute = async ({ request }) => {
 
   let payload: { url?: unknown };
   try {
-    payload = await request.json();
+    const parsed: unknown = await request.json();
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      return Response.json({ ok: false, error: "invalid_request" }, { status: 400 });
+    }
+    payload = parsed as { url?: unknown };
   } catch {
     return Response.json({ ok: false, error: "invalid_request" }, { status: 400 });
   }

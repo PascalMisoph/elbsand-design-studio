@@ -1,16 +1,16 @@
-# ELBSAND Redesign – Abschlussbericht
+# PATERNOGA Redesign – Abschlussbericht
 
 Stand: 22. Juli 2026
 
 ## Verstandenes Projektziel
 
-ELBSAND Design Studio ist ein persönlich geführtes, zweisprachiges Webstudio für lokale Unternehmen in Deutschland mit Dresden/Sachsen als erstem lokalen Anker. Der Auftritt soll Strategie, Design, Entwicklung, SEO und moderne AI-Sichtbarkeit als zusammenhängende Leistung vermitteln. Primäre Conversion ist der Website-Check, sekundär die Prüfung realer Referenzen.
+Paternoga SEO & GEO Studio ist ein persönlich geführtes, zweisprachiges Webstudio für lokale Unternehmen in Deutschland mit Dresden/Sachsen als erstem lokalen Anker. Der Auftritt soll Strategie, Design, Entwicklung, SEO und moderne AI-Sichtbarkeit als zusammenhängende Leistung vermitteln. Primäre Conversion ist der Website-Check, sekundär die Prüfung realer Referenzen.
 
 ## Wichtigste Probleme des Ausgangszustands
 
 - Der Hero belegte bei 1440×900 und 1280×800 praktisch den gesamten ersten Viewport; Erklärung, CTAs und Folgeabschnitt waren nicht sichtbar.
 - Hero-Botschaft und Tonalität entsprachen noch nicht der dokumentierten Positionierung.
-- Architektur-, Büro- und Sachsen-Stockbilder bildeten keine spezifische ELBSAND-Bildwelt.
+- Architektur-, Büro- und Sachsen-Stockbilder bildeten keine spezifische PATERNOGA-Bildwelt.
 - Externe Live-Screenshot-URLs waren unkontrollierbar; Eurosummer erschien mit Cookie-Overlay.
 - H1/H2, Section-Abstände, Navigation, Karten, Schatten und Radien waren nicht ausreichend auf ein gemeinsames System begrenzt.
 - Formular-, Sprach- und Accessible-Name-Details waren unvollständig; die statischen Preview-Dateien und Smoke-Tests prüften nicht mehr zuverlässig die Astro-Quelle.
@@ -46,7 +46,7 @@ ELBSAND Design Studio ist ein persönlich geführtes, zweisprachiges Webstudio f
 ## Bilder
 
 - Generische Remote-Stockbilder und Live-Screenshot-Dienste aus dem Quellcode entfernt.
-- Zwei gezielt erzeugte, menschenfreie ELBSAND-Stillleben eingeführt: `public/images/elbsand-hero.webp` und `public/images/elbsand-studio.webp`.
+- Zwei gezielt erzeugte, menschenfreie PATERNOGA-Stillleben eingeführt: `public/images/paternoga-hero.webp` und `public/images/paternoga-studio.webp`.
 - Mobile Varianten mit 700 px Breite ergänzt: Hero ca. 67 KB, Studio ca. 23 KB.
 - Projektflächen sind bewusst grafisch und als „Case Study folgt“ beziehungsweise „Projektansicht in Aufbereitung“ gekennzeichnet. Es werden keine Cookie-Banner oder kleinen unlesbaren Vollseiten-Screenshots gezeigt.
 

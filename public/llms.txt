@@ -1,0 +1,65 @@
+# Paternoga SEO & GEO Studio
+
+> PATERNOGA is a Germany-wide specialist studio for SEO, Generative Engine Optimization (GEO), AI Search and AI Visibility, headquartered in Dresden. The site explains how companies can become clearer and more accessible in Google and AI answer systems.
+
+Canonical site: https://www.paternoga-seo-geo.de/
+
+## Core pages
+
+- [German homepage](https://www.paternoga-seo-geo.de/): Overview of PATERNOGA, services, references, process and contact.
+- [English homepage](https://www.paternoga-seo-geo.de/en/): English overview of PATERNOGA, services, references, process and contact.
+- [GEO optimisation](https://www.paternoga-seo-geo.de/geo-optimierung/): German service hub for GEO audits, implementation and ongoing support.
+- [GEO optimisation in English](https://www.paternoga-seo-geo.de/en/geo-optimization/): English GEO service hub.
+- [GEO agency Germany](https://www.paternoga-seo-geo.de/geo-agentur-deutschland/): Commercial overview for companies evaluating a Germany-wide GEO specialist based in Dresden.
+- [GEO agency Germany in English](https://www.paternoga-seo-geo.de/en/geo-agency-germany/): English counterpart to the national commercial page.
+
+## Knowledge and original research
+
+- [AI crawlers and robots.txt](https://www.paternoga-seo-geo.de/wissen/ki-crawler-robots-txt/): Technical guide distinguishing search crawlers, training controls and the limits of llms.txt.
+- [English AI crawler guide](https://www.paternoga-seo-geo.de/en/knowledge/ai-crawlers-robots-txt/): English counterpart to the crawler-policy guide.
+- [DAX 40 AI crawler readiness 2026](https://www.paternoga-seo-geo.de/research/ki-crawler-readiness-dax-40-2026/): Dated PATERNOGA study with method, limitations and downloadable raw data.
+- [DAX 40 research in English](https://www.paternoga-seo-geo.de/en/research/dax-40-ai-crawler-readiness-2026/): English research page for the same measured dataset.
+
+## Analysis and visibility
+
+- [GEO Audit](https://www.paternoga-seo-geo.de/geo-audit/): Reviews AI answers, sources, facts, competitors and technical foundations.
+- [AI-Sichtbarkeit](https://www.paternoga-seo-geo.de/ai-sichtbarkeit/): Examines where and how a business appears in AI answers.
+- [KI-Quellenanalyse](https://www.paternoga-seo-geo.de/ki-quellenanalyse/): Connects AI statements to their supporting or missing sources.
+- [KI-Wettbewerbsanalyse](https://www.paternoga-seo-geo.de/ki-wettbewerbsanalyse/): Compares competitors within relevant AI answer fields.
+- [KI-Markenwahrnehmung](https://www.paternoga-seo-geo.de/ki-markenwahrnehmung/): Reviews themes, traits and tones associated with a brand.
+- [KI-Faktencheck](https://www.paternoga-seo-geo.de/ki-faktencheck/): Identifies outdated, unclear or incorrect claims in AI answers.
+- [Prompt-Recherche](https://www.paternoga-seo-geo.de/prompt-recherche/): Maps customer questions, intent and decision contexts.
+
+## Technical and editorial implementation
+
+- [Technische GEO-Optimierung](https://www.paternoga-seo-geo.de/technische-geo-optimierung/): Covers semantic HTML, delivery, structured facts and internal paths.
+- [AI-Crawlability](https://www.paternoga-seo-geo.de/ai-crawlability/): Reviews bot access, server responses, rendering and reachable content.
+- [GEO-Content](https://www.paternoga-seo-geo.de/geo-content/): Develops complete, supported answers to real customer questions.
+- [Content-Optimierung für AI-Suche](https://www.paternoga-seo-geo.de/content-optimierung-ai-suche/): Improves existing content for clarity, evidence and currency.
+
+## Ongoing work
+
+- [GEO-Monitoring](https://www.paternoga-seo-geo.de/geo-monitoring/): Observes changes in AI answers and sources over time.
+- [GEO-Betreuung](https://www.paternoga-seo-geo.de/geo-betreuung/): Connects monitoring, prioritisation and implementation.
+
+## English service pages
+
+- [GEO audit](https://www.paternoga-seo-geo.de/en/geo-audit/)
+- [AI visibility](https://www.paternoga-seo-geo.de/en/ai-visibility/)
+- [AI source analysis](https://www.paternoga-seo-geo.de/en/ai-source-analysis/)
+- [AI competitor analysis](https://www.paternoga-seo-geo.de/en/ai-competitor-analysis/)
+- [AI brand perception](https://www.paternoga-seo-geo.de/en/ai-brand-perception/)
+- [AI fact checking](https://www.paternoga-seo-geo.de/en/ai-fact-checking/)
+- [Prompt research](https://www.paternoga-seo-geo.de/en/prompt-research/)
+- [Technical GEO optimisation](https://www.paternoga-seo-geo.de/en/technical-geo-optimization/)
+- [AI crawlability](https://www.paternoga-seo-geo.de/en/ai-crawlability/)
+- [GEO content](https://www.paternoga-seo-geo.de/en/geo-content/)
+- [Content optimisation for AI search](https://www.paternoga-seo-geo.de/en/content-optimization-ai-search/)
+- [GEO monitoring](https://www.paternoga-seo-geo.de/en/geo-monitoring/)
+- [GEO support](https://www.paternoga-seo-geo.de/en/geo-support/)
+
+## Machine-readable resources
+
+- [XML sitemap](https://www.paternoga-seo-geo.de/sitemap.xml): Canonical DE/EN route inventory with hreflang annotations.
+- [Robots policy](https://www.paternoga-seo-geo.de/robots.txt): Crawl access and sitemap location.
+- [Expanded PATERNOGA context](https://www.paternoga-seo-geo.de/llms-full.txt): Service scope, method, limitations and complete route context.

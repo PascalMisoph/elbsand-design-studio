@@ -1,8 +1,10 @@
 node_modules/
 dist/
+.vercel/
 .astro/
 .env
 .env.*
+!.env.example
 preview-server.log
 review/*.png
 test-results/
@@ -13,4 +15,6 @@ playwright-report/
 tmp/
 artifacts/
 .codex-*.log
+.codex-artifacts/
+.codex-*.png
 debug.log

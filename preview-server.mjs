@@ -24,4 +24,4 @@ const server = createServer((req, res) => {
   createReadStream(file).pipe(res);
 });
 
-server.listen(4321, "127.0.0.1", () => console.log("ELBSAND preview: http://127.0.0.1:4321"));
+server.listen(4321, "127.0.0.1", () => console.log("PATERNOGA preview: http://127.0.0.1:4321"));

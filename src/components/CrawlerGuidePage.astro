@@ -1,0 +1,162 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Footer from "./Footer.astro";
+import Header from "./Header.astro";
+import LinkButton from "./LinkButton";
+import { content } from "../content/site";
+import { createArticlePageSchema } from "../lib/seo";
+
+interface Props { lang: "de" | "en" }
+const { lang } = Astro.props;
+const de = lang === "de";
+const site = content[lang];
+const canonicalPath = de ? "/wissen/ki-crawler-robots-txt/" : "/en/knowledge/ai-crawlers-robots-txt/";
+const alternateDePath = "/wissen/ki-crawler-robots-txt/";
+const alternateEnPath = "/en/knowledge/ai-crawlers-robots-txt/";
+const copy = de ? {
+  meta: { title: "KI-Crawler in robots.txt richtig steuern | PATERNOGA", description: "OAI-SearchBot, GPTBot, PerplexityBot und Googlebot korrekt unterscheiden. Ein aktueller robots.txt-Leitfaden für KI-Suche und Training." },
+  eyebrow: "Technischer Leitfaden · 30. August 2026",
+  title: "OAI-SearchBot, GPTBot und PerplexityBot richtig einordnen",
+  lead: "Wer KI-Crawler pauschal erlaubt oder sperrt, vermischt oft zwei verschiedene Entscheidungen: Soll eine Seite in aktueller KI-Suche auffindbar sein – und darf ihr Inhalt für zukünftiges Modelltraining verwendet werden? Die User-Agents müssen nach ihrem dokumentierten Zweck getrennt bewertet werden.",
+  answerTitle: "Die kurze Antwort",
+  answer: "Für ChatGPT-Suche ist OAI-SearchBot relevant, nicht GPTBot. GPTBot betrifft OpenAIs mögliche Nutzung für Modelltraining. PerplexityBot dient der Suche und Verlinkung in Perplexity. Googles AI Overviews und AI Mode hängen an der normalen Google-Suche und damit an Googlebot; Google-Extended ist kein eigener Such-Crawler und hat laut Google keinen Einfluss auf Google Search.",
+  tableTitle: "Crawler, Zweck und Konsequenz",
+  columns: ["User-Agent", "Dokumentierter Zweck", "Steuerung", "Was eine Sperre bedeutet"],
+  rows: [
+    ["Googlebot", "Google-Suche einschließlich der Suchgrundlage für AI Overviews und AI Mode", "robots.txt und Robots-Meta-Tags", "Die URL kann ihre Crawl- und Suchberechtigung verlieren; damit fehlt auch die Grundlage für Googles generative Suchfunktionen."],
+    ["Bingbot", "Bing-Index; dieser speist auch unterstützte Copilot- und Grounding-Erlebnisse", "robots.txt und Bing-kompatible Robots-Meta-Tags", "Inhalte können nicht zuverlässig indexiert oder für unterstützte Grounding-Ergebnisse ausgewählt werden."],
+    ["OAI-SearchBot", "Auffindbarkeit und Verlinkung in ChatGPT Search", "robots.txt", "OpenAI kann den Seiteninhalt nicht über diesen Such-Crawler erfassen; eine bloße URL kann unter bestimmten Bedingungen dennoch bekannt sein."],
+    ["GPTBot", "Potenzielle Nutzung von Webinhalten zur Verbesserung zukünftiger Modelle", "robots.txt", "Die Trainingsnutzung wird abgelehnt; das ist getrennt von der ChatGPT-Suche zu entscheiden."],
+    ["PerplexityBot", "Auffindbarkeit und Verlinkung in Perplexity Search", "robots.txt und gegebenenfalls Netzwerkfreigaben", "Die Seite ist für diesen Such-Crawler nicht zugänglich; daraus folgt noch keine Aussage über andere Systeme."],
+    ["Google-Extended", "Kontroll-Token für Gemini Apps und Vertex AI; kein eigener HTTP-User-Agent", "robots.txt als User-Agent-Token", "Hat laut Google keinen Einfluss auf Aufnahme, Ranking oder Darstellung in Google Search."],
+  ],
+  policyTitle: "Eine belastbare Richtlinie beginnt mit der Geschäftsentscheidung",
+  policyIntro: "Vor einer Änderung sollte feststehen, welche Inhalte öffentlich auffindbar sein sollen und welche Trainingsnutzung das Unternehmen akzeptiert. Danach lässt sich die Richtlinie minimal und nachvollziehbar formulieren.",
+  steps: [
+    ["1", "Öffentliche Suchinhalte bestimmen", "Nur Seiten, die für Menschen öffentlich und zitierfähig sein sollen, gehören in die Suchstrategie."],
+    ["2", "Such- und Trainingszwecke trennen", "OAI-SearchBot und PerplexityBot sind Such-Crawler; GPTBot ist eine getrennte Trainingsentscheidung."],
+    ["3", "Spezifische Gruppen vollständig halten", "Sobald ein User-Agent eine eigene Gruppe erhält, darf man nicht voraussetzen, dass generische Regeln automatisch mitwirken."],
+    ["4", "Konfiguration statt Bot-Verhalten prüfen", "Ein Validator kann Regeln und Erreichbarkeit testen, aber nicht behaupten, ein externer Bot habe die Seite wirklich indexiert oder zitiert."],
+  ],
+  baseLabel: "Beispiel: öffentliche Website für Such-Crawler offen",
+  baseCode: "User-agent: *\nAllow: /\n\nSitemap: https://example.de/sitemap.xml",
+  splitLabel: "Beispiel: ChatGPT-Suche erlauben, GPTBot separat sperren",
+  splitCode: "User-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: GPTBot\nDisallow: /\n\nUser-agent: *\nAllow: /\n\nSitemap: https://example.de/sitemap.xml",
+  note: "Das zweite Beispiel ist keine pauschale Empfehlung. Es zeigt nur, dass Suchzugriff und Trainingszugriff technisch getrennt formuliert werden können.",
+  llmsTitle: "Was llms.txt dabei nicht leistet",
+  llmsBody: "Eine llms.txt ist ein Community-Vorschlag für eine kompakte Inhaltsübersicht. Sie ersetzt weder robots.txt noch Sitemap, Indexierung, interne Links oder zugänglichen HTML-Inhalt. Google erklärt ausdrücklich, dass für seine AI-Funktionen keine speziellen AI-Dateien oder Markups nötig sind. Deshalb sollte llms.txt höchstens als ergänzende Dokumentation gepflegt werden – nicht als Rankinghebel.",
+  validationTitle: "Was technisch geprüft werden kann",
+  validationItems: ["robots.txt ist erreichbar und syntaktisch auswertbar", "Googlebot, Bingbot, OAI-SearchBot und PerplexityBot sind für Zielpfade nicht versehentlich gesperrt", "Sitemap und kanonische Seiten sind erreichbar", "Robots-Meta-Tags widersprechen der Crawl-Richtlinie nicht", "Wichtiger Inhalt steht im ausgelieferten HTML", "Server oder WAF liefern legitimen Crawlern keine unbeabsichtigten Fehler"],
+  sourcesTitle: "Primärquellen",
+  sources: [
+    ["Google: AI features and your website", "https://developers.google.com/search/docs/appearance/ai-features"],
+    ["Google: Google-Extended", "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers"],
+    ["OpenAI: Publishers and Developers FAQ", "https://help.openai.com/en/articles/12627856-publishers-and-developers-faq"],
+    ["Perplexity: crawler documentation", "https://docs.perplexity.ai/docs/resources/perplexity-crawlers"],
+    ["Bing: webmaster guidelines", "https://www.bing.com/webmasters/help/webmaster-guidelines-30fba23a"],
+  ],
+  relatedTitle: "Vom Regelwerk zur konkreten Website-Prüfung",
+  relatedText: "Die AI-Crawlability-Prüfung betrachtet nicht nur die Textdatei, sondern auch Statuscodes, Weiterleitungen, Renderbarkeit und die tatsächlich relevanten Zielseiten.",
+  relatedCta: "AI-Crawlability ansehen",
+  relatedHref: "/ai-crawlability/",
+  researchCta: "DAX-40-Auswertung ansehen",
+  researchHref: "/research/ki-crawler-readiness-dax-40-2026/",
+} : {
+  meta: { title: "AI Crawlers and robots.txt: A Practical Guide | PATERNOGA", description: "Distinguish OAI-SearchBot, GPTBot, PerplexityBot and Googlebot correctly. A current guide to AI search access and training controls." },
+  eyebrow: "Technical guide · 30 August 2026",
+  title: "Classify OAI-SearchBot, GPTBot and PerplexityBot correctly",
+  lead: "Blanket rules for AI crawlers often mix up two different decisions: should a page be discoverable in current AI search, and may its content be used for future model training? Each user agent needs to be assessed according to its documented purpose.",
+  answerTitle: "The short answer",
+  answer: "OAI-SearchBot is relevant to ChatGPT search; GPTBot is not. GPTBot concerns OpenAI's potential use of content for model training. PerplexityBot supports search and linking in Perplexity. Google's AI Overviews and AI Mode rely on normal Google Search and therefore Googlebot; Google-Extended is not a separate search crawler and, according to Google, has no effect on Google Search.",
+  tableTitle: "Crawler, purpose and consequence",
+  columns: ["User agent", "Documented purpose", "Control", "What blocking means"],
+  rows: [
+    ["Googlebot", "Google Search, including the search foundation for AI Overviews and AI Mode", "robots.txt and robots meta tags", "The URL can lose crawl and Search eligibility, removing the foundation for Google's generative search features."],
+    ["Bingbot", "Bing's index, which also supports selected Copilot and grounding experiences", "robots.txt and Bing-compatible robots meta tags", "Content may not be indexed reliably or selected for supported grounding results."],
+    ["OAI-SearchBot", "Discovery and linking in ChatGPT search", "robots.txt", "OpenAI cannot fetch page content through this search crawler; under some conditions the bare URL may still be known."],
+    ["GPTBot", "Potential use of web content to improve future models", "robots.txt", "Training use is declined; this is a separate decision from ChatGPT search."],
+    ["PerplexityBot", "Discovery and linking in Perplexity search", "robots.txt and, where relevant, network allow-lists", "The page is unavailable to this search crawler; that says nothing about other systems."],
+    ["Google-Extended", "A control token for Gemini Apps and Vertex AI; not a separate HTTP user agent", "robots.txt as a user-agent token", "According to Google, it has no effect on inclusion, ranking or presentation in Google Search."],
+  ],
+  policyTitle: "A credible policy begins with the business decision",
+  policyIntro: "Before changing a file, establish which content should be publicly discoverable and which training uses the organisation accepts. The policy can then remain minimal and auditable.",
+  steps: [
+    ["1", "Identify public search content", "Only pages intended to be public and citeable for people belong in the search strategy."],
+    ["2", "Separate search from training", "OAI-SearchBot and PerplexityBot are search crawlers; GPTBot represents a separate training decision."],
+    ["3", "Keep specific groups complete", "Once a user agent has its own group, do not assume generic rules are automatically inherited."],
+    ["4", "Validate configuration, not imagined behaviour", "A validator can test rules and reachability, but cannot claim that an external bot actually indexed or cited the page."],
+  ],
+  baseLabel: "Example: keep a public website open to search crawlers",
+  baseCode: "User-agent: *\nAllow: /\n\nSitemap: https://example.com/sitemap.xml",
+  splitLabel: "Example: allow ChatGPT search while blocking GPTBot separately",
+  splitCode: "User-agent: OAI-SearchBot\nAllow: /\n\nUser-agent: GPTBot\nDisallow: /\n\nUser-agent: *\nAllow: /\n\nSitemap: https://example.com/sitemap.xml",
+  note: "The second example is not a blanket recommendation. It only demonstrates that search access and training access can be expressed separately.",
+  llmsTitle: "What llms.txt does not do",
+  llmsBody: "llms.txt is a community proposal for a compact content index. It replaces neither robots.txt nor sitemaps, indexing, internal links or accessible HTML. Google explicitly says that its AI features require no special AI files or markup. llms.txt should therefore be treated, at most, as supplementary documentation — not a ranking lever.",
+  validationTitle: "What can be validated technically",
+  validationItems: ["robots.txt is reachable and can be parsed", "Googlebot, Bingbot, OAI-SearchBot and PerplexityBot are not accidentally blocked from target paths", "the sitemap and canonical pages are reachable", "robots meta tags do not contradict crawl policy", "important content is present in delivered HTML", "the server or WAF does not return unintended errors to legitimate crawlers"],
+  sourcesTitle: "Primary sources",
+  sources: [
+    ["Google: AI features and your website", "https://developers.google.com/search/docs/appearance/ai-features"],
+    ["Google: Google-Extended", "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers"],
+    ["OpenAI: Publishers and Developers FAQ", "https://help.openai.com/en/articles/12627856-publishers-and-developers-faq"],
+    ["Perplexity: crawler documentation", "https://docs.perplexity.ai/docs/resources/perplexity-crawlers"],
+    ["Bing: webmaster guidelines", "https://www.bing.com/webmasters/help/webmaster-guidelines-30fba23a"],
+  ],
+  relatedTitle: "From policy to a concrete website review",
+  relatedText: "The AI crawlability review examines more than the text file: status codes, redirects, renderability and the actual target pages are part of the assessment.",
+  relatedCta: "Explore AI crawlability",
+  relatedHref: "/en/ai-crawlability/",
+  researchCta: "View the DAX 40 analysis",
+  researchHref: "/en/research/dax-40-ai-crawler-readiness-2026/",
+};
+
+const breadcrumbs = [
+  { name: de ? "Start" : "Home", href: de ? "/" : "/en/" },
+  { name: de ? "Wissen" : "Knowledge", href: canonicalPath },
+  { name: de ? "KI-Crawler & robots.txt" : "AI crawlers & robots.txt", href: canonicalPath },
+];
+const schema = createArticlePageSchema({ lang, title: copy.meta.title, description: copy.meta.description, path: canonicalPath, headline: copy.title, datePublished: "2026-08-30", dateModified: "2026-08-30", breadcrumbs });
+---
+
+<BaseLayout title={copy.meta.title} description={copy.meta.description} lang={lang} canonicalPath={canonicalPath} alternateDePath={alternateDePath} alternateEnPath={alternateEnPath} schema={schema} openGraphType="article" bodyClass="ui-dark-page dark knowledge-route">
+  <Header lang={lang} nav={site.nav} cta={site.cta} page="service" alternateDePath={alternateDePath} alternateEnPath={alternateEnPath} />
+  <main id="main-content" class="min-h-screen bg-background text-foreground">
+    <article class="longform-document">
+      <header class="border-b border-solid border-border"><div class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><nav class="flex gap-2 text-xs text-muted-foreground" aria-label={de ? "Brotkrumen-Navigation" : "Breadcrumb"}><a class="text-inherit no-underline hover:text-foreground" href={de ? "/" : "/en/"}>{de ? "Start" : "Home"}</a><span aria-hidden="true">/</span><span>{de ? "Wissen" : "Knowledge"}</span><span aria-hidden="true">/</span><span aria-current="page">robots.txt</span></nav><div class="max-w-3xl pt-12"><p class="m-0 text-xs font-medium uppercase tracking-wider text-primary">{copy.eyebrow}</p><h1 class="m-0 mt-6 text-display-mobile font-medium text-foreground md:text-display">{copy.title}</h1><p class="m-0 mt-6 max-w-2xl text-base leading-copy text-muted-foreground">{copy.lead}</p></div></div></header>
+
+      <section class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><div class="max-w-3xl border-l-2 border-primary pl-6"><h2 class="m-0 text-section-title font-medium text-foreground">{copy.answerTitle}</h2><p class="m-0 mt-6 text-base leading-copy text-muted-foreground">{copy.answer}</p></div></section>
+
+      <section class="border-y border-solid border-border"><div class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><h2 class="m-0 text-section-title font-medium text-foreground">{copy.tableTitle}</h2><div class="crawler-table-region mt-10 overflow-x-auto" role="region" aria-label={copy.tableTitle} tabindex="0"><table class="crawler-comparison w-full border-collapse text-left text-sm"><thead><tr>{copy.columns.map((column) => <th class="border-b border-solid border-border px-4 py-4 font-medium text-foreground first:pl-0" scope="col">{column}</th>)}</tr></thead><tbody>{copy.rows.map((row) => <tr>{row.map((cell, index) => index === 0 ? <th class="border-b border-solid border-border px-4 py-5 text-left align-top font-medium leading-copy text-foreground first:pl-0" scope="row">{cell}</th> : <td class="border-b border-solid border-border px-4 py-5 align-top leading-copy text-muted-foreground first:pl-0">{cell}</td>)}</tr>)}</tbody></table></div></div></section>
+
+      <section class="mx-auto grid max-w-content grid-cols-1 gap-12 px-5 py-section-mobile md:px-12 lg:grid-cols-2 lg:py-section"><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.policyTitle}</h2><p class="m-0 mt-6 text-base leading-copy text-muted-foreground">{copy.policyIntro}</p></div><ol class="m-0 grid list-none gap-0 border-t border-solid border-border p-0">{copy.steps.map(([number, title, text]) => <li class="grid grid-cols-[2rem_1fr] gap-4 border-b border-solid border-border py-6"><span class="text-sm text-primary">{number}</span><div><h3 class="m-0 text-card-title font-medium text-foreground">{title}</h3><p class="m-0 mt-3 text-base leading-copy text-muted-foreground">{text}</p></div></li>)}</ol></section>
+
+      <section class="border-y border-solid border-border"><div class="mx-auto grid max-w-content grid-cols-1 gap-8 px-5 py-section-mobile md:px-12 lg:grid-cols-2 lg:py-section"><div><h2 class="m-0 text-card-title font-medium text-foreground">{copy.baseLabel}</h2><pre class="mt-6 overflow-x-auto border border-solid border-border bg-card p-5 text-sm leading-copy text-card-foreground"><code>{copy.baseCode}</code></pre></div><div><h2 class="m-0 text-card-title font-medium text-foreground">{copy.splitLabel}</h2><pre class="mt-6 overflow-x-auto border border-solid border-border bg-card p-5 text-sm leading-copy text-card-foreground"><code>{copy.splitCode}</code></pre></div><p class="m-0 max-w-2xl text-sm leading-copy text-muted-foreground lg:col-span-2">{copy.note}</p></div></section>
+
+      <section class="mx-auto grid max-w-content grid-cols-1 gap-12 px-5 py-section-mobile md:px-12 lg:grid-cols-2 lg:py-section"><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.llmsTitle}</h2><p class="m-0 mt-6 text-base leading-copy text-muted-foreground">{copy.llmsBody}</p></div><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.validationTitle}</h2><ul class="m-0 mt-6 grid list-none gap-0 border-t border-solid border-border p-0">{copy.validationItems.map((item) => <li class="border-b border-solid border-border py-4 text-base leading-copy text-muted-foreground">{item}</li>)}</ul></div></section>
+
+      <section id="kontakt" class="border-y border-solid border-border"><div class="mx-auto grid max-w-content grid-cols-1 gap-12 px-5 py-section-mobile md:px-12 lg:grid-cols-2 lg:py-section"><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.sourcesTitle}</h2><ul class="m-0 mt-6 grid list-none gap-3 p-0">{copy.sources.map(([label, href]) => <li><a class="text-sm text-primary underline underline-offset-4" href={href} target="_blank" rel="noopener">{label}</a></li>)}</ul></div><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.relatedTitle}</h2><p class="m-0 mt-6 text-base leading-copy text-muted-foreground">{copy.relatedText}</p><div class="guide-related-actions mt-8 flex flex-col flex-wrap gap-3 sm:flex-row"><LinkButton href={copy.relatedHref} label={copy.relatedCta} icon="right" /><LinkButton href={copy.researchHref} label={copy.researchCta} variant="secondary" icon="right" /></div></div></div></section>
+    </article>
+  </main>
+  <Footer {...site.footer} lang={lang} />
+</BaseLayout>
+
+<style>
+  .crawler-comparison {
+    min-width: 860px;
+  }
+  .crawler-table-region:focus-visible {
+    outline: 2px solid var(--ui-ring);
+    outline-offset: 4px;
+  }
+  @media (max-width: 639px) {
+    .guide-related-actions :global(a) {
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      padding-inline: 16px;
+      white-space: normal;
+      text-align: center;
+    }
+  }
+</style>

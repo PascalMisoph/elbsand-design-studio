@@ -7,11 +7,11 @@ interface Props {
 
 const { lang } = Astro.props;
 const isEnglish = lang === "en";
+const privacyPath = isEnglish ? "/en/privacy/" : "/datenschutz/";
 const copy = isEnglish
   ? {
-      badge: "📍 Owner-led design & SEO studio from Dresden",
-      title: "How visible is your business in AI search?",
-      body: "We run 21 technical checks on your website live. No estimate, no AI-generated filler.",
+      title: "The 21-point check: Is your website ready for ChatGPT & Co.?",
+      body: "Our live scan shows how clearly your website can be reached, structured and interpreted by AI crawlers.",
       phases: ["Website", "Live scan", "Result"],
       urlLabel: "Website address",
       urlPlaceholder: "your-website.com",
@@ -47,7 +47,7 @@ const copy = isEnglish
       lockedLabel: "Enter your details to reveal all 21 findings",
       grade: "Grade",
       recommendationTitle: "Your biggest opportunities",
-      recommendationBody: "The scan shows where your website currently loses visibility in AI systems across technical and editorial signals. In the free results review, we put the findings into context, prioritise the most important measures and show you which optimisations offer the greatest leverage.",
+      recommendationBody: "The scan shows which technical and editorial prerequisites on your website are missing or unclear. In the free results review, we put the findings into context and prioritise the measures that should be reviewed or implemented first.",
       contact: "Book a free results review",
       again: "Check another website",
       checkLabels: {
@@ -62,9 +62,8 @@ const copy = isEnglish
       },
     }
   : {
-      badge: "📍 Inhabergeführtes Design- & SEO-Studio aus Dresden",
-      title: "Wie sichtbar ist dein Unternehmen in der KI-Suche?",
-      body: "21 technische Prüfungen auf deiner Website.",
+      title: "Der 21-Punkte-Check: Ist deine Website bereit für ChatGPT & Co.?",
+      body: "Erfahre mit unserem Live-Scan sofort, wie klar deine Website für KI-Crawler technisch erreichbar, strukturiert und einordenbar ist.",
       phases: ["Website", "Live-Scan", "Ergebnis"],
       urlLabel: "Website-Adresse",
       urlPlaceholder: "deine-website.de",
@@ -100,7 +99,7 @@ const copy = isEnglish
       lockedLabel: "Kontaktdaten eintragen und alle 21 Befunde ansehen",
       grade: "Note",
       recommendationTitle: "Deine größten Potenziale",
-      recommendationBody: "Der Scan zeigt, an welchen technischen und inhaltlichen Stellen deine Website aktuell Sichtbarkeit in KI-Systemen verschenkt. Im kostenlosen Auswertungsgespräch ordnen wir die Ergebnisse ein, priorisieren die wichtigsten Maßnahmen und zeigen dir, welche Optimierungen den größten Hebel haben.",
+      recommendationBody: "Der Scan zeigt, welche technischen und inhaltlichen Voraussetzungen auf deiner Website fehlen oder uneindeutig sind. Im kostenlosen Auswertungsgespräch ordnen wir die Befunde ein und priorisieren die Maßnahmen, die zuerst geprüft oder umgesetzt werden sollten.",
       contact: "Kostenlose Auswertung vereinbaren",
       again: "Weitere Website prüfen",
       checkLabels: {
@@ -117,7 +116,6 @@ const copy = isEnglish
 ---
 <section class="ai-check section-shell" id="ki-check" aria-labelledby="ai-check-title">
   <header class="ai-check-heading">
-    <p class="hero-trust-badge ai-check-badge">{copy.badge}</p>
     <h2 id="ai-check-title">{copy.title}</h2>
     <p>{copy.body}</p>
   </header>
@@ -217,7 +215,7 @@ const copy = isEnglish
                 </div>
               </div>
               <button class="button" type="submit">{copy.unlock}</button>
-              <small>{copy.privacy}</small>
+              <small>{copy.privacy} · <a href={privacyPath}>{isEnglish ? "Privacy information" : "Datenschutzhinweise"}</a></small>
               <p class="ai-check-error" role="alert" data-lead-error hidden>{copy.leadError}</p>
             </form>
           </div>

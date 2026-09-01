@@ -1,6 +1,9 @@
 ---
 import "@fontsource-variable/inter";
+import "../styles/tailwind.css";
 import "../styles/global.css";
+import { createPageSchema, SITE_URL } from "../lib/seo";
+import ConsentManager from "../components/ConsentManager.astro";
 interface Props {
   title: string;
   description: string;
@@ -9,6 +12,9 @@ interface Props {
   alternateDePath?: string;
   alternateEnPath?: string;
   schema?: Record<string, unknown>;
+  socialImage?: string;
+  socialImageAlt?: string;
+  openGraphType?: "website" | "article";
   bodyClass?: string;
 }
 const {
@@ -19,19 +25,25 @@ const {
   alternateDePath = "/",
   alternateEnPath = "/en/",
   schema,
+  socialImage,
+  socialImageAlt,
+  openGraphType = "website",
   bodyClass
 } = Astro.props;
-const siteUrl = "https://elbsand.studio";
-const canonical = new URL(canonicalPath, siteUrl).toString();
-const defaultSchema = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "ELBSAND Design Studio",
-  url: siteUrl,
-  email: "pascal.misoph@gmail.com",
-  areaServed: ["Dresden", "Sachsen", "Deutschland", "DACH"],
-  serviceType: ["Webdesign", "Web development", "SEO", "Local SEO", "GEO optimization"]
-};
+const canonical = new URL(canonicalPath, SITE_URL).toString();
+const socialImageUrl = new URL(
+  socialImage ?? (lang === "de" ? "/video/paternoga-search-shift-poster-de.png" : "/video/paternoga-search-shift-poster-en.png"),
+  SITE_URL,
+).toString();
+const resolvedSocialImageAlt = socialImageAlt ?? (lang === "de"
+  ? "PATERNOGA Ansicht zur Sichtbarkeit in Google und KI-Systemen"
+  : "PATERNOGA view of visibility in Google and AI systems");
+const structuredData = schema ?? createPageSchema({ lang, title, description, path: canonicalPath });
+const normalizedPath = canonicalPath.replace(/\/+$/, "") || "/";
+const isHomeRoute = normalizedPath === "/" || normalizedPath === "/en";
+const isGeoAuditRoute = normalizedPath === "/geo-audit" || normalizedPath === "/en/geo-audit";
+const isLegalRoute = ["/impressum", "/datenschutz", "/en/legal-notice", "/en/privacy"].includes(normalizedPath);
+const layoutBodyClass = [bodyClass, !isHomeRoute && !isGeoAuditRoute && !isLegalRoute ? "service-type-system" : ""].filter(Boolean).join(" ");
 ---
 <!doctype html>
 <html lang={lang}>
@@ -41,16 +53,157 @@ const defaultSchema = {
     <link rel="icon" href="/favicon.png" type="image/png" sizes="256x256" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="de" href={new URL(alternateDePath, siteUrl).toString()} />
-    <link rel="alternate" hreflang="en" href={new URL(alternateEnPath, siteUrl).toString()} />
-    <link rel="alternate" hreflang="x-default" href={new URL(alternateDePath, siteUrl).toString()} />
+    <link rel="alternate" hreflang="de" href={new URL(alternateDePath, SITE_URL).toString()} />
+    <link rel="alternate" hreflang="en" href={new URL(alternateEnPath, SITE_URL).toString()} />
+    <link rel="alternate" hreflang="x-default" href={new URL(alternateDePath, SITE_URL).toString()} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={openGraphType} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Paternoga SEO & GEO Studio" />
+    <meta property="og:locale" content={lang === "de" ? "de_DE" : "en_GB"} />
+    <meta property="og:locale:alternate" content={lang === "de" ? "en_GB" : "de_DE"} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1440" />
+    <meta property="og:image:height" content="1080" />
+    <meta property="og:image:alt" content={resolvedSocialImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
+    <meta name="twitter:image:alt" content={resolvedSocialImageAlt} />
     <meta name="theme-color" content="#f5f1ea" />
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema ?? defaultSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
-  <body class={bodyClass}><a class="skip-link" href="#main-content">{lang === "de" ? "Zum Inhalt springen" : "Skip to content"}</a><slot /></body>
+  <body class={layoutBodyClass}><a class="skip-link" href="#main-content">{lang === "de" ? "Zum Inhalt springen" : "Skip to content"}</a><slot /><ConsentManager lang={lang} analyticsId={import.meta.env.PUBLIC_GA_MEASUREMENT_ID} /></body>
+  <style is:global>
+    body.service-type-system {
+      --service-heading-family: var(--sans);
+      --service-h1-size: clamp(48px, 5vw, 72px);
+      --service-h2-size: clamp(40px, 4.2vw, 56px);
+      --service-h3-size: clamp(19px, 1.55vw, 24px);
+      --service-heading-tracking: -.055em;
+      --service-heading-leading: 1;
+      --service-copy-size: 16px;
+      --service-copy-leading: 1.55;
+      --service-cross-padding: 56px;
+    }
+    body.service-type-system main h1,
+    body.service-type-system main h2,
+    body.service-type-system main h3 {
+      font-family: var(--service-heading-family) !important;
+      font-style: normal !important;
+      text-wrap: balance;
+    }
+    body.service-type-system main h1 {
+      max-width: 630px !important;
+      margin-right: 0 !important;
+      margin-bottom: 0 !important;
+      margin-left: 0 !important;
+      font-size: var(--service-h1-size) !important;
+      font-weight: 520 !important;
+      letter-spacing: -.075em !important;
+      line-height: .98 !important;
+    }
+    body.service-type-system main h1 + p {
+      margin-top: var(--hero-heading-copy-gap) !important;
+    }
+    body.service-type-system main h2 {
+      max-width: 900px !important;
+      margin-right: 0 !important;
+      margin-bottom: 0 !important;
+      margin-left: 0 !important;
+      font-size: var(--service-h2-size) !important;
+      font-weight: 560 !important;
+      letter-spacing: var(--service-heading-tracking) !important;
+      line-height: var(--service-heading-leading) !important;
+    }
+    body.service-type-system main article:not(.longform-document) h2,
+    body.service-type-system main [data-slot="card-title"] {
+      max-width: 100% !important;
+      font-size: var(--service-h3-size) !important;
+      line-height: 1.12 !important;
+    }
+    body.service-type-system main h3 {
+      max-width: 100% !important;
+      margin-right: 0 !important;
+      margin-bottom: 0 !important;
+      margin-left: 0 !important;
+      font-size: var(--service-h3-size) !important;
+      font-weight: 560 !important;
+      letter-spacing: -.045em !important;
+      line-height: 1.12 !important;
+    }
+    body.service-type-system main > section > header,
+    body.service-type-system main > section > [class*="section-intro"],
+    body.service-type-system main > section > [class$="-intro"] {
+      display: block !important;
+      text-align: left !important;
+    }
+    body.service-type-system main > section > header h2,
+    body.service-type-system main > section > [class*="section-intro"] h2,
+    body.service-type-system main > section > [class$="-intro"] h2 {
+      max-width: 900px !important;
+      margin-right: 0 !important;
+      margin-bottom: 0 !important;
+      margin-left: 0 !important;
+    }
+    body.service-type-system main :is(h1, h2).mt-6,
+    body.service-type-system main p:is([class*="eyebrow"], [class*="kicker"], [class*="label"]) + :is(h1, h2) {
+      margin-top: var(--eyebrow-heading-gap) !important;
+    }
+    body.service-type-system main > section > header > p:not([class*="eyebrow"]):not([class*="kicker"]):not([class*="label"]),
+    body.service-type-system main > section > header > span:last-child,
+    body.service-type-system main > section > [class*="section-intro"] > p:not([class*="eyebrow"]):not([class*="kicker"]):not([class*="label"]),
+    body.service-type-system main > section > [class$="-intro"] > p:not([class*="eyebrow"]):not([class*="kicker"]):not([class*="label"]) {
+      max-width: 560px !important;
+      margin: var(--section-heading-copy-gap) 0 0 !important;
+      font-size: var(--service-copy-size) !important;
+      line-height: var(--service-copy-leading) !important;
+    }
+    body.service-type-system main [class*="eyebrow"],
+    body.service-type-system main [class*="kicker"],
+    body.service-type-system main [class*="label"] {
+      font-family: var(--service-heading-family) !important;
+      font-size: 11px !important;
+      font-weight: 650 !important;
+      letter-spacing: .12em !important;
+      line-height: 1.3 !important;
+      text-transform: uppercase;
+    }
+    @media (max-width: 767px) {
+      body.service-type-system {
+        --service-cross-padding: 40px;
+      }
+      body.service-type-system main,
+      body.service-type-system main * {
+        min-width: 0;
+      }
+      body.service-type-system main h1,
+      body.service-type-system main h2,
+      body.service-type-system main h3 {
+        overflow-wrap: normal;
+        hyphens: auto;
+      }
+      body.service-type-system main p {
+        overflow-wrap: break-word;
+        hyphens: auto;
+      }
+      body.service-type-system main h1 {
+        max-width: 100% !important;
+        font-size: clamp(40px, 11vw, 55px) !important;
+      }
+      body.service-type-system main h2 {
+        font-size: 43px !important;
+      }
+      body.service-type-system main article:not(.longform-document) h2,
+      body.service-type-system main [data-slot="card-title"],
+      body.service-type-system main h3 {
+        font-size: 20px !important;
+      }
+    }
+  </style>
 </html>

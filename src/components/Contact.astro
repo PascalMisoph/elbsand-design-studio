@@ -57,6 +57,7 @@ const {
   disclaimer,
 } = Astro.props;
 const locale = Astro.url.pathname.startsWith("/en") ? "en" : "de";
+const privacyPath = locale === "en" ? "/en/privacy/" : "/datenschutz/";
 ---
 <section class="contact-section" id={sectionId}>
   <div class="contact-copy">
@@ -171,7 +172,7 @@ const locale = Astro.url.pathname.startsWith("/en") ? "en" : "de";
       <p class="contact-flow-error" role="alert" data-flow-error hidden>{flow.errorMessage}</p>
     </fieldset>
 
-    <p class="contact-flow-privacy">{flow.privacy}</p>
+    <p class="contact-flow-privacy">{flow.privacy} · <a href={privacyPath}>{locale === "en" ? "Privacy information" : "Datenschutzhinweise"}</a></p>
     <section class="contact-flow-success" data-flow-success hidden tabindex="-1">
       <p class="eyebrow">{flow.successEyebrow}</p>
       <h3>{flow.successTitle}</h3>
@@ -191,10 +192,16 @@ const locale = Astro.url.pathname.startsWith("/en") ? "en" : "de";
     data-contact-panel="calendar"
     hidden
   >
+    <div class="calendly-consent" data-calendly-consent>
+      <p>{locale === "en" ? "Calendly is loaded only with your permission. Until then, no data is sent to the scheduling provider." : "Calendly wird erst mit deiner Freigabe geladen. Bis dahin werden keine Daten an den Termin-Dienst übertragen."}</p>
+      <button class="button" type="button" data-open-consent-settings>{locale === "en" ? "Allow external scheduling" : "Externe Terminbuchung freigeben"}</button>
+      <a href={privacyPath}>{locale === "en" ? "Privacy information" : "Datenschutzhinweise"}</a>
+    </div>
     <div
       class="calendly-inline-widget"
       data-url="https://calendly.com/pascal-misoph/erstgespraech"
       style="min-width:320px;height:700px;"
+      hidden
     ></div>
   </div>
   <!-- Calendly inline widget end -->
@@ -211,8 +218,19 @@ const locale = Astro.url.pathname.startsWith("/en") ? "en" : "de";
   document.querySelectorAll<HTMLElement>(".contact-section").forEach((section) => {
     const tabs = Array.from(section.querySelectorAll<HTMLButtonElement>("[data-contact-path]"));
     const panels = Array.from(section.querySelectorAll<HTMLElement>("[data-contact-panel]"));
+    const calendarPanel = section.querySelector<HTMLElement>('[data-contact-panel="calendar"]');
+    const calendarConsent = section.querySelector<HTMLElement>("[data-calendly-consent]");
+    const calendarWidget = section.querySelector<HTMLElement>(".calendly-inline-widget");
+    const hasCalendarConsent = () => Boolean((window as Window & { paternogaConsent?: { external: boolean } }).paternogaConsent?.external);
 
     const loadCalendly = () => {
+      if (!hasCalendarConsent()) {
+        if (calendarConsent) calendarConsent.hidden = false;
+        if (calendarWidget) calendarWidget.hidden = true;
+        return;
+      }
+      if (calendarConsent) calendarConsent.hidden = true;
+      if (calendarWidget) calendarWidget.hidden = false;
       if (document.querySelector<HTMLScriptElement>("script[data-calendly-loader]")) return;
       const script = document.createElement("script");
       script.src = "https://assets.calendly.com/assets/external/widget.js";
@@ -247,6 +265,11 @@ const locale = Astro.url.pathname.startsWith("/en") ? "en" : "de";
             : (index + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
         selectPath(tabs[nextIndex]?.dataset.contactPath ?? "calendar", true);
       });
+    });
+
+    window.addEventListener("paternoga:consent", (event) => {
+      const detail = (event as CustomEvent<{ external: boolean }>).detail;
+      if (detail.external && calendarPanel && !calendarPanel.hidden) loadCalendly();
     });
   });
 
