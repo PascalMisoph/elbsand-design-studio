@@ -204,6 +204,29 @@ test("service checks replace numbers and animate once in view", async ({ page })
   await expect(page.locator(".offer-check-mark").first()).toHaveCSS("stroke-dashoffset", "0px");
 });
 
+test("homepage keeps the AI check boundary and offer heading readable", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
+
+  await expect(page.locator(".ai-check")).toHaveCSS("border-bottom-width", "1px");
+  await expect(page.locator(".ai-check")).toHaveCSS("border-bottom-style", "solid");
+  await expect(page.locator(".offer-heading-line")).toHaveCount(2);
+  await expect(page.locator(".offer-heading h2")).toHaveText("Dein digitaler Erfolg. Unsere Leistungen für dich");
+  await expect(page.locator(".offer-heading-line").nth(1)).toHaveText("Unsere Leistungen für dich");
+
+  const headingLines = await page.locator(".offer-heading-line").evaluateAll((lines) =>
+    lines.map((line) => {
+      const box = line.getBoundingClientRect();
+      return { top: box.top, bottom: box.bottom };
+    })
+  );
+  expect(headingLines[1].top).toBeGreaterThanOrEqual(headingLines[0].bottom - 1);
+
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.reload({ waitUntil: "networkidle" });
+  await expect(page.locator(".offer-heading h2")).toHaveText("Dein digitaler Erfolg. Unsere Leistungen für dich");
+});
+
 test("SEO and GEO uses an accessible responsive Bento grid", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
@@ -307,6 +330,8 @@ test("editorial support bridges process and contact with responsive portraits", 
 
   const support = page.locator(".editorial-support");
   await expect(support).toHaveCount(1);
+  await expect(support.locator(".editorial-support-inner")).toHaveCSS("border-bottom-width", "0px");
+  await expect(page.locator(".contact-section")).toHaveCSS("border-top-width", "1px");
   await expect(support.locator(".eyebrow")).toHaveText("Editorial Support");
   await expect(support.locator(".editorial-support-person")).toHaveCount(3);
   expect(await support.locator("h3").allTextContents()).toEqual(["Pauline", "Zula", "Nali"]);
@@ -326,6 +351,16 @@ test("editorial support bridges process and contact with responsive portraits", 
   await expect(firstPortrait.locator("img")).toHaveCSS("filter", "none");
   await firstPortrait.hover();
   await expect(firstPortrait.locator("img")).toHaveCSS("filter", "none");
+  const desktopAlignment = await support.locator(".editorial-support-person").evaluateAll((people) =>
+    people.map((person) => {
+      const personBox = person.getBoundingClientRect();
+      const portraitBox = person.querySelector(".editorial-support-portrait")!.getBoundingClientRect();
+      return Math.abs(
+        (portraitBox.top + portraitBox.height / 2) - (personBox.top + personBox.height / 2)
+      );
+    })
+  );
+  expect(desktopAlignment.every((difference) => difference <= 8)).toBe(true);
 
   const order = await page.locator("main > section").evaluateAll((sections) =>
     sections.map((section) => section.className)

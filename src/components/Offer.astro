@@ -9,6 +9,7 @@ interface Props {
 const { eyebrow, title, detailLinkLabel, items } = Astro.props;
 const isEnglish = Astro.url.pathname.startsWith("/en/");
 const detailHref = isEnglish ? "/en/geo-optimization/" : "/geo-optimierung/";
+const titleLines = title.match(/^(.+?\.)\s+(.+)$/);
 const structureLabels = isEnglish
   ? ["Home", "Services", "Projects", "Contact"]
   : ["Start", "Leistungen", "Projekte", "Kontakt"];
@@ -17,7 +18,15 @@ const structureLabels = isEnglish
 <section class="section-shell offer" id="leistungen">
   <div class="section-heading compact offer-heading">
     <p class="eyebrow">{eyebrow}</p>
-    <h2>{title}</h2>
+    <h2>
+      {titleLines ? (
+        <>
+          <span class="offer-heading-line">{titleLines[1]}</span>
+          {" "}
+          <span class="offer-heading-line">{titleLines[2]}</span>
+        </>
+      ) : title}
+    </h2>
   </div>
 
   <div class="offer-list">

@@ -361,7 +361,8 @@ body main :is(article:not(.longform-document), li, [class*="card"], [class*="til
 .section-heading { margin-bottom: 64px; }
 .section-heading.compact { display: block; max-width: 860px; }
 .offer .section-heading { margin-bottom: 54px; }
-.offer-heading h2 { max-width: 980px; white-space: normal; text-wrap: balance; }
+.offer-heading h2 { max-width: 980px; white-space: normal; text-wrap: balance; hyphens: none; }
+.offer-heading-line { display: inline; }
 .offer-list { border-top: 1px solid var(--line); }
 .offer-item { display: grid; grid-template-columns: 72px minmax(250px, 360px) minmax(320px, 1fr); gap: 32px; align-items: start; padding: 34px 0; border-bottom: 1px solid var(--line); }
 .offer-check { display: block; width: 28px; height: 28px; margin-top: 2px; color: var(--accent); }
@@ -1548,6 +1549,7 @@ body.home-page {
 .home-page .editorial-support-portrait { border-color: var(--line); }
 .home-page .contact-section,
 .home-page .site-footer { border-color: var(--line); }
+.home-page .ai-check { border-bottom: 1px solid var(--line); }
 .home-page .ai-check,
 .home-page .offer,
 .home-page .references,
@@ -1556,8 +1558,13 @@ body.home-page {
 .home-page .visibility-band { margin-block: 0; }
 .home-page .visibility-inner { padding-top: 112px; padding-bottom: 112px; }
 .home-page .editorial-support { padding-top: 0; padding-bottom: 112px; }
-.home-page .editorial-support-inner { padding-block: 0; }
+.home-page .editorial-support-inner { padding-block: 0; border-bottom: 0; }
 .home-page .references { padding-top: 0; }
+
+@media (min-width: 641px) {
+  .home-page .editorial-support-person { padding-block: 96px 8px; }
+  .home-page .editorial-support-copy { margin-top: 12px; }
+}
 
 /* Narrative service stories */
 .home-page .offer { padding-top: 112px; }
@@ -1769,6 +1776,10 @@ body.home-page {
   .search-intent-demo { min-height: 360px; padding: 30px 18px; }
   .search-intent-demo > p { text-align: left; }
   .search-intent-demo li strong { font-size: 11px; }
+}
+
+@media (min-width: 861px) {
+  .offer-heading-line { display: block; }
 }
 
 @media (max-width: 640px) {
