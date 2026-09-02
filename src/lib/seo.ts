@@ -1,3 +1,5 @@
+import { contactDetails } from "../content/contact-details";
+
 export const SITE_URL = "https://www.paternoga-seo-geo.de";
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
@@ -63,8 +65,8 @@ const organizationNode: JsonLdNode = {
     caption: "Paternoga SEO & GEO Studio",
   },
   image: { "@id": `${SITE_URL}/#logo` },
-  email: "pascal.misoph@gmail.com",
-  telephone: "+49 152 06398390",
+  email: contactDetails.email,
+  telephone: contactDetails.phoneInternational,
   address: {
     "@type": "PostalAddress",
     streetAddress: "Holbeinstraße 7",
@@ -80,8 +82,8 @@ const organizationNode: JsonLdNode = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
-    telephone: "+49 152 06398390",
-    email: "pascal.misoph@gmail.com",
+    telephone: contactDetails.phoneInternational,
+    email: contactDetails.email,
     availableLanguage: ["de", "en"],
     areaServed: "DE",
   },

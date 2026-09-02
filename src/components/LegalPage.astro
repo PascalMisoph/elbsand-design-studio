@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Footer from "./Footer.astro";
 import Header from "./Header.astro";
 import { content } from "../content/site";
+import { contactDetails } from "../content/contact-details";
 
 interface Props { lang: "de" | "en"; kind: "imprint" | "privacy" }
 const { lang, kind } = Astro.props;
@@ -46,8 +47,8 @@ const meta = de
         </section>
         <section>
           <h2>{de ? "Kontakt" : "Contact"}</h2>
-          <p>{de ? "Telefon" : "Telephone"}: <a href="tel:+4915206398390">+49 152 06398390</a><br />
-          E-Mail: <a href="mailto:pascal.misoph@gmail.com">pascal.misoph@gmail.com</a></p>
+          <p>{de ? "Telefon" : "Telephone"}: <a href={contactDetails.phoneHref}>{contactDetails.phoneInternational}</a><br />
+          E-Mail: <a href={contactDetails.emailHref}>{contactDetails.email}</a></p>
         </section>
         <section>
           <h2>{de ? "Verantwortlich für redaktionelle Inhalte" : "Responsibility for editorial content"}</h2>
@@ -66,8 +67,8 @@ const meta = de
           <h2>{de ? "1. Verantwortlicher" : "1. Controller"}</h2>
           <address>
             Pascal Misoph<br />Paternoga SEO &amp; GEO Studio<br />Holbeinstraße 7<br />01307 Dresden<br />Deutschland<br />
-            E-Mail: <a href="mailto:pascal.misoph@gmail.com">pascal.misoph@gmail.com</a><br />
-            {de ? "Telefon" : "Telephone"}: <a href="tel:+4915206398390">+49 152 06398390</a>
+            E-Mail: <a href={contactDetails.emailHref}>{contactDetails.email}</a><br />
+            {de ? "Telefon" : "Telephone"}: <a href={contactDetails.phoneHref}>{contactDetails.phoneInternational}</a>
           </address>
         </section>
 

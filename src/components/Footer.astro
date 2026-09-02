@@ -1,4 +1,6 @@
 ---
+import { contactDetails } from "../content/contact-details";
+
 interface Props { legal: string; imprint: string; privacy: string; lang: "de" | "en"; }
 const { imprint, privacy, lang } = Astro.props;
 const de = lang === "de";
@@ -27,7 +29,7 @@ const columns = de ? [
       </a>
       <p class="site-footer-claim">Be the brand AI thinks of first.</p>
       <p class="site-footer-status"><i aria-hidden="true"></i>{de ? "Studio-Systeme erreichbar" : "Studio systems operational"}</p>
-      <a href="mailto:pascal.misoph@gmail.com">pascal.misoph@gmail.com</a>
+      <a href={contactDetails.emailHref}>{contactDetails.email}</a>
     </div>
     <div class="site-footer-columns">
       {columns.map((column) => (

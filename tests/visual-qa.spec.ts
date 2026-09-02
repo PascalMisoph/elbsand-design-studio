@@ -264,8 +264,9 @@ test("process contact card is responsive and directly actionable", async ({ page
   const card = section.locator(".process-contact-card");
   await expect(card).toHaveCount(1);
   await expect(card.locator("h3")).toHaveText("Pascal Misoph");
-  await expect(card.locator('a[href="tel:015206398390"]')).toBeVisible();
-  await expect(card.locator('a[href="https://wa.me/4915206398390"]')).toHaveAttribute("rel", "noreferrer");
+  await expect(card.locator('a[href="tel:+4917634374543"]')).toBeVisible();
+  await expect(card.locator('a[href="tel:+4917634374543"]')).toContainText("0176 34374543");
+  await expect(card.locator('a[href="https://wa.me/4917634374543"]')).toHaveAttribute("rel", "noreferrer");
   await expect(card.locator('a[href="mailto:pascal.misoph@gmail.com"]')).toBeVisible();
   await expect(card.locator("img")).toHaveAttribute("src", "/images/pascal-misoph-contact.webp");
   await expect(section.locator(".process-timeline")).toHaveCount(1);
