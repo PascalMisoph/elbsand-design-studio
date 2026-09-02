@@ -102,7 +102,10 @@ test.describe("Markdown content negotiation", () => {
 
     expect(robots.status()).toBe(200);
     expect(await robots.text()).toContain("Content-Signal: search=yes, ai-input=yes, ai-train=yes");
-    expect(await llms.text()).toContain("https://www.paternoga-seo-geo.de/");
+    const llmsBody = await llms.text();
+    expect(llmsBody).toContain("https://www.paternoga-seo-geo.de/");
+    expect(llmsBody).toContain("Contact: kontakt@paternoga-seo-geo.de");
+    expect(llmsBody).not.toMatch(/pascal\.misoph@gmail\.com|pascal@paternoga-seo-geo\.de/i);
     expect(await llmsFull.text()).toContain("kontakt@paternoga-seo-geo.de");
   });
 });

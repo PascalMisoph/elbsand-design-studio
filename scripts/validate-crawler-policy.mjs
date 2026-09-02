@@ -21,6 +21,8 @@ if (targetPaths.length !== 40) failures.push(`Expected 40 canonical sitemap rout
 for (const [name, document] of [["llms.txt", llms], ["llms-full.txt", llmsFull]]) {
   if (!document.includes("Paternoga SEO & GEO Studio")) failures.push(`${name} does not identify the organization consistently`);
   if (!document.includes("https://www.paternoga-seo-geo.de/")) failures.push(`${name} does not declare the canonical site`);
+  if (!document.includes("kontakt@paternoga-seo-geo.de")) failures.push(`${name} does not declare the public contact address`);
+  if (/pascal\.misoph@gmail\.com|pascal@paternoga-seo-geo\.de/i.test(document)) failures.push(`${name} contains a private contact address`);
 }
 
 for (const agent of agents) {
