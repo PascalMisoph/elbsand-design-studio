@@ -30,7 +30,7 @@ const systems = [
 
 <section class:list={["hero", "section-shell", { "hero--en": isEnglish }]}>
   <div class="hero-liquid-chrome" aria-hidden="true">
-    <LiquidChrome baseColor={[0.18, 0.075, 0.03]} speed={0.32} amplitude={0.52} interactive={false} client:load />
+    <LiquidChrome baseColor={[0.18, 0.075, 0.03]} speed={0.32} amplitude={0.52} interactive={false} client:idle />
   </div>
   <div class="hero-liquid-overlay" aria-hidden="true"></div>
   <div class="hero-inner">
@@ -64,16 +64,14 @@ const systems = [
     <figure class="hero-media">
       <video
         data-landing-video
-        autoplay
+        data-video-src={videoPath}
         muted
         loop
         playsinline
-        preload="auto"
+        preload="none"
         poster={posterPath}
         aria-label={imageAlt}
-      >
-        <source src={videoPath} type="video/mp4" />
-      </video>
+      ></video>
     </figure>
   </div>
 </section>
@@ -82,17 +80,47 @@ const systems = [
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   document.querySelectorAll<HTMLVideoElement>("[data-landing-video]").forEach((video) => {
+    const sourcePath = video.dataset.videoSrc;
+    let videoLoaded = false;
+
+    const loadVideo = () => {
+      if (videoLoaded || reducedMotion.matches || !sourcePath || document.hidden) return;
+      const source = document.createElement("source");
+      source.src = sourcePath;
+      source.type = "video/mp4";
+      video.append(source);
+      videoLoaded = true;
+      video.load();
+      void video.play().catch(() => undefined);
+    };
+
     const applyPreference = () => {
       if (reducedMotion.matches) {
         video.pause();
         video.currentTime = 0;
-      } else {
+      } else if (videoLoaded) {
         void video.play().catch(() => undefined);
       }
     };
 
-    applyPreference();
-    reducedMotion.addEventListener("change", applyPreference);
+    const handleMotionChange = () => {
+      if (reducedMotion.matches) {
+        applyPreference();
+      } else if (videoLoaded) {
+        void video.play().catch(() => undefined);
+      } else {
+        loadVideo();
+      }
+    };
+
+    window.setTimeout(loadVideo, 1200);
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) video.pause();
+      else if (videoLoaded) void video.play().catch(() => undefined);
+      else loadVideo();
+    });
+    if (reducedMotion.matches) applyPreference();
+    reducedMotion.addEventListener("change", handleMotionChange);
   });
 
   document.querySelectorAll<HTMLElement>("[data-system-rotator]").forEach((rotator) => {

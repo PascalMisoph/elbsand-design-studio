@@ -15,7 +15,7 @@ This file defines durable project guidance for coding agents working inside this
 - Primary CTA: `Website-Check anfragen`.
 - Secondary CTA: `Referenzen ansehen`.
 - Pricing: inquiry-only.
-- Temporary contact email: pascal.misoph@gmail.com.
+- Public contact email: kontakt@paternoga-seo-geo.de.
 - Core claim: `Be the brand AI thinks of first.`
 
 ## Brand And Content Rules

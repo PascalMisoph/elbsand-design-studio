@@ -14,6 +14,7 @@ interface Props {
   schema?: Record<string, unknown>;
   socialImage?: string;
   socialImageAlt?: string;
+  criticalImage?: string;
   openGraphType?: "website" | "article";
   bodyClass?: string;
 }
@@ -27,6 +28,7 @@ const {
   schema,
   socialImage,
   socialImageAlt,
+  criticalImage,
   openGraphType = "website",
   bodyClass
 } = Astro.props;
@@ -58,6 +60,7 @@ const layoutBodyClass = [bodyClass, !isHomeRoute && !isGeoAuditRoute && !isLegal
     <link rel="alternate" hreflang="de" href={new URL(alternateDePath, SITE_URL).toString()} />
     <link rel="alternate" hreflang="en" href={new URL(alternateEnPath, SITE_URL).toString()} />
     <link rel="alternate" hreflang="x-default" href={new URL(alternateDePath, SITE_URL).toString()} />
+    {criticalImage && <link rel="preload" as="image" href={criticalImage} type="image/png" fetchpriority="high" />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={openGraphType} />

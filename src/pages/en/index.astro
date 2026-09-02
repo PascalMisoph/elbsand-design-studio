@@ -14,7 +14,7 @@ import Footer from "../../components/Footer.astro";
 import { content } from "../../content/site";
 const t = content.en;
 ---
-<BaseLayout title={t.meta.title} description={t.meta.description} lang="en" canonicalPath="/en/" bodyClass="home-page">
+<BaseLayout title={t.meta.title} description={t.meta.description} lang="en" canonicalPath="/en/" criticalImage="/video/paternoga-search-shift-poster-en.png" bodyClass="home-page">
   <Header lang="en" nav={t.nav} cta={t.cta} />
   <main id="main-content"><Hero {...t.hero} cta={t.cta} secondaryCta={t.secondaryCta} /><ProofStrip {...t.proof} /><AiCheck lang="en" /><Offer {...t.offer} /><References {...t.references} /><Visibility {...t.visibility} /><Process {...t.process} /><EditorialSupport {...t.editorialSupport} /><Contact {...t.contact} /></main>
   <Footer {...t.footer} lang="en" />

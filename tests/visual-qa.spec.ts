@@ -61,9 +61,22 @@ for (const [name, width, height] of sizes) {
     // The brand lockup is semantic text; this count covers the remaining content imagery.
     expect(await page.locator("img").count()).toBeGreaterThanOrEqual(24);
     await expect(page.locator(".hero-media video")).toHaveCount(1);
+    await expect(page.locator(".hero-media video")).toHaveAttribute(
+      "data-video-src",
+      "/video/paternoga-search-shift-de.mp4"
+    );
+    await expect(page.locator(".hero-media video")).toHaveAttribute("preload", "none");
+    await expect(page.locator(".hero-media video")).toHaveAttribute(
+      "poster",
+      "/video/paternoga-search-shift-poster-de.png"
+    );
+    await expect(
+      page.locator('link[rel="preload"][as="image"][href="/video/paternoga-search-shift-poster-de.png"]')
+    ).toHaveCount(1);
     await expect(page.locator('.hero-media source[type="video/mp4"]')).toHaveAttribute(
       "src",
-      "/video/paternoga-search-shift-de.mp4"
+      "/video/paternoga-search-shift-de.mp4",
+      { timeout: 3_000 }
     );
     await page.waitForFunction(() => [...document.images].every((image) => image.complete));
     const brokenImages = await page.locator("img").evaluateAll((images) => {
@@ -79,6 +92,8 @@ test("keyboard focus, reduced motion and mobile menu", async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
+  await expect(page.locator(".hero-media video")).toHaveAttribute("preload", "none");
+  await expect(page.locator(".hero-media source")).toHaveCount(0);
   await page.keyboard.press("Tab");
   await expect(page.locator(".skip-link")).toBeFocused();
   const focusStyle = await page.locator(".skip-link").evaluate((element) => getComputedStyle(element).outlineStyle);
@@ -290,7 +305,7 @@ test("process contact card is responsive and directly actionable", async ({ page
   await expect(card.locator('a[href="tel:+4917634374543"]')).toBeVisible();
   await expect(card.locator('a[href="tel:+4917634374543"]')).toContainText("0176 34374543");
   await expect(card.locator('a[href="https://wa.me/4917634374543"]')).toHaveAttribute("rel", "noreferrer");
-  await expect(card.locator('a[href="mailto:pascal.misoph@gmail.com"]')).toBeVisible();
+  await expect(card.locator('a[href="mailto:kontakt@paternoga-seo-geo.de"]')).toBeVisible();
   await expect(card.locator("img")).toHaveAttribute("src", "/images/pascal-misoph-contact.webp");
   await expect(section.locator(".process-timeline")).toHaveCount(1);
   await expect(section.locator(".process-step")).toHaveCount(5);
@@ -322,6 +337,24 @@ test("process contact card is responsive and directly actionable", async ({ page
   });
   expect(mobileOrder.timelineTop).toBeGreaterThan(mobileOrder.headingBottom);
   expect(mobileOrder.cardTop).toBeGreaterThan(mobileOrder.timelineBottom);
+});
+
+test("public contact email is canonical in links and structured data", async ({ page }) => {
+  for (const path of ["/", "/en/"]) {
+    await page.goto(`${TEST_ORIGIN}${path}`, { waitUntil: "networkidle" });
+
+    await expect(page.locator('a[href="mailto:kontakt@paternoga-seo-geo.de"]')).toHaveCount(2);
+    const structuredData = await page.locator('script[type="application/ld+json"]').evaluate((element) =>
+      JSON.parse(element.textContent ?? "{}") as {
+        "@graph"?: Array<Record<string, unknown>>;
+      }
+    );
+    const organization = structuredData["@graph"]?.find((node) => node["@type"] === "Organization");
+    const contactPoint = organization?.contactPoint as Record<string, unknown> | undefined;
+
+    expect(organization?.email).toBe("kontakt@paternoga-seo-geo.de");
+    expect(contactPoint?.email).toBe("kontakt@paternoga-seo-geo.de");
+  }
 });
 
 test("editorial support bridges process and contact with responsive portraits", async ({ page }) => {
