@@ -268,6 +268,7 @@ export const createResearchPageSchema = ({
     url: canonical,
     inLanguage: articleOptions.lang,
     temporalCoverage: datasetTemporalCoverage,
+    license: "https://creativecommons.org/licenses/by/4.0/",
     creator: { "@id": ORGANIZATION_ID },
     publisher: { "@id": ORGANIZATION_ID },
     distribution: datasetDistribution.map((distribution) => ({

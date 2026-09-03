@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Footer from "./Footer.astro";
 import Header from "./Header.astro";
 import LinkButton from "./LinkButton";
+import EditorialMeta from "./EditorialMeta.astro";
 import { content } from "../content/site";
 import { createArticlePageSchema } from "../lib/seo";
 
@@ -123,7 +124,7 @@ const schema = createArticlePageSchema({ lang, title: copy.meta.title, descripti
   <Header lang={lang} nav={site.nav} cta={site.cta} page="service" alternateDePath={alternateDePath} alternateEnPath={alternateEnPath} />
   <main id="main-content" class="min-h-screen bg-background text-foreground">
     <article class="longform-document">
-      <header class="border-b border-solid border-border"><div class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><nav class="flex gap-2 text-xs text-muted-foreground" aria-label={de ? "Brotkrumen-Navigation" : "Breadcrumb"}><a class="text-inherit no-underline hover:text-foreground" href={de ? "/" : "/en/"}>{de ? "Start" : "Home"}</a><span aria-hidden="true">/</span><span>{de ? "Wissen" : "Knowledge"}</span><span aria-hidden="true">/</span><span aria-current="page">robots.txt</span></nav><div class="max-w-3xl pt-12"><p class="m-0 text-xs font-medium uppercase tracking-wider text-primary">{copy.eyebrow}</p><h1 class="m-0 mt-6 text-display-mobile font-medium text-foreground md:text-display">{copy.title}</h1><p class="m-0 mt-6 max-w-2xl text-base leading-copy text-muted-foreground">{copy.lead}</p></div></div></header>
+      <header class="border-b border-solid border-border"><div class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><nav class="flex gap-2 text-xs text-muted-foreground" aria-label={de ? "Brotkrumen-Navigation" : "Breadcrumb"}><a class="text-inherit no-underline hover:text-foreground" href={de ? "/" : "/en/"}>{de ? "Start" : "Home"}</a><span aria-hidden="true">/</span><span>{de ? "Wissen" : "Knowledge"}</span><span aria-hidden="true">/</span><span aria-current="page">robots.txt</span></nav><div class="max-w-3xl pt-12"><p class="m-0 text-xs font-medium uppercase tracking-wider text-primary">{copy.eyebrow}</p><h1 class="m-0 mt-6 text-display-mobile font-medium text-foreground md:text-display">{copy.title}</h1><p class="m-0 mt-6 max-w-2xl text-base leading-copy text-muted-foreground">{copy.lead}</p><EditorialMeta lang={lang} author="Pascal Misoph" datePublished="2026-08-30" dateModified="2026-08-30" /></div></div></header>
 
       <section class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><div class="max-w-3xl border-l-2 border-primary pl-6"><h2 class="m-0 text-section-title font-medium text-foreground">{copy.answerTitle}</h2><p class="m-0 mt-6 text-base leading-copy text-muted-foreground">{copy.answer}</p></div></section>
 

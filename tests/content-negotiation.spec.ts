@@ -72,6 +72,38 @@ test.describe("Markdown content negotiation", () => {
     }
   });
 
+  test("preserves CC BY 4.0 licensing on both DAX research pages", async ({ request }) => {
+    const licenseUrl = "https://creativecommons.org/licenses/by/4.0/";
+    const routes = [
+      ["/research/ki-crawler-readiness-dax-40-2026/", "Creative Commons Namensnennung 4.0 International (CC BY 4.0)", "Inhalte und Rechte der untersuchten Drittwebsites bleiben hiervon unberührt.", "Zur Originalstudie"],
+      ["/en/research/dax-40-ai-crawler-readiness-2026/", "Creative Commons Attribution 4.0 International (CC BY 4.0)", "The content and rights of the third-party websites examined remain unaffected.", "Read the original study"],
+    ] as const;
+
+    for (const [path, licenseText, scopeText, originalLabel] of routes) {
+      const htmlResponse = await request.get(url(path));
+      const html = await htmlResponse.text();
+      const schemaBlock = html.match(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/i)?.[1];
+      const schema = JSON.parse(schemaBlock ?? "{}");
+      const dataset = schema["@graph"]?.find((node: Record<string, unknown>) => node["@type"] === "Dataset") as Record<string, unknown> | undefined;
+      const markdownResponse = await request.get(url(path), { headers: markdownHeaders });
+      const markdown = await markdownResponse.text();
+
+      expect(htmlResponse.status(), path).toBe(200);
+      expect(dataset?.license, path).toBe(licenseUrl);
+      expect(html, path).toContain(licenseText);
+      expect(html, path).toContain(scopeText);
+      expect(html, path).toContain(`href="${licenseUrl}"`);
+      expect(html, path).toContain(`href="https://www.paternoga-seo-geo.de${path}"`);
+      expect(html, path).toContain('hreflang="de"');
+      expect(html, path).toContain('hreflang="en"');
+      expect(markdownResponse.status(), path).toBe(200);
+      expect(markdown, path).toContain(licenseText);
+      expect(markdown, path).toContain(scopeText);
+      expect(markdown, path).toContain(licenseUrl);
+      expect(markdown, path).toContain(originalLabel);
+    }
+  });
+
   test("supports Markdown on every canonical sitemap route", async ({ request }) => {
     const sitemap = await request.get(url("/sitemap.xml"));
     const sitemapBody = await sitemap.text();

@@ -1,6 +1,7 @@
 import { defineMiddleware } from "astro:middleware";
 
 import { acceptsMarkdown, createMarkdownRepresentation } from "./lib/content-negotiation";
+import { applySecurityHeaders } from "./lib/security-headers";
 
 const isPublicDocumentPath = (pathname: string) =>
   !pathname.startsWith("/api/") && !/\.[a-z\d]+$/i.test(pathname);
@@ -14,12 +15,29 @@ const addVaryAccept = (headers: Headers) => {
 };
 
 export const onRequest = defineMiddleware(async (context, next) => {
+  const { pathname } = context.url;
+  const isDocumentRequest = context.request.method === "GET" || context.request.method === "HEAD";
+  if (isDocumentRequest && isPublicDocumentPath(pathname) && pathname !== "/" && !pathname.endsWith("/")) {
+    const location = new URL(context.url);
+    location.pathname = `${pathname}/`;
+    const headers = new Headers({ location: location.toString(), vary: "Accept" });
+    applySecurityHeaders(headers);
+    return new Response(null, { status: 308, headers });
+  }
+
   const response = await next();
+  const headers = new Headers(response.headers);
+  applySecurityHeaders(headers);
   const contentType = response.headers.get("content-type")?.toLowerCase() ?? "";
   const isHtmlResponse = response.ok && contentType.includes("text/html") && isPublicDocumentPath(context.url.pathname);
-  if (!isHtmlResponse) return response;
+  if (!isHtmlResponse) {
+    return new Response(response.body, {
+      headers,
+      status: response.status,
+      statusText: response.statusText,
+    });
+  }
 
-  const headers = new Headers(response.headers);
   addVaryAccept(headers);
 
   if (context.request.method !== "GET" || !acceptsMarkdown(context.request.headers.get("accept"))) {

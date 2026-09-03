@@ -30,6 +30,7 @@ const waitForServer = async (server) => {
 
 await runNpm(["run", "static:check"]);
 await runNpm(["run", "crawler:check"]);
+await runNpm(["run", "security:check"]);
 await runNpm(["run", "build"]);
 
 try {
@@ -61,7 +62,9 @@ try {
   await waitForServer(server);
   await run(process.execPath, ["scripts/validate-seo.mjs", origin]);
   process.env.TEST_ORIGIN = origin;
-  await runNpm(["run", "test:visual"]);
+  // These browser tests include network and animation timing assertions; keep
+  // the release verification deterministic while the ad-hoc suite stays parallel.
+  await runNpm(["run", "test:visual", "--", "--workers=1"]);
   console.log("Production verification passed.");
 } finally {
   stopServer();

@@ -14,6 +14,7 @@
     "static:check": "node scripts/static-smoke-check.cjs",
     "seo:check": "node scripts/validate-seo.mjs",
     "crawler:check": "node scripts/validate-crawler-policy.mjs",
+    "security:check": "node scripts/validate-security-headers.mjs",
     "deploy:check": "node scripts/validate-deployment-env.mjs",
     "indexnow": "node scripts/indexnow.mjs",
     "research:dax-crawlers": "node scripts/collect-dax-crawler-study.mjs",

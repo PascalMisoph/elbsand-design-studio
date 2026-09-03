@@ -113,7 +113,11 @@ for (const path of paths) {
     }
     const article = schemaNodes.find((node) => node?.["@type"] === "TechArticle");
     if (article?.author?.["@id"] !== `${canonicalOrigin}/#pascal-misoph`) failures.push(`${path}: article author @id is inconsistent`);
-    if (researchRoutes.has(path) && !schemaTypes.has("Dataset")) failures.push(`${path}: JSON-LD missing Dataset`);
+    if (researchRoutes.has(path)) {
+      if (!schemaTypes.has("Dataset")) failures.push(`${path}: JSON-LD missing Dataset`);
+      const dataset = schemaNodes.find((node) => node?.["@type"] === "Dataset");
+      if (dataset?.license !== "https://creativecommons.org/licenses/by/4.0/") failures.push(`${path}: Dataset license is missing or incorrect`);
+    }
   } else if (path !== "/" && path !== "/en/" && !legalRoutes.has(path)) {
     for (const type of ["Service", "BreadcrumbList"]) {
       if (!schemaTypes.has(type)) failures.push(`${path}: JSON-LD missing ${type}`);

@@ -1,0 +1,32 @@
+---
+interface Props {
+  lang: "de" | "en";
+  datePublished: string;
+  dateModified: string;
+  author: string;
+}
+
+const { lang, datePublished, dateModified, author } = Astro.props;
+const dateFormatter = new Intl.DateTimeFormat(lang === "de" ? "de-DE" : "en-GB", {
+  dateStyle: "long",
+  timeZone: "Europe/Berlin",
+});
+const formatDate = (date: string) => dateFormatter.format(new Date(`${date}T12:00:00Z`));
+const copy = lang === "de"
+  ? { by: "Von", published: "Veröffentlicht am", updated: "Aktualisiert am" }
+  : { by: "By", published: "Published", updated: "Updated" };
+---
+
+<p class="editorial-meta">
+  <span>{copy.by} <span class="editorial-meta-author">{author}</span></span>
+  <span aria-hidden="true">·</span>
+  <span>{copy.published} <time datetime={datePublished}>{formatDate(datePublished)}</time></span>
+  <span aria-hidden="true">·</span>
+  <span>{copy.updated} <time datetime={dateModified}>{formatDate(dateModified)}</time></span>
+</p>
+
+<style>
+  .editorial-meta { display: flex; flex-wrap: wrap; gap: 6px 10px; margin: 20px 0 0; color: var(--muted-foreground); font-size: 12px; line-height: 1.5; }
+  .editorial-meta-author { color: var(--foreground); font-weight: 600; }
+  .editorial-meta time { white-space: nowrap; }
+</style>

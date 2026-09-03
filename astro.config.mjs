@@ -8,6 +8,9 @@ const isVercelBuild = process.env.VERCEL === "1";
 
 export default defineConfig({
   site: "https://www.paternoga-seo-geo.de",
+  // Public document paths are normalized in middleware; API routes must keep
+  // their exact endpoint paths (for example /api/contact).
+  trailingSlash: "ignore",
   output: "server",
   // Keep the standalone adapter for the local production regression server;
   // Vercel exposes VERCEL=1 and receives its native on-demand output.

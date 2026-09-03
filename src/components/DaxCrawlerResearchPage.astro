@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Footer from "./Footer.astro";
 import Header from "./Header.astro";
 import LinkButton from "./LinkButton";
+import EditorialMeta from "./EditorialMeta.astro";
 import { content } from "../content/site";
 import study from "../data/research/dax-40-ai-crawler-readiness-2026.json";
 import { createResearchPageSchema } from "../lib/seo";
@@ -68,6 +69,14 @@ const copy = de ? {
     ["Perplexity: Crawler-Dokumentation", "https://docs.perplexity.ai/docs/resources/perplexity-crawlers"],
     ["Google: Common Crawlers und Google-Extended", "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers"],
   ],
+  license: {
+    label: "Lizenz",
+    prefix: "Die von PATERNOGA selbst erstellte Analyse, Klassifikation, Strukturierung, Scores, Bewertungen, redaktionellen Schlussfolgerungen und daraus abgeleiteten Forschungsdaten stehen unter",
+    name: "Creative Commons Namensnennung 4.0 International (CC BY 4.0)",
+    suffix: "Inhalte und Rechte der untersuchten Drittwebsites bleiben hiervon unberührt.",
+    original: "Zur Originalstudie",
+    ending: ".",
+  },
   bridgeTitle: "Crawler-Zugriff ist eine Voraussetzung, keine Sichtbarkeitsgarantie",
   bridgeBody: "Für eine belastbare Bewertung müssen Richtlinien, Serverzugriff, Indexierung, Inhalte, Quellen und reale Antwortmuster getrennt betrachtet werden.",
   guideCta: "Crawler-Leitfaden lesen",
@@ -127,6 +136,14 @@ const copy = de ? {
     ["Perplexity: crawler documentation", "https://docs.perplexity.ai/docs/resources/perplexity-crawlers"],
     ["Google: common crawlers and Google-Extended", "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers"],
   ],
+  license: {
+    label: "License",
+    prefix: "PATERNOGA's own analysis, classification, structure, scores, assessments, editorial conclusions and derived research data are licensed under",
+    name: "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    suffix: "The content and rights of the third-party websites examined remain unaffected.",
+    original: "Read the original study",
+    ending: ".",
+  },
   bridgeTitle: "Crawler access is a prerequisite, not a visibility guarantee",
   bridgeBody: "A credible assessment separates policy, server access, indexing, content, sources and observed answer patterns.",
   guideCta: "Read the crawler guide",
@@ -165,7 +182,7 @@ const yesNo = (value: boolean) => value ? copy.status.yes : copy.status.no;
   <Header lang={lang} nav={site.nav} cta={site.cta} page="service" alternateDePath={alternateDePath} alternateEnPath={alternateEnPath} />
   <main id="main-content" class="min-h-screen bg-background text-foreground">
     <article class="longform-document">
-      <header class="border-b border-solid border-border"><div class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><nav class="flex gap-2 text-xs text-muted-foreground" aria-label={de ? "Brotkrumen-Navigation" : "Breadcrumb"}><a class="text-inherit no-underline hover:text-foreground" href={de ? "/" : "/en/"}>{de ? "Start" : "Home"}</a><span aria-hidden="true">/</span><span>Research</span><span aria-hidden="true">/</span><span aria-current="page">DAX 40</span></nav><div class="max-w-3xl pt-12"><p class="m-0 text-xs font-medium uppercase tracking-wider text-primary">{copy.eyebrow}</p><h1 class="m-0 mt-6 text-display-mobile font-medium text-foreground md:text-display">{copy.title}</h1><p class="m-0 mt-6 max-w-2xl text-base leading-copy text-muted-foreground">{copy.lead}</p></div></div></header>
+      <header class="border-b border-solid border-border"><div class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><nav class="flex gap-2 text-xs text-muted-foreground" aria-label={de ? "Brotkrumen-Navigation" : "Breadcrumb"}><a class="text-inherit no-underline hover:text-foreground" href={de ? "/" : "/en/"}>{de ? "Start" : "Home"}</a><span aria-hidden="true">/</span><span>Research</span><span aria-hidden="true">/</span><span aria-current="page">DAX 40</span></nav><div class="max-w-3xl pt-12"><p class="m-0 text-xs font-medium uppercase tracking-wider text-primary">{copy.eyebrow}</p><h1 class="m-0 mt-6 text-display-mobile font-medium text-foreground md:text-display">{copy.title}</h1><p class="m-0 mt-6 max-w-2xl text-base leading-copy text-muted-foreground">{copy.lead}</p><EditorialMeta lang={lang} author="Pascal Misoph" datePublished="2026-08-30" dateModified="2026-08-30" /></div></div></header>
 
       <section class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><div class="max-w-3xl border-l-2 border-primary pl-6"><h2 class="m-0 text-section-title font-medium text-foreground">{copy.summaryTitle}</h2><p class="m-0 mt-6 text-base leading-copy text-muted-foreground">{copy.summary}</p></div><dl class="mt-12 grid grid-cols-1 border-l border-t border-solid border-border sm:grid-cols-2 lg:grid-cols-4">{copy.metrics.map(([value, label, detail]) => <div class="border-b border-r border-solid border-border p-6"><dt class="text-sm text-muted-foreground">{label}</dt><dd class="m-0 mt-5 text-5xl font-medium tracking-tight text-foreground tabular-nums">{value}</dd><dd class="m-0 mt-3 text-xs text-muted-foreground">{detail}</dd></div>)}</dl></section>
 
@@ -179,7 +196,7 @@ const yesNo = (value: boolean) => value ? copy.status.yes : copy.status.no;
 
       <section class="border-y border-solid border-border"><div class="mx-auto grid max-w-content grid-cols-1 gap-12 px-5 py-section-mobile md:px-12 lg:grid-cols-2 lg:py-section"><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.limitationsTitle}</h2><ul class="m-0 mt-6 grid list-none gap-0 border-t border-solid border-border p-0">{copy.limitations.map((item) => <li class="border-b border-solid border-border py-4 text-base leading-copy text-muted-foreground">{item}</li>)}</ul></div><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.dataTitle}</h2><p class="m-0 mt-6 text-base leading-copy text-muted-foreground">{copy.dataBody}</p><div class="mt-8 flex flex-col flex-wrap gap-3 sm:flex-row"><LinkButton href="/research/dax-40-ai-crawler-readiness-2026.json" label={copy.json} variant="secondary" icon="external" /><LinkButton href="/research/dax-40-ai-crawler-readiness-2026.csv" label={copy.csv} variant="secondary" icon="external" /></div></div></div></section>
 
-      <section id="kontakt" class="mx-auto grid max-w-content grid-cols-1 gap-12 px-5 py-section-mobile md:px-12 lg:grid-cols-2 lg:py-section"><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.sourcesTitle}</h2><ul class="m-0 mt-6 grid list-none gap-3 p-0">{copy.sources.map(([label, href]) => <li><a class="text-sm text-primary underline underline-offset-4" href={href} target="_blank" rel="noopener">{label}</a></li>)}</ul></div><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.bridgeTitle}</h2><p class="m-0 mt-6 text-base leading-copy text-muted-foreground">{copy.bridgeBody}</p><div class="mt-8 flex flex-col flex-wrap gap-3 sm:flex-row"><LinkButton href={copy.guideHref} label={copy.guideCta} icon="right" /><LinkButton href={copy.serviceHref} label={copy.serviceCta} variant="secondary" icon="right" /></div></div></section>
+      <section id="kontakt" class="mx-auto grid max-w-content grid-cols-1 gap-12 px-5 py-section-mobile md:px-12 lg:grid-cols-2 lg:py-section"><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.sourcesTitle}</h2><ul class="m-0 mt-6 grid list-none gap-3 p-0">{copy.sources.map(([label, href]) => <li><a class="text-sm text-primary underline underline-offset-4" href={href} target="_blank" rel="noopener">{label}</a></li>)}</ul><p class="mt-8 max-w-xl text-sm leading-copy text-muted-foreground"><span class="font-medium text-foreground">{copy.license.label}:</span> {copy.license.prefix} <a class="text-primary underline underline-offset-4" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">{copy.license.name}</a>. {copy.license.suffix} <a class="text-primary underline underline-offset-4" href={canonicalPath}>{copy.license.original}</a>{copy.license.ending}</p></div><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.bridgeTitle}</h2><p class="m-0 mt-6 text-base leading-copy text-muted-foreground">{copy.bridgeBody}</p><div class="mt-8 flex flex-col flex-wrap gap-3 sm:flex-row"><LinkButton href={copy.guideHref} label={copy.guideCta} icon="right" /><LinkButton href={copy.serviceHref} label={copy.serviceCta} variant="secondary" icon="right" /></div></div></section>
     </article>
   </main>
   <Footer {...site.footer} lang={lang} />
