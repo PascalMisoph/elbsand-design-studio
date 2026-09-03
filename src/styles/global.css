@@ -19,6 +19,8 @@
   --section-heading-copy-gap: 32px;
   --card-heading-copy-gap: 16px;
   --subpage-entry-space: 72px;
+  --subpage-hero-entry-space: 48px;
+  --subpage-hero-copy-entry-space: 32px;
   --geo-section-space: var(--section);
   --geo-heading-gap: 64px;
   --radius-sm: 8px;
@@ -31,17 +33,81 @@
   --motion-ease: cubic-bezier(.22, 1, .36, 1);
 }
 
-/* One landing offset for the first visible content on every subpage. The
-   individual page keeps control of all spacing inside and below its hero. */
-body:not(.home-page) main#main-content > section:first-child > .mx-auto.max-w-content,
-body:not(.home-page) main#main-content > article:first-child > header:first-child > .mx-auto.max-w-content,
-body:not(.home-page) main#main-content > section:first-child:is(.a-hero, .v-hero, .s-hero, .pv-hero),
-body.legal-page main#main-content.legal-document {
+/* Keep the first subpage content visible without changing the homepage
+   rhythm. Legal and result pages retain their dedicated entry token. */
+body:not(.home-page):not(.legal-page):not(.scan-result-route) main#main-content > section:first-child > .mx-auto.max-w-content,
+body:not(.home-page):not(.legal-page):not(.scan-result-route) main#main-content > article:first-child > header:first-child > .mx-auto.max-w-content,
+body:not(.home-page):not(.legal-page):not(.scan-result-route) main#main-content > header:first-child > .mx-auto.max-w-content,
+body:not(.home-page):not(.legal-page):not(.scan-result-route) main#main-content > section:first-child:is(.a-hero, .v-hero, .s-hero, .pv-hero) {
+  padding-top: var(--subpage-hero-entry-space) !important;
+}
+
+body.legal-page main#main-content.legal-document,
+body.scan-result-route main#main-content .scan-result-hero {
   padding-top: var(--subpage-entry-space) !important;
 }
 
+/* Standard acquisition and editorial templates have a shared copy wrapper.
+   This is the second half of the compact subpage entry, not a page patch. */
+body:not(.home-page):not(.legal-page):not(.scan-result-route) main#main-content > section:first-child > .mx-auto.max-w-content .max-w-3xl.pt-12,
+body:not(.home-page):not(.legal-page):not(.scan-result-route) main#main-content > article:first-child > header:first-child > .mx-auto.max-w-content .max-w-3xl.pt-12,
+body:not(.home-page):not(.legal-page):not(.scan-result-route) main#main-content > header:first-child > .mx-auto.max-w-content .max-w-3xl.pt-12 {
+  padding-top: var(--subpage-hero-copy-entry-space) !important;
+}
+
+body:not(.home-page):not(.legal-page):not(.scan-result-route) main#main-content > section:first-child > .mx-auto.max-w-content h1.m-0.mt-12 {
+  margin-top: var(--subpage-hero-copy-entry-space) !important;
+}
+
+/* Monitoring is the only standard hero whose copy column is vertically
+   centered beside a variable-height chart. Start both language versions at
+   the shared entry line so a shorter translation does not add empty runway. */
+@media (min-width: 861px) {
+  body.monitor-reference-page main#main-content > section:first-child > .mx-auto.max-w-content > div:first-child {
+    justify-content: flex-start;
+  }
+}
+
+/* Dark analytical heroes use their own internal grid rhythm. Keep the
+   visual treatment intact while removing the unused upper runway. */
+body:not(.home-page):not(.legal-page):not(.scan-result-route) main#main-content > section:first-child.a-hero .a-hero-grid,
+body:not(.home-page):not(.legal-page):not(.scan-result-route) main#main-content > section:first-child.s-hero .s-hero-grid {
+  padding-top: 48px !important;
+  padding-bottom: 72px !important;
+}
+
+body:not(.home-page):not(.legal-page):not(.scan-result-route) main#main-content > section:first-child.v-hero .v-hero-grid {
+  padding-top: 64px !important;
+  padding-bottom: 72px !important;
+}
+
+body:not(.home-page):not(.legal-page):not(.scan-result-route) main#main-content > section:first-child.pv-hero .pv-hero-copy {
+  padding-top: 48px !important;
+}
+
+@media (max-width: 860px) {
+  body:not(.home-page):not(.legal-page):not(.scan-result-route) main#main-content > section:first-child.a-hero .a-hero-grid,
+  body:not(.home-page):not(.legal-page):not(.scan-result-route) main#main-content > section:first-child.s-hero .s-hero-grid {
+    padding-top: 48px !important;
+    padding-bottom: 72px !important;
+  }
+
+  body:not(.home-page):not(.legal-page):not(.scan-result-route) main#main-content > section:first-child.v-hero .v-hero-grid {
+    padding-top: 48px !important;
+    padding-bottom: 64px !important;
+  }
+
+  body:not(.home-page):not(.legal-page):not(.scan-result-route) main#main-content > section:first-child.pv-hero .pv-hero-copy {
+    padding-top: 48px !important;
+  }
+}
+
 @media (max-width: 640px) {
-  :root { --subpage-entry-space: 48px; }
+  :root {
+    --subpage-entry-space: 48px;
+    --subpage-hero-entry-space: 40px;
+    --subpage-hero-copy-entry-space: 32px;
+  }
 }
 
 @view-transition { navigation: auto; }

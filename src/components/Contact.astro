@@ -40,6 +40,7 @@ interface Props {
   source?: string;
   disclaimerTitle?: string;
   disclaimer?: string;
+  calendarOnly?: boolean;
 }
 
 const {
@@ -55,11 +56,14 @@ const {
   source = "contact-form",
   disclaimerTitle,
   disclaimer,
+  calendarOnly = false,
 } = Astro.props;
 const locale = Astro.url.pathname.startsWith("/en") ? "en" : "de";
 const privacyPath = locale === "en" ? "/en/privacy/" : "/datenschutz/";
 ---
-<section class="contact-section" id={sectionId}>
+<section class="contact-section" id={sectionId} data-initial-path={calendarOnly ? "calendar" : undefined}>
+  {!calendarOnly && (
+    <>
   <div class="contact-copy">
     <p class="eyebrow">{eyebrow}</p>
     <h2>{title}</h2>
@@ -99,8 +103,11 @@ const privacyPath = locale === "en" ? "/en/privacy/" : "/datenschutz/";
       <span class="contact-path-arrow" aria-hidden="true">→</span>
     </button>
   </div>
+    </>
+  )}
 
   <div class="contact-path-panels">
+  {!calendarOnly && (
   <form
     class="contact-flow"
     id={`contact-form-${locale}`}
@@ -181,16 +188,17 @@ const privacyPath = locale === "en" ? "/en/privacy/" : "/datenschutz/";
     </section>
     <noscript><p class="contact-flow-noscript">{note}</p></noscript>
   </form>
+  )}
 
   <!-- Calendly inline widget begin -->
   <div
     class="calendly-panel"
     id={`contact-calendar-${locale}`}
     role="tabpanel"
-    aria-labelledby={`contact-calendar-tab-${locale}`}
+    aria-labelledby={calendarOnly ? undefined : `contact-calendar-tab-${locale}`}
     aria-label={locale === "en" ? "Book an initial consultation" : "Erstgespräch buchen"}
     data-contact-panel="calendar"
-    hidden
+    hidden={!calendarOnly}
   >
     <div class="calendly-consent" data-calendly-consent>
       <p>{locale === "en" ? "Calendly is loaded only with your permission. Until then, no data is sent to the scheduling provider." : "Calendly wird erst mit deiner Freigabe geladen. Bis dahin werden keine Daten an den Termin-Dienst übertragen."}</p>
@@ -271,6 +279,8 @@ const privacyPath = locale === "en" ? "/en/privacy/" : "/datenschutz/";
       const detail = (event as CustomEvent<{ external: boolean }>).detail;
       if (detail.external && calendarPanel && !calendarPanel.hidden) loadCalendly();
     });
+
+    if (section.dataset.initialPath) selectPath(section.dataset.initialPath);
   });
 
   document.querySelectorAll<HTMLFormElement>("[data-contact-flow]").forEach((form) => {

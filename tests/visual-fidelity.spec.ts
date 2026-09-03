@@ -23,7 +23,7 @@ const subpageEntryRoutes = [
 ] as const;
 
 test("subpage content starts on the shared landing offset", async ({ page }) => {
-  for (const [width, expectedGap] of [[375, 48], [1440, 72]] as const) {
+  for (const [width, expectedRegularGap, expectedLegalGap] of [[375, 40, 48], [1440, 48, 72]] as const) {
     await page.setViewportSize({ width, height: 900 });
     for (const route of subpageEntryRoutes) {
       await page.goto(`${TEST_ORIGIN}${route}`, { waitUntil: "domcontentloaded" });
@@ -41,7 +41,8 @@ test("subpage content starts on the shared landing offset", async ({ page }) => 
         if (!header || !firstContent) throw new Error("Missing shared header or subpage entry content");
         return Math.round(firstContent.getBoundingClientRect().top - header.getBoundingClientRect().bottom);
       });
-      expect(gap, `${route} at ${width}px`).toBe(expectedGap);
+      const isLegalRoute = ["/impressum/", "/datenschutz/", "/en/privacy/", "/en/legal-notice/"].includes(route);
+      expect(gap, `${route} at ${width}px`).toBe(isLegalRoute ? expectedLegalGap : expectedRegularGap);
     }
   }
 });

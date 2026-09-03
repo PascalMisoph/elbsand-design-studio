@@ -1,0 +1,106 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import { content } from "../../content/site";
+
+const site = content.de;
+---
+
+<BaseLayout
+  title="Kostenloses Erstgespräch zur Sichtbarkeit | PATERNOGA"
+  description="30 Minuten für eine erste Einschätzung zu SEO, GEO, Website und digitaler Sichtbarkeit."
+  lang="de"
+  canonicalPath="/erstgespraech"
+  alternateDePath="/erstgespraech"
+  alternateEnPath="/"
+  robots="noindex,follow"
+  bodyClass="booking-page ui-dark-page dark"
+>
+  <Header lang="de" nav={site.nav} cta={site.cta} page="service" />
+
+  <main id="main-content" class="booking-page-main">
+    <section class="booking-section" aria-labelledby="booking-title">
+      <div class="booking-shell">
+        <div class="booking-intro">
+          <h1 id="booking-title">Kostenloses Erstgespräch zur Sichtbarkeit</h1>
+          <p>30 Minuten für eine erste Einschätzung zu SEO, GEO, Website und digitaler Sichtbarkeit.</p>
+        </div>
+
+        <Contact
+          {...site.contact}
+          sectionId="erstgespraech-calendar"
+          source="erstgespraech-booking"
+          calendarOnly
+        />
+      </div>
+    </section>
+  </main>
+
+  <Footer {...site.footer} lang="de" />
+</BaseLayout>
+
+<style is:global>
+  .booking-page-main {
+    background: #0a0a09;
+    color: #fffaf4;
+  }
+
+  .booking-section {
+    border-bottom: 1px solid rgba(255, 250, 244, .15);
+  }
+
+  .booking-shell {
+    width: min(100%, calc(var(--container) + var(--gutter) * 2));
+    margin-inline: auto;
+    padding: var(--subpage-hero-entry-space) var(--gutter) 112px;
+  }
+
+  .booking-intro {
+    max-width: 760px;
+  }
+
+  .booking-intro h1 {
+    max-width: 680px !important;
+    margin: 0 !important;
+    color: #fffaf4;
+  }
+
+  .booking-intro > p {
+    max-width: 620px;
+    margin: 30px 0 0;
+    color: #b9b4aa;
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  .booking-shell > .contact-section {
+    width: 100%;
+    margin: 0;
+    padding: 28px 0 0;
+    border-top: 0;
+  }
+
+  .booking-shell .contact-path-panels {
+    width: 100%;
+  }
+
+  .booking-shell .calendly-panel {
+    width: 100%;
+  }
+
+  @media (max-width: 640px) {
+    .booking-shell {
+      padding: var(--subpage-hero-entry-space) var(--gutter) 80px;
+    }
+
+    .booking-intro > p {
+      font-size: 17px;
+    }
+
+    .booking-shell > .contact-section {
+      padding-top: 24px;
+    }
+  }
+</style>
