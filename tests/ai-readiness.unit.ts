@@ -99,6 +99,7 @@ test("score bands produce diagnostic copy for 93, 60, 40 and 20", () => {
 
   assert.equal(strong.interpretation.scoreBand, "very-high");
   assert.match(strong.interpretation.overallSummary, /sehr starke technische Grundlage/);
+  assert.equal(strong.interpretation.strengthsHeading, "Was bereits gut funktioniert");
   assert.equal(medium.interpretation.scoreBand, "medium");
   assert.match(medium.interpretation.overallSummary, /Grundlagen sind vorhanden/);
   assert.equal(low.interpretation.scoreBand, "low");
@@ -149,7 +150,7 @@ test("German and English user mails use the same snapshot without claiming measu
   const weak = snapshotFor(20, [8, 7, 5]);
   const token = createScanResultToken(weak);
   const deMail = renderUserAiCheckEmail(lead, weak, token);
-  const enSnapshot = snapshotFor(60, [23, 20, 17], "en");
+  const enSnapshot = snapshotFor(93, [33, 33, 27], "en");
   const enMail = renderUserAiCheckEmail(lead, enSnapshot, createScanResultToken(enSnapshot));
 
   assert.equal(deMail.subject, "Ihr PATERNOGA KI-Readiness Check ist fertig");
@@ -160,6 +161,9 @@ test("German and English user mails use the same snapshot without claiming measu
   assert.doesNotMatch(deMail.html, /bereits sehr gut für KI-Suche vorbereitet/i);
   assert.doesNotMatch(deMail.html, /Was bereits vorhanden ist/);
   assert.equal(enMail.subject, "Your PATERNOGA AI Readiness Check is ready");
+  assert.match(enMail.html, /What is already working well/);
+  assert.match(deMail.html, /Erstgespräch vereinbaren/);
+  assert.match(enMail.html, /https:\/\/calendly\.com\/pascal-misoph\/erstgespraech/);
   assert.match(enMail.html, /does not yet answer whether ChatGPT, Gemini or Perplexity actually mention/);
 });
 

@@ -343,8 +343,8 @@ export const interpretScanResult = (
     strongestCategory,
     weakestCategory,
     strengthsHeading: locale === "de"
-      ? (score < 50 ? "Was bereits vorhanden ist" : "Was bereits stark ist")
-      : (score < 50 ? "What is already in place" : "What is already strong"),
+      ? (score < 50 ? "Was bereits vorhanden ist" : "Was bereits gut funktioniert")
+      : (score < 50 ? "What is already in place" : "What is already working well"),
     opportunitiesHeading: locale === "de" ? "Wo noch Potenzial besteht" : "Where there is room to improve",
     strengths: selectStrengths([scan.categories.ai, scan.categories.data, scan.categories.tech], locale),
     opportunities: selectOpportunities([scan.categories.ai, scan.categories.data, scan.categories.tech], locale),

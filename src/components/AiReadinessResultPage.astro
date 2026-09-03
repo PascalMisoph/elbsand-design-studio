@@ -8,6 +8,7 @@ interface Props {
 
 const { lang, snapshot } = Astro.props;
 const en = lang === "en";
+const consultationUrl = "https://calendly.com/pascal-misoph/erstgespraech";
 const kindLabels = en
   ? { action: "Action", potential: "Improvement signal", context: "Context-dependent" }
   : { action: "Handlungsbedarf", potential: "Optimierungssignal", context: "Kontextabhängig" };
@@ -96,10 +97,13 @@ const kindLabels = en
       </section>
 
       <section class="scan-result-next">
-        <div class="scan-result-shell">
+        <div class="scan-result-shell scan-result-next-inner">
           <h2>{en ? "Technical readiness is only the first step" : "Technische Readiness ist nur der erste Schritt"}</h2>
           <p>{en ? "This check does not answer whether ChatGPT, Gemini or Perplexity actually mention, cite or recommend your brand for relevant questions. A complete GEO audit examines that actual AI visibility." : "Dieser Check beantwortet nicht, ob ChatGPT, Gemini oder Perplexity deine Marke bei relevanten Fragen tatsächlich nennen, zitieren oder empfehlen. Genau diese tatsächliche KI-Sichtbarkeit untersuchen wir im vollständigen GEO Audit."}</p>
-          <a class="button" href={en ? "/en/geo-audit/" : "/geo-audit/"}>{en ? "Learn about the GEO audit" : "GEO Audit kennenlernen"}</a>
+          <div class="scan-result-actions">
+            <a class="button" href={en ? "/en/geo-audit/" : "/geo-audit/"}>{en ? "Learn about the GEO audit" : "GEO Audit kennenlernen"}</a>
+            <a class="text-link" href={consultationUrl} target="_blank" rel="noopener noreferrer">{en ? "Book an initial consultation" : "Erstgespräch vereinbaren"}</a>
+          </div>
         </div>
       </section>
     </>

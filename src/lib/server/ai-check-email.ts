@@ -4,6 +4,7 @@ import { scanResultPath } from "./scan-result-token";
 const SITE_URL = "https://www.paternoga-seo-geo.de";
 const LOGO_URL = `${SITE_URL}/images/paternoga-email-logo.png`;
 const CONTACT_EMAIL = "kontakt@paternoga-seo-geo.de";
+const CONSULTATION_URL = "https://calendly.com/pascal-misoph/erstgespraech";
 
 export interface AiCheckLead {
   name: string;
@@ -144,8 +145,8 @@ export const renderUserAiCheckEmail = (
           <img src="${LOGO_URL}" width="244" height="63" alt="PATERNOGA SEO &amp; GEO" style="display:block;width:244px;max-width:100%;height:auto;border:0;color:#ffffff;font-size:18px;font-weight:700;line-height:24px;">
         </td></tr>
         <tr><td style="padding:38px 32px 10px;">
-          <p style="margin:0 0 18px;color:#1b1a17;font-size:16px;line-height:24px;">${en ? "Hello" : "Hallo"} ${escapeHtml(plainName(lead.name))},</p>
-          <p style="margin:0;color:#625f58;font-size:16px;line-height:25px;">${en ? "we reviewed" : "wir haben"} <strong style="color:#1b1a17;">${escapeHtml(new URL(snapshot.finalUrl).hostname)}</strong> ${en ? "for its technical foundations for AI search." : "auf ihre technischen Voraussetzungen für AI Search geprüft."}</p>
+          <p style="margin:0 0 18px;color:#1b1a17;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:600;line-height:25px;">${en ? "Hello" : "Hallo"} ${escapeHtml(plainName(lead.name))},</p>
+          <p style="margin:0;color:#625f58;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;line-height:25px;">${en ? "we reviewed" : "wir haben"} <strong style="color:#1b1a17;">${escapeHtml(new URL(snapshot.finalUrl).hostname)}</strong> ${en ? "for its technical foundations for AI search." : "auf ihre technischen Voraussetzungen für AI Search geprüft."}</p>
         </td></tr>
         <tr><td style="padding:26px 32px 32px;">
           <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#1b1a17;">
@@ -164,7 +165,10 @@ export const renderUserAiCheckEmail = (
           <h2 style="margin:0 0 12px;font-size:21px;line-height:27px;">${en ? "Technical readiness is only the first step." : "Technische Readiness ist nur der erste Schritt."}</h2>
           <p style="margin:0 0 20px;color:#625f58;font-size:15px;line-height:24px;">${en ? "This check shows how well your website meets the technical requirements for AI search. It does not yet answer whether ChatGPT, Gemini or Perplexity actually mention, cite or recommend your brand for relevant questions." : "Dieser Check zeigt, wie gut die technischen Voraussetzungen Ihrer Website für AI Search sind. Er beantwortet noch nicht, ob ChatGPT, Gemini oder Perplexity Ihre Marke bei relevanten Fragen tatsächlich nennen, zitieren oder empfehlen."}</p>
           <p style="margin:0 0 20px;color:#1b1a17;font-size:15px;font-weight:700;line-height:24px;">${en ? "That actual AI visibility is what we examine in a complete GEO audit." : "Genau diese tatsächliche KI-Sichtbarkeit untersuchen wir im vollständigen GEO Audit."}</p>
-          <a href="${auditUrl}" style="color:#7b2f18;font-size:15px;font-weight:700;line-height:22px;">${en ? "Learn about the GEO audit" : "GEO Audit kennenlernen"}</a>
+          <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin-top:4px;">
+            <tr><td><a href="${auditUrl}" style="color:#7b2f18;font-size:15px;font-weight:700;line-height:22px;text-decoration:underline;text-underline-offset:3px;">${en ? "Learn about the GEO audit" : "GEO Audit kennenlernen"}</a></td></tr>
+            <tr><td style="padding-top:12px;"><a href="${CONSULTATION_URL}" style="color:#7b2f18;font-size:15px;font-weight:700;line-height:22px;text-decoration:underline;text-underline-offset:3px;">${en ? "Book an initial consultation" : "Erstgespräch vereinbaren"}</a></td></tr>
+          </table>
         </td></tr>
         <tr><td style="padding:24px 32px;color:#777168;font-size:12px;line-height:19px;">Paternoga SEO &amp; GEO Studio · <a href="mailto:${CONTACT_EMAIL}" style="color:#625f58;">${CONTACT_EMAIL}</a><br>${en ? "This technical result link is valid for 30 days." : "Dieser technische Ergebnis-Link ist 30 Tage gültig."}</td></tr>
       </table>
@@ -191,6 +195,7 @@ export const renderUserAiCheckEmail = (
       ? "This check does not measure whether ChatGPT, Gemini or Perplexity actually mention, cite or recommend your brand. A complete GEO audit examines that actual AI visibility."
       : "Dieser Check misst nicht, ob ChatGPT, Gemini oder Perplexity Ihre Marke tatsächlich nennen, zitieren oder empfehlen. Diese tatsächliche KI-Sichtbarkeit untersucht ein vollständiger GEO Audit.",
     `${en ? "GEO audit" : "GEO Audit"}: ${auditUrl}`,
+    `${en ? "Initial consultation" : "Erstgespräch"}: ${CONSULTATION_URL}`,
   ].join("\n");
 
   return { subject, preheader, html, text, resultUrl };
