@@ -1,0 +1,33 @@
+---
+import AiReadinessResultPage from "../../../components/AiReadinessResultPage.astro";
+import Footer from "../../../components/Footer.astro";
+import Header from "../../../components/Header.astro";
+import { content } from "../../../content/site";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { verifyScanResultToken } from "../../../lib/server/scan-result-token";
+
+export const prerender = false;
+const t = content.en;
+let snapshot;
+try {
+  snapshot = verifyScanResultToken(Astro.url.searchParams.get("result") ?? "");
+  if (snapshot.locale !== "en") snapshot = undefined;
+} catch {
+  snapshot = undefined;
+}
+if (!snapshot) Astro.response.status = 410;
+---
+<BaseLayout
+  title="AI Readiness Result | PATERNOGA"
+  description="Personal technical result from the PATERNOGA AI Readiness Check."
+  lang="en"
+  canonicalPath="/en/ai-readiness-result/"
+  alternateDePath="/ki-readiness-ergebnis/"
+  alternateEnPath="/en/ai-readiness-result/"
+  robots="noindex,nofollow,noarchive"
+  bodyClass="scan-result-route"
+>
+  <Header lang="en" nav={t.nav} cta={t.cta} />
+  <AiReadinessResultPage lang="en" {snapshot} />
+  <Footer {...t.footer} lang="en" />
+</BaseLayout>

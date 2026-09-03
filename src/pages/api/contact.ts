@@ -3,11 +3,19 @@ import { createHash, randomUUID } from "node:crypto";
 import { appendFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 
+import {
+  createScanHistoryRecord,
+  renderInternalAiCheckEmail,
+  renderUserAiCheckEmail,
+  type ScanHistoryRecord,
+} from "@/lib/server/ai-check-email";
 import { createInMemoryRateLimiter } from "@/lib/server/rate-limit";
+import { verifyScanResultToken } from "@/lib/server/scan-result-token";
+import type { ScanSnapshot } from "@/lib/ai-readiness";
 
 export const prerender = false;
 
-const MAX_REQUEST_BYTES = 12_000;
+const MAX_REQUEST_BYTES = 64_000;
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
 const RATE_LIMIT_MAX = 5;
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
@@ -18,6 +26,8 @@ const isRateLimited = createInMemoryRateLimiter({
 
 const text = (value: unknown, maxLength: number) =>
   typeof value === "string" ? value.trim().slice(0, maxLength) : "";
+const singleLineText = (value: unknown, maxLength: number) =>
+  text(value, maxLength).replace(/[\r\n\u0000-\u001f\u007f]+/g, " ").replace(/\s+/g, " ");
 
 const escapeHtml = (value: string) =>
   value.replace(/[&<>"']/g, (character) => {
@@ -49,9 +59,11 @@ interface ContactRecord {
   source: string;
   clientHash: string;
   userAgent: string;
+  scanToken?: string;
+  scan?: ScanSnapshot;
 }
 
-const persistLocally = async (record: ContactRecord) => {
+const persistLocally = async (record: ContactRecord, scanHistory?: ScanHistoryRecord) => {
   const dataDirectory = path.join(process.cwd(), ".data");
   await mkdir(dataDirectory, { recursive: true });
   await appendFile(
@@ -59,6 +71,35 @@ const persistLocally = async (record: ContactRecord) => {
     `${JSON.stringify(record)}\n`,
     { encoding: "utf8" },
   );
+  if (scanHistory) {
+    await appendFile(
+      path.join(dataDirectory, "ai-check-history.ndjson"),
+      `${JSON.stringify(scanHistory)}\n`,
+      { encoding: "utf8" },
+    );
+  }
+};
+
+const extractEmailAddress = (value: string) => value.match(/<([^>]+)>/)?.[1]?.trim() ?? value.trim();
+const namedSender = (name: string, configuredAddress: string) =>
+  `${name} <${extractEmailAddress(configuredAddress)}>`;
+
+const sendWithResend = async (
+  apiKey: string,
+  idempotencyKey: string,
+  message: Record<string, unknown>,
+) => {
+  const response = await fetch(RESEND_ENDPOINT, {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${apiKey}`,
+      "content-type": "application/json",
+      "idempotency-key": idempotencyKey,
+    },
+    body: JSON.stringify(message),
+    signal: AbortSignal.timeout(10_000),
+  });
+  if (!response.ok) throw new Error(`contact_delivery_failed_${response.status}`);
 };
 
 const deliverWithResend = async (record: ContactRecord) => {
@@ -68,6 +109,38 @@ const deliverWithResend = async (record: ContactRecord) => {
 
   if (!apiKey || !from || !to) {
     throw new Error("contact_delivery_not_configured");
+  }
+
+  if (record.source === "ai-check" && record.scan && record.scanToken) {
+    const lead = {
+      name: record.name,
+      email: record.email,
+      createdAt: record.createdAt,
+      source: record.source,
+      inquiryType: record.intent,
+    };
+    const userMail = renderUserAiCheckEmail(lead, record.scan, record.scanToken);
+    const internalMail = renderInternalAiCheckEmail(lead, record.scan, record.scanToken);
+    const brandReplyTo = process.env.CONTACT_REPLY_TO_EMAIL?.trim() || "kontakt@paternoga-seo-geo.de";
+
+    await Promise.all([
+      sendWithResend(apiKey, `${record.id}-internal`, {
+        from: namedSender("PATERNOGA Leads", from),
+        to: [to],
+        reply_to: record.email,
+        subject: internalMail.subject,
+        text: internalMail.text,
+      }),
+      sendWithResend(apiKey, `${record.id}-user`, {
+        from: namedSender("PATERNOGA – KI-Readiness Check", from),
+        to: [record.email],
+        reply_to: brandReplyTo,
+        subject: userMail.subject,
+        text: userMail.text,
+        html: userMail.html,
+      }),
+    ]);
+    return;
   }
 
   const intentLabels: Record<string, string> = {
@@ -87,26 +160,13 @@ const deliverWithResend = async (record: ContactRecord) => {
     record.details,
   ].join("\n");
 
-  const response = await fetch(RESEND_ENDPOINT, {
-    method: "POST",
-    headers: {
-      authorization: `Bearer ${apiKey}`,
-      "content-type": "application/json",
-      "idempotency-key": record.id,
-    },
-    body: JSON.stringify({
-      from,
-      to: [to],
-      reply_to: record.email,
-      subject: `PATERNOGA Anfrage · ${record.reference} · ${intentLabels[record.intent] ?? record.intent}`,
-      text: message,
-    }),
-    signal: AbortSignal.timeout(10_000),
+  await sendWithResend(apiKey, record.id, {
+    from,
+    to: [to],
+    reply_to: record.email,
+    subject: `PATERNOGA Anfrage · ${record.reference} · ${intentLabels[record.intent] ?? record.intent}`,
+    text: message,
   });
-
-  if (!response.ok) {
-    throw new Error(`contact_delivery_failed_${response.status}`);
-  }
 };
 
 const htmlConfirmation = (locale: string, reference: string) => {
@@ -203,14 +263,27 @@ export const POST: APIRoute = async ({ request }) => {
   const details = text(payload.details, 2_000);
   const submittedSource = text(payload.source, 30);
   const source = ["ai-check", "geo-audit"].includes(submittedSource) ? submittedSource : "contact-form";
-  const submittedName = text(payload.name, 120);
+  const submittedName = singleLineText(payload.name, 120);
   const name = source === "ai-check" && !submittedName ? "KI-Check Lead" : submittedName;
   const email = text(payload.email, 254).toLowerCase();
   const locale = text(payload.locale, 2) === "en" ? "en" : "de";
+  const scanToken = source === "ai-check" ? text(payload.scanToken, 48_000) : "";
+  let scan: ScanSnapshot | undefined;
+
+  if (source === "ai-check") {
+    try {
+      scan = verifyScanResultToken(scanToken);
+    } catch {
+      return Response.json({ ok: false, error: "invalid_or_expired_scan" }, { status: 422 });
+    }
+    if (scan.locale !== locale) {
+      return Response.json({ ok: false, error: "scan_locale_mismatch" }, { status: 422 });
+    }
+  }
 
   if (
     !["new", "improve", "advice"].includes(intent) ||
-    details.length < 3 ||
+    (source !== "ai-check" && details.length < 3) ||
     name.length < 2 ||
     !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
   ) {
@@ -237,13 +310,24 @@ export const POST: APIRoute = async ({ request }) => {
     source,
     clientHash: createHash("sha256").update(clientAddress).digest("hex"),
     userAgent: text(request.headers.get("user-agent"), 300),
+    scanToken: scan ? scanToken : undefined,
+    scan,
   };
 
   try {
     if (import.meta.env.PROD) {
       await deliverWithResend(record);
     } else {
-      await persistLocally(record);
+      const scanHistory = scan
+        ? createScanHistoryRecord({
+            name,
+            email,
+            createdAt: record.createdAt,
+            source,
+            inquiryType: intent,
+          }, scan)
+        : undefined;
+      await persistLocally(record, scanHistory);
     }
   } catch (error) {
     const reason = error instanceof Error ? error.message : "unknown_error";

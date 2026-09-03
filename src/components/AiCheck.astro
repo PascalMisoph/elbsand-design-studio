@@ -25,8 +25,9 @@ const copy = isEnglish
         "Inspecting security headers and response time",
         "Scoring all 21 findings transparently",
       ],
-      preliminary: "Preliminary AI score",
+      preliminary: "Preliminary AI readiness score",
       scoreNote: "The score evaluates technical readiness, not guaranteed mentions in AI answers.",
+      scoreLabel: "AI Readiness Score",
       resultTitle: "21 technical checks completed",
       leadTitle: "Technical scan complete",
       leadBody: "Your results and optimisation opportunities are now available.",
@@ -39,22 +40,17 @@ const copy = isEnglish
       sending: "Unlocking …",
       leadError: "The findings could not be unlocked. Please try again.",
       scanError: "We could not reliably retrieve this website. Check the address and try again.",
-      criticalSingular: "critical issue found",
-      criticalPlural: "critical issues found",
       unlockedEyebrow: "Analysis complete",
       unlocked: "Your findings are unlocked.",
-      unlockedBody: "Your request has been saved. The technical details are now visible below.",
+      unlockedBody: "Your request has been saved. We have emailed your result link, and the technical details are now visible below.",
       lockedLabel: "Enter your details to reveal all 21 findings",
       grade: "Grade",
-      recommendationTitle: "Your biggest opportunities",
-      recommendationBody: "The scan shows which technical and editorial prerequisites on your website are missing or unclear. In the free results review, we put the findings into context and prioritise the measures that should be reviewed or implemented first.",
       contact: "Book a free results review",
       again: "Check another website",
-      checkLabels: {
-        robots: "AI crawler access",
-        schema: "Structured data",
-        technical: "Technical foundation",
-      },
+      geoTitle: "Technical readiness is only the first step.",
+      geoBody: "This check shows how well your website meets the technical requirements for AI search. It does not measure whether ChatGPT, Gemini or Perplexity actually mention, cite or recommend your brand.",
+      geoAudit: "A complete GEO audit examines that actual AI visibility.",
+      geoCta: "Learn about the GEO audit",
       categoryTitles: {
         ai: "AI readiness & crawling",
         data: "Data architecture & trust signals",
@@ -77,8 +73,9 @@ const copy = isEnglish
         "Security-Header und Antwortzeit analysieren",
         "Alle 21 Befunde transparent bewerten",
       ],
-      preliminary: "Vorläufiger KI-Score",
+      preliminary: "Vorläufiger KI-Readiness Score",
       scoreNote: "Der Score bewertet die technische Bereitschaft, nicht garantierte Nennungen in KI-Antworten.",
+      scoreLabel: "KI-Readiness Score",
       resultTitle: "21 technische Einzelchecks abgeschlossen",
       leadTitle: "Technischer Scan abgeschlossen",
       leadBody: "Deine Ergebnisse und Optimierungspotenziale sind jetzt verfügbar.",
@@ -91,22 +88,17 @@ const copy = isEnglish
       sending: "Wird freigeschaltet …",
       leadError: "Der Befund konnte nicht freigeschaltet werden. Bitte versuche es erneut.",
       scanError: "Diese Website konnte nicht zuverlässig abgerufen werden. Prüfe die Adresse und versuche es erneut.",
-      criticalSingular: "kritischer Punkt erkannt",
-      criticalPlural: "kritische Punkte erkannt",
       unlockedEyebrow: "Analyse abgeschlossen",
       unlocked: "Dein Befund ist freigeschaltet.",
-      unlockedBody: "Deine Anfrage wurde gespeichert. Die technischen Details sind jetzt unten sichtbar.",
+      unlockedBody: "Deine Anfrage wurde gespeichert. Wir haben dir den Ergebnis-Link per E-Mail gesendet; die technischen Details sind jetzt unten sichtbar.",
       lockedLabel: "Kontaktdaten eintragen und alle 21 Befunde ansehen",
       grade: "Note",
-      recommendationTitle: "Deine größten Potenziale",
-      recommendationBody: "Der Scan zeigt, welche technischen und inhaltlichen Voraussetzungen auf deiner Website fehlen oder uneindeutig sind. Im kostenlosen Auswertungsgespräch ordnen wir die Befunde ein und priorisieren die Maßnahmen, die zuerst geprüft oder umgesetzt werden sollten.",
       contact: "Kostenlose Auswertung vereinbaren",
       again: "Weitere Website prüfen",
-      checkLabels: {
-        robots: "KI-Crawler erreichbar",
-        schema: "Strukturierte Daten",
-        technical: "Technische Basis",
-      },
+      geoTitle: "Technische Readiness ist nur der erste Schritt.",
+      geoBody: "Dieser Check zeigt, wie gut die technischen Voraussetzungen deiner Website für AI Search sind. Er misst nicht, ob ChatGPT, Gemini oder Perplexity deine Marke tatsächlich nennen, zitieren oder empfehlen.",
+      geoAudit: "Genau diese tatsächliche KI-Sichtbarkeit untersuchen wir im vollständigen GEO Audit.",
+      geoCta: "GEO Audit kennenlernen",
       categoryTitles: {
         ai: "AI-Readiness & Crawling",
         data: "Daten-Architektur & Vertrauenssignale",
@@ -127,8 +119,6 @@ const copy = isEnglish
     data-scan-error={copy.scanError}
     data-lead-error={copy.leadError}
     data-sending={copy.sending}
-    data-critical-singular={copy.criticalSingular}
-    data-critical-plural={copy.criticalPlural}
   >
     <div class="ai-check-surface">
       <ol class="ai-check-phases" aria-label={isEnglish ? "Analysis progress" : "Analysefortschritt"}>
@@ -181,11 +171,23 @@ const copy = isEnglish
           <p>{copy.preliminary}</p>
           <p class="ai-score"><strong data-ai-score>0</strong><span>/ 100</span></p>
           <p class="ai-grade"><span>{copy.grade}</span> <strong data-ai-grade>–</strong></p>
-          <p class="ai-critical" data-ai-critical></p>
+          <p class="ai-score-label">{copy.scoreLabel}</p>
           <p class="ai-score-note">{copy.scoreNote}</p>
         </div>
 
         <div class="ai-lead-column">
+          <div class="ai-result-summary" aria-live="polite">
+            <h3 data-result-headline></h3>
+            <p data-result-summary></p>
+          </div>
+          <div class="ai-category-summary" data-category-summary>
+            {(["ai", "data", "tech"] as const).map((key) => (
+              <div data-summary-category={key}>
+                <span>{copy.categoryTitles[key]}</span>
+                <strong>0/{key === "tech" ? "30" : "35"}</strong>
+              </div>
+            ))}
+          </div>
           <div data-lead-gate>
             <h3>{copy.leadTitle}</h3>
             <p class="ai-lead-intro">{copy.leadBody}</p>
@@ -233,6 +235,14 @@ const copy = isEnglish
         >
           <h3 id={`ai-result-title-${lang}`}>{copy.resultTitle}</h3>
           <div class="ai-result-checks-grid ai-audit-content" data-result-grid aria-hidden="true">
+            <section class="ai-interpretation-panel" data-strengths-panel hidden>
+              <h4 data-strengths-heading></h4>
+              <ul data-strengths-list></ul>
+            </section>
+            <section class="ai-interpretation-panel" data-opportunities-panel hidden>
+              <h4 data-opportunities-heading></h4>
+              <ul data-opportunities-list></ul>
+            </section>
             {(["ai", "data", "tech"] as const).map((key, index) => (
               <section class="ai-audit-category" data-audit-category={key}>
                 <header>
@@ -243,9 +253,11 @@ const copy = isEnglish
                 <ul data-category-checks></ul>
               </section>
             ))}
-            <section class="ai-recommendation">
-              <h4>{copy.recommendationTitle}</h4>
-              <p class="ai-recommendation-copy">{copy.recommendationBody}</p>
+            <section class="ai-recommendation ai-geo-transition">
+              <h4>{copy.geoTitle}</h4>
+              <p class="ai-recommendation-copy">{copy.geoBody}</p>
+              <p><strong>{copy.geoAudit}</strong></p>
+              <a href={isEnglish ? "/en/geo-audit/" : "/geo-audit/"}>{copy.geoCta}</a>
             </section>
           </div>
           <div class="ai-result-lock" data-result-lock>
@@ -263,38 +275,7 @@ const copy = isEnglish
 </section>
 
 <script>
-  interface ScanCheck {
-    slug: string;
-    score: number;
-    maxScore: number;
-    status: "pass" | "warning" | "fail";
-    passed: boolean;
-    title: string;
-    detail: string;
-  }
-
-  interface ScanCategory {
-    key: "ai" | "data" | "tech";
-    title: string;
-    score: number;
-    maxScore: number;
-    status: "pass" | "warning" | "fail";
-    checks: ScanCheck[];
-  }
-
-  interface ScanResult {
-    ok: true;
-    scanId: string;
-    finalUrl: string;
-    score: number;
-    grade: string;
-    criticalIssues: number;
-    categories: {
-      ai: ScanCategory;
-      data: ScanCategory;
-      tech: ScanCategory;
-    };
-  }
+  import type { ScanApiResult, ScanCategory, ScanCheck } from "../lib/ai-readiness";
 
   document.querySelectorAll<HTMLElement>("[data-ai-check]").forEach((tool) => {
     const phases = Array.from(tool.querySelectorAll<HTMLElement>("[data-ai-phase]"));
@@ -305,7 +286,14 @@ const copy = isEnglish
     const scanItems = Array.from(tool.querySelectorAll<HTMLElement>("[data-scan-item]"));
     const score = tool.querySelector<HTMLElement>("[data-ai-score]");
     const grade = tool.querySelector<HTMLElement>("[data-ai-grade]");
-    const critical = tool.querySelector<HTMLElement>("[data-ai-critical]");
+    const resultHeadline = tool.querySelector<HTMLElement>("[data-result-headline]");
+    const resultSummary = tool.querySelector<HTMLElement>("[data-result-summary]");
+    const strengthsPanel = tool.querySelector<HTMLElement>("[data-strengths-panel]");
+    const strengthsHeading = tool.querySelector<HTMLElement>("[data-strengths-heading]");
+    const strengthsList = tool.querySelector<HTMLUListElement>("[data-strengths-list]");
+    const opportunitiesPanel = tool.querySelector<HTMLElement>("[data-opportunities-panel]");
+    const opportunitiesHeading = tool.querySelector<HTMLElement>("[data-opportunities-heading]");
+    const opportunitiesList = tool.querySelector<HTMLUListElement>("[data-opportunities-list]");
     const leadForm = tool.querySelector<HTMLFormElement>("[data-ai-lead-form]");
     const leadGate = tool.querySelector<HTMLElement>("[data-lead-gate]");
     const leadError = tool.querySelector<HTMLElement>("[data-lead-error]");
@@ -316,7 +304,7 @@ const copy = isEnglish
     const liveCta = tool.querySelector<HTMLAnchorElement>("[data-live-cta]");
     const again = tool.querySelector<HTMLButtonElement>("[data-ai-again]");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let scanResult: ScanResult | null = null;
+    let scanResult: ScanApiResult | null = null;
 
     const showPhase = (phaseNumber: number) => {
       screens.forEach((screen, index) => {
@@ -385,18 +373,38 @@ const copy = isEnglish
       return marker;
     };
 
-    const populateResult = (result: ScanResult) => {
+    const populateFindingList = (
+      list: HTMLUListElement | null,
+      findings: ScanApiResult["interpretation"]["strengths"],
+    ) => {
+      if (!list) return;
+      const rows = findings.map((finding) => {
+        const item = document.createElement("li");
+        item.dataset.status = finding.status;
+        if (finding.kind) item.dataset.kind = finding.kind;
+        const title = document.createElement("strong");
+        title.textContent = finding.title;
+        const body = document.createElement("span");
+        body.textContent = finding.text;
+        item.append(title, body);
+        return item;
+      });
+      list.replaceChildren(...rows);
+    };
+
+    const populateResult = (result: ScanApiResult) => {
       if (score) score.textContent = String(result.score);
       if (grade) grade.textContent = result.grade;
-      if (critical) {
-        const label =
-          result.criticalIssues === 1
-            ? tool.dataset.criticalSingular
-            : tool.dataset.criticalPlural;
-        critical.textContent = `${result.criticalIssues} ${label}`;
-      }
+      if (resultHeadline) resultHeadline.textContent = result.interpretation.overallHeadline;
+      if (resultSummary) resultSummary.textContent = result.interpretation.overallSummary;
+      if (strengthsHeading) strengthsHeading.textContent = result.interpretation.strengthsHeading;
+      if (opportunitiesHeading) opportunitiesHeading.textContent = result.interpretation.opportunitiesHeading;
+      if (strengthsPanel) strengthsPanel.hidden = result.interpretation.strengths.length === 0;
+      if (opportunitiesPanel) opportunitiesPanel.hidden = result.interpretation.opportunities.length === 0;
+      populateFindingList(strengthsList, result.interpretation.strengths);
+      populateFindingList(opportunitiesList, result.interpretation.opportunities);
 
-      (Object.entries(result.categories) as Array<[keyof ScanResult["categories"], ScanCategory]>).forEach(
+      (Object.entries(result.categories) as Array<[keyof ScanApiResult["categories"], ScanCategory]>).forEach(
         ([key, category]) => {
           const categoryElement = tool.querySelector<HTMLElement>(`[data-audit-category="${key}"]`);
           const list = categoryElement?.querySelector<HTMLUListElement>("[data-category-checks]");
@@ -404,6 +412,12 @@ const copy = isEnglish
           if (!categoryElement || !list) return;
           categoryElement.dataset.status = category.status;
           if (categoryScore) categoryScore.textContent = `${category.score} / ${category.maxScore}`;
+          const summaryCategory = tool.querySelector<HTMLElement>(`[data-summary-category="${key}"]`);
+          if (summaryCategory) {
+            summaryCategory.dataset.status = category.status;
+            const summaryScore = summaryCategory.querySelector<HTMLElement>("strong");
+            if (summaryScore) summaryScore.textContent = `${category.score}/${category.maxScore}`;
+          }
 
           const rows = category.checks.map((check) => {
             const item = document.createElement("li");
@@ -450,11 +464,11 @@ const copy = isEnglish
         const request = fetch("/api/scan", {
           method: "POST",
           headers: { "content-type": "application/json", accept: "application/json" },
-          body: JSON.stringify({ url: urlInput.value }),
+          body: JSON.stringify({ url: urlInput.value, locale: tool.dataset.lang }),
         }).then(async (response) => {
           const result = await response.json().catch(() => null);
           if (!response.ok || !result?.ok) throw new Error(result?.error ?? "scan_failed");
-          return result as ScanResult;
+          return result as ScanApiResult;
         });
         const minimumDisplay = new Promise((resolve) =>
           window.setTimeout(resolve, reducedMotion ? 0 : 2_200),
@@ -494,21 +508,6 @@ const copy = isEnglish
       submit.textContent = tool.dataset.sending ?? submitLabel;
       if (leadError) leadError.hidden = true;
 
-      const details = [
-        "[KI-CHECK]",
-        `Scan-ID: ${scanResult.scanId}`,
-        `URL: ${scanResult.finalUrl}`,
-        `Score: ${scanResult.score}/100`,
-        `Note: ${scanResult.grade}`,
-        ...Object.values(scanResult.categories).flatMap((category) => [
-          "",
-          `${category.title}: ${category.score}/${category.maxScore}`,
-          ...category.checks.map(
-            (check) => `${check.status === "pass" ? "OK" : check.status === "warning" ? "HINWEIS" : "FEHLT"} · ${check.title}: ${check.detail}`,
-          ),
-        ]),
-      ].join("\n");
-
       try {
         const response = await fetch("/api/contact", {
           method: "POST",
@@ -516,7 +515,7 @@ const copy = isEnglish
           body: JSON.stringify({
             source: "ai-check",
             intent: "improve",
-            details,
+            scanToken: scanResult.resultToken,
             email: email.value,
             name: name.value,
             locale: tool.dataset.lang,

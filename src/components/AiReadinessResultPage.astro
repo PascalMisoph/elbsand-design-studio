@@ -1,0 +1,107 @@
+---
+import type { ScanLocale, ScanSnapshot } from "../lib/ai-readiness";
+
+interface Props {
+  lang: ScanLocale;
+  snapshot?: ScanSnapshot;
+}
+
+const { lang, snapshot } = Astro.props;
+const en = lang === "en";
+const kindLabels = en
+  ? { action: "Action", potential: "Improvement signal", context: "Context-dependent" }
+  : { action: "Handlungsbedarf", potential: "Optimierungssignal", context: "Kontextabhängig" };
+---
+<main id="main-content" class="scan-result-page">
+  {!snapshot ? (
+    <section class="scan-result-shell scan-result-invalid">
+      <p class="eyebrow">PATERNOGA · {en ? "AI Readiness Check" : "KI-Readiness Check"}</p>
+      <h1>{en ? "This result link is invalid or has expired" : "Dieser Ergebnis-Link ist ungültig oder abgelaufen"}</h1>
+      <p>{en ? "Result links are valid for 30 days. You can run a new technical check at any time." : "Ergebnis-Links sind 30 Tage gültig. Du kannst jederzeit einen neuen technischen Check starten."}</p>
+      <a class="button" href={en ? "/en/#ki-check" : "/#ki-check"}>{en ? "Run a new check" : "Neuen Check starten"}</a>
+    </section>
+  ) : (
+    <>
+      <section class="scan-result-hero scan-result-shell">
+        <p class="eyebrow">PATERNOGA · {en ? "AI Readiness Check" : "KI-Readiness Check"}</p>
+        <div class="scan-result-hero-grid">
+          <div>
+            <p class="scan-result-domain">{new URL(snapshot.finalUrl).hostname}</p>
+            <h1>{snapshot.interpretation.overallHeadline}</h1>
+            <p class="scan-result-summary">{snapshot.interpretation.overallSummary}</p>
+          </div>
+          <div class="scan-result-score" data-band={snapshot.interpretation.scoreBand}>
+            <strong>{snapshot.score}<span>/100</span></strong>
+            <p>{en ? "Grade" : "Note"} {snapshot.grade}</p>
+            <small>{en ? "AI Readiness Score" : "KI-Readiness Score"}</small>
+          </div>
+        </div>
+        <p class="scan-result-scope">{en ? "This score evaluates technical readiness for AI search. It does not measure actual mentions, citations or recommendations by AI systems." : "Dieser Score bewertet die technische Readiness für AI Search. Er misst keine tatsächlichen Nennungen, Zitate oder Empfehlungen durch KI-Systeme."}</p>
+      </section>
+
+      <section class="scan-result-shell scan-result-categories" aria-label={en ? "Category scores" : "Kategorie-Scores"}>
+        {Object.values(snapshot.categories).map((category) => (
+          <article data-status={category.status}>
+            <h2>{category.title}</h2>
+            <strong>{category.score}/{category.maxScore}</strong>
+          </article>
+        ))}
+      </section>
+
+      <section class="scan-result-shell scan-result-priorities">
+        {snapshot.interpretation.strengths.length > 0 && (
+          <div>
+            <h2>{snapshot.interpretation.strengthsHeading}</h2>
+            <ul>
+              {snapshot.interpretation.strengths.map((finding) => (
+                <li><strong>{finding.title}</strong><span>{finding.text}</span></li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {snapshot.interpretation.opportunities.length > 0 && (
+          <div>
+            <h2>{snapshot.interpretation.opportunitiesHeading}</h2>
+            <ul>
+              {snapshot.interpretation.opportunities.map((finding) => (
+                <li>
+                  {finding.kind && <small>{kindLabels[finding.kind]}</small>}
+                  <strong>{finding.title}</strong>
+                  <span>{finding.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </section>
+
+      <section class="scan-result-shell scan-result-details">
+        <header>
+          <p class="eyebrow">{en ? "Technical details" : "Technische Details"}</p>
+          <h2>{en ? "All 21 checks" : "Alle 21 Einzelchecks"}</h2>
+        </header>
+        {Object.values(snapshot.categories).map((category) => (
+          <section>
+            <header><h3>{category.title}</h3><strong>{category.score}/{category.maxScore}</strong></header>
+            <ul>
+              {category.checks.map((check) => (
+                <li data-status={check.status}>
+                  <div><strong>{check.title}</strong><p>{check.detail}</p></div>
+                  <small>{check.score}/{check.maxScore}</small>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </section>
+
+      <section class="scan-result-next">
+        <div class="scan-result-shell">
+          <h2>{en ? "Technical readiness is only the first step" : "Technische Readiness ist nur der erste Schritt"}</h2>
+          <p>{en ? "This check does not answer whether ChatGPT, Gemini or Perplexity actually mention, cite or recommend your brand for relevant questions. A complete GEO audit examines that actual AI visibility." : "Dieser Check beantwortet nicht, ob ChatGPT, Gemini oder Perplexity deine Marke bei relevanten Fragen tatsächlich nennen, zitieren oder empfehlen. Genau diese tatsächliche KI-Sichtbarkeit untersuchen wir im vollständigen GEO Audit."}</p>
+          <a class="button" href={en ? "/en/geo-audit/" : "/geo-audit/"}>{en ? "Learn about the GEO audit" : "GEO Audit kennenlernen"}</a>
+        </div>
+      </section>
+    </>
+  )}
+</main>

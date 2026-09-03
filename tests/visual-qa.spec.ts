@@ -471,7 +471,12 @@ test("AI check gates blurred findings behind first name and email", async ({ pag
       body: JSON.stringify({
         ok: true,
         scanId: "test-scan-id",
+        requestedUrl: "example.com",
         finalUrl: "https://example.com/",
+        scannedAt: "2026-09-03T12:00:00.000Z",
+        locale: "de",
+        resultToken: "signed-test-token",
+        resultUrl: "https://www.paternoga-seo-geo.de/ki-readiness-ergebnis/?result=signed-test-token",
         score: 42,
         grade: "D",
         criticalIssues: 2,
@@ -479,6 +484,18 @@ test("AI check gates blurred findings behind first name and email", async ({ pag
           ai: { key: "ai", title: "AI-Readiness & Crawling", score: 18, maxScore: 35, status: "warning", checks: checks("AI", 7, 5) },
           data: { key: "data", title: "Daten-Architektur & Vertrauenssignale", score: 10, maxScore: 35, status: "fail", checks: checks("Daten", 7, 5) },
           tech: { key: "tech", title: "Technische Basis & Security", score: 14, maxScore: 30, status: "warning", checks: checks("Technik", 7, 4) },
+        },
+        interpretation: {
+          scoreBand: "low",
+          readinessLabel: "Geringe technische Readiness",
+          overallHeadline: "Geringe technische Readiness",
+          overallSummary: "Einige Grundlagen sind vorhanden. Mehrere zentrale technische Signale fehlen jedoch.",
+          strongestCategory: { key: "ai", title: "AI-Readiness & Crawling", score: 18, maxScore: 35, ratio: 0.514 },
+          weakestCategory: { key: "data", title: "Daten-Architektur & Vertrauenssignale", score: 10, maxScore: 35, ratio: 0.286 },
+          strengthsHeading: "Was bereits vorhanden ist",
+          opportunitiesHeading: "Wo noch Potenzial besteht",
+          strengths: [{ slug: "AI-2", category: "ai", title: "AI Prüfung 2", text: "Ein technisches Signal ist vorhanden.", status: "pass", score: 5, maxScore: 5 }],
+          opportunities: [{ slug: "Daten-1", category: "data", title: "Daten Prüfung 1", text: "Dieses technische Signal sollte geprüft werden.", status: "fail", score: 0, maxScore: 5, kind: "action" }],
         },
       }),
     });
@@ -510,6 +527,7 @@ test("AI check gates blurred findings behind first name and email", async ({ pag
   await expect(result).toBeVisible();
   await expect(result.locator("[data-ai-score]")).toHaveText("42");
   await expect(result.locator("[data-ai-grade]")).toHaveText("D");
+  await expect(result.locator("[data-result-headline]")).toHaveText("Geringe technische Readiness");
   await expect(result.locator(".ai-audit-category li")).toHaveCount(21);
   await expect(result.locator("[data-result-checks]")).toHaveClass(/is-locked/);
   await expect(result.locator(".ai-result-checks-grid")).toHaveCSS("filter", "blur(7px)");
@@ -544,12 +562,13 @@ test("AI check gates blurred findings behind first name and email", async ({ pag
   await expect(failedRows.first().locator(".ai-audit-marker svg")).toHaveCSS("stroke-width", "2.25px");
   await expect(failedRows.first().locator("strong")).toHaveCSS("color", "rgb(185, 28, 28)");
   await expect(result.locator("[data-live-cta]")).toBeVisible();
-  await expect(result.locator(".ai-recommendation h4")).toHaveText("Deine größten Potenziale");
-  await expect(result.locator(".ai-recommendation-copy")).toContainText("welche technischen und inhaltlichen Voraussetzungen");
+  await expect(result.locator(".ai-recommendation h4")).toHaveText("Technische Readiness ist nur der erste Schritt.");
+  await expect(result.locator(".ai-recommendation-copy")).toContainText("misst nicht, ob ChatGPT, Gemini oder Perplexity");
   await expect(result.locator("[data-recommendation-cta]")).toHaveCount(0);
   await expect(result.locator("[data-live-cta]")).toHaveText("Kostenlose Auswertung vereinbaren");
   await expect(result.locator("[data-live-cta]")).toHaveAttribute("href", "#kontakt");
-  expect(submittedLead).toMatchObject({ name: "Pascal", email: "pascal@example.invalid", source: "ai-check" });
+  expect(submittedLead).toMatchObject({ name: "Pascal", email: "pascal@example.invalid", source: "ai-check", scanToken: "signed-test-token" });
+  expect(submittedLead).not.toHaveProperty("details");
 
   await page.setViewportSize({ width: 320, height: 900 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(320);

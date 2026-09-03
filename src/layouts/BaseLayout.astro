@@ -17,6 +17,7 @@ interface Props {
   criticalImage?: string;
   openGraphType?: "website" | "article";
   bodyClass?: string;
+  robots?: string;
 }
 const {
   title,
@@ -30,7 +31,8 @@ const {
   socialImageAlt,
   criticalImage,
   openGraphType = "website",
-  bodyClass
+  bodyClass,
+  robots = "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
 } = Astro.props;
 const canonical = new URL(canonicalPath, SITE_URL).toString();
 const socialImageUrl = new URL(
@@ -55,7 +57,7 @@ const layoutBodyClass = [bodyClass, !isHomeRoute && !isGeoAuditRoute && !isLegal
     <link rel="icon" href="/favicon.png" type="image/png" sizes="256x256" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    <meta name="robots" content={robots} />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="de" href={new URL(alternateDePath, SITE_URL).toString()} />
     <link rel="alternate" hreflang="en" href={new URL(alternateEnPath, SITE_URL).toString()} />

@@ -24,6 +24,8 @@ The contact and AI-check forms use Resend in production and local NDJSON storage
 - `RESEND_API_KEY`
 - `CONTACT_FROM_EMAIL` — a sender on a domain verified by the mail provider
 - `CONTACT_TO_EMAIL`
+- `CONTACT_REPLY_TO_EMAIL` — the real PATERNOGA address used for replies to result emails
+- `SCAN_RESULT_SIGNING_SECRET` — an independent random secret with at least 32 characters
 - `PUBLIC_GA_MEASUREMENT_ID` — the public `G-…` identifier; GA4 remains blocked until analytics opt-in
 
 Validate the production values with:
@@ -33,6 +35,8 @@ npm run deploy:check
 ```
 
 Never expose `RESEND_API_KEY` through an Astro `PUBLIC_*` variable. Google advertising consent and personalisation remain disabled. The implemented privacy and imprint content reflects the providers currently present in this repository and still requires factual human/legal approval before launch.
+
+AI-check result links contain a compressed, signed, PII-free scan snapshot and expire after 30 days. Lead identity and the structured scan history are sent separately to the configured internal mailbox. Local development additionally writes `.data/ai-check-history.ndjson`. This mailbox trail is intentionally not presented as a queryable production database; durable lookup, individual revocation and retention automation require a separately provisioned managed store.
 
 ## Discovery operations
 

@@ -2,7 +2,19 @@ import type { APIRoute } from "astro";
 import { lookup } from "node:dns/promises";
 import { isIP } from "node:net";
 
+import {
+  gradeForScore,
+  interpretScanResult,
+  type CategoryKey,
+  type CheckStatus,
+  type ScanCategory,
+  type ScanCheck,
+  type ScanLocale,
+  type ScanSnapshot,
+} from "@/lib/ai-readiness";
 import { createInMemoryRateLimiter } from "@/lib/server/rate-limit";
+import { createScanResultToken, scanResultPath } from "@/lib/server/scan-result-token";
+import { SITE_URL } from "@/lib/seo";
 
 export const prerender = false;
 
@@ -15,29 +27,6 @@ const isRateLimited = createInMemoryRateLimiter({
   windowMs: RATE_LIMIT_WINDOW_MS,
   maxRequests: RATE_LIMIT_MAX,
 });
-
-type CheckStatus = "pass" | "warning" | "fail";
-
-interface ScanCheck {
-  slug: string;
-  score: number;
-  maxScore: number;
-  status: CheckStatus;
-  passed: boolean;
-  title: string;
-  detail: string;
-}
-
-type CategoryKey = "ai" | "data" | "tech";
-
-interface ScanCategory {
-  key: CategoryKey;
-  title: string;
-  score: number;
-  maxScore: number;
-  status: CheckStatus;
-  checks: ScanCheck[];
-}
 
 const getClientAddress = (request: Request) =>
   request.headers.get("cf-connecting-ip") ??
@@ -114,6 +103,10 @@ const normalizeUrl = (input: string) => {
   const withProtocol = /^[a-z][a-z\d+.-]*:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
   const url = new URL(withProtocol);
   url.hash = "";
+  // The readiness check does not need query parameters. Removing them avoids
+  // transporting campaign IDs, access tokens or accidental PII in result URLs.
+  url.search = "";
+  url.pathname = "/";
   return url;
 };
 
@@ -358,7 +351,9 @@ const analyzeTwentyOneCriteria = async (
   html: string,
   response: Response,
   ttfbMs: number,
+  locale: ScanLocale,
 ) => {
+  const t = (de: string, en: string) => locale === "en" ? en : de;
   const [robotsResult, llmsResult, llmsFullResult, rootSitemapResult] = await Promise.all([
     fetchOptionalText(new URL("/robots.txt", finalUrl), MAX_ROBOTS_BYTES),
     fetchOptionalText(new URL("/llms.txt", finalUrl), MAX_ROBOTS_BYTES),
@@ -390,10 +385,10 @@ const analyzeTwentyOneCriteria = async (
   };
   const botDetail = (label: string, status: CheckStatus) =>
     status === "pass"
-      ? `${label} wird nicht vollständig per robots.txt blockiert.`
+      ? t(`${label} wird nicht vollständig per robots.txt blockiert.`, `${label} is not blocked site-wide by robots.txt.`)
       : status === "warning"
-        ? `Die robots.txt war nicht eindeutig prüfbar; ${label} bleibt unbestätigt.`
-        : `${label} ist für die gesamte Website gesperrt.`;
+        ? t(`Die robots.txt war nicht eindeutig prüfbar; ${label} bleibt unbestätigt.`, `The robots.txt file could not be verified reliably; ${label} remains unconfirmed.`)
+        : t(`${label} ist für die gesamte Website gesperrt.`, `${label} is blocked across the entire website.`);
 
   const schema = parseSchema(html);
   const organizationRecords = schema.records.filter((record) =>
@@ -449,52 +444,58 @@ const analyzeTwentyOneCriteria = async (
   const aiChecks = [
     createCheck(
       "llmstxt",
-      "llms.txt Präsenz",
+      t("llms.txt Präsenz", "llms.txt presence"),
       llmsPresent
-        ? "Eine öffentlich abrufbare llms.txt mit verwertbarem Inhalt ist vorhanden."
-        : "Keine verwertbare llms.txt unter /llms.txt erkannt.",
+        ? t("Eine öffentlich abrufbare llms.txt mit verwertbarem Inhalt ist vorhanden.", "A public llms.txt with usable content is available.")
+        : t("Keine verwertbare llms.txt unter /llms.txt erkannt.", "No usable llms.txt was detected at /llms.txt."),
       5,
       llmsPresent ? "pass" : "fail",
     ),
     createCheck(
       "llmsfull",
-      "llms-full.txt Struktur",
+      t("llms-full.txt Struktur", "llms-full.txt structure"),
       llmsFullPresent
-        ? "Eine ausführliche llms-full.txt ist öffentlich abrufbar."
-        : "Keine ausreichend befüllte llms-full.txt erkannt.",
+        ? t("Eine ausführliche llms-full.txt ist öffentlich abrufbar.", "A detailed llms-full.txt is publicly available.")
+        : t("Keine ausreichend befüllte llms-full.txt erkannt.", "No sufficiently populated llms-full.txt was detected."),
       3,
       llmsFullPresent ? "pass" : "fail",
     ),
-    createCheck("gptbot", "GPTBot Freigabe", botDetail("GPTBot", gptStatus), 7, gptStatus),
+    createCheck("gptbot", t("GPTBot Freigabe", "GPTBot access"), botDetail("GPTBot", gptStatus), 7, gptStatus),
     createCheck(
       "perplexity",
-      "PerplexityBot Freigabe",
+      t("PerplexityBot Freigabe", "PerplexityBot access"),
       botDetail("PerplexityBot", perplexityStatus),
       6,
       perplexityStatus,
     ),
     createCheck(
       "claudebot",
-      "ClaudeBot Freigabe",
+      t("ClaudeBot Freigabe", "ClaudeBot access"),
       botDetail("ClaudeBot", claudeStatus),
       5,
       claudeStatus,
     ),
     createCheck(
       "headings",
-      "Fragebasierte Überschriften",
+      t("Fragebasierte Überschriften", "Question-led headings"),
       questionHeadingCount
-        ? `${questionHeadingCount} fragebasierte Überschrift${questionHeadingCount === 1 ? "" : "en"} erkannt.`
-        : "Keine eindeutige Frageüberschrift in H1 bis H3 erkannt.",
+        ? t(
+            `${questionHeadingCount} fragebasierte Überschrift${questionHeadingCount === 1 ? "" : "en"} erkannt.`,
+            `${questionHeadingCount} question-led heading${questionHeadingCount === 1 ? "" : "s"} detected.`,
+          )
+        : t("Keine eindeutige Frageüberschrift in H1 bis H3 erkannt.", "No clear question-led heading was detected from H1 to H3."),
       4,
       questionHeadingCount >= 2 ? "pass" : questionHeadingCount === 1 ? "warning" : "fail",
     ),
     createCheck(
       "multimodal",
-      "Multimodale Content-Signale",
+      t("Multimodale Content-Signale", "Multimodal content signals"),
       hasRichMedia
-        ? `${meaningfulImageCount} beschriftete Bilder oder strukturierte Rich-Media-Signale erkannt.`
-        : "Zu wenige aussagekräftig beschriftete Medien für eine multimodale Einordnung.",
+        ? t(
+            `${meaningfulImageCount} beschriftete Bilder oder strukturierte Rich-Media-Signale erkannt.`,
+            `${meaningfulImageCount} labelled images or structured rich-media signals detected.`,
+          )
+        : t("Zu wenige aussagekräftig beschriftete Medien für eine multimodale Einordnung.", "Too few meaningfully labelled media elements were detected for multimodal interpretation."),
       5,
       hasRichMedia ? "pass" : meaningfulImageCount === 1 ? "warning" : "fail",
     ),
@@ -503,46 +504,49 @@ const analyzeTwentyOneCriteria = async (
   const dataChecks = [
     createCheck(
       "schemaorg",
-      "Schema.org Organization",
+      t("Schema.org Organization", "Schema.org Organization"),
       organizationRecords.length
-        ? "Ein maschinenlesbares Unternehmens-Schema wurde erkannt."
-        : "Kein Organization- oder vergleichbares Unternehmens-Schema erkannt.",
+        ? t("Ein maschinenlesbares Unternehmens-Schema wurde erkannt.", "A machine-readable organisation schema was detected.")
+        : t("Kein Organization- oder vergleichbares Unternehmens-Schema erkannt.", "No Organization or comparable organisation schema was detected."),
       7,
       organizationRecords.length ? "pass" : "fail",
     ),
     createCheck(
       "schemalocal",
-      "Schema.org LocalBusiness",
+      t("Schema.org LocalBusiness", "Schema.org LocalBusiness"),
       localBusinessRecords.length
-        ? "Ein lokaler Unternehmenstyp ist in JSON-LD ausgezeichnet."
-        : "Kein LocalBusiness- oder spezialisierter lokaler Typ erkannt.",
+        ? t("Ein lokaler Unternehmenstyp ist in JSON-LD ausgezeichnet.", "A local business type is represented in JSON-LD.")
+        : t("Kein LocalBusiness- oder spezialisierter lokaler Typ erkannt.", "No LocalBusiness or specialised local type was detected."),
       7,
       localBusinessRecords.length ? "pass" : "fail",
     ),
     createCheck(
       "eeat",
-      "E-E-A-T Autor-Signale",
+      t("E-E-A-T Autor-Signale", "E-E-A-T author signals"),
       hasAuthorSignals
-        ? "Personen-, Autoren- oder Gründerinformationen sind maschinenlesbar beziehungsweise sichtbar."
-        : "Keine eindeutigen Autoren- oder Personen-Signale erkannt.",
+        ? t("Personen-, Autoren- oder Gründerinformationen sind maschinenlesbar beziehungsweise sichtbar.", "Person, author or founder information is visible or machine-readable.")
+        : t("Keine eindeutigen Autoren- oder Personen-Signale erkannt.", "No clear author or person signals were detected."),
       4,
       hasAuthorSignals ? "pass" : "fail",
     ),
     createCheck(
       "sitemap",
-      "Sitemap.xml Indexierung",
+      t("Sitemap.xml Indexierung", "Sitemap.xml indexing"),
       sitemapValid
-        ? "Eine valide Sitemap mit URL-Einträgen ist abrufbar."
-        : "Unter /sitemap.xml wurde keine valide Sitemap erkannt.",
+        ? t("Eine valide Sitemap mit URL-Einträgen ist abrufbar.", "A valid sitemap with URL entries is available.")
+        : t("Unter /sitemap.xml wurde keine valide Sitemap erkannt.", "No valid sitemap was detected at /sitemap.xml."),
       4,
       sitemapValid ? "pass" : "fail",
     ),
     createCheck(
       "jsonld",
-      "JSON-LD Fehlerfreiheit",
+      t("JSON-LD Fehlerfreiheit", "JSON-LD validity"),
       schema.validCount
-        ? `${schema.validCount} valide JSON-LD-Blöcke${schema.invalidCount ? ` und ${schema.invalidCount} fehlerhafte` : ""} erkannt.`
-        : "Kein valider JSON-LD-Block erkannt.",
+        ? t(
+            `${schema.validCount} valide JSON-LD-Blöcke${schema.invalidCount ? ` und ${schema.invalidCount} fehlerhafte` : ""} erkannt.`,
+            `${schema.validCount} valid JSON-LD block${schema.validCount === 1 ? "" : "s"}${schema.invalidCount ? ` and ${schema.invalidCount} invalid` : ""} detected.`,
+          )
+        : t("Kein valider JSON-LD-Block erkannt.", "No valid JSON-LD block was detected."),
       4,
       schema.validCount > 0 && schema.invalidCount === 0
         ? "pass"
@@ -552,19 +556,22 @@ const analyzeTwentyOneCriteria = async (
     ),
     createCheck(
       "nap",
-      "Eindeutige NAP-Daten",
+      t("Eindeutige NAP-Daten", "Consistent NAP data"),
       hasNap
-        ? "Name, Adresse und Kontaktangabe sind gemeinsam im Unternehmens-Schema vorhanden."
-        : "Name, Adresse und Kontaktangabe sind nicht vollständig strukturiert verknüpft.",
+        ? t("Name, Adresse und Kontaktangabe sind gemeinsam im Unternehmens-Schema vorhanden.", "Name, address and contact details are linked within the organisation schema.")
+        : t("Name, Adresse und Kontaktangabe sind nicht vollständig strukturiert verknüpft.", "Name, address and contact details are not fully linked in structured data."),
       5,
       hasNap ? "pass" : "fail",
     ),
     createCheck(
       "citability",
-      "Zitierfähige Content-Blöcke",
+      t("Zitierfähige Content-Blöcke", "Citable content passages"),
       paragraphCount
-        ? `${paragraphCount} substanziell eigenständige Textblöcke als Zitier-Signal erkannt.`
-        : "Keine ausreichend substanziellen, eigenständigen Textblöcke erkannt.",
+        ? t(
+            `${paragraphCount} substanziell eigenständige Textblöcke als Zitier-Signal erkannt.`,
+            `${paragraphCount} substantial self-contained passages detected as citability signals.`,
+          )
+        : t("Keine ausreichend substanziellen, eigenständigen Textblöcke erkannt.", "No sufficiently substantial self-contained passages were detected."),
       4,
       paragraphCount >= 4 ? "pass" : paragraphCount >= 2 ? "warning" : "fail",
     ),
@@ -576,19 +583,19 @@ const analyzeTwentyOneCriteria = async (
   const techChecks = [
     createCheck(
       "https",
-      "HTTPS-Verschlüsselung",
+      t("HTTPS-Verschlüsselung", "HTTPS encryption"),
       finalUrl.protocol === "https:"
-        ? "Die finale URL wird verschlüsselt über HTTPS ausgeliefert."
-        : "Die finale URL nutzt keine HTTPS-Verschlüsselung.",
+        ? t("Die finale URL wird verschlüsselt über HTTPS ausgeliefert.", "The final URL is delivered securely over HTTPS.")
+        : t("Die finale URL nutzt keine HTTPS-Verschlüsselung.", "The final URL does not use HTTPS encryption."),
       6,
       finalUrl.protocol === "https:" ? "pass" : "fail",
     ),
     createCheck(
       "hsts",
-      "HSTS-Sicherheitsheader",
+      t("HSTS-Sicherheitsheader", "HSTS security header"),
       headers.has("strict-transport-security")
-        ? "Strict-Transport-Security ist gesetzt."
-        : "Der Strict-Transport-Security-Header fehlt.",
+        ? t("Strict-Transport-Security ist gesetzt.", "Strict-Transport-Security is set.")
+        : t("Der Strict-Transport-Security-Header fehlt.", "The Strict-Transport-Security header is missing."),
       4,
       headers.has("strict-transport-security") ? "pass" : "fail",
     ),
@@ -596,24 +603,26 @@ const analyzeTwentyOneCriteria = async (
       "xcontent",
       "X-Content-Type-Options",
       headers.get("x-content-type-options")?.toLowerCase() === "nosniff"
-        ? "MIME-Type-Sniffing wird mit nosniff verhindert."
-        : "X-Content-Type-Options: nosniff fehlt.",
+        ? t("MIME-Type-Sniffing wird mit nosniff verhindert.", "MIME type sniffing is prevented with nosniff.")
+        : t("X-Content-Type-Options: nosniff fehlt.", "X-Content-Type-Options: nosniff is missing."),
       3,
       headers.get("x-content-type-options")?.toLowerCase() === "nosniff" ? "pass" : "fail",
     ),
     createCheck(
       "xframe",
-      "Clickjacking-Schutz",
+      t("Clickjacking-Schutz", "Clickjacking protection"),
       headers.has("x-frame-options") || /frame-ancestors/i.test(csp)
-        ? "Ein X-Frame-Options- oder CSP-frame-ancestors-Schutz ist aktiv."
-        : "Kein eindeutiger Schutz gegen fremde Frame-Einbettung erkannt.",
+        ? t("Ein X-Frame-Options- oder CSP-frame-ancestors-Schutz ist aktiv.", "X-Frame-Options or CSP frame-ancestors protection is active.")
+        : t("Kein eindeutiger Schutz gegen fremde Frame-Einbettung erkannt.", "No clear protection against third-party framing was detected."),
       3,
       headers.has("x-frame-options") || /frame-ancestors/i.test(csp) ? "pass" : "fail",
     ),
     createCheck(
       "csp",
       "Content-Security-Policy",
-      csp ? "Eine Content-Security-Policy wird ausgeliefert." : "Kein Content-Security-Policy-Header erkannt.",
+      csp
+        ? t("Eine Content-Security-Policy wird ausgeliefert.", "A Content Security Policy is delivered.")
+        : t("Kein Content-Security-Policy-Header erkannt.", "No Content-Security-Policy header was detected."),
       4,
       csp ? "pass" : "fail",
     ),
@@ -622,23 +631,23 @@ const analyzeTwentyOneCriteria = async (
       "Referrer-Policy",
       headers.has("referrer-policy")
         ? `Referrer-Policy: ${headers.get("referrer-policy")}.`
-        : "Kein Referrer-Policy-Header erkannt.",
+        : t("Kein Referrer-Policy-Header erkannt.", "No Referrer-Policy header was detected."),
       3,
       headers.has("referrer-policy") ? "pass" : "fail",
     ),
     createCheck(
       "ttfb",
-      "Antwortzeit (TTFB)",
-      `Gemessene Server-Antwortzeit: ${ttfbMs} ms.`,
+      t("Antwortzeit (TTFB)", "Response time (TTFB)"),
+      t(`Gemessene Server-Antwortzeit: ${ttfbMs} ms.`, `Measured server response time: ${ttfbMs} ms.`),
       7,
       ttfbStatus,
     ),
   ];
 
   return {
-    ai: buildCategory("ai", "AI-Readiness & Crawling", aiChecks),
-    data: buildCategory("data", "Daten-Architektur & Vertrauenssignale", dataChecks),
-    tech: buildCategory("tech", "Technische Basis & Security", techChecks),
+    ai: buildCategory("ai", t("AI-Readiness & Crawling", "AI readiness & crawling"), aiChecks),
+    data: buildCategory("data", t("Daten-Architektur & Vertrauenssignale", "Data architecture & trust signals"), dataChecks),
+    tech: buildCategory("tech", t("Technische Basis & Security", "Technical foundation & security"), techChecks),
   };
 };
 
@@ -647,13 +656,13 @@ export const POST: APIRoute = async ({ request }) => {
     return Response.json({ ok: false, error: "rate_limited" }, { status: 429 });
   }
 
-  let payload: { url?: unknown };
+  let payload: { url?: unknown; locale?: unknown };
   try {
     const parsed: unknown = await request.json();
     if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
       return Response.json({ ok: false, error: "invalid_request" }, { status: 400 });
     }
-    payload = parsed as { url?: unknown };
+    payload = parsed as { url?: unknown; locale?: unknown };
   } catch {
     return Response.json({ ok: false, error: "invalid_request" }, { status: 400 });
   }
@@ -661,6 +670,7 @@ export const POST: APIRoute = async ({ request }) => {
   if (typeof payload.url !== "string") {
     return Response.json({ ok: false, error: "invalid_url" }, { status: 422 });
   }
+  const locale: ScanLocale = payload.locale === "en" ? "en" : "de";
 
   let pageUrl: URL;
   try {
@@ -671,6 +681,7 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   try {
+    const submittedUrl = pageUrl.toString();
     let pageResult;
     try {
       pageResult = await fetchPublicText(pageUrl, MAX_HTML_BYTES);
@@ -686,25 +697,37 @@ export const POST: APIRoute = async ({ request }) => {
       pageResult.body,
       pageResult.response,
       pageResult.ttfbMs,
+      locale,
     );
     const categoryList = Object.values(categories);
     const allChecks = categoryList.flatMap((category) => category.checks);
     const score = allChecks.reduce((sum, check) => sum + check.score, 0);
     const criticalIssues = allChecks.filter((check) => check.status === "fail").length;
-    const grade = score >= 85 ? "A" : score >= 70 ? "B" : score >= 55 ? "C" : score >= 40 ? "D" : "E";
+    const grade = gradeForScore(score);
     const scanId = crypto.randomUUID();
+    const core = {
+      requestedUrl: submittedUrl,
+      finalUrl: new URL(pageResult.finalUrl.origin).toString(),
+      scannedAt: new Date().toISOString(),
+      scanId,
+      score,
+      grade,
+      criticalIssues,
+      categories,
+    };
+    const snapshot: ScanSnapshot = {
+      ...core,
+      locale,
+      interpretation: interpretScanResult(core, locale),
+    };
+    const resultToken = createScanResultToken(snapshot);
 
     return Response.json(
       {
         ok: true,
-        requestedUrl: payload.url.trim(),
-        finalUrl: pageResult.finalUrl.toString(),
-        scannedAt: new Date().toISOString(),
-        scanId,
-        score,
-        grade,
-        criticalIssues,
-        categories,
+        ...snapshot,
+        resultToken,
+        resultUrl: new URL(scanResultPath(locale, resultToken), SITE_URL).toString(),
       },
       {
         status: 200,
