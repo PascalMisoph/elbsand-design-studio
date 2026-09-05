@@ -45,4 +45,4 @@ AI-check result links contain a compressed, signed, PII-free scan snapshot and e
 - `npm run indexnow -- /changed-route/` submits only genuinely changed URLs after deployment.
 - `npm run research:dax-crawlers` repeats the versioned public crawler-policy study when a substantive update is due.
 
-See [docs/prelaunch-organic-readiness.md](docs/prelaunch-organic-readiness.md) and [docs/geo-visibility-baseline.md](docs/geo-visibility-baseline.md) for the controlled launch and measurement process.
+See [docs/prelaunch-organic-readiness.md](docs/prelaunch-organic-readiness.md), [docs/geo-visibility-baseline.md](docs/geo-visibility-baseline.md) and [docs/seo-geo-next-steps.md](docs/seo-geo-next-steps.md) for the controlled launch, measurement process and living post-deployment roadmap.

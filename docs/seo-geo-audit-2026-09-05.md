@@ -5,6 +5,8 @@ Scope: Repository-Prüfung des SEO-/GEO-Audits vom 2026-09-05 inklusive Scanner-
 
 Dieses Dokument ist der dauerhafte technische Kontext für spätere Agenten-Sessions. Die bestehende flache Informationsarchitektur, das visuelle System und die bewusste Trennung der Leistungsseiten bleiben verbindlich. Es handelt sich nicht um einen Relaunch- oder Redesign-Auftrag.
 
+Die fortlaufende Abarbeitung nach dem Production-Deployment steht in `docs/seo-geo-next-steps.md`. Der dort dokumentierte Post-Deployment-Re-Crawl ist der nächste Abschlusscheck; die Research-Roadmap ist als nächste auswählbare Phase vorgemerkt, wurde aber in dieser Aktualisierung nicht ausgeführt.
+
 ## 1. Bewusste Architektur
 
 - `/geo-optimierung/` bleibt der thematische GEO-Hub mit den bestehenden Diagnose-, AI-Visibility-, Technik-/Content- und laufenden Optimierungsleistungen.
