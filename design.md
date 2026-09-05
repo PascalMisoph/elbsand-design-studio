@@ -421,6 +421,15 @@ A service page is not ready for rollout until:
 
 ## Acceptance criteria
 
+### Dresden illustrated footer — 2026-09-05
+
+- User-selected footer reference: https://x.com/AdityaSur11/status/2096160317458030911 (three panorama details, internal reference only).
+- The shared `Footer.astro` is an intentional warm-paper ending to the continuous charcoal page. It owns all footer layout, typography, responsive and interaction rules.
+- Original terracotta print illustrations depict a stylized Dresden riverfront. Desktop and mobile use separately generated compositions, never a stretched desktop crop. Source artwork and prompts live in `output/imagegen/footer/`; optimized delivery assets live in `public/images/footer/`.
+- Navigation, contact CTA and legal/consent controls remain semantic localized HTML above the skyline. The decorative image has an empty alt attribute and reserved intrinsic dimensions.
+- Desktop spacing starts at 112px; mobile at 80px. Ink geometry remains static to preserve fine detail; links and CTA provide restrained hover/focus feedback with a reduced-motion alternative.
+- A short paper-to-transparent compositing veil only blends the image's upper paper edge. No recoloring or filter is applied to the illustration or other media.
+
 - The implementation has the same level of visual discipline and motion polish as the reference, without looking like a generic SaaS template.
 - Grid, type, cards, spacing, and motion use documented tokens rather than one-off guesses.
 - Original PATERNOGA assets have equivalent visual weight and explanatory value to the reference assets.

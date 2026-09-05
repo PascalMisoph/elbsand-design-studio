@@ -20,27 +20,27 @@ const columns = de ? [
 ];
 ---
 
-<footer class="site-footer" data-nosnippet>
-  <div class="site-footer-inner">
-    <div class="site-footer-brand">
+<footer class="site-footer dresden-footer" data-nosnippet>
+  <div class="footer-content">
+    <div class="footer-brand">
       <a class="wordmark" href={home} aria-label="Paternoga SEO & GEO Studio home">
         <span class="wordmark-brand">PATERNOGA</span>
         <span class="wordmark-descriptor">SEO &amp; GEO Studio</span>
       </a>
-      <p class="site-footer-claim">Be the brand AI thinks of first.</p>
-      <p class="site-footer-status"><i aria-hidden="true"></i>{de ? "Studio-Systeme erreichbar" : "Studio systems operational"}</p>
-      <a href={contactDetails.emailHref}>{contactDetails.email}</a>
+      <p class="footer-claim">Be the brand AI thinks of first.</p>
+      <a class="footer-email" href={contactDetails.emailHref}>{contactDetails.email}</a>
+      <a class="footer-cta" href={`${home}#kontakt`}>{de ? "Website-Check anfragen" : "Request a website check"}<span aria-hidden="true">↗</span></a>
     </div>
-    <div class="site-footer-columns">
+    <div class="footer-columns">
       {columns.map((column) => (
-        <nav class="site-footer-column" aria-label={column.title}>
+        <nav class="site-footer-column footer-column" aria-label={column.title}>
           <strong>{column.title}</strong>
-          {column.links.map(([label, href]) => <a href={href}>{label}</a>)}
+          {column.links.map(([label, href]) => <a href={href.startsWith("#") ? `${home}${href}` : href}>{label}</a>)}
         </nav>
       ))}
     </div>
   </div>
-  <div class="site-footer-bottom">
+  <div class="footer-legal">
     <span>© 2026 Paternoga SEO & GEO Studio</span>
     <div>
       <a href={imprintPath}>{imprint}</a>
@@ -48,4 +48,80 @@ const columns = de ? [
       <button type="button" data-open-consent-settings>{de ? "Datenschutz-Einstellungen" : "Privacy settings"}</button>
     </div>
   </div>
+  <picture class="footer-panorama" aria-hidden="true">
+    <source media="(max-width: 600px)" srcset="/images/footer/dresden-mobile-v1.webp" width="1024" height="1536" />
+    <img src="/images/footer/dresden-desktop-v1.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async" />
+  </picture>
 </footer>
+
+<style>
+  /* This intentional paper ending also overrides route-specific dark footer shells. */
+  :global(body) .site-footer.dresden-footer {
+    --footer-paper: #f4f0e8;
+    --footer-ink: #1b1a17;
+    --footer-muted: #625f58;
+    --footer-accent: #b74622;
+    --footer-dark: #7b2f18;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+    border: 0;
+    background: var(--footer-paper);
+    color: var(--footer-ink);
+    font-family: Inter, sans-serif;
+  }
+  .footer-content, .footer-legal {
+    position: relative;
+    z-index: 1;
+    width: min(calc(100% - 64px), 1120px);
+    margin-inline: auto;
+  }
+  .footer-content {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 64px;
+    padding-top: 112px;
+  }
+  .footer-brand { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+  .footer-brand .wordmark { width: 230px; min-height: 48px; color: var(--footer-dark); }
+  .footer-brand .wordmark-brand { font-size: 25px; }
+  .footer-brand .wordmark-descriptor { color: var(--footer-muted); }
+  .footer-claim { max-width: 240px; margin: 28px 0 24px; color: var(--footer-muted); font-size: 19px; line-height: 1.5; letter-spacing: -.035em; }
+  .footer-email { color: var(--footer-muted); font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; }
+  .footer-cta { display: inline-flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 48px; margin-top: 28px; padding: 12px 16px; border-radius: 8px; background: var(--footer-accent); color: #fbf8f2; font-size: 15px; font-weight: 650; line-height: 1.4; transition: background 180ms ease, transform 180ms ease; }
+  .footer-cta:hover { background: var(--footer-dark); transform: translateY(-2px); }
+  .footer-columns { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+  .footer-column { display: flex; align-items: flex-start; flex-direction: column; gap: 12px; min-width: 0; }
+  .footer-column strong { margin-bottom: 12px; color: var(--footer-dark); font-size: 14px; font-weight: 650; }
+  .site-footer .footer-column a { color: var(--footer-muted); font-size: 14px; line-height: 1.55; overflow-wrap: anywhere; transition: color 180ms ease, transform 180ms ease; }
+  .site-footer .footer-column a:hover { color: var(--footer-dark); transform: translateX(2px); }
+  .footer-legal { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 72px; padding-block: 24px; border-top: 1px solid rgba(27,26,23,.16); color: var(--footer-muted); font-size: 12px; line-height: 1.6; }
+  .footer-legal div { display: flex; flex-wrap: wrap; gap: 12px 24px; }
+  .footer-legal button { padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; text-align: left; }
+  .footer-legal a, .footer-email { transition: color 180ms ease; }
+  .footer-legal a:hover, .footer-legal button:hover, .footer-email:hover { color: var(--footer-dark); text-decoration: underline; text-underline-offset: 4px; }
+  .dresden-footer a, .dresden-footer button { text-decoration: none; }
+  .dresden-footer a:focus-visible, .dresden-footer button:focus-visible { outline: 2px solid var(--footer-dark); outline-offset: 5px; border-radius: 2px; }
+  .footer-panorama { position: relative; display: block; margin-top: -13%; pointer-events: none; }
+  .footer-panorama img { display: block; width: 100%; height: auto; }
+  /* A short paper veil blends the generated paper grain into the solid HTML surface. */
+  .footer-panorama::after { content: ""; position: absolute; inset: 0 0 auto; height: 18%; background: linear-gradient(var(--footer-paper), transparent); }
+  @media (max-width: 1100px) {
+    .footer-content { grid-template-columns: 240px minmax(0,1fr); gap: 48px; }
+    .footer-columns { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 36px 24px; }
+  }
+  @media (max-width: 760px) {
+    .footer-content, .footer-legal { width: calc(100% - 40px); }
+    .footer-content { grid-template-columns: minmax(0,1fr); gap: 56px; padding-top: 80px; }
+    .footer-claim { max-width: 310px; }
+    .footer-columns { gap: 36px 20px; }
+    .footer-legal { flex-direction: column; align-items: flex-start; margin-top: 48px; gap: 16px; }
+  }
+  @media (max-width: 600px) { .footer-panorama { margin-top: -35%; } }
+  @media (prefers-reduced-motion: reduce) {
+    .dresden-footer a, .dresden-footer button { transition: none; }
+    .dresden-footer a:hover { transform: none; }
+  }
+</style>
