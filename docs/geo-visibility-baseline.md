@@ -2,6 +2,10 @@
 
 The baseline separates discoverability, retrieval, traffic and commercial outcomes. A mention is not automatically a citation; a referral is not automatically a qualified lead.
 
+## Update 2026-09-06: commercial panel v2
+
+The [Growth strategy](growth-strategy-2026-09-06.md) and [20 buyer prompts](growth-matrices-2026-09-06.md) extend this method. Preserve platform/mode/language/region and repeat observations; do not create a second incompatible score. The [GSC T0 export](growth-gsc-t0-2026-09-05.json) records 42 property impressions and 6 clicks through 2026-09-05, with recent-day and query-anonymization limits. Page impressions sum to 96 under a different aggregation. Consumer AI mention/citation rates remain unmeasured (`null`): public access attempts did not produce valid answers. Search-index competitor finds are not AI answer observations. Follow-up waves remain +2/+4/+8 weeks after a valid baseline per platform.
+
 ## Record before launch
 
 For each observation store:

@@ -1,0 +1,263 @@
+{
+  "date": "2026-09-06",
+  "scale": "1 least favorable, 5 most favorable; competition, authority and effort are inverse burden scores",
+  "weights": {
+    "revenue": 15,
+    "buyer_intent": 12,
+    "search_demand": 6,
+    "ai_visibility": 5,
+    "time_to_impact": 12,
+    "winning_probability": 12,
+    "competition_ease": 6,
+    "authority_ease": 6,
+    "implementation_ease": 8,
+    "differentiation": 5,
+    "lead_quality": 6,
+    "upsell": 4,
+    "evidence_confidence": 3
+  },
+  "opportunities": [
+    {
+      "id": "audit_offer",
+      "name": "Audit-Funnel und klar begrenztes Kaufangebot",
+      "priority": "P0",
+      "ratings": {
+        "revenue": 4,
+        "buyer_intent": 5,
+        "search_demand": 3,
+        "ai_visibility": 3,
+        "time_to_impact": 5,
+        "winning_probability": 4,
+        "competition_ease": 3,
+        "authority_ease": 4,
+        "implementation_ease": 5,
+        "differentiation": 3,
+        "lead_quality": 5,
+        "upsell": 5,
+        "evidence_confidence": 5
+      },
+      "score": 84.6,
+      "note": "Analyst judgement, not measured probabilities or revenue forecast. 5 is favorable on every factor; resource gates and dependencies override score."
+    },
+    {
+      "id": "partner",
+      "name": "Persönliche Empfehlungen und komplementäre Agenturpartner",
+      "priority": "P0",
+      "ratings": {
+        "revenue": 5,
+        "buyer_intent": 5,
+        "search_demand": 1,
+        "ai_visibility": 2,
+        "time_to_impact": 5,
+        "winning_probability": 4,
+        "competition_ease": 4,
+        "authority_ease": 4,
+        "implementation_ease": 4,
+        "differentiation": 3,
+        "lead_quality": 5,
+        "upsell": 5,
+        "evidence_confidence": 3
+      },
+      "score": 82.6,
+      "note": "Analyst judgement, not measured probabilities or revenue forecast. 5 is favorable on every factor; resource gates and dependencies override score."
+    },
+    {
+      "id": "dresden",
+      "name": "Eine SEO-Dresden-Seite plus lokales Profil",
+      "priority": "P1",
+      "ratings": {
+        "revenue": 4,
+        "buyer_intent": 5,
+        "search_demand": 4,
+        "ai_visibility": 3,
+        "time_to_impact": 3,
+        "winning_probability": 3,
+        "competition_ease": 2,
+        "authority_ease": 2,
+        "implementation_ease": 3,
+        "differentiation": 3,
+        "lead_quality": 4,
+        "upsell": 5,
+        "evidence_confidence": 4
+      },
+      "score": 70,
+      "note": "Analyst judgement, not measured probabilities or revenue forecast. 5 is favorable on every factor; resource gates and dependencies override score."
+    },
+    {
+      "id": "snapshot",
+      "name": "Kaufentscheidungs-Snapshot als qualifizierter Einstieg",
+      "priority": "P1",
+      "ratings": {
+        "revenue": 4,
+        "buyer_intent": 4,
+        "search_demand": 2,
+        "ai_visibility": 4,
+        "time_to_impact": 4,
+        "winning_probability": 4,
+        "competition_ease": 2,
+        "authority_ease": 4,
+        "implementation_ease": 4,
+        "differentiation": 4,
+        "lead_quality": 4,
+        "upsell": 5,
+        "evidence_confidence": 3
+      },
+      "score": 75.4,
+      "note": "Analyst judgement, not measured probabilities or revenue forecast. 5 is favorable on every factor; resource gates and dependencies override score."
+    },
+    {
+      "id": "refresh",
+      "name": "Begrenzter SEO/GEO-Seiten-Sprint aus bestehendem Bedarf",
+      "priority": "P1",
+      "ratings": {
+        "revenue": 5,
+        "buyer_intent": 5,
+        "search_demand": 3,
+        "ai_visibility": 4,
+        "time_to_impact": 4,
+        "winning_probability": 4,
+        "competition_ease": 3,
+        "authority_ease": 4,
+        "implementation_ease": 3,
+        "differentiation": 4,
+        "lead_quality": 5,
+        "upsell": 5,
+        "evidence_confidence": 3
+      },
+      "score": 82.8,
+      "note": "Analyst judgement, not measured probabilities or revenue forecast. 5 is favorable on every factor; resource gates and dependencies override score."
+    },
+    {
+      "id": "national",
+      "name": "Nationale GEO-Anbieterseite kommerzialisieren",
+      "priority": "P1",
+      "ratings": {
+        "revenue": 5,
+        "buyer_intent": 5,
+        "search_demand": 4,
+        "ai_visibility": 5,
+        "time_to_impact": 2,
+        "winning_probability": 2,
+        "competition_ease": 1,
+        "authority_ease": 1,
+        "implementation_ease": 4,
+        "differentiation": 3,
+        "lead_quality": 4,
+        "upsell": 5,
+        "evidence_confidence": 4
+      },
+      "score": 69.4,
+      "note": "Analyst judgement, not measured probabilities or revenue forecast. 5 is favorable on every factor; resource gates and dependencies override score."
+    },
+    {
+      "id": "profiles",
+      "name": "Gezielte Anbieterprofile und überprüfbarer externer Proof",
+      "priority": "P1",
+      "ratings": {
+        "revenue": 3,
+        "buyer_intent": 4,
+        "search_demand": 3,
+        "ai_visibility": 4,
+        "time_to_impact": 3,
+        "winning_probability": 4,
+        "competition_ease": 3,
+        "authority_ease": 3,
+        "implementation_ease": 5,
+        "differentiation": 2,
+        "lead_quality": 4,
+        "upsell": 4,
+        "evidence_confidence": 4
+      },
+      "score": 70.6,
+      "note": "Analyst judgement, not measured probabilities or revenue forecast. 5 is favorable on every factor; resource gates and dependencies override score."
+    },
+    {
+      "id": "dax_distribution",
+      "name": "Vorhandene DAX-Erhebung gezielt verteilen",
+      "priority": "P1",
+      "ratings": {
+        "revenue": 2,
+        "buyer_intent": 2,
+        "search_demand": 1,
+        "ai_visibility": 4,
+        "time_to_impact": 4,
+        "winning_probability": 3,
+        "competition_ease": 3,
+        "authority_ease": 4,
+        "implementation_ease": 4,
+        "differentiation": 4,
+        "lead_quality": 2,
+        "upsell": 3,
+        "evidence_confidence": 4
+      },
+      "score": 58.8,
+      "note": "Analyst judgement, not measured probabilities or revenue forecast. 5 is favorable on every factor; resource gates and dependencies override score."
+    },
+    {
+      "id": "source_study",
+      "name": "Eng begrenzte Buyer-Source-Studie",
+      "priority": "P2",
+      "ratings": {
+        "revenue": 3,
+        "buyer_intent": 3,
+        "search_demand": 2,
+        "ai_visibility": 5,
+        "time_to_impact": 2,
+        "winning_probability": 3,
+        "competition_ease": 3,
+        "authority_ease": 3,
+        "implementation_ease": 2,
+        "differentiation": 5,
+        "lead_quality": 4,
+        "upsell": 4,
+        "evidence_confidence": 3
+      },
+      "score": 60.8,
+      "note": "Analyst judgement, not measured probabilities or revenue forecast. 5 is favorable on every factor; resource gates and dependencies override score."
+    },
+    {
+      "id": "saas_vertical",
+      "name": "SaaS-/Industrie-Spezialisierung mit neuen Branchenrouten",
+      "priority": "P3",
+      "ratings": {
+        "revenue": 5,
+        "buyer_intent": 4,
+        "search_demand": 3,
+        "ai_visibility": 5,
+        "time_to_impact": 1,
+        "winning_probability": 1,
+        "competition_ease": 1,
+        "authority_ease": 1,
+        "implementation_ease": 1,
+        "differentiation": 2,
+        "lead_quality": 5,
+        "upsell": 5,
+        "evidence_confidence": 2
+      },
+      "score": 55.2,
+      "note": "Analyst judgement, not measured probabilities or revenue forecast. 5 is favorable on every factor; resource gates and dependencies override score."
+    },
+    {
+      "id": "relaunch",
+      "name": "Relaunch-SEO als anlassbezogener Vertriebswinkel",
+      "priority": "P2",
+      "ratings": {
+        "revenue": 5,
+        "buyer_intent": 5,
+        "search_demand": 3,
+        "ai_visibility": 3,
+        "time_to_impact": 4,
+        "winning_probability": 3,
+        "competition_ease": 2,
+        "authority_ease": 3,
+        "implementation_ease": 3,
+        "differentiation": 3,
+        "lead_quality": 5,
+        "upsell": 4,
+        "evidence_confidence": 3
+      },
+      "score": 75.2,
+      "note": "Analyst judgement, not measured probabilities or revenue forecast. 5 is favorable on every factor; resource gates and dependencies override score."
+    }
+  ]
+}

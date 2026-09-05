@@ -1,6 +1,6 @@
 # PATERNOGA SEO/GEO – nächste Schritte
 
-Stand: 2026-09-05
+Stand: 2026-09-06
 Status: laufender Projektkontext
 Quelle: priorisierte nächste Schritte nach dem Production-Deployment des SEO-/GEO-Audit-Fixes.
 
@@ -12,7 +12,23 @@ Dieses Dokument ist die fortlaufend zu pflegende Arbeitsroadmap. Es beschreibt d
 - Release-Commit: `61f1c04` (`fix: harden scanner and entity signals`).
 - Die Live-Domain `https://www.paternoga-seo-geo.de/` antwortet weiterhin erfolgreich über Vercel.
 - Der Scanner-P0-Fix ist auf der Live-Auslieferung bestätigt: initial nur Startzustand; Scan-, Fehler- und Ergebniszustände entstehen erst im Client-State.
-- Der unabhängige externe Re-Crawl ist der nächste fachliche Abschlusscheck und wurde mit dieser Roadmap noch nicht ausgeführt.
+- Der externe Re-Crawl ist inzwischen abgeschlossen: `docs/seo-geo-live-crawl.json` und `docs/seo-geo-project-state.json` dokumentieren am 05.09.2026 um 20:41 UTC 40 Routen ohne Seiten-/Scanner-/Alt-Entity-Fund. Der Nutzer hat den technischen Audit ausdrücklich geschlossen. Kein erneuter Voll-Audit als Growth-Voraussetzung.
+
+## Aktive Growth-Reihenfolge ab 06.09.2026
+
+Die beauftragte Market-/Buyer-/Revenue-Recherche ist in [growth-strategy-2026-09-06.md](growth-strategy-2026-09-06.md) abgeschlossen; Matrizen, 18 Experimente, Evidenzgrenzen und maschinenlesbarer Status sind dort verlinkt. Die folgende Reihenfolge ersetzt die ältere Priorisierung für Growth. Umsetzung und externe Kommunikation sind noch nicht erfolgt.
+
+| Reihenfolge | nächster Arbeitsblock | Status | Abnahme / Abhängigkeit |
+|---|---|---|---|
+| 1 | Attribution und kommerziellen T0 vervollständigen | `NEXT_IMPLEMENTATION` | Seitenquellen bis zum Lead/CRM erhalten; GSC-Export vorhanden, GA4/CRM/GBP und Consumer-AI noch offen. |
+| 2 | begrenztes Audit-/Seiten-Sprint-Angebot und direkten Audit-CTA umsetzen | `PLANNED` | klare Abnahme/Arbeitsprobe; keine erfundenen Outcomes; öffentliche Preise weiter auf Anfrage. |
+| 3 | warme Käufer-/Partnerbeziehungen und fünf manuelle Snapshots | `PLANNED` | nur bei gesondertem Ausführungsauftrag; begrenzte Lieferzeit und echtes Buyer-Signal. |
+| 4 | eine SEO-Dresden-Kaufseite, nationale Kaufseite und Anbieterprofile | `PLANNED` | Design-/DE-EN-Parität, echter Standort, keine GEO-Dresden-Duplikatroute. |
+| 5 | bezahlten Sprint liefern, Proof und passende Betreuung entwickeln | `PLANNED` | reale Daten, Liefermarge, Freigabe für jede öffentliche Fallbeschreibung. |
+| 6 | vorhandene DAX-Daten und Pilot distribuieren | `PLANNED` | technische Konfiguration nicht als AI-Sichtbarkeit ausgeben; zuerst kleiner Distributionstest. |
+| 7 | Messwellen und ausgewählte Buyer-Source-Studie | `PLANNED_CONDITIONAL` | fixes Panel, reale Zugänge; Studie erst nach gesondertem Auftrag und Distributions-Gate. |
+
+GSC-Beobachtung: 42 Property-Impressionen / 6 Klicks im Export bis 05.09.; AI-Mentions/Citations sind `null`, nicht null Prozent. Research-Auswahl: kleine Buyer-Source-Studie und dokumentierter realer Interventionscase. Keine neue Forschungsdatenerhebung in dieser Phase.
 
 ## Pflege-Regel für künftige Agenten-Sessions
 
@@ -23,15 +39,15 @@ Dieses Dokument ist die fortlaufend zu pflegende Arbeitsroadmap. Es beschreibt d
 5. Keine Ergebnisse, Rankings, AI-Erwähnungen, Zitationen oder Research-Daten schätzen oder ausfüllen. Nicht ausgeführte Punkte bleiben sichtbar.
 6. Zugriffe auf GSC, externe AI-Systeme, Outreach oder andere externe Konten nur mit passender Autorisierung und einem konkreten Auftrag durchführen.
 
-## Priorisierte Reihenfolge
+## Historische Audit-Reihenfolge (durch Growth-Reihenfolge oben ergänzt)
 
 | Nr. | Arbeitsblock | Status | Ziel / Nachweis |
 |---:|---|---|---|
-| 1 | Unabhängiger Post-Deployment-Re-Crawl | `NEXT` | Externer Crawl der Live-Seite mit Scanner-, H1-, Title-, Link- und Entity-Prüfung. |
+| 1 | Unabhängiger Post-Deployment-Re-Crawl | `DONE` | Vorhandener 40-Routen-Live-Crawl vom 05.09.2026; technische Phase vom Nutzer geschlossen. |
 | 2 | Indexierung beschleunigen und alten Cache bereinigen | `PLANNED` | GSC-URL-Prüfung und gezielte erneute Indexierungsanfragen für die wichtigsten geänderten DE-/EN-URLs; anschließend Index-/Cache-Status dokumentieren. |
-| 3 | GEO-/SEO-T0-Baseline | `PLANNED` | Versioniertes Query-/Prompt-Panel, heutiger Ranking-/Mention-/Citation-Stand und definierte Messpunkte nach 2, 4 und 8 Wochen. |
-| 4 | Einen Research-Case auswählen und die Research-Roadmap aktivieren | `PLANNED` | Nach T0 eine Studie auswählen, sauber abgrenzen und separat beauftragen; keine Forschung im Rahmen dieses Roadmap-Eintrags. |
-| 5 | Commercial Content gegen echte Suchintention prüfen | `PLANNED` | Chirurgischer SERP-/Content-Gap-Audit für ungefähr 58 wichtigste Money Pages, ohne pauschale Umschreibungen. |
+| 3 | GEO-/SEO-T0-Baseline | `PARTIAL` | GSC-Export und erweitertes Panel vorhanden; direkte Consumer-AI-/Google-Local-Messung offen. |
+| 4 | Einen Research-Case auswählen und die Research-Roadmap aktivieren | `PRIORITIZED_NOT_STARTED` | Auswahl im Growth-Dokument; keine neue Studie erhoben oder veröffentlicht. |
+| 5 | Commercial Content gegen echte Suchintention prüfen | `RESEARCH_DONE` | Acht Live-Einstiege geprüft, vier priorisierte Kaufseiten plus Delivery-Netz definiert; keine Produktionsänderung. |
 | 6 | Distribution aufbauen | `PLANNED` | Nach einem realen Research-Asset Website-, LinkedIn-, Video-, Chart- und Outreach-Formate aus einem freigegebenen Datensatz ableiten. |
 | 7 | Monitoring automatisieren | `PLANNED` | Nach T0 und Query-Definition regelmäßige Messung von Rankings, Indexierung, AI-Zitationen, Mentions und Veränderungen gegenüber T0. |
 
@@ -89,7 +105,7 @@ Weitere dokumentierte Themen bleiben im Research-Backlog des Audits: AI-Crawler 
 
 ## 5. Commercial Content / SERP- und Content-Gap-Audit
 
-Nach T0 wird jede der ungefähr 58 wichtigsten Money Pages einzeln gegen ihre tatsächliche Zielintention geprüft:
+Die neue Growth-Recherche ersetzt den unscharfen früheren Umfang durch vier priorisierte Kaufseiten; fachliche Delivery-Module bleiben erhalten. Vor Umsetzung wird jede betroffene Seite einzeln gegen ihre tatsächliche Zielintention geprüft:
 
 - Für welche konkrete Suchanfrage und welchen Buyer Job soll die URL gewinnen?
 - Was rankt aktuell und welcher Seitentyp dominiert?
@@ -118,4 +134,5 @@ Nach T0 und einem definierten Query-/Prompt-Panel soll das Monitoring schrittwei
 
 | Datum | Änderung | Nachweis |
 |---|---|---|
+| 2026-09-06 | Growth-Research abgeschlossen, Ausführungsreihenfolge nach Umsatznähe neu geordnet; vorhandenen Re-Crawl-Abschluss nachgetragen. GSC-T0 teilweise belegt, Consumer-AI-/Local-/Revenue-Daten offen. | `growth-strategy-2026-09-06.md`, `growth-gsc-t0-2026-09-05.json`, `growth-state-2026-09-06.json`; keine Produktion/Outreach/Studienpublikation. |
 | 2026-09-05 | Die vom Nutzer priorisierte Reihenfolge wurde als lebende Roadmap aufgenommen. Post-Deployment-Re-Crawl ist `NEXT`; T0, Research-Auswahl, Commercial Content, Distribution und Monitoring sind geplant. | Keine Research-, Indexierungs- oder Outreach-Aktion in dieser Aktualisierung. |

@@ -17,6 +17,7 @@ This file defines durable project guidance for coding agents working inside this
 - Pricing: inquiry-only.
 - Public contact email: kontakt@paternoga-seo-geo.de.
 - Core claim: `Be the brand AI thinks of first.`
+- For the 2026-09-06 Growth/Revenue decision, read `docs/growth-strategy-2026-09-06.md` and its linked matrices, evidence, experiments and `docs/growth-state-2026-09-06.json`. This research prioritizes the next work; it does not authorize production changes, outreach or new study publication. GSC T0 is partial; consumer-AI measurements remain open.
 - For the 2026-09-05 SEO/GEO audit status, scanner extraction verification and confirmed decisions, read `docs/seo-geo-audit-2026-09-05.md`. The living execution order is `docs/seo-geo-next-steps.md`; read and update it when working through the next steps. The Research Roadmap is a planned next phase, but do not start research, collect data or publish research pages without an explicit execution request for a selected case.
 - The reusable audit skill is installed as `$paternoga-seo-geo-audit`; use it for future evidence-based repository/live-site audits so the PATERNOGA knowledge base, current code, crawl evidence and project state are reconciled consistently.
 

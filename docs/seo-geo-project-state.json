@@ -181,11 +181,12 @@
   },
   "roadmap": {
     "source": "docs/seo-geo-next-steps.md",
+    "active_growth_state": "docs/growth-state-2026-09-06.json",
     "items": [
       {
         "number": 1,
         "name": "Unabhängiger Post-Deployment-Re-Crawl",
-        "status": "NEXT",
+        "status": "DONE",
         "goal": "Externer Crawl der Live-Seite mit Scanner-, H1-, Title-, Link- und Entity-Prüfung."
       },
       {
@@ -197,20 +198,20 @@
       {
         "number": 3,
         "name": "GEO-/SEO-T0-Baseline",
-        "status": "PLANNED",
+        "status": "PARTIAL",
         "goal": "Versioniertes Query-/Prompt-Panel, heutiger Ranking-/Mention-/Citation-Stand und definierte Messpunkte nach 2, 4 und 8 Wochen."
       },
       {
         "number": 4,
         "name": "Einen Research-Case auswählen und die Research-Roadmap aktivieren",
-        "status": "PLANNED",
+        "status": "PRIORITIZED_NOT_STARTED",
         "goal": "Nach T0 eine Studie auswählen, sauber abgrenzen und separat beauftragen; keine Forschung im Rahmen dieses Roadmap-Eintrags."
       },
       {
         "number": 5,
         "name": "Commercial Content gegen echte Suchintention prüfen",
-        "status": "PLANNED",
-        "goal": "Chirurgischer SERP-/Content-Gap-Audit für ungefähr 58 wichtigste Money Pages, ohne pauschale Umschreibungen."
+        "status": "RESEARCH_DONE",
+        "goal": "Growth-Entscheidung für vier priorisierte Kaufseiten und das bestehende Delivery-Netz; Produktionsumsetzung steht aus."
       },
       {
         "number": 6,
@@ -227,11 +228,11 @@
     ]
   },
   "research": {
-    "status": "backlog",
+    "status": "prioritized_not_started",
     "execution_authorized": false,
-    "note": "Do not start a Research case without an explicit later request."
+    "note": "Commercial market research completed in docs/growth-strategy-2026-09-06.md. New study collection/publication still requires a selected-case execution request."
   },
-  "updated_at": "2026-09-05T20:41:35.922Z",
+  "updated_at": "2026-09-05T22:18:47Z",
   "checks": {
     "delivery": {
       "status": "verified",

@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "project": "PATERNOGA SEO & GEO Studio",
+  "date": "2026-09-06",
+  "timezone": "Europe/Berlin",
+  "status": "research_complete_measurements_partial",
+  "strategy": "docs/growth-strategy-2026-09-06.md",
+  "technical_audit": "closed_existing_evidence",
+  "authorization": {
+    "market_research": true,
+    "local_documentation": true,
+    "production_changes": false,
+    "external_messages": false,
+    "account_writes": false,
+    "new_study_collection": false,
+    "new_study_publication": false
+  },
+  "evidence_files": [
+    "docs/growth-evidence-2026-09-06.md",
+    "docs/growth-gsc-t0-2026-09-05.json",
+    "docs/growth-live-content-2026-09-05.json"
+  ],
+  "matrix_file": "docs/growth-matrices-2026-09-06.md",
+  "experiments_file": "docs/growth-experiments-2026-09-06.md",
+  "priorities_file": "docs/growth-priorities-2026-09-06.json",
+  "t0": {
+    "gsc_export_end": "2026-09-05",
+    "gsc_property_impressions": 42,
+    "gsc_clicks": 6,
+    "gsc_page_impressions": 96,
+    "disclosed_query_page_impressions": 19,
+    "disclosed_query_page_clicks": 0,
+    "nonbranded_clicks_total": null,
+    "ai_mention_rate": null,
+    "ai_citation_rate": null,
+    "ai_share_of_voice": null,
+    "qualified_leads": null,
+    "revenue": null,
+    "gbp_actions": null,
+    "notes": [
+      "Recent GSC dates may be preliminary",
+      "Page and property aggregation differ",
+      "No valid consumer AI answers collected",
+      "Search-index discoveries are not Google rank or AI mention measurements"
+    ]
+  },
+  "decisions": {
+    "primary_icp": "hypothesis: owner-led businesses with complex services, existing website and a concrete acquisition problem",
+    "money_pages": [
+      "/geo-audit/",
+      "/seo-dresden/",
+      "/geo-agentur-deutschland/",
+      "/geo-betreuung/"
+    ],
+    "new_route_recommended": "/seo-dresden/",
+    "new_route_implemented": false,
+    "english_new_route": "to be fixed in implementation brief; existing localized mappings unchanged",
+    "commercial_module": "/content-optimierung-ai-suche/",
+    "lead_magnet": "human-reviewed buyer-decision snapshot; pilot before automation",
+    "public_pricing": "inquiry-only",
+    "selected_research": [
+      "bounded buyer-source study for complex service providers",
+      "consented real paid-page intervention case"
+    ],
+    "research_status": "prioritized_not_started"
+  },
+  "next_actions": [
+    {
+      "id": 1,
+      "action": "Preserve lead source and complete commercial T0",
+      "status": "next_implementation"
+    },
+    {
+      "id": 2,
+      "action": "Scope audit and page sprint",
+      "status": "planned"
+    },
+    {
+      "id": 3,
+      "action": "Direct audit CTA and real work sample",
+      "status": "planned"
+    },
+    {
+      "id": 4,
+      "action": "Warm relationships and five complementary partners",
+      "status": "planned_not_sent"
+    },
+    {
+      "id": 5,
+      "action": "Five manually reviewed buyer snapshots",
+      "status": "planned_not_collected"
+    },
+    {
+      "id": 6,
+      "action": "One Dresden money page and eligible real GBP",
+      "status": "planned"
+    },
+    {
+      "id": 7,
+      "action": "National buyer page and selected provider profiles",
+      "status": "planned"
+    },
+    {
+      "id": 8,
+      "action": "Deliver paid page sprint and obtain proof permission",
+      "status": "planned"
+    },
+    {
+      "id": 9,
+      "action": "Distribute existing DAX asset and consented pilot",
+      "status": "planned_not_published"
+    },
+    {
+      "id": 10,
+      "action": "Remeasure and scale winning path; gate source study",
+      "status": "planned_conditional"
+    }
+  ],
+  "open_measurements": [
+    "Consumer AI panel",
+    "Geolocated Google organic/ads/local pack",
+    "Current GBP and Google reviews",
+    "Independent comparable keyword raw exports and trend series",
+    "Backlink index",
+    "GA4/CRM and revenue attribution"
+  ],
+  "experiment_results": [
+    {
+      "id": "E1",
+      "status": "planned",
+      "result": null
+    },
+    {
+      "id": "E2",
+      "status": "planned",
+      "result": null
+    },
+    {
+      "id": "E3",
+      "status": "planned",
+      "result": null
+    },
+    {
+      "id": "E4",
+      "status": "planned",
+      "result": null
+    },
+    {
+      "id": "E5",
+      "status": "planned",
+      "result": null
+    },
+    {
+      "id": "E6",
+      "status": "planned",
+      "result": null
+    },
+    {
+      "id": "E7",
+      "status": "planned",
+      "result": null
+    },
+    {
+      "id": "E8",
+      "status": "planned",
+      "result": null
+    },
+    {
+      "id": "E9",
+      "status": "planned",
+      "result": null
+    },
+    {
+      "id": "E10",
+      "status": "planned",
+      "result": null
+    },
+    {
+      "id": "E11",
+      "status": "planned",
+      "result": null
+    },
+    {
+      "id": "E12",
+      "status": "planned",
+      "result": null
+    },
+    {
+      "id": "E13",
+      "status": "planned",
+      "result": null
+    },
+    {
+      "id": "E14",
+      "status": "planned",
+      "result": null
+    },
+    {
+      "id": "E15",
+      "status": "planned",
+      "result": null
+    },
+    {
+      "id": "E16",
+      "status": "planned",
+      "result": null
+    },
+    {
+      "id": "E17",
+      "status": "planned",
+      "result": null
+    },
+    {
+      "id": "E18",
+      "status": "planned",
+      "result": null
+    }
+  ]
+}
