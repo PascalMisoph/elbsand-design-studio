@@ -1,0 +1,1983 @@
+{
+  "schema_version": 1,
+  "crawler": {
+    "user_agent": "paternoga-seo-geo-audit/1.0 (+https://www.paternoga-seo-geo.de/)",
+    "max_routes": 40,
+    "timeout_ms": 15000
+  },
+  "target": "https://www.paternoga-seo-geo.de",
+  "crawled_at": "2026-09-05T20:41:34.763Z",
+  "pages": [
+    {
+      "url": "https://www.paternoga-seo-geo.de/",
+      "final_url": "https://www.paternoga-seo-geo.de/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 87345,
+      "sha256": "f178965b9be0b78338c5492fe10b68c9629e56c3ba9cc62f9e0ca9844017456c",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "SEO & GEO Studio für Deutschland | PATERNOGA",
+      "h1": [
+        "Suchmaschinen verändern sich. Dein Online-Auftritt auch?"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage"
+      ],
+      "internal_link_count": 128,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 86343,
+      "sha256": "6e8cd64a4c7e7986ce31f2511796398617880f48de5fadafc82e77d9ac52232c",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "SEO & GEO Studio for Germany | PATERNOGA",
+      "h1": [
+        "Search engines are changing. Is your online presence keeping up?"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage"
+      ],
+      "internal_link_count": 128,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/geo-optimierung/",
+      "final_url": "https://www.paternoga-seo-geo.de/geo-optimierung/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 67392,
+      "sha256": "96bf4ae1959a382ef56d13a91ffe7afe35170b8c001b88de4b5e1c5a69630027",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "GEO-Optimierung & AI-Sichtbarkeit | PATERNOGA",
+      "h1": [
+        "Sichtbarkeit in KI-Antworten beginnt mit Klarheit"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/geo-optimierung/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/geo-optimierung/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/geo-optimization/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/geo-optimierung/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList"
+      ],
+      "internal_link_count": 128,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/geo-optimization/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/geo-optimization/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 67081,
+      "sha256": "442ec42c02cc044577f196ef42b365cc25c21e90bd9ee2bda73c96f9581401fa",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "GEO Optimisation & AI Visibility | PATERNOGA",
+      "h1": [
+        "Visibility in AI answers starts with clarity"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/geo-optimization/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/geo-optimierung/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/geo-optimization/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/geo-optimierung/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList"
+      ],
+      "internal_link_count": 128,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/geo-audit/",
+      "final_url": "https://www.paternoga-seo-geo.de/geo-audit/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 61804,
+      "sha256": "df672266e582a2345eb6323886efdcde34f1f95ea302019ab7d6ad88eb6d46ac",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "GEO Audit für Unternehmen | PATERNOGA",
+      "h1": [
+        "GEO Audit: Wie sichtbar ist dein Unternehmen in ChatGPT & Co.?"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/geo-audit/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/geo-audit/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/geo-audit/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/geo-audit/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 112,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/geo-audit/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/geo-audit/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 60763,
+      "sha256": "c242618257ce78ca452b5995221decfbf566fa6e1a47c5abdebb304f3dbc3bb1",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "GEO Audit for Businesses | PATERNOGA",
+      "h1": [
+        "GEO audit: How visible is your business in AI answers?"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/geo-audit/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/geo-audit/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/geo-audit/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/geo-audit/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 112,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/ai-sichtbarkeit/",
+      "final_url": "https://www.paternoga-seo-geo.de/ai-sichtbarkeit/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 51512,
+      "sha256": "4baf987b75d6465922a21427b5a76bd561a59e48fcc96a6785759ff353ccdc60",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "AI-Sichtbarkeit für Unternehmen | PATERNOGA",
+      "h1": [
+        "Wie, wo und wie oft wird deine Marke in den KI-Antworten platziert?"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/ai-sichtbarkeit/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/ai-sichtbarkeit/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/ai-visibility/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/ai-sichtbarkeit/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 113,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/ai-visibility/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/ai-visibility/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 50317,
+      "sha256": "da34b2d79397245cc7c7390be868521278a13258e23b19dc54501c3d7a1d2a6d",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "AI Visibility for Businesses | PATERNOGA",
+      "h1": [
+        "Is your business being placed correctly in AI answers?"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/ai-visibility/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/ai-sichtbarkeit/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/ai-visibility/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/ai-sichtbarkeit/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 113,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/ki-quellenanalyse/",
+      "final_url": "https://www.paternoga-seo-geo.de/ki-quellenanalyse/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 56975,
+      "sha256": "bae9f1e99ba8ef1c950d4c1fc5aaaac422a9cd08f297e001e7949b8097b1acce",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "KI-Quellenanalyse für Websites | PATERNOGA",
+      "h1": [
+        "Auf welche Quellen stützt die KI das Bild deines Unternehmens?"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/ki-quellenanalyse/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/ki-quellenanalyse/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/ai-source-analysis/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/ki-quellenanalyse/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 115,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/ai-source-analysis/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/ai-source-analysis/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 56475,
+      "sha256": "5775052e75e25e15329f3f3a74694fca60859df8fcb85a446fa5cdf605c8ff7b",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "AI Source Analysis for Websites | PATERNOGA",
+      "h1": [
+        "Which sources does AI rely on to shape the picture of your business?"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/ai-source-analysis/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/ki-quellenanalyse/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/ai-source-analysis/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/ki-quellenanalyse/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 115,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/ki-wettbewerbsanalyse/",
+      "final_url": "https://www.paternoga-seo-geo.de/ki-wettbewerbsanalyse/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 88696,
+      "sha256": "f8cfb0c984a01741544448aec2ea7b4761de0820fb9bb3d451043f689aa15b7d",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "KI-Wettbewerbsanalyse für Unternehmen | PATERNOGA",
+      "h1": [
+        "Was wird im gleichen Antwortfeld über andere Angebote gesagt?"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/ki-wettbewerbsanalyse/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/ki-wettbewerbsanalyse/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/ai-competitor-analysis/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/ki-wettbewerbsanalyse/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 113,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/ai-competitor-analysis/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/ai-competitor-analysis/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 87965,
+      "sha256": "5a92f83aa71f96d06a243bfa5f07244189e179d4eabc8a523e2de3579be2728c",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "AI Competitor Analysis for Businesses | PATERNOGA",
+      "h1": [
+        "What is said about other offers in the same answer field?"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/ai-competitor-analysis/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/ki-wettbewerbsanalyse/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/ai-competitor-analysis/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/ki-wettbewerbsanalyse/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 113,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/ki-markenwahrnehmung/",
+      "final_url": "https://www.paternoga-seo-geo.de/ki-markenwahrnehmung/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 78623,
+      "sha256": "82f0d167c015eb1f8b2ea3904e73b7edb2a807ddbf804c8d2033cc3deebdb053",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "KI-Markenwahrnehmung analysieren | PATERNOGA",
+      "h1": [
+        "Wie beschreiben KI-Systeme deine Marke?"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/ki-markenwahrnehmung/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/ki-markenwahrnehmung/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/ai-brand-perception/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/ki-markenwahrnehmung/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 113,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/ai-brand-perception/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/ai-brand-perception/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 77751,
+      "sha256": "0b5e5ba10cafbbdeed19593138f20084ccbdf7be83095fd6b31058a30a180500",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "AI Brand Perception Analysis | PATERNOGA",
+      "h1": [
+        "How do AI systems describe your brand?"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/ai-brand-perception/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/ki-markenwahrnehmung/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/ai-brand-perception/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/ki-markenwahrnehmung/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 113,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/ki-faktencheck/",
+      "final_url": "https://www.paternoga-seo-geo.de/ki-faktencheck/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 82201,
+      "sha256": "2407d4e3a2545c4addf9f590716e9fc0df731b16c5c8f1402cf432dc0d16eb69",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "KI-Faktencheck für Unternehmensangaben | PATERNOGA",
+      "h1": [
+        "Stimmen die Fakten, die KI über dich nennt?"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/ki-faktencheck/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/ki-faktencheck/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/ai-fact-checking/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/ki-faktencheck/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 114,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/ai-fact-checking/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/ai-fact-checking/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 81535,
+      "sha256": "1978d66067c372926a2b82e6dc505ffaef97b31feae22a89ea016a59d7694340",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "AI Fact Checking for Business Information | PATERNOGA",
+      "h1": [
+        "Are the facts AI gives about you correct?"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/ai-fact-checking/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/ki-faktencheck/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/ai-fact-checking/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/ki-faktencheck/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 114,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/prompt-recherche/",
+      "final_url": "https://www.paternoga-seo-geo.de/prompt-recherche/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 52381,
+      "sha256": "aba9445c204ae5e9c440a559fd74c2f34a382740e9899c0183b5aa72080bcc4c",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "Prompt-Recherche für KI-Sichtbarkeit | PATERNOGA",
+      "h1": [
+        "Welche Fragen stellen potenzielle Kunden an ChatGPT & Co.?"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/prompt-recherche/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/prompt-recherche/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/prompt-research/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/prompt-recherche/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 117,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/prompt-research/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/prompt-research/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 52112,
+      "sha256": "6de6b43b62b7a793c49cb9df932e34d5de8a86289bacfc18fe5c8b0a92f372dc",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "Prompt Research for AI Visibility | PATERNOGA",
+      "h1": [
+        "What questions do potential customers ask AI systems?"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/prompt-research/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/prompt-recherche/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/prompt-research/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/prompt-recherche/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 117,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/technische-geo-optimierung/",
+      "final_url": "https://www.paternoga-seo-geo.de/technische-geo-optimierung/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 91637,
+      "sha256": "9f08a8d1df908e716dc179559ab98146656689a71b5528a792304bc1f6b09b6f",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "Technische GEO-Optimierung | PATERNOGA",
+      "h1": [
+        "Technische GEO-Optimierung für klare, erreichbare Inhalte"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/technische-geo-optimierung/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/technische-geo-optimierung/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/technical-geo-optimization/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/technische-geo-optimierung/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 115,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/technical-geo-optimization/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/technical-geo-optimization/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 91061,
+      "sha256": "a708dc61bfe2a5acb9134accd5b8932a7f5fdf5c613bd2a1cef374ccb07a94db",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "Technical GEO Optimization | PATERNOGA",
+      "h1": [
+        "Technical GEO optimization for content that stays clear and reachable"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/technical-geo-optimization/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/technische-geo-optimierung/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/technical-geo-optimization/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/technische-geo-optimierung/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 115,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/ai-crawlability/",
+      "final_url": "https://www.paternoga-seo-geo.de/ai-crawlability/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 112333,
+      "sha256": "6ea555214ab8d72bdd5372873ca8c27c06002c89757562457ba09ff53f790d1b",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "AI-Crawlability für KI-Suche | PATERNOGA",
+      "h1": [
+        "Sieh, was Antwortsysteme erreichen können"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/ai-crawlability/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/ai-crawlability/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/ai-crawlability/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/ai-crawlability/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 113,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/ai-crawlability/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/ai-crawlability/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 111510,
+      "sha256": "ccfd7987b8ae586e83aed0f2a7916f08a5fc1fd5376df19fae7340123e061654",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "AI Crawlability for AI Search | PATERNOGA",
+      "h1": [
+        "See what answer systems can actually reach"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/ai-crawlability/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/ai-crawlability/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/ai-crawlability/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/ai-crawlability/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 113,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/geo-content/",
+      "final_url": "https://www.paternoga-seo-geo.de/geo-content/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 92175,
+      "sha256": "31010c35a04f5a9a713759e56e2c09fd913e54f676ff0d01a8039b6ce6cc408b",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "GEO-Content für belastbare Antworten und Quellen | PATERNOGA",
+      "h1": [
+        "GEO-Content entwickeln, der eine echte Frage vollständig beantwortet"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/geo-content/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/geo-content/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/geo-content/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/geo-content/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 115,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/geo-content/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/geo-content/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 91123,
+      "sha256": "aba322b9981342f0e1e948905fa8a49b1ac96180b61e799be6e03ff8fa3a0a31",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "GEO Content for Dependable Answers and Sources | PATERNOGA",
+      "h1": [
+        "Build GEO content that answers a real question completely"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/geo-content/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/geo-content/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/geo-content/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/geo-content/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 115,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/content-optimierung-ai-suche/",
+      "final_url": "https://www.paternoga-seo-geo.de/content-optimierung-ai-suche/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 63236,
+      "sha256": "714f8e7ed94f4ac163cb3fe44c4ec278df2f51ae4d2f0e912e15c378f8eeee9f",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "Content-Optimierung für AI-Suche | PATERNOGA",
+      "h1": [
+        "Bestehende Inhalte klarer, aktueller und hilfreicher machen"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/content-optimierung-ai-suche/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/content-optimierung-ai-suche/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/content-optimization-ai-search/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/content-optimierung-ai-suche/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 115,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/content-optimization-ai-search/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/content-optimization-ai-search/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 62478,
+      "sha256": "671b6abb35053aee9a4beaf11ea9ad6faf9ea98ce58ecd4f126be162cbca5355",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "Content Optimization for AI Search | PATERNOGA",
+      "h1": [
+        "Make existing content clearer, current and more useful"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/content-optimization-ai-search/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/content-optimierung-ai-suche/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/content-optimization-ai-search/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/content-optimierung-ai-suche/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 115,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/geo-monitoring/",
+      "final_url": "https://www.paternoga-seo-geo.de/geo-monitoring/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 75171,
+      "sha256": "1104fe66391ba1d41f25b3eab87ab8bf4fdccf5d9d41495ec9bf3de225961200",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "GEO Monitoring für laufende KI-Sichtbarkeit | PATERNOGA",
+      "h1": [
+        "Veränderungen sehen, bevor sie zur falschen Gewissheit werden"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/geo-monitoring/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/geo-monitoring/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/geo-monitoring/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/geo-monitoring/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 113,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/geo-monitoring/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/geo-monitoring/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 74379,
+      "sha256": "271be7684df0fe3804b918342c0d51df1557d581e3bcd59dc0f292e856da64ed",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "GEO Monitoring for Ongoing AI Visibility | PATERNOGA",
+      "h1": [
+        "See change before it becomes false certainty"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/geo-monitoring/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/geo-monitoring/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/geo-monitoring/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/geo-monitoring/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 113,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/geo-betreuung/",
+      "final_url": "https://www.paternoga-seo-geo.de/geo-betreuung/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 67841,
+      "sha256": "05cd7460d2fb166a04ff33c6d5a8129a8a80068c1232b71fc7097bfef5cdd12c",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "GEO-Betreuung für laufende Optimierung | PATERNOGA",
+      "h1": [
+        "Deine AI-Sichtbarkeit bleibt in Bewegung"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/geo-betreuung/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/geo-betreuung/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/geo-support/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/geo-betreuung/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 112,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/geo-support/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/geo-support/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 66904,
+      "sha256": "c5827fe5042d69adaf3ee53f2c7e4f6dd4b41e0c5382e133d2883c229729bbae",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "GEO Support for Ongoing Optimisation | PATERNOGA",
+      "h1": [
+        "Your AI visibility keeps moving"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/geo-support/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/geo-betreuung/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/geo-support/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/geo-betreuung/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ],
+      "internal_link_count": 112,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/geo-agentur-deutschland/",
+      "final_url": "https://www.paternoga-seo-geo.de/geo-agentur-deutschland/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 48015,
+      "sha256": "345831c895b7d2149bb02a8ddbbfc4c850add33a5144e25e3ccd7814ee831121",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "GEO Agentur Deutschland | PATERNOGA",
+      "h1": [
+        "GEO-Agentur für Unternehmen in Deutschland"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/geo-agentur-deutschland/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/geo-agentur-deutschland/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/geo-agency-germany/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/geo-agentur-deutschland/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList"
+      ],
+      "internal_link_count": 118,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/geo-agency-germany/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/geo-agency-germany/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 47465,
+      "sha256": "9c18ac8f3fed49d707cefa3b5beceac23cd89fc20451c51a04fd2565035e2ca8",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "GEO Agency Germany | PATERNOGA",
+      "h1": [
+        "A GEO agency for companies across Germany"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/geo-agency-germany/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/geo-agentur-deutschland/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/geo-agency-germany/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/geo-agentur-deutschland/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "Service",
+        "BreadcrumbList"
+      ],
+      "internal_link_count": 118,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [
+        "form_guard"
+      ],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/wissen/ki-crawler-robots-txt/",
+      "final_url": "https://www.paternoga-seo-geo.de/wissen/ki-crawler-robots-txt/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 46561,
+      "sha256": "7576caceac68a854a60c346f260dfbb789aafebda573fb4548ab234b561f4f8c",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "KI-Crawler in robots.txt richtig steuern | PATERNOGA",
+      "h1": [
+        "OAI-SearchBot, GPTBot und PerplexityBot richtig einordnen"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/wissen/ki-crawler-robots-txt/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/wissen/ki-crawler-robots-txt/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/knowledge/ai-crawlers-robots-txt/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/wissen/ki-crawler-robots-txt/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "TechArticle",
+        "BreadcrumbList"
+      ],
+      "internal_link_count": 114,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/knowledge/ai-crawlers-robots-txt/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/knowledge/ai-crawlers-robots-txt/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 46319,
+      "sha256": "fe63df5e89cf346d1a25d15e1a93d3e102aac45e3dc6aaea97f11d48f4674f14",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "AI Crawlers and robots.txt: A Practical Guide | PATERNOGA",
+      "h1": [
+        "Classify OAI-SearchBot, GPTBot and PerplexityBot correctly"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/knowledge/ai-crawlers-robots-txt/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/wissen/ki-crawler-robots-txt/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/knowledge/ai-crawlers-robots-txt/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/wissen/ki-crawler-robots-txt/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "TechArticle",
+        "BreadcrumbList"
+      ],
+      "internal_link_count": 114,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/research/ki-crawler-readiness-dax-40-2026/",
+      "final_url": "https://www.paternoga-seo-geo.de/research/ki-crawler-readiness-dax-40-2026/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 85011,
+      "sha256": "cf056e6fa88b0af15488013b212f121d63a92a43fabbe5c4a586c8b91ad717a0",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "KI-Crawler-Readiness der DAX 40 2026 | PATERNOGA",
+      "h1": [
+        "Wie steuern DAX-40-Unternehmen KI-Crawler?"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/research/ki-crawler-readiness-dax-40-2026/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/research/ki-crawler-readiness-dax-40-2026/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/research/dax-40-ai-crawler-readiness-2026/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/research/ki-crawler-readiness-dax-40-2026/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "TechArticle",
+        "BreadcrumbList",
+        "Dataset"
+      ],
+      "internal_link_count": 118,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/research/dax-40-ai-crawler-readiness-2026/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/research/dax-40-ai-crawler-readiness-2026/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 84396,
+      "sha256": "34c4d57f87a6d868a11b1def4df88261ceb6da73c4e105679a24d2899b2f9425",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "DAX 40 AI Crawler Readiness 2026 | PATERNOGA",
+      "h1": [
+        "How do DAX 40 companies control AI crawlers?"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/research/dax-40-ai-crawler-readiness-2026/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/research/ki-crawler-readiness-dax-40-2026/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/research/dax-40-ai-crawler-readiness-2026/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/research/ki-crawler-readiness-dax-40-2026/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "TechArticle",
+        "BreadcrumbList",
+        "Dataset"
+      ],
+      "internal_link_count": 118,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/impressum/",
+      "final_url": "https://www.paternoga-seo-geo.de/impressum/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 28222,
+      "sha256": "cb0a0818f6c96d5ea21711078c61feef4bb5ff4d2036b0226676fb8c6117316c",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "Impressum | PATERNOGA",
+      "h1": [
+        "Impressum"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/impressum/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/impressum/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/legal-notice/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/impressum/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage"
+      ],
+      "internal_link_count": 108,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/legal-notice/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/legal-notice/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 28382,
+      "sha256": "eb0a04cde5b179dc6e125e73965abb073b1a41eb2cd9844a01d2e8aba8699eff",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "Legal Notice | PATERNOGA",
+      "h1": [
+        "Legal Notice"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/legal-notice/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/impressum/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/legal-notice/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/impressum/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage"
+      ],
+      "internal_link_count": 108,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/datenschutz/",
+      "final_url": "https://www.paternoga-seo-geo.de/datenschutz/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 38413,
+      "sha256": "f336226234f6c466ab500c4e2ec984bf5fc5090281caac61e918e4355ea17170",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "Datenschutz | PATERNOGA",
+      "h1": [
+        "Datenschutz"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/datenschutz/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/datenschutz/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/privacy/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/datenschutz/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage"
+      ],
+      "internal_link_count": 116,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [],
+      "extracted_entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/privacy/",
+      "final_url": "https://www.paternoga-seo-geo.de/en/privacy/",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/html",
+      "content_length": 37329,
+      "sha256": "e267003792363fb7cd3faa5f0bd1b6d330e2ad2b80d7a5ea598f1c8ec90abeda",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": "Accept",
+        "x_robots_tag": null
+      },
+      "title": "Privacy Policy | PATERNOGA",
+      "h1": [
+        "Privacy Policy"
+      ],
+      "canonical": "https://www.paternoga-seo-geo.de/en/privacy/",
+      "hreflang": [
+        {
+          "lang": "de",
+          "href": "https://www.paternoga-seo-geo.de/datenschutz/"
+        },
+        {
+          "lang": "en",
+          "href": "https://www.paternoga-seo-geo.de/en/privacy/"
+        },
+        {
+          "lang": "x-default",
+          "href": "https://www.paternoga-seo-geo.de/datenschutz/"
+        }
+      ],
+      "json_ld_types": [
+        "Organization",
+        "WebSite",
+        "WebPage"
+      ],
+      "internal_link_count": 116,
+      "raw_scanner_terms": [],
+      "extracted_scanner_terms": [],
+      "entity_terms": [],
+      "extracted_entity_terms": []
+    }
+  ],
+  "special": [
+    {
+      "url": "https://www.paternoga-seo-geo.de/robots.txt",
+      "final_url": "https://www.paternoga-seo-geo.de/robots.txt",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/plain; charset=utf-8",
+      "content_length": 133,
+      "sha256": "44b3ffcfcfb1446d37b6522bfe916ae1a46399e88515a67e86c983dd10c5fccb",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": null
+      },
+      "has_sitemap_reference": true,
+      "entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/sitemap.xml",
+      "final_url": "https://www.paternoga-seo-geo.de/sitemap.xml",
+      "status": 200,
+      "ok": true,
+      "content_type": "application/xml",
+      "content_length": 12768,
+      "sha256": "19d4e6968fb9027b76aad1a96b318c8e1a133afb0fea8000c13ff93d7d9cc306",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": null
+      },
+      "has_sitemap_reference": true,
+      "entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/llms.txt",
+      "final_url": "https://www.paternoga-seo-geo.de/llms.txt",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/plain; charset=utf-8",
+      "content_length": 5274,
+      "sha256": "80a058837b7df38f777416110ecd1272d8e96a146b44737c16f653126a45c9b7",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": null
+      },
+      "has_sitemap_reference": true,
+      "entity_terms": []
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/llms-full.txt",
+      "final_url": "https://www.paternoga-seo-geo.de/llms-full.txt",
+      "status": 200,
+      "ok": true,
+      "content_type": "text/plain; charset=utf-8",
+      "content_length": 6272,
+      "sha256": "2fe9059372e24969d06d0b456087bb033066ab2c230b7071bbf5867970da7399",
+      "headers": {
+        "cache_control": "public, max-age=0, must-revalidate",
+        "vary": null
+      },
+      "has_sitemap_reference": true,
+      "entity_terms": []
+    }
+  ],
+  "markdown": [
+    {
+      "url": "https://www.paternoga-seo-geo.de/",
+      "status": 200,
+      "content_type": "text/markdown; charset=utf-8",
+      "has_html": false,
+      "has_script": false,
+      "scanner_terms": [],
+      "entity_terms": [],
+      "sha256": "772f33864db9d76c239e4b269cf900be66591114eca1cb857950db859f8cc79a"
+    },
+    {
+      "url": "https://www.paternoga-seo-geo.de/en/",
+      "status": 200,
+      "content_type": "text/markdown; charset=utf-8",
+      "has_html": false,
+      "has_script": false,
+      "scanner_terms": [],
+      "entity_terms": [],
+      "sha256": "2f314cb40d88f265ecc6393bea0dd981c1f566f8f955651e6b108ba374399698"
+    }
+  ],
+  "summary": {
+    "page_failures": 0,
+    "raw_scanner_hits": [],
+    "extracted_scanner_hits": [],
+    "company_fax_hits": [],
+    "legacy_entity_hits": []
+  }
+}

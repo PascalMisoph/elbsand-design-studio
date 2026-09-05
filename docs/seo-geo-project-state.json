@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "project": {
+    "name": "paternoga-seo-geo-studio",
+    "repository": "C:\\Dev\\elbsand-design-studio",
+    "branch": "main",
+    "commit": "d172e84ee6e19cfb46608844e075b5f28b3b387d",
+    "dirty": true,
+    "git_status": [
+      "M AGENTS.md",
+      "?? docs/seo-geo-live-crawl.json",
+      "?? docs/seo-geo-project-state.json",
+      "?? scripts/analyze-x-bookmarks.mjs",
+      "?? scripts/build-seo-geo-bookmark-doc.ps1",
+      "?? scripts/finalize-seo-geo-bookmark-html.mjs",
+      "?? scripts/render-word-pages.ps1",
+      "?? scripts/resolve-x-bookmark-links.mjs",
+      "?? scripts/x-bookmarks-console-export.js"
+    ]
+  },
+  "target": {
+    "canonical_origin": "https://www.paternoga-seo-geo.de",
+    "locales": [
+      "de",
+      "en"
+    ],
+    "route_file_count": 45,
+    "last_live_crawl": {
+      "observed_at": "2026-09-05T20:41:34.763Z",
+      "routes": 40,
+      "page_failures": 0,
+      "raw_scanner_hits": 0,
+      "extracted_scanner_hits": 0,
+      "company_fax_hits": 0,
+      "legacy_entity_hits": 0,
+      "output_file": "C:\\Dev\\elbsand-design-studio\\docs\\seo-geo-live-crawl.json"
+    }
+  },
+  "inventory": {
+    "file_count": 1638,
+    "route_files": [
+      "src/pages/ai-crawlability/index.astro",
+      "src/pages/ai-sichtbarkeit/index.astro",
+      "src/pages/api/contact.ts",
+      "src/pages/api/scan.ts",
+      "src/pages/content-optimierung-ai-suche/index.astro",
+      "src/pages/datenschutz/index.astro",
+      "src/pages/en/ai-brand-perception/index.astro",
+      "src/pages/en/ai-competitor-analysis/index.astro",
+      "src/pages/en/ai-crawlability/index.astro",
+      "src/pages/en/ai-fact-checking/index.astro",
+      "src/pages/en/ai-readiness-result/index.astro",
+      "src/pages/en/ai-source-analysis/index.astro",
+      "src/pages/en/ai-visibility/index.astro",
+      "src/pages/en/content-optimization-ai-search/index.astro",
+      "src/pages/en/geo-agency-germany/index.astro",
+      "src/pages/en/geo-audit/index.astro",
+      "src/pages/en/geo-content/index.astro",
+      "src/pages/en/geo-monitoring/index.astro",
+      "src/pages/en/geo-optimization/index.astro",
+      "src/pages/en/geo-support/index.astro",
+      "src/pages/en/index.astro",
+      "src/pages/en/knowledge/ai-crawlers-robots-txt/index.astro",
+      "src/pages/en/legal-notice/index.astro",
+      "src/pages/en/privacy/index.astro",
+      "src/pages/en/prompt-research/index.astro",
+      "src/pages/en/research/dax-40-ai-crawler-readiness-2026/index.astro",
+      "src/pages/en/technical-geo-optimization/index.astro",
+      "src/pages/erstgespraech/index.astro",
+      "src/pages/geo-agentur-deutschland/index.astro",
+      "src/pages/geo-audit/index.astro",
+      "src/pages/geo-betreuung/index.astro",
+      "src/pages/geo-content/index.astro",
+      "src/pages/geo-monitoring/index.astro",
+      "src/pages/geo-optimierung/index.astro",
+      "src/pages/impressum/index.astro",
+      "src/pages/index.astro",
+      "src/pages/ki-faktencheck/index.astro",
+      "src/pages/ki-markenwahrnehmung/index.astro",
+      "src/pages/ki-quellenanalyse/index.astro",
+      "src/pages/ki-readiness-ergebnis/index.astro",
+      "src/pages/ki-wettbewerbsanalyse/index.astro",
+      "src/pages/prompt-recherche/index.astro",
+      "src/pages/research/ki-crawler-readiness-dax-40-2026/index.astro",
+      "src/pages/technische-geo-optimierung/index.astro",
+      "src/pages/wissen/ki-crawler-robots-txt/index.astro"
+    ],
+    "docs": [
+      "docs/codebase-audit-2026-08-26.md",
+      "docs/design-audit.md",
+      "docs/design-reference-analysis.md",
+      "docs/geo-visibility-baseline.md",
+      "docs/implementation-report.md",
+      "docs/national-search-acquisition-2026-08-30.md",
+      "docs/national-search-acquisition-report-2026-08-30.md",
+      "docs/prelaunch-organic-readiness.md",
+      "docs/seo-geo-audit-2026-09-05.md",
+      "docs/seo-geo-live-crawl.json",
+      "docs/seo-geo-next-steps.md",
+      "docs/seo-geo-project-state.json"
+    ],
+    "package_scripts": [
+      "dev",
+      "build",
+      "preview",
+      "check",
+      "static:check",
+      "seo:check",
+      "crawler:check",
+      "security:check",
+      "test:unit",
+      "preview:ai-mails",
+      "deploy:check",
+      "indexnow",
+      "research:dax-crawlers",
+      "test:visual",
+      "verify"
+    ],
+    "deployment_files": [
+      "astro.config.mjs",
+      "vercel.json"
+    ],
+    "entity_signals_in_source": [
+      {
+        "file": "public/llms-full.txt",
+        "signal": "public_email",
+        "count": 1
+      },
+      {
+        "file": "public/llms-full.txt",
+        "signal": "public_phone",
+        "count": 1
+      },
+      {
+        "file": "public/llms.txt",
+        "signal": "public_email",
+        "count": 1
+      },
+      {
+        "file": "src/components/AiCheck.astro",
+        "signal": "form_guard",
+        "count": 1
+      },
+      {
+        "file": "src/components/Contact.astro",
+        "signal": "form_guard",
+        "count": 1
+      },
+      {
+        "file": "src/content/contact-details.ts",
+        "signal": "public_email",
+        "count": 2
+      },
+      {
+        "file": "src/content/contact-details.ts",
+        "signal": "public_phone",
+        "count": 2
+      },
+      {
+        "file": "src/lib/server/ai-check-email.ts",
+        "signal": "public_email",
+        "count": 1
+      },
+      {
+        "file": "src/pages/api/contact.ts",
+        "signal": "public_email",
+        "count": 1
+      },
+      {
+        "file": "src/pages/api/contact.ts",
+        "signal": "form_guard",
+        "count": 1
+      }
+    ]
+  },
+  "knowledge": {
+    "pack": "PATERNOGA SEO & GEO Wissensbasis",
+    "source_sha256": "91a9cb6fb8c06981b6370867bfd6ab1762e56b95dc6b8dd5cfa9a99847a5343e",
+    "ingested_at": "2026-09-05T20:40:28.110032+00:00",
+    "online_best_practices_checked": "2026-09-05"
+  },
+  "roadmap": {
+    "source": "docs/seo-geo-next-steps.md",
+    "items": [
+      {
+        "number": 1,
+        "name": "Unabhängiger Post-Deployment-Re-Crawl",
+        "status": "NEXT",
+        "goal": "Externer Crawl der Live-Seite mit Scanner-, H1-, Title-, Link- und Entity-Prüfung."
+      },
+      {
+        "number": 2,
+        "name": "Indexierung beschleunigen und alten Cache bereinigen",
+        "status": "PLANNED",
+        "goal": "GSC-URL-Prüfung und gezielte erneute Indexierungsanfragen für die wichtigsten geänderten DE-/EN-URLs; anschließend Index-/Cache-Status dokumentieren."
+      },
+      {
+        "number": 3,
+        "name": "GEO-/SEO-T0-Baseline",
+        "status": "PLANNED",
+        "goal": "Versioniertes Query-/Prompt-Panel, heutiger Ranking-/Mention-/Citation-Stand und definierte Messpunkte nach 2, 4 und 8 Wochen."
+      },
+      {
+        "number": 4,
+        "name": "Einen Research-Case auswählen und die Research-Roadmap aktivieren",
+        "status": "PLANNED",
+        "goal": "Nach T0 eine Studie auswählen, sauber abgrenzen und separat beauftragen; keine Forschung im Rahmen dieses Roadmap-Eintrags."
+      },
+      {
+        "number": 5,
+        "name": "Commercial Content gegen echte Suchintention prüfen",
+        "status": "PLANNED",
+        "goal": "Chirurgischer SERP-/Content-Gap-Audit für ungefähr 58 wichtigste Money Pages, ohne pauschale Umschreibungen."
+      },
+      {
+        "number": 6,
+        "name": "Distribution aufbauen",
+        "status": "PLANNED",
+        "goal": "Nach einem realen Research-Asset Website-, LinkedIn-, Video-, Chart- und Outreach-Formate aus einem freigegebenen Datensatz ableiten."
+      },
+      {
+        "number": 7,
+        "name": "Monitoring automatisieren",
+        "status": "PLANNED",
+        "goal": "Nach T0 und Query-Definition regelmäßige Messung von Rankings, Indexierung, AI-Zitationen, Mentions und Veränderungen gegenüber T0."
+      }
+    ]
+  },
+  "research": {
+    "status": "backlog",
+    "execution_authorized": false,
+    "note": "Do not start a Research case without an explicit later request."
+  },
+  "updated_at": "2026-09-05T20:41:35.922Z",
+  "checks": {
+    "delivery": {
+      "status": "verified",
+      "evidence": [
+        {
+          "claim": "All crawled pages returned a successful HTTP response.",
+          "source": "C:\\Dev\\elbsand-design-studio\\docs\\seo-geo-live-crawl.json",
+          "method": "node crawl-site.mjs --url https://www.paternoga-seo-geo.de",
+          "observed_at": "2026-09-05T20:41:34.763Z",
+          "evidence_level": "A",
+          "confidence": "high"
+        }
+      ]
+    },
+    "crawl_controls": {
+      "status": "verified",
+      "evidence": [
+        {
+          "claim": "robots.txt, sitemap.xml, llms.txt and llms-full.txt were fetched.",
+          "source": "C:\\Dev\\elbsand-design-studio\\docs\\seo-geo-live-crawl.json",
+          "method": "node crawl-site.mjs --url https://www.paternoga-seo-geo.de",
+          "observed_at": "2026-09-05T20:41:34.763Z",
+          "evidence_level": "A",
+          "confidence": "high"
+        }
+      ]
+    }
+  },
+  "open_points": [],
+  "audit_runs": [
+    {
+      "type": "live-crawl",
+      "observed_at": "2026-09-05T20:39:21.236Z",
+      "source": "C:\\Dev\\elbsand-design-studio\\docs\\seo-geo-live-crawl.json",
+      "routes": 40,
+      "result": "pass"
+    },
+    {
+      "type": "live-crawl",
+      "observed_at": "2026-09-05T20:41:34.763Z",
+      "source": "C:\\Dev\\elbsand-design-studio\\docs\\seo-geo-live-crawl.json",
+      "routes": 40,
+      "result": "pass"
+    }
+  ]
+}
