@@ -23,7 +23,7 @@ export const aiVisibilityPages: AiVisibilityPair = {
     alternateDePath: aiVisibilityDePath,
     alternateEnPath: aiVisibilityEnPath,
     meta: {
-      title: "AI-Sichtbarkeit für Unternehmen | Paternoga SEO & GEO Studio",
+      title: "AI-Sichtbarkeit für Unternehmen | PATERNOGA",
       description: "Erfahre, wie dein Unternehmen in KI-Antworten erscheint, welche Themen fehlen und welche Signale gestärkt werden sollten. AI-Sichtbarkeit prüfen."
     },
     breadcrumb: { home: "Start", hub: "GEO-Optimierung", current: "AI-Sichtbarkeit" },
@@ -114,7 +114,7 @@ export const aiVisibilityPages: AiVisibilityPair = {
     alternateDePath: aiVisibilityDePath,
     alternateEnPath: aiVisibilityEnPath,
     meta: {
-      title: "AI Visibility for Businesses | Paternoga SEO & GEO Studio",
+      title: "AI Visibility for Businesses | PATERNOGA",
       description: "See how your business appears in AI answers, which topics are missing and which signals need strengthening. Request an AI visibility review."
     },
     breadcrumb: { home: "Home", hub: "GEO optimisation", current: "AI visibility" },
@@ -392,7 +392,7 @@ export const aiBrandPerceptionPages: AiVisibilityPair = {
     lang: "de", slug: "ki-markenwahrnehmung", alternateDePath: "/ki-markenwahrnehmung/", alternateEnPath: "/en/ai-brand-perception/",
     meta: { title: "KI-Markenwahrnehmung analysieren | PATERNOGA", description: "Prüfe, welche Themen, Eigenschaften und Stimmungen KI-Systeme mit deiner Marke verbinden und wo die Erzählung unklar bleibt. Analyse anfragen." },
     breadcrumb: { home: "Start", hub: "GEO-Optimierung", parent: { label: "AI-Sichtbarkeit", href: aiVisibilityDePath }, current: "KI-Markenwahrnehmung" },
-    eyebrow: "KI-Markenwahrnehmung", title: "Welche Geschichte erzählt KI über deine Marke?", lead: "Wir ordnen wiederkehrende Themen, Tonalität und Zuschreibungen in AI-Antworten. So erkennst du, ob die Außenwahrnehmung zu deinem tatsächlichen Angebot passt.", primaryCta: "Markenwahrnehmung anfragen", secondaryCta: "Analyse ansehen",
+    eyebrow: "KI-Markenwahrnehmung", title: "Wie beschreiben KI-Systeme deine Marke?", lead: "Wir ordnen wiederkehrende Themen, Tonalität und Zuschreibungen in AI-Antworten. So erkennst du, ob die Außenwahrnehmung zu deinem tatsächlichen Angebot passt.", primaryCta: "Markenwahrnehmung anfragen", secondaryCta: "Analyse ansehen",
     outcomes: [
       { label: "Themen", title: "Wiederholungen erkennen", text: "Sieh, welche Eigenschaften und Leistungen in Antworten immer wieder auftauchen." },
       { label: "Tonalität", title: "Wirkung einordnen", text: "Verstehe, ob deine Marke sachlich, persönlich, spezialisiert oder beliebig beschrieben wird." },
@@ -437,7 +437,7 @@ export const aiBrandPerceptionPages: AiVisibilityPair = {
     lang: "en", slug: "ai-brand-perception", alternateDePath: "/ki-markenwahrnehmung/", alternateEnPath: "/en/ai-brand-perception/",
     meta: { title: "AI Brand Perception Analysis | PATERNOGA", description: "See which themes, traits and tones AI systems associate with your brand and where the story remains unclear. Request a perception analysis." },
     breadcrumb: { home: "Home", hub: "GEO optimisation", parent: { label: "AI visibility", href: aiVisibilityEnPath }, current: "AI brand perception" },
-    eyebrow: "AI brand perception", title: "What story does AI tell about your brand?", lead: "We classify recurring themes, tone and associations in AI answers. You can see whether the outside picture fits the offer you actually deliver.", primaryCta: "Request brand perception analysis", secondaryCta: "View the analysis",
+    eyebrow: "AI brand perception", title: "How do AI systems describe your brand?", lead: "We classify recurring themes, tone and associations in AI answers. You can see whether the outside picture fits the offer you actually deliver.", primaryCta: "Request brand perception analysis", secondaryCta: "View the analysis",
     outcomes: [
       { label: "Themes", title: "Recognise repetition", text: "See which traits and services keep appearing in answers." },
       { label: "Tone", title: "Classify the effect", text: "Understand whether your brand is described as factual, personal, specialist or generic." },

@@ -431,6 +431,9 @@ test("English route and form semantics", async ({ page }) => {
   await expect(formTab).toHaveAttribute("aria-selected", "true");
   await expect(page.locator('[data-contact-panel="calendar"]')).toBeHidden();
   await expect(page.locator('form[data-contact-panel="form"]')).toBeVisible();
+  await expect(page.locator(".contact-honeypot")).toBeHidden();
+  await expect(page.locator('.contact-honeypot input[name="formGuard"]')).toHaveCount(1);
+  await expect(page.locator(".contact-honeypot")).not.toContainText("Company fax");
   await expect(page.locator('input[name="intent"]')).toHaveCount(3);
   await expect(page.locator('input[name="intent"]').first()).toHaveAttribute("required", "");
   await expect(page.locator('form[data-contact-flow] input[name="email"]')).toHaveAttribute("type", "email");
@@ -507,6 +510,16 @@ test("AI check gates blurred findings behind first name and email", async ({ pag
   });
 
   await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
+  const initialAiCheck = await page.locator("#ki-check").evaluate((check) => ({
+    screens: [...check.querySelectorAll<HTMLElement>("[data-ai-screen]")].map((screen) => screen.dataset.aiScreen),
+    text: (check as HTMLElement).innerText,
+  }));
+  expect(initialAiCheck.screens).toEqual(["1"]);
+  expect(initialAiCheck.text).not.toContain("Wartet");
+  expect(initialAiCheck.text).not.toContain("0 / 100");
+  expect(initialAiCheck.text).not.toContain("Technischer Scan abgeschlossen");
+  expect(initialAiCheck.text).not.toContain("Dein Befund ist freigeschaltet.");
+
   const compactStart = await page.locator("#ki-check .ai-check-surface").evaluate((surface) => {
     const phases = surface.querySelector(".ai-check-phases")!;
     const row = surface.querySelector(".ai-check-url-row")!.getBoundingClientRect();
@@ -525,6 +538,8 @@ test("AI check gates blurred findings behind first name and email", async ({ pag
 
   const result = page.locator("#ki-check [data-ai-screen='3']");
   await expect(result).toBeVisible();
+  expect(await page.locator("#ki-check [data-ai-screen]").evaluateAll((screens) => screens.map((screen) => screen.dataset.aiScreen))).toEqual(["3"]);
+  await expect(page.locator("#ki-check [data-ai-screen='1'], #ki-check [data-ai-screen='2']")).toHaveCount(0);
   await expect(result.locator("[data-ai-score]")).toHaveText("42");
   await expect(result.locator("[data-ai-grade]")).toHaveText("D");
   await expect(result.locator("[data-result-headline]")).toHaveText("Geringe technische Readiness");
@@ -538,12 +553,14 @@ test("AI check gates blurred findings behind first name and email", async ({ pag
   await expect(result.locator("input[name='email']")).toBeVisible();
   await expect(result.locator("input[name='tel']")).toHaveCount(0);
   await expect(result.locator("[data-live-cta]")).toBeHidden();
+  await expect(result.locator("input[name='email']")).toBeFocused();
 
   await result.locator("input[name='name']").fill("Pascal");
   await result.locator("input[name='email']").fill("pascal@example.invalid");
   await result.locator("[data-ai-lead-form]").getByRole("button").click();
 
   await expect(result.locator("[data-result-checks]")).not.toHaveClass(/is-locked/);
+  await expect(result.locator("[data-ai-unlocked]")).toBeFocused();
   await expect(result.locator("[data-result-grid]")).not.toHaveAttribute("aria-hidden");
   const failedRows = result.locator('.ai-audit-category li[data-status="fail"]');
   await expect(failedRows).toHaveCount(9);
@@ -573,4 +590,103 @@ test("AI check gates blurred findings behind first name and email", async ({ pag
   await page.setViewportSize({ width: 320, height: 900 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(320);
   await expect(result.locator(".ai-audit-category")).toHaveCount(3);
+});
+
+test("AI check exposes one active state across failure, scan and result transitions", async ({ page }) => {
+  const consoleErrors: string[] = [];
+  const runtimeErrors: string[] = [];
+  page.on("console", (message) => message.type() === "error" && consoleErrors.push(message.text()));
+  page.on("pageerror", (error) => runtimeErrors.push(error.message));
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+
+  let attempt = 0;
+  let releaseScan!: () => void;
+  const scanGate = new Promise<void>((resolve) => {
+    releaseScan = resolve;
+  });
+  await page.route("**/api/scan", async (route) => {
+    attempt += 1;
+    if (attempt === 1) {
+      await route.fulfill({
+        status: 502,
+        contentType: "application/json",
+        body: JSON.stringify({ ok: false, error: "test_scan_failure" }),
+      });
+      return;
+    }
+
+    await scanGate;
+    await route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({
+        ok: true,
+        scanId: "state-test-scan",
+        requestedUrl: "example.com",
+        finalUrl: "https://example.com/",
+        scannedAt: "2026-09-05T12:00:00.000Z",
+        locale: "de",
+        resultToken: "state-test-token",
+        resultUrl: "https://www.paternoga-seo-geo.de/ki-readiness-ergebnis/?result=state-test-token",
+        score: 37,
+        grade: "C",
+        criticalIssues: 1,
+        categories: {
+          ai: { key: "ai", title: "AI-Readiness & Crawling", score: 18, maxScore: 35, status: "warning", checks: [] },
+          data: { key: "data", title: "Daten-Architektur & Vertrauenssignale", score: 11, maxScore: 35, status: "warning", checks: [] },
+          tech: { key: "tech", title: "Technische Basis & Security", score: 8, maxScore: 30, status: "fail", checks: [] },
+        },
+        interpretation: {
+          scoreBand: "low",
+          readinessLabel: "Mittlere technische Readiness",
+          overallHeadline: "Mittlere technische Readiness",
+          overallSummary: "Die wichtigsten technischen Signale sind teilweise vorhanden.",
+          strongestCategory: { key: "ai", title: "AI-Readiness & Crawling", score: 18, maxScore: 35, ratio: 0.514 },
+          weakestCategory: { key: "tech", title: "Technische Basis & Security", score: 8, maxScore: 30, ratio: 0.267 },
+          strengthsHeading: "Was bereits vorhanden ist",
+          opportunitiesHeading: "Wo noch Potenzial besteht",
+          strengths: [],
+          opportunities: [],
+        },
+      }),
+    });
+  });
+
+  await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
+  const state = () => page.locator("#ki-check").evaluate((check) => ({
+    screens: [...check.querySelectorAll<HTMLElement>("[data-ai-screen]")].map((screen) => screen.dataset.aiScreen),
+    text: (check as HTMLElement).innerText,
+  }));
+
+  const initial = await state();
+  expect(initial.screens).toEqual(["1"]);
+  expect(initial.text).toContain("KI-Bereitschaft prüfen");
+  expect(initial.text).not.toContain("Wartet");
+  expect(initial.text).not.toContain("0 / 100");
+  expect(initial.text).not.toContain("Dein Befund ist freigeschaltet.");
+
+  const urlInput = page.locator("#ki-check input[name='url']");
+  await urlInput.fill("example.com");
+  await page.locator("#ki-check [data-scan-form]").getByRole("button").click();
+  await expect(page.locator("#ki-check [data-scan-error]")).toBeVisible();
+  await expect(urlInput).toBeFocused();
+  expect((await state()).screens).toEqual(["1"]);
+
+  await urlInput.fill("example.com");
+  await page.locator("#ki-check [data-scan-form]").getByRole("button").click();
+  const scanning = page.locator("#ki-check [data-ai-screen='2']");
+  await expect(scanning).toBeVisible();
+  expect((await state()).screens).toEqual(["2"]);
+  await expect(scanning).toContainText("Wir prüfen deine Website live.");
+  await expect(scanning).not.toContainText("0 / 100");
+  await expect(scanning).not.toContainText("Dein Befund ist freigeschaltet.");
+
+  releaseScan();
+  const result = page.locator("#ki-check [data-ai-screen='3']");
+  await expect(result).toBeVisible();
+  expect((await state()).screens).toEqual(["3"]);
+  await expect(result.locator("[data-ai-score]")).toHaveText("37");
+  await expect(result.locator("input[name='email']")).toBeFocused();
+  expect(consoleErrors.filter((error) => !error.includes("502"))).toEqual([]);
+  expect(runtimeErrors).toEqual([]);
 });

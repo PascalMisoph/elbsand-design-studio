@@ -17,11 +17,11 @@ const alternateDePath = isImprint ? "/impressum/" : "/datenschutz/";
 const alternateEnPath = isImprint ? "/en/legal-notice/" : "/en/privacy/";
 const meta = de
   ? isImprint
-    ? { title: "Impressum | Paternoga SEO & GEO Studio", description: "Anbieterkennzeichnung und Kontaktangaben von Paternoga SEO & GEO Studio in Dresden." }
-    : { title: "Datenschutz | Paternoga SEO & GEO Studio", description: "Informationen zur Verarbeitung personenbezogener Daten bei Paternoga SEO & GEO Studio." }
+    ? { title: "Impressum | PATERNOGA", description: "Anbieterkennzeichnung und Kontaktangaben von Paternoga SEO & GEO Studio in Dresden." }
+    : { title: "Datenschutz | PATERNOGA", description: "Informationen zur Verarbeitung personenbezogener Daten bei Paternoga SEO & GEO Studio." }
   : isImprint
-    ? { title: "Legal Notice | Paternoga SEO & GEO Studio", description: "Provider identification and contact details for Paternoga SEO & GEO Studio in Dresden, Germany." }
-    : { title: "Privacy Policy | Paternoga SEO & GEO Studio", description: "How Paternoga SEO & GEO Studio processes personal data when you use this website and its services." };
+    ? { title: "Legal Notice | PATERNOGA", description: "Provider identification and contact details for Paternoga SEO & GEO Studio in Dresden, Germany." }
+    : { title: "Privacy Policy | PATERNOGA", description: "How Paternoga SEO & GEO Studio processes personal data when you use this website and its services." };
 ---
 
 <BaseLayout title={meta.title} description={meta.description} lang={lang} canonicalPath={canonicalPath} alternateDePath={alternateDePath} alternateEnPath={alternateEnPath} bodyClass="legal-page">

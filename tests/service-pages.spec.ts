@@ -57,7 +57,7 @@ for (const [route, lang] of serviceRoutes) {
     expect(await page.locator("main").evaluate((main) => main.lastElementChild?.classList.contains("subpage-contact"))).toBe(true);
     await expect(page.locator(".site-footer-column")).toHaveCount(4);
     if (route === "/geo-audit/") {
-      await expect(page.locator("h1")).toHaveText("Wie spricht KI über dein Unternehmen?");
+      await expect(page.locator("h1")).toHaveText("GEO Audit: Wie sichtbar ist dein Unternehmen in ChatGPT & Co.?");
       await expect(page.locator(".a-hero-copy > p:not(.a-kicker)")).toContainText("Verfolge deine KI-Sichtbarkeit");
       await expect(page.locator(".a-presence-grid h3")).toHaveText(["Sichtbarkeits-Scores", "Stimmung & Themen", "Quellenautorität", "Faktencheck deiner Marke", "Wettbewerbsvergleich", "Plattformvergleich"]);
       await expect(page.locator(".a-presence h2")).toHaveText("Verstehe und ordne deine KI-Präsenz ein");
@@ -82,7 +82,7 @@ for (const [route, lang] of serviceRoutes) {
       await expect(page.locator(".a-faq summary").first()).toHaveText(/Welche KI-Systeme werden geprüft/);
     }
     if (route === "/en/geo-audit/") {
-      await expect(page.locator("h1")).toHaveText("How does AI talk about your business?");
+      await expect(page.locator("h1")).toHaveText("GEO audit: How visible is your business in AI answers?");
       await expect(page.locator(".a-hero-copy > p:not(.a-kicker)")).toHaveText("Track your AI visibility, see where and how AI mentions your brand, and uncover insights to enhance your presence.");
       await expect(page.locator(".a-presence-grid h3")).toHaveText(["Visibility Scores", "Sentiment & Keyword Insights", "Citation Authority", "FactCheck what AI says about your brand", "Competitive Benchmarking", "Platform Comparisons"]);
       await expect(page.locator(".a-presence h2")).toHaveText("Understand and assess your AI presence");

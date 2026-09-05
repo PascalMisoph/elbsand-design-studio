@@ -250,7 +250,7 @@ export const POST: APIRoute = async ({ request }) => {
     return Response.json({ ok: false, error: "invalid_request" }, { status: 400 });
   }
 
-  if (text(payload.companyFax, 200)) {
+  if (text(payload.formGuard, 200)) {
     return Response.json({ ok: true });
   }
 

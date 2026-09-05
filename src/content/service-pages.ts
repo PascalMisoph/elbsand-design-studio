@@ -72,12 +72,12 @@ export const geoAuditPages: Record<ServiceLocale, ServicePageContent> = {
     alternateDePath: "/geo-audit/",
     alternateEnPath: "/en/geo-audit/",
     meta: {
-      title: "GEO Audit für Unternehmen | Paternoga SEO & GEO Studio",
+      title: "GEO Audit für Unternehmen | PATERNOGA",
       description: "Prüfe, wie KI-Systeme dein Unternehmen einordnen, welche Quellen sie nutzen und wo die stärksten GEO-Hebel liegen. Jetzt GEO Audit anfragen."
     },
     breadcrumb: { home: "Start", hub: "GEO-Optimierung", current: "GEO Audit" },
     eyebrow: "GEO Audit",
-    title: "Wie spricht KI über dein Unternehmen?",
+    title: "GEO Audit: Wie sichtbar ist dein Unternehmen in ChatGPT & Co.?",
     lead: "Verfolge deine KI-Sichtbarkeit, erkenne, wo und wie KI deine Marke erwähnt, und gewinne Erkenntnisse, mit denen du deine Präsenz gezielt verbessern kannst.",
     primaryCta: "Kostenfreien KI-Check starten",
     secondaryCta: "Audit-Methode ansehen",
@@ -166,12 +166,12 @@ export const geoAuditPages: Record<ServiceLocale, ServicePageContent> = {
     alternateDePath: "/geo-audit/",
     alternateEnPath: "/en/geo-audit/",
     meta: {
-      title: "GEO Audit for Businesses | Paternoga SEO & GEO Studio",
+      title: "GEO Audit for Businesses | PATERNOGA",
       description: "See how AI systems understand your business, which sources they use and where the strongest GEO opportunities lie. Request a GEO audit."
     },
     breadcrumb: { home: "Home", hub: "GEO optimisation", current: "GEO audit" },
     eyebrow: "GEO audit",
-    title: "How does AI talk about your business?",
+    title: "GEO audit: How visible is your business in AI answers?",
     lead: "Track your AI visibility, see where and how AI mentions your brand, and uncover insights to enhance your presence.",
     primaryCta: "Start your free AI check",
     secondaryCta: "View audit method",

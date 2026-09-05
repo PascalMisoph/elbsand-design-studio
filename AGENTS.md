@@ -17,6 +17,7 @@ This file defines durable project guidance for coding agents working inside this
 - Pricing: inquiry-only.
 - Public contact email: kontakt@paternoga-seo-geo.de.
 - Core claim: `Be the brand AI thinks of first.`
+- For the 2026-09-05 SEO/GEO audit status, scanner extraction verification, confirmed decisions and the Research Roadmap backlog, read `docs/seo-geo-audit-2026-09-05.md`. The roadmap is backlog-only; do not start research or publish research pages without a later explicit request.
 
 ## Brand And Content Rules
 

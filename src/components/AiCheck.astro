@@ -1,5 +1,6 @@
 ---
 import type { Locale } from "../content/site";
+import { Buffer } from "node:buffer";
 
 interface Props {
   lang: Locale;
@@ -105,6 +106,7 @@ const copy = isEnglish
         tech: "Technische Basis & Security",
       },
     };
+const screenConfig = Buffer.from(JSON.stringify({ lang, privacyPath, copy })).toString("base64");
 ---
 <section class="ai-check section-shell" id="ki-check" aria-labelledby="ai-check-title">
   <header class="ai-check-heading">
@@ -116,9 +118,7 @@ const copy = isEnglish
     class="ai-check-tool"
     data-ai-check
     data-lang={lang}
-    data-scan-error={copy.scanError}
-    data-lead-error={copy.leadError}
-    data-sending={copy.sending}
+    data-ai-screen-config={screenConfig}
   >
     <div class="ai-check-surface">
       <ol class="ai-check-phases" aria-label={isEnglish ? "Analysis progress" : "Analysefortschritt"}>
@@ -129,6 +129,7 @@ const copy = isEnglish
         ))}
       </ol>
 
+      <div class="ai-check-screen-host" data-ai-screen-host>
       <section class="ai-check-screen ai-check-start" data-ai-screen="1">
         <form data-scan-form>
           <label for={`ai-check-url-${lang}`}>{copy.urlLabel}</label>
@@ -145,129 +146,11 @@ const copy = isEnglish
             <button class="button" type="submit">{copy.start}</button>
           </div>
           <small>{copy.inputNote}</small>
-          <p class="ai-check-error" role="alert" data-scan-error hidden>{copy.scanError}</p>
+          <p class="ai-check-error" role="alert" data-scan-error hidden></p>
         </form>
       </section>
+      </div>
 
-      <section class="ai-check-screen ai-check-scanning" data-ai-screen="2" hidden aria-live="polite">
-        <div>
-          <p class="eyebrow">{copy.phases[1]}</p>
-          <h3>{copy.scanningTitle}</h3>
-          <p>{copy.scanningBody}</p>
-        </div>
-        <ul class="ai-scan-list">
-          {copy.scanItems.map((item, index) => (
-            <li data-scan-item={index}>
-              <span class="ai-scan-marker" aria-hidden="true"></span>
-              <span>{item}</span>
-              <small data-scan-state>{isEnglish ? "Waiting" : "Wartet"}</small>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section class="ai-check-screen ai-check-result" data-ai-screen="3" hidden>
-        <div class="ai-score-column">
-          <p>{copy.preliminary}</p>
-          <p class="ai-score"><strong data-ai-score>0</strong><span>/ 100</span></p>
-          <p class="ai-grade"><span>{copy.grade}</span> <strong data-ai-grade>–</strong></p>
-          <p class="ai-score-label">{copy.scoreLabel}</p>
-          <p class="ai-score-note">{copy.scoreNote}</p>
-        </div>
-
-        <div class="ai-lead-column">
-          <div class="ai-result-summary" aria-live="polite">
-            <h3 data-result-headline></h3>
-            <p data-result-summary></p>
-          </div>
-          <div class="ai-category-summary" data-category-summary>
-            {(["ai", "data", "tech"] as const).map((key) => (
-              <div data-summary-category={key}>
-                <span>{copy.categoryTitles[key]}</span>
-                <strong>0/{key === "tech" ? "30" : "35"}</strong>
-              </div>
-            ))}
-          </div>
-          <div data-lead-gate>
-            <h3>{copy.leadTitle}</h3>
-            <p class="ai-lead-intro">{copy.leadBody}</p>
-            <form action="/api/contact" method="post" data-ai-lead-form>
-              <div class="ai-lead-fields">
-                <div>
-                  <label for={`ai-check-name-${lang}`}>{copy.firstNameLabel}</label>
-                  <input
-                    id={`ai-check-name-${lang}`}
-                    name="name"
-                    type="text"
-                    autocomplete="given-name"
-                    placeholder={copy.firstNamePlaceholder}
-                    required
-                  />
-                </div>
-                <div>
-                  <label for={`ai-check-email-${lang}`}>{copy.emailLabel}</label>
-                  <input
-                    id={`ai-check-email-${lang}`}
-                    name="email"
-                    type="email"
-                    autocomplete="email"
-                    placeholder={copy.emailPlaceholder}
-                    required
-                  />
-                </div>
-              </div>
-              <button class="button" type="submit">{copy.unlock}</button>
-              <small>{copy.privacy} · <a href={privacyPath}>{isEnglish ? "Privacy information" : "Datenschutzhinweise"}</a></small>
-              <p class="ai-check-error" role="alert" data-lead-error hidden>{copy.leadError}</p>
-            </form>
-          </div>
-          <div class="ai-unlocked" data-ai-unlocked hidden tabindex="-1">
-            <p class="eyebrow">{copy.unlockedEyebrow}</p>
-            <h3>{copy.unlocked}</h3>
-            <p>{copy.unlockedBody}</p>
-          </div>
-        </div>
-
-        <div
-          class="ai-result-checks is-locked"
-          aria-labelledby={`ai-result-title-${lang}`}
-          data-result-checks
-        >
-          <h3 id={`ai-result-title-${lang}`}>{copy.resultTitle}</h3>
-          <div class="ai-result-checks-grid ai-audit-content" data-result-grid aria-hidden="true">
-            <section class="ai-interpretation-panel" data-strengths-panel hidden>
-              <h4 data-strengths-heading></h4>
-              <ul data-strengths-list></ul>
-            </section>
-            <section class="ai-interpretation-panel" data-opportunities-panel hidden>
-              <h4 data-opportunities-heading></h4>
-              <ul data-opportunities-list></ul>
-            </section>
-            {(["ai", "data", "tech"] as const).map((key, index) => (
-              <section class="ai-audit-category" data-audit-category={key}>
-                <header>
-                  <p>{index + 1}</p>
-                  <h4>{copy.categoryTitles[key]}</h4>
-                  <small data-category-score>0 / {key === "tech" ? "30" : "35"}</small>
-                </header>
-                <ul data-category-checks></ul>
-              </section>
-            ))}
-            <section class="ai-recommendation ai-geo-transition">
-              <h4>{copy.geoTitle}</h4>
-              <p class="ai-recommendation-copy">{copy.geoBody}</p>
-              <p><strong>{copy.geoAudit}</strong></p>
-              <a href={isEnglish ? "/en/geo-audit/" : "/geo-audit/"}>{copy.geoCta}</a>
-            </section>
-          </div>
-          <div class="ai-result-lock" data-result-lock>
-            <span aria-hidden="true"></span>
-            <p>{copy.lockedLabel}</p>
-          </div>
-        </div>
-
-        <a class="button ai-live-cta" href="#kontakt" data-live-cta hidden>{copy.contact}</a>
-      </section>
     </div>
 
     <button class="ai-check-again" type="button" data-ai-again hidden>← {copy.again}</button>
@@ -275,41 +158,75 @@ const copy = isEnglish
 </section>
 
 <script>
+  import { createAiCheckScreens, type AiCheckScreenConfig } from "../lib/ai-check-screens";
   import type { ScanApiResult, ScanCategory, ScanCheck } from "../lib/ai-readiness";
+
+  const decodeScreenConfig = (encoded: string) => {
+    const binary = window.atob(encoded);
+    const bytes = Uint8Array.from(binary, (character) => character.charCodeAt(0));
+    return JSON.parse(new TextDecoder().decode(bytes)) as AiCheckScreenConfig;
+  };
 
   document.querySelectorAll<HTMLElement>("[data-ai-check]").forEach((tool) => {
     const phases = Array.from(tool.querySelectorAll<HTMLElement>("[data-ai-phase]"));
-    const screens = Array.from(tool.querySelectorAll<HTMLElement>("[data-ai-screen]"));
-    const scanForm = tool.querySelector<HTMLFormElement>("[data-scan-form]");
-    const urlInput = scanForm?.elements.namedItem("url") as HTMLInputElement | null;
-    const scanError = tool.querySelector<HTMLElement>("[data-scan-error]");
-    const scanItems = Array.from(tool.querySelectorAll<HTMLElement>("[data-scan-item]"));
-    const score = tool.querySelector<HTMLElement>("[data-ai-score]");
-    const grade = tool.querySelector<HTMLElement>("[data-ai-grade]");
-    const resultHeadline = tool.querySelector<HTMLElement>("[data-result-headline]");
-    const resultSummary = tool.querySelector<HTMLElement>("[data-result-summary]");
-    const strengthsPanel = tool.querySelector<HTMLElement>("[data-strengths-panel]");
-    const strengthsHeading = tool.querySelector<HTMLElement>("[data-strengths-heading]");
-    const strengthsList = tool.querySelector<HTMLUListElement>("[data-strengths-list]");
-    const opportunitiesPanel = tool.querySelector<HTMLElement>("[data-opportunities-panel]");
-    const opportunitiesHeading = tool.querySelector<HTMLElement>("[data-opportunities-heading]");
-    const opportunitiesList = tool.querySelector<HTMLUListElement>("[data-opportunities-list]");
-    const leadForm = tool.querySelector<HTMLFormElement>("[data-ai-lead-form]");
-    const leadGate = tool.querySelector<HTMLElement>("[data-lead-gate]");
-    const leadError = tool.querySelector<HTMLElement>("[data-lead-error]");
-    const unlocked = tool.querySelector<HTMLElement>("[data-ai-unlocked]");
-    const resultChecks = tool.querySelector<HTMLElement>("[data-result-checks]");
-    const resultGrid = tool.querySelector<HTMLElement>("[data-result-grid]");
-    const resultLock = tool.querySelector<HTMLElement>("[data-result-lock]");
-    const liveCta = tool.querySelector<HTMLAnchorElement>("[data-live-cta]");
+    const screenHost = tool.querySelector<HTMLElement>("[data-ai-screen-host]");
+    const startScreen = screenHost?.querySelector<HTMLElement>("[data-ai-screen='1']") ?? null;
+    const screenConfig = decodeScreenConfig(tool.dataset.aiScreenConfig ?? "");
+    const { createScanningScreen, createResultScreen } = createAiCheckScreens(screenConfig);
+
+    let scanForm: HTMLFormElement | null = null;
+    let urlInput: HTMLInputElement | null = null;
+    let scanError: HTMLElement | null = null;
+    let scanItems: HTMLElement[] = [];
+    let score: HTMLElement | null = null;
+    let grade: HTMLElement | null = null;
+    let resultHeadline: HTMLElement | null = null;
+    let resultSummary: HTMLElement | null = null;
+    let strengthsPanel: HTMLElement | null = null;
+    let strengthsHeading: HTMLElement | null = null;
+    let strengthsList: HTMLUListElement | null = null;
+    let opportunitiesPanel: HTMLElement | null = null;
+    let opportunitiesHeading: HTMLElement | null = null;
+    let opportunitiesList: HTMLUListElement | null = null;
+    let leadForm: HTMLFormElement | null = null;
+    let leadGate: HTMLElement | null = null;
+    let leadError: HTMLElement | null = null;
+    let unlocked: HTMLElement | null = null;
+    let resultChecks: HTMLElement | null = null;
+    let resultGrid: HTMLElement | null = null;
+    let resultLock: HTMLElement | null = null;
+    let liveCta: HTMLAnchorElement | null = null;
     const again = tool.querySelector<HTMLButtonElement>("[data-ai-again]");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let scanResult: ScanApiResult | null = null;
 
-    const showPhase = (phaseNumber: number) => {
-      screens.forEach((screen, index) => {
-        screen.hidden = index !== phaseNumber - 1;
-      });
+    const bindActiveScreen = () => {
+      const activeScreen = screenHost?.querySelector<HTMLElement>("[data-ai-screen]");
+      scanForm = activeScreen?.querySelector<HTMLFormElement>("[data-scan-form]") ?? null;
+      urlInput = scanForm?.elements.namedItem("url") as HTMLInputElement | null;
+      scanError = activeScreen?.querySelector<HTMLElement>("[data-scan-error]") ?? null;
+      scanItems = Array.from(activeScreen?.querySelectorAll<HTMLElement>("[data-scan-item]") ?? []);
+      score = activeScreen?.querySelector<HTMLElement>("[data-ai-score]") ?? null;
+      grade = activeScreen?.querySelector<HTMLElement>("[data-ai-grade]") ?? null;
+      resultHeadline = activeScreen?.querySelector<HTMLElement>("[data-result-headline]") ?? null;
+      resultSummary = activeScreen?.querySelector<HTMLElement>("[data-result-summary]") ?? null;
+      strengthsPanel = activeScreen?.querySelector<HTMLElement>("[data-strengths-panel]") ?? null;
+      strengthsHeading = activeScreen?.querySelector<HTMLElement>("[data-strengths-heading]") ?? null;
+      strengthsList = activeScreen?.querySelector<HTMLUListElement>("[data-strengths-list]") ?? null;
+      opportunitiesPanel = activeScreen?.querySelector<HTMLElement>("[data-opportunities-panel]") ?? null;
+      opportunitiesHeading = activeScreen?.querySelector<HTMLElement>("[data-opportunities-heading]") ?? null;
+      opportunitiesList = activeScreen?.querySelector<HTMLUListElement>("[data-opportunities-list]") ?? null;
+      leadForm = activeScreen?.querySelector<HTMLFormElement>("[data-ai-lead-form]") ?? null;
+      leadGate = activeScreen?.querySelector<HTMLElement>("[data-lead-gate]") ?? null;
+      leadError = activeScreen?.querySelector<HTMLElement>("[data-lead-error]") ?? null;
+      unlocked = activeScreen?.querySelector<HTMLElement>("[data-ai-unlocked]") ?? null;
+      resultChecks = activeScreen?.querySelector<HTMLElement>("[data-result-checks]") ?? null;
+      resultGrid = activeScreen?.querySelector<HTMLElement>("[data-result-grid]") ?? null;
+      resultLock = activeScreen?.querySelector<HTMLElement>("[data-result-lock]") ?? null;
+      liveCta = activeScreen?.querySelector<HTMLAnchorElement>("[data-live-cta]") ?? null;
+    };
+
+    const updatePhase = (phaseNumber: number) => {
       phases.forEach((phase, index) => {
         const isCurrent = index === phaseNumber - 1;
         phase.classList.toggle("is-current", isCurrent);
@@ -318,6 +235,18 @@ const copy = isEnglish
         else phase.removeAttribute("aria-current");
       });
       if (again) again.hidden = phaseNumber === 1;
+    };
+
+    const showPhase = (phaseNumber: number) => {
+      if (!screenHost) return;
+      if (phaseNumber === 1 && startScreen) {
+        screenHost.replaceChildren(startScreen);
+      } else {
+        const screen = phaseNumber === 2 ? createScanningScreen() : createResultScreen();
+        screenHost.replaceChildren(screen);
+      }
+      bindActiveScreen();
+      updatePhase(phaseNumber);
     };
 
     const resetScanItems = () => {
@@ -442,12 +371,14 @@ const copy = isEnglish
       );
     };
 
-    scanForm?.addEventListener("submit", async (event) => {
+    const submitScan = async (event: Event, activeForm: HTMLFormElement) => {
       event.preventDefault();
-      if (!scanForm.reportValidity() || !urlInput) return;
+      const activeUrlInput = activeForm.elements.namedItem("url") as HTMLInputElement | null;
+      if (!activeForm.reportValidity() || !activeUrlInput) return;
       if (scanError) scanError.hidden = true;
-      resetScanItems();
+      const requestedUrl = activeUrlInput.value;
       showPhase(2);
+      resetScanItems();
 
       const timers = scanItems.map((item, index) =>
         window.setTimeout(() => {
@@ -464,7 +395,7 @@ const copy = isEnglish
         const request = fetch("/api/scan", {
           method: "POST",
           headers: { "content-type": "application/json", accept: "application/json" },
-          body: JSON.stringify({ url: urlInput.value, locale: tool.dataset.lang }),
+          body: JSON.stringify({ url: requestedUrl, locale: tool.dataset.lang }),
         }).then(async (response) => {
           const result = await response.json().catch(() => null);
           if (!response.ok || !result?.ok) throw new Error(result?.error ?? "scan_failed");
@@ -482,30 +413,31 @@ const copy = isEnglish
           if (state) state.textContent = tool.dataset.lang === "en" ? "Done" : "Erledigt";
         });
         scanResult = result;
-        populateResult(result);
         showPhase(3);
+        populateResult(result);
         leadForm?.querySelector<HTMLInputElement>('input[type="email"]')?.focus();
       } catch {
         timers.forEach(window.clearTimeout);
         showPhase(1);
         if (scanError) {
-          scanError.textContent = tool.dataset.scanError ?? "";
+          scanError.textContent = screenConfig.copy.scanError;
           scanError.hidden = false;
         }
-        urlInput.focus();
+        urlInput?.focus();
       }
-    });
+    };
 
-    leadForm?.addEventListener("submit", async (event) => {
+    const submitLead = async (event: Event, activeForm: HTMLFormElement) => {
       event.preventDefault();
-      if (!leadForm.reportValidity() || !scanResult) return;
-      const submit = leadForm.querySelector<HTMLButtonElement>('button[type="submit"]');
-      const email = leadForm.elements.namedItem("email") as HTMLInputElement | null;
-      const name = leadForm.elements.namedItem("name") as HTMLInputElement | null;
+      if (!activeForm.reportValidity() || !scanResult) return;
+      const submit = activeForm.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const email = activeForm.elements.namedItem("email") as HTMLInputElement | null;
+      const name = activeForm.elements.namedItem("name") as HTMLInputElement | null;
       if (!submit || !email || !name) return;
       const submitLabel = submit.textContent ?? "";
+      const resultToken = scanResult.resultToken;
       submit.disabled = true;
-      submit.textContent = tool.dataset.sending ?? submitLabel;
+      submit.textContent = screenConfig.copy.sending;
       if (leadError) leadError.hidden = true;
 
       try {
@@ -515,11 +447,11 @@ const copy = isEnglish
           body: JSON.stringify({
             source: "ai-check",
             intent: "improve",
-            scanToken: scanResult.resultToken,
+            scanToken: resultToken,
             email: email.value,
             name: name.value,
             locale: tool.dataset.lang,
-            companyFax: "",
+            formGuard: "",
             startedAt: 0,
           }),
         });
@@ -537,13 +469,23 @@ const copy = isEnglish
         }
       } catch {
         if (leadError) {
-          leadError.textContent = tool.dataset.leadError ?? "";
+          leadError.textContent = screenConfig.copy.leadError;
           leadError.hidden = false;
         }
       } finally {
         submit.disabled = false;
         submit.textContent = submitLabel;
       }
+    };
+
+    bindActiveScreen();
+    updatePhase(1);
+
+    tool.addEventListener("submit", (event) => {
+      const form = event.target;
+      if (!(form instanceof HTMLFormElement)) return;
+      if (form.matches("[data-scan-form]")) void submitScan(event, form);
+      else if (form.matches("[data-ai-lead-form]")) void submitLead(event, form);
     });
 
     again?.addEventListener("click", () => {
@@ -556,10 +498,10 @@ const copy = isEnglish
       resultGrid?.setAttribute("aria-hidden", "true");
       if (resultLock) resultLock.hidden = false;
       if (liveCta) liveCta.hidden = true;
-      if (scanError) scanError.hidden = true;
       if (leadError) leadError.hidden = true;
       resetScanItems();
       showPhase(1);
+      if (scanError) scanError.hidden = true;
       urlInput?.focus();
     });
   });

@@ -79,7 +79,7 @@ const schema = createServicePageSchema({ lang: page.lang, title: page.meta.title
     <section class="s-signals s-shell"><div class="s-signals-heading"><p class="s-kicker">{isGerman ? "Was daraus folgt" : "What follows"}</p><h2>{isGerman ? "Quellen werden zu redaktionellen Entscheidungen" : "Sources become editorial decisions"}</h2></div><SourceRoutingIndicator lang={page.lang} client:load /></section>
 
     <section class="s-citation s-shell" data-s-reveal>
-      <div class="s-citation-intro"><p class="s-kicker">{isGerman ? "Fortschritt sichtbar machen" : "Make progress visible"}</p><h2>{isGerman ? "Bereit, deine KI-Sichtbarkeit gezielt zu steigern?" : "Ready to increase your AI visibility with purpose?"}</h2><p>{isGerman ? "Die Demo-Auswertung bündelt einen beispielhaften Befund und zeigt, welche Quellenmaßnahmen als Nächstes geprüft werden." : "The demo view combines an illustrative finding and shows which source actions should be reviewed next."}</p></div>
+      <div class="s-citation-intro"><p class="s-kicker">{isGerman ? "Fortschritt sichtbar machen" : "Make progress visible"}</p><h2>{isGerman ? "Bereit, deine KI-Sichtbarkeit gezielt zu steigern?" : "Ready to increase your AI visibility with purpose?"}</h2><p>{isGerman ? "Die Demo-Auswertung bündelt einen beispielhaften Befund und zeigt, welche Quellenmaßnahmen als Nächstes geprüft werden." : "The demo view combines an illustrative finding and shows which source actions should be reviewed next."} {isGerman ? "Bei einer konkreten Inhaltslücke folgt daraus der nächste Schritt über " : "When a concrete content gap appears, the next step may be "}<a class="s-context-link" href={isGerman ? "/geo-content/" : "/en/geo-content/"}>{isGerman ? "GEO-Content" : "GEO content"}</a>{isGerman ? " oder " : " or "}<a class="s-context-link" href={isGerman ? "/content-optimierung-ai-suche/" : "/en/content-optimization-ai-search/"}>{isGerman ? "Content-Optimierung für AI-Suche" : "content optimization for AI search"}</a>.</p></div>
       <figure class="s-citation-board s-citation-image-board" aria-label={isGerman ? "Animierte Overall-Score-Anzeige von 72 bis 95 Prozent" : "Animated overall score display rising from 72 to 95 percent"}>
         <video class="s-citation-video-media" autoplay muted loop playsinline preload="metadata" poster="/video/source-analysis-overall-score-poster.png" aria-label={isGerman ? "Animierte Overall-Score-Anzeige von 72 bis 95 Prozent" : "Animated overall score display rising from 72 to 95 percent"}>
           <source src="/video/source-analysis-overall-score.mp4" type="video/mp4" />
@@ -209,6 +209,13 @@ const schema = createServicePageSchema({ lang: page.lang, title: page.meta.title
     color: var(--s-muted);
     font-size: 11px;
     line-height: 1.4;
+  }
+  .source-page .s-context-link {
+    color: #d37a5c;
+    text-underline-offset: 4px;
+  }
+  .source-page .s-context-link:hover {
+    color: var(--s-ink);
   }
   @media (max-width: 860px) {
     .source-page .s-provenance { margin-bottom: -28px; }

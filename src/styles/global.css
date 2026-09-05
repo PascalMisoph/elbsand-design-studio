@@ -325,6 +325,7 @@ body main :is(article:not(.longform-document), li, [class*="card"], [class*="til
 .ai-check-phases .is-current span { border-color: var(--accent); background: var(--accent); color: #fffaf4; }
 .ai-check-phases .is-complete span { border-color: rgba(83, 91, 48, .58); background: #e5e4d4; color: #4d552d; }
 .ai-check-surface { min-height: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: rgba(251, 248, 242, .72); box-shadow: 0 18px 46px rgba(48, 39, 28, .065); }
+.ai-check-screen-host { display: contents; }
 .ai-check-screen[hidden] { display: none; }
 .ai-check-start { display: grid; min-height: 0; place-items: center; padding: 30px clamp(24px, 4vw, 48px) 26px; }
 .ai-check-start form { width: min(100%, 900px); }

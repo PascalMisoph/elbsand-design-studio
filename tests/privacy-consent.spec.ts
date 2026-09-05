@@ -113,7 +113,45 @@ test("legal routes and privacy information are reachable in both languages", asy
     await expect(page.locator(`footer a[href='${lang === "de" ? "/datenschutz/" : "/en/privacy/"}']`)).toHaveCount(1);
   }
 
-  await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "domcontentloaded" });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.route("**/api/scan", async (route) => {
+    await route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({
+        ok: true,
+        scanId: "privacy-test-scan",
+        requestedUrl: "example.com",
+        finalUrl: "https://example.com/",
+        scannedAt: "2026-09-05T12:00:00.000Z",
+        locale: "de",
+        resultToken: "privacy-test-token",
+        resultUrl: "https://www.paternoga-seo-geo.de/ki-readiness-ergebnis/?result=privacy-test-token",
+        score: 50,
+        grade: "C",
+        criticalIssues: 0,
+        categories: {
+          ai: { key: "ai", title: "AI-Readiness & Crawling", score: 18, maxScore: 35, status: "warning", checks: [] },
+          data: { key: "data", title: "Daten-Architektur & Vertrauenssignale", score: 18, maxScore: 35, status: "warning", checks: [] },
+          tech: { key: "tech", title: "Technische Basis & Security", score: 14, maxScore: 30, status: "warning", checks: [] },
+        },
+        interpretation: {
+          scoreBand: "medium",
+          readinessLabel: "Mittlere technische Readiness",
+          overallHeadline: "Mittlere technische Readiness",
+          overallSummary: "Die wichtigsten technischen Signale sind teilweise vorhanden.",
+          strongestCategory: { key: "ai", title: "AI-Readiness & Crawling", score: 18, maxScore: 35, ratio: 0.514 },
+          weakestCategory: { key: "tech", title: "Technische Basis & Security", score: 14, maxScore: 30, ratio: 0.467 },
+          strengthsHeading: "Was bereits vorhanden ist",
+          opportunitiesHeading: "Wo noch Potenzial besteht",
+          strengths: [],
+          opportunities: [],
+        },
+      }),
+    });
+  });
+  await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
+  await page.locator("#ki-check input[name='url']").fill("example.com");
+  await page.locator("#ki-check [data-scan-form]").getByRole("button").click();
   await expect(page.locator("[data-ai-lead-form] a[href='/datenschutz/']")).toHaveText("Datenschutzhinweise");
   await expect(page.locator("[data-contact-flow] a[href='/datenschutz/']")).toHaveText("Datenschutzhinweise");
   await expect(page.locator("[data-ai-lead-form] input[type='checkbox']")).toHaveCount(0);

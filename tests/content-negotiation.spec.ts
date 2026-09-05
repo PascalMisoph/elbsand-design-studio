@@ -24,6 +24,59 @@ test.describe("Markdown content negotiation", () => {
     expect(response.headers()["vary"] ?? "").toContain("Accept");
   });
 
+  test("does not serialize inactive AI-check states into HTML or normal text", async ({ request }) => {
+    const response = await request.get(url("/"));
+    const html = await response.text();
+    const withoutCode = html.replace(/<(?:script|style)\b[\s\S]*?<\/(?:script|style)>/gi, " ");
+    const normalText = withoutCode.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    const forbiddenStates = [
+      "Wartet",
+      "0 / 100",
+      "Diese Website konnte nicht zuverlässig abgerufen werden.",
+      "Technischer Scan abgeschlossen",
+      "Dein Befund ist freigeschaltet.",
+      "21 technische Einzelchecks abgeschlossen",
+    ];
+
+    expect(response.status()).toBe(200);
+    expect(html).not.toContain('data-ai-screen="2"');
+    expect(html).not.toContain('data-ai-screen="3"');
+    for (const state of forbiddenStates) {
+      expect(html).not.toContain(state);
+      expect(normalText).not.toContain(state);
+    }
+    expect(normalText).toContain("KI-Bereitschaft prüfen");
+
+    const markdownResponse = await request.get(url("/"), { headers: markdownHeaders });
+    const markdown = await markdownResponse.text();
+    expect(markdownResponse.status()).toBe(200);
+    for (const state of forbiddenStates) expect(markdown).not.toContain(state);
+
+    const englishResponse = await request.get(url("/en/"));
+    const englishHtml = await englishResponse.text();
+    const englishText = englishHtml
+      .replace(/<(?:script|style)\b[\s\S]*?<\/(?:script|style)>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    const englishForbiddenStates = [
+      "Waiting",
+      "0 / 100",
+      "We could not reliably retrieve this website.",
+      "Technical scan complete",
+      "Your findings are unlocked.",
+      "21 technical checks completed",
+    ];
+    expect(englishResponse.status()).toBe(200);
+    expect(englishHtml).not.toContain('data-ai-screen="2"');
+    expect(englishHtml).not.toContain('data-ai-screen="3"');
+    for (const state of englishForbiddenStates) {
+      expect(englishHtml).not.toContain(state);
+      expect(englishText).not.toContain(state);
+    }
+    expect(englishText).toContain("Check AI readiness");
+  });
+
   test("returns a clean German homepage representation", async ({ request }) => {
     const response = await request.get(url("/"), { headers: markdownHeaders });
     const body = await response.text();

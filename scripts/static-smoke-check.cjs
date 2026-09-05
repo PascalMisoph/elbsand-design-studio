@@ -27,6 +27,7 @@ const chart = read("src/components/FlatAreaChart.tsx");
 const contact = read("src/components/Contact.astro");
 const contactApi = read("src/pages/api/contact.ts");
 const aiCheck = read("src/components/AiCheck.astro");
+const aiCheckScreens = read("src/lib/ai-check-screens.ts");
 const scanApi = read("src/pages/api/scan.ts");
 const llms = read("public/llms.txt");
 const llmsFull = read("public/llms-full.txt");
@@ -181,16 +182,22 @@ for (const variant of [
   if (!serviceFamilyContent.includes(`variant: "${variant}"`)) throw new Error(`service family missing visual variant ${variant}`);
 }
 
-for (const required of ['data-contact-flow', 'action="/api/contact"', 'name="intent"', "autocomplete=", "required", 'type="submit"', "aria-live", "data-flow-success", "https://calendly.com/pascal-misoph/erstgespraech", "https://assets.calendly.com/assets/external/widget.js"]) {
+for (const required of ['data-contact-flow', 'action="/api/contact"', 'name="intent"', "autocomplete=", "required", 'type="submit"', "aria-live", "data-flow-success", "formGuard", "contact-honeypot", "https://calendly.com/pascal-misoph/erstgespraech", "https://assets.calendly.com/assets/external/widget.js"]) {
   if (!contact.includes(required)) throw new Error(`contact form missing ${required}`);
 }
+
+if (/companyFax|Company fax/i.test(contact)) throw new Error("contact form exposes the honeypot as a company field");
 
 for (const required of ["export const POST", "validation_failed", "isRateLimited", "contact-inquiries.ndjson", "htmlConfirmation"]) {
   if (!contactApi.includes(required)) throw new Error(`contact API missing ${required}`);
 }
 
-for (const required of ["data-ai-check", 'action="/api/contact"', "/api/scan", "data-ai-score", "data-ai-lead-form"]) {
+for (const required of ["data-ai-check", "/api/scan", "data-ai-lead-form", "data-ai-screen-config", "data-ai-screen-host", "createAiCheckScreens", "createScanningScreen", "createResultScreen", "bindActiveScreen"]) {
   if (!aiCheck.includes(required)) throw new Error(`AI check missing ${required}`);
+}
+
+for (const required of ['action="/api/contact"', "data-ai-screen=\"2\"", "data-ai-screen=\"3\"", "data-ai-score", "data-ai-grade"]) {
+  if (!aiCheckScreens.includes(required)) throw new Error(`AI check screen renderer missing ${required}`);
 }
 
 for (const required of ["validatePublicUrl", "isPrivateAddress", "robots.txt", "application\\/ld\\+json", "ttfbMs", "isRateLimited"]) {

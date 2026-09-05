@@ -124,10 +124,9 @@ const privacyPath = locale === "en" ? "/en/privacy/" : "/datenschutz/";
     data-sending={flow.sending}
     data-error-message={flow.errorMessage}
   >
-    <label class="contact-honeypot" aria-hidden="true">
-      <span>Company fax</span>
-      <input name="companyFax" type="text" tabindex="-1" autocomplete="off" />
-    </label>
+    <div class="contact-honeypot" aria-hidden="true" hidden>
+      <input name="formGuard" type="text" tabindex="-1" autocomplete="off" />
+    </div>
     <input name="locale" type="hidden" value={locale} />
     <input name="source" type="hidden" value={source} />
     <input name="startedAt" type="hidden" value="" data-started-at />
