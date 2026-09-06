@@ -126,7 +126,7 @@ test("Profound-style header keeps the service network simple and accessible", as
 
   await desktopNav.locator(".header-menu > summary").first().click();
   await expect(desktopNav.locator(".header-menu").first()).toHaveAttribute("open", "");
-  await expect(desktopNav.locator(".header-menu").first().getByRole("link")).toHaveCount(15);
+  await expect(desktopNav.locator(".header-menu").first().getByRole("link")).toHaveCount(16);
   await desktopNav.locator(".header-menu > summary").nth(1).click();
   await expect(desktopNav.locator(".header-menu").first()).not.toHaveAttribute("open", "");
   await expect(desktopNav.locator(".header-menu").nth(1)).toHaveAttribute("open", "");

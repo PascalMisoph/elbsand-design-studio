@@ -44,7 +44,10 @@
         "Website-Neubau als Kopfangebot",
         "Seiten-Sprint mit Zeit-/Ergebniskopplung"
       ],
-      "removed_unfounded_filters": ["inhabergeführt", "ein bis drei Kernleistungen"]
+      "removed_unfounded_filters": [
+        "inhabergeführt",
+        "ein bis drei Kernleistungen"
+      ]
     },
     "public_pricing": {
       "rule": "public entry prices, replaces the previous inquiry-only rule",
@@ -284,5 +287,84 @@
       "status": "planned",
       "result": null
     }
-  ]
+  ],
+  "revenue_sprint_2": {
+    "document": "docs/revenue-sprint-2-traffic-2026-09-06.md",
+    "status": "IN_PROGRESS",
+    "mandate": "traffic, search visibility and commercial discovery; MRR is the business north star",
+    "t0": {
+      "gsc_window": "2026-08-09..2026-09-06",
+      "clicks": 7,
+      "impressions": 62,
+      "pages_with_impressions": 32,
+      "local_queries": 0,
+      "commercial_conversions": null
+    },
+    "t1_checkpoint": "2026-10-04",
+    "keyword_attack_map": "30 clustered queries with exactly one intent owner each",
+    "new_routes": [
+      "/seo-dresden/",
+      "/en/seo-agency-dresden/"
+    ],
+    "sitemap_routes": 42,
+    "pages_improved": [
+      "/geo-audit/",
+      "/content-optimierung-ai-suche/",
+      "/geo-betreuung/",
+      "/ai-sichtbarkeit/",
+      "/research/ki-crawler-readiness-dax-40-2026/"
+    ],
+    "retainer": {
+      "north_star": "monthly recurring revenue from fitting ongoing support",
+      "owner_route": "/geo-betreuung/",
+      "owner_question": "SEO Betreuung is an established separate intent; GEO Betreuung is niche. Title/H1/description switched to the combined SEO+GEO retainer this sprint.",
+      "second_route_decision": "deferred to Sprint 3; requires real GSC query evidence after 8-12 weeks, no second retainer owner built to avoid cannibalisation",
+      "package_architecture": "single strong base retainer with a monthly decision rule; artificial tiers rejected because no delivered retainer exists to derive scope levels from",
+      "highest_potential_keywords": [
+        "SEO Betreuung",
+        "laufende SEO Betreuung",
+        "SEO Betreuung Dresden",
+        "SEO Agentur Dresden",
+        "GEO Betreuung",
+        "AI Visibility Monitoring",
+        "SEO für Dienstleister"
+      ],
+      "owner_decision": "GEO Betreuung is the wrong primary term; SEO Betreuung is the established intent with near-standard /seo-betreuung/ competitor routes. Onpage switched this sprint; URL migration with 301 recommended for Sprint 3, decided by the 2026-10-04 T1 query data."
+    },
+    "snapshot": {
+      "status": "AUTHORIZED_NOT_IMPLEMENTED",
+      "blocker": "no public price approved in repository state; the 249 EUR figure is conversational only",
+      "required_decision": [
+        "public net price",
+        "delivery scope",
+        "lead time",
+        "limits",
+        "owner route",
+        "own offer_type"
+      ]
+    },
+    "google_business_profile": {
+      "status": "PLAN_DOCUMENTED_NO_WRITE_ACCESS",
+      "actions_executed": 0,
+      "planned_actions": 7,
+      "utm_convention": "utm_source=google&utm_medium=organic&utm_campaign=google_business_profile"
+    },
+    "external_authority": {
+      "status": "PREPARED_NOT_SUBMITTED",
+      "reason": "authorization.external_messages and account_writes remain false"
+    },
+    "warm_distribution": {
+      "status": "NOT_SENT",
+      "criteria_documented": true
+    },
+    "research_distribution": {
+      "internal_bridge_to_money_page": true,
+      "external_posts": "prepared, not sent"
+    },
+    "gate": {
+      "status": "IN_PROGRESS"
+    },
+    "distribution_assets": "docs/revenue-sprint-2-distribution-assets-2026-09-06.md",
+    "messaging_red_team": "proposed website-level lead rejected; page-unit hybrid adopted, ends on the enquiry"
+  }
 }

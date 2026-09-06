@@ -267,3 +267,52 @@ for (const offer of offerRoutes) {
     });
   });
 }
+
+for (const [route, lang, h1Fragment, priceFragment] of [
+  ["/seo-dresden/", "de", "SEO Agentur Dresden", "ab 1.500 €"],
+  ["/en/seo-agency-dresden/", "en", "SEO agency in Dresden", "from €1,500"],
+] as const) {
+  test(`${route} owns local SEO intent with answered question headings`, async ({ page }) => {
+    const response = await page.goto(`${TEST_ORIGIN}${route}`);
+    expect(response?.status()).toBe(200);
+
+    await expect(page.locator("main h1")).toHaveCount(1);
+    await expect(page.locator("main h1")).toContainText(h1Fragment);
+    await expect(page.locator("html")).toHaveAttribute("lang", lang);
+
+    // Question headings must be answered by the paragraph directly beneath them.
+    const answered = await page.evaluate(() =>
+      [...document.querySelectorAll("main .l-block > h2")]
+        .filter((heading) => heading.textContent?.trim().endsWith("?"))
+        .map((heading) => ({
+          question: heading.textContent?.trim() ?? "",
+          answer: heading.nextElementSibling?.classList.contains("l-answer")
+            ? (heading.nextElementSibling.textContent ?? "").trim()
+            : "",
+        })));
+    expect(answered.length).toBeGreaterThanOrEqual(6);
+    for (const item of answered) expect(item.answer.length, item.question).toBeGreaterThan(40);
+
+    // Local pricing must come from the shared offer source, never a local variant.
+    await expect(page.locator(".l-price-value").first()).toContainText(priceFragment);
+    await expect(page.locator(".l-price-grid article")).toHaveCount(3);
+
+    // The page must route into all three existing revenue paths, not a new one.
+    for (const href of lang === "de"
+      ? ["/geo-audit/#kontakt", "/content-optimierung-ai-suche/#kontakt", "/geo-betreuung/#kontakt"]
+      : ["/en/geo-audit/#kontakt", "/en/content-optimization-ai-search/#kontakt", "/en/geo-support/#kontakt"]) {
+      await expect(page.locator(`.l-price-grid a[href="${href}"]`)).toHaveCount(1);
+    }
+
+    await expect(page.locator("main .subpage-contact")).toHaveCount(1);
+    const areaServed = await page.evaluate(() => {
+      for (const script of document.querySelectorAll('script[type="application/ld+json"]')) {
+        const graph = JSON.parse(script.textContent ?? "{}")["@graph"] ?? [];
+        const service = graph.find((node: Record<string, unknown>) => node["@type"] === "Service");
+        if (service?.areaServed) return service.areaServed;
+      }
+      return null;
+    });
+    expect(areaServed).toMatchObject({ "@type": "AdministrativeArea" });
+  });
+}

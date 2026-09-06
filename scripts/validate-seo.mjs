@@ -162,7 +162,7 @@ for (const [path, html] of pages) {
   }
 }
 
-if (paths.length !== 40) failures.push(`Expected 40 sitemap routes, found ${paths.length}`);
+if (paths.length !== 42) failures.push(`Expected 42 sitemap routes, found ${paths.length}`);
 
 if (failures.length > 0) {
   console.error(`SEO validation failed (${failures.length} issues):`);

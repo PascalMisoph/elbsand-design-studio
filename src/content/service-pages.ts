@@ -72,7 +72,7 @@ export const geoAuditPages: Record<ServiceLocale, ServicePageContent> = {
     alternateDePath: "/geo-audit/",
     alternateEnPath: "/en/geo-audit/",
     meta: {
-      title: "GEO Audit für Unternehmen | PATERNOGA",
+      title: "GEO Audit für KI-Sichtbarkeit | PATERNOGA",
       description: "Prüfe, wie KI-Systeme dein Unternehmen einordnen, welche Quellen sie nutzen und wo die stärksten GEO-Hebel liegen. Jetzt GEO Audit anfragen."
     },
     breadcrumb: { home: "Start", hub: "GEO-Optimierung", current: "GEO Audit" },
@@ -102,21 +102,21 @@ export const geoAuditPages: Record<ServiceLocale, ServicePageContent> = {
     },
     narratives: [
       {
-        eyebrow: "Mehr als ein Sichtbarkeitscheck",
-        title: "Nicht nur prüfen, ob du genannt wirst.",
-        text: "Eine einzelne Nennung sagt wenig darüber aus, ob ein System dein Angebot korrekt verstanden hat. Deshalb betrachten wir Antworten, Begründungen, Quellen und wiederkehrende Muster gemeinsam.",
+        eyebrow: "Prüfumfang",
+        title: "Was wird bei einem GEO Audit geprüft?",
+        text: "Geprüft werden Antworten auf reale Käuferfragen, die dabei verwendeten Quellen, die Nennung deiner Marke und die Einordnung gegenüber Wettbewerbern. Eine einzelne Nennung sagt wenig darüber aus, ob ein System dein Angebot korrekt verstanden hat; deshalb betrachten wir Antworten, Begründungen, Quellen und wiederkehrende Muster gemeinsam.",
         points: ["Marke, Angebot und Standort", "Antworten auf reale Kundenfragen", "Verwendete und fehlende Quellen"]
       },
       {
-        eyebrow: "Handlungsorientiert",
-        title: "Von Beobachtung zu konkreter Arbeit.",
-        text: "Jeder Befund wird einem umsetzbaren Hebel zugeordnet: Technik, Seitenstruktur, Fakten, vorhandene Inhalte oder neue Themen. So wird aus Analyse eine belastbare Reihenfolge.",
+        eyebrow: "Ergebnis",
+        title: "Was erhältst du nach dem Audit?",
+        text: "Du erhältst dokumentierte Befunde, eine begründete Prioritätenliste und die drei wichtigsten nächsten Maßnahmen. Jeder Befund wird einem umsetzbaren Hebel zugeordnet: Technik, Seitenstruktur, Fakten, vorhandene Inhalte oder neue Themen.",
         points: ["Sofort behebbare Grundlagen", "Inhaltliche Lücken mit hoher Relevanz", "Mittelfristige Autoritäts- und Quellensignale"]
       }
     ],
     method: {
       eyebrow: "Methode",
-      title: "Vier Schritte zu einem belastbaren Audit",
+      title: "Wie läuft ein GEO Audit ab?",
       steps: [
         { title: "Fragen festlegen", text: "Wir definieren die Themen und Entscheidungssituationen, in denen dein Unternehmen sichtbar sein sollte." },
         { title: "Antworten prüfen", text: "Mehrere relevante Such- und KI-Systeme werden mit konsistenten Fragestellungen betrachtet." },
@@ -166,7 +166,7 @@ export const geoAuditPages: Record<ServiceLocale, ServicePageContent> = {
     alternateDePath: "/geo-audit/",
     alternateEnPath: "/en/geo-audit/",
     meta: {
-      title: "GEO Audit for Businesses | PATERNOGA",
+      title: "GEO Audit for AI Visibility | PATERNOGA",
       description: "See how AI systems understand your business, which sources they use and where the strongest GEO opportunities lie. Request a GEO audit."
     },
     breadcrumb: { home: "Home", hub: "GEO optimisation", current: "GEO audit" },
@@ -196,21 +196,21 @@ export const geoAuditPages: Record<ServiceLocale, ServicePageContent> = {
     },
     narratives: [
       {
-        eyebrow: "More than a visibility check",
-        title: "Do not only check whether you are mentioned.",
-        text: "A single mention says little about whether a system understood your offer correctly. We therefore review answers, reasoning, sources and recurring patterns together.",
+        eyebrow: "Review scope",
+        title: "What does a GEO audit examine?",
+        text: "We review answers to real buyer questions, the sources behind them, whether your brand is mentioned and how you are classified against competitors. A single mention says little about whether a system understood your offer correctly, so we review answers, reasoning, sources and recurring patterns together.",
         points: ["Brand, offer and location", "Answers to real customer questions", "Used and missing sources"]
       },
       {
-        eyebrow: "Action oriented",
-        title: "Turn observations into concrete work.",
-        text: "Every finding is connected to an actionable lever: technology, page structure, facts, existing content or new topics. Analysis becomes a dependable sequence.",
+        eyebrow: "Deliverables",
+        title: "What do you receive after the audit?",
+        text: "You receive documented findings, a reasoned priority list and the three most important next actions. Every finding is connected to an actionable lever: technology, page structure, facts, existing content or new topics.",
         points: ["Foundations that can be fixed immediately", "High-relevance content gaps", "Longer-term authority and source signals"]
       }
     ],
     method: {
       eyebrow: "Method",
-      title: "Four steps to a dependable audit",
+      title: "How does a GEO audit work?",
       steps: [
         { title: "Define questions", text: "We establish the topics and decision moments where your business should be visible." },
         { title: "Review answers", text: "Relevant search and AI systems are assessed using a consistent question set." },

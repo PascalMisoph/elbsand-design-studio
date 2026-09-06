@@ -23,8 +23,8 @@ export const aiVisibilityPages: AiVisibilityPair = {
     alternateDePath: aiVisibilityDePath,
     alternateEnPath: aiVisibilityEnPath,
     meta: {
-      title: "AI-Sichtbarkeit für Unternehmen | PATERNOGA",
-      description: "Erfahre, wie dein Unternehmen in KI-Antworten erscheint, welche Themen fehlen und welche Signale gestärkt werden sollten. AI-Sichtbarkeit prüfen."
+      title: "KI-Sichtbarkeit: in ChatGPT sichtbar werden | PATERNOGA",
+      description: "Warum wird mein Unternehmen in ChatGPT nicht genannt? Wir prüfen Nennungen, Quellen und Einordnung in KI-Antworten und benennen die Ursachen."
     },
     breadcrumb: { home: "Start", hub: "GEO-Optimierung", current: "AI-Sichtbarkeit" },
     eyebrow: "AI-Sichtbarkeit",
@@ -114,7 +114,7 @@ export const aiVisibilityPages: AiVisibilityPair = {
     alternateDePath: aiVisibilityDePath,
     alternateEnPath: aiVisibilityEnPath,
     meta: {
-      title: "AI Visibility for Businesses | PATERNOGA",
+      title: "AI Visibility: Get Named in ChatGPT | PATERNOGA",
       description: "See how your business appears in AI answers, which topics are missing and which signals need strengthening. Request an AI visibility review."
     },
     breadcrumb: { home: "Home", hub: "GEO optimisation", current: "AI visibility" },

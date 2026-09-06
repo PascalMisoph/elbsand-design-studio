@@ -32,6 +32,8 @@ interface ServicePageSchemaOptions extends PageSchemaOptions {
   faqs?: readonly FaqItem[];
   /** Only pass this when the same entry price is visible on the page itself. */
   offer?: OfferId;
+  /** Narrows Service.areaServed for local pages; the Organization entity is unchanged. */
+  areaServed?: string;
 }
 
 interface ArticlePageSchemaOptions extends PageSchemaOptions {
@@ -168,6 +170,7 @@ export const createServicePageSchema = ({
   breadcrumbs,
   faqs = [],
   offer,
+  areaServed,
 }: ServicePageSchemaOptions) => {
   const canonical = absoluteSiteUrl(path);
   const pageId = `${canonical}#webpage`;
@@ -189,7 +192,7 @@ export const createServicePageSchema = ({
       url: canonical,
       mainEntityOfPage: { "@id": pageId },
       provider: { "@id": ORGANIZATION_ID },
-      areaServed: { "@type": "Country", name: "Deutschland" },
+      areaServed: areaServed ? { "@type": "AdministrativeArea", name: areaServed } : { "@type": "Country", name: "Deutschland" },
       ...(offer ? { offers: createOffer(offer, canonical) } : {}),
     },
     {

@@ -374,12 +374,12 @@ export const geoSupportPages: Record<ServiceLocale, ResearchSupportContent> = {
     alternateDePath: "/geo-betreuung/",
     alternateEnPath: "/en/geo-support/",
     meta: {
-      title: "GEO-Betreuung für laufende Optimierung | PATERNOGA",
-      description: "Verbinde Monitoring, Faktenpflege, Content und technische Verbesserungen in einer priorisierten laufenden Zusammenarbeit. Betreuung besprechen."
+      title: "SEO- & GEO-Betreuung: laufende Optimierung | PATERNOGA",
+      description: "Laufende SEO-, Content- und GEO-Betreuung mit festem Messpanel und monatlicher Priorisierung. Ab 1.250 € netto pro Monat, zunächst drei Monate."
     },
     breadcrumb: { home: "Start", hub: "GEO-Optimierung", current: "GEO-Betreuung" },
     eyebrow: "GEO-Betreuung",
-    title: "GEO wird wirksam, wenn aus Beobachtung verlässliche Arbeit wird.",
+    title: "Laufende SEO- und GEO-Betreuung für wiederkehrende Arbeit",
     lead: "Wenn die Arbeit an deinen wichtigen Seiten wiederkehrt, statt einmal stattzufinden: Wir begleiten dich nach Audit oder Seiten-Sprint mit einer klaren Reihenfolge aus SEO-, Inhalts- und GEO-Maßnahmen – beobachten, prüfen, verbessern, wieder einordnen. Ohne starre Pakete und ohne Versprechen, die externe Systeme nicht halten können.",
     primaryCta: "GEO-Betreuung anfragen",
     secondaryCta: "Betreuungsmodell ansehen",
@@ -462,12 +462,12 @@ export const geoSupportPages: Record<ServiceLocale, ResearchSupportContent> = {
     alternateDePath: "/geo-betreuung/",
     alternateEnPath: "/en/geo-support/",
     meta: {
-      title: "GEO Support for Ongoing Optimisation | PATERNOGA",
-      description: "Connect monitoring, fact maintenance, content and technical improvements in a prioritised ongoing collaboration. Discuss GEO support."
+      title: "SEO & GEO Support: Ongoing Optimisation | PATERNOGA",
+      description: "Ongoing SEO, content and GEO support with a fixed measurement panel and monthly prioritisation. From EUR 1,250 net per month, three months to begin."
     },
     breadcrumb: { home: "Home", hub: "GEO optimisation", current: "GEO support" },
     eyebrow: "GEO support",
-    title: "GEO becomes useful when observation turns into dependable work.",
+    title: "Ongoing SEO and GEO support for recurring work",
     lead: "For when work on your important pages recurs rather than happening once: after an audit or page sprint we guide you through a clear sequence of SEO, content and GEO measures — observe, verify, improve, review again. No rigid packages and no promises that external systems cannot keep.",
     primaryCta: "Request GEO support",
     secondaryCta: "View the support model",
@@ -539,7 +539,10 @@ export const geoSupportPages: Record<ServiceLocale, ResearchSupportContent> = {
       items: [
         { question: "Do I need a GEO audit first?", answer: "Not necessarily. An audit can focus the collaboration, but we can also start with a website, specific questions or existing monitoring and sharpen the baseline together." },
         { question: "What does ongoing support include?", answer: "Depending on your needs, it can include monitoring, fact maintenance, content and structure work, technical coordination and prioritising the next actions. The exact scope is agreed transparently." },
-        { question: "Is there a visibility guarantee?", answer: "No. We improve traceable prerequisites and observe external answers. Mentions, rankings or recommendations by AI systems cannot be promised." }
+        { question: "Is there a visibility guarantee?", answer: "No. We improve traceable prerequisites and observe external answers. Mentions, rankings or recommendations by AI systems cannot be promised." },
+        { question: "What does monthly SEO support cost?", answer: "At PATERNOGA ongoing support starts at EUR 1,250 net per month, initially for three months and cancellable monthly thereafter. In the wider market, monthly SEO support for small and mid-sized companies often ranges from roughly EUR 500 to 3,000 net; the price depends mainly on agreed capacity and the number of pages covered. The actual scope is agreed before we start and quoted bindingly." },
+        { question: "What is the difference between SEO support and GEO support?", answer: "With us it is the same engagement. Classic SEO support works on discoverability and rankings in search engines, GEO support on classification and sources in AI answer systems. Both concern the same pages and the same foundations, so we do not split them into two contracts. Which level gets more weight in a given month follows the current measurements." },
+        { question: "Is this ongoing SEO work or just reporting?", answer: "It is implementation. Monitoring observes, support changes: each month a prioritised block of measures is actually implemented within the agreed capacity and documented. A report without implementation would be monitoring, which is a different offer." }
       ]
     },
     closing: { eyebrow: "Start working together", title: "A useful GEO routine begins with one realistic next task.", text: "Tell us where your offer, content or visibility stands today. We will suggest a suitable first working cycle.", cta: "Discuss GEO support" }

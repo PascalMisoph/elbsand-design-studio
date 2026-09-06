@@ -593,8 +593,8 @@ const contentOptimizationDe: ServicePageContent = {
   alternateDePath: "/content-optimierung-ai-suche/",
   alternateEnPath: "/en/content-optimization-ai-search/",
   meta: {
-    title: "Content-Optimierung für AI-Suche | PATERNOGA",
-    description: "Seiten-Sprint für bis zu drei bestehende Leistungsseiten: Angebot, Belege, SEO, AI-Suche und CTA gezielt verbessern. Direkt anfragen, ohne Audit-Pflicht."
+    title: "Seiten-Sprint: Leistungsseiten optimieren | PATERNOGA",
+    description: "Leistungsseiten optimieren im Seiten-Sprint: bis zu drei bestehende Seiten für Google, KI-Suche und Käufer. Ab 2.500 € netto, ohne Audit-Pflicht."
   },
   breadcrumb: {
     home: "Start",
@@ -694,8 +694,8 @@ const contentOptimizationEn: ServicePageContent = {
   alternateDePath: "/content-optimierung-ai-suche/",
   alternateEnPath: "/en/content-optimization-ai-search/",
   meta: {
-    title: "Content Optimization for AI Search | PATERNOGA",
-    description: "Page sprint for up to three existing service pages: improve your offer, evidence, SEO, AI search and calls to action. No prior audit required."
+    title: "Page Sprint: Improve Your Service Pages | PATERNOGA",
+    description: "Improve your service pages in a page sprint: up to three existing pages for Google, AI search and buyers. From EUR 2,500 net, no prior audit required."
   },
   breadcrumb: {
     home: "Home",

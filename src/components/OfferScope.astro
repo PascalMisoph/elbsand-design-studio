@@ -22,13 +22,14 @@ const rows: readonly (readonly [string, string])[] = de ? [
   ["Limits", copy.limits],
 ];
 
+// Question headings mirror researched buyer queries; the price row answers immediately.
 const heading = de
-  ? offer === "geo_audit" ? "GEO Audit: Umfang, Ergebnis und Preis"
-    : offer === "page_sprint" ? "Seiten-Sprint: Umfang, Ergebnis und Preis"
-    : "Laufende Betreuung: Umfang, Ergebnis und Preis"
-  : offer === "geo_audit" ? "GEO audit: scope, deliverables and price"
-    : offer === "page_sprint" ? "Page sprint: scope, deliverables and price"
-    : "Ongoing support: scope, deliverables and price";
+  ? offer === "geo_audit" ? "Was kostet ein GEO Audit und was ist enthalten?"
+    : offer === "page_sprint" ? "Was kostet ein Seiten-Sprint und was ist enthalten?"
+    : "Was kostet die laufende Betreuung und was passiert monatlich?"
+  : offer === "geo_audit" ? "What does a GEO audit cost and what is included?"
+    : offer === "page_sprint" ? "What does a page sprint cost and what is included?"
+    : "What does ongoing support cost and what happens each month?";
 
 const priceLabel = de ? "Preis" : "Price";
 const nextStepLabel = de ? "Nächster Schritt" : "Next step";

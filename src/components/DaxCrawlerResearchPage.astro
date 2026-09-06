@@ -83,6 +83,8 @@ const copy = de ? {
   guideHref: "/wissen/ki-crawler-robots-txt/",
   serviceCta: "AI-Crawlability prüfen",
   serviceHref: "/ai-crawlability/",
+  auditCta: "GEO Audit anfragen",
+  auditHref: "/geo-audit/",
 } : {
   meta: { title: "DAX 40 AI Crawler Readiness 2026 | PATERNOGA", description: "PATERNOGA reviews public robots.txt policies across DAX 40 corporate websites. Method, limitations and raw data are openly available." },
   eyebrow: "PATERNOGA Research · 2026 study",
@@ -150,6 +152,8 @@ const copy = de ? {
   guideHref: "/en/knowledge/ai-crawlers-robots-txt/",
   serviceCta: "Review AI crawlability",
   serviceHref: "/en/ai-crawlability/",
+  auditCta: "Request a GEO audit",
+  auditHref: "/en/geo-audit/",
 };
 
 const breadcrumbs = [
@@ -196,7 +200,7 @@ const yesNo = (value: boolean) => value ? copy.status.yes : copy.status.no;
 
       <section class="border-y border-solid border-border"><div class="mx-auto grid max-w-content grid-cols-1 gap-12 px-5 py-section-mobile md:px-12 lg:grid-cols-2 lg:py-section"><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.limitationsTitle}</h2><ul class="m-0 mt-6 grid list-none gap-0 border-t border-solid border-border p-0">{copy.limitations.map((item) => <li class="border-b border-solid border-border py-4 text-base leading-copy text-muted-foreground">{item}</li>)}</ul></div><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.dataTitle}</h2><p class="m-0 mt-6 text-base leading-copy text-muted-foreground">{copy.dataBody}</p><div class="mt-8 flex flex-col flex-wrap gap-3 sm:flex-row"><LinkButton href="/research/dax-40-ai-crawler-readiness-2026.json" label={copy.json} variant="secondary" icon="external" /><LinkButton href="/research/dax-40-ai-crawler-readiness-2026.csv" label={copy.csv} variant="secondary" icon="external" /></div></div></div></section>
 
-      <section id="kontakt" class="mx-auto grid max-w-content grid-cols-1 gap-12 px-5 py-section-mobile md:px-12 lg:grid-cols-2 lg:py-section"><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.sourcesTitle}</h2><ul class="m-0 mt-6 grid list-none gap-3 p-0">{copy.sources.map(([label, href]) => <li><a class="text-sm text-primary underline underline-offset-4" href={href} target="_blank" rel="noopener">{label}</a></li>)}</ul><p class="mt-8 max-w-xl text-sm leading-copy text-muted-foreground"><span class="font-medium text-foreground">{copy.license.label}:</span> {copy.license.prefix} <a class="text-primary underline underline-offset-4" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">{copy.license.name}</a>. {copy.license.suffix} <a class="text-primary underline underline-offset-4" href={canonicalPath}>{copy.license.original}</a>{copy.license.ending}</p></div><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.bridgeTitle}</h2><p class="m-0 mt-6 text-base leading-copy text-muted-foreground">{copy.bridgeBody}</p><div class="mt-8 flex flex-col flex-wrap gap-3 sm:flex-row"><LinkButton href={copy.guideHref} label={copy.guideCta} icon="right" /><LinkButton href={copy.serviceHref} label={copy.serviceCta} variant="secondary" icon="right" /></div></div></section>
+      <section id="kontakt" class="mx-auto grid max-w-content grid-cols-1 gap-12 px-5 py-section-mobile md:px-12 lg:grid-cols-2 lg:py-section"><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.sourcesTitle}</h2><ul class="m-0 mt-6 grid list-none gap-3 p-0">{copy.sources.map(([label, href]) => <li><a class="text-sm text-primary underline underline-offset-4" href={href} target="_blank" rel="noopener">{label}</a></li>)}</ul><p class="mt-8 max-w-xl text-sm leading-copy text-muted-foreground"><span class="font-medium text-foreground">{copy.license.label}:</span> {copy.license.prefix} <a class="text-primary underline underline-offset-4" href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">{copy.license.name}</a>. {copy.license.suffix} <a class="text-primary underline underline-offset-4" href={canonicalPath}>{copy.license.original}</a>{copy.license.ending}</p></div><div><h2 class="m-0 text-section-title font-medium text-foreground">{copy.bridgeTitle}</h2><p class="m-0 mt-6 text-base leading-copy text-muted-foreground">{copy.bridgeBody}</p><div class="mt-8 flex flex-col flex-wrap gap-3 sm:flex-row"><LinkButton href={copy.auditHref} label={copy.auditCta} icon="right" revenueCta="research_bridge" offer="geo_audit" /><LinkButton href={copy.guideHref} label={copy.guideCta} variant="secondary" icon="right" /><LinkButton href={copy.serviceHref} label={copy.serviceCta} variant="secondary" icon="right" /></div></div></section>
     </article>
   </main>
   <Footer {...site.footer} lang={lang} />

@@ -212,4 +212,16 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://www.paternoga-seo-geo.de/datenschutz/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://www.paternoga-seo-geo.de/en/privacy/" />
   </url>
+  <url>
+    <loc>https://www.paternoga-seo-geo.de/seo-dresden/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.paternoga-seo-geo.de/seo-dresden/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.paternoga-seo-geo.de/en/seo-agency-dresden/" />
+  </url>
+  <url>
+    <loc>https://www.paternoga-seo-geo.de/en/seo-agency-dresden/</loc>
+    <lastmod>2026-09-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.paternoga-seo-geo.de/seo-dresden/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.paternoga-seo-geo.de/en/seo-agency-dresden/" />
+  </url>
 </urlset>

@@ -165,7 +165,7 @@ test.describe("Markdown content negotiation", () => {
     );
 
     expect(sitemap.status()).toBe(200);
-    expect(routes).toHaveLength(40);
+    expect(routes).toHaveLength(42);
 
     for (const route of routes) {
       const response = await request.get(url(route), { headers: markdownHeaders });

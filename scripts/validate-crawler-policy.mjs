@@ -17,7 +17,7 @@ if (!/^sitemap:\s*https:\/\/www\.paternoga-seo-geo\.de\/sitemap\.xml\s*$/im.test
 if (!/^content-signal:\s*search=yes,\s*ai-input=yes,\s*ai-train=yes\s*$/im.test(robots)) {
   failures.push("robots.txt does not declare the intended Content-Signal policy");
 }
-if (targetPaths.length !== 40) failures.push(`Expected 40 canonical sitemap routes, found ${targetPaths.length}`);
+if (targetPaths.length !== 42) failures.push(`Expected 42 canonical sitemap routes, found ${targetPaths.length}`);
 for (const [name, document] of [["llms.txt", llms], ["llms-full.txt", llmsFull]]) {
   if (!document.includes("Paternoga SEO & GEO Studio")) failures.push(`${name} does not identify the organization consistently`);
   if (!document.includes("https://www.paternoga-seo-geo.de/")) failures.push(`${name} does not declare the canonical site`);

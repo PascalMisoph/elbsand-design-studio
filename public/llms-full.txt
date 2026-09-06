@@ -32,6 +32,8 @@ The website contains illustrative product interfaces. They explain workflows and
 - [Startseite](https://www.paternoga-seo-geo.de/): Studio overview, services, references, process, team and contact.
 - [GEO-Optimierung](https://www.paternoga-seo-geo.de/geo-optimierung/): Root page for the GEO service network.
 - [GEO-Agentur Deutschland](https://www.paternoga-seo-geo.de/geo-agentur-deutschland/): National commercial supplier-selection page; PATERNOGA remains physically based in Dresden.
+- [SEO Agentur Dresden](https://www.paternoga-seo-geo.de/seo-dresden/): Local commercial page owning the Dresden SEO buying intent; SEO leads, GEO is the added review level; same national entry prices, no local packages.
+- [SEO agency Dresden (EN)](https://www.paternoga-seo-geo.de/en/seo-agency-dresden/): English counterpart of the Dresden local page; same scope and prices.
 - [GEO Audit](https://www.paternoga-seo-geo.de/geo-audit/): Analysis of answers, sources, facts, competitors and technical foundations.
 - [AI-Sichtbarkeit](https://www.paternoga-seo-geo.de/ai-sichtbarkeit/): Presence and classification in AI answers.
 - [KI-Quellenanalyse](https://www.paternoga-seo-geo.de/ki-quellenanalyse/): Source provenance, evidence quality and source gaps.
