@@ -287,6 +287,15 @@ Keine Superlative, keine Garantien, keine erfundenen Kundenzahlen. Der Nicht-Gar
 | **Was die Seite NICHT behaupten darf** | keine Marktführerschaft oder „beste SEO-Agentur Dresden"; kein Rankingversprechen und keine Zeitangabe bis Top-3; keine Local-Pack-Position, solange sie nicht gemessen ist; kein GBP-Status, bevor Berechtigung und Profil geprüft sind; keine fingierte Niederlassung oder zusätzliche Adresse; kein „SEO + GEO aus Dresden" als Alleinstellung (WEBneo führt beides bereits auf seiner Dresden-Seite); keine übernommenen Toolvolumina als bestätigte Nachfrage; kein lokaler AI-Sichtbarkeitssieger ohne eigene Stichprobe. |
 | **Technische Vorgaben für die spätere Umsetzung** | DE-Route `/seo-dresden/`; englisches Pendant im Umsetzungsauftrag verbindlich festzulegen, bestehende EN-Slugs bleiben unverändert. Kanonischer Taxonomie-Parent, logische Breadcrumbs, eigenständige Metadaten, Visual-Parity-Protokoll aus `design.md` mit eigenem Signature-Visual und eigener Mobile-Komposition. Der SEO-Validator erwartet die Routenzahl der Sitemap — sie steigt mit dieser Seite von 40 auf 41 (bzw. 42 mit EN-Pendant) und ist im Umsetzungsauftrag mit anzupassen. |
 
+## 8.1 Abnahme, Release und Live-Verifikation
+
+- Lokal vollständig: Astro check 186 Dateien ohne Fehler/Warnungen/Hinweise, Build, 11 Unit-Tests, isolierter Produktions-API-Vertrag, 40 SEO-Routen, Crawler-, Security- und Static-Prüfungen sowie 137 Browsertests (131 bestehende plus 6 neue Angebotsprüfungen). `git diff --check` ohne Whitespacefehler.
+- Neue Regressionstests: je Owner-Route wird geprüft, dass der Einstiegspreis mit Suffix sichtbar ist, dass die sieben Angebotslabels vollständig und in der richtigen Reihenfolge erscheinen, dass der CTA auf das Formular derselben Seite zeigt und dass `Service.offers.priceSpecification` exakt zum sichtbaren Preis passt (`PriceSpecification` bzw. `UnitPriceSpecification` mit `unitCode: "MON"`). Damit kann die Konsistenz von sichtbarem Preis und Structured Data nicht unbemerkt auseinanderlaufen.
+- Release-Commit: `542e48f`.
+- Production: Deployment `paternoga-seo-geo-studio-h8vg7qjl9.vercel.app`, Status `Ready`, ausgelöst durch den Push auf `main`.
+- Live gegen `https://www.paternoga-seo-geo.de` verifiziert: SEO-Validator über alle 40 Routen bestanden; 53 Browserprüfungen aus Service-Pages und Revenue-Sprint bestanden, darunter alle sechs Angebotsprüfungen und die beiden direkten Kaufwege; 13 weitere Prüfungen für Consent, Security-Header und Content Negotiation bestanden. Keine echte Formulareinsendung, keine E-Mail versendet.
+- Betreuungs-Attribution live nachgestellt: CTA erzeugt `geo_support_cta_click` mit `offer_type: geo_support` und `cta_id: offer_scope` ohne PII; der abgefangene Lead trug `offer_type: geo_support`, `source: geo-support-service`, `source_page: /geo-betreuung/`, `landing_page: /` und `attribution_mode: consented_session`.
+
 ## 9. Nicht gestartet
 
 - **Partner-/Referral-Aktivierung:** NOT STARTED

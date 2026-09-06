@@ -25,8 +25,10 @@
     "agent_readable_offers": true,
     "offer_structured_data_consistent": true,
     "local_regression_green": "astro_check_186_files_0_errors, 11_unit, revenue_api_contract, 40_seo_routes, crawler, security, static, 137_browser",
-    "deployed": false,
-    "live_verified": false,
+    "deployed": true,
+    "release_commit": "542e48f",
+    "deployment_url": "https://paternoga-seo-geo-studio-h8vg7qjl9.vercel.app",
+    "live_verified": "40_seo_routes_plus_66_live_browser_checks_on_www_domain",
     "sprint_2_requires_separate_authorization": true,
     "positioning": {
       "category": "SEO- und GEO-Studio; die Seite ist Auftragseinheit, nicht Kategoriename",
