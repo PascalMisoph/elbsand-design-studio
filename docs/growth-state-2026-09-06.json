@@ -290,7 +290,7 @@
   ],
   "revenue_sprint_2": {
     "document": "docs/revenue-sprint-2-traffic-2026-09-06.md",
-    "status": "IN_PROGRESS",
+    "status": "PASS",
     "mandate": "traffic, search visibility and commercial discovery; MRR is the business north star",
     "t0": {
       "gsc_window": "2026-08-09..2026-09-06",
@@ -362,9 +362,31 @@
       "external_posts": "prepared, not sent"
     },
     "gate": {
-      "status": "IN_PROGRESS"
+      "status": "PASS",
+      "conditions": {
+        "keyword_attack_map": true,
+        "keyword_ownership_explicit": true,
+        "seo_dresden_live": true,
+        "money_pages_aligned": true,
+        "no_material_cannibalisation": true,
+        "internal_linking_strengthened": true,
+        "indexing_correct": true,
+        "offer_data_consistent": true,
+        "revenue_attribution_green": true,
+        "agent_readable_clarity_intact": true,
+        "gbp_plan_documented": true,
+        "external_authority_documented": true,
+        "no_spam_tactics": true,
+        "full_regression_green": true,
+        "production_deployed": true,
+        "live_verified": true
+      }
     },
     "distribution_assets": "docs/revenue-sprint-2-distribution-assets-2026-09-06.md",
-    "messaging_red_team": "proposed website-level lead rejected; page-unit hybrid adopted, ends on the enquiry"
+    "messaging_red_team": "proposed website-level lead rejected; page-unit hybrid adopted, ends on the enquiry",
+    "release_commit": "8555b2b",
+    "deployment_url": "https://paternoga-seo-geo-studio-jwmdr068k.vercel.app",
+    "local_regression": "astro_check_190_files_0_errors, 11_unit, revenue_api_contract, 42_seo_routes, crawler, security, static, 139_browser",
+    "live_verification": "42 live SEO routes plus 64 live browser checks; both new routes 200, self-canonical, indexable, 3 hreflang, JSON-LD, in sitemap and markdown negotiation"
   }
 }

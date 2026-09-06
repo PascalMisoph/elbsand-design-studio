@@ -295,6 +295,15 @@ Der bezahlte Kaufentscheidungs-Snapshot ist kommerziell freigegeben, aber **nich
 | E4 | Query-nahe Titles heben die Audit- und Sprintseiten aus Position 30+ | neue Titles | Durchschnittsposition je Zielquery | Impressionen | 28 Tage | keine Bewegung → interne Verlinkung und Inhaltstiefe vor weiteren Title-Iterationen |
 | E5 | Die Research-Brücke leitet Fachtraffic in die Money Page | DAX → GEO Audit | `research_bridge`-CTA-Klicks | Auditanfragen | 28 Tage | > 0 Klicks → Brücke auf Knowledge-Seiten ausweiten |
 
+## 15.1 Abnahme, Release und Live-Verifikation
+
+- Lokal: Astro check 190 Dateien ohne Fehler, Build, 11 Unit-Tests, Produktions-API-Vertrag, 42 SEO-Routen, Crawler-, Security- und Static-Prüfungen, **139 Browsertests**. `git diff --check` sauber.
+- Zwei echte Regressionen wurden gefunden und behoben statt wegassertiert: horizontaler Überlauf bei 320 px durch einen nicht umbrechenden Button und ein Hero-CTA unterhalb des ersten Viewports. Zwei weitere Fehlschläge waren legitime Konstanten (40→42 Routen, 15→16 Navigationslinks), einer ein Fehler im neuen Test selbst.
+- Release-Commit `8555b2b`, Production `paternoga-seo-geo-studio-jwmdr068k.vercel.app`, Status `Ready`.
+- Live gegen `https://www.paternoga-seo-geo.de`: SEO-Validator über alle **42** Routen bestanden; **64 Browserprüfungen** aus Service-Pages, Revenue-Sprint und Content Negotiation bestanden.
+- Indexierbarkeit beider neuer Routen live geprüft: HTTP 200, selbstreferenzierendes Canonical, kein `noindex`, drei hreflang-Angaben, JSON-LD vorhanden, in `sitemap.xml` enthalten und über Content Negotiation als Markdown abrufbar.
+- Hero-Geometrie über neun Breiten geprüft (1728 bis 320): CTA in allen Fällen im ersten Viewport, Marge 53–346 px, kein horizontaler Überlauf.
+
 ## 16. Nicht ausgeführt / Grenzen
 
 - Keine externe Nachricht versendet, kein Verzeichnisprofil eingereicht, kein GBP-Schreibzugriff.
