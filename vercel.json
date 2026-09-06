@@ -3,6 +3,26 @@
   "buildCommand": "npm run deploy:check && npm run build",
   "redirects": [
     {
+      "source": "/geo-betreuung",
+      "destination": "/seo-betreuung/",
+      "statusCode": 301
+    },
+    {
+      "source": "/geo-betreuung/",
+      "destination": "/seo-betreuung/",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/geo-support",
+      "destination": "/en/seo-support/",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/geo-support/",
+      "destination": "/en/seo-support/",
+      "statusCode": 301
+    },
+    {
       "source": "/:path*",
       "has": [
         {
