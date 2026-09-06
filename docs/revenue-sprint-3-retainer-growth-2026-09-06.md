@@ -45,7 +45,7 @@ Drei zusätzliche gezielte Abfragen am 06.09.2026, keine neue Großrecherche.
 | Ebene | Umsetzung |
 |---|---|
 | Routen | `src/pages/geo-betreuung/` → `src/pages/seo-betreuung/`; `src/pages/en/geo-support/` → `src/pages/en/seo-support/` (per `git mv`, Historie erhalten) |
-| Redirects | 301 in `src/middleware.ts`, **vor** der Trailing-Slash-Normalisierung, damit kein 308→301-Chain entsteht. Vier Formen abgedeckt: `/geo-betreuung`, `/geo-betreuung/`, `/en/geo-support`, `/en/geo-support/` |
+| Redirects | **Zwei Ebenen.** Produktion: vier Regeln in `vercel.json` mit `statusCode: 301`, die vor dem Routing greifen (siehe 14.1 — die reine Middleware-Lösung lieferte live 404). Lokaler Standalone-Server: 301 in `src/middleware.ts` **vor** der Trailing-Slash-Normalisierung, damit kein 308→301-Chain entsteht. Beide zeigen auf dasselbe Ziel. Vier Formen abgedeckt: `/geo-betreuung`, `/geo-betreuung/`, `/en/geo-support`, `/en/geo-support/` |
 | Canonical | `https://www.paternoga-seo-geo.de/seo-betreuung/` bzw. `/en/seo-support/` |
 | hreflang | de/en/x-default auf die neuen Routen |
 | Sitemap | alte Einträge ersetzt, weiterhin 42 Routen |
