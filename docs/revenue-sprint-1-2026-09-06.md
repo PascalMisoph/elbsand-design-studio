@@ -6,7 +6,8 @@ Stand: 06.09.2026. Auftrag: Attribution, kaufbarer GEO Audit, direkter Seiten-Sp
 
 - IMPLEMENTED: Angebotsumfang DE/EN, direkte Audit-/Sprint-Formulare und Header-/Hero-CTAs, sekundärer technischer Check, Leadkontext, consentabhängige Funnel-Ereignisse, eigene Arbeitsprobe.
 - VERIFIED: vollständiger `npm run verify` bestanden: Astro 186 Dateien ohne Fehler/Warnungen/Hinweise, Build, 11 Unit-Tests, isolierter Produktions-API-Vertrag, 40 SEO-Routen, Crawler-/Security-/Static-Prüfungen und 131 Browsertests (5,8 Minuten). Desktop-/Mobile-Screenshots erneut geprüft; `git diff --check` ohne Whitespacefehler. Deployment und Live-Verifikation stehen noch aus.
-- PLANNED / NEXT SPRINT: `/seo-dresden/`, Partner-/Referral-Aktivierung und manuelle Snapshots.
+- DEPLOYED / LIVE_VERIFIED: Release `32fbaeb`; finale Abnahme unten ersetzt den vorherigen lokalen Prüfzwischenstand. Production und Live-Prüfung abgeschlossen.
+- BLOCKED / LATER SPRINT: `/seo-dresden/`, Partner-/Referral-Aktivierung und manuelle Snapshots; zuerst Positionierungs-Gate Sprint 1.5.
 - PRIORITIZED_NOT_STARTED: beide neuen Research-Projekte. Keine Markt- oder Studienerhebung in diesem Sprint.
 
 ## Revenue Friction: vorher → nachher
@@ -102,7 +103,26 @@ Homepage: bewusst nur zwei Prozessschritte verändert. Sie schließen bestehende
 - Screenshots lokal unter `.codex-tmp/revenue-review/`; keine Formulareinsendungen bei der Bildprüfung.
 - Vercel-Build prüft die bestehenden erforderlichen Produktionsvariablen vor dem Build. Lokal heruntergeladene sensitive Platzhalter werden nicht als gültige Zugangsdaten ausgegeben oder committed.
 
-Release-Commit, Deployment und abschließende Prüfergebnisse werden erst nach tatsächlicher Durchführung ergänzt.
+### Production-Abnahme
+
+- Release-Commit: `32fbaeb` — `feat: ship direct revenue offers and consent-aware attribution`.
+- Production: [Deployment](https://paternoga-seo-geo-studio-dwc2le3ry.vercel.app), ID `dpl_5qCy1QgGz8hD4WzLiDzHjhHcqkh8`, Vercel `READY`, Alias `https://www.paternoga-seo-geo.de` am 06.09.2026.
+- Remote-Build: Deployment-Environment-Check bestanden; Astro 181 ausgelieferte Prüfdateien ohne Fehler/Warnungen/Hinweise; nativer Vercel-Build bestanden. Lokaler vollständiger Lauf: 131/131 Browser, 11/11 Unit, API-Vertrag und 40/40 SEO-Routen bestanden.
+- Live: 23/23 Browserprüfungen aus Revenue, Consent, Content Negotiation und Security plus 2/2 Scanner-UI-Tests bestanden. Echte Header-/Footer-Navigation funktioniert mit normaler/reduzierter Bewegung. Audit und Sprint DE/EN erhalten Offer, Source, ursprüngliche Landing, Campaign und CTA im abgefangenen Request; synthetische Lead-ID bestätigt den Erfolgszweig. Widerruf löscht Sessionattribution und stoppt Events. Keine PII in den geprüften Funnel-Events.
+- Live-SEO-Validator: alle 40 Routen inklusive Metadata, Canonical/hreflang, H1, JSON-LD, Bilder und interne Links bestanden.
+- Echte Production-Scanner-API: eigene PATERNOGA-Homepage in DE und EN geprüft, beide Antworten erfolgreich und beide signierten Ergebnisseiten HTTP 200. Kein Kontakt-POST und keine E-Mail dabei. Scanner-Lead-/E-Mail-Verarbeitung zusätzlich im isolierten API-Vertrag mit Mocktransport geprüft; reale Inbox-Zustellung bewusst nicht behauptet.
+- Zwölf Live-Screenshots aufgenommen; Audit-Mobile-Hierarchie und Sprint-Desktop-Formular erneut visuell geprüft. Breitenmatrix 320–1728px, DE/EN und Reduced Motion im Browserlauf bestanden.
+
+### Revenue Readiness
+
+| Pfad | Abnahme |
+|---|---|
+| A: direkt GEO Audit anfragen | JA — kommerzieller Hero-/Header-CTA öffnet das vorbereitete Auditformular; Gratischeck sekundär. |
+| B: direkt Seiten-Sprint anfragen | JA — begrenzter Scope und direktes Formular, kein vorausgehender Audit nötig. |
+| C: technischer Free Check | JA — reale DE/EN-Scans und Ergebnisseiten sowie UI-/Lead-Mockpfad verifiziert. |
+| D: attribuieren | JA für Angebot, aktuelle Seite, CTA und eindeutigen Server-Lead; First-Touch/Campaign über Seiten hinweg nur bei verfügbarer Statistikzustimmung. Keine lückenlose geräteübergreifende Zuordnung versprochen. |
+
+Revenue Sprint 1 ist IMPLEMENTED / VERIFIED / DEPLOYED / LIVE_VERIFIED. Reale Leads und Umsatz bleiben ungemessen. Der anschließend beauftragte [Sprint 1.5](seo-positioning-sprint-1-5-2026-09-06.md) steht auf `IN_PROGRESS`; Partner, warme Kontakte, Snapshots und Dresden sind bis zum Positionierungs-Gate blockiert und benötigen danach weiterhin einen separaten Auftrag.
 
 ## Noch echte Grenzen
 

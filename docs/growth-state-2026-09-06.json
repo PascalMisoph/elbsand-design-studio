@@ -24,8 +24,11 @@
     "document": "docs/revenue-sprint-1-2026-09-06.md",
     "implementation": "implemented",
     "validation": "verified_131_browser_11_unit_api_seo_40_routes",
-    "deployment": "not_started",
-    "live_verification": "not_started",
+    "deployment": "production_ready",
+    "release_commit": "32fbaeb",
+    "deployment_id": "dpl_5qCy1QgGz8hD4WzLiDzHjhHcqkh8",
+    "deployment_url": "https://paternoga-seo-geo-studio-dwc2le3ry.vercel.app",
+    "live_verification": "verified_25_browser_40_seo_routes_real_de_en_scanner",
     "qualified_leads": null,
     "revenue": null
   },
