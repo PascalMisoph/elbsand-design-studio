@@ -14,7 +14,7 @@ Stand: 06.09.2026. Ergänzung zu [Revenue Sprint 2](revenue-sprint-2-traffic-202
 | Standort | Dresden, Deutschland |
 | Ansprechperson | Pascal Misoph |
 | E-Mail | kontakt@paternoga-seo-geo.de |
-| Angebotsnamen | GEO Audit · Seiten-Sprint · Laufende Betreuung |
+| Angebotsnamen | GEO Audit · Seiten-Sprint · Laufende SEO- und GEO-Betreuung |
 | Einstiegspreise | ab 1.500 € / ab 2.500 € / ab 1.250 € netto pro Monat |
 
 Keine abweichenden Kurzbeschreibungen, keine zweite Adresse, keine Fantasie-Standorte, keine Wikipedia-/Wikidata-Selbsteinträge.
@@ -27,16 +27,16 @@ Keine abweichenden Kurzbeschreibungen, keine zweite Adresse, keine Fantasie-Stan
 
 - **Primärkategorie:** Suchmaschinenoptimierungs-Dienst (SEO-Agentur). Begründung: der lokale Kaufintent lautet „SEO Agentur Dresden", nicht „GEO".
 - **Sekundärkategorien:** Marketingagentur, Webdesigner — nur wenn tatsächlich angeboten.
-- **Leistungen** (Namen exakt wie auf der Website): GEO Audit, Seiten-Sprint, Laufende Betreuung, Kostenfreier technischer KI-Check.
+- **Leistungen** (Namen exakt wie auf der Website): GEO Audit, Seiten-Sprint, Laufende SEO- und GEO-Betreuung, Kostenfreier technischer KI-Check.
 - **Website-Link des Profils:** `https://www.paternoga-seo-geo.de/seo-dresden/?utm_source=google&utm_medium=organic&utm_campaign=google_business_profile` statt der Startseite. Die lokale Money Page beantwortet lokalen Kaufintent direkt.
 
 ### 1.2 Profilbeschreibung (750-Zeichen-Rahmen)
 
 > PATERNOGA ist ein SEO- und GEO-Studio aus Dresden für Dienstleister, deren Leistung vor dem Kauf erklärt werden muss. Wir arbeiten an den wenigen Seiten, über die Anfragen tatsächlich entstehen, und prüfen dabei getrennt drei Dinge: ob Google die Seite findet und einordnet, ob KI-Antwortsysteme wie ChatGPT oder Perplexity sie korrekt wiedergeben, und ob Besucher dort tatsächlich anfragen. Der Einstieg erfolgt über einen einmaligen GEO Audit ab 1.500 € netto, einen Seiten-Sprint für bis zu drei bestehende Seiten ab 2.500 € netto oder eine laufende Betreuung ab 1.250 € netto pro Monat. Umsetzung persönlich durch Pascal Misoph, Standort Dresden, Zusammenarbeit deutschlandweit.
 
-### 1.3 Beiträge — vier vorbereitete Posts
+### 1.3 Beiträge — fünf vorbereitete Posts
 
-Jeder Beitrag hat Suchwinkel, Ziel-Landingpage, CTA und UTM. Keine Beitragsfrequenz um der Frequenz willen; vier Beiträge über vier Wochen reichen für einen ersten Messzyklus.
+Jeder Beitrag hat Suchwinkel, Ziel-Landingpage, CTA und UTM. Keine Beitragsfrequenz um der Frequenz willen; fünf Beiträge über vier bis fünf Wochen reichen für einen ersten Messzyklus. Post 4 ist in Sprint 3 nach der Retainer-Migration ergänzt worden.
 
 **Post 1 — Preisfrage**
 > Was kostet SEO in Dresden? Bei uns beginnt die Zusammenarbeit bei 1.500 € netto für einen einmaligen GEO Audit, bei 2.500 € netto für einen Seiten-Sprint an bis zu drei bestehenden Seiten und bei 1.250 € netto pro Monat für die laufende Betreuung. Keine lokalen Sonderpakete, keine Rabatte, der Umfang wird vorher abgestimmt.
@@ -50,7 +50,11 @@ Jeder Beitrag hat Suchwinkel, Ziel-Landingpage, CTA und UTM. Keine Beitragsfrequ
 > Wird dein Unternehmen in ChatGPT genannt? Antwortsysteme arbeiten unabhängig vom Google-Index und wählen Quellen anders aus. Wer bei Google rankt, taucht deshalb nicht automatisch in KI-Antworten auf. Ein GEO Audit prüft, welche Antworten deine Käufer tatsächlich bekommen und welche Quellen sie prägen.
 > CTA: Mehr erfahren → `/ai-sichtbarkeit/?utm_source=google&utm_medium=organic&utm_campaign=google_business_profile&utm_content=gbp_post_chatgpt`
 
-**Post 4 — Angebot**
+**Post 4 — Retainer**
+> Laufende SEO-, Content- und GEO-Betreuung ab 1.250 € netto pro Monat, zunächst drei Monate. Jeden Monat entscheiden wir anhand echter Such-, KI- und Anfragesignale, welche Seite oder welches Hindernis als Nächstes drankommt — und setzen es um. Wenn objektiv kein wiederkehrender Bedarf besteht, empfehlen wir auch keine Betreuung.
+> CTA: Mehr erfahren → `/seo-betreuung/?utm_source=google&utm_medium=organic&utm_campaign=retainer_launch&utm_content=gbp_post_retainer`
+
+**Post 5 — Angebot**
 > GEO Audit ab 1.500 € netto: rund 20 gemeinsam bestätigte Käuferfragen, drei Antwortoberflächen, bis zu drei Wettbewerber und bis zu zehn priorisierte URLs. Ergebnis sind dokumentierte Befunde, priorisierte Maßnahmen und eine 45-minütige Übergabe. Rund sieben Arbeitstage.
 > CTA: Termin buchen → `/geo-audit/?utm_source=google&utm_medium=organic&utm_campaign=google_business_profile&utm_content=gbp_post_audit`
 

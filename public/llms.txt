@@ -43,7 +43,7 @@ Contact: kontakt@paternoga-seo-geo.de
 ## Ongoing work
 
 - [GEO-Monitoring](https://www.paternoga-seo-geo.de/geo-monitoring/): Observes changes in AI answers and sources over time.
-- [GEO-Betreuung](https://www.paternoga-seo-geo.de/geo-betreuung/): Connects monitoring, prioritisation and implementation.
+- [GEO-Betreuung](https://www.paternoga-seo-geo.de/seo-betreuung/): Connects monitoring, prioritisation and implementation.
 
 ## English service pages
 
@@ -59,7 +59,7 @@ Contact: kontakt@paternoga-seo-geo.de
 - [GEO content](https://www.paternoga-seo-geo.de/en/geo-content/)
 - [Content optimisation for AI search](https://www.paternoga-seo-geo.de/en/content-optimization-ai-search/)
 - [GEO monitoring](https://www.paternoga-seo-geo.de/en/geo-monitoring/)
-- [GEO support](https://www.paternoga-seo-geo.de/en/geo-support/)
+- [GEO support](https://www.paternoga-seo-geo.de/en/seo-support/)
 
 ## Machine-readable resources
 

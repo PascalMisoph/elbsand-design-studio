@@ -148,7 +148,7 @@ const serviceRoutePairs = [
   ["/geo-content/", "/en/geo-content/"],
   ["/content-optimierung-ai-suche/", "/en/content-optimization-ai-search/"],
   ["/geo-monitoring/", "/en/geo-monitoring/"],
-  ["/geo-betreuung/", "/en/geo-support/"],
+  ["/seo-betreuung/", "/en/seo-support/"],
   ["/wissen/ki-crawler-robots-txt/", "/en/knowledge/ai-crawlers-robots-txt/"],
   ["/research/ki-crawler-readiness-dax-40-2026/", "/en/research/dax-40-ai-crawler-readiness-2026/"],
 ];

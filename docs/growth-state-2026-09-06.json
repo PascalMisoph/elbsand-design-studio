@@ -388,5 +388,82 @@
     "deployment_url": "https://paternoga-seo-geo-studio-jwmdr068k.vercel.app",
     "local_regression": "astro_check_190_files_0_errors, 11_unit, revenue_api_contract, 42_seo_routes, crawler, security, static, 139_browser",
     "live_verification": "42 live SEO routes plus 64 live browser checks; both new routes 200, self-canonical, indexable, 3 hreflang, JSON-LD, in sitemap and markdown negotiation"
+  },
+  "revenue_sprint_3": {
+    "document": "docs/revenue-sprint-3-retainer-growth-2026-09-06.md",
+    "status": "IN_PROGRESS",
+    "mandate": "retainer growth, distribution and MRR",
+    "retainer_owner": {
+      "old": [
+        "/geo-betreuung/",
+        "/en/geo-support/"
+      ],
+      "new": [
+        "/seo-betreuung/",
+        "/en/seo-support/"
+      ],
+      "verdict": "SEO Betreuung is the established commercial intent with /seo-betreuung/ as de-facto slug standard; GEO Betreuung is not a standalone category",
+      "migrated": true,
+      "redirect": "single-hop 301 before trailing-slash normalisation, four path forms covered",
+      "search_equity_lost": "none; old route had 0 clicks",
+      "offer_type_unchanged": "geo_support retained internally to avoid breaking measurement history"
+    },
+    "local_retainer_route": {
+      "decision": "REJECTED",
+      "reason": "SEO Betreuung Dresden has no standalone SERP; all results are SEO Agentur Dresden pages. Covered inside /seo-dresden/."
+    },
+    "pricing": {
+      "public_entry": "1250 EUR net per month, three months to begin with",
+      "market_validation": "2026 SMB professional band documented at 1000-1500 EUR/month; PATERNOGA sits inside it",
+      "second_tier": {
+        "status": "DESIGNED_NOT_PUBLISHED",
+        "draft_price_eur": 2400,
+        "capacity_hours": 16,
+        "blocker": "no delivered retainer month exists to validate the hour assumption",
+        "decision_required": [
+          "exact price",
+          "package vs capacity option",
+          "initial term"
+        ]
+      }
+    },
+    "mrr_model": {
+      "3_retainers": {
+        "mrr": 3750,
+        "delivery_hours": 24,
+        "contribution": 1650
+      },
+      "5_retainers": {
+        "mrr": 6250,
+        "delivery_hours": 40,
+        "contribution": 2750
+      },
+      "10_retainers": {
+        "mrr": 12500,
+        "delivery_hours": 80,
+        "contribution": 5500,
+        "note": "beyond one-person capacity"
+      },
+      "realistic_ceiling": "6-8 base retainers for one person",
+      "target_corridor": "5-8 retainers"
+    },
+    "snapshot": {
+      "status": "DEPRIORITISED",
+      "reason": "cannibalises the 1500 EUR audit for the same buyer state, weaker lead quality, no shorter path to the retainer; 249 EUR remains an unapproved hypothesis"
+    },
+    "distribution": {
+      "status": "PREPARED_NOT_EXECUTED",
+      "reason": "authorization.external_messages and account_writes remain false; no GBP write access in this environment",
+      "publication_sequence": "four weeks, GBP + LinkedIn + directories, final copy and UTMs ready",
+      "executed_actions": 0
+    },
+    "measurement": {
+      "t_plus_7": "2026-09-13",
+      "t_plus_14": "2026-09-20",
+      "t_plus_28": "2026-10-04"
+    },
+    "gate": {
+      "status": "IN_PROGRESS"
+    }
   }
 }

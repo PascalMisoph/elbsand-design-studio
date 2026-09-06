@@ -15,7 +15,7 @@ const serviceRoutes = [
   ["/geo-content/", "de"], ["/en/geo-content/", "en"],
   ["/content-optimierung-ai-suche/", "de"], ["/en/content-optimization-ai-search/", "en"],
   ["/geo-monitoring/", "de"], ["/en/geo-monitoring/", "en"],
-  ["/geo-betreuung/", "de"], ["/en/geo-support/", "en"],
+  ["/seo-betreuung/", "de"], ["/en/seo-support/", "en"],
 ] as const;
 
 const acquisitionRoutes = [
@@ -227,10 +227,10 @@ test("shared FAQ keeps single-open native disclosure behavior", async ({ page })
 const offerRoutes = [
   { path: "/geo-audit/", price: "ab 1.500 €", suffix: "netto, einmalig", minPrice: 1500, recurring: false, labels: ["Preis", "Geeignet für", "Umfang", "Du erhältst", "Dauer", "Grenzen", "Nächster Schritt"] },
   { path: "/content-optimierung-ai-suche/", price: "ab 2.500 €", suffix: "netto, einmalig", minPrice: 2500, recurring: false, labels: ["Preis", "Geeignet für", "Umfang", "Du erhältst", "Dauer", "Grenzen", "Nächster Schritt"] },
-  { path: "/geo-betreuung/", price: "ab 1.250 €", suffix: "netto / Monat", minPrice: 1250, recurring: true, labels: ["Preis", "Geeignet für", "Umfang", "Du erhältst", "Dauer", "Grenzen", "Nächster Schritt"] },
+  { path: "/seo-betreuung/", price: "ab 1.250 €", suffix: "netto / Monat", minPrice: 1250, recurring: true, labels: ["Preis", "Geeignet für", "Umfang", "Du erhältst", "Dauer", "Grenzen", "Nächster Schritt"] },
   { path: "/en/geo-audit/", price: "from €1,500", suffix: "net, one-off", minPrice: 1500, recurring: false, labels: ["Price", "Suited to", "Scope", "You receive", "Duration", "Limits", "Next step"] },
   { path: "/en/content-optimization-ai-search/", price: "from €2,500", suffix: "net, one-off", minPrice: 2500, recurring: false, labels: ["Price", "Suited to", "Scope", "You receive", "Duration", "Limits", "Next step"] },
-  { path: "/en/geo-support/", price: "from €1,250", suffix: "net / month", minPrice: 1250, recurring: true, labels: ["Price", "Suited to", "Scope", "You receive", "Duration", "Limits", "Next step"] },
+  { path: "/en/seo-support/", price: "from €1,250", suffix: "net / month", minPrice: 1250, recurring: true, labels: ["Price", "Suited to", "Scope", "You receive", "Duration", "Limits", "Next step"] },
 ] as const;
 
 for (const offer of offerRoutes) {
@@ -299,8 +299,8 @@ for (const [route, lang, h1Fragment, priceFragment] of [
 
     // The page must route into all three existing revenue paths, not a new one.
     for (const href of lang === "de"
-      ? ["/geo-audit/#kontakt", "/content-optimierung-ai-suche/#kontakt", "/geo-betreuung/#kontakt"]
-      : ["/en/geo-audit/#kontakt", "/en/content-optimization-ai-search/#kontakt", "/en/geo-support/#kontakt"]) {
+      ? ["/geo-audit/#kontakt", "/content-optimierung-ai-suche/#kontakt", "/seo-betreuung/#kontakt"]
+      : ["/en/geo-audit/#kontakt", "/en/content-optimization-ai-search/#kontakt", "/en/seo-support/#kontakt"]) {
       await expect(page.locator(`.l-price-grid a[href="${href}"]`)).toHaveCount(1);
     }
 

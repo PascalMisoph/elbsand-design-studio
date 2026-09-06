@@ -41,14 +41,14 @@ const schema = createServicePageSchema({
 const related = de ? [
   ["GEO Audit", "/geo-audit/"],
   ["Seiten-Sprint für bestehende Seiten", "/content-optimierung-ai-suche/"],
-  ["Laufende Betreuung", "/geo-betreuung/"],
+  ["Laufende Betreuung", "/seo-betreuung/"],
   ["KI-Sichtbarkeit prüfen", "/ai-sichtbarkeit/"],
   ["Technische GEO-Optimierung", "/technische-geo-optimierung/"],
   ["GEO-Agentur Deutschland", "/geo-agentur-deutschland/"],
 ] : [
   ["GEO audit", "/en/geo-audit/"],
   ["Page sprint for existing pages", "/en/content-optimization-ai-search/"],
-  ["Ongoing support", "/en/geo-support/"],
+  ["Ongoing support", "/en/seo-support/"],
   ["Review AI visibility", "/en/ai-visibility/"],
   ["Technical GEO optimisation", "/en/technical-geo-optimization/"],
   ["GEO agency Germany", "/en/geo-agency-germany/"],
@@ -170,7 +170,7 @@ const related = de ? [
       <p class="l-answer">{s.retainer.answer}</p>
       <p>{s.retainer.body}</p>
       <p class="l-muted">{s.retainer.note}</p>
-      <p><a class="l-inline-link" href={de ? "/geo-betreuung/" : "/en/geo-support/"}>{s.retainer.linkLabel}<span aria-hidden="true">→</span></a></p>
+      <p><a class="l-inline-link" href={de ? "/seo-betreuung/" : "/en/seo-support/"}>{s.retainer.linkLabel}<span aria-hidden="true">→</span></a></p>
     </section>
 
     <section class="l-shell l-block">

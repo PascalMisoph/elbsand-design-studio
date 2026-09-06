@@ -143,14 +143,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.paternoga-seo-geo.de/en/geo-monitoring/" />
   </url>
   <url>
-    <loc>https://www.paternoga-seo-geo.de/geo-betreuung/</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.paternoga-seo-geo.de/geo-betreuung/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.paternoga-seo-geo.de/en/geo-support/" />
+    <loc>https://www.paternoga-seo-geo.de/seo-betreuung/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.paternoga-seo-geo.de/seo-betreuung/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.paternoga-seo-geo.de/en/seo-support/" />
   </url>
   <url>
-    <loc>https://www.paternoga-seo-geo.de/en/geo-support/</loc>
-    <xhtml:link rel="alternate" hreflang="de" href="https://www.paternoga-seo-geo.de/geo-betreuung/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.paternoga-seo-geo.de/en/geo-support/" />
+    <loc>https://www.paternoga-seo-geo.de/en/seo-support/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.paternoga-seo-geo.de/seo-betreuung/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.paternoga-seo-geo.de/en/seo-support/" />
   </url>
   <url>
     <loc>https://www.paternoga-seo-geo.de/geo-agentur-deutschland/</loc>

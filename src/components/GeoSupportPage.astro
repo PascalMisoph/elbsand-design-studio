@@ -21,25 +21,25 @@ const { lang } = Astro.props;
 const isGerman = lang === "de";
 const siteContent = content[lang];
 const homePath = isGerman ? "/" : "/en/";
-const canonicalPath = isGerman ? "/geo-betreuung/" : "/en/geo-support/";
+const canonicalPath = isGerman ? "/seo-betreuung/" : "/en/seo-support/";
 const meta = geoSupportPages[lang].meta;
 
 const t = isGerman ? {
-  eyebrow: "GEO-Betreuung",
-  title: "Deine AI-Sichtbarkeit bleibt in Bewegung",
-  lead: "Wenn regelmäßig Inhalte, Angebote oder technische Grundlagen gepflegt werden müssen, übernimmt PATERNOGA einen vereinbarten Maßnahmenblock mit Review. Ein Audit oder Seiten-Sprint verpflichtet nicht zur Betreuung; verwertbare Vorarbeit anderer Anbieter ist willkommen.",
-  cta: "Betreuung besprechen",
-  second: "Arbeitsweise ansehen",
+  eyebrow: "SEO- & GEO-Betreuung",
+  title: "Laufende SEO-, Content- und GEO-Betreuung",
+  lead: "Für Unternehmen, bei denen die Arbeit an den wichtigen Seiten wiederkehrt statt einmal stattzufinden. Jeden Monat entscheiden wir anhand tatsächlicher Such-, KI- und Anfragesignale, welche Seite oder welches Hindernis als Nächstes bearbeitet wird – und setzen es innerhalb der vereinbarten Kapazität um. Ab 1.250 € netto pro Monat, zunächst drei Monate.",
+  cta: "Betreuung anfragen",
+  second: "Monatlichen Ablauf ansehen",
   home: "Start",
   hub: "GEO-Optimierung",
-  featureIntro: "Drei Dinge, die im Alltag zählen",
+  featureIntro: "Wann lohnt sich laufende Betreuung?",
   features: [
     { title: "Wissen, was jetzt zählt", text: "Befunde werden nach Relevanz, Aufwand und dem nächsten sinnvollen Schritt geordnet." },
     { title: "Veränderung im Blick behalten", text: "Antworten, Quellen und technische Zugänge werden regelmäßig auf echte Verschiebungen geprüft." },
     { title: "Eine Person, ein klarer Faden", text: "Pascal bleibt dein Ansprechpartner – von der Einordnung bis zur Umsetzung und dem nächsten Review." },
   ],
   workspaceEyebrow: "Illustrativer Betreuungs-Workspace",
-  workspaceTitle: "Aus Beobachtung wird eine nächste Entscheidung",
+  workspaceTitle: "Wie werden die Prioritäten gewählt?",
   workspaceNote: "Illustratives Beispiel – keine Kundenanalyse und keine echten Messwerte.",
   tabs: ["AI-Sichtbarkeit", "Prompt-Recherche", "Crawlability", "Content"],
   workspaceLabels: ["Aktuelle Beobachtung", "Nächste Aktion", "Verantwortlich"] as const,
@@ -49,8 +49,8 @@ const t = isGerman ? {
     ["Zugriff", "Eine wichtige Seite antwortet langsam auf einen geprüften Bot-Request.", "Serverpfad prüfen", "Pascal"],
     ["Inhalt", "Ein Abschnitt ist fachlich richtig, aber ohne Zeitbezug schwer einzuordnen.", "Refresh planen", "Pascal"],
   ] as const,
-  supportTitle: "Betreuung ist ein Rhythmus, kein Dauerprojekt",
-  supportLead: "Du erhältst einen überschaubaren Arbeitsrahmen. Gemeinsam wird entschieden, was beobachtet, verändert oder bewusst nicht angefasst wird.",
+  supportTitle: "Was passiert jeden Monat?",
+  supportLead: "Jeder Monat folgt derselben Schleife: Signale prüfen, eine Priorität bestimmen, sie umsetzen, das Ergebnis dokumentieren und daraus die nächste Priorität ableiten. Du bekommst keine Aufgabenliste, sondern eine getroffene Entscheidung und eine umgesetzte Änderung.",
   supportRows: [
     { title: "Check-in", text: "Ein kurzer Blick auf die relevanten Signale." },
     { title: "Priorisierung", text: "Eine Entscheidung statt zehn offene Aufgaben." },
@@ -76,7 +76,7 @@ const t = isGerman ? {
   second: "See how it works",
   home: "Home",
   hub: "GEO Optimization",
-  featureIntro: "Three things that matter day to day",
+  featureIntro: "When is ongoing support worth it?",
   features: [
     { title: "Know what matters now", text: "Findings are ordered by relevance, effort and the next useful step." },
     { title: "Keep change in view", text: "Answers, sources and technical access are reviewed for meaningful shifts." },
@@ -93,8 +93,8 @@ const t = isGerman ? {
     ["Access", "An important page responds slowly to a reviewed bot request.", "Review server path", "Pascal"],
     ["Content", "A section is correct but hard to place without time context.", "Plan refresh", "Pascal"],
   ] as const,
-  supportTitle: "Support is a rhythm, not a permanent project",
-  supportLead: "You receive a manageable working frame. Together we decide what to observe, change or deliberately leave alone.",
+  supportTitle: "What happens each month?",
+  supportLead: "Every month follows the same loop: review the signals, decide one priority, implement it, document the result and derive the next priority from it. You do not get a task list, you get a decision made and a change shipped.",
   supportRows: [
     { title: "Check-in", text: "A short look at the signals that matter." },
     { title: "Prioritisation", text: "One decision instead of ten open tasks." },
@@ -120,8 +120,8 @@ const methodItems = t.methodPoints.map((title) => ({ title, text: t.methodText }
 const schema = createServicePageSchema({ lang, title: meta.title, description: meta.description, path: canonicalPath, serviceName: t.eyebrow, breadcrumbs: breadcrumbItems, faqs: faqItems , offer: "geo_support"});
 ---
 
-<BaseLayout title={meta.title} description={meta.description} lang={lang} canonicalPath={canonicalPath} alternateDePath="/geo-betreuung/" alternateEnPath="/en/geo-support/" schema={schema} bodyClass="geo-support-page ui-dark-page dark">
-  <Header lang={lang} nav={siteContent.nav} cta={siteContent.cta} page="service" alternateDePath="/geo-betreuung/" alternateEnPath="/en/geo-support/" />
+<BaseLayout title={meta.title} description={meta.description} lang={lang} canonicalPath={canonicalPath} alternateDePath="/seo-betreuung/" alternateEnPath="/en/seo-support/" schema={schema} bodyClass="geo-support-page ui-dark-page dark">
+  <Header lang={lang} nav={siteContent.nav} cta={siteContent.cta} page="service" alternateDePath="/seo-betreuung/" alternateEnPath="/en/seo-support/" />
   <main id="main-content" class="min-h-screen bg-background text-foreground">
     <section class="border-b border-solid border-border"><div class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><nav class="flex flex-wrap gap-2 text-xs text-muted-foreground" aria-label={isGerman ? "Brotkrumen-Navigation" : "Breadcrumb"}>{breadcrumbItems.map((item, index) => <>{index > 0 && <span aria-hidden="true">/</span>}{index === breadcrumbItems.length - 1 ? <span aria-current="page">{item.name}</span> : <a class="text-inherit no-underline hover:text-foreground" href={item.href}>{item.name}</a>}</>)}</nav><div class="max-w-3xl pt-12"><p class="m-0 text-xs font-medium uppercase tracking-wider text-primary">{t.eyebrow}</p><h1 class="m-0 mt-6 text-display-mobile font-medium text-foreground md:text-display">{t.title}</h1><p class="m-0 mt-6 max-w-xl text-base leading-copy text-muted-foreground">{t.lead}</p><div class="mt-8 flex flex-col gap-3 sm:flex-row"><LinkButton href="#kontakt" label={t.cta} icon="right" /><LinkButton href="#workspace" label={t.second} variant="secondary" icon="down" /></div></div><div class="mt-20"><FeatureCardGrid items={t.features} columns={3} /></div></div></section>
     <OfferScope lang={lang} offer="geo_support" />

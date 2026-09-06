@@ -13,7 +13,7 @@ const allRoutes = [
   "/geo-content/",
   "/content-optimierung-ai-suche/",
   "/geo-monitoring/",
-  "/geo-betreuung/",
+  "/seo-betreuung/",
   "/en/geo-optimization/",
   "/en/ai-source-analysis/",
   "/en/ai-competitor-analysis/",
@@ -24,7 +24,7 @@ const allRoutes = [
   "/en/geo-content/",
   "/en/content-optimization-ai-search/",
   "/en/geo-monitoring/",
-  "/en/geo-support/",
+  "/en/seo-support/",
 ];
 const routeFilter = process.env.VERIFY_ROUTES?.split(",").filter(Boolean);
 const routes = routeFilter?.length ? allRoutes.filter((route) => routeFilter.includes(route)) : allRoutes;

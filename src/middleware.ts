@@ -14,9 +14,29 @@ const addVaryAccept = (headers: Headers) => {
   headers.set("vary", values.join(", "));
 };
 
+// Sprint 3 retainer migration: the ongoing-support offer moved to an SEO-led slug
+// because "SEO Betreuung" is the established commercial intent. Both the bare and
+// trailing-slash forms redirect straight to the new route so no 308 -> 301 chain forms.
+const permanentRedirects = new Map<string, string>([
+  ["/geo-betreuung", "/seo-betreuung/"],
+  ["/geo-betreuung/", "/seo-betreuung/"],
+  ["/en/geo-support", "/en/seo-support/"],
+  ["/en/geo-support/", "/en/seo-support/"],
+]);
+
 export const onRequest = defineMiddleware(async (context, next) => {
   const { pathname } = context.url;
   const isDocumentRequest = context.request.method === "GET" || context.request.method === "HEAD";
+
+  const movedTo = permanentRedirects.get(pathname);
+  if (isDocumentRequest && movedTo) {
+    const location = new URL(context.url);
+    location.pathname = movedTo;
+    const headers = new Headers({ location: location.toString(), vary: "Accept" });
+    applySecurityHeaders(headers);
+    return new Response(null, { status: 301, headers });
+  }
+
   if (isDocumentRequest && isPublicDocumentPath(pathname) && pathname !== "/" && !pathname.endsWith("/")) {
     const location = new URL(context.url);
     location.pathname = `${pathname}/`;

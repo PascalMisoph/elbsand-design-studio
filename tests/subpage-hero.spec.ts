@@ -31,8 +31,8 @@ const heroCtaRoutes = [
   "/en/ai-brand-perception/",
   "/ai-crawlability/",
   "/en/ai-crawlability/",
-  "/geo-betreuung/",
-  "/en/geo-support/",
+  "/seo-betreuung/",
+  "/en/seo-support/",
 ] as const;
 
 const representativeRoutes = [

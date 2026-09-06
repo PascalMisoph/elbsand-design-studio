@@ -194,3 +194,36 @@ test.describe("Markdown content negotiation", () => {
     expect(await llmsFull.text()).toContain("kontakt@paternoga-seo-geo.de");
   });
 });
+
+test.describe("Retainer route migration", () => {
+  const moved = [
+    ["/geo-betreuung", "/seo-betreuung/"],
+    ["/geo-betreuung/", "/seo-betreuung/"],
+    ["/en/geo-support", "/en/seo-support/"],
+    ["/en/geo-support/", "/en/seo-support/"],
+  ] as const;
+
+  for (const [from, to] of moved) {
+    test(`${from} is a single-hop 301 to ${to}`, async ({ request }) => {
+      const response = await request.get(url(from), { maxRedirects: 0 });
+      expect(response.status(), `${from} must be a permanent redirect`).toBe(301);
+      expect(new URL(response.headers()["location"]).pathname).toBe(to);
+
+      // The target must answer directly: no 301 -> 308 -> 200 chain.
+      const target = await request.get(url(to), { maxRedirects: 0 });
+      expect(target.status()).toBe(200);
+    });
+  }
+
+  test("the retired retainer route is no longer a parallel indexable owner", async ({ request }) => {
+    const sitemap = await (await request.get(url("/sitemap.xml"))).text();
+    expect(sitemap).not.toContain("/geo-betreuung/");
+    expect(sitemap).not.toContain("/en/geo-support/");
+    expect(sitemap).toContain("/seo-betreuung/");
+    expect(sitemap).toContain("/en/seo-support/");
+
+    const page = await (await request.get(url("/seo-betreuung/"))).text();
+    expect(page).toContain('rel="canonical" href="https://www.paternoga-seo-geo.de/seo-betreuung/"');
+    expect(page).not.toContain("noindex");
+  });
+});

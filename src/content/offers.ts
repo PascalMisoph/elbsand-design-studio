@@ -79,7 +79,7 @@ export const offers: Record<OfferLocale, Record<OfferId, OfferCopy>> = {
       limits: "Vereinbarte Kapazität statt unbegrenzter Aufgaben. Keine Zusage zu Rankings, KI-Nennungen oder Leadzahlen. Betreuung ist sinnvoll, wenn tatsächlich wiederkehrende Arbeit anfällt.",
       cta: "Betreuung anfragen",
       ctaHref: "#kontakt",
-      cardHref: "/geo-betreuung/#kontakt",
+      cardHref: "/seo-betreuung/#kontakt",
     },
   },
   en: {
@@ -123,7 +123,7 @@ export const offers: Record<OfferLocale, Record<OfferId, OfferCopy>> = {
       limits: "Agreed capacity rather than unlimited tasks. No commitment to rankings, AI mentions or lead numbers. Support makes sense when there is genuine recurring work.",
       cta: "Request ongoing support",
       ctaHref: "#kontakt",
-      cardHref: "/en/geo-support/#kontakt",
+      cardHref: "/en/seo-support/#kontakt",
     },
   },
 };

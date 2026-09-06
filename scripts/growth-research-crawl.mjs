@@ -2,7 +2,7 @@
 import { chromium } from '@playwright/test';
 const browser = await chromium.launch({ headless: true });
 const context = await browser.newContext({ locale: 'de-DE' });
-const paths = process.argv.slice(2).length ? process.argv.slice(2) : ['/', '/geo-agentur-deutschland/', '/geo-audit/', '/geo-optimierung/', '/ai-sichtbarkeit/', '/geo-betreuung/', '/content-optimierung-ai-suche/', '/research/ki-crawler-readiness-dax-40-2026/'];
+const paths = process.argv.slice(2).length ? process.argv.slice(2) : ['/', '/geo-agentur-deutschland/', '/geo-audit/', '/geo-optimierung/', '/ai-sichtbarkeit/', '/seo-betreuung/', '/content-optimierung-ai-suche/', '/research/ki-crawler-readiness-dax-40-2026/'];
 for (const path of paths) {
   const page = await context.newPage();
   try {

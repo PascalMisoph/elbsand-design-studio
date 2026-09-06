@@ -46,7 +46,7 @@ The website contains illustrative product interfaces. They explain workflows and
 - [GEO-Content](https://www.paternoga-seo-geo.de/geo-content/): New editorial pages built around complete, supported answers.
 - [Content-Optimierung für AI-Suche](https://www.paternoga-seo-geo.de/content-optimierung-ai-suche/): Revision of existing content for clarity, evidence and currency.
 - [GEO-Monitoring](https://www.paternoga-seo-geo.de/geo-monitoring/): Repeated observation of relevant answers and sources.
-- [GEO-Betreuung](https://www.paternoga-seo-geo.de/geo-betreuung/): Ongoing prioritisation, implementation and review.
+- [GEO-Betreuung](https://www.paternoga-seo-geo.de/seo-betreuung/): Ongoing prioritisation, implementation and review.
 - [KI-Crawler & robots.txt](https://www.paternoga-seo-geo.de/wissen/ki-crawler-robots-txt/): Current technical guide to search-vs-training crawler policies.
 - [KI-Crawler-Readiness DAX 40 2026](https://www.paternoga-seo-geo.de/research/ki-crawler-readiness-dax-40-2026/): Original, dated PATERNOGA study with transparent method and raw data.
 
@@ -67,7 +67,7 @@ The website contains illustrative product interfaces. They explain workflows and
 - [GEO content](https://www.paternoga-seo-geo.de/en/geo-content/)
 - [Content optimisation for AI search](https://www.paternoga-seo-geo.de/en/content-optimization-ai-search/)
 - [GEO monitoring](https://www.paternoga-seo-geo.de/en/geo-monitoring/)
-- [GEO support](https://www.paternoga-seo-geo.de/en/geo-support/)
+- [GEO support](https://www.paternoga-seo-geo.de/en/seo-support/)
 - [AI crawlers and robots.txt](https://www.paternoga-seo-geo.de/en/knowledge/ai-crawlers-robots-txt/)
 - [DAX 40 AI crawler readiness 2026](https://www.paternoga-seo-geo.de/en/research/dax-40-ai-crawler-readiness-2026/)
 

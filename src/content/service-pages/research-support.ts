@@ -196,7 +196,7 @@ export const geoMonitoringPages: Record<ServiceLocale, ResearchSupportContent> =
       title: "GEO Monitoring für laufende KI-Sichtbarkeit | PATERNOGA",
       description: "Beobachte wichtige KI-Antworten, Quellen und Veränderungen über Zeit und leite klare nächste Schritte ab. GEO Monitoring besprechen."
     },
-    breadcrumb: { home: "Start", hub: "GEO-Optimierung", parent: { label: "GEO-Betreuung", href: "/geo-betreuung/" }, current: "GEO Monitoring" },
+    breadcrumb: { home: "Start", hub: "GEO-Optimierung", parent: { label: "GEO-Betreuung", href: "/seo-betreuung/" }, current: "GEO Monitoring" },
     eyebrow: "GEO Monitoring",
     title: "Veränderungen sehen, bevor sie zur falschen Gewissheit werden",
     lead: "Wir beobachten vereinbarte Fragen, Antwortsysteme und Quellen in einem festen Rhythmus. Du erkennst, was stabil bleibt, was sich verschiebt und wo eine Prüfung sinnvoll ist.",
@@ -259,7 +259,7 @@ export const geoMonitoringPages: Record<ServiceLocale, ResearchSupportContent> =
       eyebrow: "Im Netzwerk",
       title: "Monitoring als Teil deiner GEO-Betreuung",
       items: [
-        { title: "GEO-Betreuung", text: "Priorisierte laufende Umsetzung mit einem festen Arbeitsrhythmus.", href: "/geo-betreuung/" },
+        { title: "GEO-Betreuung", text: "Priorisierte laufende Umsetzung mit einem festen Arbeitsrhythmus.", href: "/seo-betreuung/" },
         { title: "GEO Audit", text: "Eine klare Ausgangslage für Fragen, Quellen, Fakten und Zugänglichkeit.", href: "/geo-audit/" },
         { title: "AI-Sichtbarkeit", text: "Antwortmuster und Plattformen als Teil eines größeren Sichtbarkeitsbildes verstehen.", href: "/ai-sichtbarkeit/" }
       ]
@@ -285,7 +285,7 @@ export const geoMonitoringPages: Record<ServiceLocale, ResearchSupportContent> =
       title: "GEO Monitoring for Ongoing AI Visibility | PATERNOGA",
       description: "Track important AI answers, sources and changes over time, then turn them into clear next actions. Discuss GEO monitoring."
     },
-    breadcrumb: { home: "Home", hub: "GEO optimisation", parent: { label: "GEO support", href: "/en/geo-support/" }, current: "GEO monitoring" },
+    breadcrumb: { home: "Home", hub: "GEO optimisation", parent: { label: "GEO support", href: "/en/seo-support/" }, current: "GEO monitoring" },
     eyebrow: "GEO monitoring",
     title: "See change before it becomes false certainty",
     lead: "We observe agreed questions, answer systems and sources on a consistent rhythm. You can see what stays stable, what shifts and where a review is worth your time.",
@@ -348,7 +348,7 @@ export const geoMonitoringPages: Record<ServiceLocale, ResearchSupportContent> =
       eyebrow: "In the network",
       title: "Monitoring as part of GEO support",
       items: [
-        { title: "GEO support", text: "Prioritised ongoing execution with a dependable working rhythm.", href: "/en/geo-support/" },
+        { title: "GEO support", text: "Prioritised ongoing execution with a dependable working rhythm.", href: "/en/seo-support/" },
         { title: "GEO audit", text: "A clear baseline for questions, sources, facts and accessibility.", href: "/en/geo-audit/" },
         { title: "AI visibility", text: "Understand answer patterns and platforms as part of a wider visibility picture.", href: "/en/ai-visibility/" }
       ]
@@ -370,9 +370,9 @@ export const geoMonitoringPages: Record<ServiceLocale, ResearchSupportContent> =
 export const geoSupportPages: Record<ServiceLocale, ResearchSupportContent> = {
   de: {
     lang: "de",
-    slug: "geo-betreuung",
-    alternateDePath: "/geo-betreuung/",
-    alternateEnPath: "/en/geo-support/",
+    slug: "seo-betreuung",
+    alternateDePath: "/seo-betreuung/",
+    alternateEnPath: "/en/seo-support/",
     meta: {
       title: "SEO- & GEO-Betreuung: laufende Optimierung | PATERNOGA",
       description: "Laufende SEO-, Content- und GEO-Betreuung mit festem Messpanel und monatlicher Priorisierung. Ab 1.250 € netto pro Monat, zunächst drei Monate."
@@ -458,9 +458,9 @@ export const geoSupportPages: Record<ServiceLocale, ResearchSupportContent> = {
   },
   en: {
     lang: "en",
-    slug: "geo-support",
-    alternateDePath: "/geo-betreuung/",
-    alternateEnPath: "/en/geo-support/",
+    slug: "seo-support",
+    alternateDePath: "/seo-betreuung/",
+    alternateEnPath: "/en/seo-support/",
     meta: {
       title: "SEO & GEO Support: Ongoing Optimisation | PATERNOGA",
       description: "Ongoing SEO, content and GEO support with a fixed measurement panel and monthly prioritisation. From EUR 1,250 net per month, three months to begin."

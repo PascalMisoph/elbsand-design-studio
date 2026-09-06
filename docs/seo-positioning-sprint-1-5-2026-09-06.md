@@ -4,6 +4,8 @@ Stand: 06.09.2026. Fortsetzung des am selben Tag begonnenen Gates nach Abschluss
 
 Verbindlicher Gate-State: [growth-state-2026-09-06.json](growth-state-2026-09-06.json), `seo_positioning_gate`.
 
+**Hinweis zu URLs in diesem Dokument:** Die hier genannten Retainer-Routen `/geo-betreuung/` und `/en/geo-support/` wurden in [Sprint 3](revenue-sprint-3-retainer-growth-2026-09-06.md) per 301 auf `/seo-betreuung/` bzw. `/en/seo-support/` migriert. Die Beschreibungen bleiben als Zustandsdokumentation gültig; die alten URLs nicht wiederherstellen.
+
 Partner-/Referral-Aktivierung, warme Kontakte, Snapshot-Distribution und `/seo-dresden/` bleiben blockiert und benötigen auch nach PASS einen separaten Sprint-2-Auftrag.
 
 ---
