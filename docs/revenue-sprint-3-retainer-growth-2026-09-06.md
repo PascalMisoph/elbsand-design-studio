@@ -238,6 +238,27 @@ Die Retainer-Fragen müssen aus dem sichtbaren HTML beantwortbar sein. Abdeckung
 
 Structured Data behauptet nichts Unsichtbares: `UnitPriceSpecification` mit `minPrice: 1250`, `unitCode: "MON"`, `valueAddedTaxIncluded: false` — identisch zur sichtbaren Preiszeile, gelesen aus derselben Quelle.
 
+## 14.1 Abnahme, Release und Live-Verifikation
+
+- Lokal: Astro check 190 Dateien ohne Fehler, Build, 11 Unit-Tests, Produktions-API-Vertrag, 42 SEO-Routen, Crawler-, Security- und Static-Prüfungen, **144 Browsertests** inklusive fünf neuer Redirect-Regressionen. `git diff --check` sauber.
+- Releases: `752cc09` (Migration) und `b5692d7` (Redirect-Fix).
+
+**Ein echter Live-Fehler wurde gefunden und behoben.** Die Middleware-301 funktionierten lokal einwandfrei, lieferten in Production aber **404 mit gesetztem Location-Header**: Für die stillgelegten Pfade existiert keine Route mehr, weshalb die Vercel-Routing-Schicht 404 beantwortete, während die Middleware ihren Header bereits angehängt hatte. Ein 404 mit Location ist kein Redirect — die alten URLs wären gestrandet und die Migration hätte Search Equity vernichtet statt übertragen.
+
+Behebung: vier Redirects auf Plattformebene in `vercel.json` mit explizitem `statusCode: 301`. Plattform-Redirects laufen vor dem Routing und können deshalb nicht 404 werden. Die Middleware-Regeln bleiben für den Standalone-Server der lokalen Regression bestehen; beide zeigen auf dasselbe Ziel, sodass kein Chain entsteht.
+
+**Live verifiziert gegen `https://www.paternoga-seo-geo.de`:**
+
+| Prüfung | Ergebnis |
+|---|---|
+| `/geo-betreuung` und `/geo-betreuung/` | 301 → `/seo-betreuung/`, `hops=1`, Endstatus 200 |
+| `/en/geo-support` und `/en/geo-support/` | 301 → `/en/seo-support/`, `hops=1`, Endstatus 200 |
+| SEO-Validator | 42 Routen bestanden |
+| Browserprüfungen | 65 bestanden, inklusive der fünf Redirect-Regressionen gegen Production |
+| Retainer-Seite | H1 „Laufende SEO-, Content- und GEO-Betreuung", Canonical korrekt, Preis „ab 1.250 €" sichtbar |
+| Offer-Schema | `url` folgt der neuen Route, `minPrice: 1250` identisch zur sichtbaren Preiszeile |
+| Frage-Headings live | „Was kostet die laufende Betreuung und was passiert monatlich?", „Was passiert jeden Monat?", „Wie werden die Prioritäten gewählt?" |
+
 ## 15. Messplan
 
 **T+7 (13.09.2026) — Distribution:** Referral-Sessions je UTM-Quelle, GBP-Websiteklicks, CTA-Klicks je Angebot, eingegangene Anfragen. Noch keine Suchdaten interpretieren.

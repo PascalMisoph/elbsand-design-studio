@@ -391,7 +391,7 @@
   },
   "revenue_sprint_3": {
     "document": "docs/revenue-sprint-3-retainer-growth-2026-09-06.md",
-    "status": "IN_PROGRESS",
+    "status": "PASS",
     "mandate": "retainer growth, distribution and MRR",
     "retainer_owner": {
       "old": [
@@ -404,7 +404,7 @@
       ],
       "verdict": "SEO Betreuung is the established commercial intent with /seo-betreuung/ as de-facto slug standard; GEO Betreuung is not a standalone category",
       "migrated": true,
-      "redirect": "single-hop 301 before trailing-slash normalisation, four path forms covered",
+      "redirect": "single-hop 301 at the Vercel edge (vercel.json) plus middleware rules for the standalone server; all four path forms verified live",
       "search_equity_lost": "none; old route had 0 clicks",
       "offer_type_unchanged": "geo_support retained internally to avoid breaking measurement history"
     },
@@ -463,7 +463,38 @@
       "t_plus_28": "2026-10-04"
     },
     "gate": {
-      "status": "IN_PROGRESS"
-    }
+      "status": "PASS",
+      "conditions": {
+        "retainer_intent_checked": true,
+        "owner_url_decided": true,
+        "migration_clean": true,
+        "value_proposition_clear": true,
+        "monthly_job_clear": true,
+        "pricing_visible": true,
+        "scope_visible": true,
+        "term_visible": true,
+        "audit_and_sprint_paths_clean": true,
+        "search_questions_covered": true,
+        "agent_readable_offer_correct": true,
+        "internal_links_strengthened": true,
+        "distribution_assets_updated": true,
+        "distribution_executed_where_authorised": "blocked: external_messages and account_writes are false; nothing sent",
+        "external_actions_not_falsely_marked_executed": true,
+        "tracking_works": true,
+        "no_cannibalisation": true,
+        "redirects_sitemap_hreflang_canonical_correct": true,
+        "full_regression_green": true,
+        "production_deployed": true,
+        "live_verified": true,
+        "mrr_economics_documented": true,
+        "measurement_plan": true
+      }
+    },
+    "release_commits": [
+      "752cc09",
+      "b5692d7"
+    ],
+    "live_verification": "42 live SEO routes, 65 live browser checks, four live 301s with hops=1, retainer page shows H1, price 1250 and matching Offer schema",
+    "local_regression": "astro check 190 files 0 errors, 11 unit, revenue API contract, 42 SEO routes, crawler, security, static, 144 browser"
   }
 }
