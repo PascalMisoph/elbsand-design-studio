@@ -22,7 +22,7 @@ Die beauftragte Market-/Buyer-/Revenue-Recherche ist in [growth-strategy-2026-09
 | Reihenfolge | nächster Arbeitsblock | Status | Abnahme / Abhängigkeit |
 |---|---|---|---|
 | 1 | Attribution und kommerziellen T0 vervollständigen | `IMPLEMENTED_T0_PARTIAL` | Angebots-/Quellenkontext bis zur internen Lead-Mail; kein neues CRM. Reale Leads, Umsatz, GBP und Consumer-AI bleiben ungemessen. |
-| 2 | begrenztes Audit-/Seiten-Sprint-Angebot und direkten Audit-CTA umsetzen | `IMPLEMENTED` | direkte DE/EN-Angebote und eigene Arbeitsprobe; Release-Nachweis im Sprintbericht. Öffentliche Preise weiter auf Anfrage. |
+| 2 | begrenztes Audit-/Seiten-Sprint-Angebot und direkten Audit-CTA umsetzen | `IMPLEMENTED` | direkte DE/EN-Angebote und eigene Arbeitsprobe; Release-Nachweis im Sprintbericht. Öffentliche Einstiegspreise seit Sprint 1.5 (ab 1.500 / 2.500 / 1.250 EUR netto); die frühere Regel "auf Anfrage" gilt nicht mehr. |
 | 3 | warme Käufer-/Partnerbeziehungen und fünf manuelle Snapshots | `PLANNED` | nur bei gesondertem Ausführungsauftrag; begrenzte Lieferzeit und echtes Buyer-Signal. |
 | 4 | eine SEO-Dresden-Kaufseite, nationale Kaufseite und Anbieterprofile | `PLANNED` | Design-/DE-EN-Parität, echter Standort, keine GEO-Dresden-Duplikatroute. |
 | 5 | bezahlten Sprint liefern, Proof und passende Betreuung entwickeln | `PLANNED` | reale Daten, Liefermarge, Freigabe für jede öffentliche Fallbeschreibung. |

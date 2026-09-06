@@ -7,18 +7,58 @@
   "strategy": "docs/growth-strategy-2026-09-06.md",
   "technical_audit": "closed_existing_evidence",
   "seo_positioning_gate": {
-    "status": "IN_PROGRESS",
+    "status": "PASS",
     "decision_document": "docs/seo-positioning-sprint-1-5-2026-09-06.md",
     "execution_order": "after Revenue Sprint 1 production verification",
-    "homepage_aligned": false,
-    "money_pages_aligned": false,
-    "seo_role_clear": false,
-    "geo_role_clear": false,
-    "buyer_job_clear": false,
-    "proof_aligned": false,
-    "revenue_paths_preserved": false,
-    "seo_dresden_brief_ready": false,
-    "sprint_2_requires_separate_authorization": true
+    "homepage_aligned": true,
+    "money_pages_aligned": true,
+    "seo_role_clear": true,
+    "geo_role_clear": true,
+    "buyer_job_clear": true,
+    "proof_aligned": true,
+    "revenue_paths_preserved": true,
+    "seo_dresden_brief_ready": true,
+    "positioning_not_over_narrowed": true,
+    "seo_geo_relationship_factually_correct": true,
+    "three_pass_process_documented": true,
+    "public_entry_prices_visible": true,
+    "agent_readable_offers": true,
+    "offer_structured_data_consistent": true,
+    "local_regression_green": "astro_check_186_files_0_errors, 11_unit, revenue_api_contract, 40_seo_routes, crawler, security, static, 137_browser",
+    "deployed": false,
+    "live_verified": false,
+    "sprint_2_requires_separate_authorization": true,
+    "positioning": {
+      "category": "SEO- und GEO-Studio; die Seite ist Auftragseinheit, nicht Kategoriename",
+      "primary_buyer": "Unternehmen in Deutschland, deren Leistung vor dem Kauf erklärt werden muss, deren Geschäft an wenigen wichtigen Seiten hängt und in denen eine Person freigeben und Fachaussagen bestätigen kann",
+      "buyer_job": "Die Seiten, über die wir verkaufen, bringen zu wenige passende Anfragen, und die Ursache ist unklar",
+      "business_outcome": "mehr passende Anfragen über eine kleine Zahl bestehender Seiten bei bekanntem Umfang und Kosten",
+      "mechanism": "drei Leser derselben Seite: Suchmaschine, Antwortsystem, entscheidender Mensch",
+      "differentiation": "Auftragseinheit statt Fähigkeitsbehauptung, offengelegter Ausgangszustand, eine umsetzende Person",
+      "rejected_variants": [
+        "GEO-Agentur mit SEO-Fundament",
+        "evidenzbasierte SEO & GEO für B2B-Mittelstand",
+        "Sichtbarkeit in KI-Antworten als Ergebnisversprechen",
+        "Website-Neubau als Kopfangebot",
+        "Seiten-Sprint mit Zeit-/Ergebniskopplung"
+      ],
+      "removed_unfounded_filters": ["inhabergeführt", "ein bis drei Kernleistungen"]
+    },
+    "public_pricing": {
+      "rule": "public entry prices, replaces the previous inquiry-only rule",
+      "source_of_truth": "src/content/offers.ts",
+      "geo_audit_min_eur_net": 1500,
+      "page_sprint_min_eur_net": 2500,
+      "geo_support_min_eur_net_per_month": 1250,
+      "structured_data": "Service.offers.Offer.priceSpecification with minPrice, EUR, valueAddedTaxIncluded false; UnitPriceSpecification per MON for the retainer",
+      "commerce_surface_claim": "none; no claim of appearing in ChatGPT Shopping or Instant Checkout"
+    },
+    "blocked_after_pass": {
+      "partner_referral_activation": "NOT_STARTED",
+      "warm_contacts": "NOT_STARTED",
+      "snapshot_distribution": "NOT_STARTED",
+      "seo_dresden": "NOT_IMPLEMENTED_BRIEF_ONLY"
+    }
   },
   "revenue_sprint_1": {
     "document": "docs/revenue-sprint-1-2026-09-06.md",
@@ -72,7 +112,7 @@
     ]
   },
   "decisions": {
-    "primary_icp": "hypothesis: owner-led businesses with complex services, existing website and a concrete acquisition problem",
+    "primary_icp": "companies whose offer needs explaining before purchase, whose business rests on a few commercially important pages, with an existing website and a contact who can approve the project; ownership structure and service count are explicitly not filters (Sprint 1.5)",
     "money_pages": [
       "/geo-audit/",
       "/seo-dresden/",
@@ -84,7 +124,7 @@
     "english_new_route": "to be fixed in implementation brief; existing localized mappings unchanged",
     "commercial_module": "/content-optimierung-ai-suche/",
     "lead_magnet": "human-reviewed buyer-decision snapshot; pilot before automation",
-    "public_pricing": "inquiry-only",
+    "public_pricing": "public entry prices since 2026-09-06 (Sprint 1.5); see seo_positioning_gate.public_pricing and src/content/offers.ts",
     "selected_research": [
       "bounded buyer-source study for complex service providers",
       "consented real paid-page intervention case"

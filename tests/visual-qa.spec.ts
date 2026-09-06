@@ -226,8 +226,8 @@ test("homepage keeps the AI check boundary and offer heading readable", async ({
   await expect(page.locator(".ai-check")).toHaveCSS("border-bottom-width", "1px");
   await expect(page.locator(".ai-check")).toHaveCSS("border-bottom-style", "solid");
   await expect(page.locator(".offer-heading-line")).toHaveCount(2);
-  await expect(page.locator(".offer-heading h2")).toHaveText("Dein digitaler Erfolg. Unsere Leistungen für dich");
-  await expect(page.locator(".offer-heading-line").nth(1)).toHaveText("Unsere Leistungen für dich");
+  await expect(page.locator(".offer-heading h2")).toHaveText("Wenige Seiten entscheiden. An denen arbeiten wir");
+  await expect(page.locator(".offer-heading-line").nth(1)).toHaveText("An denen arbeiten wir");
 
   const headingLines = await page.locator(".offer-heading-line").evaluateAll((lines) =>
     lines.map((line) => {
@@ -239,7 +239,7 @@ test("homepage keeps the AI check boundary and offer heading readable", async ({
 
   await page.setViewportSize({ width: 375, height: 812 });
   await page.reload({ waitUntil: "networkidle" });
-  await expect(page.locator(".offer-heading h2")).toHaveText("Dein digitaler Erfolg. Unsere Leistungen für dich");
+  await expect(page.locator(".offer-heading h2")).toHaveText("Wenige Seiten entscheiden. An denen arbeiten wir");
 });
 
 test("SEO and GEO uses an accessible responsive Bento grid", async ({ page }) => {
@@ -250,7 +250,7 @@ test("SEO and GEO uses an accessible responsive Bento grid", async ({ page }) =>
   const desktopNav = page.locator(".desktop-nav");
   await desktopNav.locator(".header-menu > summary").first().click();
   await expect(desktopNav.locator(".header-mega-feature").first()).toHaveAttribute("href", "/geo-optimierung/");
-  await expect(section.locator("h2")).toHaveText("Gefunden werden verändert sich");
+  await expect(section.locator("h2")).toHaveText("Google, KI-Systeme und Menschen lesen dieselbe Seite");
   await expect(section.locator(".visibility-tile")).toHaveCount(5);
   await expect(section.getByRole("link", { name: "Mehr über SEO & GEO erfahren" })).toHaveAttribute("href", "/geo-optimierung/");
   await expect(page.locator(".offer-detail-link")).toHaveAttribute("href", "/geo-optimierung/");

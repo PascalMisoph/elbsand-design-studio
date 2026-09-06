@@ -1,4 +1,5 @@
 import { contactDetails } from "../content/contact-details";
+import { offerPricing, type OfferId } from "../content/offers";
 
 export const SITE_URL = "https://www.paternoga-seo-geo.de";
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
@@ -29,6 +30,8 @@ interface ServicePageSchemaOptions extends PageSchemaOptions {
   serviceName: string;
   breadcrumbs: readonly BreadcrumbItem[];
   faqs?: readonly FaqItem[];
+  /** Only pass this when the same entry price is visible on the page itself. */
+  offer?: OfferId;
 }
 
 interface ArticlePageSchemaOptions extends PageSchemaOptions {
@@ -134,6 +137,28 @@ export const createPageSchema = ({ lang, title, description, path }: PageSchemaO
   };
 };
 
+// Entry prices are published as a minimum, so the schema models `minPrice` rather
+// than asserting a fixed `price`. Retainers use UnitPriceSpecification per month.
+const createOffer = (offer: OfferId, canonical: string): JsonLdNode => {
+  const { minPrice, currency, recurring } = offerPricing[offer];
+  const priceSpecification: JsonLdNode = recurring
+    ? {
+      "@type": "UnitPriceSpecification",
+      minPrice,
+      priceCurrency: currency,
+      valueAddedTaxIncluded: false,
+      unitCode: "MON",
+      referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "MON" },
+    }
+    : {
+      "@type": "PriceSpecification",
+      minPrice,
+      priceCurrency: currency,
+      valueAddedTaxIncluded: false,
+    };
+  return { "@type": "Offer", url: canonical, priceCurrency: currency, priceSpecification };
+};
+
 export const createServicePageSchema = ({
   lang,
   title,
@@ -142,6 +167,7 @@ export const createServicePageSchema = ({
   serviceName,
   breadcrumbs,
   faqs = [],
+  offer,
 }: ServicePageSchemaOptions) => {
   const canonical = absoluteSiteUrl(path);
   const pageId = `${canonical}#webpage`;
@@ -164,6 +190,7 @@ export const createServicePageSchema = ({
       mainEntityOfPage: { "@id": pageId },
       provider: { "@id": ORGANIZATION_ID },
       areaServed: { "@type": "Country", name: "Deutschland" },
+      ...(offer ? { offers: createOffer(offer, canonical) } : {}),
     },
     {
       "@type": "BreadcrumbList",

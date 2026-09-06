@@ -92,7 +92,7 @@ const proofItems = isGerman ? [
   { title: "Move", text: "Remove repetition and side paths from the main flow." },
 ];
 
-const schema = createServicePageSchema({ lang: page.lang, title: page.meta.title, description: page.meta.description, path: canonicalPath, serviceName: page.eyebrow, breadcrumbs: breadcrumbItems, faqs: page.faq.items });
+const schema = createServicePageSchema({ lang: page.lang, title: page.meta.title, description: page.meta.description, path: canonicalPath, serviceName: page.eyebrow, breadcrumbs: breadcrumbItems, faqs: page.faq.items , offer: "page_sprint"});
 ---
 
 <BaseLayout title={page.meta.title} description={page.meta.description} lang={page.lang} canonicalPath={canonicalPath} alternateDePath={page.alternateDePath} alternateEnPath={page.alternateEnPath} schema={schema} bodyClass="content-optimization-page ui-dark-page dark">

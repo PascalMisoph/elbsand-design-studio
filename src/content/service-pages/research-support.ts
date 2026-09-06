@@ -380,7 +380,7 @@ export const geoSupportPages: Record<ServiceLocale, ResearchSupportContent> = {
     breadcrumb: { home: "Start", hub: "GEO-Optimierung", current: "GEO-Betreuung" },
     eyebrow: "GEO-Betreuung",
     title: "GEO wird wirksam, wenn aus Beobachtung verlässliche Arbeit wird.",
-    lead: "Wir begleiten dich nach Audit oder Startpunkt mit einer klaren Reihenfolge: beobachten, prüfen, verbessern und wieder einordnen. Ohne starre Pakete und ohne Versprechen, die externe Systeme nicht halten können.",
+    lead: "Wenn die Arbeit an deinen wichtigen Seiten wiederkehrt, statt einmal stattzufinden: Wir begleiten dich nach Audit oder Seiten-Sprint mit einer klaren Reihenfolge aus SEO-, Inhalts- und GEO-Maßnahmen – beobachten, prüfen, verbessern, wieder einordnen. Ohne starre Pakete und ohne Versprechen, die externe Systeme nicht halten können.",
     primaryCta: "GEO-Betreuung anfragen",
     secondaryCta: "Betreuungsmodell ansehen",
     outcomes: [
@@ -468,7 +468,7 @@ export const geoSupportPages: Record<ServiceLocale, ResearchSupportContent> = {
     breadcrumb: { home: "Home", hub: "GEO optimisation", current: "GEO support" },
     eyebrow: "GEO support",
     title: "GEO becomes useful when observation turns into dependable work.",
-    lead: "After an audit or initial review, we help you move through a clear sequence: observe, verify, improve and review again. No rigid packages and no promises that external systems cannot keep.",
+    lead: "For when work on your important pages recurs rather than happening once: after an audit or page sprint we guide you through a clear sequence of SEO, content and GEO measures — observe, verify, improve, review again. No rigid packages and no promises that external systems cannot keep.",
     primaryCta: "Request GEO support",
     secondaryCta: "View the support model",
     outcomes: [

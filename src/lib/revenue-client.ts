@@ -7,7 +7,7 @@ type RevenueWindow = Window & {
 const STORAGE_KEY = "paternoga-revenue-session-v1";
 let initialized = false;
 let ctaId = "";
-const allowedEvents = ["geo_audit_cta_click", "page_sprint_cta_click", "contact_form_start", "contact_form_submit_success", "technical_ai_check_start", "technical_ai_check_complete", "audit_inquiry_success", "page_sprint_inquiry_success", "technical_ai_check_lead_success"] as const;
+const allowedEvents = ["geo_audit_cta_click", "page_sprint_cta_click", "geo_support_cta_click", "contact_form_start", "contact_form_submit_success", "technical_ai_check_start", "technical_ai_check_complete", "audit_inquiry_success", "page_sprint_inquiry_success", "geo_support_inquiry_success", "technical_ai_check_lead_success"] as const;
 type RevenueEvent = typeof allowedEvents[number];
 const consented = () => (window as RevenueWindow).paternogaConsent?.analytics === true;
 
@@ -72,5 +72,6 @@ export function initializeRevenue() {
     const offer = target.dataset.offer;
     if (offer === "geo_audit") trackRevenue("geo_audit_cta_click", offer);
     if (offer === "page_sprint") trackRevenue("page_sprint_cta_click", offer);
+    if (offer === "geo_support") trackRevenue("geo_support_cta_click", offer);
   });
 }

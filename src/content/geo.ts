@@ -6,13 +6,13 @@ export const geoContent = {
         "GEO-Audit, Umsetzung und laufende Betreuung für klare Sichtbarkeit in KI-Antworten. Quellen, Technik und Content jetzt systematisch prüfen lassen."
     },
     nav: ["Leistungen", "Projekte", "Sichtbarkeit", "Ablauf", "Kontakt"],
-    headerCta: "Kostenfreier KI-Check",
+    headerCta: "Projekt anfragen",
     hero: {
       eyebrow: "GEO & KI-Sichtbarkeit",
       title: "Wie werde ich in KI-Antworten sichtbar?",
-      body: "Durch klare Inhalte, eindeutige Unternehmenssignale und eine technisch zugängliche Website. So können Google, ChatGPT und Perplexity dein Angebot korrekt einordnen und als Quelle berücksichtigen.",
-      primaryCta: "Kostenfreien KI-Check starten",
-      primaryHref: "/#ki-check",
+      body: "Durch klare Inhalte, eindeutige Unternehmenssignale und eine technisch zugängliche Website. SEO und GEO teilen viele dieser Grundlagen: Zugänglichkeit, klare Struktur und eindeutige Unternehmensangaben helfen Google ebenso wie den eigenen Crawlern von ChatGPT oder Perplexity, die unabhängig vom Google-Index arbeiten.",
+      primaryCta: "GEO Audit anfragen",
+      primaryHref: "/geo-audit/",
       secondaryCta: "Pakete ansehen",
       imageAlt: "Pascal Misoph im PATERNOGA Studio bei der Arbeit an einer Sichtbarkeitsanalyse"
     },
@@ -79,62 +79,8 @@ export const geoContent = {
     },
     packages: {
       eyebrow: "GEO-Pakete",
-      title: "Der passende Einstieg für deinen aktuellen Stand",
-      intro: "",
-      items: [
-        {
-          number: "1",
-          name: "GEO Deep Dive Audit",
-          descriptor: "Klarheit über Sichtbarkeit, Quellen und Potenziale.",
-          price: "1.450 €",
-          priceSuffix: "einmalig",
-          duration: "ca. 10 Werktage",
-          features: [
-            "Analyse deiner KI-Sichtbarkeit und Quellen",
-            "Priorisierte Handlungsfelder und Quick Wins",
-            "Konkrete Roadmap für die nächsten Schritte",
-            "Technischer Crawl- und Schema-Check",
-            "60 Min. Workshop mit Top-5-Maßnahmenplan"
-          ],
-          cta: "Audit anfragen"
-        },
-        {
-          number: "2",
-          name: "GEO Action & Fix",
-          descriptor: "Die wichtigsten Potenziale gezielt umsetzen.",
-          price: "ab 3.900 €",
-          priceSuffix: "Projektpreis",
-          duration: "ca. 4–6 Wochen",
-          features: [
-            "Zugriff, Indexierung und Schema-Markup optimieren",
-            "Bis zu 3 Kernseiten strukturell überarbeiten",
-            "Klare Unternehmens- und Entity-Signale",
-            "Bis zu 5 relevante Drittprofile prüfen",
-            "Kontrollmessung nach etwa 6 Wochen"
-          ],
-          cta: "Umsetzung besprechen"
-        },
-        {
-          number: "3",
-          name: "AI Visibility Begleitung",
-          descriptor: "Sichtbarkeit laufend messen und weiterentwickeln.",
-          price: "ab 1.850 €",
-          priceSuffix: "pro Monat",
-          duration: "Mindestlaufzeit 6 Monate",
-          features: [
-            "20 Kernfragen und 50 Long-Tail-Prompts monitoren",
-            "Monatlicher Share-of-Voice- und Quellenreport",
-            "1 Fokus-Inhalt oder 2 Content-Module pro Monat",
-            "Laufende Quellen- und Entity-Arbeit",
-            "45 Min. Strategie-Call mit nächsten Maßnahmen"
-          ],
-          cta: "Retainer prüfen"
-        }
-      ],
-      priceNote: "Alle Preise zzgl. MwSt. Fremd-, Tool- und Veröffentlichungskosten werden nur nach Freigabe separat berechnet.",
-      scopeNote: "Für größere Websites, mehrere Märkte oder zusätzliche Sprachen erstellen wir ein individuelles Angebot.",
-      recommendedLabel: "Empfohlener Einstieg",
-      detailsLabel: "Alle Details anzeigen"
+      title: "Klare Pakete. Individuell im Umfang",
+      scopeNote: "Die genannten Preise sind Einstiegspreise für den jeweils beschriebenen Basisumfang. Den tatsächlichen Umfang stimmen wir vor dem Start gemeinsam ab und halten ihn als verbindliches Angebot fest. Fremd- und Toolkosten werden nur nach Freigabe separat berechnet."
     },
     process: {
       eyebrow: "Ablauf",
@@ -202,13 +148,13 @@ export const geoContent = {
         "GEO audits, implementation and ongoing support for clearer visibility in AI answers. Review sources, technology and content with PATERNOGA."
     },
     nav: ["Services", "Projects", "Visibility", "Process", "Contact"],
-    headerCta: "Start your free AI check",
+    headerCta: "Start a project",
     hero: {
       eyebrow: "GEO & AI visibility",
       title: "Become visible in AI answers",
-      body: "We create the technical and editorial conditions that help AI systems understand your business clearly and classify it as a relevant source.",
-      primaryCta: "Start your free AI check",
-      primaryHref: "/en/#ki-check",
+      body: "We create the technical and editorial conditions that help AI systems understand your business clearly. SEO and GEO share many of these foundations: accessibility, clear structure and unambiguous company information help Google as well as the dedicated crawlers of ChatGPT or Perplexity, which operate independently of Google's index.",
+      primaryCta: "Request a GEO audit",
+      primaryHref: "/en/geo-audit/",
       secondaryCta: "View packages",
       imageAlt: "Pascal Misoph at the PATERNOGA studio working on a visibility analysis"
     },
@@ -275,62 +221,8 @@ export const geoContent = {
     },
     packages: {
       eyebrow: "GEO packages",
-      title: "The right GEO starting point",
-      intro: "",
-      items: [
-        {
-          number: "1",
-          name: "GEO Deep Dive Audit",
-          descriptor: "Clarity about visibility, sources and opportunities.",
-          price: "€1,450",
-          priceSuffix: "one-off",
-          duration: "approx. 10 working days",
-          features: [
-            "Analysis of your AI visibility and sources",
-            "Prioritised opportunities and quick wins",
-            "A clear roadmap for the next steps",
-            "Technical crawl and schema review",
-            "60-minute workshop with a top-five action plan"
-          ],
-          cta: "Request the audit"
-        },
-        {
-          number: "2",
-          name: "GEO Action & Fix",
-          descriptor: "Implement the strongest opportunities with focus.",
-          price: "from €3,900",
-          priceSuffix: "project price",
-          duration: "approx. 4–6 weeks",
-          features: [
-            "Optimise access, indexing and schema markup",
-            "Restructure up to 3 priority pages",
-            "Clear business and entity signals",
-            "Review up to 5 relevant third-party profiles",
-            "Control measurement after around 6 weeks"
-          ],
-          cta: "Discuss implementation"
-        },
-        {
-          number: "3",
-          name: "AI Visibility Support",
-          descriptor: "Measure visibility and keep improving it.",
-          price: "from €1,850",
-          priceSuffix: "per month",
-          duration: "6-month minimum term",
-          features: [
-            "Monitor 20 core questions and 50 long-tail prompts",
-            "Monthly share-of-voice and source report",
-            "1 focus article or 2 content modules per month",
-            "Ongoing source and entity work",
-            "45-minute strategy call with next actions"
-          ],
-          cta: "Review the retainer"
-        }
-      ],
-      priceNote: "All prices exclude VAT. Third-party, tool and publication costs are charged separately only after approval.",
-      scopeNote: "For larger websites, multiple markets or additional languages, we prepare a tailored proposal.",
-      recommendedLabel: "Recommended starting point",
-      detailsLabel: "Show all details"
+      title: "Clear packages. Individual in scope",
+      scopeNote: "These are entry prices for the base scope described on each offer page. We agree the actual scope with you before we start and record it as a binding quote. Third-party and tool costs are billed separately only after approval."
     },
     process: {
       eyebrow: "Process",

@@ -375,6 +375,7 @@ const offerPlaceholder = locale === "de" ? "Website-Link und dein wichtigstes Zi
           trackRevenue("contact_form_submit_success", offer);
           if (offer === "geo_audit") trackRevenue("audit_inquiry_success", offer);
           if (offer === "page_sprint") trackRevenue("page_sprint_inquiry_success", offer);
+          if (offer === "geo_support") trackRevenue("geo_support_inquiry_success", offer);
         }
         steps.forEach((step) => { step.hidden = true; step.disabled = true; });
         if (progressArea) progressArea.hidden = true;

@@ -25,7 +25,7 @@ const crumbs = [
   { name: page.breadcrumb.hub, href: hub },
   { name: page.breadcrumb.current, href: canonical }
 ];
-const schema = createServicePageSchema({ lang: page.lang, title: page.meta.title, description: page.meta.description, path: canonical, serviceName: page.eyebrow, breadcrumbs: crumbs, faqs: page.faq.items });
+const schema = createServicePageSchema({ lang: page.lang, title: page.meta.title, description: page.meta.description, path: canonical, serviceName: page.eyebrow, breadcrumbs: crumbs, faqs: page.faq.items , offer: "geo_audit"});
 const storyIcons = [SlidersHorizontal, ChartNoAxesCombined, Network, ListChecks];
 const answerPlatforms = [
   { name: "ChatGPT", logo: openAiLogo },

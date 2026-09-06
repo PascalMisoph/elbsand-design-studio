@@ -53,17 +53,17 @@ export const projectLogos = [
 export const content = {
   de: {
     meta: {
-      title: "SEO & GEO Studio für Deutschland | PATERNOGA",
+      title: "SEO & GEO Studio für Dienstleister | PATERNOGA",
       description:
-        "PATERNOGA ist das Spezialstudio für SEO, GEO, AI Search und AI Visibility. Deutschlandweit tätig, persönlich geführt aus Dresden."
+        "PATERNOGA bringt die Seiten, über die deine Anfragen kommen, durch Google, durch KI-Antwortsysteme und durch den Menschen, der dort entscheidet."
     },
     nav: ["Leistungen", "Projekte", "Sichtbarkeit", "Ablauf", "Kontakt"],
-    cta: "Kostenfreier KI-Check",
-    secondaryCta: "Ausgewählte Projekte",
+    cta: "Projekt anfragen",
+    secondaryCta: "Kostenfreier technischer KI-Check",
     hero: {
       eyebrow: "📍 Studio aus Dresden · für Unternehmen in Deutschland",
-      title: ["Suchmaschinen verändern sich.", "Dein Online-Auftritt auch?"],
-      body: "PATERNOGA verbindet SEO, GEO und technische Umsetzung, damit dein Angebot in Google und KI-Systemen klar gefunden und eingeordnet werden kann.",
+      title: ["SEO und GEO für deine", "wichtigsten Seiten."],
+      body: "Für Dienstleister, deren Leistung erklärt werden muss. Wir prüfen die Seiten, über die deine Anfragen kommen, getrennt darauf, ob Google sie findet, ob KI-Systeme sie richtig wiedergeben und ob Besucher dort anfragen.",
       imageAlt: "Pascal Misoph an seinem Arbeitsplatz im PATERNOGA Studio"
     },
     proof: {
@@ -72,18 +72,18 @@ export const content = {
     },
     offer: {
       eyebrow: "Leistungen",
-      title: "Dein digitaler Erfolg. Unsere Leistungen für dich",
+      title: "Wenige Seiten entscheiden. An denen arbeiten wir",
       detailLinkLabel: "SEO & GEO im Detail",
       items: [
         [
           "1",
-          "Inhalte & Seitenaufbau",
-          "Wir ordnen dein Angebot, legen die benötigten Seiten fest und führen Besucher ohne Umwege zur passenden Information oder Anfrage."
+          "Seiten, die zur Anfrage führen",
+          "Auf den Seiten, über die dein Geschäft läuft, schärfen wir Angebot, Belege und den nächsten Schritt. Meist sind das ein bis drei Seiten, nicht die ganze Website."
         ],
         [
           "2",
-          "Webdesign & Entwicklung",
-          "Wir gestalten und programmieren die Website passend zu deinem Unternehmen. Sie funktioniert auf Smartphone, Tablet und Desktop und bleibt technisch schlank."
+          "Technische Umsetzung",
+          "Wir setzen die Änderungen selbst um statt sie nur zu empfehlen: von einzelnen Leistungsseiten bis zur kompletten Website, auf Smartphone, Tablet und Desktop und technisch schlank."
         ],
         [
           "3",
@@ -138,13 +138,13 @@ export const content = {
     },
     visibility: {
       eyebrow: "SEO & GEO",
-      title: "Gefunden werden verändert sich",
-      body: "Eine aktuelle Analyse von Graphite.io schätzt, dass das globale Suchvolumen in KI-Assistenten bereits 56 % des klassischen Suchmaschinen-Volumens erreicht hat. PATERNOGA strukturiert deine Inhalte und macht deine Website lokal auffindbar und maschinenlesbar, damit dein Angebot auch in neuen Suchumfeldern klar eingeordnet werden kann.",
-      bodyHtml: "Eine aktuelle <a href=\"https://graphite.io/five-percent/research/ai-is-much-bigger-than-you-think\" target=\"_blank\" rel=\"noopener\">Analyse von Graphite.io</a> schätzt, dass das globale Suchvolumen in KI-Assistenten bereits 56 % des klassischen Suchmaschinen-Volumens erreicht hat. PATERNOGA strukturiert deine Inhalte und macht deine Website lokal auffindbar und maschinenlesbar, damit dein Angebot auch in neuen Suchumfeldern klar eingeordnet werden kann.",
+      title: "Google, KI-Systeme und Menschen lesen dieselbe Seite",
+      body: "Eine Leistungsseite muss heute drei Leser überstehen: die Suchmaschine, die sie einordnet, das Antwortsystem, das sie zusammenfasst, und den Menschen, der auf ihr entscheidet. Eine aktuelle Analyse von Graphite.io schätzt, dass das globale Suchvolumen in KI-Assistenten bereits 56 % des klassischen Suchmaschinen-Volumens erreicht hat. Wir prüfen die drei getrennt und arbeiten dann an derselben Seite.",
+      bodyHtml: "Eine Leistungsseite muss heute drei Leser überstehen: die Suchmaschine, die sie einordnet, das Antwortsystem, das sie zusammenfasst, und den Menschen, der auf ihr entscheidet. Eine aktuelle <a href=\"https://graphite.io/five-percent/research/ai-is-much-bigger-than-you-think\" target=\"_blank\" rel=\"noopener\">Analyse von Graphite.io</a> schätzt, dass das globale Suchvolumen in KI-Assistenten bereits 56 % des klassischen Suchmaschinen-Volumens erreicht hat. Wir prüfen die drei getrennt und arbeiten dann an derselben Seite.",
       points: [
         [
           "Technisches SEO",
-          "Schnelle Ladezeiten, klare Seitenstruktur und saubere interne Verlinkung."
+          "Damit Google die Seite findet, laden kann und richtig einordnet: Ladezeit, Seitenstruktur, interne Verlinkung."
         ],
         [
           "Lokale Auffindbarkeit",
@@ -156,7 +156,7 @@ export const content = {
         ],
         [
           "GEO-Optimierung",
-          "Relevante Sichtbarkeit in generativer KI durch klare Inhalte, Quellen und technische Signale."
+          "Damit KI-Antwortsysteme die Seite erreichen, korrekt wiedergeben und als Quelle nennen können."
         ]
       ],
       dataNote: "der US-amerikanischen Erwachsenen geben an, KI-Zusammenfassungen in Suchergebnissen zu lesen.",
@@ -230,38 +230,38 @@ export const content = {
     },
     contact: {
       eyebrow: "Kontakt",
-      title: "Sichtbarkeit gezielt ausbauen",
+      title: "Welche Seiten sollen wir uns ansehen?",
       quickOption: "Erstgespräch zur Sichtbarkeit buchen",
       detailOption: "SEO- & GEO-Projekt anfragen",
-      valueLine: "SEO & GEO, die aus relevanten Fragen qualifizierte Anfragen machen.",
+      valueLine: "Klar begrenzter Auftrag, eine feste Ansprechperson, dokumentierter Vorher- und Nachher-Stand.",
       note: "Deine Anfrage wird direkt und vertraulich an Pascal übermittelt.",
       formLabel: "Unverbindliche Anfrage für SEO, GEO und digitale Sichtbarkeit",
       flow: {
         stepLabel: "Schritt",
         ofLabel: "von",
         back: "Zurück",
-        intentQuestion: "Was möchtest du bei Google und in generativen KI-Systemen als Nächstes erreichen?",
+        intentQuestion: "Woran sollen wir als Nächstes arbeiten?",
         intentOptions: [
-          { value: "new", label: "SEO & GEO neu aufbauen" },
-          { value: "improve", label: "Bestehende Sichtbarkeit verbessern" },
-          { value: "advice", label: "Strategie & nächste Schritte besprechen" }
+          { value: "improve", label: "Bestehende Seiten verbessern" },
+          { value: "new", label: "Neue Seiten aufbauen" },
+          { value: "advice", label: "Ursache klären" }
         ],
         detailQuestions: {
-          new: "Welche Ziele soll deine Sichtbarkeit bei Google und in generativen KI-Systemen erreichen?",
-          improve: "Welche Website oder Inhalte sollen wir auf SEO- und GEO-Potenzial prüfen?",
-          advice: "Welche Sichtbarkeitsfrage möchtest du mit uns klären?"
+          new: "Welche Leistung soll künftig über eigene Seiten gefunden werden?",
+          improve: "Welche bestehenden Seiten bringen zu wenige passende Anfragen?",
+          advice: "Was funktioniert gerade nicht, ohne dass die Ursache klar ist?"
         },
         detailPlaceholders: {
-          new: "Zum Beispiel: mehr qualifizierte Anfragen, lokale Sichtbarkeit oder bessere Antworten in KI-Systemen.",
-          improve: "Website-Adresse und, wenn du magst, das wichtigste Ziel.",
+          new: "Zum Beispiel eine Leistung, die bisher nur im Fließtext vorkommt.",
+          improve: "Website-Adresse und die ein bis drei Seiten, um die es geht.",
           advice: "Ein bis zwei Sätze zu deiner aktuellen Situation genügen."
         },
         contactQuestion: "Wohin dürfen wir uns mit einer ersten Einschätzung melden?",
         nameLabel: "Name",
         emailLabel: "E-Mail",
         next: "Weiter",
-        submit: "Sichtbarkeit besprechen",
-        summaryLabel: "Dein Sichtbarkeitsziel",
+        submit: "Projekt besprechen",
+        summaryLabel: "Dein Anliegen",
         privacy: "Persönlich gelesen · unverbindlich · vertraulich behandelt",
         sending: "Wird sicher übermittelt …",
         errorMessage: "Das hat gerade nicht funktioniert. Bitte versuche es noch einmal.",
@@ -275,17 +275,17 @@ export const content = {
   },
   en: {
     meta: {
-      title: "SEO & GEO Studio for Germany | PATERNOGA",
+      title: "SEO & GEO Studio for Service Businesses | PATERNOGA",
       description:
-        "PATERNOGA is a specialist studio for SEO, GEO, AI Search and AI Visibility, serving companies across Germany from Dresden."
+        "PATERNOGA takes the pages your enquiries come from through Google, through AI answer systems and through the person deciding on the page."
     },
     nav: ["Services", "Projects", "Visibility", "Process", "Contact"],
-    cta: "Start your free AI check",
-    secondaryCta: "Selected projects",
+    cta: "Start a project",
+    secondaryCta: "Free technical AI check",
     hero: {
       eyebrow: "📍 Dresden-based studio · serving companies across Germany",
-      title: ["Search engines are changing.", "Is your online presence keeping up?"],
-      body: "PATERNOGA connects SEO, GEO and technical implementation so your offer can be found and understood clearly in Google and AI systems.",
+      title: ["SEO and GEO for your", "most important pages."],
+      body: "For service businesses whose offer needs explaining. We check the pages your enquiries come from separately: whether Google finds them, whether AI systems relay them correctly and whether visitors actually enquire.",
       imageAlt: "Pascal Misoph at his desk in the PATERNOGA studio"
     },
     proof: {
@@ -294,18 +294,18 @@ export const content = {
     },
     offer: {
       eyebrow: "Services",
-      title: "Your digital success. Our services for you",
+      title: "A few pages decide. Those are the ones we work on",
       detailLinkLabel: "SEO & GEO in detail",
       items: [
         [
           "1",
-          "Content & page structure",
-          "We organise your offer, define the pages you need and guide visitors directly to the right information or enquiry."
+          "Pages that lead to an enquiry",
+          "On the pages your business actually runs on, we sharpen the offer, the evidence and the next step. Usually one to three pages, not the whole website."
         ],
         [
           "2",
-          "Web design & development",
-          "We design and build the website around your business. It works on phones, tablets and desktops while keeping the technical foundation lean."
+          "Technical implementation",
+          "We implement the changes ourselves instead of only recommending them: from individual service pages to a complete website, on phones, tablets and desktops, technically lean."
         ],
         [
           "3",
@@ -360,13 +360,13 @@ export const content = {
     },
     visibility: {
       eyebrow: "SEO & GEO",
-      title: "The way businesses are found is changing",
-      body: "A recent analysis by Graphite.io estimates that global search volume in AI assistants has reached 56% of traditional search-engine volume. PATERNOGA structures your content and makes your website locally discoverable and machine-readable so your offer can be understood clearly in emerging search environments.",
-      bodyHtml: "A recent <a href=\"https://graphite.io/five-percent/research/ai-is-much-bigger-than-you-think\" target=\"_blank\" rel=\"noopener\">analysis by Graphite.io</a> estimates that global search volume in AI assistants has reached 56% of traditional search-engine volume. PATERNOGA structures your content and makes your website locally discoverable and machine-readable so your offer can be understood clearly in emerging search environments.",
+      title: "Google, AI systems and people read the same page",
+      body: "A service page has to survive three readers today: the search engine that classifies it, the answer system that summarises it, and the person who decides on it. A recent analysis by Graphite.io estimates that global search volume in AI assistants has reached 56% of traditional search-engine volume. We review the three separately and then work on the same page.",
+      bodyHtml: "A service page has to survive three readers today: the search engine that classifies it, the answer system that summarises it, and the person who decides on it. A recent <a href=\"https://graphite.io/five-percent/research/ai-is-much-bigger-than-you-think\" target=\"_blank\" rel=\"noopener\">analysis by Graphite.io</a> estimates that global search volume in AI assistants has reached 56% of traditional search-engine volume. We review the three separately and then work on the same page.",
       points: [
         [
           "Technical SEO",
-          "Fast load times, clear page structure and clean internal linking."
+          "So Google can find, load and classify the page: load times, page structure and clean internal linking."
         ],
         [
           "Local discovery",
@@ -378,7 +378,7 @@ export const content = {
         ],
         [
           "GEO optimisation",
-          "Relevant visibility in generative AI through clear content, sources and technical signals."
+          "So AI answer systems can reach the page, relay it correctly and cite it as a source."
         ]
       ],
       dataNote: "of U.S. adults say they read AI summaries in search results.",
@@ -452,38 +452,38 @@ export const content = {
     },
     contact: {
       eyebrow: "Contact",
-      title: "Build your visibility deliberately",
+      title: "Which pages should we look at?",
       quickOption: "Book a visibility consultation",
       detailOption: "Enquire about SEO & GEO",
-      valueLine: "SEO & GEO that turn relevant questions into qualified enquiries.",
+      valueLine: "A clearly bounded project, one named contact, a documented before-and-after state.",
       note: "Your enquiry goes directly and confidentially to Pascal.",
       formLabel: "No-obligation enquiry for SEO, GEO and digital visibility",
       flow: {
         stepLabel: "Step",
         ofLabel: "of",
         back: "Back",
-        intentQuestion: "What would you like to achieve on Google and in generative AI next?",
+        intentQuestion: "What should we work on next?",
         intentOptions: [
-          { value: "new", label: "Build SEO & GEO from the ground up" },
-          { value: "improve", label: "Improve existing visibility" },
-          { value: "advice", label: "Discuss strategy & next steps" }
+          { value: "improve", label: "Improve existing pages" },
+          { value: "new", label: "Build new pages" },
+          { value: "advice", label: "Find the cause" }
         ],
         detailQuestions: {
-          new: "What should your visibility on Google and in generative AI achieve?",
-          improve: "Which website or content should we review for SEO and GEO potential?",
-          advice: "Which visibility question would you like to clarify with us?"
+          new: "Which service should be findable through pages of its own?",
+          improve: "Which existing pages bring too few relevant enquiries?",
+          advice: "What is not working, without the cause being clear?"
         },
         detailPlaceholders: {
-          new: "For example: more qualified enquiries, local visibility or better answers in AI systems.",
-          improve: "Website address and, if useful, the main goal.",
+          new: "For example a service that currently only appears inside body copy.",
+          improve: "Website address and the one to three pages in question.",
           advice: "One or two sentences about your current situation are enough."
         },
         contactQuestion: "Where may we send a first assessment?",
         nameLabel: "Name",
         emailLabel: "Email",
         next: "Continue",
-        submit: "Discuss visibility",
-        summaryLabel: "Your visibility goal",
+        submit: "Discuss the project",
+        summaryLabel: "Your request",
         privacy: "Read personally · no obligation · treated confidentially",
         sending: "Sending securely …",
         errorMessage: "That did not work. Please try again.",

@@ -15,7 +15,7 @@ Stand: 06.09.2026. Auftrag: Attribution, kaufbarer GEO Audit, direkter Seiten-Sp
 | Vorher | Änderung |
 |---|---|
 | Audit-Hero und Header führen zum technischen Gratischeck | Auf den beiden Angebotsseiten führen Header und Hero direkt zum jeweiligen Anfrageformular. Der kostenlose Check bleibt auf der Audit-Seite sekundär und im Ressourcenmenü erreichbar. |
-| Unklarer Umfang, keine konkrete Übergabe | Audit mit einem definierten Käuferfragen-/Quellenrahmen; Seiten-Sprint mit bis zu drei bestehenden kaufnahen Seiten. Dauer, Inputs, Outputs und Grenzen benannt; Preis auf Anfrage. |
+| Unklarer Umfang, keine konkrete Übergabe | Audit mit einem definierten Käuferfragen-/Quellenrahmen; Seiten-Sprint mit bis zu drei bestehenden kaufnahen Seiten. Dauer, Inputs, Outputs und Grenzen benannt; Preis damals auf Anfrage, seit Sprint 1.5 öffentlicher Einstiegspreis. |
 | Kontaktweg wählen und bekanntes Anliegen erneut erklären | Audit-/Sprint-Formular ist bereits geöffnet. Nur zwei Schritte: Website/Ziel, dann Name/E-Mail. Angebot ist technisch vorbelegt. Kein obligatorischer Kalender oder vorausgehender Gratischeck. |
 | Deaktivierte frühere Formularschritte fehlen in FormData | Frühere Werte werden beim Serialisieren erhalten; nur der aktuelle Schritt bleibt für die laufende Validierung aktiviert. Regressionstest prüft auch den generischen Kontaktweg. |
 | API fasst die meisten Seitenquellen als contact-form zusammen | Valide Source-Kennungen bleiben erhalten; separater normalisierter Angebots-/Attributionskontext begleitet jede Anfrage. |

@@ -8,7 +8,7 @@ interface LinkButtonProps {
   variant?: "default" | "secondary" | "outline" | "ghost" | "link";
   icon?: "down" | "right" | "external";
   revenueCta?: string;
-  offer?: "geo_audit" | "page_sprint";
+  offer?: "geo_audit" | "page_sprint" | "geo_support";
 }
 
 export default function LinkButton({ href, label, variant = "default", icon, revenueCta, offer }: LinkButtonProps) {

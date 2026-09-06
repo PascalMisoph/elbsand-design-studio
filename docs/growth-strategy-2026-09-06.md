@@ -107,6 +107,8 @@ Vollständig in [growth-matrices-2026-09-06.md](growth-matrices-2026-09-06.md): 
 
 H: Drei Angebotsstufen, Preise zunächst ausschließlich intern testen; öffentliche Preisregel „auf Anfrage“ bleibt bestehen.
 
+**Überholt am 06.09.2026:** Diese Preisregel wurde in [Sprint 1.5](seo-positioning-sprint-1-5-2026-09-06.md) ersetzt. Die drei Stufen werden jetzt mit öffentlichem Einstiegspreis geführt (ab 1.500 € / ab 2.500 € / ab 1.250 € netto pro Monat). Die Beträge unten bleiben als Kalkulationsgrundlage gültig.
+
 | Stufe | konkreter Umfang | Lieferrahmen / Abnahme | interner Preistest |
 |---|---|---|---|
 | Diagnose | 1 Marke, 1 Angebot, DE, 20 gemeinsam bestätigte Prompts, 3 tatsächlich verfügbare Suchoberflächen, 3 Wiederholungen, 3 Wettbewerber, bis 10 priorisierte URLs | 7 Werktage ab vollständigen Inputs und verfügbarem Messzugang; Antwortarchiv, Quellenlücken, 3 wichtigste Maßnahmen, 45-Minuten-Übergabe | 1.500 € netto, maximal 12 Lieferstunden plus bis 100 € direkte Messkosten |

@@ -30,7 +30,7 @@ export const aiVisibilityPages: AiVisibilityPair = {
     eyebrow: "AI-Sichtbarkeit",
     title: "Wie, wo und wie oft wird deine Marke in den KI-Antworten platziert?",
     lead: "Wir beobachten relevante Fragen, Antworten und Quellen über mehrere Systeme hinweg. So wird aus einem schwer greifbaren Eindruck eine nachvollziehbare Sicht auf deinen Share of Model.",
-    primaryCta: "Website-Check anfragen",
+    primaryCta: "KI-Sichtbarkeit im GEO Audit prüfen",
     secondaryCta: "Methode ansehen",
     outcomes: [
       { label: "Präsenz", title: "Die Sichtbarkeit messen", text: "Wir messen kontinuierlich, wie oft dein Angebot bei kaufrelevanten Prompts im Vergleich zum Wettbewerb genannt wird. Wir machen sichtbar, welche Plattformen gut laufen und wo es noch Potenziale gibt." },
@@ -121,7 +121,7 @@ export const aiVisibilityPages: AiVisibilityPair = {
     eyebrow: "AI visibility",
     title: "Is your business being placed correctly in AI answers?",
     lead: "We observe relevant questions, answers and sources across several systems. The result is a grounded view of presence, context and next actions rather than an opaque impression.",
-    primaryCta: "Request a website check",
+    primaryCta: "Review AI visibility with a GEO audit",
     secondaryCta: "View the method",
     outcomes: [
       { label: "Presence", title: "Measure visibility", text: "We continuously measure how often your offer is mentioned for purchase-relevant prompts compared with competitors. We make clear which platforms perform well and where potential remains." },

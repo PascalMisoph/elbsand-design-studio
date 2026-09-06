@@ -12,6 +12,7 @@ const geoHubPage = read("src/components/GeoHubPage.astro");
 const layout = read("src/layouts/BaseLayout.astro");
 const content = read("src/content/site.ts");
 const geoContent = read("src/content/geo.ts");
+const offerContent = read("src/content/offers.ts") + read("src/lib/seo.ts");
 const serviceContent = read("src/content/service-pages.ts");
 const serviceFamilyContent = [
   read("src/content/service-pages/ai-visibility.ts"),
@@ -52,14 +53,23 @@ for (const required of ['id="main-content"', 'id="service-network"', "IconFeatur
 }
 
 for (const required of [
-  "1.450 €",
-  "ab 3.900 €",
-  "ab 1.850 €",
-  "ca. 4–6 Wochen",
   "Klare Grundlagen lassen sich gezielt verbessern und nachvollziehbar prüfen.",
   "Clear foundations can be improved deliberately and reviewed transparently.",
 ]) {
   if (!geoContent.includes(required)) throw new Error(`GEO content missing ${required}`);
+}
+
+// Public entry prices must stay visible and must match the single offer source.
+for (const required of [
+  "ab 1.500 €", "netto, einmalig",
+  "ab 2.500 €",
+  "ab 1.250 €", "netto / Monat",
+  "from €1,500", "net, one-off",
+  "from €2,500",
+  "from €1,250", "net / month",
+  "minPrice: 1500", "minPrice: 2500", "minPrice: 1250",
+]) {
+  if (!offerContent.includes(required)) throw new Error(`offers missing ${required}`);
 }
 
 for (const required of ["hreflang=\"de\"", "hreflang=\"en\"", "application/ld+json", "skip-link", "twitter:card", "og:image", "max-image-preview:large"]) {
@@ -78,7 +88,7 @@ for (const required of ["Method and limitations", "German route inventory", "Eng
   if (!llmsFull.includes(required)) throw new Error(`llms-full.txt missing ${required}`);
 }
 
-for (const required of ["Suchmaschinen verändern sich.", "Search engines are changing.", "Gefunden werden verändert sich", "imageAlt"]) {
+for (const required of ["SEO und GEO für deine", "SEO and GEO for your", "Google, KI-Systeme und Menschen lesen dieselbe Seite", "imageAlt"]) {
   if (!content.includes(required)) throw new Error(`content missing ${required}`);
 }
 

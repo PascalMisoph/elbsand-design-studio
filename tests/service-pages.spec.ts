@@ -58,7 +58,7 @@ for (const [route, lang] of serviceRoutes) {
     await expect(page.locator(".site-footer-column")).toHaveCount(4);
     if (route === "/geo-audit/") {
       await expect(page.locator("h1")).toHaveText("GEO Audit: Wie sichtbar ist dein Unternehmen in ChatGPT & Co.?");
-      await expect(page.locator(".a-hero-copy > p:not(.a-kicker)")).toContainText("Einmaliger bezahlter Audit");
+      await expect(page.locator(".a-hero-copy > p:not(.a-kicker)")).toContainText("einmaliger bezahlter Audit");
       await expect(page.locator(".a-presence-grid h3")).toHaveText(["Sichtbarkeits-Scores", "Stimmung & Themen", "Quellenautorität", "Faktencheck deiner Marke", "Wettbewerbsvergleich", "Plattformvergleich"]);
       await expect(page.locator(".a-presence h2")).toHaveText("Verstehe und ordne deine KI-Präsenz ein");
       for (const selector of [".score-visual-image img", ".sentiment-visual-image img", ".citation-visual-image img", ".fact-visual-image img", ".benchmark-visual-image img"]) {
@@ -223,3 +223,47 @@ test("shared FAQ keeps single-open native disclosure behavior", async ({ page })
   await expect(questions.nth(0)).not.toHaveAttribute("open", "");
   await expect(page.locator("main astro-island")).toHaveCount(0);
 });
+
+const offerRoutes = [
+  { path: "/geo-audit/", price: "ab 1.500 €", suffix: "netto, einmalig", minPrice: 1500, recurring: false, labels: ["Preis", "Geeignet für", "Umfang", "Du erhältst", "Dauer", "Grenzen", "Nächster Schritt"] },
+  { path: "/content-optimierung-ai-suche/", price: "ab 2.500 €", suffix: "netto, einmalig", minPrice: 2500, recurring: false, labels: ["Preis", "Geeignet für", "Umfang", "Du erhältst", "Dauer", "Grenzen", "Nächster Schritt"] },
+  { path: "/geo-betreuung/", price: "ab 1.250 €", suffix: "netto / Monat", minPrice: 1250, recurring: true, labels: ["Preis", "Geeignet für", "Umfang", "Du erhältst", "Dauer", "Grenzen", "Nächster Schritt"] },
+  { path: "/en/geo-audit/", price: "from €1,500", suffix: "net, one-off", minPrice: 1500, recurring: false, labels: ["Price", "Suited to", "Scope", "You receive", "Duration", "Limits", "Next step"] },
+  { path: "/en/content-optimization-ai-search/", price: "from €2,500", suffix: "net, one-off", minPrice: 2500, recurring: false, labels: ["Price", "Suited to", "Scope", "You receive", "Duration", "Limits", "Next step"] },
+  { path: "/en/geo-support/", price: "from €1,250", suffix: "net / month", minPrice: 1250, recurring: true, labels: ["Price", "Suited to", "Scope", "You receive", "Duration", "Limits", "Next step"] },
+] as const;
+
+for (const offer of offerRoutes) {
+  test(`${offer.path} publishes an agent-readable offer that matches its structured data`, async ({ page }) => {
+    await page.goto(`${TEST_ORIGIN}${offer.path}`);
+
+    // The entry price must be readable by a human, not only present in JSON-LD.
+    const scope = page.locator(".offer-scope");
+    await expect(scope).toHaveCount(1);
+    await expect(scope.locator(".offer-price-value")).toContainText(offer.price);
+    await expect(scope.locator(".offer-price-value")).toContainText(offer.suffix);
+    await expect(scope.locator("dt")).toHaveText([...offer.labels]);
+    await expect(scope.locator(".offer-next-cta")).toHaveAttribute("href", "#kontakt");
+
+    const offerNode = await page.evaluate(() => {
+      for (const script of document.querySelectorAll('script[type="application/ld+json"]')) {
+        const graph = JSON.parse(script.textContent ?? "{}")["@graph"] ?? [];
+        const service = graph.find((node: Record<string, unknown>) => node["@type"] === "Service");
+        if (service?.offers) return service.offers;
+      }
+      return null;
+    });
+
+    expect(offerNode).toMatchObject({
+      "@type": "Offer",
+      priceCurrency: "EUR",
+      priceSpecification: {
+        "@type": offer.recurring ? "UnitPriceSpecification" : "PriceSpecification",
+        minPrice: offer.minPrice,
+        priceCurrency: "EUR",
+        valueAddedTaxIncluded: false,
+        ...(offer.recurring ? { unitCode: "MON" } : {}),
+      },
+    });
+  });
+}

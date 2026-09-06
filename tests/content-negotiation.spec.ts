@@ -100,9 +100,9 @@ test.describe("Markdown content negotiation", () => {
 
     expect(response.status()).toBe(200);
     expect(response.headers()["content-type"]).toContain("text/markdown");
-    expect(body).toContain("Search engines are changing.");
+    expect(body).toContain("SEO and GEO for your");
     expect(body).toContain("## Contact");
-    expect(body).not.toContain("Suchmaschinen verändern sich.");
+    expect(body).not.toContain("SEO und GEO für deine");
     expect(body).not.toContain("<astro-island");
   });
 

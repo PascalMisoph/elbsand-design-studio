@@ -78,7 +78,7 @@ export const geoAuditPages: Record<ServiceLocale, ServicePageContent> = {
     breadcrumb: { home: "Start", hub: "GEO-Optimierung", current: "GEO Audit" },
     eyebrow: "GEO Audit",
     title: "GEO Audit: Wie sichtbar ist dein Unternehmen in ChatGPT & Co.?",
-    lead: "Einmaliger bezahlter Audit deiner KI-Präsenz: Wir prüfen Käuferfragen, Antworten, Quellen und Wettbewerber. Du erhältst dokumentierte Befunde und priorisierte Maßnahmen.",
+    lead: "Wettbewerber erscheinen in Kaufantworten, dein Unternehmen kaum? Ein einmaliger bezahlter Audit untersucht Antworten, Quellen und deine wichtigsten Seiten.",
     primaryCta: "GEO Audit anfragen",
     secondaryCta: "Kostenfreier technischer KI-Check",
     outcomes: [
@@ -140,7 +140,7 @@ export const geoAuditPages: Record<ServiceLocale, ServicePageContent> = {
       items: [
         { title: "GEO-Optimierung", text: "Überblick über Methode, Leistungen und Betreuungsmodelle.", href: "/geo-optimierung/", image: "/images/geo-visibility-stock.webp", imagePosition: "center 44%" },
         { title: "Kostenfreier KI-Check", text: "Eine kompakte erste technische Einordnung deiner Website.", href: "/#ki-check", image: "/images/contact/project-enquiry.webp", imagePosition: "center 54%" },
-        { title: "Projekt besprechen", text: "Audit, Relaunch oder laufende Optimierung persönlich einordnen.", href: "/#kontakt", image: "/images/contact/consultation.webp", imagePosition: "center 42%" }
+        { title: "Projekt besprechen", text: "Audit, Seiten-Sprint oder laufende Betreuung persönlich einordnen.", href: "/#kontakt", image: "/images/contact/consultation.webp", imagePosition: "center 42%" }
       ]
     },
     faq: {
@@ -234,7 +234,7 @@ export const geoAuditPages: Record<ServiceLocale, ServicePageContent> = {
       items: [
         { title: "GEO optimisation", text: "Overview of the method, services and support models.", href: "/en/geo-optimization/", image: "/images/geo-visibility-stock.webp", imagePosition: "center 44%" },
         { title: "Free AI check", text: "A compact first technical assessment of your website.", href: "/en/#ki-check", image: "/images/contact/project-enquiry.webp", imagePosition: "center 54%" },
-        { title: "Discuss your project", text: "Put an audit, relaunch or ongoing optimisation into context.", href: "/en/#kontakt", image: "/images/contact/consultation.webp", imagePosition: "center 42%" }
+        { title: "Discuss your project", text: "Put an audit, page sprint or ongoing support into context.", href: "/en/#kontakt", image: "/images/contact/consultation.webp", imagePosition: "center 42%" }
       ]
     },
     faq: {
