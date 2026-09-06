@@ -12,6 +12,7 @@ import {
 import { createInMemoryRateLimiter } from "@/lib/server/rate-limit";
 import { verifyScanResultToken } from "@/lib/server/scan-result-token";
 import type { ScanSnapshot } from "@/lib/ai-readiness";
+import { normalizeLeadContext, type LeadContext } from "@/lib/lead-context";
 
 export const prerender = false;
 
@@ -47,6 +48,8 @@ const getClientAddress = (request: Request) =>
   "unknown";
 
 interface ContactRecord {
+  lead_id: string;
+  attribution: LeadContext;
   id: string;
   reference: string;
   createdAt: string;
@@ -129,7 +132,7 @@ const deliverWithResend = async (record: ContactRecord) => {
         to: [to],
         reply_to: record.email,
         subject: internalMail.subject,
-        text: internalMail.text,
+        text: `${internalMail.text}\n\nLead-ID: ${record.lead_id}\nZuordnung: ${JSON.stringify(record.attribution)}`,
       }),
       sendWithResend(apiKey, `${record.id}-user`, {
         from: namedSender("PATERNOGA – KI-Readiness Check", from),
@@ -152,6 +155,9 @@ const deliverWithResend = async (record: ContactRecord) => {
     `Referenz: ${record.reference}`,
     `Eingang: ${record.createdAt}`,
     `Quelle: ${record.source}`,
+    `Lead-ID: ${record.lead_id}`,
+    `Angebot: ${record.attribution.offer_type}`,
+    `Zuordnung: ${JSON.stringify(record.attribution)}`,
     `Sprache: ${record.locale}`,
     `Anliegen: ${intentLabels[record.intent] ?? record.intent}`,
     `Name: ${record.name}`,
@@ -164,7 +170,7 @@ const deliverWithResend = async (record: ContactRecord) => {
     from,
     to: [to],
     reply_to: record.email,
-    subject: `PATERNOGA Anfrage · ${record.reference} · ${intentLabels[record.intent] ?? record.intent}`,
+    subject: `PATERNOGA Anfrage · ${record.reference} · ${record.attribution.offer_type === "general" ? (intentLabels[record.intent] ?? record.intent) : record.attribution.offer_type}`,
     text: message,
   });
 };
@@ -262,7 +268,9 @@ export const POST: APIRoute = async ({ request }) => {
   const intent = text(payload.intent, 24);
   const details = text(payload.details, 2_000);
   const submittedSource = text(payload.source, 30);
-  const source = ["ai-check", "geo-audit"].includes(submittedSource) ? submittedSource : "contact-form";
+  const source = /^[a-z][a-z0-9-]{1,39}$/.test(submittedSource) ? submittedSource : "contact-form";
+  const attribution = normalizeLeadContext(payload);
+  if (source === "ai-check") attribution.offer_type = "technical_ai_check";
   const submittedName = singleLineText(payload.name, 120);
   const name = source === "ai-check" && !submittedName ? "KI-Check Lead" : submittedName;
   const email = text(payload.email, 254).toLowerCase();
@@ -299,6 +307,8 @@ export const POST: APIRoute = async ({ request }) => {
   const reference = id.slice(0, 8).toUpperCase();
   const record: ContactRecord = {
     id,
+    lead_id: id,
+    attribution,
     reference,
     createdAt: new Date().toISOString(),
     status: "new",
@@ -336,7 +346,7 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   if (contentType.includes("application/json")) {
-    return Response.json({ ok: true, reference }, { status: 201 });
+    return Response.json({ ok: true, reference, lead_id: id }, { status: 201 });
   }
 
   return new Response(htmlConfirmation(locale, reference), {

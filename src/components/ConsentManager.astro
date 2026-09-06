@@ -93,6 +93,8 @@ const copy = de
 </div>
 
 <script>
+  import { initializeRevenue } from "../lib/revenue-client";
+  import { safePath, safeReferrer } from "../lib/lead-context";
   type ConsentChoice = { analytics: boolean; external: boolean; updatedAt: string; version: 1 };
   type ConsentWindow = Window & {
     dataLayer?: unknown[];
@@ -149,6 +151,8 @@ const copy = de
     consentWindow.gtag("config", analyticsId, {
       allow_google_signals: false,
       allow_ad_personalization_signals: false,
+      page_location: `${location.origin}${safePath(location.pathname) || "/"}`,
+      page_referrer: safeReferrer(document.referrer),
     });
     const script = document.createElement("script");
     script.async = true;
@@ -214,6 +218,7 @@ const copy = de
       applyChoice(choice, manager.dataset.analyticsId ?? analyticsId);
     } else if (banner) banner.hidden = false;
   });
+  initializeRevenue();
 </script>
 
 <style>

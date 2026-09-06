@@ -313,8 +313,8 @@ test("process contact card is responsive and directly actionable", async ({ page
     "Wunschtermin wählen",
     "Bestand prüfen",
     "Struktur & Seiten planen",
-    "Design & User Experience festlegen",
-    "Website bauen & veröffentlichen",
+    "Angebot & Anfrageweg schärfen",
+    "Änderungen umsetzen & prüfen",
   ]);
   await expect(section.locator(".process-step").first()).toHaveClass(/is-current/);
 

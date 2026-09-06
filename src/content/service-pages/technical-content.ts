@@ -594,7 +594,7 @@ const contentOptimizationDe: ServicePageContent = {
   alternateEnPath: "/en/content-optimization-ai-search/",
   meta: {
     title: "Content-Optimierung für AI-Suche | PATERNOGA",
-    description: "Prüfe bestehende Seiten auf Antwortklarheit, Quellen, Aktualität und interne Verbindungen. Erhalte priorisierte Überarbeitungen. Check anfragen."
+    description: "Seiten-Sprint für bis zu drei bestehende Leistungsseiten: Angebot, Belege, SEO, AI-Suche und CTA gezielt verbessern. Direkt anfragen, ohne Audit-Pflicht."
   },
   breadcrumb: {
     home: "Start",
@@ -695,7 +695,7 @@ const contentOptimizationEn: ServicePageContent = {
   alternateEnPath: "/en/content-optimization-ai-search/",
   meta: {
     title: "Content Optimization for AI Search | PATERNOGA",
-    description: "Review existing pages for answer clarity, sources, currency and internal links. Get prioritised revisions. Request a content review."
+    description: "Page sprint for up to three existing service pages: improve your offer, evidence, SEO, AI search and calls to action. No prior audit required."
   },
   breadcrumb: {
     home: "Home",

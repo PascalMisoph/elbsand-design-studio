@@ -194,8 +194,8 @@ export const content = {
         ["Wunschtermin wählen", "Wähle einen Termin für ein unverbindliches Erstgespräch. Wir sprechen über dein Vorhaben, analysieren deine aktuelle Sichtbarkeit und klären, ob PATERNOGA der richtige Partner für dein Projekt ist."],
         ["Bestand prüfen", "Wir analysieren deine Website, Inhalte, Datenquellen und die technische Basis. So wird sofort sichtbar, wo die größten Hebel für Google und KI-Suchsysteme liegen."],
         ["Struktur & Seiten planen", "Wir ordnen Suchintentionen und Themen zu einem klaren Seitenaufbau. So stellen wir sicher, dass potenzielle Kunden und moderne Antwortsysteme deine Kernbotschaften sofort finden."],
-        ["Design & User Experience festlegen", "Wir entwickeln die visuelle Richtung. Das Design spiegelt deine Marke wider, baut Vertrauen auf und führt Besucher klar zur passenden nächsten Handlung."],
-        ["Website bauen & veröffentlichen", "Wir setzen den Code und alle Inhalte sauber um. Nach finalen Prüfungen der Indexierbarkeit, der strukturierten Daten und aller GEO-Funktionen geht deine neue Website live."]
+        ["Angebot & Anfrageweg schärfen", "Bei bestehenden Seiten verbessern wir Nutzen, Belege und den nächsten Schritt für passende Käufer. Gute Gestaltung bleibt erhalten; ein Relaunch ist keine Voraussetzung."],
+        ["Änderungen umsetzen & prüfen", "Wir setzen den vereinbarten Umfang um, prüfen Technik und Anfragewege und dokumentieren den Stand. Ob einzelne Leistungsseiten oder eine neue Website: Der Auftrag bleibt klar abgegrenzt."]
       ]
     },
     editorialSupport: {
@@ -416,8 +416,8 @@ export const content = {
         ["Choose a preferred date", "Choose a date for a no-obligation initial conversation. We discuss your project, its current visibility and whether PATERNOGA is the right partner for your SEO and GEO work."],
         ["Review the current site", "We review the website, content, sources, technical foundation and existing visibility. This quickly reveals where the strongest SEO and GEO opportunities lie."],
         ["Plan the pages", "We prioritise questions and search intent to create a page structure that leads people quickly to the right answer, builds trust and gives AI systems the relevant context."],
-        ["Set the design", "We develop the visual direction. The design reflects your brand, builds trust and guides visitors clearly towards the right next action."],
-        ["Build & publish the website", "We implement the content and technical foundations, review indexability, structured data and internal linking, then publish with the essential SEO and GEO settings."]
+        ["Sharpen the offer & enquiry path", "On existing pages, we improve value, evidence and the next step for relevant buyers. Strong design stays in place; a relaunch is not a prerequisite."],
+        ["Implement & verify the changes", "We implement the agreed scope, check technical foundations and enquiry paths, and document the result. Whether individual service pages or a new website, the project stays clearly bounded."]
       ]
     },
     editorialSupport: {

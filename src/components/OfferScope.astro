@@ -1,0 +1,40 @@
+---
+interface Props { lang: "de" | "en"; offer: "geo_audit" | "page_sprint" }
+const { lang, offer } = Astro.props;
+const de = lang === "de";
+const audit = offer === "geo_audit";
+const rows = audit ? (de ? [
+  ["Prüfrahmen", "Eine Marke, ein Angebot, deutscher Zielmarkt. Ausgangspunkt: 20 bestätigte Käuferfragen, drei verfügbare Suchoberflächen, drei Wiederholungen, drei Wettbewerber und bis zu zehn priorisierte URLs. Den genauen Umfang bestätigen wir vor Auftrag."],
+  ["Dein Ergebnis", "Dokumentierte Antworten mit Datum und Modus, Markennennungen, verlinkte Quellen und Wettbewerber. Dazu erkennbare Quellen- und Inhaltslücken, eine begründete Prioritätenliste und die drei wichtigsten nächsten Maßnahmen."],
+  ["Zeitrahmen", "Geplant sind sieben Werktage ab vollständigen Inputs und bestätigtem Messzugang, anschließend 45 Minuten gemeinsame Übergabe. Preis auf Anfrage. Fehlgeschlagene Abrufe werden ausgewiesen; API- und Nutzeransichten bleiben getrennt."],
+  ["Passt, wenn …", "… du eine bestehende Website und ein konkretes Angebot hast, aber deine Präsenz bei Käuferfragen nicht einordnen kannst. Für die reine technische Erreichbarkeit genügt zunächst der kostenlose KI-Check. Ist das Seitenproblem bereits klar, kannst du direkt einen Seiten-Sprint anfragen."],
+] : [
+  ["Review scope", "One brand, one offering, German target market. Starting scope: 20 confirmed buyer questions, three available search surfaces, three repetitions, three competitors and up to ten priority URLs. We confirm the exact scope before you commission the work."],
+  ["Your deliverables", "Documented answers with date and mode, brand mentions, linked sources and competitors. Identifiable source and content gaps, a reasoned priority list and the three most important next actions."],
+  ["Timing", "Planned delivery in seven working days after complete inputs and confirmed measurement access, followed by a 45-minute handover. Pricing on request. Failed observations are disclosed; API and consumer experiences remain separate."],
+  ["A fit when …", "… you have an existing website and a specific offering but cannot assess your presence in buyer answers. For technical accessibility alone, start with the free AI check. If the page problem is already clear, request a page sprint directly."],
+]) : (de ? [
+  ["Begrenzter Umfang", "Bis zu drei bestehende kaufnahe Seiten für ein Angebot in einer vereinbarten Sprache. Wir überarbeiten Nutzen und Suchintention, Informationsstruktur, fachliche Belege, interne Links und CTA. Notwendige begrenzte Technik wird vorab abgegrenzt."],
+  ["Dein Ergebnis", "Veröffentlichbare Seitenänderungen für Google, KI-Suche und passende Käufer, inklusive Umsetzung im vereinbarten System, Qualitätsprüfung und dokumentiertem Vorher-/Nachher-Stand. Fachliche Aussagen und Freigaben kommen von dir."],
+  ["Zeitrahmen", "Geplant sind zehn Werktage ab Zugang und fachlicher Freigabe. Preis auf Anfrage. Du kannst direkt starten, wenn Ziel und Seiten bekannt sind – auch mit einem verwertbaren Audit eines anderen Anbieters."],
+  ["Nicht enthalten", "Kein kompletter Relaunch, keine unbegrenzte Content-Produktion oder Entwicklung, kein Branding, keine PR-Kampagne und keine vollständige Mehrsprachigkeit. Wir versprechen weder Rankings noch KI-Nennungen oder eine bestimmte Zahl an Anfragen."],
+] : [
+  ["Bounded scope", "Up to three existing commercial pages for one offering in one agreed language. We improve value, search intent, information structure, expert evidence, internal links and calls to action. Necessary limited technical work is scoped in advance."],
+  ["Your deliverables", "Publishable page changes for Google, AI search and relevant buyers, including implementation in the agreed system, quality checks and a documented before/after record. You provide and approve subject-matter claims."],
+  ["Timing", "Planned delivery in ten working days after access and subject-matter approval. Pricing on request. Start directly when your goal and pages are known – including with a usable audit from another provider."],
+  ["Not included", "No complete relaunch, unlimited content or development, branding, PR campaign or full multilingual rollout. We do not promise rankings, AI mentions or a particular number of enquiries."],
+]);
+---
+<section class="offer-scope" aria-labelledby={`scope-${offer}`}>
+  <h2 id={`scope-${offer}`}>{de ? audit ? "Ein Audit mit klarer Übergabe" : "Dein Seiten-Sprint: Umfang und Ergebnis" : audit ? "An audit with a clear handover" : "Your page sprint: scope and deliverables"}</h2>
+  <dl>{rows.map(([title, description]) => <div><dt>{title}</dt><dd>{description}</dd></div>)}</dl>
+  {audit && <p><a href={de ? "/content-optimierung-ai-suche/" : "/en/content-optimization-ai-search/"}>{de ? "Das Problem ist bereits klar? Zum Seiten-Sprint" : "Already know the problem? Explore the page sprint"}</a></p>}
+  <p>{de ? "Ein Folgeauftrag ist optional. Laufende Betreuung empfehlen wir nur, wenn tatsächlich wiederkehrende Arbeit anfällt." : "Further work is optional. We recommend ongoing support only when there is genuine recurring work."}</p>
+</section>
+<style>
+  .offer-scope{width:min(100%,1120px);box-sizing:border-box;margin-inline:auto;padding:64px 32px;border-top:1px solid rgba(255,250,244,.15);color:#fbf8f2;font-family:var(--sans)}
+  h2{margin:0 0 32px;max-width:850px;font-family:var(--sans);font-size:clamp(30px,3vw,40px);font-weight:550;line-height:1.12;letter-spacing:-.04em}
+  dl{margin:0} dl>div{display:grid;grid-template-columns:200px minmax(0,1fr);gap:32px;padding:24px 0;border-top:1px solid rgba(255,250,244,.15)}
+  dt{font-weight:650} dd{margin:0} dd,p{color:#b9b4aa;font-size:16px;line-height:1.65} p{margin:24px 0 0} a{color:#e98764;text-underline-offset:4px} a:focus-visible{outline:2px solid #e98764;outline-offset:4px}
+  @media(max-width:640px){.offer-scope{padding:48px 20px}dl>div{grid-template-columns:minmax(0,1fr);gap:12px}}
+</style>

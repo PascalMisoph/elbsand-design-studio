@@ -1,4 +1,5 @@
 ---
+import type { OfferType } from "../lib/lead-context";
 interface IntentOption {
   value: "new" | "improve" | "advice";
   label: string;
@@ -41,6 +42,7 @@ interface Props {
   disclaimerTitle?: string;
   disclaimer?: string;
   calendarOnly?: boolean;
+  offerType?: OfferType;
 }
 
 const {
@@ -57,22 +59,30 @@ const {
   disclaimerTitle,
   disclaimer,
   calendarOnly = false,
+  offerType = "general",
 } = Astro.props;
 const locale = Astro.url.pathname.startsWith("/en") ? "en" : "de";
 const privacyPath = locale === "en" ? "/en/privacy/" : "/datenschutz/";
+const directOffer = offerType === "geo_audit" || offerType === "page_sprint";
+const offerName = offerType === "geo_audit" ? "GEO Audit" : locale === "de" ? "Seiten-Sprint" : "Page sprint";
+const offerQuestion = locale === "de"
+  ? offerType === "geo_audit" ? "Welche Website und welches Angebot sollen wir untersuchen?" : "Welche bestehenden Seiten möchtest du verbessern?"
+  : offerType === "geo_audit" ? "Which website and offering should we investigate?" : "Which existing pages would you like to improve?";
+const offerPlaceholder = locale === "de" ? "Website-Link und dein wichtigstes Ziel genügen für den Einstieg." : "A website link and your main objective are enough to start.";
 ---
-<section class="contact-section" id={sectionId} data-initial-path={calendarOnly ? "calendar" : undefined}>
+<section class="contact-section" id={sectionId} data-initial-path={calendarOnly ? "calendar" : directOffer ? "form" : undefined}>
   {!calendarOnly && (
     <>
   <div class="contact-copy">
     <p class="eyebrow">{eyebrow}</p>
-    <h2>{title}</h2>
+    <h2>{directOffer ? (locale === "de" ? `${offerName} anfragen` : `Request a ${offerName}`) : title}</h2>
   </div>
 
-  <p class="contact-value-line">{valueLine}</p>
+  <p class="contact-value-line">{directOffer ? (locale === "de" ? "Pascal prüft deinen Bedarf und meldet sich mit einem abgegrenzten Angebot. Preis auf Anfrage; kein Auftrag durch das Absenden." : "Pascal reviews your requirements and responds with a scoped proposal. Pricing on request; submitting does not place an order.") : valueLine}</p>
 
   <div
     class="contact-paths"
+    hidden={directOffer}
     role="tablist"
     aria-label={locale === "en" ? "Choose how to get in touch" : "Kontaktweg auswählen"}
   >
@@ -111,12 +121,13 @@ const privacyPath = locale === "en" ? "/en/privacy/" : "/datenschutz/";
   <form
     class="contact-flow"
     id={`contact-form-${locale}`}
-    role="tabpanel"
-    aria-labelledby={`contact-form-tab-${locale}`}
+    role={directOffer ? undefined : "tabpanel"}
+    aria-labelledby={directOffer ? undefined : `contact-form-tab-${locale}`}
     aria-label={formLabel}
     action="/api/contact"
     method="post"
-    hidden
+    hidden={!directOffer}
+    data-offer-type={offerType}
     data-contact-panel="form"
     data-contact-flow
     data-step-label={flow.stepLabel}
@@ -129,6 +140,8 @@ const privacyPath = locale === "en" ? "/en/privacy/" : "/datenschutz/";
     </div>
     <input name="locale" type="hidden" value={locale} />
     <input name="source" type="hidden" value={source} />
+    <input name="offer_type" type="hidden" value={offerType} />
+    <input name="source_page" type="hidden" value={Astro.url.pathname} />
     <input name="startedAt" type="hidden" value="" data-started-at />
 
     <div class="contact-flow-progress">
@@ -150,6 +163,7 @@ const privacyPath = locale === "en" ? "/en/privacy/" : "/datenschutz/";
               data-flow-question={flow.detailQuestions[option.value]}
               data-flow-placeholder={flow.detailPlaceholders[option.value]}
               required
+              checked={directOffer && option.value === (offerType === "geo_audit" ? "advice" : "improve")}
             />
             <span class="contact-choice-marker" aria-hidden="true"></span>
             <span>{option.label}</span>
@@ -159,10 +173,10 @@ const privacyPath = locale === "en" ? "/en/privacy/" : "/datenschutz/";
     </fieldset>
 
     <fieldset class="contact-flow-step" data-flow-step="1" hidden disabled>
-      <legend data-detail-question>{flow.detailQuestions.new}</legend>
+      <legend data-detail-question>{directOffer ? offerQuestion : flow.detailQuestions.new}</legend>
       <label class="contact-flow-input">
-        <span class="sr-only" data-detail-label>{flow.detailQuestions.new}</span>
-        <textarea name="details" rows="5" placeholder={flow.detailPlaceholders.new} required data-detail-input></textarea>
+        <span class="sr-only" data-detail-label>{directOffer ? offerQuestion : flow.detailQuestions.new}</span>
+        <textarea name="details" rows="5" placeholder={directOffer ? offerPlaceholder : flow.detailPlaceholders.new} minlength="3" maxlength="2000" required data-detail-input></textarea>
       </label>
       <div class="contact-flow-actions"><button class="button" type="button" data-flow-next>{flow.next}</button></div>
     </fieldset>
@@ -174,7 +188,7 @@ const privacyPath = locale === "en" ? "/en/privacy/" : "/datenschutz/";
         <label class="contact-flow-input"><span>{flow.emailLabel}</span><input name="email" type="email" autocomplete="email" required /></label>
       </div>
       <div class="contact-flow-summary"><span>{flow.summaryLabel}</span><strong data-flow-summary></strong></div>
-      <div class="contact-flow-actions"><button class="button" type="submit">{flow.submit}</button></div>
+      <div class="contact-flow-actions"><button class="button" type="submit">{directOffer ? (locale === "de" ? `${offerName} anfragen` : `Request a ${offerName}`) : flow.submit}</button></div>
       <p class="contact-flow-error" role="alert" data-flow-error hidden>{flow.errorMessage}</p>
     </fieldset>
 
@@ -222,6 +236,8 @@ const privacyPath = locale === "en" ? "/en/privacy/" : "/datenschutz/";
 </section>
 
 <script>
+  import { leadContext, trackRevenue } from "../lib/revenue-client";
+  import { safeOffer } from "../lib/lead-context";
   document.querySelectorAll<HTMLElement>(".contact-section").forEach((section) => {
     const tabs = Array.from(section.querySelectorAll<HTMLButtonElement>("[data-contact-path]"));
     const panels = Array.from(section.querySelectorAll<HTMLElement>("[data-contact-panel]"));
@@ -300,19 +316,25 @@ const privacyPath = locale === "en" ? "/en/privacy/" : "/datenschutz/";
     const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]');
     const startedAt = form.querySelector<HTMLInputElement>("[data-started-at]");
     const submitLabel = submit?.textContent ?? "";
-    let currentStep = 0;
+    const offer = safeOffer(form.dataset.offerType);
+    const firstStep = offer === "geo_audit" || offer === "page_sprint" ? 1 : 0;
+    let currentStep = firstStep;
+    let started = false;
+    form.addEventListener("focusin", () => {
+      if (!started) { trackRevenue("contact_form_start", offer); started = true; }
+    });
 
     const showStep = (index: number, focus = true) => {
-      currentStep = Math.max(0, Math.min(index, steps.length - 1));
+      currentStep = Math.max(firstStep, Math.min(index, steps.length - 1));
       steps.forEach((step, stepIndex) => {
         step.hidden = stepIndex !== currentStep;
         step.disabled = stepIndex !== currentStep;
       });
-      const progressText = `${form.dataset.stepLabel} ${currentStep + 1} ${form.dataset.ofLabel} ${steps.length}`;
+      const progressText = `${form.dataset.stepLabel} ${currentStep + 1 - firstStep} ${form.dataset.ofLabel} ${steps.length - firstStep}`;
       if (count) count.textContent = progressText;
       if (status) status.textContent = progressText;
-      if (progress) progress.style.setProperty("--flow-progress", `${((currentStep + 1) / steps.length) * 100}%`);
-      if (back) back.hidden = currentStep === 0;
+      if (progress) progress.style.setProperty("--flow-progress", `${((currentStep + 1 - firstStep) / (steps.length - firstStep)) * 100}%`);
+      if (back) back.hidden = currentStep === firstStep;
       if (focus) steps[currentStep]?.querySelector<HTMLElement>("input:checked, input, textarea")?.focus();
     };
 
@@ -338,13 +360,22 @@ const privacyPath = locale === "en" ? "/en/privacy/" : "/datenschutz/";
       submit.disabled = true;
       submit.textContent = form.dataset.sending ?? submitLabel;
       try {
+        // Completed steps are disabled for validation, not omitted from delivery.
+        steps.forEach((step) => { step.disabled = false; });
+        const payload = Object.fromEntries(new FormData(form).entries());
+        steps.forEach((step, index) => { step.disabled = index !== currentStep; });
         const response = await fetch(form.action, {
           method: "POST",
           headers: { "content-type": "application/json", accept: "application/json" },
-          body: JSON.stringify(Object.fromEntries(new FormData(form).entries())),
+          body: JSON.stringify({ ...payload, ...leadContext(offer) }),
         });
         const result = await response.json().catch(() => null);
         if (!response.ok || !result?.ok) throw new Error("submission_failed");
+        if (response.status === 201 && result.lead_id) {
+          trackRevenue("contact_form_submit_success", offer);
+          if (offer === "geo_audit") trackRevenue("audit_inquiry_success", offer);
+          if (offer === "page_sprint") trackRevenue("page_sprint_inquiry_success", offer);
+        }
         steps.forEach((step) => { step.hidden = true; step.disabled = true; });
         if (progressArea) progressArea.hidden = true;
         if (privacy) privacy.hidden = true;
@@ -359,15 +390,20 @@ const privacyPath = locale === "en" ? "/en/privacy/" : "/datenschutz/";
 
     form.querySelector<HTMLButtonElement>("[data-flow-again]")?.addEventListener("click", () => {
       form.reset();
+      started = false;
       if (success) success.hidden = true;
       if (progressArea) progressArea.hidden = false;
       if (privacy) privacy.hidden = false;
       if (startedAt) startedAt.value = String(Date.now());
-      showStep(0);
+      showStep(firstStep);
     });
 
     form.dataset.lang = form.querySelector<HTMLInputElement>('[name="locale"]')?.value ?? "de";
     if (startedAt) startedAt.value = String(Date.now());
-    showStep(0, false);
+    if (firstStep && summary) summary.textContent = offer === "geo_audit" ? "GEO Audit" : form.dataset.lang === "de" ? "Seiten-Sprint" : "Page sprint";
+    showStep(firstStep, false);
   });
 </script>
+<style>
+  .contact-paths[hidden] { display: none !important; }
+</style>

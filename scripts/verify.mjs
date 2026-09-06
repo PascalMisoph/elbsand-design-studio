@@ -31,7 +31,9 @@ const waitForServer = async (server) => {
 await runNpm(["run", "static:check"]);
 await runNpm(["run", "crawler:check"]);
 await runNpm(["run", "security:check"]);
+await runNpm(["run", "test:unit"]);
 await runNpm(["run", "build"]);
+await run(process.execPath, ["scripts/test-revenue-api.mjs"]);
 
 try {
   await fetch(origin);

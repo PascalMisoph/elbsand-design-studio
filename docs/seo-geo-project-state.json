@@ -1,5 +1,11 @@
 {
   "schema_version": 1,
+  "revenue_sprint_1": {
+    "date": "2026-09-06",
+    "document": "docs/revenue-sprint-1-2026-09-06.md",
+    "state": "docs/growth-state-2026-09-06.json",
+    "note": "Revenue implementation tracked separately; the project and crawl snapshot below remains historical audit evidence."
+  },
   "project": {
     "name": "paternoga-seo-geo-studio",
     "repository": "C:\\Dev\\elbsand-design-studio",

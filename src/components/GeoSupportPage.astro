@@ -26,7 +26,7 @@ const meta = geoSupportPages[lang].meta;
 const t = isGerman ? {
   eyebrow: "GEO-Betreuung",
   title: "Deine AI-Sichtbarkeit bleibt in Bewegung",
-  lead: "PATERNOGA begleitet dich nach dem ersten Audit: mit klaren Prioritäten, regelmäßigen Checks und einer festen Ansprechperson für die technische und inhaltliche Weiterentwicklung.",
+  lead: "Wenn regelmäßig Inhalte, Angebote oder technische Grundlagen gepflegt werden müssen, übernimmt PATERNOGA einen vereinbarten Maßnahmenblock mit Review. Ein Audit oder Seiten-Sprint verpflichtet nicht zur Betreuung; verwertbare Vorarbeit anderer Anbieter ist willkommen.",
   cta: "Betreuung besprechen",
   second: "Arbeitsweise ansehen",
   home: "Start",
@@ -70,7 +70,7 @@ const t = isGerman ? {
 } : {
   eyebrow: "GEO Support",
   title: "Your AI visibility keeps moving",
-  lead: "PATERNOGA stays with you after the first audit: with clear priorities, regular reviews and one direct contact for the technical and editorial work that follows.",
+  lead: "When content, offers or technical foundations need recurring work, PATERNOGA delivers an agreed action block and review. An audit or page sprint does not commit you to ongoing support; usable work from other providers is welcome.",
   cta: "Discuss ongoing support",
   second: "See how it works",
   home: "Home",
@@ -127,7 +127,7 @@ const schema = createServicePageSchema({ lang, title: meta.title, description: m
     <section class="border-y border-solid border-border"><div class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><header class="grid grid-cols-1 gap-6 pb-12 lg:grid-cols-2 lg:pb-20"><h2 class="m-0 text-section-title font-medium text-foreground">{t.supportTitle}</h2><p class="m-0 max-w-xl text-base leading-copy text-muted-foreground">{t.supportLead}</p></header><FeatureCardGrid items={t.supportRows} columns={4} /></div></section>
     <section class="mx-auto grid max-w-content grid-cols-1 gap-12 px-5 py-section-mobile md:px-12 lg:grid-cols-2 lg:py-section"><div><h2 class="m-0 text-section-title font-medium text-foreground">{t.methodTitle}</h2><p class="m-0 mt-6 max-w-xl text-base leading-copy text-muted-foreground">{t.methodText}</p></div><IconFeaturePanel items={methodItems} label={t.eyebrow} /></section>
     <section class="border-t border-solid border-border"><div class="mx-auto grid max-w-content grid-cols-1 gap-12 px-5 py-section-mobile md:px-12 lg:grid-cols-3 lg:py-section"><h2 class="m-0 text-section-title font-medium text-foreground">{t.faqTitle}</h2><FaqAccordion items={faqItems} theme="dark" className="lg:col-span-2" /></div></section>
-    <SubpageContact lang={lang} source="geo-support-service" />
+    <SubpageContact lang={lang} source="geo-support-service" offerType="geo_support" />
   </main>
   <Footer {...siteContent.footer} lang={lang} />
 </BaseLayout>

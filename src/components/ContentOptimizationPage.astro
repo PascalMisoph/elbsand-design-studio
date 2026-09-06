@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Footer from "./Footer.astro";
 import Header from "./Header.astro";
 import SubpageContact from "./SubpageContact.astro";
+import OfferScope from "./OfferScope.astro";
 import FaqAccordion from "./FaqAccordion.astro";
 import FeatureCardGrid from "./FeatureCardGrid";
 import IconFeaturePanel from "./IconFeaturePanel";
@@ -29,9 +30,9 @@ const breadcrumbItems = [
 
 const copy = isGerman ? {
   label: "Content Optimization / Refresh",
-  title: "Bestehende Inhalte klarer, aktueller und hilfreicher machen",
-  lead: "Nicht jede GEO-Maßnahme braucht eine neue Seite. Wir lesen deine Inhalte wie eine Antwort: Was ist sofort klar, was fehlt, was ist veraltet und welche Überarbeitung bringt wirklich mehr Orientierung?",
-  cta: "Content-Check anfragen",
+  title: "Seiten-Sprint: Bestehende Leistungsseiten gezielt verbessern",
+  lead: "Bis zu drei bestehende kaufnahe Seiten: Wir schärfen Angebot, Inhalte, Belege und Anfrageweg für Google, KI-Suche und passende Käufer. Ein begrenztes Umsetzungsprojekt – kein Relaunch und kein vorgeschalteter Audit nötig.",
+  cta: "Seiten-Sprint anfragen",
   intro: "Content-Optimierung mit einem klaren Prüfpfad",
   introLead: "Ein Refresh beginnt nicht mit blindem Umschreiben. Er beginnt mit einem Befund, einer Entscheidung pro Abschnitt und einer sichtbaren Verantwortung für die nächste Pflege.",
   audit: "Dein End-to-End-Content-Check",
@@ -41,9 +42,9 @@ const copy = isGerman ? {
   faq: "Fragen zur Content-Optimierung für AI-Suche",
 } : {
   label: "Content Optimization / Refresh",
-  title: "Make existing content clearer, current and more useful",
-  lead: "Not every GEO task needs a new page. We read your content like an answer: what is immediately clear, what is missing, what has aged and which revision genuinely adds orientation?",
-  cta: "Request a content check",
+  title: "Page sprint: Improve your existing service pages",
+  lead: "Up to three existing commercial pages: We sharpen your offer, content, evidence and enquiry path for Google, AI search and relevant buyers. A scoped implementation project – no relaunch or prior audit required.",
+  cta: "Request a page sprint",
   intro: "Content optimization with a clear review path",
   introLead: "A refresh does not begin with blind rewriting. It begins with a finding, a decision for each section and visible ownership for later maintenance.",
   audit: "Your end-to-end content check",
@@ -95,11 +96,12 @@ const schema = createServicePageSchema({ lang: page.lang, title: page.meta.title
 ---
 
 <BaseLayout title={page.meta.title} description={page.meta.description} lang={page.lang} canonicalPath={canonicalPath} alternateDePath={page.alternateDePath} alternateEnPath={page.alternateEnPath} schema={schema} bodyClass="content-optimization-page ui-dark-page dark">
-  <Header lang={page.lang} nav={siteContent.nav} cta={siteContent.cta} page="service" alternateDePath={page.alternateDePath} alternateEnPath={page.alternateEnPath} />
+  <Header lang={page.lang} nav={siteContent.nav} cta={copy.cta} primaryHref="#kontakt" revenueOffer="page_sprint" page="service" alternateDePath={page.alternateDePath} alternateEnPath={page.alternateEnPath} />
 
   <main id="main-content" class="min-h-screen bg-background text-foreground">
-    <section class="border-b border-solid border-border"><div class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><nav class="flex flex-wrap gap-2 text-xs text-muted-foreground" aria-label={isGerman ? "Brotkrumen-Navigation" : "Breadcrumb"}>{breadcrumbItems.map((item, index) => <>{index > 0 && <span aria-hidden="true">/</span>}{index === breadcrumbItems.length - 1 ? <span aria-current="page">{item.name}</span> : <a class="text-inherit no-underline hover:text-foreground" href={item.href}>{item.name}</a>}</>)}</nav><div class="max-w-3xl pt-12"><p class="m-0 text-xs font-medium uppercase tracking-wider text-primary">{copy.label}</p><h1 class="m-0 mt-6 text-display-mobile font-medium text-foreground md:text-display">{copy.title}</h1><p class="m-0 mt-6 max-w-xl text-base leading-copy text-muted-foreground">{copy.lead}</p><div class="mt-8 flex flex-col gap-3 sm:flex-row"><LinkButton href={`${homePath}#kontakt`} label={copy.cta} icon="right" /><LinkButton href="#content-review" label={page.secondaryCta} variant="secondary" icon="down" /></div></div><div class="mt-20"><FeatureCardGrid items={modules} columns={4} /></div></div></section>
+    <section class="border-b border-solid border-border"><div class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><nav class="flex flex-wrap gap-2 text-xs text-muted-foreground" aria-label={isGerman ? "Brotkrumen-Navigation" : "Breadcrumb"}>{breadcrumbItems.map((item, index) => <>{index > 0 && <span aria-hidden="true">/</span>}{index === breadcrumbItems.length - 1 ? <span aria-current="page">{item.name}</span> : <a class="text-inherit no-underline hover:text-foreground" href={item.href}>{item.name}</a>}</>)}</nav><div class="max-w-3xl pt-12"><p class="m-0 text-xs font-medium uppercase tracking-wider text-primary">{copy.label}</p><h1 class="m-0 mt-6 text-display-mobile font-medium text-foreground md:text-display">{copy.title}</h1><p class="m-0 mt-6 max-w-xl text-base leading-copy text-muted-foreground">{copy.lead}</p><div class="mt-8 flex flex-col gap-3 sm:flex-row"><LinkButton href="#kontakt" revenueCta="sprint_hero" offer="page_sprint" label={copy.cta} icon="right" /><LinkButton href="#content-review" label={page.secondaryCta} variant="secondary" icon="down" /></div></div><div class="mt-20"><FeatureCardGrid items={modules} columns={4} /></div></div></section>
 
+    <OfferScope lang={page.lang} offer="page_sprint" />
     <section id="content-review" class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><header class="grid grid-cols-1 gap-6 pb-12 lg:grid-cols-2 lg:pb-20"><div><p class="m-0 text-xs font-medium uppercase tracking-wider text-primary">{copy.intro}</p><h2 class="m-0 mt-6 text-section-title font-medium text-foreground">{copy.audit}</h2></div><div><p class="m-0 max-w-xl text-base leading-copy text-muted-foreground">{copy.introLead}</p><p class="m-0 mt-6 max-w-xl text-base leading-copy text-muted-foreground">{copy.auditLead}</p></div></header><IconFeaturePanel items={auditItems} label={copy.audit} /></section>
 
     <section class="border-y border-solid border-border"><div class="mx-auto max-w-content px-5 py-section-mobile md:px-12 lg:py-section"><header class="grid grid-cols-1 gap-6 pb-12 lg:grid-cols-2 lg:pb-20"><h2 class="m-0 text-section-title font-medium text-foreground">{copy.proof}</h2><p class="m-0 max-w-xl text-base leading-copy text-muted-foreground">{copy.proofLead}</p></header><FeatureCardGrid items={proofItems} columns={2} /></div></section>
@@ -108,7 +110,7 @@ const schema = createServicePageSchema({ lang: page.lang, title: page.meta.title
 
     <section class="border-t border-solid border-border"><div class="mx-auto grid max-w-content grid-cols-1 gap-12 px-5 py-section-mobile md:px-12 lg:grid-cols-3 lg:py-section"><h2 class="m-0 text-section-title font-medium text-foreground">{copy.faq}</h2><FaqAccordion items={page.faq.items} theme="dark" className="lg:col-span-2" /></div></section>
 
-    <SubpageContact lang={page.lang} source="content-optimization-service" />
+    <SubpageContact lang={page.lang} source="content-optimization-service" offerType="page_sprint" />
   </main>
 
   <Footer {...siteContent.footer} lang={page.lang} />

@@ -1,18 +1,20 @@
 ---
 import Contact from "./Contact.astro";
 import { content, type Locale } from "../content/site";
+import type { OfferType } from "../lib/lead-context";
 
 interface Props {
   lang: Locale;
   source?: string;
+  offerType?: OfferType;
 }
 
-const { lang, source = "service-page-contact" } = Astro.props;
+const { lang, source = "service-page-contact", offerType = "general" } = Astro.props;
 const contact = content[lang].contact;
 ---
 
 <div class="subpage-contact">
-  <Contact {...contact} source={source} />
+  <Contact {...contact} source={source} offerType={offerType} />
 </div>
 
 <style>

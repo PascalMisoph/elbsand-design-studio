@@ -58,9 +58,13 @@ for (const [route, lang] of serviceRoutes) {
     await expect(page.locator(".site-footer-column")).toHaveCount(4);
     if (route === "/geo-audit/") {
       await expect(page.locator("h1")).toHaveText("GEO Audit: Wie sichtbar ist dein Unternehmen in ChatGPT & Co.?");
-      await expect(page.locator(".a-hero-copy > p:not(.a-kicker)")).toContainText("Verfolge deine KI-Sichtbarkeit");
+      await expect(page.locator(".a-hero-copy > p:not(.a-kicker)")).toContainText("Einmaliger bezahlter Audit");
       await expect(page.locator(".a-presence-grid h3")).toHaveText(["Sichtbarkeits-Scores", "Stimmung & Themen", "Quellenautorität", "Faktencheck deiner Marke", "Wettbewerbsvergleich", "Plattformvergleich"]);
       await expect(page.locator(".a-presence h2")).toHaveText("Verstehe und ordne deine KI-Präsenz ein");
+      for (const selector of [".score-visual-image img", ".sentiment-visual-image img", ".citation-visual-image img", ".fact-visual-image img", ".benchmark-visual-image img"]) {
+        await page.locator(selector).scrollIntoViewIfNeeded();
+        await expect(page.locator(selector)).toHaveJSProperty("naturalWidth", 1254);
+      }
       await expect(page.locator('.score-visual-image img[src="/images/geo-audit-visibility-scores-graph.webp"]')).toHaveJSProperty("naturalWidth", 1254);
       await expect(page.locator('.sentiment-visual-image img[src="/images/geo-audit-sentiment-insights.webp"]')).toHaveJSProperty("naturalWidth", 1254);
       const citationVisual = page.locator('.citation-visual-image img[src="/images/geo-audit-citation-authority-v2.webp"]');
@@ -78,16 +82,16 @@ for (const [route, lang] of serviceRoutes) {
       await expect(page.locator("#audit-story .a-story-copy > .a-kicker")).toHaveCount(0);
       await expect(page.locator("#audit-story .a-step-icon")).toHaveCount(4);
       expect(await page.locator("#audit-story [data-a-step]").evaluateAll((steps) => steps.every((step) => getComputedStyle(step).opacity === "1"))).toBe(true);
-      await expect(page.locator(".a-faq details")).toHaveCount(9);
-      await expect(page.locator(".a-faq summary").first()).toHaveText(/Welche KI-Systeme werden geprüft/);
+      await expect(page.locator(".a-faq:not(#arbeitsprobe) details")).toHaveCount(9);
+      await expect(page.locator(".a-faq:not(#arbeitsprobe) summary").first()).toHaveText(/Welche KI-Systeme werden geprüft/);
     }
     if (route === "/en/geo-audit/") {
       await expect(page.locator("h1")).toHaveText("GEO audit: How visible is your business in AI answers?");
-      await expect(page.locator(".a-hero-copy > p:not(.a-kicker)")).toHaveText("Track your AI visibility, see where and how AI mentions your brand, and uncover insights to enhance your presence.");
+      await expect(page.locator(".a-hero-copy > p:not(.a-kicker)")).toContainText("one-off paid audit");
       await expect(page.locator(".a-presence-grid h3")).toHaveText(["Visibility Scores", "Sentiment & Keyword Insights", "Citation Authority", "FactCheck what AI says about your brand", "Competitive Benchmarking", "Platform Comparisons"]);
       await expect(page.locator(".a-presence h2")).toHaveText("Understand and assess your AI presence");
-      await expect(page.locator(".a-faq details")).toHaveCount(9);
-      await expect(page.locator(".a-faq summary").first()).toHaveText(/Which AI systems are reviewed/);
+      await expect(page.locator(".a-faq:not(#arbeitsprobe) details")).toHaveCount(9);
+      await expect(page.locator(".a-faq:not(#arbeitsprobe) summary").first()).toHaveText(/Which AI systems are reviewed/);
     }
 
     const geometry = await page.evaluate(() => ({
@@ -127,7 +131,7 @@ test("GEO audit presence grid keeps its desktop heading on one line and referenc
   await expect(page.locator(".a-presence-grid > article.has-reference-image")).toHaveCount(6);
   await expect(page.locator(".a-method [data-platform-panel]")).toHaveCount(3);
   await expect(page.locator(".a-method-board, .a-board-head, .a-board-row")).toHaveCount(0);
-  await expect(page.locator(".site-header .button-small")).toHaveText("Kostenfreier KI-Check");
+  await expect(page.locator(".site-header .button-small")).toHaveText("GEO Audit anfragen");
   expect(await page.locator(".a-method-copy").evaluate((element) => getComputedStyle(element).position)).toBe("sticky");
   expect(await page.locator(".site-header .button-small").evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true);
   const dividerPositions = await page.evaluate(() => ({

@@ -2,6 +2,7 @@
 
 Stand: 2026-09-06
 Status: laufender Projektkontext
+Revenue Sprint 1: Angebote, direkte Formulare und Attribution sind implementiert; Release-Validierung läuft. Nachweise und aktueller Deploymentstatus: [revenue-sprint-1-2026-09-06.md](revenue-sprint-1-2026-09-06.md). Dresden bleibt nächster Seiten-Sprint, Research `PRIORITIZED_NOT_STARTED`.
 Quelle: priorisierte nächste Schritte nach dem Production-Deployment des SEO-/GEO-Audit-Fixes.
 
 Dieses Dokument ist die fortlaufend zu pflegende Arbeitsroadmap. Es beschreibt die Themen, die PATERNOGA als Nächstes abarbeiten will. Es ist kein Auftrag, alle Punkte in einer Session auszuführen.
@@ -16,12 +17,12 @@ Dieses Dokument ist die fortlaufend zu pflegende Arbeitsroadmap. Es beschreibt d
 
 ## Aktive Growth-Reihenfolge ab 06.09.2026
 
-Die beauftragte Market-/Buyer-/Revenue-Recherche ist in [growth-strategy-2026-09-06.md](growth-strategy-2026-09-06.md) abgeschlossen; Matrizen, 18 Experimente, Evidenzgrenzen und maschinenlesbarer Status sind dort verlinkt. Die folgende Reihenfolge ersetzt die ältere Priorisierung für Growth. Umsetzung und externe Kommunikation sind noch nicht erfolgt.
+Die beauftragte Market-/Buyer-/Revenue-Recherche ist in [growth-strategy-2026-09-06.md](growth-strategy-2026-09-06.md) abgeschlossen; Matrizen, 18 Experimente, Evidenzgrenzen und maschinenlesbarer Status sind dort verlinkt. Die folgende Reihenfolge ersetzt die ältere Priorisierung für Growth. Revenue Sprint 1 setzt die ersten beiden Blöcke um; externe Kommunikation ist weiterhin nicht erfolgt. Der verbindliche Release-Status steht im oben verlinkten Sprintbericht.
 
 | Reihenfolge | nächster Arbeitsblock | Status | Abnahme / Abhängigkeit |
 |---|---|---|---|
-| 1 | Attribution und kommerziellen T0 vervollständigen | `NEXT_IMPLEMENTATION` | Seitenquellen bis zum Lead/CRM erhalten; GSC-Export vorhanden, GA4/CRM/GBP und Consumer-AI noch offen. |
-| 2 | begrenztes Audit-/Seiten-Sprint-Angebot und direkten Audit-CTA umsetzen | `PLANNED` | klare Abnahme/Arbeitsprobe; keine erfundenen Outcomes; öffentliche Preise weiter auf Anfrage. |
+| 1 | Attribution und kommerziellen T0 vervollständigen | `IMPLEMENTED_T0_PARTIAL` | Angebots-/Quellenkontext bis zur internen Lead-Mail; kein neues CRM. Reale Leads, Umsatz, GBP und Consumer-AI bleiben ungemessen. |
+| 2 | begrenztes Audit-/Seiten-Sprint-Angebot und direkten Audit-CTA umsetzen | `IMPLEMENTED` | direkte DE/EN-Angebote und eigene Arbeitsprobe; Release-Nachweis im Sprintbericht. Öffentliche Preise weiter auf Anfrage. |
 | 3 | warme Käufer-/Partnerbeziehungen und fünf manuelle Snapshots | `PLANNED` | nur bei gesondertem Ausführungsauftrag; begrenzte Lieferzeit und echtes Buyer-Signal. |
 | 4 | eine SEO-Dresden-Kaufseite, nationale Kaufseite und Anbieterprofile | `PLANNED` | Design-/DE-EN-Parität, echter Standort, keine GEO-Dresden-Duplikatroute. |
 | 5 | bezahlten Sprint liefern, Proof und passende Betreuung entwickeln | `PLANNED` | reale Daten, Liefermarge, Freigabe für jede öffentliche Fallbeschreibung. |

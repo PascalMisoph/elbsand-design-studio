@@ -110,11 +110,9 @@ body:not(.home-page):not(.legal-page):not(.scan-result-route) main#main-content 
   }
 }
 
-@view-transition { navigation: auto; }
-::view-transition-old(root) { animation: 110ms ease-out both page-fade-out; }
-::view-transition-new(root) { animation: 150ms ease-out both page-fade-in; }
-@keyframes page-fade-out { to { opacity: .92; } }
-@keyframes page-fade-in { from { opacity: .92; } }
+/* Cross-document transitions can suspend destination rendering after a real
+   link navigation in Chromium. Keep native navigation; in-page motion stays. */
+@view-transition { navigation: none; }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 88px; }

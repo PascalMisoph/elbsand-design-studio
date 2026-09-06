@@ -6,10 +6,34 @@
   "status": "research_complete_measurements_partial",
   "strategy": "docs/growth-strategy-2026-09-06.md",
   "technical_audit": "closed_existing_evidence",
+  "seo_positioning_gate": {
+    "status": "IN_PROGRESS",
+    "decision_document": "docs/seo-positioning-sprint-1-5-2026-09-06.md",
+    "execution_order": "after Revenue Sprint 1 production verification",
+    "homepage_aligned": false,
+    "money_pages_aligned": false,
+    "seo_role_clear": false,
+    "geo_role_clear": false,
+    "buyer_job_clear": false,
+    "proof_aligned": false,
+    "revenue_paths_preserved": false,
+    "seo_dresden_brief_ready": false,
+    "sprint_2_requires_separate_authorization": true
+  },
+  "revenue_sprint_1": {
+    "document": "docs/revenue-sprint-1-2026-09-06.md",
+    "implementation": "implemented",
+    "validation": "verified_131_browser_11_unit_api_seo_40_routes",
+    "deployment": "not_started",
+    "live_verification": "not_started",
+    "qualified_leads": null,
+    "revenue": null
+  },
   "authorization": {
     "market_research": true,
     "local_documentation": true,
-    "production_changes": false,
+    "production_changes": true,
+    "production_deployment": true,
     "external_messages": false,
     "account_writes": false,
     "new_study_collection": false,
@@ -68,32 +92,32 @@
     {
       "id": 1,
       "action": "Preserve lead source and complete commercial T0",
-      "status": "next_implementation"
+      "status": "attribution_implemented_commercial_measurements_partial"
     },
     {
       "id": 2,
       "action": "Scope audit and page sprint",
-      "status": "planned"
+      "status": "implemented_verified"
     },
     {
       "id": 3,
       "action": "Direct audit CTA and real work sample",
-      "status": "planned"
+      "status": "implemented_verified"
     },
     {
       "id": 4,
       "action": "Warm relationships and five complementary partners",
-      "status": "planned_not_sent"
+      "status": "BLOCKED_SEO_POSITIONING_GATE_NOT_STARTED"
     },
     {
       "id": 5,
       "action": "Five manually reviewed buyer snapshots",
-      "status": "planned_not_collected"
+      "status": "BLOCKED_SEO_POSITIONING_GATE_NOT_STARTED"
     },
     {
       "id": 6,
       "action": "One Dresden money page and eligible real GBP",
-      "status": "planned"
+      "status": "BLOCKED_SEO_POSITIONING_GATE_NOT_IMPLEMENTED"
     },
     {
       "id": 7,

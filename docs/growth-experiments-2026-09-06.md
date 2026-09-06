@@ -27,6 +27,8 @@ Ein qualifizierter Lead hat einen passenden Unternehmensbedarf, erreichbaren Ans
 
 ## Einheitliches Experimentprotokoll
 
+Umsetzungsstand Revenue Sprint 1: E1 ist technisch mit 5/5 isolierten API-/Mail-Eingängen bestanden; dies sind keine echten Leads und kein neues CRM. Die Voraussetzungen für E2, E3, E13 und E14 (direkte Angebote, Umfang, eigene Arbeitsprobe) sind implementiert. Käuferverständnis, Aufträge und Conversion-Effekt bleiben ungemessen. Release-Nachweise: [Revenue Sprint 1](revenue-sprint-1-2026-09-06.md). Alle übrigen Experimente bleiben geplant, nicht gestartet.
+
 Vor Beginn: ID, Owner (Pascal), Start-/Enddatum, Hypothese, Zielgruppe, Quellen-UTM, Scope, Aufwandlimit, Mindestmenge und Entscheidungskriterium festhalten. Nach Ende: tatsächliche N, Kosten/Stunden, Kontakte, qualifizierte Leads, Angebote, Aufträge, Umsatz/DB und Entscheidung dokumentieren. Alle Ergebnisse bis zur Ausführung `null`, nicht `0`.
 
 Bei Copy-/CTA-Tests Kanal-Mix, Saison und Trafficmenge protokollieren. Keine Kausalität aus sequenziell veränderten Seiten und gleichzeitigem Partnertraffic behaupten. Kleine Stichproben liefern qualitative Entscheidungen; statistische Conversion-Lifts erst mit ausreichendem Design/Menge.

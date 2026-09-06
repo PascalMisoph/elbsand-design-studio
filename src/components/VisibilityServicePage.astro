@@ -56,7 +56,7 @@ const schema = createServicePageSchema({ lang: page.lang, title: page.meta.title
           <p class="v-kicker">{page.eyebrow}</p>
           <h1>{page.title}</h1>
           <p class="v-lead">{page.lead}</p>
-          <div class="v-actions"><a class="v-button" href={`${homePath}#ki-check`}>{page.primaryCta}</a><a class="v-link" href="#visibility-evidence">{page.secondaryCta}<span aria-hidden="true">↓</span></a></div>
+          <div class="v-actions"><a class="v-button" href={isGerman ? "/geo-audit/" : "/en/geo-audit/"}>{isGerman ? "KI-Sichtbarkeit im GEO Audit prüfen" : "Review AI visibility with a GEO audit"}</a><a class="v-link" href="#visibility-evidence">{page.secondaryCta}<span aria-hidden="true">↓</span></a></div>
         </div>
       </div>
       <div class="v-feature-rail" aria-label={isGerman ? "Was die Analyse sichtbar macht" : "What the analysis reveals"}>

@@ -9,9 +9,11 @@ interface Props {
   page?: "home" | "geo" | "service";
   alternateDePath?: string;
   alternateEnPath?: string;
+  primaryHref?: string;
+  revenueOffer?: "geo_audit" | "page_sprint";
 }
 
-const { lang, cta, page = "home", alternateDePath, alternateEnPath } = Astro.props;
+const { lang, cta, page = "home", alternateDePath, alternateEnPath, primaryHref, revenueOffer } = Astro.props;
 const de = lang === "de";
 const homePath = de ? "/" : "/en/";
 const local = (dePath: string, enPath: string) => de ? dePath : enPath;
@@ -136,7 +138,7 @@ const menuLabel = de ? "Menü" : "Menu";
       <a href={languagePaths.de} hreflang="de" lang="de" aria-current={de ? "page" : undefined} data-astro-prefetch="viewport">DE</a>
       <a href={languagePaths.en} hreflang="en" lang="en" aria-current={!de ? "page" : undefined} data-astro-prefetch="viewport">EN</a>
     </nav>
-    <a class="button button-small" href={ctaHref}>{cta}</a>
+    <a class="button button-small" href={primaryHref ?? ctaHref} data-revenue-cta={revenueOffer ? "header_desktop" : undefined} data-offer={revenueOffer}>{cta}</a>
     <details class="mobile-menu" data-mobile-menu>
       <summary aria-label={menuLabel}><span></span><span></span></summary>
       <nav aria-label={de ? "Mobile Navigation" : "Mobile navigation"}>
@@ -155,7 +157,7 @@ const menuLabel = de ? "Menü" : "Menu";
           </details>
         ))}
         <div class="mobile-direct-links">{directLinks.map(([label, href]) => <a href={href}>{label}</a>)}</div>
-        <a class="button" href={ctaHref}>{cta}</a>
+        <a class="button" href={primaryHref ?? ctaHref} data-revenue-cta={revenueOffer ? "header_mobile" : undefined} data-offer={revenueOffer}>{cta}</a>
       </nav>
     </details>
   </div>
