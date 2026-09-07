@@ -37,7 +37,7 @@ At the status date, DNS still points to GoDaddy Website Builder (`DPS/2.0.0`). T
 
 ## Positioning guardrails
 
-- Use “Paternoga SEO & GEO Studio” consistently as the organization entity; PATERNOGA remains the visual wordmark.
+- Use “Paternoga SEO & GEO Agentur” consistently as the organization entity; PATERNOGA remains the visual wordmark.
 - Describe Dresden as the real location and Germany as the service market.
 - Do not publish “beste GEO-Agentur” as a self-awarded fact.
 - Do not create keyword-swapped city pages, artificial comparison rankings or duplicate service routes.

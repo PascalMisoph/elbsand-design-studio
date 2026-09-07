@@ -8,7 +8,7 @@ Stand: 06.09.2026. Ergänzung zu [Revenue Sprint 2](revenue-sprint-2-traffic-202
 
 | Feld | Verbindlicher Wert |
 |---|---|
-| Name | Paternoga SEO & GEO Studio |
+| Name | Paternoga SEO & GEO Agentur |
 | Wortmarke | PATERNOGA |
 | Website | https://www.paternoga-seo-geo.de |
 | Standort | Dresden, Deutschland |
@@ -32,7 +32,7 @@ Keine abweichenden Kurzbeschreibungen, keine zweite Adresse, keine Fantasie-Stan
 
 ### 1.2 Profilbeschreibung (750-Zeichen-Rahmen)
 
-> PATERNOGA ist ein SEO- und GEO-Studio aus Dresden für Dienstleister, deren Leistung vor dem Kauf erklärt werden muss. Wir arbeiten an den wenigen Seiten, über die Anfragen tatsächlich entstehen, und prüfen dabei getrennt drei Dinge: ob Google die Seite findet und einordnet, ob KI-Antwortsysteme wie ChatGPT oder Perplexity sie korrekt wiedergeben, und ob Besucher dort tatsächlich anfragen. Der Einstieg erfolgt über einen einmaligen GEO Audit ab 1.500 € netto, einen Seiten-Sprint für bis zu drei bestehende Seiten ab 2.500 € netto oder eine laufende Betreuung ab 1.250 € netto pro Monat. Umsetzung persönlich durch Pascal Misoph, Standort Dresden, Zusammenarbeit deutschlandweit.
+> PATERNOGA ist eine SEO- und GEO-Agentur aus Dresden für Dienstleister, deren Leistung vor dem Kauf erklärt werden muss. Wir arbeiten an den wenigen Seiten, über die Anfragen tatsächlich entstehen, und prüfen dabei getrennt drei Dinge: ob Google die Seite findet und einordnet, ob KI-Antwortsysteme wie ChatGPT oder Perplexity sie korrekt wiedergeben, und ob Besucher dort tatsächlich anfragen. Der Einstieg erfolgt über einen einmaligen GEO Audit ab 1.500 € netto, einen Seiten-Sprint für bis zu drei bestehende Seiten ab 2.500 € netto oder eine laufende Betreuung ab 1.250 € netto pro Monat. Umsetzung persönlich durch Pascal Misoph, Standort Dresden, Zusammenarbeit deutschlandweit.
 
 ### 1.3 Beiträge — fünf vorbereitete Posts
 
@@ -70,7 +70,7 @@ Reihenfolge nach Aufwand und Nutzen. Vor jeder Einreichung Aktualität und Quali
 
 **Einheitlicher Profiltext (Kurzform, ~300 Zeichen):**
 
-> Paternoga SEO & GEO Studio aus Dresden. SEO und GEO für Dienstleister, deren Leistung vor dem Kauf erklärt werden muss: technische Grundlagen, die wenigen wirklich wichtigen Leistungsseiten, lokale Auffindbarkeit und Sichtbarkeit in KI-Antwortsystemen. Einstieg ab 1.500 € netto. Umsetzung persönlich durch Pascal Misoph.
+> Paternoga SEO & GEO Agentur aus Dresden. SEO und GEO für Dienstleister, deren Leistung vor dem Kauf erklärt werden muss: technische Grundlagen, die wenigen wirklich wichtigen Leistungsseiten, lokale Auffindbarkeit und Sichtbarkeit in KI-Antwortsystemen. Einstieg ab 1.500 € netto. Umsetzung persönlich durch Pascal Misoph.
 
 | Reihenfolge | Fläche | Bedingung vor Einreichung | Ziel-URL |
 |---|---|---|---|

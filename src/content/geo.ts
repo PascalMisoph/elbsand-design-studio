@@ -14,7 +14,7 @@ export const geoContent = {
       primaryCta: "GEO Audit anfragen",
       primaryHref: "/geo-audit/",
       secondaryCta: "Pakete ansehen",
-      imageAlt: "Pascal Misoph im PATERNOGA Studio bei der Arbeit an einer Sichtbarkeitsanalyse"
+      imageAlt: "Pascal Misoph bei PATERNOGA an einer Sichtbarkeitsanalyse"
     },
     method: {
       eyebrow: "Was GEO sichtbar macht",
@@ -139,7 +139,7 @@ export const geoContent = {
         successAgain: "Weitere Anfrage starten"
       }
     },
-    footer: { legal: "Paternoga SEO & GEO Studio", imprint: "Impressum", privacy: "Datenschutz" }
+    footer: { legal: "Paternoga SEO & GEO Agentur", imprint: "Impressum", privacy: "Datenschutz" }
   },
   en: {
     meta: {
@@ -156,7 +156,7 @@ export const geoContent = {
       primaryCta: "Request a GEO audit",
       primaryHref: "/en/geo-audit/",
       secondaryCta: "View packages",
-      imageAlt: "Pascal Misoph at the PATERNOGA studio working on a visibility analysis"
+      imageAlt: "Pascal Misoph at PATERNOGA working on a visibility analysis"
     },
     method: {
       eyebrow: "What makes GEO visible",
@@ -281,7 +281,7 @@ export const geoContent = {
         successAgain: "Start another request"
       }
     },
-    footer: { legal: "Paternoga SEO & GEO Studio", imprint: "Imprint", privacy: "Privacy" }
+    footer: { legal: "Paternoga SEO & GEO Agentur", imprint: "Imprint", privacy: "Privacy" }
   }
 } as const;
 

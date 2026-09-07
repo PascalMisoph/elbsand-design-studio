@@ -188,7 +188,7 @@ const htmlConfirmation = (locale: string, reference: string) => {
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>${escapeHtml(title)} · Paternoga SEO & GEO Studio</title>
+    <title>${escapeHtml(title)} · Paternoga SEO & GEO Agentur</title>
     <style>
       :root { color-scheme: light; font-family: Inter, system-ui, sans-serif; background: #f4f0e8; color: #1b1a17; }
       body { min-height: 100vh; display: grid; place-items: center; margin: 0; padding: 24px; }

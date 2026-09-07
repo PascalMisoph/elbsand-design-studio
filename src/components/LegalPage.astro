@@ -17,11 +17,11 @@ const alternateDePath = isImprint ? "/impressum/" : "/datenschutz/";
 const alternateEnPath = isImprint ? "/en/legal-notice/" : "/en/privacy/";
 const meta = de
   ? isImprint
-    ? { title: "Impressum | PATERNOGA", description: "Anbieterkennzeichnung und Kontaktangaben von Paternoga SEO & GEO Studio in Dresden." }
-    : { title: "Datenschutz | PATERNOGA", description: "Informationen zur Verarbeitung personenbezogener Daten bei Paternoga SEO & GEO Studio." }
+    ? { title: "Impressum | PATERNOGA", description: "Anbieterkennzeichnung und Kontaktangaben von Paternoga SEO & GEO Agentur in Dresden." }
+    : { title: "Datenschutz | PATERNOGA", description: "Informationen zur Verarbeitung personenbezogener Daten bei Paternoga SEO & GEO Agentur." }
   : isImprint
-    ? { title: "Legal Notice | PATERNOGA", description: "Provider identification and contact details for Paternoga SEO & GEO Studio in Dresden, Germany." }
-    : { title: "Privacy Policy | PATERNOGA", description: "How Paternoga SEO & GEO Studio processes personal data when you use this website and its services." };
+    ? { title: "Legal Notice | PATERNOGA", description: "Provider identification and contact details for Paternoga SEO & GEO Agentur in Dresden, Germany." }
+    : { title: "Privacy Policy | PATERNOGA", description: "How Paternoga SEO & GEO Agentur processes personal data when you use this website and its services." };
 ---
 
 <BaseLayout title={meta.title} description={meta.description} lang={lang} canonicalPath={canonicalPath} alternateDePath={alternateDePath} alternateEnPath={alternateEnPath} bodyClass="legal-page">
@@ -39,7 +39,7 @@ const meta = de
           <h2>{de ? "Diensteanbieter gemäß § 5 DDG" : "Service provider under section 5 DDG"}</h2>
           <address id="kontakt">
             <strong>Pascal Misoph</strong><br />
-            {de ? "Geschäftsbezeichnung" : "Trading name"}: Paternoga SEO &amp; GEO Studio<br />
+            {de ? "Geschäftsbezeichnung" : "Trading name"}: Paternoga SEO &amp; GEO Agentur<br />
             Holbeinstraße 7<br />
             01307 Dresden<br />
             Deutschland
@@ -66,7 +66,7 @@ const meta = de
         <section id="kontakt">
           <h2>{de ? "1. Verantwortlicher" : "1. Controller"}</h2>
           <address>
-            Pascal Misoph<br />Paternoga SEO &amp; GEO Studio<br />Holbeinstraße 7<br />01307 Dresden<br />Deutschland<br />
+            Pascal Misoph<br />Paternoga SEO &amp; GEO Agentur<br />Holbeinstraße 7<br />01307 Dresden<br />Deutschland<br />
             E-Mail: <a href={contactDetails.emailHref}>{contactDetails.email}</a><br />
             {de ? "Telefon" : "Telephone"}: <a href={contactDetails.phoneHref}>{contactDetails.phoneInternational}</a>
           </address>

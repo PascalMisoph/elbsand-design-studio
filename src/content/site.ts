@@ -53,7 +53,7 @@ export const projectLogos = [
 export const content = {
   de: {
     meta: {
-      title: "SEO & GEO Studio für Dienstleister | PATERNOGA",
+      title: "SEO & GEO Agentur für Dienstleister | PATERNOGA",
       description:
         "PATERNOGA bringt die Seiten, über die Ihre Anfragen kommen, durch Google, durch KI-Antwortsysteme und durch den Menschen, der dort entscheidet."
     },
@@ -84,7 +84,7 @@ export const content = {
         ],
         detail: "PATERNOGA analysiert und optimiert die Seiten, die für Ihre Anfragen entscheidend sind. Für Sichtbarkeit bei Google, Präsenz in KI-Systemen und mehr qualifizierte Anfragen."
       },
-      imageAlt: "Pascal Misoph an seinem Arbeitsplatz im PATERNOGA Studio",
+      imageAlt: "Pascal Misoph an seinem Arbeitsplatz bei PATERNOGA",
     },
     proof: {
       intro: "Ausgewählte Projekte",
@@ -242,7 +242,7 @@ export const content = {
         },
         {
           name: "Zula",
-          role: "Studiobegleitung",
+          role: "Begleitung",
           image: "/images/support/zula-basket.webp",
           imageWidth: 640,
           imageHeight: 768,
@@ -305,11 +305,11 @@ export const content = {
         successAgain: "Weitere Anfrage starten"
       }
     },
-    footer: { legal: "Paternoga SEO & GEO Studio", imprint: "Impressum", privacy: "Datenschutz" }
+    footer: { legal: "Paternoga SEO & GEO Agentur", imprint: "Impressum", privacy: "Datenschutz" }
   },
   en: {
     meta: {
-      title: "SEO & GEO Studio for Service Businesses | PATERNOGA",
+      title: "SEO & GEO agency for Service Businesses | PATERNOGA",
       description:
         "PATERNOGA takes the pages your enquiries come from through Google, through AI answer systems and through the person deciding on the page."
     },
@@ -340,7 +340,7 @@ export const content = {
         ],
         detail: "PATERNOGA analyses and optimises the pages that matter for your enquiries. For visibility in Google, presence in AI systems and more qualified enquiries."
       },
-      imageAlt: "Pascal Misoph at his desk in the PATERNOGA studio",
+      imageAlt: "Pascal Misoph at his PATERNOGA workspace",
     },
     proof: {
       intro: "Selected projects",
@@ -498,7 +498,7 @@ export const content = {
         },
         {
           name: "Zula",
-          role: "Studio companion",
+          role: "Companion",
           image: "/images/support/zula-basket.webp",
           imageWidth: 640,
           imageHeight: 768,
@@ -561,6 +561,6 @@ export const content = {
         successAgain: "Start another enquiry"
       }
     },
-    footer: { legal: "Paternoga SEO & GEO Studio", imprint: "Imprint", privacy: "Privacy" }
+    footer: { legal: "Paternoga SEO & GEO Agentur", imprint: "Imprint", privacy: "Privacy" }
   }
 } as const;

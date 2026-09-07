@@ -4,11 +4,11 @@ This file defines durable project guidance for coding agents working inside this
 
 ## Project
 
-- Official brand: Paternoga SEO & GEO Studio.
-- Logo/header wordmark: PATERNOGA with `SEO & GEO Studio` as its descriptor.
+- Official brand: Paternoga SEO & GEO Agentur.
+- Logo/header wordmark: PATERNOGA with `SEO & GEO Agentur` as its descriptor.
 - Product: bilingual specialist website for SEO, GEO, AI Search and AI visibility.
 - Primary market: local businesses in Germany, with Dresden/Saxony as the first local SEO anchor and Germany/DACH as the broader scale path.
-- Public positioning: personal-led premium design studio for web design, web development, redesigns, concept, launch, SEO, and modern AI/GEO visibility.
+- Public positioning: personal-led premium agency for web design, web development, redesigns, concept, launch, SEO, and modern AI/GEO visibility.
 - Tone: German-first, polished `du`, calm, confident, not loud, not overly technical.
 - Hero headline direction: `Websites, die Form, Funktion und Sichtbarkeit verbinden.`
 - Hero explanation direction: `PATERNOGA entwickelt individuelle digitale Auftritte für lokale Unternehmen - von Strategie und Design bis Entwicklung, SEO und moderner AI-Sichtbarkeit.`
@@ -26,14 +26,14 @@ This file defines durable project guidance for coding agents working inside this
 
 ## Brand And Content Rules
 
-- Treat `Paternoga SEO & GEO Studio` as the organization brand; do not conflate it with any unrelated person entity sharing the surname.
+- Treat `Paternoga SEO & GEO Agentur` as the organization brand; do not conflate it with any unrelated person entity sharing the surname.
 - Use `PATERNOGA` as the strong wordmark in logo/header contexts.
-- Use `Paternoga SEO & GEO Studio` in metadata, footer, imprint, and suitable explanatory contexts.
+- Use `Paternoga SEO & GEO Agentur` in metadata, footer, imprint, and suitable explanatory contexts.
 - Include Pascal's personal name for credibility, preferably in About/team context rather than making the hero depend on him.
-- Pauline may appear as `Studio Support & Editorial Operations`; she should not be presented as client-facing or as a core delivery lead.
+- Pauline may appear as `Editorial Operations`; she should not be presented as client-facing or as a core delivery lead.
 - Zula and Nali may appear as a small humanizing detail in the team/footer area only.
 - Avoid explicit claims like `premium wirken`; the visual design should communicate quality indirectly.
-- Avoid awkward generic claims such as `Websites, die gefunden und gewaehlt werden`. Positioning must sound like a real studio, not AI-generated marketing copy.
+- Avoid awkward generic claims such as `Websites, die gefunden und gewaehlt werden`. Positioning must sound like a real agency, not AI-generated marketing copy.
 - Visible interface sequences never use leading zeroes. Write `1`, `2`, `3`, not `01`, `02`, `03`, across cards, projects, steps, demos, carousels, and page content. Dates, phone numbers, technical codes, and source data are exempt.
 - GEO must not dominate the hero. It should be explained later as part of modern visibility and the next step in search behavior.
 - Mention ChatGPT, Claude, and Perplexity only in a restrained GEO explainer area.
@@ -62,7 +62,7 @@ This file defines durable project guidance for coding agents working inside this
 
 ## UX And Conversion
 
-- First screen must immediately answer who the studio helps, what it does, why it is credible, and what action to take next.
+- First screen must immediately answer who the agency helps, what it does, why it is credible, and what action to take next.
 - The hero should be subtle but immediately understandable; avoid agency boilerplate like `Webdesign, SEO & GEO fuer lokale Unternehmen`.
 - Keep CTAs clear and concrete. Primary CTA should lead toward a short website check/request flow.
 - Navigation must be predictable: Services, Referenzen, Prozess, About, Kontakt, language switcher.

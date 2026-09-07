@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "project": "PATERNOGA SEO & GEO Studio",
+  "project": "PATERNOGA SEO & GEO Agentur",
   "date": "2026-09-06",
   "timezone": "Europe/Berlin",
   "status": "research_complete_measurements_partial",
@@ -31,7 +31,7 @@
     "live_verified": "40_seo_routes_plus_66_live_browser_checks_on_www_domain",
     "sprint_2_requires_separate_authorization": true,
     "positioning": {
-      "category": "SEO- und GEO-Studio; die Seite ist Auftragseinheit, nicht Kategoriename",
+      "category": "SEO- und GEO-Agentur; die Seite ist Auftragseinheit, nicht Kategoriename",
       "primary_buyer": "Unternehmen in Deutschland, deren Leistung vor dem Kauf erklärt werden muss, deren Geschäft an wenigen wichtigen Seiten hängt und in denen eine Person freigeben und Fachaussagen bestätigen kann",
       "buyer_job": "Die Seiten, über die wir verkaufen, bringen zu wenige passende Anfragen, und die Ursache ist unklar",
       "business_outcome": "mehr passende Anfragen über eine kleine Zahl bestehender Seiten bei bekanntem Umfang und Kosten",

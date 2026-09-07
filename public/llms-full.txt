@@ -1,6 +1,6 @@
-# Paternoga SEO & GEO Studio
+# Paternoga SEO & GEO Agentur
 
-> PATERNOGA is a Germany-wide specialist studio for SEO, Generative Engine Optimization (GEO), AI Search and AI Visibility, headquartered in Dresden. Content and technical implementation support this focus so companies can be found and understood more clearly in Google and modern AI answer systems.
+> PATERNOGA is a Germany-wide specialist agency for SEO, Generative Engine Optimization (GEO), AI Search and AI Visibility, headquartered in Dresden. Content and technical implementation support this focus so companies can be found and understood more clearly in Google and modern AI answer systems.
 
 Canonical site: https://www.paternoga-seo-geo.de/
 Primary language: German
@@ -29,7 +29,7 @@ The website contains illustrative product interfaces. They explain workflows and
 
 ## German route inventory
 
-- [Startseite](https://www.paternoga-seo-geo.de/): Studio overview, services, references, process, team and contact.
+- [Startseite](https://www.paternoga-seo-geo.de/): Agency overview, services, references, process, team and contact.
 - [GEO-Optimierung](https://www.paternoga-seo-geo.de/geo-optimierung/): Root page for the GEO service network.
 - [GEO-Agentur Deutschland](https://www.paternoga-seo-geo.de/geo-agentur-deutschland/): National commercial supplier-selection page; PATERNOGA remains physically based in Dresden.
 - [SEO Agentur Dresden](https://www.paternoga-seo-geo.de/seo-dresden/): Local commercial page owning the Dresden SEO buying intent; SEO leads, GEO is the added review level; same national entry prices, no local packages.

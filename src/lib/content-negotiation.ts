@@ -427,7 +427,7 @@ export const createMarkdownRepresentation = (html: string, pageUrl: URL) => {
   const state: RenderState = { skippedFirstHeading: false };
   const body = main ? cleanMarkdown(renderBlock(main, pageUrl, state)) : "";
   const metadata = [
-    `# ${escapeHeading(heading || title || "PATERNOGA SEO & GEO Studio")}`,
+    `# ${escapeHeading(heading || title || "PATERNOGA SEO & GEO Agentur")}`,
     description ? `> ${escapeBlockquote(description)}` : "",
     [
       `- **${lang.toLowerCase().startsWith("en") ? "Page title" : "Seitentitel"}:** ${escapeInline(title)}`,

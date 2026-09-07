@@ -1,6 +1,6 @@
-# Paternoga SEO & GEO Studio
+# Paternoga SEO & GEO Agentur
 
-Bilingual Astro website for Paternoga SEO & GEO Studio. The project contains 40 validated German and English routes, a national GEO service architecture, technical knowledge content, transparent original research and bilingual legal information.
+Bilingual Astro website for Paternoga SEO & GEO Agentur. The project contains 40 validated German and English routes, a national GEO service architecture, technical knowledge content, transparent original research and bilingual legal information.
 
 ## Local workflow
 

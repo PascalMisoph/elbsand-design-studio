@@ -170,7 +170,7 @@ export const renderUserAiCheckEmail = (
             <tr><td style="padding-top:12px;"><a href="${CONSULTATION_URL}" style="color:#7b2f18;font-size:15px;font-weight:700;line-height:22px;text-decoration:underline;text-underline-offset:3px;">${en ? "Book an initial consultation" : "Erstgespräch vereinbaren"}</a></td></tr>
           </table>
         </td></tr>
-        <tr><td style="padding:24px 32px;color:#777168;font-size:12px;line-height:19px;">Paternoga SEO &amp; GEO Studio · <a href="mailto:${CONTACT_EMAIL}" style="color:#625f58;">${CONTACT_EMAIL}</a><br>${en ? "This technical result link is valid for 30 days." : "Dieser technische Ergebnis-Link ist 30 Tage gültig."}</td></tr>
+        <tr><td style="padding:24px 32px;color:#777168;font-size:12px;line-height:19px;">Paternoga SEO &amp; GEO Agentur · <a href="mailto:${CONTACT_EMAIL}" style="color:#625f58;">${CONTACT_EMAIL}</a><br>${en ? "This technical result link is valid for 30 days." : "Dieser technische Ergebnis-Link ist 30 Tage gültig."}</td></tr>
       </table>
     </td></tr>
   </table>

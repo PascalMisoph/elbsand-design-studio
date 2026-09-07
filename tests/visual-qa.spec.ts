@@ -370,7 +370,7 @@ test("editorial support bridges process and contact with responsive portraits", 
   expect(await support.locator("h3").allTextContents()).toEqual(["Pauline", "Zula", "Nali"]);
   expect(await support.locator(".editorial-support-copy p").allTextContents()).toEqual([
     "Redaktion & Organisation",
-    "Studiobegleitung",
+    "Begleitung",
     "Ruhepol & Qualitätskontrolle",
   ]);
   expect(await support.locator("img").evaluateAll((images) =>

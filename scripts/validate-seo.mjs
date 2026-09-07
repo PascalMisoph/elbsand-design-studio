@@ -101,7 +101,7 @@ for (const path of paths) {
     if (!schemaTypes.has(type)) failures.push(`${path}: JSON-LD missing ${type}`);
   }
   const organization = schemaNodes.find((node) => node?.["@type"] === "Organization");
-  if (organization?.name !== "Paternoga SEO & GEO Studio") failures.push(`${path}: Organization name is inconsistent`);
+  if (organization?.name !== "Paternoga SEO & GEO Agentur") failures.push(`${path}: Organization name is inconsistent`);
   if (organization?.["@id"] !== `${canonicalOrigin}/#organization`) failures.push(`${path}: Organization @id is inconsistent`);
   if (organization?.founder?.["@id"] !== `${canonicalOrigin}/#pascal-misoph`) failures.push(`${path}: founder @id is inconsistent`);
   if (organization?.areaServed?.name !== "Deutschland") failures.push(`${path}: national areaServed is missing`);

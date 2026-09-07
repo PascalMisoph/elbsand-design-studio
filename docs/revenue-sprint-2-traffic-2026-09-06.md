@@ -237,7 +237,7 @@ Externe Nachrichten und Accounteinträge bleiben laut `authorization` im Projekt
 | Silicon Saxony | Beziehung vor Anfrage | erst mit konkretem Fachbeitrag |
 | OMR / OMT / Podcasts | zurückgestellt | erst mit freigegebenem Kundencase |
 
-**Entitätskonsistenz für alle Profile:** Name `Paternoga SEO & GEO Studio`, Wortmarke `PATERNOGA`, Website `https://www.paternoga-seo-geo.de`, Standort Dresden, Angebotsnamen GEO Audit / Seiten-Sprint / Laufende Betreuung, Kontakt `kontakt@paternoga-seo-geo.de`. Keine abweichenden Beschreibungen, keine Fantasieadressen, keine Wikipedia-/Wikidata-Selbsteinträge.
+**Entitätskonsistenz für alle Profile:** Name `Paternoga SEO & GEO Agentur`, Wortmarke `PATERNOGA`, Website `https://www.paternoga-seo-geo.de`, Standort Dresden, Angebotsnamen GEO Audit / Seiten-Sprint / Laufende Betreuung, Kontakt `kontakt@paternoga-seo-geo.de`. Keine abweichenden Beschreibungen, keine Fantasieadressen, keine Wikipedia-/Wikidata-Selbsteinträge.
 
 ## 11. DAX-Research-Distribution
 
