@@ -43,6 +43,7 @@ interface Props {
   flow: FlowCopy;
   sectionId?: string;
   source?: string;
+  hideValueLine?: boolean;
   disclaimerTitle?: string;
   disclaimer?: string;
   calendarOnly?: boolean;
@@ -64,6 +65,7 @@ const {
   flow,
   sectionId = "kontakt",
   source = "contact-form",
+  hideValueLine = false,
   disclaimerTitle,
   disclaimer,
   calendarOnly = false,
@@ -86,7 +88,9 @@ const offerPlaceholder = locale === "de" ? "Website-Link und dein wichtigstes Zi
     <h2>{directOffer ? (locale === "de" ? `${offerName} anfragen` : `Request a ${offerName}`) : title}</h2>
   </div>
 
-  <p class="contact-value-line">{directOffer ? (locale === "de" ? "Pascal prüft deinen Bedarf und meldet sich mit einem abgegrenzten Angebot. Preis auf Anfrage; kein Auftrag durch das Absenden." : "Pascal reviews your requirements and responds with a scoped proposal. Pricing on request; submitting does not place an order.") : valueLine}</p>
+  {!hideValueLine && (
+    <p class="contact-value-line">{directOffer ? (locale === "de" ? "Pascal prüft deinen Bedarf und meldet sich mit einem abgegrenzten Angebot. Preis auf Anfrage; kein Auftrag durch das Absenden." : "Pascal reviews your requirements and responds with a scoped proposal. Pricing on request; submitting does not place an order.") : valueLine}</p>
+  )}
 
   <div
     class="contact-paths"
