@@ -199,8 +199,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .mobile-nav-group section { padding: 18px 4px 0; }
 .mobile-nav-group .header-nav-group-label { margin: 0 0 7px; color: #77736c; font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .mobile-nav-group section a { display: flex; min-height: 42px; align-items: center; color: #bbb5ab; font-size: 15px; }
-.mobile-direct-links { display: grid; padding: 14px 0; }
-.mobile-direct-links a { display: flex; min-height: 48px; align-items: center; border-bottom: 1px solid rgba(255,250,244,.1); color: #fffaf4; font-size: 17px; }
+.mobile-direct-link { display: flex; min-height: 48px; align-items: center; border-bottom: 1px solid rgba(255,250,244,.1); color: #fffaf4; font-size: 17px; }
 .mobile-menu > nav > .button { width: 100%; margin-top: 16px; }
 
 .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; border: 1px solid var(--accent); border-radius: var(--radius-sm); background: var(--accent); color: #fffaf4; padding: 0 22px; font-size: 15px; font-weight: 650; line-height: 1.2; transition: background 180ms ease, border-color 180ms ease, transform 180ms ease; }

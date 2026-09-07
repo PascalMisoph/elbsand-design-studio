@@ -86,7 +86,6 @@ const solutions = {
   ],
 };
 
-const dropdowns = [services, resources, solutions];
 const directLinks = de ? [
   ["Referenzen", homeLink("#projekte")],
   ["Ablauf", homeLink("#ablauf")],
@@ -95,6 +94,14 @@ const directLinks = de ? [
   ["Work", homeLink("#projekte")],
   ["Process", homeLink("#ablauf")],
   ["Contact", "#kontakt"],
+];
+const navigationItems = [
+  { kind: "menu" as const, menu: services, menuIndex: 0 },
+  { kind: "menu" as const, menu: solutions, menuIndex: 2 },
+  { kind: "link" as const, label: directLinks[0][0], href: directLinks[0][1] },
+  { kind: "link" as const, label: directLinks[1][0], href: directLinks[1][1] },
+  { kind: "menu" as const, menu: resources, menuIndex: 1 },
+  { kind: "link" as const, label: directLinks[2][0], href: directLinks[2][1] },
 ];
 const menuLabel = de ? "Menü" : "Menu";
 ---
@@ -106,22 +113,22 @@ const menuLabel = de ? "Menü" : "Menu";
   </a>
 
   <nav class="desktop-nav" aria-label={de ? "Hauptnavigation" : "Main navigation"}>
-    {dropdowns.map((menu, menuIndex) => (
+    {navigationItems.map((item) => item.kind === "menu" ? (
       <details class="header-menu" data-header-menu>
         <summary>
-          <span>{menu.label}</span>
+          <span>{item.menu.label}</span>
           <ChevronDown aria-hidden="true" />
         </summary>
-        <div class:list={["header-mega-panel", `header-mega-${menuIndex + 1}`]}>
+        <div class:list={["header-mega-panel", `header-mega-${item.menuIndex + 1}`]}>
           <div class="header-mega-inner">
-            <a class="header-mega-feature" href={menu.feature.href}>
-              <span>{menu.feature.eyebrow}</span>
-              <strong>{menu.feature.title}</strong>
-              <p>{menu.feature.text}</p>
+            <a class="header-mega-feature" href={item.menu.feature.href}>
+              <span>{item.menu.feature.eyebrow}</span>
+              <strong>{item.menu.feature.title}</strong>
+              <p>{item.menu.feature.text}</p>
               <i aria-hidden="true">↗</i>
             </a>
             <div class="header-mega-groups">
-              {menu.groups.map((group) => (
+              {item.menu.groups.map((group) => (
                 <section>
                   <p class="header-nav-group-label">{group.label}</p>
                   <div>{group.items.map(([label, href]) => <a href={href}>{label}</a>)}</div>
@@ -131,8 +138,9 @@ const menuLabel = de ? "Menü" : "Menu";
           </div>
         </div>
       </details>
+    ) : (
+      <a class="header-direct-link" href={item.href}>{item.label}</a>
     ))}
-    {directLinks.map(([label, href]) => <a class="header-direct-link" href={href}>{label}</a>)}
   </nav>
 
   <div class="header-actions">
@@ -144,12 +152,12 @@ const menuLabel = de ? "Menü" : "Menu";
     <details class="mobile-menu" data-mobile-menu>
       <summary aria-label={menuLabel}><span></span><span></span></summary>
       <nav aria-label={de ? "Mobile Navigation" : "Mobile navigation"}>
-        {dropdowns.map((menu) => (
+        {navigationItems.map((item) => item.kind === "menu" ? (
           <details class="mobile-nav-group">
-            <summary>{menu.label}<span aria-hidden="true">⌄</span></summary>
+            <summary>{item.menu.label}<span aria-hidden="true">⌄</span></summary>
             <div>
-              <a class="mobile-feature-link" href={menu.feature.href}>{menu.feature.title}</a>
-              {menu.groups.map((group) => (
+              <a class="mobile-feature-link" href={item.menu.feature.href}>{item.menu.feature.title}</a>
+              {item.menu.groups.map((group) => (
                 <section>
                   <p class="header-nav-group-label">{group.label}</p>
                   {group.items.map(([label, href]) => <a href={href}>{label}</a>)}
@@ -157,8 +165,9 @@ const menuLabel = de ? "Menü" : "Menu";
               ))}
             </div>
           </details>
+        ) : (
+          <a class="mobile-direct-link" href={item.href}>{item.label}</a>
         ))}
-        <div class="mobile-direct-links">{directLinks.map(([label, href]) => <a href={href}>{label}</a>)}</div>
         <a class="button" href={primaryHref ?? ctaHref} data-revenue-cta={revenueOffer ? "header_mobile" : undefined} data-offer={revenueOffer}>{cta}</a>
       </nav>
     </details>

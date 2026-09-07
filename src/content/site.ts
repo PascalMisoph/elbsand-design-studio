@@ -57,7 +57,7 @@ export const content = {
       description:
         "PATERNOGA bringt die Seiten, über die Ihre Anfragen kommen, durch Google, durch KI-Antwortsysteme und durch den Menschen, der dort entscheidet."
     },
-    nav: ["Leistungen", "Projekte", "Sichtbarkeit", "Ablauf", "Kontakt"],
+    nav: ["Leistungen", "Lösungen", "Referenzen", "Ablauf", "Ressourcen", "Kontakt"],
     cta: "Projekt anfragen",
     heroCta: "Sichtbarkeit prüfen",
     secondaryCta: "Projekt anfragen",
@@ -313,7 +313,7 @@ export const content = {
       description:
         "PATERNOGA takes the pages your enquiries come from through Google, through AI answer systems and through the person deciding on the page."
     },
-    nav: ["Services", "Projects", "Visibility", "Process", "Contact"],
+    nav: ["Services", "Solutions", "Work", "Process", "Resources", "Contact"],
     cta: "Start a project",
     heroCta: "Check your visibility",
     secondaryCta: "Start a project",
