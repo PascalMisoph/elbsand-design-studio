@@ -60,13 +60,13 @@ export const content = {
     nav: ["Leistungen", "Projekte", "Sichtbarkeit", "Ablauf", "Kontakt"],
     cta: "Projekt anfragen",
     heroCta: "Sichtbarkeit prüfen",
-    secondaryCta: "Kostenfreier technischer KI-Check",
+    secondaryCta: "Projekt anfragen",
     hero: {
       eyebrow: {
         primary: "SEO & GEO-Agentur aus Dresden",
         secondary: "für Unternehmen in Deutschland"
       },
-      title: ["Suche verändert sich.", "Bleibt Ihr Unternehmen sichtbar?"],
+      title: ["Werden Sie gefunden, wenn Kunden", "nach Ihrer Leistung suchen?"],
       body: {
         stats: [
           {
@@ -81,10 +81,6 @@ export const content = {
             sourceLabel: "Quelle: Deloitte",
             sourceHref: "https://www.deloitte.com/ch/en/services/consulting/perspectives/the-age-of-geo.html"
           }
-        ],
-        question: [
-          "Wird Ihr Unternehmen genannt, wenn Kunden",
-          "nach der Leistung suchen, die Sie anbieten?"
         ],
         detail: "PATERNOGA analysiert und optimiert die Seiten, die für Ihre Anfragen entscheidend sind. Für Sichtbarkeit bei Google, Präsenz in KI-Systemen und mehr qualifizierte Anfragen."
       },
@@ -196,17 +192,17 @@ export const content = {
         {
           title: "Google",
           lead: "Gefunden und richtig eingeordnet werden.",
-          text: "Suchintention, Seitenstruktur, technische Voraussetzungen und relevante Inhalte sorgen dafür, dass Google versteht, für welche Anfragen Ihre Seite relevant ist."
+          text: "Suchintention, Seitenstruktur, technische SEO, interne Verlinkung und relevante Inhalte helfen Google dabei, Ihre Leistung richtig einzuordnen und für passende Suchanfragen sichtbar zu machen."
         },
         {
           title: "KI Systeme",
           lead: "Verstanden und korrekt wiedergegeben werden.",
-          text: "Klare Aussagen, strukturierte Informationen und eindeutige Unternehmenssignale helfen Antwortsystemen dabei, Ihre Leistung richtig einzuordnen und als Quelle zu verwenden."
+          text: "Klare Aussagen, strukturierte Informationen und eindeutige Unternehmenssignale helfen ChatGPT, Google AI und anderen Antwortsystemen dabei, Ihre Leistungen richtig zu verstehen, einzuordnen und als Quelle zu verwenden."
         },
         {
           title: "Menschen",
           lead: "Verstehen und entscheiden können.",
-          text: "Eine klare Leistungsdarstellung, nachvollziehbare Argumente und eine eindeutige Nutzerführung machen aus Sichtbarkeit eine konkrete Anfrage."
+          text: "Eine klare Leistungsdarstellung, nachvollziehbare Argumente und eine eindeutige Nutzerführung helfen potenziellen Kunden, Ihr Angebot zu verstehen, mit Alternativen zu vergleichen und den nächsten Schritt zur Anfrage zu gehen."
         }
       ],
       systemsIntro: "Sichtbar in",
@@ -264,10 +260,14 @@ export const content = {
     },
     contact: {
       eyebrow: "Kontakt",
-      title: "Welche Seiten sollen wir uns ansehen?",
-      quickOption: "Erstgespräch zur Sichtbarkeit buchen",
-      detailOption: "SEO- & GEO-Projekt anfragen",
-      valueLine: "Klar begrenzter Auftrag, eine feste Ansprechperson, dokumentierter Vorher- und Nachher-Stand.",
+      title: "Wie möchten Sie starten?",
+      quickOption: "Sichtbarkeit gemeinsam prüfen",
+      quickOptionText: "Wir schauen auf Ihre wichtigsten Seiten, aktuelle Sichtbarkeit und die nächsten sinnvollen Schritte.",
+      quickOptionCta: "Erstgespräch buchen",
+      detailOption: "Konkretes Projekt besprechen",
+      detailOptionText: "Sie haben bereits ein SEO, GEO oder Website Thema? Schicken Sie uns kurz Ausgangslage, Ziel und relevante Seiten.",
+      detailOptionCta: "Projekt anfragen",
+      valueLine: "Ob erste Einschätzung oder konkretes Projekt: Wir schauen uns die Seiten an, die für Ihre Sichtbarkeit und Anfragen entscheidend sind, und zeigen, wo Google, KI Systeme oder Nutzer noch Potenzial liegen lassen.",
       note: "Ihre Anfrage wird direkt und vertraulich an Pascal übermittelt.",
       formLabel: "Unverbindliche Anfrage für SEO, GEO und digitale Sichtbarkeit",
       flow: {
@@ -316,13 +316,13 @@ export const content = {
     nav: ["Services", "Projects", "Visibility", "Process", "Contact"],
     cta: "Start a project",
     heroCta: "Check your visibility",
-    secondaryCta: "Free technical AI check",
+    secondaryCta: "Start a project",
     hero: {
       eyebrow: {
         primary: "SEO & GEO agency from Dresden",
         secondary: "for companies across Germany"
       },
-      title: ["Search behaviour is changing.", "Will your business stay visible?"],
+      title: ["Will your business be mentioned", "when customers search for the service", "you offer?"],
       body: {
         stats: [
           {
@@ -337,10 +337,6 @@ export const content = {
             sourceLabel: "Source: Deloitte",
             sourceHref: "https://www.deloitte.com/ch/en/services/consulting/perspectives/the-age-of-geo.html"
           }
-        ],
-        question: [
-          "Will your business be mentioned when customers",
-          "search for the service you offer?"
         ],
         detail: "PATERNOGA analyses and optimises the pages that matter for your enquiries. For visibility in Google, presence in AI systems and more qualified enquiries."
       },
@@ -452,17 +448,17 @@ export const content = {
         {
           title: "Google",
           lead: "Be found and classified correctly.",
-          text: "Search intent, page structure, technical foundations and relevant content help Google understand which searches your page should serve."
+          text: "Search intent, page structure, technical SEO, internal linking and relevant content help Google understand your service correctly and make it visible for relevant searches."
         },
         {
           title: "AI systems",
           lead: "Be understood and represented correctly.",
-          text: "Clear statements, structured information and unambiguous business signals help answer systems classify your service correctly and use it as a source."
+          text: "Clear statements, structured information and unambiguous business signals help ChatGPT, Google AI and other answer systems understand your services correctly, classify them and use them as a source."
         },
         {
           title: "People",
           lead: "Understand and decide.",
-          text: "A clear service presentation, credible arguments and an unambiguous user path turn visibility into a concrete enquiry."
+          text: "A clear service presentation, credible arguments and an unambiguous user path help potential customers understand your offer, compare it with alternatives and take the next step towards an enquiry."
         }
       ],
       systemsIntro: "Visible in",
@@ -520,10 +516,14 @@ export const content = {
     },
     contact: {
       eyebrow: "Contact",
-      title: "Which pages should we look at?",
-      quickOption: "Book a visibility consultation",
-      detailOption: "Enquire about SEO & GEO",
-      valueLine: "A clearly bounded project, one named contact, a documented before-and-after state.",
+      title: "Which pages decide your enquiries?",
+      quickOption: "Review visibility together",
+      quickOptionText: "We look at your most important pages, current visibility and the next sensible steps.",
+      quickOptionCta: "Book an initial consultation",
+      detailOption: "Discuss a concrete project",
+      detailOptionText: "Do you already have an SEO, GEO or website topic? Send us a brief outline of the starting point, goal and relevant pages.",
+      detailOptionCta: "Enquire about the project",
+      valueLine: "Whether you need an initial assessment or a concrete project, we look at the pages that matter for your visibility and enquiries and show where Google, AI systems or users still leave potential unused.",
       note: "Your enquiry goes directly and confidentially to Pascal.",
       formLabel: "No-obligation enquiry for SEO, GEO and digital visibility",
       flow: {

@@ -88,7 +88,7 @@ for (const required of ["Method and limitations", "German route inventory", "Eng
   if (!llmsFull.includes(required)) throw new Error(`llms-full.txt missing ${required}`);
 }
 
-for (const required of ["Suche verändert sich.", "Search behaviour is changing.", "Wenige Seiten entscheiden. Genau dort setzen wir an.", "Sichtbarkeit bei Google", "Von der Analyse in die Umsetzung.", "imageAlt"]) {
+for (const required of ["Werden Sie gefunden, wenn Kunden", "Will your business be mentioned", "Wenige Seiten entscheiden. Genau dort setzen wir an.", "SEO: Sichtbarkeit bei Google", "Von der Analyse in die Umsetzung.", "imageAlt"]) {
   if (!content.includes(required)) throw new Error(`content missing ${required}`);
 }
 

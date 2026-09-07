@@ -32,11 +32,11 @@ const systems = [
       <p>{body}</p>
     </header>
 
-    <div class="visibility-grid">
+    <div class="visibility-perspectives">
       {perspectives.slice(0, 3).map((perspective) => (
-        <article class="visibility-tile">
+        <article class="visibility-perspective">
           <h3>{perspective.title}</h3>
-          <p class="visibility-tile-lead">{perspective.lead}</p>
+          <p class="visibility-perspective-lead">{perspective.lead}</p>
           <p>{perspective.text}</p>
         </article>
       ))}

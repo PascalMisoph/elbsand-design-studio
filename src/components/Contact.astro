@@ -32,7 +32,11 @@ interface Props {
   eyebrow: string;
   title: string;
   quickOption: string;
+  quickOptionText?: string;
+  quickOptionCta?: string;
   detailOption: string;
+  detailOptionText?: string;
+  detailOptionCta?: string;
   valueLine: string;
   note: string;
   formLabel: string;
@@ -49,7 +53,11 @@ const {
   eyebrow,
   title,
   quickOption,
+  quickOptionText,
+  quickOptionCta,
   detailOption,
+  detailOptionText,
+  detailOptionCta,
   valueLine,
   note,
   formLabel,
@@ -96,7 +104,11 @@ const offerPlaceholder = locale === "de" ? "Website-Link und dein wichtigstes Zi
       tabindex="0"
       data-contact-path="calendar"
     >
-      <span>{quickOption}</span>
+      <span class="contact-path-copy">
+        <strong>{quickOption}</strong>
+        {quickOptionText && <small>{quickOptionText}</small>}
+        {quickOptionCta && <span class="contact-path-cta">{quickOptionCta}</span>}
+      </span>
       <span class="contact-path-arrow" aria-hidden="true">→</span>
     </button>
     <button
@@ -109,7 +121,11 @@ const offerPlaceholder = locale === "de" ? "Website-Link und dein wichtigstes Zi
       tabindex="-1"
       data-contact-path="form"
     >
-      <span>{detailOption}</span>
+      <span class="contact-path-copy">
+        <strong>{detailOption}</strong>
+        {detailOptionText && <small>{detailOptionText}</small>}
+        {detailOptionCta && <span class="contact-path-cta">{detailOptionCta}</span>}
+      </span>
       <span class="contact-path-arrow" aria-hidden="true">→</span>
     </button>
   </div>
