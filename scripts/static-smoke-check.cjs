@@ -88,7 +88,7 @@ for (const required of ["Method and limitations", "German route inventory", "Eng
   if (!llmsFull.includes(required)) throw new Error(`llms-full.txt missing ${required}`);
 }
 
-for (const required of ["SEO und GEO für deine", "SEO and GEO for your", "Google, KI-Systeme und Menschen lesen dieselbe Seite", "imageAlt"]) {
+for (const required of ["Suche verändert sich.", "Search behaviour is changing.", "Wenige Seiten entscheiden. Genau dort setzen wir an.", "Sichtbarkeit bei Google", "Von der Analyse in die Umsetzung.", "imageAlt"]) {
   if (!content.includes(required)) throw new Error(`content missing ${required}`);
 }
 

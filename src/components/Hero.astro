@@ -7,9 +7,21 @@ import geminiLogo from "@lobehub/icons-static-svg/icons/gemini-color.svg?url";
 import { LiquidChrome } from "./ui/liquid-chrome";
 
 interface Props {
-  eyebrow: string;
+  eyebrow: {
+    primary: string;
+    secondary: string;
+  };
   title: readonly [string, string];
-  body: string;
+  body: {
+    stats: readonly {
+      value: string;
+      label: string;
+      sourceLabel: string;
+      sourceHref: string;
+    }[];
+    question: readonly string[];
+    detail: string;
+  };
   imageAlt: string;
   cta: string;
   secondaryCta: string;
@@ -35,9 +47,31 @@ const systems = [
   <div class="hero-liquid-overlay" aria-hidden="true"></div>
   <div class="hero-inner">
     <div class="hero-copy">
-      <p class="hero-trust-badge">{eyebrow}</p>
+      <p class="hero-trust-badge">
+        <span class="hero-trust-badge-primary">{eyebrow.primary}</span>
+        <span class="hero-trust-badge-secondary">{eyebrow.secondary}</span>
+      </p>
       <h1>{title.map((line) => <span>{line}</span>)}</h1>
-      <p class="lead">{body}</p>
+      <div class="lead">
+        <div class="hero-stats" aria-label={isEnglish ? "Deloitte statistics" : "Deloitte-Kennzahlen"}>
+          {body.stats.map((stat) => (
+            <article class="hero-stat">
+              <strong>{stat.value}</strong>
+              <p>{stat.label}</p>
+              <a class="hero-source-inline hero-stat-source" href={stat.sourceHref} target="_blank" rel="noopener noreferrer">{stat.sourceLabel}</a>
+            </article>
+          ))}
+        </div>
+        <p class="hero-lead-question">
+          {body.question.map((line, index) => (
+            <>
+              {index > 0 && " "}
+              <span class="hero-question-line">{line}</span>
+            </>
+          ))}
+        </p>
+        <p>{body.detail}</p>
+      </div>
       <div class="cta-row">
         <a class="button" href="#kontakt">{cta}</a>
         <a class="hero-secondary-cta" href="#ki-check">{secondaryCta}<span aria-hidden="true">→</span></a>

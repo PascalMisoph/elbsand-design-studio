@@ -3,16 +3,25 @@ interface Props {
   eyebrow: string;
   title: string;
   detailLinkLabel: string;
-  items: readonly (readonly [string, string, string])[];
+  items: readonly OfferItem[];
+}
+
+interface OfferItem {
+  title: string;
+  lead: string;
+  text: string;
+  features?: readonly { label: string; href?: string }[];
+  detailLink?: { label: string; href: string };
+  visual: "google" | "ai" | "conversion" | "implementation";
 }
 
 const { eyebrow, title, detailLinkLabel, items } = Astro.props;
 const isEnglish = Astro.url.pathname.startsWith("/en/");
 const detailHref = isEnglish ? "/en/geo-optimization/" : "/geo-optimierung/";
 const titleLines = title.match(/^(.+?\.)\s+(.+)$/);
-const structureLabels = isEnglish
-  ? ["Home", "Services", "Projects", "Contact"]
-  : ["Start", "Leistungen", "Projekte", "Kontakt"];
+const conversionLabels = isEnglish
+  ? ["Home", "Service", "Proof", "Contact"]
+  : ["Start", "Leistung", "Belege", "Kontakt"];
 ---
 
 <section class="section-shell offer" id="leistungen">
@@ -30,7 +39,7 @@ const structureLabels = isEnglish
   </div>
 
   <div class="offer-list">
-    {items.map(([, itemTitle, text], index) => (
+    {items.map((item, index) => (
       <article class="offer-item" data-offer-row style={`--check-stagger: ${index * 150}ms`}>
         <span class="offer-check" data-offer-check aria-hidden="true">
           <span class="offer-check-number">{index + 1}</span>
@@ -41,10 +50,24 @@ const structureLabels = isEnglish
         </span>
 
         <div class="offer-story-copy">
-          <h3>{itemTitle}</h3>
+          <h3>{item.title}</h3>
           <div class="offer-item-copy">
-            <p>{text}</p>
-            {index === 2 && (
+            <p class="offer-item-lead">{item.lead}</p>
+            <p>{item.text}</p>
+            {item.detailLink ? (
+              <a class="offer-detail-link" href={item.detailLink.href} data-astro-prefetch>
+                {item.detailLink.label}<span aria-hidden="true">→</span>
+              </a>
+            ) : (
+              <ul class="offer-feature-list" aria-label={isEnglish ? "Included focus areas" : "Enthaltene Schwerpunkte"}>
+                {item.features?.map((feature) => (
+                  <li>
+                    {feature.href ? <a href={feature.href} data-astro-prefetch>{feature.label}</a> : <span>{feature.label}</span>}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {item.visual === "ai" && (
               <a class="offer-detail-link" href={detailHref} data-astro-prefetch>
                 {detailLinkLabel}<span aria-hidden="true">→</span>
               </a>
@@ -53,13 +76,13 @@ const structureLabels = isEnglish
         </div>
 
         <div class:list={["offer-story-visual", `offer-story-visual--${index + 1}`]} aria-hidden="true">
-          {index === 0 && (
+          {item.visual === "conversion" && (
             <div class="structure-demo">
               <div class="demo-browser-bar"><i></i><i></i><i></i><span>{isEnglish ? "Company website" : "Unternehmenswebsite"}</span></div>
               <div class="structure-demo-body">
                 <p>{isEnglish ? "Clear path to enquiry" : "Klarer Weg zur Anfrage"}</p>
                 <ol>
-                  {structureLabels.map((label, labelIndex) => (
+                  {conversionLabels.map((label, labelIndex) => (
                     <li><span>{labelIndex + 1}</span><strong>{label}</strong><i></i></li>
                   ))}
                 </ol>
@@ -68,32 +91,46 @@ const structureLabels = isEnglish
             </div>
           )}
 
-          {index === 1 && (
+          {(item.visual === "google" || item.visual === "implementation") && (
             <div class="responsive-demo">
               <div class="responsive-demo-desktop">
                 <span class="responsive-demo-nav"></span>
-                <strong>{isEnglish ? "One system." : "Ein System."}</strong>
+                <strong>
+                  {item.visual === "implementation"
+                    ? (isEnglish ? "Changes, implemented." : "Änderungen, umgesetzt.")
+                    : (isEnglish ? "Visible in search." : "In der Suche sichtbar.")}
+                </strong>
                 <i></i><i></i><i></i>
               </div>
               <div class="responsive-demo-mobile">
-                <span></span><strong>{isEnglish ? "Every screen." : "Jeder Screen."}</strong><i></i><i></i>
+                <span></span><strong>
+                  {item.visual === "implementation"
+                    ? (isEnglish ? "Request advice" : "Beratung anfragen")
+                    : (isEnglish ? "When demand starts." : "Wenn Bedarf entsteht.")}
+                </strong><i></i><i></i>
               </div>
-              <p><span>320</span><span>768</span><span>1440</span></p>
+              <p>
+                {item.visual === "implementation" ? (
+                  <><span>{isEnglish ? "Structure" : "Struktur"}</span><span>{isEnglish ? "Content" : "Inhalte"}</span><span>{isEnglish ? "Technology" : "Technik"}</span></>
+                ) : (
+                  <><span>{isEnglish ? "Search" : "Suche"}</span><span>{isEnglish ? "Page" : "Seite"}</span><span>{isEnglish ? "Result" : "Ergebnis"}</span></>
+                )}
+              </p>
             </div>
           )}
 
-          {index === 2 && (
+          {item.visual === "ai" && (
             <div class="search-intent-demo">
-              <p>{isEnglish ? "Discover what your customers ask" : "Verstehen, wonach deine Kunden fragen"}</p>
+              <p>{isEnglish ? "How AI systems classify your offer" : "Wie KI-Systeme Ihr Angebot einordnen"}</p>
               <div class="search-intent-field">
                 <strong>{isEnglish ? "advice on business succession" : "Beratung Unternehmensnachfolge"}</strong>
-                <div><span><i></i>{isEnglish ? "Topic analysis" : "Themenanalyse"}</span><b>{isEnglish ? "Analyse" : "Analysieren"}</b></div>
+                <div><span><i></i>{isEnglish ? "Answer analysis" : "Antwortanalyse"}</span><b>{isEnglish ? "Review" : "Prüfen"}</b></div>
               </div>
-              <small>{isEnglish ? "Related questions" : "Verwandte Fragen"}</small>
+              <small>{isEnglish ? "Answer signals" : "Antwortsignale"}</small>
               <ol>
-                <li><strong>{isEnglish ? "Who offers this in my region?" : "Wer bietet das in meiner Region an?"}</strong><span>1</span></li>
-                <li><strong>{isEnglish ? "How does the process actually work?" : "Wie läuft das konkret ab?"}</strong><span>2</span></li>
-                <li><strong>{isEnglish ? "Why this provider and not another?" : "Warum dieser Anbieter und nicht ein anderer?"}</strong><span>3</span></li>
+                <li><strong>{isEnglish ? "Which providers are recommended?" : "Welche Anbieter werden empfohlen?"}</strong><span>1</span></li>
+                <li><strong>{isEnglish ? "How is the service described?" : "Wie wird die Leistung beschrieben?"}</strong><span>2</span></li>
+                <li><strong>{isEnglish ? "Which sources are named?" : "Welche Quellen werden genannt?"}</strong><span>3</span></li>
               </ol>
             </div>
           )}
@@ -101,6 +138,7 @@ const structureLabels = isEnglish
       </article>
     ))}
   </div>
+
 </section>
 
 <script>

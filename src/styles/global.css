@@ -1404,26 +1404,38 @@ body main :is(article:not(.longform-document), li, [class*="card"], [class*="til
 }
 .hero .hero-copy {
   display: grid;
-  max-width: 880px;
+  width: 100%;
+  max-width: 1120px;
   justify-items: center;
   justify-self: center;
   padding: 0;
   text-align: center;
 }
 .hero .hero-trust-badge {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  max-width: 100%;
+  gap: 14px;
   margin-bottom: 26px;
-  border-color: rgba(255, 250, 244, .2);
-  background: rgba(255, 250, 244, .06);
-  color: #e9b7a3;
+  padding: 0;
+  color: var(--accent);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
+.hero-trust-badge-primary,
+.hero-trust-badge-secondary { color: var(--accent); font-weight: 760; opacity: 1; }
 .hero h1,
 .hero--en h1 {
-  max-width: 880px;
-  margin-bottom: var(--hero-heading-copy-gap);
+  width: 100%;
+  max-width: 1120px;
+  margin-bottom: clamp(22px, 2.2vw, var(--hero-heading-copy-gap));
   color: #fffaf4;
   font-family: var(--sans);
-  font-size: clamp(52px, 6vw, 76px);
+  font-size: clamp(36px, 4.2vw, 60px);
   font-weight: 540;
+  hyphens: none;
   letter-spacing: -.055em;
   line-height: .98;
   text-wrap: balance;
@@ -1431,13 +1443,77 @@ body main :is(article:not(.longform-document), li, [class*="card"], [class*="til
 .hero h1 span,
 .hero--en h1 span { white-space: normal; }
 .hero .lead {
-  max-width: 660px;
-  margin-bottom: 30px;
+  max-width: 1040px;
+  margin-bottom: 24px;
   color: rgba(255, 250, 244, .72);
   font-size: clamp(17px, 1.55vw, 19px);
-  line-height: 1.55;
+  line-height: 1.5;
+}
+.hero .lead p { margin: 0; }
+.hero .lead p + p { margin-top: 14px; }
+.hero .hero-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  margin: 0 auto 20px;
+  border-block: 1px solid rgba(255, 250, 244, .11);
+  text-align: center;
+}
+.hero .hero-stat {
+  display: grid;
+  justify-items: center;
+  min-width: 0;
+  padding: 18px clamp(20px, 3.2vw, 48px) 17px;
+}
+.hero .hero-stat + .hero-stat { border-left: 1px solid rgba(255, 250, 244, .09); }
+.hero .hero-stat > strong {
+  display: block;
+  color: #fffaf4;
+  font-size: clamp(44px, 3vw, 48px);
+  font-weight: 560;
+  letter-spacing: -.06em;
+  line-height: .9;
+}
+.hero .hero-stat > p {
+  max-width: none;
+  margin: 8px auto 7px;
+  color: rgba(255, 250, 244, .72);
+  font-size: clamp(13px, .9vw, 14px);
+  line-height: 1.35;
+}
+.hero .hero-stat-source {
+  display: inline-block;
+  color: rgba(255, 250, 244, .58);
+  font-size: 11px;
+  line-height: 1.3;
+}
+.hero .lead > p.hero-lead-question {
+  width: min(100%, 840px);
+  max-width: 840px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #fffaf4;
+  font-size: clamp(17px, 1.45vw, 19px);
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+}
+.hero-question-line { display: block; }
+.hero .lead > p:last-child {
+  max-width: 700px;
+  margin-inline: auto;
+  font-size: clamp(15px, 1.12vw, 16px);
+  line-height: 1.45;
 }
 .hero .cta-row { justify-content: center; }
+.hero-source-inline {
+  color: #e9b7a3;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 250, 244, .32);
+  text-underline-offset: 3px;
+}
+.hero-source-inline:hover,
+.hero-source-inline:focus-visible { color: #fffaf4; text-decoration-color: currentColor; }
 .hero .hero-secondary-cta {
   border-color: rgba(255, 250, 244, .32);
   color: #fffaf4;
@@ -1521,6 +1597,12 @@ body main :is(article:not(.longform-document), li, [class*="card"], [class*="til
   .hero h1,
   .hero--en h1 { font-size: clamp(43px, 13vw, 58px); }
   .hero .cta-row { width: 100%; align-items: stretch; }
+  .hero .hero-trust-badge {
+    justify-content: center;
+    gap: 6px 10px;
+    text-align: center;
+    white-space: normal;
+  }
   .hero .cta-row > a { width: 100%; }
   .hero-system { min-height: 150px; margin-top: 30px; padding-block: 24px 28px; }
   .hero-system-window { min-height: 76px; }
@@ -1563,6 +1645,19 @@ body.home-page {
   font-family: var(--sans);
   font-weight: 520;
   letter-spacing: -.045em;
+}
+@media (min-width: 1200px) {
+  .hero .hero-question-line { white-space: nowrap; }
+}
+@media (max-width: 1199px) {
+  .hero .hero-question-line { display: inline; }
+}
+.home-page :is(h1, h2, h3) {
+  hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 .home-page .proof-strip { border-top: 1px solid var(--line); }
 .home-page .proof-strip > p,
@@ -1701,6 +1796,38 @@ body.home-page {
 }
 .home-page .offer-item-copy { max-width: 500px; }
 .home-page .offer-item-copy p { font-size: 17px; line-height: 1.65; }
+.home-page .offer-item-copy .offer-item-lead {
+  margin-bottom: 13px;
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 650;
+  line-height: 1.45;
+}
+.home-page .offer-feature-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 27px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.home-page .offer-feature-list li {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.home-page .offer-feature-list li + li {
+  margin-left: 12px;
+  border-left: 1px solid var(--line);
+  padding-left: 12px;
+}
+.home-page .offer-feature-list a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 250, 244, .4);
+  text-underline-offset: 3px;
+}
+.home-page .offer-feature-list a:hover,
+.home-page .offer-feature-list a:focus-visible { text-decoration-color: currentColor; }
 .offer-story-visual {
   position: relative;
   min-width: 0;
@@ -1841,6 +1968,12 @@ body.home-page {
 }
 
 @media (max-width: 640px) {
+  .hero .hero-stats { grid-template-columns: 1fr; text-align: center; }
+  .hero .hero-stat { padding: 18px 16px 17px; }
+  .hero .hero-stat + .hero-stat { border-top: 1px solid rgba(255, 250, 244, .09); border-left: 0; }
+  .hero .hero-stat > strong { font-size: clamp(36px, 10vw, 44px); }
+  .hero .hero-stat > p { margin-inline: auto; }
+  .hero .hero-lead-question { font-size: 18px; }
   .home-page .offer-item { grid-template-columns: 32px minmax(0, 1fr); gap: 16px; padding-block: 58px; }
   .home-page .offer-check { width: 26px; height: 26px; }
   .home-page .offer-item h3 { font-size: 40px; }
@@ -1860,6 +1993,7 @@ body.home-page {
   .search-intent-demo { min-height: 360px; padding: 30px 18px; }
   .search-intent-demo > p { text-align: left; }
   .search-intent-demo li strong { font-size: 11px; }
+  .home-page .offer-feature-list { margin-top: 23px; }
 }
 
 @media (min-width: 861px) {

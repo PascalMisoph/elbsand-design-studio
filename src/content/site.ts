@@ -55,16 +55,40 @@ export const content = {
     meta: {
       title: "SEO & GEO Studio für Dienstleister | PATERNOGA",
       description:
-        "PATERNOGA bringt die Seiten, über die deine Anfragen kommen, durch Google, durch KI-Antwortsysteme und durch den Menschen, der dort entscheidet."
+        "PATERNOGA bringt die Seiten, über die Ihre Anfragen kommen, durch Google, durch KI-Antwortsysteme und durch den Menschen, der dort entscheidet."
     },
     nav: ["Leistungen", "Projekte", "Sichtbarkeit", "Ablauf", "Kontakt"],
     cta: "Projekt anfragen",
+    heroCta: "Sichtbarkeit prüfen",
     secondaryCta: "Kostenfreier technischer KI-Check",
     hero: {
-      eyebrow: "📍 Studio aus Dresden · für Unternehmen in Deutschland",
-      title: ["SEO und GEO für deine", "wichtigsten Seiten."],
-      body: "Für Dienstleister, deren Leistung erklärt werden muss. Wir prüfen die Seiten, über die deine Anfragen kommen, getrennt darauf, ob Google sie findet, ob KI-Systeme sie richtig wiedergeben und ob Besucher dort anfragen.",
-      imageAlt: "Pascal Misoph an seinem Arbeitsplatz im PATERNOGA Studio"
+      eyebrow: {
+        primary: "SEO & GEO-Agentur aus Dresden",
+        secondary: "für Unternehmen in Deutschland"
+      },
+      title: ["Suche verändert sich.", "Bleibt Ihr Unternehmen sichtbar?"],
+      body: {
+        stats: [
+          {
+            value: "40 %",
+            label: "der Verbraucher beginnen ihre Suche bereits mit KI Tools",
+            sourceLabel: "Quelle: Deloitte",
+            sourceHref: "https://www.deloitte.com/ch/en/services/consulting/perspectives/the-age-of-geo.html"
+          },
+          {
+            value: "4,4×",
+            label: "höher ist die Conversion Rate von Besuchern aus KI Suchen",
+            sourceLabel: "Quelle: Deloitte",
+            sourceHref: "https://www.deloitte.com/ch/en/services/consulting/perspectives/the-age-of-geo.html"
+          }
+        ],
+        question: [
+          "Wird Ihr Unternehmen genannt, wenn potenzielle Kunden",
+          "nach genau der Leistung suchen, die Sie anbieten?"
+        ],
+        detail: "PATERNOGA analysiert und optimiert die Seiten, die für Ihre Anfragen entscheidend sind. Für Sichtbarkeit bei Google, Präsenz in KI-Systemen und mehr qualifizierte Anfragen."
+      },
+      imageAlt: "Pascal Misoph an seinem Arbeitsplatz im PATERNOGA Studio",
     },
     proof: {
       intro: "Ausgewählte Projekte",
@@ -72,24 +96,52 @@ export const content = {
     },
     offer: {
       eyebrow: "Leistungen",
-      title: "Wenige Seiten entscheiden. An denen arbeiten wir",
+      title: "Wenige Seiten entscheiden. Genau dort setzen wir an.",
       detailLinkLabel: "SEO & GEO im Detail",
       items: [
-        [
-          "1",
-          "Seiten, die zur Anfrage führen",
-          "Auf den Seiten, über die dein Geschäft läuft, schärfen wir Angebot, Belege und den nächsten Schritt. Meist sind das ein bis drei Seiten, nicht die ganze Website."
-        ],
-        [
-          "2",
-          "Technische Umsetzung",
-          "Wir setzen die Änderungen selbst um statt sie nur zu empfehlen: von einzelnen Leistungsseiten bis zur kompletten Website, auf Smartphone, Tablet und Desktop und technisch schlank."
-        ],
-        [
-          "3",
-          "SEO & GEO",
-          "Wir optimieren Websites für klassische Suchmaschinen und KI-gestützte Suchsysteme. Dazu gehören technische SEO, lokale Auffindbarkeit, strukturierte Daten, eindeutige Unternehmensinformationen und Inhalte, die konkrete Fragen potenzieller Kunden beantworten."
-        ]
+        {
+          title: "Sichtbarkeit bei Google",
+          lead: "Gefunden werden, wenn Bedarf entsteht.",
+          text: "Wir analysieren, wonach potenzielle Kunden suchen, welche Seiten dafür sichtbar sein müssen und wo Wettbewerber aktuell vor Ihnen stehen. Anschließend optimieren wir genau diese Seiten für relevante Suchanfragen.",
+          features: [
+            { label: "Suchintention" },
+            { label: "Onpage SEO" },
+            { label: "technische SEO", href: "/technische-geo-optimierung/" },
+            { label: "interne Verlinkung" }
+          ],
+          visual: "google"
+        },
+        {
+          title: "Sichtbarkeit in KI-Systemen",
+          lead: "Genannt werden, wenn KI Empfehlungen gibt.",
+          text: "Wir prüfen, wie ChatGPT, Google AI und andere KI-Systeme Ihr Unternehmen verstehen, welche Wettbewerber sie empfehlen und welche Informationen fehlen, damit Ihre Leistungen korrekt eingeordnet und genannt werden.",
+          features: [
+            { label: "AI Visibility", href: "/ai-sichtbarkeit/" },
+            { label: "GEO", href: "/geo-optimierung/" },
+            { label: "Prompt Analyse", href: "/prompt-recherche/" },
+            { label: "Entity Signale" }
+          ],
+          visual: "ai"
+        },
+        {
+          title: "Seiten, die zur Anfrage führen",
+          lead: "Aus Sichtbarkeit müssen Anfragen entstehen.",
+          text: "Wir optimieren die Seiten, auf denen potenzielle Kunden entscheiden, ob Ihre Leistung zu ihrem Bedarf passt. Inhalt, Struktur und Nutzerführung richten wir darauf aus, diese Entscheidung möglichst einfach zu machen.",
+          features: [
+            { label: "Leistungsseiten", href: "/content-optimierung-ai-suche/" },
+            { label: "Nutzerführung" },
+            { label: "Inhalte" },
+            { label: "Conversion" }
+          ],
+          visual: "conversion"
+        },
+        {
+          title: "Von der Analyse in die Umsetzung.",
+          lead: "Wir zeigen nicht nur, wo Handlungsbedarf besteht.",
+          text: "Wir priorisieren die entscheidenden Hebel und setzen die relevanten Anpassungen an Struktur, Inhalten, SEO und Technik auf Wunsch direkt um.",
+          detailLink: { label: "Leistungspakete ansehen", href: "/geo-optimierung/" },
+          visual: "implementation"
+        }
       ]
     },
     references: {
@@ -148,7 +200,7 @@ export const content = {
         ],
         [
           "Lokale Auffindbarkeit",
-          "Damit Kundinnen und Kunden in deiner Region dich schneller finden."
+          "Damit Kundinnen und Kunden in Ihrer Region Sie schneller finden."
         ],
         [
           "Strukturierte Informationen",
@@ -184,16 +236,16 @@ export const content = {
       contact: {
         label: "Direkter Kontakt",
         name: "Pascal Misoph",
-        role: "Dein Ansprechpartner",
+        role: "Ihr Ansprechpartner",
         phoneLabel: "Telefon",
         whatsappLabel: "WhatsApp",
         emailLabel: "E-Mail",
         imageAlt: "Pascal Misoph vor einer Berglandschaft"
       },
       steps: [
-        ["Wunschtermin wählen", "Wähle einen Termin für ein unverbindliches Erstgespräch. Wir sprechen über dein Vorhaben, analysieren deine aktuelle Sichtbarkeit und klären, ob PATERNOGA der richtige Partner für dein Projekt ist."],
-        ["Bestand prüfen", "Wir analysieren deine Website, Inhalte, Datenquellen und die technische Basis. So wird sofort sichtbar, wo die größten Hebel für Google und KI-Suchsysteme liegen."],
-        ["Struktur & Seiten planen", "Wir ordnen Suchintentionen und Themen zu einem klaren Seitenaufbau. So stellen wir sicher, dass potenzielle Kunden und moderne Antwortsysteme deine Kernbotschaften sofort finden."],
+        ["Wunschtermin wählen", "Wählen Sie einen Termin für ein unverbindliches Erstgespräch. Wir sprechen über Ihr Vorhaben, analysieren Ihre aktuelle Sichtbarkeit und klären, ob PATERNOGA der richtige Partner für Ihr Projekt ist."],
+        ["Bestand prüfen", "Wir analysieren Ihre Website, Inhalte, Datenquellen und die technische Basis. So wird sofort sichtbar, wo die größten Hebel für Google und KI-Suchsysteme liegen."],
+        ["Struktur & Seiten planen", "Wir ordnen Suchintentionen und Themen zu einem klaren Seitenaufbau. So stellen wir sicher, dass potenzielle Kunden und moderne Antwortsysteme Ihre Kernbotschaften sofort finden."],
         ["Angebot & Anfrageweg schärfen", "Bei bestehenden Seiten verbessern wir Nutzen, Belege und den nächsten Schritt für passende Käufer. Gute Gestaltung bleibt erhalten; ein Relaunch ist keine Voraussetzung."],
         ["Änderungen umsetzen & prüfen", "Wir setzen den vereinbarten Umfang um, prüfen Technik und Anfragewege und dokumentieren den Stand. Ob einzelne Leistungsseiten oder eine neue Website: Der Auftrag bleibt klar abgegrenzt."]
       ]
@@ -234,7 +286,7 @@ export const content = {
       quickOption: "Erstgespräch zur Sichtbarkeit buchen",
       detailOption: "SEO- & GEO-Projekt anfragen",
       valueLine: "Klar begrenzter Auftrag, eine feste Ansprechperson, dokumentierter Vorher- und Nachher-Stand.",
-      note: "Deine Anfrage wird direkt und vertraulich an Pascal übermittelt.",
+      note: "Ihre Anfrage wird direkt und vertraulich an Pascal übermittelt.",
       formLabel: "Unverbindliche Anfrage für SEO, GEO und digitale Sichtbarkeit",
       flow: {
         stepLabel: "Schritt",
@@ -254,20 +306,20 @@ export const content = {
         detailPlaceholders: {
           new: "Zum Beispiel eine Leistung, die bisher nur im Fließtext vorkommt.",
           improve: "Website-Adresse und die ein bis drei Seiten, um die es geht.",
-          advice: "Ein bis zwei Sätze zu deiner aktuellen Situation genügen."
+          advice: "Ein bis zwei Sätze zu Ihrer aktuellen Situation genügen."
         },
         contactQuestion: "Wohin dürfen wir uns mit einer ersten Einschätzung melden?",
         nameLabel: "Name",
         emailLabel: "E-Mail",
         next: "Weiter",
         submit: "Projekt besprechen",
-        summaryLabel: "Dein Anliegen",
+        summaryLabel: "Ihr Anliegen",
         privacy: "Persönlich gelesen · unverbindlich · vertraulich behandelt",
         sending: "Wird sicher übermittelt …",
         errorMessage: "Das hat gerade nicht funktioniert. Bitte versuche es noch einmal.",
         successEyebrow: "Anfrage angekommen",
         successTitle: "Der nächste Schritt ist vorbereitet.",
-        successBody: "Pascal prüft deine Angaben persönlich und meldet sich mit einer ersten Einschätzung und passenden nächsten Schritten.",
+        successBody: "Pascal prüft Ihre Angaben persönlich und meldet sich mit einer ersten Einschätzung und passenden nächsten Schritten.",
         successAgain: "Weitere Anfrage starten"
       }
     },
@@ -281,12 +333,36 @@ export const content = {
     },
     nav: ["Services", "Projects", "Visibility", "Process", "Contact"],
     cta: "Start a project",
+    heroCta: "Check your visibility",
     secondaryCta: "Free technical AI check",
     hero: {
-      eyebrow: "📍 Dresden-based studio · serving companies across Germany",
-      title: ["SEO and GEO for your", "most important pages."],
-      body: "For service businesses whose offer needs explaining. We check the pages your enquiries come from separately: whether Google finds them, whether AI systems relay them correctly and whether visitors actually enquire.",
-      imageAlt: "Pascal Misoph at his desk in the PATERNOGA studio"
+      eyebrow: {
+        primary: "SEO & GEO agency from Dresden",
+        secondary: "for companies across Germany"
+      },
+      title: ["Search behaviour is changing.", "Will your business stay visible?"],
+      body: {
+        stats: [
+          {
+            value: "40%",
+            label: "of consumers already start their search with AI tools",
+            sourceLabel: "Source: Deloitte",
+            sourceHref: "https://www.deloitte.com/ch/en/services/consulting/perspectives/the-age-of-geo.html"
+          },
+          {
+            value: "4.4×",
+            label: "higher conversion rate for visitors from AI search",
+            sourceLabel: "Source: Deloitte",
+            sourceHref: "https://www.deloitte.com/ch/en/services/consulting/perspectives/the-age-of-geo.html"
+          }
+        ],
+        question: [
+          "Will your business be mentioned when potential customers",
+          "search for exactly the service you offer?"
+        ],
+        detail: "PATERNOGA analyses and optimises the pages that matter for your enquiries. For visibility in Google, presence in AI systems and more qualified enquiries."
+      },
+      imageAlt: "Pascal Misoph at his desk in the PATERNOGA studio",
     },
     proof: {
       intro: "Selected projects",
@@ -294,24 +370,52 @@ export const content = {
     },
     offer: {
       eyebrow: "Services",
-      title: "A few pages decide. Those are the ones we work on",
+      title: "A few pages decide. That is exactly where we start.",
       detailLinkLabel: "SEO & GEO in detail",
       items: [
-        [
-          "1",
-          "Pages that lead to an enquiry",
-          "On the pages your business actually runs on, we sharpen the offer, the evidence and the next step. Usually one to three pages, not the whole website."
-        ],
-        [
-          "2",
-          "Technical implementation",
-          "We implement the changes ourselves instead of only recommending them: from individual service pages to a complete website, on phones, tablets and desktops, technically lean."
-        ],
-        [
-          "3",
-          "SEO & GEO",
-          "We optimise websites for traditional search engines and AI-powered search systems. This includes technical SEO, local discovery, structured data, consistent business information and content that answers potential customers’ questions."
-        ]
+        {
+          title: "Visibility in Google",
+          lead: "Be found when demand starts.",
+          text: "We analyse what potential customers search for, which pages need to be visible and where competitors currently appear ahead of you. Then we optimise those pages for relevant searches.",
+          features: [
+            { label: "Search intent" },
+            { label: "On-page SEO" },
+            { label: "technical SEO", href: "/en/technical-geo-optimization/" },
+            { label: "internal linking" }
+          ],
+          visual: "google"
+        },
+        {
+          title: "Visibility in AI systems",
+          lead: "Be named when AI gives recommendations.",
+          text: "We review how ChatGPT, Google AI and other AI systems understand your business, which competitors they recommend and which information is missing for your services to be classified and mentioned correctly.",
+          features: [
+            { label: "AI visibility", href: "/en/ai-visibility/" },
+            { label: "GEO", href: "/en/geo-optimization/" },
+            { label: "Prompt analysis", href: "/en/prompt-research/" },
+            { label: "Entity signals" }
+          ],
+          visual: "ai"
+        },
+        {
+          title: "Pages that lead to an enquiry",
+          lead: "Visibility should turn into enquiries.",
+          text: "We optimise the pages where potential customers decide whether your service fits their need. Content, structure and user guidance are shaped to make that decision as easy as possible.",
+          features: [
+            { label: "Service pages", href: "/en/content-optimization-ai-search/" },
+            { label: "User guidance" },
+            { label: "Content" },
+            { label: "Conversion" }
+          ],
+          visual: "conversion"
+        },
+        {
+          title: "From analysis to implementation.",
+          lead: "We do more than show where action is needed.",
+          text: "We prioritise the decisive levers and, on request, implement the relevant changes to structure, content, SEO and technology directly.",
+          detailLink: { label: "View packages", href: "/en/geo-optimization/" },
+          visual: "implementation"
+        }
       ]
     },
     references: {
