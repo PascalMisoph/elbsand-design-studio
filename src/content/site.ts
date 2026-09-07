@@ -83,8 +83,8 @@ export const content = {
           }
         ],
         question: [
-          "Wird Ihr Unternehmen genannt, wenn potenzielle Kunden",
-          "nach genau der Leistung suchen, die Sie anbieten?"
+          "Wird Ihr Unternehmen genannt, wenn Kunden",
+          "nach der Leistung suchen, die Sie anbieten?"
         ],
         detail: "PATERNOGA analysiert und optimiert die Seiten, die für Ihre Anfragen entscheidend sind. Für Sichtbarkeit bei Google, Präsenz in KI-Systemen und mehr qualifizierte Anfragen."
       },
@@ -100,7 +100,7 @@ export const content = {
       detailLinkLabel: "SEO & GEO im Detail",
       items: [
         {
-          title: "Sichtbarkeit bei Google",
+          title: "SEO: Sichtbarkeit bei Google",
           lead: "Gefunden werden, wenn Bedarf entsteht.",
           text: "Wir analysieren, wonach potenzielle Kunden suchen, welche Seiten dafür sichtbar sein müssen und wo Wettbewerber aktuell vor Ihnen stehen. Anschließend optimieren wir genau diese Seiten für relevante Suchanfragen.",
           features: [
@@ -112,7 +112,7 @@ export const content = {
           visual: "google"
         },
         {
-          title: "Sichtbarkeit in KI-Systemen",
+          title: "GEO: Sichtbarkeit in KI-Systemen",
           lead: "Genannt werden, wenn KI Empfehlungen gibt.",
           text: "Wir prüfen, wie ChatGPT, Google AI und andere KI-Systeme Ihr Unternehmen verstehen, welche Wettbewerber sie empfehlen und welche Informationen fehlen, damit Ihre Leistungen korrekt eingeordnet und genannt werden.",
           features: [
@@ -190,45 +190,27 @@ export const content = {
     },
     visibility: {
       eyebrow: "SEO & GEO",
-      title: "Google, KI-Systeme und Menschen lesen dieselbe Seite",
-      body: "Eine Leistungsseite muss heute drei Leser überstehen: die Suchmaschine, die sie einordnet, das Antwortsystem, das sie zusammenfasst, und den Menschen, der auf ihr entscheidet. Eine aktuelle Analyse von Graphite.io schätzt, dass das globale Suchvolumen in KI-Assistenten bereits 56 % des klassischen Suchmaschinen-Volumens erreicht hat. Wir prüfen die drei getrennt und arbeiten dann an derselben Seite.",
-      bodyHtml: "Eine Leistungsseite muss heute drei Leser überstehen: die Suchmaschine, die sie einordnet, das Antwortsystem, das sie zusammenfasst, und den Menschen, der auf ihr entscheidet. Eine aktuelle <a href=\"https://graphite.io/five-percent/research/ai-is-much-bigger-than-you-think\" target=\"_blank\" rel=\"noopener\">Analyse von Graphite.io</a> schätzt, dass das globale Suchvolumen in KI-Assistenten bereits 56 % des klassischen Suchmaschinen-Volumens erreicht hat. Wir prüfen die drei getrennt und arbeiten dann an derselben Seite.",
-      points: [
-        [
-          "Technisches SEO",
-          "Damit Google die Seite findet, laden kann und richtig einordnet: Ladezeit, Seitenstruktur, interne Verlinkung."
-        ],
-        [
-          "Lokale Auffindbarkeit",
-          "Damit Kundinnen und Kunden in Ihrer Region Sie schneller finden."
-        ],
-        [
-          "Strukturierte Informationen",
-          "Leistungen, Standort und Expertise maschinenlesbar miteinander verbunden."
-        ],
-        [
-          "GEO-Optimierung",
-          "Damit KI-Antwortsysteme die Seite erreichen, korrekt wiedergeben und als Quelle nennen können."
-        ]
-      ],
-      dataNote: "der US-amerikanischen Erwachsenen geben an, KI-Zusammenfassungen in Suchergebnissen zu lesen.",
-      sourceLabel: "Quelle: Pew Research Center, ",
-      sources: [
+      title: "Google, KI Systeme und Menschen lesen dieselbe Seite.",
+      body: "Eine gute Leistungsseite muss heute drei Aufgaben gleichzeitig erfüllen. Google muss sie einordnen können, KI Systeme müssen ihre Inhalte verstehen und korrekt wiedergeben, und potenzielle Kunden müssen erkennen, warum Ihr Angebot die richtige Wahl ist. Wir betrachten diese drei Perspektiven getrennt und optimieren anschließend dieselbe Seite.",
+      perspectives: [
         {
-          label: "2025",
-          url: "https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/",
-          ariaLabel: "Pew Research Center: Analyse zu Klicks bei Google-Suchen mit KI-Zusammenfassungen, 2025"
+          title: "Google",
+          lead: "Gefunden und richtig eingeordnet werden.",
+          text: "Suchintention, Seitenstruktur, technische Voraussetzungen und relevante Inhalte sorgen dafür, dass Google versteht, für welche Anfragen Ihre Seite relevant ist."
         },
         {
-          label: "2026",
-          url: "https://www.pewresearch.org/internet/2026/06/17/americans-and-ai-2026-chatbots-smart-devices-and-views-on-impact/",
-          ariaLabel: "Pew Research Center: Americans and AI 2026"
+          title: "KI Systeme",
+          lead: "Verstanden und korrekt wiedergegeben werden.",
+          text: "Klare Aussagen, strukturierte Informationen und eindeutige Unternehmenssignale helfen Antwortsystemen dabei, Ihre Leistung richtig einzuordnen und als Quelle zu verwenden."
+        },
+        {
+          title: "Menschen",
+          lead: "Verstehen und entscheiden können.",
+          text: "Eine klare Leistungsdarstellung, nachvollziehbare Argumente und eine eindeutige Nutzerführung machen aus Sichtbarkeit eine konkrete Anfrage."
         }
       ],
-      note: "Eine konkrete Nennung oder Empfehlung kann nicht garantiert werden. PATERNOGA schafft die technischen und inhaltlichen Voraussetzungen, damit Such- und Antwortsysteme ein Unternehmen möglichst eindeutig erfassen können.",
       systemsIntro: "Sichtbar in",
-      systemsLabel: "Google, ChatGPT, Claude und Perplexity",
-      detailLinkLabel: "Mehr über SEO & GEO erfahren"
+      systemsLabel: "Google, ChatGPT, Claude und Perplexity"
     },
     process: {
       eyebrow: "Ablauf",
@@ -357,8 +339,8 @@ export const content = {
           }
         ],
         question: [
-          "Will your business be mentioned when potential customers",
-          "search for exactly the service you offer?"
+          "Will your business be mentioned when customers",
+          "search for the service you offer?"
         ],
         detail: "PATERNOGA analyses and optimises the pages that matter for your enquiries. For visibility in Google, presence in AI systems and more qualified enquiries."
       },
@@ -374,7 +356,7 @@ export const content = {
       detailLinkLabel: "SEO & GEO in detail",
       items: [
         {
-          title: "Visibility in Google",
+          title: "SEO: Visibility in Google",
           lead: "Be found when demand starts.",
           text: "We analyse what potential customers search for, which pages need to be visible and where competitors currently appear ahead of you. Then we optimise those pages for relevant searches.",
           features: [
@@ -386,7 +368,7 @@ export const content = {
           visual: "google"
         },
         {
-          title: "Visibility in AI systems",
+          title: "GEO: Visibility in AI systems",
           lead: "Be named when AI gives recommendations.",
           text: "We review how ChatGPT, Google AI and other AI systems understand your business, which competitors they recommend and which information is missing for your services to be classified and mentioned correctly.",
           features: [
@@ -464,45 +446,27 @@ export const content = {
     },
     visibility: {
       eyebrow: "SEO & GEO",
-      title: "Google, AI systems and people read the same page",
-      body: "A service page has to survive three readers today: the search engine that classifies it, the answer system that summarises it, and the person who decides on it. A recent analysis by Graphite.io estimates that global search volume in AI assistants has reached 56% of traditional search-engine volume. We review the three separately and then work on the same page.",
-      bodyHtml: "A service page has to survive three readers today: the search engine that classifies it, the answer system that summarises it, and the person who decides on it. A recent <a href=\"https://graphite.io/five-percent/research/ai-is-much-bigger-than-you-think\" target=\"_blank\" rel=\"noopener\">analysis by Graphite.io</a> estimates that global search volume in AI assistants has reached 56% of traditional search-engine volume. We review the three separately and then work on the same page.",
-      points: [
-        [
-          "Technical SEO",
-          "So Google can find, load and classify the page: load times, page structure and clean internal linking."
-        ],
-        [
-          "Local discovery",
-          "So customers in your region can find you more quickly."
-        ],
-        [
-          "Structured information",
-          "Services, location and expertise connected in a machine-readable way."
-        ],
-        [
-          "GEO optimisation",
-          "So AI answer systems can reach the page, relay it correctly and cite it as a source."
-        ]
-      ],
-      dataNote: "of U.S. adults say they read AI summaries in search results.",
-      sourceLabel: "Source: Pew Research Center, ",
-      sources: [
+      title: "Google, AI systems and people read the same page.",
+      body: "A good service page now has to fulfil three tasks at once. Google must be able to classify it, AI systems must understand and relay its content correctly, and potential customers must see why your offer is the right choice. We review these three perspectives separately and then optimise the same page.",
+      perspectives: [
         {
-          label: "2025",
-          url: "https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/",
-          ariaLabel: "Pew Research Center analysis of clicks on Google searches with AI summaries, 2025"
+          title: "Google",
+          lead: "Be found and classified correctly.",
+          text: "Search intent, page structure, technical foundations and relevant content help Google understand which searches your page should serve."
         },
         {
-          label: "2026",
-          url: "https://www.pewresearch.org/internet/2026/06/17/americans-and-ai-2026-chatbots-smart-devices-and-views-on-impact/",
-          ariaLabel: "Pew Research Center: Americans and AI 2026"
+          title: "AI systems",
+          lead: "Be understood and represented correctly.",
+          text: "Clear statements, structured information and unambiguous business signals help answer systems classify your service correctly and use it as a source."
+        },
+        {
+          title: "People",
+          lead: "Understand and decide.",
+          text: "A clear service presentation, credible arguments and an unambiguous user path turn visibility into a concrete enquiry."
         }
       ],
-      note: "A specific mention or recommendation cannot be guaranteed. PATERNOGA creates the technical and editorial conditions that help search and answer systems identify a business as clearly as possible.",
       systemsIntro: "Visible in",
-      systemsLabel: "Google, ChatGPT, Claude and Perplexity",
-      detailLinkLabel: "Learn more about SEO & GEO"
+      systemsLabel: "Google, ChatGPT, Claude and Perplexity"
     },
     process: {
       eyebrow: "Process",
