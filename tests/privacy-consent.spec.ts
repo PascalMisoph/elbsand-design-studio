@@ -22,7 +22,7 @@ test("optional providers make no request before consent and Calendly stays block
   await expect(page.locator("[data-consent-banner]")).toBeVisible();
   await page.locator("[data-consent-reject]").first().click();
 
-  await page.getByRole("tab", { name: "Erstgespräch zur Sichtbarkeit buchen" }).click();
+  await page.getByRole("tab", { name: /Sichtbarkeit gemeinsam prüfen/ }).click();
   await expect(page.locator("[data-calendly-consent]")).toBeVisible();
   await expect(page.locator(".calendly-inline-widget")).toBeHidden();
   expect(thirdPartyRequests).toEqual([]);

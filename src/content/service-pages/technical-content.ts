@@ -17,7 +17,7 @@ const technicalGeoOptimizationDe: ServicePageContent = {
   breadcrumb: { home: "Start", hub: "GEO-Optimierung", current: "Technische GEO-Optimierung" },
   eyebrow: "Technische GEO-Optimierung",
   title: "Eine Website, deren Inhalte Maschinen sauber lesen können.",
-  lead: "Wir ordnen Struktur, Geschwindigkeit und Fakten so, dass Suchmaschinen und KI-Systeme dein Angebot zuverlässig erreichen und einordnen können. Ohne technische Showeffekte, mit nachvollziehbaren Änderungen im bestehenden System.",
+  lead: "Wir ordnen Struktur, Geschwindigkeit und Fakten so, dass Suchmaschinen und KI-Systeme Ihr Angebot zuverlässig erreichen und einordnen können. Ohne technische Showeffekte, mit nachvollziehbaren Änderungen im bestehenden System.",
   primaryCta: "Technischen Check anfragen",
   secondaryCta: "Methode ansehen",
   outcomes: [
@@ -43,7 +43,7 @@ const technicalGeoOptimizationDe: ServicePageContent = {
     {
       eyebrow: "Technik mit redaktioneller Wirkung",
       title: "Semantik ist die Ordnung hinter der sichtbaren Seite.",
-      text: "Eine KI kann den Text einer Seite sehen und trotzdem den Zusammenhang verfehlen, wenn Überschriften, Abschnitte und Links keine eindeutige Hierarchie bilden. Wir übersetzen deine fachliche Struktur in sauberes HTML und lesbare interne Pfade.",
+      text: "Eine KI kann den Text einer Seite sehen und trotzdem den Zusammenhang verfehlen, wenn Überschriften, Abschnitte und Links keine eindeutige Hierarchie bilden. Wir übersetzen Ihre fachliche Struktur in sauberes HTML und lesbare interne Pfade.",
       points: ["Eine H1 mit klarer Seitenaufgabe", "Abschnitte, die Fragen vollständig beantworten", "Links zwischen Eltern-, Detail- und Kontaktseiten"]
     },
     {
@@ -88,14 +88,14 @@ const technicalGeoOptimizationDe: ServicePageContent = {
     items: [
       { question: "Ist technische GEO-Optimierung nur SEO mit einem neuen Namen?", answer: "Nein. SEO-Grundlagen wie HTML, Performance und Indexierbarkeit bleiben wichtig. Die technische GEO-Perspektive ergänzt sie um die Frage, ob Inhalte, Fakten und Zusammenhänge für antwortende Systeme klar zugänglich sind." },
       { question: "Muss die Website komplett neu gebaut werden?", answer: "Nicht automatisch. Wir prüfen zuerst Templates, CMS und bestehende Pfade. Oft lassen sich die wichtigsten Verbesserungen gezielt in Struktur, Auslieferung und Markup umsetzen." },
-      { question: "Arbeitet ihr auch mit bestehenden CMS?", answer: "Ja. Der Ansatz richtet sich nach dem vorhandenen System und seinen Möglichkeiten. Die Empfehlungen bleiben nachvollziehbar, auch wenn einzelne technische Änderungen durch ein CMS begrenzt sind." },
+      { question: "Arbeiten Sie auch mit bestehenden CMS?", answer: "Ja. Der Ansatz richtet sich nach dem vorhandenen System und seinen Möglichkeiten. Die Empfehlungen bleiben nachvollziehbar, auch wenn einzelne technische Änderungen durch ein CMS begrenzt sind." },
       { question: "Garantiert die Optimierung Erwähnungen in KI-Antworten?", answer: "Nein. Sie verbessert technische Voraussetzungen und Klarheit, kann aber keine bestimmte Antwort, Position oder Empfehlung eines externen Systems garantieren." }
     ]
   },
   closing: {
     eyebrow: "Technik besprechen",
     title: "Klarheit für die nächste technische Entscheidung.",
-    text: "Schick uns deine Website und die Frage, an der du gerade festhängst. Wir ordnen ein, welche technische Arbeit für dein GEO-Ziel sinnvoll ist und welche nicht.",
+    text: "Schicken Sie uns Ihre Website und die Frage, an der Sie gerade festhängst. Wir ordnen ein, welche technische Arbeit für Ihr GEO-Ziel sinnvoll ist und welche nicht.",
     cta: "Technischen Check anfragen"
   }
 };
@@ -202,7 +202,7 @@ const aiCrawlabilityDe: ServicePageContent = {
   alternateEnPath: "/en/ai-crawlability/",
   meta: {
     title: "AI-Crawlability für KI-Suche | PATERNOGA",
-    description: "Prüfe, welche Bots wichtige Seiten erreichen, wo Requests scheitern und welche technischen Pfade zuerst geöffnet werden sollten. Check anfragen."
+    description: "Prüfen Sie, welche Bots wichtige Seiten erreichen, wo Requests scheitern und welche technischen Pfade zuerst geöffnet werden sollten. Check anfragen."
   },
   breadcrumb: {
     home: "Start",
@@ -212,7 +212,7 @@ const aiCrawlabilityDe: ServicePageContent = {
   },
   eyebrow: "AI-Crawlability",
   title: "Wenn wichtige Seiten erreichbar sein sollen, bevor sie verstanden werden.",
-  lead: "Wir verfolgen den Weg vom Bot-Aufruf bis zum sichtbaren Inhalt. So wird klar, ob Regeln, Rendering, Antworten oder interne Verbindungen deine wichtigsten Seiten unnötig ausbremsen.",
+  lead: "Wir verfolgen den Weg vom Bot-Aufruf bis zum sichtbaren Inhalt. So wird klar, ob Regeln, Rendering, Antworten oder interne Verbindungen Ihre wichtigsten Seiten unnötig ausbremsen.",
   primaryCta: "Crawlability prüfen lassen",
   secondaryCta: "Ablauf ansehen",
   outcomes: [
@@ -243,7 +243,7 @@ const aiCrawlabilityDe: ServicePageContent = {
     },
     {
       eyebrow: "Priorität im Pfad",
-      title: "Crawlability folgt deiner Angebotslogik.",
+      title: "Crawlability folgt Ihrer Angebotslogik.",
       text: "Die technisch kürzeste Route ist nicht automatisch die wichtigste. Wir prüfen, ob zentrale Leistungen, lokale Relevanz und Belege über interne Links erreichbar sind und ob die Navigation einen sinnvollen Kontext mitliefert.",
       points: ["Wichtige Einstiegs- und Leistungsseiten", "Kontext zwischen Standort und Angebot", "Verwaiste oder zu tief liegende Inhalte"]
     }
@@ -252,7 +252,7 @@ const aiCrawlabilityDe: ServicePageContent = {
     eyebrow: "Methode",
     title: "Vier Schritte vom Bot-Aufruf bis zum Inhalt",
     steps: [
-      { title: "Bot-Sicht definieren", text: "Wir legen fest, welche Seitentypen und Crawler für dein Ziel relevant sind und welche Fragen sie beantworten sollen." },
+      { title: "Bot-Sicht definieren", text: "Wir legen fest, welche Seitentypen und Crawler für Ihr Ziel relevant sind und welche Fragen sie beantworten sollen." },
       { title: "Zugriff verfolgen", text: "Robots-Regeln, Sitemaps, Statuscodes und Weiterleitungen werden entlang konkreter URLs geprüft." },
       { title: "Rendering vergleichen", text: "Wir vergleichen die erste Serverantwort mit dem gerenderten Inhalt und markieren kritische Abweichungen." },
       { title: "Pfade verbessern", text: "Blockaden, Umwege und fehlende Verbindungen werden in einer umsetzbaren Reihenfolge dokumentiert." }
@@ -289,8 +289,8 @@ const aiCrawlabilityDe: ServicePageContent = {
   },
   closing: {
     eyebrow: "Crawlpfad klären",
-    title: "Zeig den Bots den Weg zu deinem wichtigsten Inhalt.",
-    text: "Wir verfolgen einen konkreten Seitentyp durch deine Website und zeigen, an welcher Stelle Zugriff, Rendering oder Kontext verbessert werden sollte.",
+    title: "Zeigen Sie den Bots den Weg zu Ihrem wichtigsten Inhalt.",
+    text: "Wir verfolgen einen konkreten Seitentyp durch Ihre Website und zeigen, an welcher Stelle Zugriff, Rendering oder Kontext verbessert werden sollte.",
     cta: "Crawlability prüfen lassen"
   }
 };
@@ -407,7 +407,7 @@ const geoContentDe: ServicePageContent = {
   breadcrumb: { home: "Start", hub: "GEO-Optimierung", current: "GEO-Content" },
   eyebrow: "GEO-Content",
   title: "Inhalte, die eine echte Frage vollständig beantworten.",
-  lead: "Wir entwickeln neue Seiten und Content-Systeme aus den Fragen deiner Zielgruppe. Jede Aussage bekommt Kontext, eine passende Struktur und – wo sinnvoll – eine sichtbare Quelle.",
+  lead: "Wir entwickeln neue Seiten und Content-Systeme aus den Fragen Ihrer Zielgruppe. Jede Aussage bekommt Kontext, eine passende Struktur und – wo sinnvoll – eine sichtbare Quelle.",
   primaryCta: "GEO-Content besprechen",
   secondaryCta: "Content-Methode ansehen",
   outcomes: [
@@ -476,17 +476,17 @@ const geoContentDe: ServicePageContent = {
     eyebrow: "FAQ",
     title: "Fragen zu GEO-Content",
     items: [
-      { question: "Ist GEO-Content einfach ein Blog mit KI-Keywords?", answer: "Nein. Im Mittelpunkt stehen echte Fragen, klare Antworten, belastbare Quellen und eine sinnvolle Verbindung zu deinem Angebot. Keywords können dabei helfen, ersetzen aber keine inhaltliche Aufgabe." },
-      { question: "Müssen alle Aussagen externe Quellen haben?", answer: "Nein. Eigene Leistungen, Prozesse und Erfahrungen können aus deiner Organisation stammen. Wichtig ist, dass Herkunft, Aktualität und Geltungsbereich einer Aussage nicht missverständlich bleiben." },
-      { question: "Könnt ihr auch Themen entwickeln, zu denen noch keine Seite existiert?", answer: "Ja. Wir priorisieren Themen aus Kundenfragen, bestehenden Quellen und deinem Angebot und legen offen, wenn ein Thema zunächst Recherche oder fachliche Freigabe benötigt." },
+      { question: "Ist GEO-Content einfach ein Blog mit KI-Keywords?", answer: "Nein. Im Mittelpunkt stehen echte Fragen, klare Antworten, belastbare Quellen und eine sinnvolle Verbindung zu Ihrem Angebot. Keywords können dabei helfen, ersetzen aber keine inhaltliche Aufgabe." },
+      { question: "Müssen alle Aussagen externe Quellen haben?", answer: "Nein. Eigene Leistungen, Prozesse und Erfahrungen können aus Ihrer Organisation stammen. Wichtig ist, dass Herkunft, Aktualität und Geltungsbereich einer Aussage nicht missverständlich bleiben." },
+      { question: "Können Sie auch Themen entwickeln, zu denen noch keine Seite existiert?", answer: "Ja. Wir priorisieren Themen aus Kundenfragen, bestehenden Quellen und Ihrem Angebot und legen offen, wenn ein Thema zunächst Recherche oder fachliche Freigabe benötigt." },
       { question: "Garantiert eine zitierfähige Seite eine Nennung?", answer: "Nein. Sie schafft eine klarere, überprüfbare Grundlage. Ob ein externes System eine Seite nutzt oder zitiert, hängt von vielen Faktoren ab und ist nicht garantierbar." },
-      { question: "Was braucht ihr und was erhalten wir?", answer: "Wir brauchen das wichtigste Thema, Zielgruppe, Angebot und vorhandenes Fachwissen oder Quellen. Du erhältst ein redaktionelles Briefing, eine Antwortarchitektur, den abgestimmten Entwurf und eine nachvollziehbare Quellen- und Freigabespur. PATERNOGA strukturiert und redigiert; fachliche Aussagen und Veröffentlichung gibst du frei." }
+      { question: "Was benötigen wir für den Start und was erhalten Sie?", answer: "Wir brauchen das wichtigste Thema, Zielgruppe, Angebot und vorhandenes Fachwissen oder Quellen. Sie erhalten ein redaktionelles Briefing, eine Antwortarchitektur, den abgestimmten Entwurf und eine nachvollziehbare Quellen- und Freigabespur. PATERNOGA strukturiert und redigiert; fachliche Aussagen und Veröffentlichung geben Sie frei." }
     ]
   },
   closing: {
     eyebrow: "Content planen",
     title: "Aus einer Kundenfrage wird eine belastbare Seite.",
-    text: "Bring uns ein Thema, das deine Zielgruppe immer wieder fragt. Wir prüfen, welche Antwort fehlt, welche Quelle sie trägt und wie sie in dein Angebot passt.",
+    text: "Bringen Sie uns ein Thema, das Ihre Zielgruppe immer wieder fragt. Wir prüfen, welche Antwort fehlt, welche Quelle sie trägt und wie sie in Ihr Angebot passt.",
     cta: "GEO-Content besprechen"
   }
 };
@@ -604,7 +604,7 @@ const contentOptimizationDe: ServicePageContent = {
   },
   eyebrow: "Content-Optimierung für AI-Suche",
   title: "Bestehende Inhalte klarer, aktueller und hilfreicher machen.",
-  lead: "Nicht jede GEO-Maßnahme braucht eine neue Seite. Wir lesen deine bestehenden Inhalte wie eine Antwort: Was ist sofort klar, was fehlt, was ist veraltet und welche Überarbeitung bringt wirklich mehr Orientierung?",
+  lead: "Nicht jede GEO-Maßnahme braucht eine neue Seite. Wir lesen Ihre bestehenden Inhalte wie eine Antwort: Was ist sofort klar, was fehlt, was ist veraltet und welche Überarbeitung bringt wirklich mehr Orientierung?",
   primaryCta: "Content-Check anfragen",
   secondaryCta: "Refresh-Methode ansehen",
   outcomes: [
@@ -644,7 +644,7 @@ const contentOptimizationDe: ServicePageContent = {
     eyebrow: "Methode",
     title: "Vier Schritte vom Inhaltsbefund zum sicheren Refresh",
     steps: [
-      { title: "Bestand lesen", text: "Wir betrachten Seiten, Abschnitte und interne Verbindungen im Kontext deiner Zielgruppe und deines Angebots." },
+      { title: "Bestand lesen", text: "Wir betrachten Seiten, Abschnitte und interne Verbindungen im Kontext Ihrer Zielgruppe und Ihres Angebots." },
       { title: "Antwortlücken markieren", text: "Fehlende Definitionen, unklare Einstiege, Wiederholungen und unbelegte Aussagen werden getrennt erfasst." },
       { title: "Refresh entscheiden", text: "Jeder Abschnitt erhält eine konkrete Entscheidung: behalten, präzisieren, belegen, verschieben oder neu schreiben." },
       { title: "Änderung pflegen", text: "Die überarbeitete Seite wird verknüpft, datiert und mit einem praktikablen Prüfintervall dokumentiert." }
@@ -665,7 +665,7 @@ const contentOptimizationDe: ServicePageContent = {
     title: "Aus einem Refresh wird ein verlässliches Content-System",
     items: [
       { title: "GEO-Content", text: "Neue Seiten entwickeln, wenn eine Frage im Bestand noch keine gute Antwort hat.", href: "/geo-content/" },
-      { title: "KI-Faktencheck", text: "Prüfen, ob externe KI-Antworten veraltete oder ungenaue Angaben über dein Angebot enthalten.", href: "/ki-faktencheck/" },
+      { title: "KI-Faktencheck", text: "Prüfen Sie, ob externe KI-Antworten veraltete oder ungenaue Angaben über Ihr Angebot enthalten.", href: "/ki-faktencheck/" },
       { title: "GEO Monitoring", text: "Veränderungen an Antworten, Quellen und relevanten Seiten regelmäßig beobachten.", href: "/geo-monitoring/" }
     ]
   },
@@ -674,15 +674,15 @@ const contentOptimizationDe: ServicePageContent = {
     title: "Fragen zur Content-Optimierung für AI-Suche",
     items: [
       { question: "Wann ist eine Überarbeitung besser als eine neue Seite?", answer: "Wenn die bestehende Seite bereits passende Autorität, Inhalte oder interne Verbindungen hat, aber Antworten, Aktualität oder Struktur nicht mehr sauber trägt. Die Entscheidung treffen wir anhand des konkreten Bestands." },
-      { question: "Wie geht ihr mit alten Zahlen und Beispielen um?", answer: "Wir prüfen Zeitbezug, Quelle und Gültigkeitsbereich. Was nicht mehr belastbar ist, wird nicht still verlängert, sondern ersetzt, eingeordnet oder entfernt." },
-      { question: "Kann ich die redaktionellen Änderungen selbst umsetzen?", answer: "Ja. Du kannst eine klare Änderungsgrundlage erhalten oder PATERNOGA mit Redaktion und Veröffentlichung beauftragen. Umfang und Verantwortlichkeiten werden vorher festgelegt." },
+      { question: "Wie gehen Sie mit alten Zahlen und Beispielen um?", answer: "Wir prüfen Zeitbezug, Quelle und Gültigkeitsbereich. Was nicht mehr belastbar ist, wird nicht still verlängert, sondern ersetzt, eingeordnet oder entfernt." },
+      { question: "Kann ich die redaktionellen Änderungen selbst umsetzen?", answer: "Ja. Sie können eine klare Änderungsgrundlage erhalten oder PATERNOGA mit Redaktion und Veröffentlichung beauftragen. Umfang und Verantwortlichkeiten werden vorher festgelegt." },
       { question: "Verbessert ein Refresh automatisch die AI-Sichtbarkeit?", answer: "Nein. Ein klarerer und aktuellerer Inhalt verbessert die Grundlage, aber externe Systeme entscheiden weiterhin selbst, welche Quellen sie verwenden und wie sie antworten." },
-      { question: "Was braucht ihr für den Start?", answer: "Wir brauchen die betroffenen URLs, das aktuelle Ziel der Seiten und vorhandene Quellen oder fachliche Ansprechpartner. PATERNOGA liefert den priorisierten Befund und je nach vereinbartem Umfang ein Änderungsbriefing oder die redaktionelle Umsetzung; Freigabe und Veröffentlichung werden vorab klar zugeordnet." }
+      { question: "Was brauchen Sie für den Start?", answer: "Wir brauchen die betroffenen URLs, das aktuelle Ziel der Seiten und vorhandene Quellen oder fachliche Ansprechpartner. PATERNOGA liefert den priorisierten Befund und je nach vereinbartem Umfang ein Änderungsbriefing oder die redaktionelle Umsetzung; Freigabe und Veröffentlichung werden vorab klar zugeordnet." }
     ]
   },
   closing: {
     eyebrow: "Refresh planen",
-    title: "Erhalte mehr Klarheit aus dem Inhalt, den du schon hast.",
+    title: "Gewinnen Sie mehr Klarheit aus dem Inhalt, den Sie schon haben.",
     text: "Wir markieren zuerst die Stellen, an denen eine kleine präzise Änderung mehr Orientierung schafft als eine komplett neue Seite.",
     cta: "Content-Check anfragen"
   }

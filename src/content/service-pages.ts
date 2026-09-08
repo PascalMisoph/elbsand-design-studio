@@ -73,18 +73,18 @@ export const geoAuditPages: Record<ServiceLocale, ServicePageContent> = {
     alternateEnPath: "/en/geo-audit/",
     meta: {
       title: "GEO Audit für KI-Sichtbarkeit | PATERNOGA",
-      description: "Prüfe, wie KI-Systeme dein Unternehmen einordnen, welche Quellen sie nutzen und wo die stärksten GEO-Hebel liegen. Jetzt GEO Audit anfragen."
+      description: "Prüfen Sie, wie KI-Systeme Ihr Unternehmen einordnen, welche Quellen sie nutzen und wo die stärksten GEO-Hebel liegen. Jetzt GEO Audit anfragen."
     },
     breadcrumb: { home: "Start", hub: "GEO-Optimierung", current: "GEO Audit" },
     eyebrow: "GEO Audit",
-    title: "GEO Audit: Wie sichtbar ist dein Unternehmen in ChatGPT & Co.?",
-    lead: "Wettbewerber erscheinen in Kaufantworten, dein Unternehmen kaum? Ein einmaliger bezahlter Audit untersucht Antworten, Quellen und deine wichtigsten Seiten.",
+    title: "GEO Audit: Wie sichtbar ist Ihr Unternehmen in ChatGPT & Co.?",
+    lead: "Wettbewerber erscheinen in Kaufantworten, Ihr Unternehmen kaum? Ein einmaliger bezahlter Audit untersucht Antworten, Quellen und Ihre wichtigsten Seiten.",
     primaryCta: "GEO Audit anfragen",
     secondaryCta: "Kostenfreier technischer KI-Check",
     outcomes: [
       { label: "Ausgangslage", title: "Sichtbarkeit einordnen", text: "Relevante Fragen und Antwortsysteme werden systematisch betrachtet." },
       { label: "Fehlerbilder", title: "Lücken erkennen", text: "Falsche Fakten, fehlende Quellen und unklare Signale werden sichtbar." },
-      { label: "Priorisierung", title: "Nächste Schritte festlegen", text: "Du erhältst eine nachvollziehbare Reihenfolge statt einer langen Mängelliste." }
+      { label: "Priorisierung", title: "Nächste Schritte festlegen", text: "Sie erhalten eine nachvollziehbare Reihenfolge statt einer langen Mängelliste." }
     ],
     demo: {
       variant: "audit",
@@ -104,13 +104,13 @@ export const geoAuditPages: Record<ServiceLocale, ServicePageContent> = {
       {
         eyebrow: "Prüfumfang",
         title: "Was wird bei einem GEO Audit geprüft?",
-        text: "Geprüft werden Antworten auf reale Käuferfragen, die dabei verwendeten Quellen, die Nennung deiner Marke und die Einordnung gegenüber Wettbewerbern. Eine einzelne Nennung sagt wenig darüber aus, ob ein System dein Angebot korrekt verstanden hat; deshalb betrachten wir Antworten, Begründungen, Quellen und wiederkehrende Muster gemeinsam.",
+        text: "Geprüft werden Antworten auf reale Käuferfragen, die dabei verwendeten Quellen, die Nennung Ihrer Marke und die Einordnung gegenüber Wettbewerbern. Eine einzelne Nennung sagt wenig darüber aus, ob ein System Ihr Angebot korrekt verstanden hat; deshalb betrachten wir Antworten, Begründungen, Quellen und wiederkehrende Muster gemeinsam.",
         points: ["Marke, Angebot und Standort", "Antworten auf reale Kundenfragen", "Verwendete und fehlende Quellen"]
       },
       {
         eyebrow: "Ergebnis",
-        title: "Was erhältst du nach dem Audit?",
-        text: "Du erhältst dokumentierte Befunde, eine begründete Prioritätenliste und die drei wichtigsten nächsten Maßnahmen. Jeder Befund wird einem umsetzbaren Hebel zugeordnet: Technik, Seitenstruktur, Fakten, vorhandene Inhalte oder neue Themen.",
+        title: "Was erhalten Sie nach dem Audit?",
+        text: "Sie erhalten dokumentierte Befunde, eine begründete Prioritätenliste und die drei wichtigsten nächsten Maßnahmen. Jeder Befund wird einem umsetzbaren Hebel zugeordnet: Technik, Seitenstruktur, Fakten, vorhandene Inhalte oder neue Themen.",
         points: ["Sofort behebbare Grundlagen", "Inhaltliche Lücken mit hoher Relevanz", "Mittelfristige Autoritäts- und Quellensignale"]
       }
     ],
@@ -118,7 +118,7 @@ export const geoAuditPages: Record<ServiceLocale, ServicePageContent> = {
       eyebrow: "Methode",
       title: "Wie läuft ein GEO Audit ab?",
       steps: [
-        { title: "Fragen festlegen", text: "Wir definieren die Themen und Entscheidungssituationen, in denen dein Unternehmen sichtbar sein sollte." },
+        { title: "Fragen festlegen", text: "Wir definieren die Themen und Entscheidungssituationen, in denen Ihr Unternehmen sichtbar sein sollte." },
         { title: "Antworten prüfen", text: "Mehrere relevante Such- und KI-Systeme werden mit konsistenten Fragestellungen betrachtet." },
         { title: "Ursachen analysieren", text: "Quellen, Fakten, Inhalte, Crawlability und Wettbewerbsumfeld werden miteinander verbunden." },
         { title: "Maßnahmen priorisieren", text: "Die Ergebnisse werden nach Wirkung, Aufwand und Abhängigkeiten geordnet." }
@@ -139,7 +139,7 @@ export const geoAuditPages: Record<ServiceLocale, ServicePageContent> = {
       title: "Vom Audit in die passende Umsetzung",
       items: [
         { title: "GEO-Optimierung", text: "Überblick über Methode, Leistungen und Betreuungsmodelle.", href: "/geo-optimierung/", image: "/images/geo-visibility-stock.webp", imagePosition: "center 44%" },
-        { title: "Kostenfreier KI-Check", text: "Eine kompakte erste technische Einordnung deiner Website.", href: "/#ki-check", image: "/images/contact/project-enquiry.webp", imagePosition: "center 54%" },
+        { title: "Kostenfreier KI-Check", text: "Eine kompakte erste technische Einordnung Ihrer Website.", href: "/#ki-check", image: "/images/contact/project-enquiry.webp", imagePosition: "center 54%" },
         { title: "Projekt besprechen", text: "Audit, Seiten-Sprint oder laufende Betreuung persönlich einordnen.", href: "/#kontakt", image: "/images/contact/consultation.webp", imagePosition: "center 42%" }
       ]
     },
@@ -147,15 +147,15 @@ export const geoAuditPages: Record<ServiceLocale, ServicePageContent> = {
       eyebrow: "FAQ",
       title: "Häufige Fragen zum GEO Audit",
       items: [
-        { question: "Welche KI-Systeme werden geprüft?", answer: "Je nach Zielgruppe und Auditumfang betrachten wir die sichtbaren Nutzererlebnisse von ChatGPT, Perplexity, Claude, Microsoft Copilot, Google AI Overviews und AI Mode sowie Gemini. Grok oder DeepSeek beziehen wir ein, wenn sie für dein Thema relevant sind. Entscheidend ist nicht die größtmögliche Anzahl, sondern die Systeme, die deine Kunden tatsächlich nutzen." },
-        { question: "Was lässt sich mit einem GEO Audit untersuchen?", answer: "Wir prüfen, wie häufig und in welchem Zusammenhang dein Unternehmen erscheint, wie dein Angebot beschrieben wird, welche Quellen Antworten prägen, wo Fakten falsch oder unvollständig sind und wie du gegenüber relevanten Wettbewerbern eingeordnet wirst. Zeiträume, Regionen oder Zielgruppen lassen sich bei Bedarf als eigener Prüfrahmen ergänzen." },
+        { question: "Welche KI-Systeme werden geprüft?", answer: "Je nach Zielgruppe und Auditumfang betrachten wir die sichtbaren Nutzererlebnisse von ChatGPT, Perplexity, Claude, Microsoft Copilot, Google AI Overviews und AI Mode sowie Gemini. Grok oder DeepSeek beziehen wir ein, wenn sie für Ihr Thema relevant sind. Entscheidend ist nicht die größtmögliche Anzahl, sondern die Systeme, die Ihre Kunden tatsächlich nutzen." },
+        { question: "Was lässt sich mit einem GEO Audit untersuchen?", answer: "Wir prüfen, wie häufig und in welchem Zusammenhang Ihr Unternehmen erscheint, wie Ihr Angebot beschrieben wird, welche Quellen Antworten prägen, wo Fakten falsch oder unvollständig sind und wie Sie gegenüber relevanten Wettbewerbern eingeordnet wirst. Zeiträume, Regionen oder Zielgruppen lassen sich bei Bedarf als eigener Prüfrahmen ergänzen." },
         { question: "Wie viele Marken oder Angebote kann ich prüfen lassen?", answer: "Ein klar abgegrenzter Audit konzentriert sich meist auf ein Unternehmen, ein Angebot und ein passendes Wettbewerbsumfeld. Mehrere Produktlinien, Standorte oder unterschiedliche Wettbewerbsgruppen können wir in getrennten Prüffeldern abbilden und vorab sinnvoll eingrenzen." },
         { question: "Wie viele Fragen werden untersucht?", answer: "Der Ausgangsrahmen umfasst 20 gemeinsam bestätigte Käuferfragen, drei verfügbare Suchoberflächen und drei Wiederholungen je Frage. Den tatsächlichen Plattformzugang und Umfang vereinbaren wir vor Beginn. Ausfälle werden dokumentiert, nicht als fehlende Sichtbarkeit gezählt." },
-        { question: "Wie verbessere ich meine Sichtbarkeit in der KI-Suche?", answer: "Der Audit zeigt, bei welchen Fragen Wettbewerber oder andere Quellen bevorzugt werden und warum. Daraus priorisieren wir konkrete Verbesserungen an Fakten, Inhalten, Quellen, Seitenstruktur und technischer Erreichbarkeit. PATERNOGA kann diese Maßnahmen anschließend mit dir planen oder direkt umsetzen." },
+        { question: "Wie verbessere ich meine Sichtbarkeit in der KI-Suche?", answer: "Der Audit zeigt, bei welchen Fragen Wettbewerber oder andere Quellen bevorzugt werden und warum. Daraus priorisieren wir konkrete Verbesserungen an Fakten, Inhalten, Quellen, Seitenstruktur und technischer Erreichbarkeit. PATERNOGA kann diese Maßnahmen anschließend mit Ihnen planen oder direkt umsetzen." },
         { question: "Welche Regionen und Sprachen lassen sich berücksichtigen?", answer: "Der Schwerpunkt liegt auf Deutschland und dem DACH-Markt, bei lokalen Unternehmen zusätzlich auf ihrem tatsächlichen Einzugsgebiet. Regionale und mehrsprachige Prüfungen sind möglich, wenn Angebot, Website und Zielgruppe dafür eine belastbare Grundlage bieten." },
         { question: "Garantiert ein Audit spätere Nennungen?", answer: "Nein. Ein Audit macht Voraussetzungen, Lücken und mögliche Hebel sichtbar. Eine konkrete Nennung oder Empfehlung durch ein externes System kann nicht garantiert werden." },
         { question: "Brauche ich bereits viele Inhalte?", answer: "Nein. Der Audit zeigt gerade, welche bestehenden Inhalte verwendbar sind und wo neue, klar belegte Inhalte sinnvoll wären." },
-        { question: "Was brauchen wir für den Start und was erhältst du?", answer: "Für den Start genügen deine Domain, das wichtigste Angebot, Zielmarkt oder Region und die Entscheidungssituationen, in denen dein Unternehmen sichtbar sein soll. Du erhältst einen priorisierten Auditbefund mit untersuchten Fragen, Antwortmustern, Quellen- und Technikhinweisen sowie klaren nächsten Entscheidungen. Fachliche Freigaben bleiben bei dir; PATERNOGA übernimmt Prüfung, Einordnung und Priorisierung." }
+        { question: "Was benötigen wir für den Start und was erhalten Sie?", answer: "Für den Start genügen Ihre Domain, das wichtigste Angebot, Zielmarkt oder Region und die Entscheidungssituationen, in denen Ihr Unternehmen sichtbar sein soll. Sie erhalten einen priorisierten Auditbefund mit untersuchten Fragen, Antwortmustern, Quellen- und Technikhinweisen sowie klaren nächsten Entscheidungen. Fachliche Freigaben bleiben bei Ihnen; PATERNOGA übernimmt Prüfung, Einordnung und Priorisierung." }
       ]
     },
     closing: { eyebrow: "Audit anfragen", title: "Klarheit vor der nächsten Maßnahme.", text: "Wir schauen zuerst, was bereits funktioniert, was Systeme missverstehen und welcher nächste Schritt wirklich sinnvoll ist.", cta: "GEO Audit besprechen" }

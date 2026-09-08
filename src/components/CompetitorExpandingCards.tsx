@@ -12,14 +12,14 @@ const cards = {
       id: "answer-fields",
       title: "Antwortfelder erkennen",
       description:
-        "Sieh, bei welchen Fragen ähnliche Angebote bereits als Referenz auftauchen.",
+        "Sehen Sie, bei welchen Fragen ähnliche Angebote bereits als Referenz auftauchen.",
       imgSrc: "/images/competitor-answer-fields.webp",
     },
     {
       id: "own-strength",
       title: "Eigene Stärke schärfen",
       description:
-        "Finde Merkmale, die dein Angebot verständlich von Alternativen unterscheiden.",
+        "Finden Sie Merkmale, die Ihr Angebot verständlich von Alternativen unterscheiden.",
       imgSrc: "/images/competitor-distinction.webp",
     },
     {

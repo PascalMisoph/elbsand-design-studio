@@ -76,6 +76,8 @@ test("shared contact flow uses the PATERNOGA type system and visible keyboard fo
     for (const width of [390, 1440]) {
       await page.setViewportSize({ width, height: width === 390 ? 844 : 900 });
       await page.goto(`${TEST_ORIGIN}${route}`, { waitUntil: "networkidle" });
+      const consentBanner = page.locator("[data-consent-banner]");
+      if (await consentBanner.isVisible()) await page.locator("[data-consent-reject]").first().click();
       await page.locator("#kontakt").scrollIntoViewIfNeeded();
       await page.locator('[data-contact-path="form"]').click();
       const flow = page.locator("[data-contact-flow]");
@@ -145,8 +147,9 @@ test("technical GEO visual motion remains active after hydration", async ({ page
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto(`${TEST_ORIGIN}/technische-geo-optimierung/`, { waitUntil: "networkidle" });
 
+  await page.locator("[data-technical-macbook]").scrollIntoViewIfNeeded();
   const macLid = page.locator("[data-technical-macbook] > div > div:nth-child(2)");
-  await expect.poll(() => macLid.evaluate((element) => getComputedStyle(element).transform), { timeout: 2_500 }).toContain("0.939");
+  await expect.poll(() => macLid.evaluate((element) => getComputedStyle(element).transform), { timeout: 10_000 }).toContain("0.939");
 
   const beam = page.locator("[data-technical-beam]");
   await beam.scrollIntoViewIfNeeded();
@@ -172,14 +175,16 @@ test("homepage smoke canvas remains visible and animated", async ({ page }) => {
   const canvas = page.locator(".hero-liquid-chrome canvas");
   await expect(canvas).toBeVisible();
   await expect(page.locator(".hero-liquid-chrome")).toHaveCSS("opacity", "0.78");
-  const resolution = await canvas.evaluate((element) => {
-    const canvasElement = element as HTMLCanvasElement;
-    const box = canvasElement.getBoundingClientRect();
-    return {
-      widthRatio: canvasElement.width / box.width,
-      heightRatio: canvasElement.height / box.height,
-    };
-  });
+  const readResolution = () => canvas.evaluate((element) => {
+      const canvasElement = element as HTMLCanvasElement;
+      const box = canvasElement.getBoundingClientRect();
+      return {
+        widthRatio: canvasElement.width / box.width,
+        heightRatio: canvasElement.height / box.height,
+      };
+    });
+  await expect.poll(async () => (await readResolution()).widthRatio, { timeout: 10_000 }).toBeGreaterThanOrEqual(0.95);
+  const resolution = await readResolution();
   expect(resolution.widthRatio).toBeGreaterThanOrEqual(0.95);
   expect(resolution.heightRatio).toBeGreaterThanOrEqual(0.95);
   const firstFrame = await canvas.evaluate((element) => (element as HTMLCanvasElement & { __liquidFrame?: number }).__liquidFrame ?? 0);

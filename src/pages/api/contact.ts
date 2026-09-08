@@ -180,7 +180,7 @@ const htmlConfirmation = (locale: string, reference: string) => {
   const title = isEnglish ? "The next step is ready." : "Der nächste Schritt ist vorbereitet.";
   const body = isEnglish
     ? "Pascal will review your details personally and get back to you with an initial assessment and suitable next steps."
-    : "Pascal prüft deine Angaben persönlich und meldet sich mit einer ersten Einschätzung und passenden nächsten Schritten.";
+    : "Pascal prüft Ihre Angaben persönlich und meldet sich mit einer ersten Einschätzung und passenden nächsten Schritten.";
   const back = isEnglish ? "Back to PATERNOGA" : "Zurück zu PATERNOGA";
 
   return `<!doctype html>

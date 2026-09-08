@@ -34,7 +34,7 @@ test.describe("Markdown content negotiation", () => {
       "0 / 100",
       "Diese Website konnte nicht zuverlässig abgerufen werden.",
       "Technischer Scan abgeschlossen",
-      "Dein Befund ist freigeschaltet.",
+      "Ihr Befund ist freigeschaltet.",
       "21 technische Einzelchecks abgeschlossen",
     ];
 
@@ -100,9 +100,9 @@ test.describe("Markdown content negotiation", () => {
 
     expect(response.status()).toBe(200);
     expect(response.headers()["content-type"]).toContain("text/markdown");
-    expect(body).toContain("SEO and GEO for your");
+    expect(body).toContain("SEO: Visibility in Google");
     expect(body).toContain("## Contact");
-    expect(body).not.toContain("SEO und GEO für deine");
+    expect(body).not.toContain("SEO und GEO für Ihre");
     expect(body).not.toContain("<astro-island");
   });
 

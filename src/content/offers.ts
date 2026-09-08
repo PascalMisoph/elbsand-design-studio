@@ -61,7 +61,7 @@ export const offers: Record<OfferLocale, Record<OfferId, OfferCopy>> = {
       priceNote: "Der Einstiegspreis gilt für den beschriebenen Basisumfang. Vor Projektstart stimmen wir den konkreten Umfang ab und halten ihn als verbindliches Angebot fest.",
       duration: "Rund 10 Arbeitstage nach vollständigem Briefing, Zugang und fachlicher Freigabe.",
       scope: "Bis zu drei bestehende wichtige Leistungsseiten für ein Angebot in einer vereinbarten Sprache. Bearbeitet werden Suchintention und Käuferjob, Angebotsklarheit, Informationsstruktur, fachliche Belege, interne Verlinkung, CTA und Anfrageweg sowie notwendige begrenzte technische Anpassungen. Die Umsetzung erfolgt direkt auf der bestehenden Website, soweit vereinbart.",
-      deliverables: "Umgesetzte Seitenänderungen, Qualitätsprüfung, ein dokumentierter Vorher- und Nachher-Stand, eine nachvollziehbare Änderungslogik und die nächsten Prioritäten. Fachliche Aussagen und Freigaben kommen von dir.",
+      deliverables: "Umgesetzte Seitenänderungen, Qualitätsprüfung, ein dokumentierter Vorher- und Nachher-Stand, eine nachvollziehbare Änderungslogik und die nächsten Prioritäten. Fachliche Aussagen und Freigaben kommen von Ihnen.",
       limits: "Kein kompletter Relaunch, keine unbegrenzte Content-Produktion oder Entwicklung, kein Branding, keine PR-Kampagne und keine vollständige Mehrsprachigkeit. Keine Zusage zu Rankings, KI-Nennungen oder einer bestimmten Zahl an Anfragen.",
       cta: "Seiten-Sprint anfragen",
       ctaHref: "#kontakt",

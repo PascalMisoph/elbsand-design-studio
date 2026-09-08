@@ -33,12 +33,12 @@ const answerPlatforms = [
   { name: "Claude", logo: claudeLogo },
 ];
 const presenceFeatures = de ? [
-  { title: "Sichtbarkeits-Scores", text: "Miss mit Sichtbarkeits-Score und Share-of-Voice-Metriken, wie oft du in KI-Antworten erscheinst." },
-  { title: "Stimmung & Themen", text: "Analysiere, wie KI deine Marke beschreibt. Erkenne Schlüsselthemen und wiederkehrende Narrative." },
-  { title: "Quellenautorität", text: "Sieh, welche Websites KI-generierte Antworten über deine Marke beeinflussen, und verfolge ihre Autorität." },
-  { title: "Faktencheck deiner Marke", text: "Verstehe, welche Aussagen KI über deine Marke trifft, welche Quellen Ungenauigkeiten verursachen und wie du sie korrigierst." },
-  { title: "Wettbewerbsvergleich", text: "Vergleiche deine Präsenz mit Branchenführern und relevanten Wettbewerbern." },
-  { title: "Plattformvergleich", text: "Erkenne Unterschiede bei Sichtbarkeit, Genauigkeit und Darstellung auf den wichtigsten KI-Plattformen." },
+  { title: "Sichtbarkeits-Scores", text: "Messen Sie mit Sichtbarkeits-Score und Share-of-Voice-Metriken, wie oft Sie in KI-Antworten erscheinen." },
+  { title: "Stimmung & Themen", text: "Analysieren Sie, wie KI Ihre Marke beschreibt. Erkennen Sie Schlüsselthemen und wiederkehrende Narrative." },
+  { title: "Quellenautorität", text: "Sehen Sie, welche Websites KI-generierte Antworten über Ihre Marke beeinflussen, und verfolgen Sie ihre Autorität." },
+  { title: "Faktencheck Ihrer Marke", text: "Verstehen Sie, welche Aussagen KI über Ihre Marke trifft, welche Quellen Ungenauigkeiten verursachen und wie Sie sie korrigieren." },
+  { title: "Wettbewerbsvergleich", text: "Vergleichen Sie Ihre Präsenz mit Branchenführern und relevanten Wettbewerbern." },
+  { title: "Plattformvergleich", text: "Erkennen Sie Unterschiede bei Sichtbarkeit, Genauigkeit und Darstellung auf den wichtigsten KI-Plattformen." },
 ] : [
   { title: "Visibility Scores", text: "Measure how often you appear in AI answers with visibility score and share of voice metrics." },
   { title: "Sentiment & Keyword Insights", text: "Analyze how AI describes your brand. Identify key themes, topics, and recurring narratives." },
@@ -58,12 +58,12 @@ const presenceFeatures = de ? [
     </section>
 
     <OfferScope lang={page.lang} offer="geo_audit" />
-    <ServicePresenceGrid heading={de ? "Verstehe und ordne deine KI-Präsenz ein" : "Understand and assess your AI presence"} items={presenceFeatures} lang={page.lang} />
+    <ServicePresenceGrid heading={de ? "Verstehen und ordnen Sie Ihre KI-Präsenz ein" : "Understand and assess your AI presence"} items={presenceFeatures} lang={page.lang} />
 
     <section id="audit-story" class="a-story a-shell" data-a-story>
       <div class="a-story-copy">
-        <h2>{de ? "Erkenne, was KI potenziellen Kunden über dein Unternehmen sagt" : "See what AI tells potential customers about your business"}</h2>
-        <p>{de ? "Du erfährst, ob dein Angebot korrekt verstanden wird, welche Quellen das Bild prägen und was du konkret verbessern kannst, um bei relevanten Entscheidungen sichtbarer und vertrauenswürdiger zu werden." : "Find out whether your offer is understood correctly, which sources shape the story and what to improve so your business becomes more visible and credible at relevant decision moments."}</p>
+        <h2>{de ? "Erkennen Sie, was KI potenziellen Kunden über Ihr Unternehmen sagt" : "See what AI tells potential customers about your business"}</h2>
+        <p>{de ? "Sie erfahren, ob Ihr Angebot korrekt verstanden wird, welche Quellen das Bild prägen und was Sie konkret verbessern können, um bei relevanten Entscheidungen sichtbarer und vertrauenswürdiger zu werden." : "Find out whether your offer is understood correctly, which sources shape the story and what to improve so your business becomes more visible and credible at relevant decision moments."}</p>
       </div>
       <div class="a-story-list">
         {page.method.steps.map((step, index) => {
@@ -101,7 +101,7 @@ const presenceFeatures = de ? [
       <div><details open><summary>{de ? "PATERNOGA: eigener Suchstart, 1.–5. September 2026" : "PATERNOGA: our search baseline, 1–5 September 2026"}<span aria-hidden="true">+</span></summary>
         <p>{de ? "Befund: Der eigene Search-Console-Export enthält 42 Website-Impressionen und sechs Klicks. Für die Suchanfrage „geo audit“ wurde eine Impression ohne Klick bei durchschnittlicher Position 85 ausgewiesen." : "Finding: Our Search Console export contains 42 property impressions and six clicks. The query ‘geo audit’ has one impression, no clicks and an average position of 85."}</p>
         <p>{de ? "Grenze: Das ist ein sehr kleiner Google-Ausgangsstand, kein stabiler Rankingnachweis und keine Messung von KI-Nennungen. Jüngste Daten können vorläufig sein. Ein gültiges Consumer-AI-Antwortpanel liegt für diese Arbeitsprobe noch nicht vor – deshalb zeigen wir keine erfundene Mention Rate." : "Limitation: This is a very small Google baseline, not a stable ranking result or a measurement of AI mentions. Recent data may be preliminary. This sample does not yet have a valid consumer-AI answer panel, so we do not show an invented mention rate."}</p>
-        <p>{de ? "Entscheidung: Zuerst den Audit-Anfrageweg und die Leadzuordnung korrigieren, anschließend ein wiederholbares Käuferfragen-Panel messen. Genau diese Trennung aus Beobachtung, Grenze und priorisierter Handlung erhältst du im Audit; ergänzt um die tatsächlich erhobenen Antworten, Quellen und Wettbewerber." : "Decision: First correct the audit enquiry path and lead attribution, then measure a repeatable buyer-question panel. Your audit uses this separation of observation, limitation and prioritised action, supplemented with the answers, sources and competitors actually observed."}</p>
+        <p>{de ? "Entscheidung: Zuerst den Audit-Anfrageweg und die Leadzuordnung korrigieren, anschließend ein wiederholbares Käuferfragen-Panel messen. Genau diese Trennung aus Beobachtung, Grenze und priorisierter Handlung erhalten Sie im Audit; ergänzt um die tatsächlich erhobenen Antworten, Quellen und Wettbewerber." : "Decision: First correct the audit enquiry path and lead attribution, then measure a repeatable buyer-question panel. Your audit uses this separation of observation, limitation and prioritised action, supplemented with the answers, sources and competitors actually observed."}</p>
       </details></div>
     </section>
     <section class="a-faq a-shell"><div><p class="a-kicker">{page.faq.eyebrow}</p><h2>{page.faq.title}</h2></div><div>{page.faq.items.map((item) => <details><summary>{item.question}<span aria-hidden="true">+</span></summary><p>{item.answer}</p></details>)}</div></section>

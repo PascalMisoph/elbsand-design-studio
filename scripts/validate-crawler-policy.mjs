@@ -8,7 +8,19 @@ const llmsFull = await readFile(new URL("../public/llms-full.txt", import.meta.u
 const groups = parseRobots(robots);
 const targetPaths = [...sitemap.matchAll(/<loc>https:\/\/www\.paternoga-seo-geo\.de([^<]*)<\/loc>/g)]
   .map((match) => match[1] || "/");
-const agents = ["Googlebot", "Bingbot", "OAI-SearchBot", "PerplexityBot"];
+const agents = [
+  "Googlebot",
+  "Google-Extended",
+  "Bingbot",
+  "Applebot",
+  "GPTBot",
+  "OAI-SearchBot",
+  "ChatGPT-User",
+  "PerplexityBot",
+  "Perplexity-User",
+  "ClaudeBot",
+  "Claude-SearchBot",
+];
 const failures = [];
 
 if (!/^sitemap:\s*https:\/\/www\.paternoga-seo-geo\.de\/sitemap\.xml\s*$/im.test(robots)) {

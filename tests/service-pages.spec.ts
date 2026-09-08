@@ -57,10 +57,10 @@ for (const [route, lang] of serviceRoutes) {
     expect(await page.locator("main").evaluate((main) => main.lastElementChild?.classList.contains("subpage-contact"))).toBe(true);
     await expect(page.locator(".site-footer-column")).toHaveCount(4);
     if (route === "/geo-audit/") {
-      await expect(page.locator("h1")).toHaveText("GEO Audit: Wie sichtbar ist dein Unternehmen in ChatGPT & Co.?");
+      await expect(page.locator("h1")).toHaveText("GEO Audit: Wie sichtbar ist Ihr Unternehmen in ChatGPT & Co.?");
       await expect(page.locator(".a-hero-copy > p:not(.a-kicker)")).toContainText("einmaliger bezahlter Audit");
-      await expect(page.locator(".a-presence-grid h3")).toHaveText(["Sichtbarkeits-Scores", "Stimmung & Themen", "Quellenautorität", "Faktencheck deiner Marke", "Wettbewerbsvergleich", "Plattformvergleich"]);
-      await expect(page.locator(".a-presence h2")).toHaveText("Verstehe und ordne deine KI-Präsenz ein");
+      await expect(page.locator(".a-presence-grid h3")).toHaveText(["Sichtbarkeits-Scores", "Stimmung & Themen", "Quellenautorität", "Faktencheck Ihrer Marke", "Wettbewerbsvergleich", "Plattformvergleich"]);
+      await expect(page.locator(".a-presence h2")).toHaveText("Verstehen und ordnen Sie Ihre KI-Präsenz ein");
       for (const selector of [".score-visual-image img", ".sentiment-visual-image img", ".citation-visual-image img", ".fact-visual-image img", ".benchmark-visual-image img"]) {
         await page.locator(selector).scrollIntoViewIfNeeded();
         await expect(page.locator(selector)).toHaveJSProperty("naturalWidth", 1254);
@@ -225,9 +225,9 @@ test("shared FAQ keeps single-open native disclosure behavior", async ({ page })
 });
 
 const offerRoutes = [
-  { path: "/geo-audit/", price: "ab 1.500 €", suffix: "netto, einmalig", minPrice: 1500, recurring: false, labels: ["Preis", "Geeignet für", "Umfang", "Du erhältst", "Dauer", "Grenzen", "Nächster Schritt"] },
-  { path: "/content-optimierung-ai-suche/", price: "ab 2.500 €", suffix: "netto, einmalig", minPrice: 2500, recurring: false, labels: ["Preis", "Geeignet für", "Umfang", "Du erhältst", "Dauer", "Grenzen", "Nächster Schritt"] },
-  { path: "/seo-betreuung/", price: "ab 1.250 €", suffix: "netto / Monat", minPrice: 1250, recurring: true, labels: ["Preis", "Geeignet für", "Umfang", "Du erhältst", "Dauer", "Grenzen", "Nächster Schritt"] },
+  { path: "/geo-audit/", price: "ab 1.500 €", suffix: "netto, einmalig", minPrice: 1500, recurring: false, labels: ["Preis", "Geeignet für", "Umfang", "Sie erhalten", "Dauer", "Grenzen", "Nächster Schritt"] },
+  { path: "/content-optimierung-ai-suche/", price: "ab 2.500 €", suffix: "netto, einmalig", minPrice: 2500, recurring: false, labels: ["Preis", "Geeignet für", "Umfang", "Sie erhalten", "Dauer", "Grenzen", "Nächster Schritt"] },
+  { path: "/seo-betreuung/", price: "ab 1.250 €", suffix: "netto / Monat", minPrice: 1250, recurring: true, labels: ["Preis", "Geeignet für", "Umfang", "Sie erhalten", "Dauer", "Grenzen", "Nächster Schritt"] },
   { path: "/en/geo-audit/", price: "from €1,500", suffix: "net, one-off", minPrice: 1500, recurring: false, labels: ["Price", "Suited to", "Scope", "You receive", "Duration", "Limits", "Next step"] },
   { path: "/en/content-optimization-ai-search/", price: "from €2,500", suffix: "net, one-off", minPrice: 2500, recurring: false, labels: ["Price", "Suited to", "Scope", "You receive", "Duration", "Limits", "Next step"] },
   { path: "/en/seo-support/", price: "from €1,250", suffix: "net / month", minPrice: 1250, recurring: true, labels: ["Price", "Suited to", "Scope", "You receive", "Duration", "Limits", "Next step"] },

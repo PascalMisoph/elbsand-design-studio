@@ -101,7 +101,7 @@ export const content = {
           text: "Wir analysieren, wonach potenzielle Kunden suchen, welche Seiten dafür sichtbar sein müssen und wo Wettbewerber aktuell vor Ihnen stehen. Anschließend optimieren wir genau diese Seiten für relevante Suchanfragen.",
           features: [
             { label: "Suchintention" },
-            { label: "Onpage SEO" },
+            { label: "Onpage SEO", href: "/seo-dresden/" },
             { label: "technische SEO", href: "/technische-geo-optimierung/" },
             { label: "interne Verlinkung" }
           ],
@@ -298,7 +298,7 @@ export const content = {
         summaryLabel: "Ihr Anliegen",
         privacy: "Persönlich gelesen · unverbindlich · vertraulich behandelt",
         sending: "Wird sicher übermittelt …",
-        errorMessage: "Das hat gerade nicht funktioniert. Bitte versuche es noch einmal.",
+        errorMessage: "Das hat gerade nicht funktioniert. Bitte versuchen Sie es noch einmal.",
         successEyebrow: "Anfrage angekommen",
         successTitle: "Der nächste Schritt ist vorbereitet.",
         successBody: "Pascal prüft Ihre Angaben persönlich und meldet sich mit einer ersten Einschätzung und passenden nächsten Schritten.",
@@ -357,7 +357,7 @@ export const content = {
           text: "We analyse what potential customers search for, which pages need to be visible and where competitors currently appear ahead of you. Then we optimise those pages for relevant searches.",
           features: [
             { label: "Search intent" },
-            { label: "On-page SEO" },
+            { label: "On-page SEO", href: "/en/seo-agency-dresden/" },
             { label: "technical SEO", href: "/en/technical-geo-optimization/" },
             { label: "internal linking" }
           ],

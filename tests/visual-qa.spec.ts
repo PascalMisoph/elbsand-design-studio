@@ -115,8 +115,8 @@ test("Profound-style header keeps the service network simple and accessible", as
   const desktopNav = page.locator(".desktop-nav");
   expect(await desktopNav.locator(":scope > .header-menu > summary").allTextContents()).toEqual([
     "Leistungen",
-    "Ressourcen",
     "Lösungen",
+    "Ressourcen",
   ]);
   expect(await desktopNav.locator(":scope > .header-direct-link").allTextContents()).toEqual([
     "Referenzen",
@@ -126,7 +126,7 @@ test("Profound-style header keeps the service network simple and accessible", as
 
   await desktopNav.locator(".header-menu > summary").first().click();
   await expect(desktopNav.locator(".header-menu").first()).toHaveAttribute("open", "");
-  await expect(desktopNav.locator(".header-menu").first().getByRole("link")).toHaveCount(16);
+  await expect(desktopNav.locator(".header-menu").first().getByRole("link")).toHaveCount(14);
   await desktopNav.locator(".header-menu > summary").nth(1).click();
   await expect(desktopNav.locator(".header-menu").first()).not.toHaveAttribute("open", "");
   await expect(desktopNav.locator(".header-menu").nth(1)).toHaveAttribute("open", "");
@@ -139,8 +139,8 @@ test("Profound-style header keeps the service network simple and accessible", as
   await expect(mobileNav).toBeVisible();
   expect(await mobileNav.locator(":scope > .mobile-nav-group > summary").allTextContents()).toEqual([
     "Leistungen⌄",
-    "Ressourcen⌄",
     "Lösungen⌄",
+    "Ressourcen⌄",
   ]);
   const mobileGeometry = await mobileNav.evaluate((element) => {
     const box = element.getBoundingClientRect();
@@ -201,10 +201,10 @@ test("project section uses the final real-image selection", async ({ page }) => 
 
 test("service checks replace numbers and animate once in view", async ({ page }) => {
   await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
-  await expect(page.locator(".offer-item .offer-check")).toHaveCount(3);
+  await expect(page.locator(".offer-item .offer-check")).toHaveCount(4);
   expect(await page.locator(".offer-item").evaluateAll((items) =>
     items.map((item) => item.querySelector(":scope > span")?.textContent?.trim())
-  )).toEqual(["1", "2", "3"]);
+  )).toEqual(["1", "2", "3", "4"]);
   await page.waitForTimeout(1100);
   await expect(page.locator(".offer-item.is-visible")).toHaveCount(0);
   await expect(page.locator(".offer-check-circle").first()).toHaveCSS("stroke-dashoffset", "1px");
@@ -226,8 +226,8 @@ test("homepage keeps the AI check boundary and offer heading readable", async ({
   await expect(page.locator(".ai-check")).toHaveCSS("border-bottom-width", "1px");
   await expect(page.locator(".ai-check")).toHaveCSS("border-bottom-style", "solid");
   await expect(page.locator(".offer-heading-line")).toHaveCount(2);
-  await expect(page.locator(".offer-heading h2")).toHaveText("Wenige Seiten entscheiden. An denen arbeiten wir");
-  await expect(page.locator(".offer-heading-line").nth(1)).toHaveText("An denen arbeiten wir");
+  await expect(page.locator(".offer-heading h2")).toHaveText("Wenige Seiten entscheiden. Genau dort setzen wir an.");
+  await expect(page.locator(".offer-heading-line").nth(1)).toHaveText("Genau dort setzen wir an.");
 
   const headingLines = await page.locator(".offer-heading-line").evaluateAll((lines) =>
     lines.map((line) => {
@@ -239,10 +239,10 @@ test("homepage keeps the AI check boundary and offer heading readable", async ({
 
   await page.setViewportSize({ width: 375, height: 812 });
   await page.reload({ waitUntil: "networkidle" });
-  await expect(page.locator(".offer-heading h2")).toHaveText("Wenige Seiten entscheiden. An denen arbeiten wir");
+  await expect(page.locator(".offer-heading h2")).toHaveText("Wenige Seiten entscheiden. Genau dort setzen wir an.");
 });
 
-test("SEO and GEO uses an accessible responsive Bento grid", async ({ page }) => {
+test("SEO and GEO uses an accessible editorial perspective layout", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
 
@@ -250,16 +250,15 @@ test("SEO and GEO uses an accessible responsive Bento grid", async ({ page }) =>
   const desktopNav = page.locator(".desktop-nav");
   await desktopNav.locator(".header-menu > summary").first().click();
   await expect(desktopNav.locator(".header-mega-feature").first()).toHaveAttribute("href", "/geo-optimierung/");
-  await expect(section.locator("h2")).toHaveText("Google, KI-Systeme und Menschen lesen dieselbe Seite");
-  await expect(section.locator(".visibility-tile")).toHaveCount(5);
-  await expect(section.getByRole("link", { name: "Mehr über SEO & GEO erfahren" })).toHaveAttribute("href", "/geo-optimierung/");
-  await expect(page.locator(".offer-detail-link")).toHaveAttribute("href", "/geo-optimierung/");
+  await expect(section.locator("h2")).toHaveText("Google, KI Systeme und Menschen lesen dieselbe Seite.");
+  await expect(section.locator(".visibility-perspective")).toHaveCount(3);
+  await expect(page.locator(".offer-detail-link")).toHaveCount(2);
+  await expect(page.locator(".offer-detail-link").first()).toHaveAttribute("href", "/geo-optimierung/");
   await expect(page.locator(".site-footer").getByRole("link", { name: "GEO-Optimierung" })).toHaveAttribute("href", "/geo-optimierung/");
-  expect(await section.locator(".visibility-tile h3").allTextContents()).toEqual([
-    "Technisches SEO",
-    "Lokale Auffindbarkeit",
-    "Strukturierte Informationen",
-    "GEO-Optimierung",
+  expect(await section.locator(".visibility-perspective h3").allTextContents()).toEqual([
+    "Google",
+    "KI Systeme",
+    "Menschen",
   ]);
   expect(await section.locator(".visibility-systems li span").allTextContents()).toEqual([
     "Google",
@@ -267,32 +266,24 @@ test("SEO and GEO uses an accessible responsive Bento grid", async ({ page }) =>
     "Claude",
     "Perplexity",
   ]);
-  await expect(section.locator(".visibility-sources a")).toHaveCount(2);
-  await expect(section.locator('.visibility-sources a[href*="/2025/07/22/"]')).toBeVisible();
-  await expect(section.locator('.visibility-sources a[href*="/2026/06/17/"]')).toBeVisible();
-  await expect(section.locator(".visibility-note")).toContainText("kann nicht garantiert werden");
-  await expect(section.locator(".visibility-geo-image")).toHaveAttribute("src", "/images/geo-visibility-stock.webp");
-
   const desktopLayout = await section.evaluate((element) => {
-    const tiles = [...element.querySelectorAll<HTMLElement>(".visibility-tile")].map((tile) => tile.getBoundingClientRect());
-    const geo = element.querySelector<HTMLElement>(".visibility-tile--geo")!.getBoundingClientRect();
-    return { first: tiles[0], second: tiles[1], structured: tiles[2], statistic: tiles[3], geo };
+    return [...element.querySelectorAll<HTMLElement>(".visibility-perspective")].map((item) => {
+      const box = item.getBoundingClientRect();
+      return { top: box.top, right: box.right, bottom: box.bottom, left: box.left, width: box.width };
+    });
   });
-  expect(desktopLayout.second.left).toBeGreaterThan(desktopLayout.first.right);
-  expect(desktopLayout.geo.right).toBeLessThan(desktopLayout.first.left);
-  expect(desktopLayout.geo.width).toBeGreaterThan(desktopLayout.first.width * 1.9);
-  expect(desktopLayout.geo.height).toBeGreaterThan(desktopLayout.first.height * 1.9);
-  expect(Math.abs(desktopLayout.structured.height - desktopLayout.statistic.height)).toBeLessThan(1);
-  expect(Math.abs(desktopLayout.structured.bottom - desktopLayout.statistic.bottom)).toBeLessThan(1);
-  expect(Math.abs(desktopLayout.geo.bottom - desktopLayout.statistic.bottom)).toBeLessThan(1);
+  expect(desktopLayout[1].left).toBeGreaterThanOrEqual(desktopLayout[0].right - 1);
+  expect(desktopLayout[2].left).toBeGreaterThanOrEqual(desktopLayout[1].right - 1);
+  expect(Math.max(...desktopLayout.map(({ width }) => width)) - Math.min(...desktopLayout.map(({ width }) => width))).toBeLessThan(2);
+  expect(Math.max(...desktopLayout.map(({ top }) => top)) - Math.min(...desktopLayout.map(({ top }) => top))).toBeLessThan(2);
 
   await page.setViewportSize({ width: 375, height: 812 });
   const mobileLayout = await section.evaluate((element) => {
-    const tiles = [...element.querySelectorAll<HTMLElement>(".visibility-tile")].map((tile) => tile.getBoundingClientRect());
-    return tiles.map(({ top, right, bottom, left, width }) => ({ top, right, bottom, left, width }));
+    const items = [...element.querySelectorAll<HTMLElement>(".visibility-perspective")].map((item) => item.getBoundingClientRect());
+    return items.map(({ top, right, bottom, left, width }) => ({ top, right, bottom, left, width }));
   });
   expect(mobileLayout.every((tile) => tile.width <= 335)).toBe(true);
-  expect(mobileLayout.every((tile, index) => index === 0 || tile.top > mobileLayout[index - 1].bottom)).toBe(true);
+  expect(mobileLayout.every((tile, index) => index === 0 || tile.top >= mobileLayout[index - 1].bottom - 1)).toBe(true);
 });
 
 test("process contact card is responsive and directly actionable", async ({ page }) => {
@@ -418,8 +409,8 @@ test("editorial support bridges process and contact with responsive portraits", 
 test("English route and form semantics", async ({ page }) => {
   await page.goto(`${TEST_ORIGIN}/en/`, { waitUntil: "networkidle" });
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
-  const calendarTab = page.getByRole("tab", { name: "Book a visibility consultation" });
-  const formTab = page.getByRole("tab", { name: "Enquire about SEO & GEO" });
+  const calendarTab = page.getByRole("tab", { name: /Review visibility together/ });
+  const formTab = page.getByRole("tab", { name: /Discuss a concrete project/ });
   await expect(calendarTab).toHaveAttribute("aria-selected", "false");
   await expect(page.locator('[data-contact-panel="calendar"]')).toBeHidden();
   await expect(page.locator('form[data-contact-panel="form"]')).toBeHidden();
@@ -518,7 +509,7 @@ test("AI check gates blurred findings behind first name and email", async ({ pag
   expect(initialAiCheck.text).not.toContain("Wartet");
   expect(initialAiCheck.text).not.toContain("0 / 100");
   expect(initialAiCheck.text).not.toContain("Technischer Scan abgeschlossen");
-  expect(initialAiCheck.text).not.toContain("Dein Befund ist freigeschaltet.");
+  expect(initialAiCheck.text).not.toContain("Ihr Befund ist freigeschaltet.");
 
   const compactStart = await page.locator("#ki-check .ai-check-surface").evaluate((surface) => {
     const phases = surface.querySelector(".ai-check-phases")!;
@@ -547,7 +538,7 @@ test("AI check gates blurred findings behind first name and email", async ({ pag
   await expect(result.locator("[data-result-checks]")).toHaveClass(/is-locked/);
   await expect(result.locator(".ai-result-checks-grid")).toHaveCSS("filter", "blur(7px)");
   await expect(result.locator("[data-lead-gate] h3")).toHaveText("Technischer Scan abgeschlossen");
-  await expect(result.locator(".ai-lead-intro")).toHaveText("Deine Ergebnisse und Optimierungspotenziale sind jetzt verfügbar.");
+  await expect(result.locator(".ai-lead-intro")).toHaveText("Ihre Ergebnisse und Optimierungspotenziale sind jetzt verfügbar.");
   await expect(result.locator("[data-ai-lead-form] button")).toHaveText("Ergebnisse im Detail ansehen");
   await expect(result.locator("input[name='name']")).toBeVisible();
   await expect(result.locator("input[name='email']")).toBeVisible();
@@ -663,7 +654,7 @@ test("AI check exposes one active state across failure, scan and result transiti
   expect(initial.text).toContain("KI-Bereitschaft prüfen");
   expect(initial.text).not.toContain("Wartet");
   expect(initial.text).not.toContain("0 / 100");
-  expect(initial.text).not.toContain("Dein Befund ist freigeschaltet.");
+  expect(initial.text).not.toContain("Ihr Befund ist freigeschaltet.");
 
   const urlInput = page.locator("#ki-check input[name='url']");
   await urlInput.fill("example.com");
@@ -677,9 +668,9 @@ test("AI check exposes one active state across failure, scan and result transiti
   const scanning = page.locator("#ki-check [data-ai-screen='2']");
   await expect(scanning).toBeVisible();
   expect((await state()).screens).toEqual(["2"]);
-  await expect(scanning).toContainText("Wir prüfen deine Website live.");
+  await expect(scanning).toContainText("Wir prüfen Ihre Website live.");
   await expect(scanning).not.toContainText("0 / 100");
-  await expect(scanning).not.toContainText("Dein Befund ist freigeschaltet.");
+  await expect(scanning).not.toContainText("Ihr Befund ist freigeschaltet.");
 
   releaseScan();
   const result = page.locator("#ki-check [data-ai-screen='3']");

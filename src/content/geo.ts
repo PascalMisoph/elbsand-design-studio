@@ -18,10 +18,10 @@ export const geoContent = {
     },
     method: {
       eyebrow: "Was GEO sichtbar macht",
-      title: "Wie KI-Systeme dein Unternehmen einordnen",
+      title: "Wie KI-Systeme Ihr Unternehmen einordnen",
       body: "Generative Suchsysteme verbinden Suchindizes, Webquellen und Sprachmodelle. Sichtbarkeit entsteht deshalb nicht durch einen einzelnen GEO-Trick, sondern durch hilfreiche Inhalte, eindeutige Fakten und technisch erreichbare Seiten.",
       leadTitle: "Einordnen, bevor empfohlen wird",
-      leadBody: "Wir prüfen nicht nur, ob dein Unternehmen genannt wird. Wir untersuchen, welche Antwort dafür ausschlaggebend war, welche Quelle verwendet wurde und ob Leistungen, Standort und Expertise korrekt wiedergegeben werden.",
+      leadBody: "Wir prüfen nicht nur, ob Ihr Unternehmen genannt wird. Wir untersuchen, welche Antwort dafür ausschlaggebend war, welche Quelle verwendet wurde und ob Leistungen, Standort und Expertise korrekt wiedergegeben werden.",
       systems: [
         {
           name: "Quellen",
@@ -96,7 +96,7 @@ export const geoContent = {
     },
     cta: {
       eyebrow: "Kontakt",
-      title: "Wie möchtest du starten?",
+      title: "Wie möchten Sie starten?",
       quickOption: "Direkt Erstgespräch buchen",
       detailOption: "GEO-Audit anfragen",
       valueLine: "Von der ersten Messung bis zur sichtbaren Verbesserung.",
@@ -108,7 +108,7 @@ export const geoContent = {
         stepLabel: "Schritt",
         ofLabel: "von",
         back: "Zurück",
-        intentQuestion: "Wo stehst du gerade?",
+        intentQuestion: "Wo stehen Sie gerade?",
         intentOptions: [
           { value: "new", label: "Noch keine KI-Sichtbarkeit geprüft" },
           { value: "improve", label: "Erste Nennungen oder Auffälligkeiten gesehen" },
@@ -116,26 +116,26 @@ export const geoContent = {
         ],
         detailQuestions: {
           new: "Welche Website sollen wir prüfen?",
-          improve: "Was ist dir bisher aufgefallen?",
-          advice: "Was möchtest du mit dem Audit erreichen?"
+          improve: "Was ist Ihnen bisher aufgefallen?",
+          advice: "Was möchten Sie mit dem Audit erreichen?"
         },
         detailPlaceholders: {
           new: "Die Website-Adresse genügt.",
           improve: "Website-Adresse plus ein kurzer Hinweis.",
-          advice: "Website-Adresse und ein bis zwei Sätze zu deinem Ziel."
+          advice: "Website-Adresse und ein bis zwei Sätze zu Ihrem Ziel."
         },
-        contactQuestion: "Wie dürfen wir dich erreichen?",
+        contactQuestion: "Wie dürfen wir Sie erreichen?",
         nameLabel: "Name",
         emailLabel: "E-Mail",
         next: "Weiter",
         submit: "GEO-Audit anfragen",
-        summaryLabel: "Dein Ausgangspunkt",
+        summaryLabel: "Ihr Ausgangspunkt",
         privacy: "Persönlich gelesen · unverbindlich · keine Weitergabe",
         sending: "Wird gesendet …",
-        errorMessage: "Das hat gerade nicht funktioniert. Bitte versuche es noch einmal.",
+        errorMessage: "Das hat gerade nicht funktioniert. Bitte versuchen Sie es noch einmal.",
         successEyebrow: "Anfrage gesendet",
-        successTitle: "Danke für deine Audit-Anfrage.",
-        successBody: "Deine Angaben sind angekommen. Pascal sieht sie sich persönlich an und meldet sich bei dir.",
+        successTitle: "Danke für Ihre Audit-Anfrage.",
+        successBody: "Ihre Angaben sind angekommen. Pascal sieht sie sich persönlich an und meldet sich bei Ihnen.",
         successAgain: "Weitere Anfrage starten"
       }
     },

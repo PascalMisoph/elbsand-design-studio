@@ -13,12 +13,12 @@ export const promptResearchPages: Record<ServiceLocale, ResearchSupportContent> 
     alternateEnPath: "/en/prompt-research/",
     meta: {
       title: "Prompt-Recherche für KI-Sichtbarkeit | PATERNOGA",
-      description: "Ordne echte Kundenfragen, Suchintentionen und Themenfelder, damit GEO-Maßnahmen an relevanten Entscheidungen ansetzen. Prompt-Recherche anfragen."
+      description: "Ordnen Sie echte Kundenfragen, Suchintentionen und Themenfelder, damit GEO-Maßnahmen an relevanten Entscheidungen ansetzen. Prompt-Recherche anfragen."
     },
     breadcrumb: { home: "Start", hub: "GEO-Optimierung", current: "Prompt-Recherche" },
     eyebrow: "Prompt-Recherche",
     title: "Welche Fragen stellen potenzielle Kunden an ChatGPT & Co.?",
-    lead: "Wir übersetzen reale Entscheidungssituationen in ein priorisiertes Prompt-Set. So wird sichtbar, welche Themen, Formulierungen und Belege für deine Zielgruppe wirklich zählen.",
+    lead: "Wir übersetzen reale Entscheidungssituationen in ein priorisiertes Prompt-Set. So wird sichtbar, welche Themen, Formulierungen und Belege für Ihre Zielgruppe wirklich zählen.",
     primaryCta: "Prompt-Recherche anfragen",
     secondaryCta: "Methode ansehen",
     outcomes: [
@@ -61,7 +61,7 @@ export const promptResearchPages: Record<ServiceLocale, ResearchSupportContent> 
         { title: "Entscheidungssituationen sammeln", text: "Wir sprechen über Angebote, Zielgruppen und die Momente, in denen Orientierung oder Vertrauen fehlen." },
         { title: "Fragen formulieren", text: "Aus Sprache, Website, Wettbewerb und Kundenwissen entsteht ein klar abgegrenztes Prompt-Set." },
         { title: "Intentionen clustern", text: "Fragen werden nach Bedarf, Nähe zur Entscheidung, Ort und Beleganforderung verbunden." },
-        { title: "Prioritäten übergeben", text: "Du erhältst eine sortierte Forschungs- und Inhaltsgrundlage für Audit, Optimierung und laufende Checks." }
+        { title: "Prioritäten übergeben", text: "Sie erhalten eine sortierte Forschungs- und Inhaltsgrundlage für Audit, Optimierung und laufende Checks." }
       ],
       visual: {
         frameLabel: "Illustrative Prompt-Forschung",
@@ -80,7 +80,7 @@ export const promptResearchPages: Record<ServiceLocale, ResearchSupportContent> 
       items: [
         { title: "GEO Audit", text: "Die KI-Präsenz einordnen. Wir spiegeln die recherchierten Prompts gegen führende Sprachmodelle, decken Lücken auf und lokalisieren die Quellen, auf die die Systeme zurückgreifen.", href: "/geo-audit/" },
         { title: "GEO Content", text: "Digitale Autorität aufbauen. Wir verwandeln identifizierte Informationslücken in klar strukturierte, belegbare Inhalte, die als nachvollziehbare Quelle dienen können.", href: "/geo-content/" },
-        { title: "AI-Sichtbarkeit", text: "Markenwahrnehmung einordnen. Wir analysieren plattformübergreifend wiederkehrende Antwortmuster und zeigen, wo Inhalte, Fakten oder Quellen deine Position in relevanten Abwägungen klarer tragen müssen.", href: "/ai-sichtbarkeit/" }
+        { title: "AI-Sichtbarkeit", text: "Markenwahrnehmung einordnen. Wir analysieren plattformübergreifend wiederkehrende Antwortmuster und zeigen, wo Inhalte, Fakten oder Quellen Ihre Position in relevanten Abwägungen klarer tragen müssen.", href: "/ai-sichtbarkeit/" }
       ]
     },
     faq: {
@@ -90,7 +90,7 @@ export const promptResearchPages: Record<ServiceLocale, ResearchSupportContent> 
         { question: "Sind die Prompts für alle Unternehmen gleich?", answer: "Nein. Wir leiten sie aus Angebot, Zielgruppe, Standort, Entscheidungssituationen und vorhandenen Fragen ab. Eine Bäckerei, Praxis oder Beratungsfirma braucht jeweils andere Fragebilder." },
         { question: "Ersetzt Prompt-Recherche eine Keyword-Recherche?", answer: "Sie erfüllt einen anderen Zweck. Keywords helfen bei Suchsprache und Nachfrage; Prompt-Recherche bildet zusätzlich mehrteilige Fragen, Abwägungen und den Informationsbedarf in KI-Antworten ab." },
         { question: "Garantiert das bessere Antworten in KI-Systemen?", answer: "Nein. Das Set schafft eine nachvollziehbare Forschungsgrundlage. Ob ein System später bestimmte Inhalte nennt oder empfiehlt, hängt von externen Daten, Quellen und Modellverhalten ab." },
-        { question: "Was braucht ihr und was erhalten wir?", answer: "Wir brauchen einen Überblick über Angebot, Zielgruppe, Markt oder Region und die Fragen, die im Verkauf oder in Beratungsgesprächen tatsächlich auftauchen. Du erhältst ein priorisiertes Prompt-Set mit Intent, Themenbezug und Anschluss an Audit, Content oder Monitoring. PATERNOGA strukturiert die Recherche; du prüfst, ob Fragen und fachlicher Kontext zur Realität deines Angebots passen." }
+        { question: "Was benötigen wir für den Start und was erhalten Sie?", answer: "Wir brauchen einen Überblick über Angebot, Zielgruppe, Markt oder Region und die Fragen, die im Verkauf oder in Beratungsgesprächen tatsächlich auftauchen. Sie erhalten ein priorisiertes Prompt-Set mit Intent, Themenbezug und Anschluss an Audit, Content oder Monitoring. PATERNOGA strukturiert die Recherche; Sie prüfen, ob Fragen und fachlicher Kontext zur Realität Ihres Angebots passen." }
       ]
     },
     closing: { eyebrow: "Prompt-Recherche starten", title: "Beginne mit den Fragen, die wirklich auf dem Tisch liegen.", text: "Wir machen aus diffusem Interesse ein klares Fragenbild und zeigen, welche nächste GEO-Maßnahme daraus sinnvoll folgt.", cta: "Prompt-Recherche besprechen" }
@@ -194,12 +194,12 @@ export const geoMonitoringPages: Record<ServiceLocale, ResearchSupportContent> =
     alternateEnPath: "/en/geo-monitoring/",
     meta: {
       title: "GEO Monitoring für laufende KI-Sichtbarkeit | PATERNOGA",
-      description: "Beobachte wichtige KI-Antworten, Quellen und Veränderungen über Zeit und leite klare nächste Schritte ab. GEO Monitoring besprechen."
+      description: "Beobachten Sie wichtige KI-Antworten, Quellen und Veränderungen über Zeit und leiten Sie klare nächste Schritte ab. GEO Monitoring besprechen."
     },
     breadcrumb: { home: "Start", hub: "GEO-Optimierung", parent: { label: "GEO-Betreuung", href: "/seo-betreuung/" }, current: "GEO Monitoring" },
     eyebrow: "GEO Monitoring",
     title: "Veränderungen sehen, bevor sie zur falschen Gewissheit werden",
-    lead: "Wir beobachten vereinbarte Fragen, Antwortsysteme und Quellen in einem festen Rhythmus. Du erkennst, was stabil bleibt, was sich verschiebt und wo eine Prüfung sinnvoll ist.",
+    lead: "Wir beobachten vereinbarte Fragen, Antwortsysteme und Quellen in einem festen Rhythmus. Sie erkennen, was stabil bleibt, was sich verschiebt und wo eine Prüfung sinnvoll ist.",
     primaryCta: "Monitoring besprechen",
     secondaryCta: "Monitoring-Methode ansehen",
     outcomes: [
@@ -230,7 +230,7 @@ export const geoMonitoringPages: Record<ServiceLocale, ResearchSupportContent> =
       },
       {
         eyebrow: "Ruhige Entscheidungsbasis",
-        title: "Du bekommst Orientierung, nicht mehr Benachrichtigungen.",
+        title: "Sie bekommen Orientierung, nicht mehr Benachrichtigungen.",
         text: "Ein Monitoring-Zyklus endet mit einer verständlichen Einordnung: stabil, prüfen oder handeln. Nur Befunde mit echter Relevanz werden in die nächste Arbeitsrunde übernommen.",
         points: ["Stabile Antwortbilder festhalten", "Neue Risiken mit Beleg prüfen", "Aufgaben nach Wirkung bündeln"]
       }
@@ -239,10 +239,10 @@ export const geoMonitoringPages: Record<ServiceLocale, ResearchSupportContent> =
       eyebrow: "Arbeitsweise",
       title: "Vier Schritte für verlässliche Beobachtung",
       steps: [
-        { title: "Beobachtungsfeld definieren", text: "Wir wählen Fragen, Systeme, Quellen und Frequenzen passend zu deinem Angebot und deinen Risiken." },
+        { title: "Beobachtungsfeld definieren", text: "Wir wählen Fragen, Systeme, Quellen und Frequenzen passend zu Ihrem Angebot und Ihren Risiken." },
         { title: "Baseline dokumentieren", text: "Der Ausgangspunkt hält Antwort, Quellenbezug und offene Unsicherheiten nachvollziehbar fest." },
         { title: "Verläufe prüfen", text: "Wiederholte Durchläufe werden nach Stabilität, Abweichung und möglicher Ursache gelesen." },
-        { title: "Aktionen einordnen", text: "Du erhältst eine kurze Empfehlung, was beobachtet, geprüft oder als Arbeit gestartet werden sollte." }
+        { title: "Aktionen einordnen", text: "Sie erhalten eine kurze Empfehlung, was beobachtet, geprüft oder als Arbeit gestartet werden sollte." }
       ],
       visual: {
         frameLabel: "Illustrativer Monitoring-Verlauf",
@@ -257,7 +257,7 @@ export const geoMonitoringPages: Record<ServiceLocale, ResearchSupportContent> =
     },
     related: {
       eyebrow: "Im Netzwerk",
-      title: "Monitoring als Teil deiner GEO-Betreuung",
+      title: "Monitoring als Teil Ihrer GEO-Betreuung",
       items: [
         { title: "GEO-Betreuung", text: "Priorisierte laufende Umsetzung mit einem festen Arbeitsrhythmus.", href: "/seo-betreuung/" },
         { title: "GEO Audit", text: "Eine klare Ausgangslage für Fragen, Quellen, Fakten und Zugänglichkeit.", href: "/geo-audit/" },
@@ -271,10 +271,10 @@ export const geoMonitoringPages: Record<ServiceLocale, ResearchSupportContent> =
         { question: "Wie oft wird geprüft?", answer: "Das hängt von Thema, Veränderungsrisiko und Arbeitsrhythmus ab. Wir vereinbaren eine Frequenz, die Vergleichbarkeit schafft, ohne aus jeder täglichen Schwankung eine Maßnahme abzuleiten." },
         { question: "Kann Monitoring Sichtbarkeit garantieren?", answer: "Nein. Monitoring beobachtet externe Antworten und Quellen. Es kann Veränderungen dokumentieren und Handlungen vorbereiten, aber keine Nennung, Position oder Empfehlung garantieren." },
         { question: "Was passiert bei einem auffälligen Verlauf?", answer: "Wir prüfen zuerst Frage, Zeitpunkt, Quelle und Kontext. Erst danach wird entschieden, ob ein Faktencheck, eine inhaltliche Ergänzung oder nur weitere Beobachtung sinnvoll ist." },
-        { question: "Welche Grundlage und welche Auswertung gehören dazu?", answer: "Wir vereinbaren ein stabiles Fragenfeld, relevante Systeme, Vergleichszeitpunkte und die Veränderungen, die eine Entscheidung auslösen sollen. Du erhältst eine verständliche Verlaufsansicht mit eingeordneten Abweichungen und priorisierten nächsten Schritten. Freigaben für Inhalt oder Technik bleiben bei dir." }
+        { question: "Welche Grundlage und welche Auswertung gehören dazu?", answer: "Wir vereinbaren ein stabiles Fragenfeld, relevante Systeme, Vergleichszeitpunkte und die Veränderungen, die eine Entscheidung auslösen sollen. Sie erhalten eine verständliche Verlaufsansicht mit eingeordneten Abweichungen und priorisierten nächsten Schritten. Freigaben für Inhalt oder Technik bleiben bei Ihnen." }
       ]
     },
-    closing: { eyebrow: "Monitoring einrichten", title: "Beobachte die Entwicklung, ohne ihr hinterherzulaufen.", text: "Wir bauen einen ruhigen, verständlichen Monitoring-Zyklus auf, der Veränderungen in konkrete Entscheidungen übersetzt.", cta: "GEO Monitoring besprechen" }
+    closing: { eyebrow: "Monitoring einrichten", title: "Beobachten Sie die Entwicklung, ohne ihr hinterherzulaufen.", text: "Wir bauen einen ruhigen, verständlichen Monitoring-Zyklus auf, der Veränderungen in konkrete Entscheidungen übersetzt.", cta: "GEO Monitoring besprechen" }
   },
   en: {
     lang: "en",
@@ -380,13 +380,13 @@ export const geoSupportPages: Record<ServiceLocale, ResearchSupportContent> = {
     breadcrumb: { home: "Start", hub: "GEO-Optimierung", current: "GEO-Betreuung" },
     eyebrow: "GEO-Betreuung",
     title: "Laufende SEO- und GEO-Betreuung für wiederkehrende Arbeit",
-    lead: "Wenn die Arbeit an deinen wichtigen Seiten wiederkehrt, statt einmal stattzufinden: Wir begleiten dich nach Audit oder Seiten-Sprint mit einer klaren Reihenfolge aus SEO-, Inhalts- und GEO-Maßnahmen – beobachten, prüfen, verbessern, wieder einordnen. Ohne starre Pakete und ohne Versprechen, die externe Systeme nicht halten können.",
+    lead: "Wenn die Arbeit an Ihren wichtigen Seiten wiederkehrt, statt einmal stattzufinden: Wir begleiten Sie nach Audit oder Seiten-Sprint mit einer klaren Reihenfolge aus SEO-, Inhalts- und GEO-Maßnahmen – beobachten, prüfen, verbessern, wieder einordnen. Ohne starre Pakete und ohne Versprechen, die externe Systeme nicht halten können.",
     primaryCta: "GEO-Betreuung anfragen",
     secondaryCta: "Betreuungsmodell ansehen",
     outcomes: [
       { label: "Fokus", title: "Wichtige Hebel zuerst bearbeiten", text: "Eine laufende Liste bündelt Themen nach Relevanz, Aufwand und Abhängigkeiten." },
       { label: "Kontinuität", title: "Signale und Fakten pflegen", text: "Änderungen an Angebot, Website und Quellen bleiben Teil der GEO-Arbeit." },
-      { label: "Zusammenarbeit", title: "Entscheidungen gemeinsam tragen", text: "Du weißt, was als Nächstes ansteht und welche Annahme hinter einer Maßnahme steht." }
+      { label: "Zusammenarbeit", title: "Entscheidungen gemeinsam tragen", text: "Sie wissen, was als Nächstes ansteht und welche Annahme hinter einer Maßnahme steht." }
     ],
     demo: {
       variant: "action-queue",
@@ -411,8 +411,8 @@ export const geoSupportPages: Record<ServiceLocale, ResearchSupportContent> = {
       },
       {
         eyebrow: "Persönlich abgestimmt",
-        title: "Die Arbeit bleibt an deinem Angebot, nicht an einem Dashboard.",
-        text: "PATERNOGA übersetzt Analyse in verständliche Entscheidungen und arbeitet dort mit, wo dein Team Zeit oder Perspektive braucht. Umfang und Rhythmus richten sich nach der Situation, nicht nach einer künstlichen Paketlogik.",
+        title: "Die Arbeit bleibt an Ihrem Angebot, nicht an einem Dashboard.",
+        text: "PATERNOGA übersetzt Analyse in verständliche Entscheidungen und arbeitet dort mit, wo Ihr Team Zeit oder Perspektive braucht. Umfang und Rhythmus richten sich nach der Situation, nicht nach einer künstlichen Paketlogik.",
         points: ["Prioritäten gemeinsam entscheiden", "Änderungen nachvollziehbar dokumentieren", "Wirkung und offene Fragen regelmäßig prüfen"]
       }
     ],
@@ -438,7 +438,7 @@ export const geoSupportPages: Record<ServiceLocale, ResearchSupportContent> = {
     },
     related: {
       eyebrow: "Betreuung aufbauen",
-      title: "Der passende nächste Schritt für deine laufende Arbeit",
+      title: "Der passende nächste Schritt für Ihre laufende Arbeit",
       items: [
         { title: "GEO Monitoring", text: "Antworten, Quellen und Fakten in einem ruhigen Rhythmus beobachten.", href: "/geo-monitoring/" },
         { title: "GEO Audit", text: "Eine belastbare Ausgangslage schaffen, bevor Prioritäten gesetzt werden.", href: "/geo-audit/" },
@@ -454,7 +454,7 @@ export const geoSupportPages: Record<ServiceLocale, ResearchSupportContent> = {
         { question: "Gibt es eine Sichtbarkeitsgarantie?", answer: "Nein. Wir verbessern nachvollziehbare Voraussetzungen und beobachten externe Antworten. Nennungen, Rankings oder Empfehlungen durch KI-Systeme können nicht zugesagt werden." }
       ]
     },
-    closing: { eyebrow: "Zusammenarbeit starten", title: "Eine gute GEO-Routine beginnt mit einer realistischen nächsten Aufgabe.", text: "Erzähl uns, wo dein Angebot, deine Inhalte oder deine Sichtbarkeit gerade stehen. Wir schlagen einen passenden ersten Arbeitszyklus vor.", cta: "GEO-Betreuung besprechen" }
+    closing: { eyebrow: "Zusammenarbeit starten", title: "Eine gute GEO-Routine beginnt mit einer realistischen nächsten Aufgabe.", text: "Erzählen Sie uns, wo Ihr Angebot, Ihre Inhalte oder Ihre Sichtbarkeit gerade stehen. Wir schlagen einen passenden ersten Arbeitszyklus vor.", cta: "GEO-Betreuung besprechen" }
   },
   en: {
     lang: "en",

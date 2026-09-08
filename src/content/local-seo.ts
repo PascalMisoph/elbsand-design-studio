@@ -21,7 +21,7 @@ export const localSeoContent = {
       label: "Wo eine Dresdner Suche endet",
       note: "Schematische Darstellung der drei Ergebnisflächen. Keine Messwerte, keine Kundendaten.",
       steps: [
-        { tag: "Google-Ergebnisse", title: "Organische Treffer", text: "Deine Leistungsseite konkurriert mit Agenturportalen und etablierten Anbietern." },
+        { tag: "Google-Ergebnisse", title: "Organische Treffer", text: "Ihre Leistungsseite konkurriert mit Agenturportalen und etablierten Anbietern." },
         { tag: "Lokale Ergebnisse", title: "Kartenbereich", text: "Unternehmensprofil, Entfernung, Bewertungen und Kategorien entscheiden mit." },
         { tag: "KI-Antwort", title: "Antwortsystem", text: "Ein Antwortsystem fasst wenige Quellen zusammen und nennt einzelne Anbieter." }
       ]
@@ -48,7 +48,7 @@ export const localSeoContent = {
         answer: "Wir arbeiten an technischer Basis, an den wichtigen Leistungsseiten, an der lokalen Auffindbarkeit und an der internen Verlinkung – in einem vorher festgelegten Umfang.",
         items: [
           { title: "Technisches SEO", text: "Indexierung, Statuscodes, Canonicals, Ladezeit, Rendering und strukturierte Daten entlang konkreter URLs statt als Sammelbericht." },
-          { title: "Wichtige Leistungsseiten", text: "Suchintention, Angebotsklarheit, Informationsstruktur, fachliche Belege und der Anfrageweg auf den Seiten, über die dein Geschäft läuft." },
+          { title: "Wichtige Leistungsseiten", text: "Suchintention, Angebotsklarheit, Informationsstruktur, fachliche Belege und der Anfrageweg auf den Seiten, über die Ihr Geschäft läuft." },
           { title: "Lokale Auffindbarkeit", text: "Google-Unternehmensprofil, konsistente Unternehmensdaten, lokale Relevanz auf der Website und die passenden lokalen Suchanfragen." },
           { title: "Interne Verlinkung", text: "Fachinhalte werden mit den kaufnahen Seiten verbunden, damit Relevanz nicht in Unterseiten versickert." },
           { title: "Search Intent", text: "Jede wichtige Seite bekommt genau eine Hauptsuchintention, damit zwei eigene Seiten nicht gegeneinander ranken." },
@@ -58,7 +58,7 @@ export const localSeoContent = {
       geo: {
         heading: "Was hat SEO in Dresden mit ChatGPT und KI-Suche zu tun?",
         answer: "SEO und GEO teilen viele Grundlagen: Zugänglichkeit, klare Struktur und eindeutige Unternehmensangaben helfen Google ebenso wie den eigenen Crawlern von ChatGPT oder Perplexity.",
-        body: "Diese Systeme arbeiten unabhängig vom Google-Index und wählen Quellen anders aus. Deshalb ist KI-Sichtbarkeit kein Nebenprodukt guter Rankings, sondern eine eigene Prüfebene. In Dresden bleibt klassisches SEO der Einstieg, weil die etablierte Nachfrage dort liegt. GEO kommt dazu, wenn geklärt werden soll, wie Antwortsysteme dein Unternehmen einordnen.",
+        body: "Diese Systeme arbeiten unabhängig vom Google-Index und wählen Quellen anders aus. Deshalb ist KI-Sichtbarkeit kein Nebenprodukt guter Rankings, sondern eine eigene Prüfebene. In Dresden bleibt klassisches SEO der Einstieg, weil die etablierte Nachfrage dort liegt. GEO kommt dazu, wenn geklärt werden soll, wie Antwortsysteme Ihr Unternehmen einordnen.",
         linkLabel: "KI-Sichtbarkeit im GEO Audit prüfen"
       },
       pricing: {
@@ -101,16 +101,16 @@ export const localSeoContent = {
       heading: "Häufige Fragen zu SEO in Dresden",
       items: [
         { question: "Wie lange dauert es, bis SEO in Dresden wirkt?", answer: "Das hängt vom Ausgangszustand ab. Technische Korrekturen und Verbesserungen an bestehenden Seiten können sich innerhalb weniger Wochen in Suchdaten zeigen, der Aufbau von Relevanz für umkämpfte lokale Suchanfragen dauert deutlich länger. Wir nennen bewusst keine garantierte Frist bis zu einer bestimmten Position, weil externe Rankingfaktoren nicht kontrollierbar sind." },
-        { question: "Arbeitet ihr nur mit Unternehmen aus Dresden?", answer: "Nein. Der Standort ist Dresden, der Markt ist Deutschland. Für lokale Anbieter aus Dresden und Sachsen kommt die lokale Auffindbarkeit als eigenes Arbeitsfeld dazu; national gelten dieselben Leistungen ohne den lokalen Teil." },
+        { question: "Arbeiten Sie nur mit Unternehmen aus Dresden?", answer: "Nein. Der Standort ist Dresden, der Markt ist Deutschland. Für lokale Anbieter aus Dresden und Sachsen kommt die lokale Auffindbarkeit als eigenes Arbeitsfeld dazu; national gelten dieselben Leistungen ohne den lokalen Teil." },
         { question: "Braucht mein Unternehmen SEO oder GEO?", answer: "In der Regel beides, aber nicht gleichzeitig und nicht in derselben Reihenfolge. Wenn etablierte Suchnachfrage vorhanden ist, beginnt die Arbeit bei SEO. Wenn unklar ist, wie Antwortsysteme das Unternehmen einordnen, klärt das ein GEO Audit. Beide Ebenen arbeiten an denselben Seiten." },
-        { question: "Übernehmt ihr auch die Umsetzung oder nur die Beratung?", answer: "Wir setzen um. Der Seiten-Sprint enthält die Änderungen an bis zu drei bestehenden Seiten einschließlich der notwendigen begrenzten Technik. Fachliche Aussagen und Freigaben bleiben bei dir." },
+        { question: "Übernehmen Sie auch die Umsetzung oder nur die Beratung?", answer: "Wir setzen um. Der Seiten-Sprint enthält die Änderungen an bis zu drei bestehenden Seiten einschließlich der notwendigen begrenzten Technik. Fachliche Aussagen und Freigaben bleiben bei Ihnen." },
         { question: "Was kostet eine SEO-Beratung in Dresden?", answer: "Es gibt keine gesonderte Stundenberatung als Produkt. Der Einstieg erfolgt über einen der drei Wege: GEO Audit ab 1.500 € netto, Seiten-Sprint ab 2.500 € netto oder laufende Betreuung ab 1.250 € netto pro Monat. Ein Erstgespräch zur Einordnung ist kostenfrei und unverbindlich." },
-        { question: "Kümmert ihr euch auch um das Google-Unternehmensprofil?", answer: "Ja, als Teil der lokalen Auffindbarkeit. Dazu gehören korrekte Kategorien, konsistente Unternehmensdaten, sinnvolle Leistungen und die Verbindung zur Website. Bewertungen werden ausschließlich echt erzeugt; wir kaufen oder erzeugen keine Rezensionen." }
+        { question: "Kümmern Sie sich auch um das Google-Unternehmensprofil?", answer: "Ja, als Teil der lokalen Auffindbarkeit. Dazu gehören korrekte Kategorien, konsistente Unternehmensdaten, sinnvolle Leistungen und die Verbindung zur Website. Bewertungen werden ausschließlich echt erzeugt; wir kaufen oder erzeugen keine Rezensionen." }
       ]
     },
     closing: {
       heading: "Nächster Schritt",
-      text: "Schick uns die Seiten, über die eure Anfragen kommen sollen. Wir sagen dir, welcher der drei Einstiege wirklich passt – auch wenn das der kleinste ist.",
+      text: "Schicken Sie uns die Seiten, über die Ihre Anfragen kommen sollen. Wir sagen Ihnen, welcher der drei Einstiege wirklich passt – auch wenn das der kleinste ist.",
       cta: "SEO-Projekt in Dresden anfragen"
     },
     relatedLabel: "Passende Leistungen"

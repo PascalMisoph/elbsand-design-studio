@@ -76,9 +76,9 @@ const privacyPath = locale === "en" ? "/en/privacy/" : "/datenschutz/";
 const directOffer = offerType === "geo_audit" || offerType === "page_sprint";
 const offerName = offerType === "geo_audit" ? "GEO Audit" : locale === "de" ? "Seiten-Sprint" : "Page sprint";
 const offerQuestion = locale === "de"
-  ? offerType === "geo_audit" ? "Welche Website und welches Angebot sollen wir untersuchen?" : "Welche bestehenden Seiten möchtest du verbessern?"
+  ? offerType === "geo_audit" ? "Welche Website und welches Angebot sollen wir untersuchen?" : "Welche bestehenden Seiten möchten Sie verbessern?"
   : offerType === "geo_audit" ? "Which website and offering should we investigate?" : "Which existing pages would you like to improve?";
-const offerPlaceholder = locale === "de" ? "Website-Link und dein wichtigstes Ziel genügen für den Einstieg." : "A website link and your main objective are enough to start.";
+const offerPlaceholder = locale === "de" ? "Website-Link und Ihr wichtigstes Ziel genügen für den Einstieg." : "A website link and your main objective are enough to start.";
 ---
 <section class="contact-section" id={sectionId} data-initial-path={calendarOnly ? "calendar" : directOffer ? "form" : undefined}>
   {!calendarOnly && (
@@ -89,7 +89,7 @@ const offerPlaceholder = locale === "de" ? "Website-Link und dein wichtigstes Zi
   </div>
 
   {!hideValueLine && (
-    <p class="contact-value-line">{directOffer ? (locale === "de" ? "Pascal prüft deinen Bedarf und meldet sich mit einem abgegrenzten Angebot. Preis auf Anfrage; kein Auftrag durch das Absenden." : "Pascal reviews your requirements and responds with a scoped proposal. Pricing on request; submitting does not place an order.") : valueLine}</p>
+    <p class="contact-value-line">{directOffer ? (locale === "de" ? "Pascal prüft Ihren Bedarf und meldet sich mit einem abgegrenzten Angebot. Preis auf Anfrage; kein Auftrag durch das Absenden." : "Pascal reviews your requirements and responds with a scoped proposal. Pricing on request; submitting does not place an order.") : valueLine}</p>
   )}
 
   <div
@@ -234,14 +234,14 @@ const offerPlaceholder = locale === "de" ? "Website-Link und dein wichtigstes Zi
     hidden={!calendarOnly}
   >
     <div class="calendly-consent" data-calendly-consent>
-      <p>{locale === "en" ? "Calendly is loaded only with your permission. Until then, no data is sent to the scheduling provider." : "Calendly wird erst mit deiner Freigabe geladen. Bis dahin werden keine Daten an den Termin-Dienst übertragen."}</p>
+      <p>{locale === "en" ? "Calendly is loaded only with your permission. Until then, no data is sent to the scheduling provider." : "Calendly wird erst mit Ihrer Freigabe geladen. Bis dahin werden keine Daten an den Termin-Dienst übertragen."}</p>
       <button class="button" type="button" data-open-consent-settings>{locale === "en" ? "Allow external scheduling" : "Externe Terminbuchung freigeben"}</button>
       <a href={privacyPath}>{locale === "en" ? "Privacy information" : "Datenschutzhinweise"}</a>
     </div>
     <div
       class="calendly-inline-widget"
       data-url="https://calendly.com/pascal-misoph/erstgespraech"
-      style="min-width:320px;height:700px;"
+      style="min-width:0;height:700px;"
       hidden
     ></div>
   </div>

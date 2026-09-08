@@ -83,6 +83,16 @@ const organizationNode: JsonLdNode = {
     "@type": "Person",
     "@id": FOUNDER_ID,
     name: "Pascal Misoph",
+    jobTitle: "Inhaber, SEO- und GEO-Berater",
+    worksFor: { "@id": ORGANIZATION_ID },
+    knowsAbout: ["SEO", "Generative Engine Optimization", "Local SEO", "KI-Crawlability"],
+    knowsLanguage: ["de", "en"],
+    address: {
+      "@type": "PostalAddress",
+      postalCode: "01307",
+      addressLocality: "Dresden",
+      addressCountry: "DE",
+    },
   },
   contactPoint: {
     "@type": "ContactPoint",
