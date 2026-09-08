@@ -10,14 +10,12 @@
     "name": "paternoga-seo-geo-studio",
     "repository": "C:\\Dev\\elbsand-design-studio",
     "branch": "main",
-    "commit": "879cf25a26fdf491f0c6caf0b84d9a41b3625bf6",
+    "commit": "82242d150d5fa37a8fda21b2f3ae01773c453b6b",
     "dirty": true,
     "git_status": [
-      "M docs/seo-geo-next-steps.md",
-      " M scripts/static-smoke-check.cjs",
-      " M scripts/validate-seo.mjs",
-      " M src/lib/seo.ts",
-      " M tests/visual-qa.spec.ts",
+      "M docs/seo-geo-live-crawl.json",
+      " M docs/seo-geo-next-steps.md",
+      " M docs/seo-geo-project-state.json",
       "?? scripts/analyze-x-bookmarks.mjs",
       "?? scripts/build-seo-geo-bookmark-doc.ps1",
       "?? scripts/finalize-seo-geo-bookmark-html.mjs",
@@ -34,8 +32,8 @@
     ],
     "route_file_count": 47,
     "last_live_crawl": {
-      "observed_at": "2026-09-05T20:41:34.763Z",
-      "routes": 40,
+      "observed_at": "2026-09-08T18:51:14.300Z",
+      "routes": 42,
       "page_failures": 0,
       "raw_scanner_hits": 0,
       "extracted_scanner_hits": 0,
@@ -45,7 +43,7 @@
     }
   },
   "inventory": {
-    "file_count": 1719,
+    "file_count": 1722,
     "route_files": [
       "src/pages/ai-crawlability/index.astro",
       "src/pages/ai-sichtbarkeit/index.astro",
@@ -291,7 +289,7 @@
     "execution_authorized": false,
     "note": "Do not start a Research case without an explicit later request."
   },
-  "updated_at": "2026-09-08T17:46:19.479Z",
+  "updated_at": "2026-09-08T18:51:14.309Z",
   "checks": {
     "delivery": {
       "status": "verified",
@@ -300,7 +298,7 @@
           "claim": "All crawled pages returned a successful HTTP response.",
           "source": "C:\\Dev\\elbsand-design-studio\\docs\\seo-geo-live-crawl.json",
           "method": "node crawl-site.mjs --url https://www.paternoga-seo-geo.de",
-          "observed_at": "2026-09-05T20:41:34.763Z",
+          "observed_at": "2026-09-08T18:51:14.300Z",
           "evidence_level": "A",
           "confidence": "high"
         }
@@ -313,7 +311,7 @@
           "claim": "robots.txt, sitemap.xml, llms.txt and llms-full.txt were fetched.",
           "source": "C:\\Dev\\elbsand-design-studio\\docs\\seo-geo-live-crawl.json",
           "method": "node crawl-site.mjs --url https://www.paternoga-seo-geo.de",
-          "observed_at": "2026-09-05T20:41:34.763Z",
+          "observed_at": "2026-09-08T18:51:14.300Z",
           "evidence_level": "A",
           "confidence": "high"
         }
@@ -360,6 +358,20 @@
       "observed_at": "2026-09-05T20:41:34.763Z",
       "source": "C:\\Dev\\elbsand-design-studio\\docs\\seo-geo-live-crawl.json",
       "routes": 40,
+      "result": "pass"
+    },
+    {
+      "type": "live-crawl",
+      "observed_at": "2026-09-08T18:50:21.550Z",
+      "source": "C:\\Dev\\elbsand-design-studio\\docs\\seo-geo-live-crawl.json",
+      "routes": 42,
+      "result": "pass"
+    },
+    {
+      "type": "live-crawl",
+      "observed_at": "2026-09-08T18:51:14.300Z",
+      "source": "C:\\Dev\\elbsand-design-studio\\docs\\seo-geo-live-crawl.json",
+      "routes": 42,
       "result": "pass"
     }
   ]
