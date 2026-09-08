@@ -348,6 +348,21 @@ test("public contact email is canonical in links and structured data", async ({ 
   }
 });
 
+test("DE and EN homepages expose the same crawlable PATERNOGA favicon", async ({ page, request }) => {
+  for (const path of ["/", "/en/"]) {
+    await page.goto(`${TEST_ORIGIN}${path}`, { waitUntil: "networkidle" });
+    await expect(page.locator('link[rel="icon"]')).toHaveAttribute("href", "/favicon.png");
+    await expect(page.locator('link[rel="icon"]')).toHaveAttribute("type", "image/png");
+    await expect(page.locator('link[rel="icon"]')).toHaveAttribute("sizes", "256x256");
+    await expect(page.locator('link[rel="apple-touch-icon"]')).toHaveAttribute("href", "/favicon.png");
+    await expect(page.locator('link[rel="apple-touch-icon"]')).toHaveAttribute("type", "image/png");
+
+    const faviconResponse = await request.get(`${TEST_ORIGIN}/favicon.png`);
+    expect(faviconResponse.status()).toBe(200);
+    expect(faviconResponse.headers()["content-type"]).toMatch(/^image\/png(?:;|$)/i);
+  }
+});
+
 test("editorial support bridges process and contact with responsive portraits", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto(`${TEST_ORIGIN}/`, { waitUntil: "networkidle" });
