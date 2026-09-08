@@ -76,7 +76,7 @@ for (const required of ["hreflang=\"de\"", "hreflang=\"en\"", "application/ld+js
   if (!layout.includes(required)) throw new Error(`layout missing ${required}`);
 }
 
-for (const required of ["createPageSchema", "createServicePageSchema", '"@type": ["Organization", "LocalBusiness"]', "WebSite", "WebPage", "BreadcrumbList"]) {
+for (const required of ["createPageSchema", "createServicePageSchema", '"@type": ["LocalBusiness", "Organization"]', "WebSite", "WebPage", "BreadcrumbList"]) {
   if (!seo.includes(required)) throw new Error(`SEO schema helper missing ${required}`);
 }
 
