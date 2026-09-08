@@ -10,6 +10,10 @@ const decodeHtml = (value = "") => value
 const stripTags = (value = "") => decodeHtml(value.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim());
 const attribute = (html, pattern) => decodeHtml(html.match(pattern)?.[1]?.trim() ?? "");
 const escapePattern = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const nodeHasType = (node, type) => {
+  const types = Array.isArray(node?.["@type"]) ? node["@type"] : [node?.["@type"]];
+  return types.includes(type);
+};
 
 const sitemapResponse = await fetch(new URL("/sitemap.xml", origin));
 if (!sitemapResponse.ok) throw new Error(`Unable to fetch sitemap: ${sitemapResponse.status}`);
@@ -97,10 +101,10 @@ for (const path of paths) {
       failures.push(`${path}: invalid JSON-LD`);
     }
   }
-  for (const type of ["Organization", "WebSite", "WebPage"]) {
+  for (const type of ["Organization", "LocalBusiness", "WebSite", "WebPage"]) {
     if (!schemaTypes.has(type)) failures.push(`${path}: JSON-LD missing ${type}`);
   }
-  const organization = schemaNodes.find((node) => node?.["@type"] === "Organization");
+  const organization = schemaNodes.find((node) => nodeHasType(node, "Organization"));
   if (organization?.name !== "Paternoga SEO & GEO Agentur") failures.push(`${path}: Organization name is inconsistent`);
   if (organization?.["@id"] !== `${canonicalOrigin}/#organization`) failures.push(`${path}: Organization @id is inconsistent`);
   if (organization?.founder?.["@id"] !== `${canonicalOrigin}/#pascal-misoph`) failures.push(`${path}: founder @id is inconsistent`);

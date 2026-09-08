@@ -53,7 +53,9 @@ interface ResearchPageSchemaOptions extends ArticlePageSchemaOptions {
 export const absoluteSiteUrl = (path: string) => new URL(path, SITE_URL).toString();
 
 const organizationNode: JsonLdNode = {
-  "@type": "Organization",
+  // The public legal/business address makes this same entity a LocalBusiness;
+  // keep the existing Organization type and identity in the same graph node.
+  "@type": ["Organization", "LocalBusiness"],
   "@id": ORGANIZATION_ID,
   name: "Paternoga SEO & GEO Agentur",
   alternateName: "PATERNOGA",

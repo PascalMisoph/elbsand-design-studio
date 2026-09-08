@@ -44,7 +44,7 @@ const { intro, items } = Astro.props;
           <span class={`project-logo project-logo--${item.variant} project-logo--${item.slug}`}>
             <img
               src={item.logo}
-              alt=""
+              alt={`${item.name} Logo`}
               width={item.width}
               height={item.height}
               loading="eager"

@@ -77,8 +77,8 @@ const systems = [
       <p>{isEnglish ? "Built to be understood by" : "Gemacht für Sichtbarkeit in"}</p>
       <div class="hero-system-window" aria-hidden="true">
         <span class="hero-system-value" data-system-value>
-          <img class="is-inverted" src={systems[0].logo} alt="" width="72" height="72" />
-          <strong>{systems[0].name}</strong>
+          <img class="is-inverted" src={systems[0].logo} alt={`${systems[0].name} Logo`} width="72" height="72" />
+          <span class="hero-system-name">{systems[0].name}</span>
         </span>
       </div>
       <span class="sr-only">
@@ -158,7 +158,7 @@ const systems = [
     let timer: number | undefined;
 
     const systemMarkup = (system: { name: string; logo: string; inverse?: boolean }) =>
-      `<img class="${system.inverse ? "is-inverted" : ""}" src="${system.logo}" alt="" width="72" height="72"><strong>${system.name}</strong>`;
+      `<img class="${system.inverse ? "is-inverted" : ""}" src="${system.logo}" alt="${system.name} Logo" width="72" height="72"><span class="hero-system-name">${system.name}</span>`;
 
     const renderSystem = (system: { name: string; logo: string; inverse?: boolean }) => {
       if (reducedMotion.matches) {

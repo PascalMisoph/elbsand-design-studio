@@ -83,10 +83,10 @@ const conversionLabels = isEnglish
                 <p>{isEnglish ? "Clear path to enquiry" : "Klarer Weg zur Anfrage"}</p>
                 <ol>
                   {conversionLabels.map((label, labelIndex) => (
-                    <li><span>{labelIndex + 1}</span><strong>{label}</strong><i></i></li>
+                    <li><span class="structure-demo-step">{labelIndex + 1}</span><span class="structure-demo-label">{label}</span><i></i></li>
                   ))}
                 </ol>
-                <b class="structure-demo-cursor"></b>
+                <span class="structure-demo-cursor" aria-hidden="true"></span>
               </div>
             </div>
           )}
@@ -95,19 +95,19 @@ const conversionLabels = isEnglish
             <div class="responsive-demo">
               <div class="responsive-demo-desktop">
                 <span class="responsive-demo-nav"></span>
-                <strong>
+                <span class="responsive-demo-heading">
                   {item.visual === "implementation"
                     ? (isEnglish ? "Changes, implemented." : "Änderungen, umgesetzt.")
                     : (isEnglish ? "Visible in search." : "In der Suche sichtbar.")}
-                </strong>
+                </span>
                 <i></i><i></i><i></i>
               </div>
               <div class="responsive-demo-mobile">
-                <span></span><strong>
+                <span class="responsive-demo-notch"></span><span class="responsive-demo-heading">
                   {item.visual === "implementation"
                     ? (isEnglish ? "Request advice" : "Beratung anfragen")
                     : (isEnglish ? "When demand starts." : "Wenn Bedarf entsteht.")}
-                </strong><i></i><i></i>
+                </span><i></i><i></i>
               </div>
               <p>
                 {item.visual === "implementation" ? (
@@ -123,14 +123,14 @@ const conversionLabels = isEnglish
             <div class="search-intent-demo">
               <p>{isEnglish ? "How AI systems classify your offer" : "Wie KI-Systeme Ihr Angebot einordnen"}</p>
               <div class="search-intent-field">
-                <strong>{isEnglish ? "advice on business succession" : "Beratung Unternehmensnachfolge"}</strong>
-                <div><span><i></i>{isEnglish ? "Answer analysis" : "Antwortanalyse"}</span><b>{isEnglish ? "Review" : "Prüfen"}</b></div>
+                <span class="search-intent-query">{isEnglish ? "advice on business succession" : "Beratung Unternehmensnachfolge"}</span>
+                <div><span class="search-intent-meta"><i></i>{isEnglish ? "Answer analysis" : "Antwortanalyse"}</span><span class="search-intent-action">{isEnglish ? "Review" : "Prüfen"}</span></div>
               </div>
               <small>{isEnglish ? "Answer signals" : "Antwortsignale"}</small>
               <ol>
-                <li><strong>{isEnglish ? "Which providers are recommended?" : "Welche Anbieter werden empfohlen?"}</strong><span>1</span></li>
-                <li><strong>{isEnglish ? "How is the service described?" : "Wie wird die Leistung beschrieben?"}</strong><span>2</span></li>
-                <li><strong>{isEnglish ? "Which sources are named?" : "Welche Quellen werden genannt?"}</strong><span>3</span></li>
+                <li><span class="search-intent-question">{isEnglish ? "Which providers are recommended?" : "Welche Anbieter werden empfohlen?"}</span><span class="search-intent-number">1</span></li>
+                <li><span class="search-intent-question">{isEnglish ? "How is the service described?" : "Wie wird die Leistung beschrieben?"}</span><span class="search-intent-number">2</span></li>
+                <li><span class="search-intent-question">{isEnglish ? "Which sources are named?" : "Welche Quellen werden genannt?"}</span><span class="search-intent-number">3</span></li>
               </ol>
             </div>
           )}

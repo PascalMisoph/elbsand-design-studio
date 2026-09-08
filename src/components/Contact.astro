@@ -109,7 +109,7 @@ const offerPlaceholder = locale === "de" ? "Website-Link und Ihr wichtigstes Zie
       data-contact-path="calendar"
     >
       <span class="contact-path-copy">
-        <strong>{quickOption}</strong>
+        <span class="contact-path-title">{quickOption}</span>
         {quickOptionText && <small>{quickOptionText}</small>}
         {quickOptionCta && <span class="contact-path-cta">{quickOptionCta}</span>}
       </span>
@@ -126,7 +126,7 @@ const offerPlaceholder = locale === "de" ? "Website-Link und Ihr wichtigstes Zie
       data-contact-path="form"
     >
       <span class="contact-path-copy">
-        <strong>{detailOption}</strong>
+        <span class="contact-path-title">{detailOption}</span>
         {detailOptionText && <small>{detailOptionText}</small>}
         {detailOptionCta && <span class="contact-path-cta">{detailOptionCta}</span>}
       </span>
@@ -207,7 +207,7 @@ const offerPlaceholder = locale === "de" ? "Website-Link und Ihr wichtigstes Zie
         <label class="contact-flow-input"><span>{flow.nameLabel}</span><input name="name" type="text" autocomplete="name" required /></label>
         <label class="contact-flow-input"><span>{flow.emailLabel}</span><input name="email" type="email" autocomplete="email" required /></label>
       </div>
-      <div class="contact-flow-summary"><span>{flow.summaryLabel}</span><strong data-flow-summary></strong></div>
+      <div class="contact-flow-summary"><span class="contact-flow-summary-label">{flow.summaryLabel}</span><span class="contact-flow-summary-value" data-flow-summary></span></div>
       <div class="contact-flow-actions"><button class="button" type="submit">{directOffer ? (locale === "de" ? `${offerName} anfragen` : `Request a ${offerName}`) : flow.submit}</button></div>
       <p class="contact-flow-error" role="alert" data-flow-error hidden>{flow.errorMessage}</p>
     </fieldset>

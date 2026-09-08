@@ -170,7 +170,7 @@ test("selected projects marquee moves", async ({ page }) => {
     "https://ochreandchrome.com",
   ]);
   await expect(page.locator(".marquee-group").nth(1).locator("img")).toHaveCount(5);
-  await expect(page.locator(".marquee-group").nth(1).locator("img").first()).toHaveAttribute("alt", "");
+  await expect(page.locator(".marquee-group").nth(1).locator("img").first()).toHaveAttribute("alt", "Kuzikus Wildlife Reserve Logo");
   const start = await marquee.evaluate((element) => getComputedStyle(element).transform);
   await page.waitForTimeout(350);
   const end = await marquee.evaluate((element) => getComputedStyle(element).transform);
@@ -340,7 +340,7 @@ test("public contact email is canonical in links and structured data", async ({ 
         "@graph"?: Array<Record<string, unknown>>;
       }
     );
-    const organization = structuredData["@graph"]?.find((node) => node["@type"] === "Organization");
+    const organization = structuredData["@graph"]?.find((node) => node["@id"] === "https://www.paternoga-seo-geo.de/#organization");
     const contactPoint = organization?.contactPoint as Record<string, unknown> | undefined;
 
     expect(organization?.email).toBe("kontakt@paternoga-seo-geo.de");
@@ -360,6 +360,30 @@ test("DE and EN homepages expose the same crawlable PATERNOGA favicon", async ({
     const faviconResponse = await request.get(`${TEST_ORIGIN}/favicon.png`);
     expect(faviconResponse.status()).toBe(200);
     expect(faviconResponse.headers()["content-type"]).toMatch(/^image\/png(?:;|$)/i);
+  }
+});
+
+test("homepage publishes the Dresden entity as a LocalBusiness", async ({ page }) => {
+  for (const path of ["/", "/en/"]) {
+    await page.goto(`${TEST_ORIGIN}${path}`, { waitUntil: "networkidle" });
+
+    const structuredData = await page.locator('script[type="application/ld+json"]').evaluate((element) =>
+      JSON.parse(element.textContent ?? "{}") as {
+        "@graph"?: Array<Record<string, unknown>>;
+      }
+    );
+    const localBusiness = structuredData["@graph"]?.find((node) => node["@id"] === "https://www.paternoga-seo-geo.de/#organization");
+    const types = Array.isArray(localBusiness?.["@type"]) ? localBusiness["@type"] : [localBusiness?.["@type"]];
+    const address = localBusiness?.address as Record<string, unknown> | undefined;
+
+    expect(types).toEqual(expect.arrayContaining(["Organization", "LocalBusiness"]));
+    expect(address).toMatchObject({
+      "@type": "PostalAddress",
+      streetAddress: "Holbeinstraße 7",
+      postalCode: "01307",
+      addressLocality: "Dresden",
+      addressCountry: "DE",
+    });
   }
 });
 

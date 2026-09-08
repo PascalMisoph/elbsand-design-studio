@@ -122,8 +122,8 @@ const menuLabel = de ? "Menü" : "Menu";
         <div class:list={["header-mega-panel", `header-mega-${item.menuIndex + 1}`]}>
           <div class="header-mega-inner">
             <a class="header-mega-feature" href={item.menu.feature.href}>
-              <span>{item.menu.feature.eyebrow}</span>
-              <strong>{item.menu.feature.title}</strong>
+              <span class="header-mega-feature-eyebrow">{item.menu.feature.eyebrow}</span>
+              <span class="header-mega-feature-title">{item.menu.feature.title}</span>
               <p>{item.menu.feature.text}</p>
               <i aria-hidden="true">↗</i>
             </a>

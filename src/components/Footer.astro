@@ -34,7 +34,7 @@ const columns = de ? [
     <div class="footer-columns">
       {columns.map((column) => (
         <nav class="site-footer-column footer-column" aria-label={column.title}>
-          <strong>{column.title}</strong>
+          <span class="footer-column-title">{column.title}</span>
           {column.links.map(([label, href]) => <a href={href.startsWith("#") ? `${home}${href}` : href}>{label}</a>)}
         </nav>
       ))}
@@ -50,7 +50,7 @@ const columns = de ? [
   </div>
   <picture class="footer-panorama" aria-hidden="true">
     <source media="(max-width: 600px)" srcset="/images/footer/dresden-mobile-v1.webp" width="1024" height="1536" />
-    <img src="/images/footer/dresden-desktop-v1.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async" />
+    <img src="/images/footer/dresden-desktop-v1.webp" alt="Dresden cityscape with the Frauenkirche" width="1536" height="1024" loading="lazy" decoding="async" />
   </picture>
 </footer>
 
@@ -94,7 +94,7 @@ const columns = de ? [
   .footer-cta:hover { background: var(--footer-dark); transform: translateY(-2px); }
   .footer-columns { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
   .footer-column { display: flex; align-items: flex-start; flex-direction: column; gap: 12px; min-width: 0; }
-  .footer-column strong { margin-bottom: 12px; color: var(--footer-dark); font-size: 14px; font-weight: 650; }
+  .footer-column-title { margin-bottom: 12px; color: var(--footer-dark); font-size: 14px; font-weight: 650; }
   .site-footer .footer-column a { color: var(--footer-muted); font-size: 14px; line-height: 1.55; overflow-wrap: anywhere; transition: color 180ms ease, transform 180ms ease; }
   .site-footer .footer-column a:hover { color: var(--footer-dark); transform: translateX(2px); }
   .footer-legal { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 72px; padding-block: 24px; border-top: 1px solid rgba(27,26,23,.16); color: var(--footer-muted); font-size: 12px; line-height: 1.6; }

@@ -53,7 +53,7 @@ export const projectLogos = [
 export const content = {
   de: {
     meta: {
-      title: "SEO & GEO Agentur für Dienstleister | PATERNOGA",
+      title: "Werden Sie gefunden, wenn Kunden suchen? | PATERNOGA",
       description:
         "PATERNOGA bringt die Seiten, über die Ihre Anfragen kommen, durch Google, durch KI-Antwortsysteme und durch den Menschen, der dort entscheidet."
     },
@@ -309,7 +309,7 @@ export const content = {
   },
   en: {
     meta: {
-      title: "SEO & GEO agency for Service Businesses | PATERNOGA",
+      title: "Will your business be mentioned? | PATERNOGA",
       description:
         "PATERNOGA takes the pages your enquiries come from through Google, through AI answer systems and through the person deciding on the page."
     },

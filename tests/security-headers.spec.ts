@@ -7,6 +7,7 @@ test("SSR pages expose the configured browser security policy", async ({ request
   expect(response.status()).toBe(200);
 
   const headers = response.headers();
+  expect(headers["content-type"]).toMatch(/^text\/html; charset=utf-8$/i);
   expect(headers["x-content-type-options"]).toBe("nosniff");
   expect(headers["x-frame-options"]).toBe("SAMEORIGIN");
   expect(headers["referrer-policy"]).toBe("strict-origin-when-cross-origin");

@@ -58,6 +58,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
     });
   }
 
+  if (!contentType.includes("charset=")) headers.set("content-type", "text/html; charset=utf-8");
   addVaryAccept(headers);
 
   if (context.request.method !== "GET" || !acceptsMarkdown(context.request.headers.get("accept"))) {

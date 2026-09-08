@@ -135,5 +135,6 @@ Nach T0 und einem definierten Query-/Prompt-Panel soll das Monitoring schrittwei
 
 | Datum | Änderung | Nachweis |
 |---|---|---|
+| 2026-09-08 | Den bestehenden Organisationsknoten um den sachlich passenden Typ `LocalBusiness` ergänzt; Adresse, Telefon und E-Mail bleiben mit sichtbarem Impressum und NAP-Schema konsistent. | `src/lib/seo.ts`, `scripts/validate-seo.mjs`, `scripts/static-smoke-check.cjs`, `tests/visual-qa.spec.ts`; `npm run verify` mit 145/145 Browser-Tests bestanden. |
 | 2026-09-06 | Growth-Research abgeschlossen, Ausführungsreihenfolge nach Umsatznähe neu geordnet; vorhandenen Re-Crawl-Abschluss nachgetragen. GSC-T0 teilweise belegt, Consumer-AI-/Local-/Revenue-Daten offen. | `growth-strategy-2026-09-06.md`, `growth-gsc-t0-2026-09-05.json`, `growth-state-2026-09-06.json`; keine Produktion/Outreach/Studienpublikation. |
 | 2026-09-05 | Die vom Nutzer priorisierte Reihenfolge wurde als lebende Roadmap aufgenommen. Post-Deployment-Re-Crawl ist `NEXT`; T0, Research-Auswahl, Commercial Content, Distribution und Monitoring sind geplant. | Keine Research-, Indexierungs- oder Outreach-Aktion in dieser Aktualisierung. |

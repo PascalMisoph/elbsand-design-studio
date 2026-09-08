@@ -47,7 +47,7 @@ const systems = [
       <ul>
         {systems.map((system) => (
           <li>
-            <img src={system.logo} alt="" width="28" height="28" loading="lazy" />
+            <img src={system.logo} alt={`${system.name} Logo`} width="28" height="28" loading="lazy" />
             <span>{system.name}</span>
           </li>
         ))}
