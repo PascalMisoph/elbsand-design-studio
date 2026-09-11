@@ -44,6 +44,12 @@
   --text-card-title--line-height: 1.12;
   --text-card-title--letter-spacing: -0.045em;
   --leading-copy: 1.55;
+  --duration-paternoga-press: var(--motion-press);
+  --duration-paternoga-popover: var(--motion-popover);
+  --duration-paternoga-dropdown: var(--motion-dropdown);
+  --duration-paternoga-drawer: var(--motion-drawer);
+  --ease-paternoga: var(--motion-ease);
+  --ease-paternoga-drawer: var(--motion-ease-drawer);
   --animate-shimmer: shimmer 2s linear infinite;
 }
 
