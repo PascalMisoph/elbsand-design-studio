@@ -82,25 +82,25 @@ const ExpandingCards = React.forwardRef<HTMLUListElement, ExpandingCardsProps>(
               height="1024"
               loading="lazy"
               decoding="async"
-              className="absolute inset-0 h-full w-full scale-110 object-cover grayscale transition-all duration-300 ease-out group-data-[active=true]:scale-100 group-data-[active=true]:grayscale-0 motion-reduce:transition-none"
+              className="absolute inset-0 h-full w-full scale-110 object-cover grayscale transition-[transform,filter] duration-300 ease-out group-data-[active=true]:scale-100 group-data-[active=true]:grayscale-0 motion-reduce:transition-none"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/5" />
             <article className="absolute inset-0 flex flex-col justify-end gap-2 p-4">
-              <p className="absolute bottom-4 left-1/2 m-0 hidden -translate-x-1/2 rotate-180 whitespace-nowrap text-[13px] font-light uppercase tracking-wider text-white/90 opacity-100 transition-all duration-300 ease-out [overflow-wrap:normal] [word-break:normal] [writing-mode:vertical-rl] group-data-[active=true]:opacity-0 motion-reduce:transition-none md:block">
+              <p className="absolute bottom-4 left-1/2 m-0 hidden -translate-x-1/2 rotate-180 whitespace-nowrap text-[13px] font-light uppercase tracking-wider text-white/90 opacity-100 transition-opacity duration-300 ease-out [overflow-wrap:normal] [word-break:normal] [writing-mode:vertical-rl] group-data-[active=true]:opacity-0 motion-reduce:transition-none md:block">
                 <span className="mb-3 text-[#d37a5c]">{index + 1}</span>
                 <span>{item.title}</span>
               </p>
-              <p className="absolute inset-x-4 bottom-4 m-0 flex min-w-0 items-center gap-2 whitespace-nowrap text-xs font-medium text-white/90 opacity-100 transition-all duration-300 ease-out group-data-[active=true]:opacity-0 motion-reduce:transition-none md:hidden">
+              <p className="absolute inset-x-4 bottom-4 m-0 flex min-w-0 items-center gap-2 whitespace-nowrap text-xs font-medium text-white/90 opacity-100 transition-opacity duration-300 ease-out group-data-[active=true]:opacity-0 motion-reduce:transition-none md:hidden">
                 <span className="shrink-0 text-[#d37a5c]">{index + 1}</span>
                 <span className="min-w-0 overflow-hidden text-ellipsis">{item.title}</span>
               </p>
-              <div className="text-[#d37a5c] opacity-0 transition-all delay-75 duration-300 ease-out group-data-[active=true]:opacity-100 motion-reduce:transition-none">
+              <div className="text-[#d37a5c] opacity-0 transition-opacity delay-75 duration-300 ease-out group-data-[active=true]:opacity-100 motion-reduce:transition-none">
                 {item.icon}
               </div>
-              <p className="m-0 max-w-md text-xl font-bold leading-tight text-white opacity-0 transition-all delay-150 duration-300 ease-out group-data-[active=true]:opacity-100 motion-reduce:transition-none">
+              <p className="m-0 max-w-md text-xl font-bold leading-tight text-white opacity-0 transition-opacity delay-150 duration-300 ease-out group-data-[active=true]:opacity-100 motion-reduce:transition-none">
                 {item.title}
               </p>
-              <p className="w-full max-w-xs text-sm leading-6 text-white/85 opacity-0 transition-all delay-225 duration-300 ease-out group-data-[active=true]:opacity-100 motion-reduce:transition-none">
+              <p className="w-full max-w-xs text-sm leading-6 text-white/85 opacity-0 transition-opacity delay-225 duration-300 ease-out group-data-[active=true]:opacity-100 motion-reduce:transition-none">
                 {item.description}
               </p>
             </article>

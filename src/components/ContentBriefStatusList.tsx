@@ -74,7 +74,7 @@ export default function ContentBriefStatusList({ title, subtitle, resultTitle, r
                 </div>
                 <button
                   type="button"
-                  className={`grid size-8 shrink-0 place-items-center rounded-md border border-transparent text-muted-foreground transition-all hover:border-border hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${status === "updates-found" ? "opacity-100" : "pointer-events-none opacity-60"}`}
+                  className={`grid size-8 shrink-0 place-items-center rounded-md border border-transparent text-muted-foreground transition-[border-color,background-color,color] hover:border-border hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${status === "updates-found" ? "opacity-100" : "pointer-events-none opacity-60"}`}
                   onClick={() => synchronize(item.id)}
                   aria-label={`${labels[status]}: ${item.title}`}
                   disabled={status !== "updates-found"}

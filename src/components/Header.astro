@@ -113,13 +113,13 @@ const menuLabel = de ? "Menü" : "Menu";
   </a>
 
   <nav class="desktop-nav" aria-label={de ? "Hauptnavigation" : "Main navigation"}>
-    {navigationItems.map((item) => item.kind === "menu" ? (
+    {navigationItems.map((item, itemIndex) => item.kind === "menu" ? (
       <details class="header-menu" data-header-menu>
-        <summary>
+        <summary id={`header-menu-trigger-${lang}-${itemIndex}`} aria-controls={`header-menu-panel-${lang}-${itemIndex}`} aria-expanded="false">
           <span>{item.menu.label}</span>
           <ChevronDown aria-hidden="true" />
         </summary>
-        <div class:list={["header-mega-panel", `header-mega-${item.menuIndex + 1}`]}>
+        <div id={`header-menu-panel-${lang}-${itemIndex}`} class:list={["header-mega-panel", `header-mega-${item.menuIndex + 1}`]}>
           <div class="header-mega-inner">
             <a class="header-mega-feature" href={item.menu.feature.href}>
               <span class="header-mega-feature-eyebrow">{item.menu.feature.eyebrow}</span>
@@ -150,12 +150,12 @@ const menuLabel = de ? "Menü" : "Menu";
     </nav>
     <a class="button button-small" href={primaryHref ?? ctaHref} data-revenue-cta={revenueOffer ? "header_desktop" : undefined} data-offer={revenueOffer}>{cta}</a>
     <details class="mobile-menu" data-mobile-menu>
-      <summary aria-label={menuLabel}><span></span><span></span></summary>
-      <nav aria-label={de ? "Mobile Navigation" : "Mobile navigation"}>
-        {navigationItems.map((item) => item.kind === "menu" ? (
+      <summary id={`mobile-menu-trigger-${lang}`} aria-controls={`mobile-menu-panel-${lang}`} aria-expanded="false" aria-label={menuLabel}><span></span><span></span></summary>
+      <nav id={`mobile-menu-panel-${lang}`} aria-label={de ? "Mobile Navigation" : "Mobile navigation"}>
+        {navigationItems.map((item, itemIndex) => item.kind === "menu" ? (
           <details class="mobile-nav-group">
-            <summary>{item.menu.label}<span aria-hidden="true">⌄</span></summary>
-            <div>
+            <summary id={`mobile-menu-group-trigger-${lang}-${itemIndex}`} aria-controls={`mobile-menu-group-panel-${lang}-${itemIndex}`} aria-expanded="false">{item.menu.label}<span aria-hidden="true">⌄</span></summary>
+            <div id={`mobile-menu-group-panel-${lang}-${itemIndex}`}>
               <a class="mobile-feature-link" href={item.menu.feature.href}>{item.menu.feature.title}</a>
               {item.menu.groups.map((group) => (
                 <section>
@@ -175,28 +175,111 @@ const menuLabel = de ? "Menü" : "Menu";
 </header>
 
 <script>
+  const focusableSelector = "a[href], button:not([disabled]), summary, input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])";
+  const isVisibleFocusable = (element: HTMLElement) => !element.closest("[hidden]") && element.getClientRects().length > 0;
+  const getFocusable = (root: ParentNode) => [...root.querySelectorAll<HTMLElement>(focusableSelector)].filter(isVisibleFocusable);
+
   const headers = document.querySelectorAll<HTMLElement>("[data-site-header]");
   headers.forEach((header) => {
     const menus = [...header.querySelectorAll<HTMLDetailsElement>("[data-header-menu]")];
     const mobileMenu = header.querySelector<HTMLDetailsElement>("[data-mobile-menu]");
-    menus.forEach((menu) => menu.addEventListener("toggle", () => {
-      if (menu.open) menus.forEach((other) => { if (other !== menu) other.open = false; });
-    }));
+    const mobileTrigger = mobileMenu?.querySelector<HTMLElement>(":scope > summary");
+    const mobileNav = mobileMenu?.querySelector<HTMLElement>(":scope > nav");
+    const mobileGroups = mobileMenu ? [...mobileMenu.querySelectorAll<HTMLDetailsElement>(".mobile-nav-group")] : [];
+    const backgroundTargets = [
+      document.querySelector<HTMLElement>("main#main-content"),
+      document.querySelector<HTMLElement>(".site-footer"),
+    ].filter((element): element is HTMLElement => element !== null);
+
+    const syncExpanded = (details: HTMLDetailsElement) => {
+      details.querySelector<HTMLElement>(":scope > summary")?.setAttribute("aria-expanded", String(details.open));
+    };
+    const setBackgroundInert = (inert: boolean) => backgroundTargets.forEach((element) => element.toggleAttribute("inert", inert));
+    const closeDesktopMenu = (menu: HTMLDetailsElement, returnFocus = false) => {
+      const wasOpen = menu.open;
+      menu.open = false;
+      syncExpanded(menu);
+      if (returnFocus && wasOpen) menu.querySelector<HTMLElement>(":scope > summary")?.focus({ preventScroll: true });
+    };
+    const closeMobileGroup = (group: HTMLDetailsElement, returnFocus = false) => {
+      const wasOpen = group.open;
+      group.open = false;
+      syncExpanded(group);
+      if (returnFocus && wasOpen) group.querySelector<HTMLElement>(":scope > summary")?.focus({ preventScroll: true });
+    };
+    const closeMobileMenu = (returnFocus = false) => {
+      if (!mobileMenu) return;
+      mobileGroups.forEach((group) => closeMobileGroup(group));
+      const wasOpen = mobileMenu.open;
+      mobileMenu.open = false;
+      syncExpanded(mobileMenu);
+      document.documentElement.classList.remove("mobile-nav-open");
+      setBackgroundInert(false);
+      if (returnFocus && wasOpen) mobileTrigger?.focus({ preventScroll: true });
+    };
+
+    menus.forEach((menu) => {
+      syncExpanded(menu);
+      menu.addEventListener("toggle", () => {
+        syncExpanded(menu);
+        if (menu.open) menus.forEach((other) => { if (other !== menu) closeDesktopMenu(other); });
+      });
+    });
+    mobileGroups.forEach((group) => {
+      syncExpanded(group);
+      group.addEventListener("toggle", () => syncExpanded(group));
+    });
     mobileMenu?.addEventListener("toggle", () => {
+      syncExpanded(mobileMenu);
       document.documentElement.classList.toggle("mobile-nav-open", mobileMenu.open);
+      setBackgroundInert(mobileMenu.open);
+      if (mobileMenu.open) {
+        menus.forEach((menu) => closeDesktopMenu(menu));
+        requestAnimationFrame(() => getFocusable(mobileNav ?? mobileMenu).find((element) => element !== mobileTrigger)?.focus({ preventScroll: true }));
+      }
     });
     mobileMenu?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
-      mobileMenu.open = false;
-      document.documentElement.classList.remove("mobile-nav-open");
+      closeMobileMenu();
     }));
-    document.addEventListener("click", (event) => {
-      if (!header.contains(event.target as Node)) menus.forEach((menu) => { menu.open = false; });
-    });
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        menus.forEach((menu) => { menu.open = false; });
-        mobileMenu?.removeAttribute("open");
-        document.documentElement.classList.remove("mobile-nav-open");
+      if (mobileMenu?.open && event.key === "Tab") {
+        const focusable = getFocusable(mobileNav ?? mobileMenu).filter((element) => element !== mobileTrigger);
+        if (focusable.length === 0) {
+          event.preventDefault();
+          return;
+        }
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+      if (event.key !== "Escape") return;
+      const openGroup = [...mobileGroups].reverse().find((group) => group.open && group.contains(document.activeElement));
+      if (openGroup) {
+        event.preventDefault();
+        closeMobileGroup(openGroup, true);
+        return;
+      }
+      if (mobileMenu?.open) {
+        event.preventDefault();
+        closeMobileMenu(true);
+        return;
+      }
+      const activeMenu = menus.find((menu) => menu.open);
+      if (activeMenu) {
+        event.preventDefault();
+        closeDesktopMenu(activeMenu, true);
+      }
+    });
+    document.addEventListener("click", (event) => {
+      if (!header.contains(event.target as Node)) {
+        menus.forEach((menu) => closeDesktopMenu(menu));
+        if (mobileMenu?.open) closeMobileMenu();
       }
     });
   });

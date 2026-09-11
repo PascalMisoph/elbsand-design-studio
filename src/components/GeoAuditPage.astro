@@ -382,4 +382,8 @@ const presenceFeatures = de ? [
     font-family: var(--sans);
   }
   .a-faq { border-top: 0; }
+  .a-button:hover { transform: none; }
+  .a-button:active { transform: scale(.98); }
+  @media (hover: hover) and (pointer: fine) { .a-button:hover { transform: translateY(-2px); } }
+  @media (prefers-reduced-motion: reduce) { .a-button:hover, .a-button:active { transform: none; } }
 </style>

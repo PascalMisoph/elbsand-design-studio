@@ -453,4 +453,8 @@ const schema = createServicePageSchema({ lang: page.lang, title: page.meta.title
     .visibility-page .v-answer-index-image:hover { box-shadow: none; transform: none; }
   }
   :global(body.visibility-route) { font-family: var(--sans); }
+  .v-button:hover { transform: none; }
+  .v-button:active { transform: scale(.98); }
+  @media (hover: hover) and (pointer: fine) { .v-button:hover { transform: translateY(-2px); } }
+  @media (prefers-reduced-motion: reduce) { .v-button:hover, .v-button:active { transform: none; } }
 </style>

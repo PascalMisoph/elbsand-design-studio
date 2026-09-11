@@ -47,7 +47,7 @@ function AiRoutingIndicator({
       data-slot="ai-routing-indicator"
       data-routing={isRouting}
       className={cn(
-        "rounded-lg border bg-card text-card-foreground overflow-hidden transition-all",
+        "rounded-lg border bg-card text-card-foreground overflow-hidden transition-[border-color,box-shadow]",
         isRouting
           ? "border-[#b74622]/55 shadow-lg shadow-[#b74622]/10"
           : "border-border",
