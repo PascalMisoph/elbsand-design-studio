@@ -10,12 +10,11 @@
     "name": "paternoga-seo-geo-studio",
     "repository": "C:\\Dev\\elbsand-design-studio",
     "branch": "main",
-    "commit": "82242d150d5fa37a8fda21b2f3ae01773c453b6b",
+    "commit": "95afb042db5b26646090532a5de17410965d0d10",
     "dirty": true,
     "git_status": [
-      "M docs/seo-geo-live-crawl.json",
-      " M docs/seo-geo-next-steps.md",
-      " M docs/seo-geo-project-state.json",
+      "M docs/seo-geo-project-state.json",
+      "?? docs/entity-recognition-baseline-2026-09-11.md",
       "?? scripts/analyze-x-bookmarks.mjs",
       "?? scripts/build-seo-geo-bookmark-doc.ps1",
       "?? scripts/finalize-seo-geo-bookmark-html.mjs",
@@ -43,7 +42,7 @@
     }
   },
   "inventory": {
-    "file_count": 1722,
+    "file_count": 1724,
     "route_files": [
       "src/pages/ai-crawlability/index.astro",
       "src/pages/ai-sichtbarkeit/index.astro",
@@ -97,6 +96,7 @@
       "docs/codebase-audit-2026-08-26.md",
       "docs/design-audit.md",
       "docs/design-reference-analysis.md",
+      "docs/entity-recognition-baseline-2026-09-11.md",
       "docs/geo-visibility-baseline.md",
       "docs/growth-evidence-2026-09-06.md",
       "docs/growth-experiments-2026-09-06.md",
@@ -289,7 +289,7 @@
     "execution_authorized": false,
     "note": "Do not start a Research case without an explicit later request."
   },
-  "updated_at": "2026-09-08T18:51:14.309Z",
+  "updated_at": "2026-09-11T22:08:07.252Z",
   "checks": {
     "delivery": {
       "status": "verified",
