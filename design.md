@@ -272,6 +272,10 @@ Rollout count:
 - Closing CTAs must match intent: audit pages lead to an audit request; execution pages lead to an implementation conversation.
 - Avoid orphan pages, generic `learn more` labels, and excessive exact-match anchor repetition.
 
+### Route experience safeguard
+
+Strategic routes should not automatically reuse the same hero pattern, sticky-scroll pattern, graph, browser frame, card grid, logo cloud, or autoplay animation. Future route design should be selected from the communication job of the route: the object, interaction, and motion budget must explain that route's subject rather than repeat a signature by default. This is an architecture safeguard, not a direction to introduce new visual concepts during technical hardening.
+
 ### Binding GEO taxonomy
 
 Keep the information architecture shallow: one root, first-level subtopics, and at most one leaf level. Do not add a fourth logical level merely to create more landing pages.
