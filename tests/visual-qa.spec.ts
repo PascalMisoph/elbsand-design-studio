@@ -344,6 +344,7 @@ test("public contact email is canonical in links and structured data", async ({ 
     const contactPoint = organization?.contactPoint as Record<string, unknown> | undefined;
 
     expect(organization?.email).toBe("kontakt@paternoga-seo-geo.de");
+    expect(organization?.sameAs).toEqual(["https://www.linkedin.com/company/paternoga-seo-geo/"]);
     expect(contactPoint?.email).toBe("kontakt@paternoga-seo-geo.de");
   }
 });

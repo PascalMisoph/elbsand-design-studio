@@ -60,6 +60,7 @@ const organizationNode: JsonLdNode = {
   "@id": ORGANIZATION_ID,
   name: "Paternoga SEO & GEO Agentur",
   alternateName: "PATERNOGA",
+  sameAs: ["https://www.linkedin.com/company/paternoga-seo-geo/"],
   slogan: "Be the brand AI thinks of first.",
   url: `${SITE_URL}/`,
   description: "Paternoga SEO & GEO Agentur ist eine Spezialagentur für SEO, Generative Engine Optimization, AI Search und AI Visibility mit Sitz in Dresden und deutschlandweiter Zusammenarbeit.",

@@ -55,7 +55,7 @@ export const content = {
     meta: {
       title: "Werden Sie gefunden, wenn Kunden suchen? | PATERNOGA",
       description:
-        "PATERNOGA bringt die Seiten, über die Ihre Anfragen kommen, durch Google, durch KI-Antwortsysteme und durch den Menschen, der dort entscheidet."
+        "PATERNOGA ist eine SEO- und GEO-Agentur aus Dresden für Unternehmen in Deutschland. SEO, GEO und AI-Sichtbarkeit für die Seiten, die Ihre Anfragen bringen."
     },
     nav: ["Leistungen", "Lösungen", "Referenzen", "Ablauf", "Ressourcen", "Kontakt"],
     cta: "Projekt anfragen",
@@ -82,7 +82,7 @@ export const content = {
             sourceHref: "https://www.deloitte.com/ch/en/services/consulting/perspectives/the-age-of-geo.html"
           }
         ],
-        detail: "PATERNOGA analysiert und optimiert die Seiten, die für Ihre Anfragen entscheidend sind. Für Sichtbarkeit bei Google, Präsenz in KI-Systemen und mehr qualifizierte Anfragen."
+        detail: "PATERNOGA ist eine SEO- und GEO-Agentur aus Dresden für Unternehmen in Deutschland. Wir analysieren und optimieren die Seiten, die für Ihre Anfragen entscheidend sind. Für Sichtbarkeit bei Google, Präsenz in KI-Systemen und mehr qualifizierte Anfragen."
       },
       imageAlt: "Pascal Misoph an seinem Arbeitsplatz bei PATERNOGA",
     },
@@ -311,7 +311,7 @@ export const content = {
     meta: {
       title: "Will your business be mentioned? | PATERNOGA",
       description:
-        "PATERNOGA takes the pages your enquiries come from through Google, through AI answer systems and through the person deciding on the page."
+        "PATERNOGA is an SEO and GEO agency from Dresden for companies across Germany. SEO, GEO and AI visibility for the pages that drive your enquiries."
     },
     nav: ["Services", "Solutions", "Work", "Process", "Resources", "Contact"],
     cta: "Start a project",
@@ -338,7 +338,7 @@ export const content = {
             sourceHref: "https://www.deloitte.com/ch/en/services/consulting/perspectives/the-age-of-geo.html"
           }
         ],
-        detail: "PATERNOGA analyses and optimises the pages that matter for your enquiries. For visibility in Google, presence in AI systems and more qualified enquiries."
+        detail: "PATERNOGA is an SEO and GEO agency from Dresden for companies across Germany. We analyse and optimise the pages that matter for your enquiries. For visibility in Google, presence in AI systems and more qualified enquiries."
       },
       imageAlt: "Pascal Misoph at his PATERNOGA workspace",
     },
