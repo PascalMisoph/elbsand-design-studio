@@ -318,24 +318,24 @@ function CircuitBoard({
               width: size,
               height: size,
             }}
-            initial={{ scale: 0, opacity: 0 }}
+            initial={shouldReduceMotion ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: i * 0.1 + 0.5, type: "spring" }}
+            transition={shouldReduceMotion ? { duration: 0 } : { delay: i * 0.1 + 0.5, type: "spring" }}
           >
             {/* Node background with pulse */}
             <motion.div
               className="absolute inset-0 rounded-lg"
               style={{ backgroundColor: statusColor }}
-              animate={
-                node.status === "processing"
+              animate={shouldReduceMotion
+                ? { opacity: node.status === "processing" ? 0.5 : 0.2 }
+                : node.status === "processing"
                   ? { opacity: [0.2, 0.5, 0.2] }
-                  : { opacity: 0.2 }
-              }
-              transition={
-                node.status === "processing"
+                  : { opacity: 0.2 }}
+              transition={shouldReduceMotion
+                ? { duration: 0 }
+                : node.status === "processing"
                   ? { duration: 1.5, repeat: Infinity }
-                  : {}
-              }
+                  : {}}
             />
 
             {/* Node border */}
@@ -351,8 +351,8 @@ function CircuitBoard({
                 style={{
                   boxShadow: `0 0 20px ${statusColor}40, inset 0 0 10px ${statusColor}20`,
                 }}
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{ duration: 2, repeat: Infinity }}
+                animate={shouldReduceMotion ? { opacity: 0.5 } : { opacity: [0.5, 1, 0.5] }}
+                transition={shouldReduceMotion ? { duration: 0 } : { duration: 2, repeat: Infinity }}
               />
             )}
 

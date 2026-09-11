@@ -141,6 +141,7 @@ const systems = [
     window.setTimeout(loadVideo, 1200);
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) video.pause();
+      else if (reducedMotion.matches) applyPreference();
       else if (videoLoaded) void video.play().catch(() => undefined);
       else loadVideo();
     });
@@ -156,6 +157,7 @@ const systems = [
     const systems = JSON.parse(rawSystems) as Array<{ name: string; logo: string; inverse?: boolean }>;
     let activeIndex = 0;
     let timer: number | undefined;
+    let transitionTimer: number | undefined;
 
     const systemMarkup = (system: { name: string; logo: string; inverse?: boolean }) =>
       `<img class="${system.inverse ? "is-inverted" : ""}" src="${system.logo}" alt="${system.name} Logo" width="72" height="72"><span class="hero-system-name">${system.name}</span>`;
@@ -166,7 +168,8 @@ const systems = [
         return;
       }
       value.classList.add("is-leaving");
-      window.setTimeout(() => {
+      if (transitionTimer !== undefined) window.clearTimeout(transitionTimer);
+      transitionTimer = window.setTimeout(() => {
         value.innerHTML = systemMarkup(system);
         value.classList.remove("is-leaving");
         value.classList.add("is-entering");
@@ -177,15 +180,17 @@ const systems = [
     const stop = () => {
       if (timer !== undefined) window.clearInterval(timer);
       timer = undefined;
+      if (transitionTimer !== undefined) window.clearTimeout(transitionTimer);
+      transitionTimer = undefined;
     };
 
     const start = () => {
       stop();
-      if (document.hidden) return;
+      if (document.hidden || reducedMotion.matches || systems.length < 2) return;
       timer = window.setInterval(() => {
         activeIndex = (activeIndex + 1) % systems.length;
         renderSystem(systems[activeIndex]);
-      }, reducedMotion.matches ? 3000 : 1900);
+      }, 1900);
     };
 
     document.addEventListener("visibilitychange", start);
