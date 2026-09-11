@@ -45,11 +45,11 @@ const copy = de
 ---
 
 <div class="consent-manager" data-consent-manager data-analytics-id={analyticsId} data-lang={lang} hidden>
-  <section class="consent-banner" role="dialog" aria-modal="true" aria-labelledby={`consent-title-${lang}`} data-consent-banner>
+  <section class="consent-banner" aria-labelledby={`consent-title-${lang}`} aria-describedby={`consent-description-${lang}`} data-consent-banner>
     <div>
       <p class="consent-eyebrow">PATERNOGA</p>
       <h2 id={`consent-title-${lang}`}>{copy.title}</h2>
-      <p>{copy.intro} <a href={privacyPath}>{copy.privacy}</a></p>
+      <p id={`consent-description-${lang}`}>{copy.intro} <a href={privacyPath}>{copy.privacy}</a></p>
     </div>
     <div class="consent-actions">
       <button type="button" class="consent-button consent-button--quiet" data-consent-reject>{copy.reject}</button>
@@ -180,12 +180,34 @@ const copy = de
     const externalInput = manager.querySelector<HTMLInputElement>("[data-consent-external]");
     const analyticsId = manager.dataset.analyticsId ?? "";
     let choice = readChoice();
+    let settingsOpener: HTMLElement | null = null;
 
-    const openSettings = () => {
-      if (!dialog) return;
+    const isVisible = (element: HTMLElement) => !element.closest("[hidden]") && element.getClientRects().length > 0;
+    const findFocusable = () => {
+      if (!dialog) return null;
+      return [...dialog.querySelectorAll<HTMLElement>("button, input, a[href], [tabindex]:not([tabindex='-1'])")]
+        .find((element) => !element.hasAttribute("disabled") && isVisible(element)) ?? null;
+    };
+    const restoreFocus = () => {
+      const opener = settingsOpener;
+      settingsOpener = null;
+      if (opener && isVisible(opener)) {
+        opener.focus({ preventScroll: true });
+        return;
+      }
+      [...document.querySelectorAll<HTMLElement>("[data-open-consent-settings]")]
+        .find((element) => isVisible(element))
+        ?.focus({ preventScroll: true });
+    };
+
+    const openSettings = (opener?: HTMLElement) => {
+      if (!dialog || dialog.open) return;
+      const activeElement = document.activeElement;
+      settingsOpener = opener ?? (activeElement instanceof HTMLElement ? activeElement : null);
       analyticsInput && (analyticsInput.checked = choice?.analytics ?? false);
       externalInput && (externalInput.checked = choice?.external ?? false);
       dialog.showModal();
+      requestAnimationFrame(() => findFocusable()?.focus({ preventScroll: true }));
     };
     const save = (analytics: boolean, external: boolean) => {
       const previous = choice;
@@ -199,10 +221,11 @@ const copy = de
 
     manager.querySelectorAll<HTMLButtonElement>("[data-consent-reject]").forEach((button) => button.addEventListener("click", () => save(false, false)));
     manager.querySelector<HTMLButtonElement>("[data-consent-accept]")?.addEventListener("click", () => save(true, true));
-    manager.querySelector<HTMLButtonElement>("[data-consent-details]")?.addEventListener("click", openSettings);
+    manager.querySelector<HTMLButtonElement>("[data-consent-details]")?.addEventListener("click", (event) => openSettings(event.currentTarget as HTMLButtonElement));
     manager.querySelector<HTMLButtonElement>("[data-consent-close]")?.addEventListener("click", () => dialog?.close());
     manager.querySelector<HTMLButtonElement>("[data-consent-save]")?.addEventListener("click", () => save(analyticsInput?.checked ?? false, externalInput?.checked ?? false));
-    document.querySelectorAll<HTMLButtonElement>("[data-open-consent-settings]").forEach((button) => button.addEventListener("click", openSettings));
+    dialog?.addEventListener("close", restoreFocus);
+    document.querySelectorAll<HTMLButtonElement>("[data-open-consent-settings]").forEach((button) => button.addEventListener("click", () => openSettings(button)));
 
     const consentWindow = window as ConsentWindow;
     consentWindow.dataLayer = consentWindow.dataLayer ?? [];
@@ -231,14 +254,15 @@ const copy = de
   .consent-banner p:not(.consent-eyebrow) { max-width: 640px; margin: 12px 0 0; color: #b9b4aa; font-size: 14px; line-height: 1.55; }
   .consent-manager a { color: inherit; text-underline-offset: 3px; }
   .consent-actions { display: flex; gap: 9px; flex-wrap: wrap; justify-content: flex-end; }
-  .consent-button { min-height: 44px; border: 1px solid rgba(255,250,244,.26); border-radius: 6px; padding: 0 17px; color: #fffaf4; font: 650 13px/1 var(--sans); cursor: pointer; }
+  .consent-button { min-height: 44px; border: 1px solid rgba(255,250,244,.26); border-radius: 6px; padding: 0 17px; color: #fffaf4; font: 650 13px/1 var(--sans); cursor: pointer; transition: background-color var(--motion-press) ease, border-color var(--motion-press) ease, color var(--motion-press) ease, transform var(--motion-press) var(--motion-ease); }
+  .consent-button:active, .consent-close:active { transform: scale(.98); }
   .consent-button--quiet { background: transparent; }
   .consent-button--primary { border-color: #b74622; background: #b74622; }
   .consent-button:focus-visible, .consent-close:focus-visible, .consent-option input:focus-visible { outline: 3px solid #e98764; outline-offset: 3px; }
   .consent-dialog { width: min(calc(100% - 32px), 720px); max-height: calc(100vh - 32px); overflow: auto; border: 1px solid rgba(27,26,23,.18); border-radius: 12px; background: #fbf8f2; padding: 0; color: #1b1a17; box-shadow: 0 30px 100px rgba(0,0,0,.35); pointer-events: auto; }
   .consent-dialog::backdrop { background: rgba(10,10,9,.72); }
   .consent-dialog form > header, .consent-dialog-actions { display: flex; gap: 20px; align-items: flex-start; justify-content: space-between; padding: 24px; }
-  .consent-close { width: 40px; height: 40px; flex: 0 0 auto; border: 1px solid rgba(27,26,23,.16); border-radius: 50%; background: transparent; color: #1b1a17; font: 300 26px/1 var(--sans); cursor: pointer; }
+  .consent-close { width: 40px; height: 40px; flex: 0 0 auto; border: 1px solid rgba(27,26,23,.16); border-radius: 50%; background: transparent; color: #1b1a17; font: 300 26px/1 var(--sans); cursor: pointer; transition: background-color var(--motion-press) ease, border-color var(--motion-press) ease, color var(--motion-press) ease, transform var(--motion-press) var(--motion-ease); }
   .consent-options { border-block: 1px solid rgba(27,26,23,.14); }
   .consent-option { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 24px; align-items: center; padding: 20px 24px; }
   .consent-option + .consent-option { border-top: 1px solid rgba(27,26,23,.1); }
